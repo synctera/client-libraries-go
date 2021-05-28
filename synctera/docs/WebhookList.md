@@ -1,0 +1,77 @@
+# WebhookList
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Webhooks** | [**[]Webhook**](Webhook.md) | Array of webhooks | 
+**NextPageToken** | Pointer to **string** | If returned, use the next_page_token to query for the next page of results. | [optional] 
+
+## Methods
+
+### NewWebhookList
+
+`func NewWebhookList(webhooks []Webhook, ) *WebhookList`
+
+NewWebhookList instantiates a new WebhookList object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewWebhookListWithDefaults
+
+`func NewWebhookListWithDefaults() *WebhookList`
+
+NewWebhookListWithDefaults instantiates a new WebhookList object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetWebhooks
+
+`func (o *WebhookList) GetWebhooks() []Webhook`
+
+GetWebhooks returns the Webhooks field if non-nil, zero value otherwise.
+
+### GetWebhooksOk
+
+`func (o *WebhookList) GetWebhooksOk() (*[]Webhook, bool)`
+
+GetWebhooksOk returns a tuple with the Webhooks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhooks
+
+`func (o *WebhookList) SetWebhooks(v []Webhook)`
+
+SetWebhooks sets Webhooks field to given value.
+
+
+### GetNextPageToken
+
+`func (o *WebhookList) GetNextPageToken() string`
+
+GetNextPageToken returns the NextPageToken field if non-nil, zero value otherwise.
+
+### GetNextPageTokenOk
+
+`func (o *WebhookList) GetNextPageTokenOk() (*string, bool)`
+
+GetNextPageTokenOk returns a tuple with the NextPageToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNextPageToken
+
+`func (o *WebhookList) SetNextPageToken(v string)`
+
+SetNextPageToken sets NextPageToken field to given value.
+
+### HasNextPageToken
+
+`func (o *WebhookList) HasNextPageToken() bool`
+
+HasNextPageToken returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
