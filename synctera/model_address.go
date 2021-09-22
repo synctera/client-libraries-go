@@ -16,39 +16,38 @@ import (
 
 // Address struct for Address
 type Address struct {
-	// Address unique identifier
-	Id *string `json:"id,omitempty"`
-	// Denotes whether this address is the person's default address
-	DefaultAddressFlg bool `json:"default_address_flg"`
-	// type of address
-	Type string `json:"type"`
 	// Street address line 1
 	AddressLine1 string `json:"address_line_1"`
 	// String address line 2
 	AddressLine2 *string `json:"address_line_2,omitempty"`
 	// City
 	City string `json:"city"`
-	// State, region, province, or prefecture
-	State string `json:"state"`
-	// Postal code
-	PostalCode string `json:"postal_code"`
 	// ISO-3166-1 Alpha-2 country code
 	CountryCode string `json:"country_code"`
+	// Denotes whether this address is the person's default address
+	DefaultAddressFlg bool `json:"default_address_flg"`
+	// Address unique identifier
+	Id *string `json:"id,omitempty"`
+	// Postal code
+	PostalCode string `json:"postal_code"`
+	// State, region, province, or prefecture
+	State string `json:"state"`
+	// type of address
+	Type *string `json:"type,omitempty"`
 }
 
 // NewAddress instantiates a new Address object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddress(defaultAddressFlg bool, type_ string, addressLine1 string, city string, state string, postalCode string, countryCode string) *Address {
+func NewAddress(addressLine1 string, city string, countryCode string, defaultAddressFlg bool, postalCode string, state string) *Address {
 	this := Address{}
-	this.DefaultAddressFlg = defaultAddressFlg
-	this.Type = type_
 	this.AddressLine1 = addressLine1
 	this.City = city
-	this.State = state
-	this.PostalCode = postalCode
 	this.CountryCode = countryCode
+	this.DefaultAddressFlg = defaultAddressFlg
+	this.PostalCode = postalCode
+	this.State = state
 	return &this
 }
 
@@ -58,86 +57,6 @@ func NewAddress(defaultAddressFlg bool, type_ string, addressLine1 string, city 
 func NewAddressWithDefaults() *Address {
 	this := Address{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Address) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Address) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Address) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Address) SetId(v string) {
-	o.Id = &v
-}
-
-// GetDefaultAddressFlg returns the DefaultAddressFlg field value
-func (o *Address) GetDefaultAddressFlg() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.DefaultAddressFlg
-}
-
-// GetDefaultAddressFlgOk returns a tuple with the DefaultAddressFlg field value
-// and a boolean to check if the value has been set.
-func (o *Address) GetDefaultAddressFlgOk() (*bool, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.DefaultAddressFlg, true
-}
-
-// SetDefaultAddressFlg sets field value
-func (o *Address) SetDefaultAddressFlg(v bool) {
-	o.DefaultAddressFlg = v
-}
-
-// GetType returns the Type field value
-func (o *Address) GetType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *Address) GetTypeOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *Address) SetType(v string) {
-	o.Type = v
 }
 
 // GetAddressLine1 returns the AddressLine1 field value
@@ -220,28 +139,84 @@ func (o *Address) SetCity(v string) {
 	o.City = v
 }
 
-// GetState returns the State field value
-func (o *Address) GetState() string {
+// GetCountryCode returns the CountryCode field value
+func (o *Address) GetCountryCode() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.State
+	return o.CountryCode
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetCountryCodeOk returns a tuple with the CountryCode field value
 // and a boolean to check if the value has been set.
-func (o *Address) GetStateOk() (*string, bool) {
+func (o *Address) GetCountryCodeOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.State, true
+	return &o.CountryCode, true
 }
 
-// SetState sets field value
-func (o *Address) SetState(v string) {
-	o.State = v
+// SetCountryCode sets field value
+func (o *Address) SetCountryCode(v string) {
+	o.CountryCode = v
+}
+
+// GetDefaultAddressFlg returns the DefaultAddressFlg field value
+func (o *Address) GetDefaultAddressFlg() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.DefaultAddressFlg
+}
+
+// GetDefaultAddressFlgOk returns a tuple with the DefaultAddressFlg field value
+// and a boolean to check if the value has been set.
+func (o *Address) GetDefaultAddressFlgOk() (*bool, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.DefaultAddressFlg, true
+}
+
+// SetDefaultAddressFlg sets field value
+func (o *Address) SetDefaultAddressFlg(v bool) {
+	o.DefaultAddressFlg = v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Address) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Address) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Address) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Address) SetId(v string) {
+	o.Id = &v
 }
 
 // GetPostalCode returns the PostalCode field value
@@ -268,41 +243,64 @@ func (o *Address) SetPostalCode(v string) {
 	o.PostalCode = v
 }
 
-// GetCountryCode returns the CountryCode field value
-func (o *Address) GetCountryCode() string {
+// GetState returns the State field value
+func (o *Address) GetState() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CountryCode
+	return o.State
 }
 
-// GetCountryCodeOk returns a tuple with the CountryCode field value
+// GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *Address) GetCountryCodeOk() (*string, bool) {
+func (o *Address) GetStateOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.CountryCode, true
+	return &o.State, true
 }
 
-// SetCountryCode sets field value
-func (o *Address) SetCountryCode(v string) {
-	o.CountryCode = v
+// SetState sets field value
+func (o *Address) SetState(v string) {
+	o.State = v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Address) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Address) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *Address) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *Address) SetType(v string) {
+	o.Type = &v
 }
 
 func (o Address) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["default_address_flg"] = o.DefaultAddressFlg
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if true {
 		toSerialize["address_line_1"] = o.AddressLine1
 	}
@@ -313,13 +311,22 @@ func (o Address) MarshalJSON() ([]byte, error) {
 		toSerialize["city"] = o.City
 	}
 	if true {
-		toSerialize["state"] = o.State
+		toSerialize["country_code"] = o.CountryCode
+	}
+	if true {
+		toSerialize["default_address_flg"] = o.DefaultAddressFlg
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["postal_code"] = o.PostalCode
 	}
 	if true {
-		toSerialize["country_code"] = o.CountryCode
+		toSerialize["state"] = o.State
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

@@ -4,29 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Customer unique identifier | [optional] [readonly] 
-**FirstName** | Pointer to **string** | Customer&#39;s first name | [optional] 
-**LastName** | Pointer to **string** | Customer&#39;s last name | [optional] 
-**MiddleName** | Pointer to **string** | Customer&#39;s middle name | [optional] 
-**LegalAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
-**ShippingAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
-**Dob** | Pointer to **string** | Customer&#39;s date of birth in ISO-8601 date format YYYY-MM-DD | [optional] 
-**Ssn** | Pointer to **string** | Customer&#39;s full tax ID eg SSN formatted with hyphens 123-45-6789 | [optional] 
-**SsnLastFour** | Pointer to **string** | Customer&#39;s masked tax ID eg SSN formatted with hyphens ***-**-6789 | [optional] [readonly] 
-**Email** | Pointer to **string** | Customer&#39;s email | [optional] 
-**MobilePhoneNumber** | Pointer to **string** | Customer&#39;s mobile phone number in E.164 format e.g. +19178675309 | [optional] 
-**AltPhoneNumber** | Pointer to **string** | Customer&#39;s alternate phone number in E.164 format e.g. +19178675309 | [optional] 
-**CreationTime** | Pointer to **time.Time** |  | [optional] [readonly] 
-**LastUpdatedTime** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Devices** | Pointer to [**[]Device**](Device.md) | List of the Customer&#39;s associated devices | [optional] 
-**RelatedCustomers** | Pointer to [**[]Relationship1**](Relationship1.md) | Customer&#39;s relationships with other accounts eg. guardian | [optional] 
+**Dob** | **string** | Customer&#39;s date of birth in RFC 3339 full-date format (YYYY-MM-DD) | 
+**FirstName** | **string** | Customer&#39;s first name | 
+**LastName** | **string** | Customer&#39;s last name | 
+**Status** | **string** | Customer&#39;s status | 
 **Accounts** | Pointer to [**[]Account**](Account.md) | List of accounts that belong to the customer | [optional] [readonly] 
+**CreationTime** | Pointer to **time.Time** |  | [optional] [readonly] 
+**Devices** | Pointer to [**[]Device**](Device.md) | List of the Customer&#39;s associated devices | [optional] 
+**Email** | Pointer to **string** | Customer&#39;s email | [optional] 
+**Id** | Pointer to **string** | Customer unique identifier | [optional] [readonly] 
+**KycStatus** | Pointer to [**CustomerKycStatus**](CustomerKycStatus.md) |  | [optional] 
+**LastUpdatedTime** | Pointer to **time.Time** |  | [optional] [readonly] 
+**LegalAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
+**MiddleName** | Pointer to **string** | Customer&#39;s middle name | [optional] 
+**PhoneNumber** | Pointer to **string** | Customer&#39;s mobile phone number with country code in E.164 format e.g. +19178675309 | [optional] 
+**RelatedCustomers** | Pointer to [**[]Relationship1**](Relationship1.md) | Customer&#39;s relationships with other accounts eg. guardian | [optional] 
+**ShippingAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
+**Ssn** | Pointer to **string** | Customer&#39;s full tax ID eg SSN formatted with hyphens 123-45-6789. This optional parameter is required when running KYC on a customer. Must be compiled with ^\\d{3}-\\d{2}-\\d{4}$. Response contains the last 4 digits only (e.g. 6789). | [optional] 
 
 ## Methods
 
 ### NewCustomer
 
-`func NewCustomer() *Customer`
+`func NewCustomer(dob string, firstName string, lastName string, status string, ) *Customer`
 
 NewCustomer instantiates a new Customer object
 This constructor will assign default values to properties that have it defined,
@@ -40,156 +40,6 @@ will change when the set of required properties is changed
 NewCustomerWithDefaults instantiates a new Customer object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Customer) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Customer) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Customer) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Customer) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetFirstName
-
-`func (o *Customer) GetFirstName() string`
-
-GetFirstName returns the FirstName field if non-nil, zero value otherwise.
-
-### GetFirstNameOk
-
-`func (o *Customer) GetFirstNameOk() (*string, bool)`
-
-GetFirstNameOk returns a tuple with the FirstName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFirstName
-
-`func (o *Customer) SetFirstName(v string)`
-
-SetFirstName sets FirstName field to given value.
-
-### HasFirstName
-
-`func (o *Customer) HasFirstName() bool`
-
-HasFirstName returns a boolean if a field has been set.
-
-### GetLastName
-
-`func (o *Customer) GetLastName() string`
-
-GetLastName returns the LastName field if non-nil, zero value otherwise.
-
-### GetLastNameOk
-
-`func (o *Customer) GetLastNameOk() (*string, bool)`
-
-GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastName
-
-`func (o *Customer) SetLastName(v string)`
-
-SetLastName sets LastName field to given value.
-
-### HasLastName
-
-`func (o *Customer) HasLastName() bool`
-
-HasLastName returns a boolean if a field has been set.
-
-### GetMiddleName
-
-`func (o *Customer) GetMiddleName() string`
-
-GetMiddleName returns the MiddleName field if non-nil, zero value otherwise.
-
-### GetMiddleNameOk
-
-`func (o *Customer) GetMiddleNameOk() (*string, bool)`
-
-GetMiddleNameOk returns a tuple with the MiddleName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMiddleName
-
-`func (o *Customer) SetMiddleName(v string)`
-
-SetMiddleName sets MiddleName field to given value.
-
-### HasMiddleName
-
-`func (o *Customer) HasMiddleName() bool`
-
-HasMiddleName returns a boolean if a field has been set.
-
-### GetLegalAddress
-
-`func (o *Customer) GetLegalAddress() Address`
-
-GetLegalAddress returns the LegalAddress field if non-nil, zero value otherwise.
-
-### GetLegalAddressOk
-
-`func (o *Customer) GetLegalAddressOk() (*Address, bool)`
-
-GetLegalAddressOk returns a tuple with the LegalAddress field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLegalAddress
-
-`func (o *Customer) SetLegalAddress(v Address)`
-
-SetLegalAddress sets LegalAddress field to given value.
-
-### HasLegalAddress
-
-`func (o *Customer) HasLegalAddress() bool`
-
-HasLegalAddress returns a boolean if a field has been set.
-
-### GetShippingAddress
-
-`func (o *Customer) GetShippingAddress() Address`
-
-GetShippingAddress returns the ShippingAddress field if non-nil, zero value otherwise.
-
-### GetShippingAddressOk
-
-`func (o *Customer) GetShippingAddressOk() (*Address, bool)`
-
-GetShippingAddressOk returns a tuple with the ShippingAddress field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShippingAddress
-
-`func (o *Customer) SetShippingAddress(v Address)`
-
-SetShippingAddress sets ShippingAddress field to given value.
-
-### HasShippingAddress
-
-`func (o *Customer) HasShippingAddress() bool`
-
-HasShippingAddress returns a boolean if a field has been set.
 
 ### GetDob
 
@@ -210,136 +60,91 @@ and a boolean to check if the value has been set.
 
 SetDob sets Dob field to given value.
 
-### HasDob
 
-`func (o *Customer) HasDob() bool`
+### GetFirstName
 
-HasDob returns a boolean if a field has been set.
+`func (o *Customer) GetFirstName() string`
 
-### GetSsn
+GetFirstName returns the FirstName field if non-nil, zero value otherwise.
 
-`func (o *Customer) GetSsn() string`
+### GetFirstNameOk
 
-GetSsn returns the Ssn field if non-nil, zero value otherwise.
+`func (o *Customer) GetFirstNameOk() (*string, bool)`
 
-### GetSsnOk
-
-`func (o *Customer) GetSsnOk() (*string, bool)`
-
-GetSsnOk returns a tuple with the Ssn field if it's non-nil, zero value otherwise
+GetFirstNameOk returns a tuple with the FirstName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSsn
+### SetFirstName
 
-`func (o *Customer) SetSsn(v string)`
+`func (o *Customer) SetFirstName(v string)`
 
-SetSsn sets Ssn field to given value.
+SetFirstName sets FirstName field to given value.
 
-### HasSsn
 
-`func (o *Customer) HasSsn() bool`
+### GetLastName
 
-HasSsn returns a boolean if a field has been set.
+`func (o *Customer) GetLastName() string`
 
-### GetSsnLastFour
+GetLastName returns the LastName field if non-nil, zero value otherwise.
 
-`func (o *Customer) GetSsnLastFour() string`
+### GetLastNameOk
 
-GetSsnLastFour returns the SsnLastFour field if non-nil, zero value otherwise.
+`func (o *Customer) GetLastNameOk() (*string, bool)`
 
-### GetSsnLastFourOk
-
-`func (o *Customer) GetSsnLastFourOk() (*string, bool)`
-
-GetSsnLastFourOk returns a tuple with the SsnLastFour field if it's non-nil, zero value otherwise
+GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSsnLastFour
+### SetLastName
 
-`func (o *Customer) SetSsnLastFour(v string)`
+`func (o *Customer) SetLastName(v string)`
 
-SetSsnLastFour sets SsnLastFour field to given value.
+SetLastName sets LastName field to given value.
 
-### HasSsnLastFour
 
-`func (o *Customer) HasSsnLastFour() bool`
+### GetStatus
 
-HasSsnLastFour returns a boolean if a field has been set.
+`func (o *Customer) GetStatus() string`
 
-### GetEmail
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-`func (o *Customer) GetEmail() string`
+### GetStatusOk
 
-GetEmail returns the Email field if non-nil, zero value otherwise.
+`func (o *Customer) GetStatusOk() (*string, bool)`
 
-### GetEmailOk
-
-`func (o *Customer) GetEmailOk() (*string, bool)`
-
-GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEmail
+### SetStatus
 
-`func (o *Customer) SetEmail(v string)`
+`func (o *Customer) SetStatus(v string)`
 
-SetEmail sets Email field to given value.
+SetStatus sets Status field to given value.
 
-### HasEmail
 
-`func (o *Customer) HasEmail() bool`
+### GetAccounts
 
-HasEmail returns a boolean if a field has been set.
+`func (o *Customer) GetAccounts() []Account`
 
-### GetMobilePhoneNumber
+GetAccounts returns the Accounts field if non-nil, zero value otherwise.
 
-`func (o *Customer) GetMobilePhoneNumber() string`
+### GetAccountsOk
 
-GetMobilePhoneNumber returns the MobilePhoneNumber field if non-nil, zero value otherwise.
+`func (o *Customer) GetAccountsOk() (*[]Account, bool)`
 
-### GetMobilePhoneNumberOk
-
-`func (o *Customer) GetMobilePhoneNumberOk() (*string, bool)`
-
-GetMobilePhoneNumberOk returns a tuple with the MobilePhoneNumber field if it's non-nil, zero value otherwise
+GetAccountsOk returns a tuple with the Accounts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMobilePhoneNumber
+### SetAccounts
 
-`func (o *Customer) SetMobilePhoneNumber(v string)`
+`func (o *Customer) SetAccounts(v []Account)`
 
-SetMobilePhoneNumber sets MobilePhoneNumber field to given value.
+SetAccounts sets Accounts field to given value.
 
-### HasMobilePhoneNumber
+### HasAccounts
 
-`func (o *Customer) HasMobilePhoneNumber() bool`
+`func (o *Customer) HasAccounts() bool`
 
-HasMobilePhoneNumber returns a boolean if a field has been set.
-
-### GetAltPhoneNumber
-
-`func (o *Customer) GetAltPhoneNumber() string`
-
-GetAltPhoneNumber returns the AltPhoneNumber field if non-nil, zero value otherwise.
-
-### GetAltPhoneNumberOk
-
-`func (o *Customer) GetAltPhoneNumberOk() (*string, bool)`
-
-GetAltPhoneNumberOk returns a tuple with the AltPhoneNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAltPhoneNumber
-
-`func (o *Customer) SetAltPhoneNumber(v string)`
-
-SetAltPhoneNumber sets AltPhoneNumber field to given value.
-
-### HasAltPhoneNumber
-
-`func (o *Customer) HasAltPhoneNumber() bool`
-
-HasAltPhoneNumber returns a boolean if a field has been set.
+HasAccounts returns a boolean if a field has been set.
 
 ### GetCreationTime
 
@@ -366,6 +171,106 @@ SetCreationTime sets CreationTime field to given value.
 
 HasCreationTime returns a boolean if a field has been set.
 
+### GetDevices
+
+`func (o *Customer) GetDevices() []Device`
+
+GetDevices returns the Devices field if non-nil, zero value otherwise.
+
+### GetDevicesOk
+
+`func (o *Customer) GetDevicesOk() (*[]Device, bool)`
+
+GetDevicesOk returns a tuple with the Devices field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDevices
+
+`func (o *Customer) SetDevices(v []Device)`
+
+SetDevices sets Devices field to given value.
+
+### HasDevices
+
+`func (o *Customer) HasDevices() bool`
+
+HasDevices returns a boolean if a field has been set.
+
+### GetEmail
+
+`func (o *Customer) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *Customer) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *Customer) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *Customer) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Customer) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Customer) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Customer) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *Customer) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetKycStatus
+
+`func (o *Customer) GetKycStatus() CustomerKycStatus`
+
+GetKycStatus returns the KycStatus field if non-nil, zero value otherwise.
+
+### GetKycStatusOk
+
+`func (o *Customer) GetKycStatusOk() (*CustomerKycStatus, bool)`
+
+GetKycStatusOk returns a tuple with the KycStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKycStatus
+
+`func (o *Customer) SetKycStatus(v CustomerKycStatus)`
+
+SetKycStatus sets KycStatus field to given value.
+
+### HasKycStatus
+
+`func (o *Customer) HasKycStatus() bool`
+
+HasKycStatus returns a boolean if a field has been set.
+
 ### GetLastUpdatedTime
 
 `func (o *Customer) GetLastUpdatedTime() time.Time`
@@ -391,30 +296,80 @@ SetLastUpdatedTime sets LastUpdatedTime field to given value.
 
 HasLastUpdatedTime returns a boolean if a field has been set.
 
-### GetDevices
+### GetLegalAddress
 
-`func (o *Customer) GetDevices() []Device`
+`func (o *Customer) GetLegalAddress() Address`
 
-GetDevices returns the Devices field if non-nil, zero value otherwise.
+GetLegalAddress returns the LegalAddress field if non-nil, zero value otherwise.
 
-### GetDevicesOk
+### GetLegalAddressOk
 
-`func (o *Customer) GetDevicesOk() (*[]Device, bool)`
+`func (o *Customer) GetLegalAddressOk() (*Address, bool)`
 
-GetDevicesOk returns a tuple with the Devices field if it's non-nil, zero value otherwise
+GetLegalAddressOk returns a tuple with the LegalAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDevices
+### SetLegalAddress
 
-`func (o *Customer) SetDevices(v []Device)`
+`func (o *Customer) SetLegalAddress(v Address)`
 
-SetDevices sets Devices field to given value.
+SetLegalAddress sets LegalAddress field to given value.
 
-### HasDevices
+### HasLegalAddress
 
-`func (o *Customer) HasDevices() bool`
+`func (o *Customer) HasLegalAddress() bool`
 
-HasDevices returns a boolean if a field has been set.
+HasLegalAddress returns a boolean if a field has been set.
+
+### GetMiddleName
+
+`func (o *Customer) GetMiddleName() string`
+
+GetMiddleName returns the MiddleName field if non-nil, zero value otherwise.
+
+### GetMiddleNameOk
+
+`func (o *Customer) GetMiddleNameOk() (*string, bool)`
+
+GetMiddleNameOk returns a tuple with the MiddleName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMiddleName
+
+`func (o *Customer) SetMiddleName(v string)`
+
+SetMiddleName sets MiddleName field to given value.
+
+### HasMiddleName
+
+`func (o *Customer) HasMiddleName() bool`
+
+HasMiddleName returns a boolean if a field has been set.
+
+### GetPhoneNumber
+
+`func (o *Customer) GetPhoneNumber() string`
+
+GetPhoneNumber returns the PhoneNumber field if non-nil, zero value otherwise.
+
+### GetPhoneNumberOk
+
+`func (o *Customer) GetPhoneNumberOk() (*string, bool)`
+
+GetPhoneNumberOk returns a tuple with the PhoneNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhoneNumber
+
+`func (o *Customer) SetPhoneNumber(v string)`
+
+SetPhoneNumber sets PhoneNumber field to given value.
+
+### HasPhoneNumber
+
+`func (o *Customer) HasPhoneNumber() bool`
+
+HasPhoneNumber returns a boolean if a field has been set.
 
 ### GetRelatedCustomers
 
@@ -441,30 +396,55 @@ SetRelatedCustomers sets RelatedCustomers field to given value.
 
 HasRelatedCustomers returns a boolean if a field has been set.
 
-### GetAccounts
+### GetShippingAddress
 
-`func (o *Customer) GetAccounts() []Account`
+`func (o *Customer) GetShippingAddress() Address`
 
-GetAccounts returns the Accounts field if non-nil, zero value otherwise.
+GetShippingAddress returns the ShippingAddress field if non-nil, zero value otherwise.
 
-### GetAccountsOk
+### GetShippingAddressOk
 
-`func (o *Customer) GetAccountsOk() (*[]Account, bool)`
+`func (o *Customer) GetShippingAddressOk() (*Address, bool)`
 
-GetAccountsOk returns a tuple with the Accounts field if it's non-nil, zero value otherwise
+GetShippingAddressOk returns a tuple with the ShippingAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccounts
+### SetShippingAddress
 
-`func (o *Customer) SetAccounts(v []Account)`
+`func (o *Customer) SetShippingAddress(v Address)`
 
-SetAccounts sets Accounts field to given value.
+SetShippingAddress sets ShippingAddress field to given value.
 
-### HasAccounts
+### HasShippingAddress
 
-`func (o *Customer) HasAccounts() bool`
+`func (o *Customer) HasShippingAddress() bool`
 
-HasAccounts returns a boolean if a field has been set.
+HasShippingAddress returns a boolean if a field has been set.
+
+### GetSsn
+
+`func (o *Customer) GetSsn() string`
+
+GetSsn returns the Ssn field if non-nil, zero value otherwise.
+
+### GetSsnOk
+
+`func (o *Customer) GetSsnOk() (*string, bool)`
+
+GetSsnOk returns a tuple with the Ssn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSsn
+
+`func (o *Customer) SetSsn(v string)`
+
+SetSsn sets Ssn field to given value.
+
+### HasSsn
+
+`func (o *Customer) HasSsn() bool`
+
+HasSsn returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

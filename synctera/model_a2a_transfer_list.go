@@ -18,7 +18,7 @@ import (
 type A2aTransferList struct {
 	// Array of account to account transfers
 	A2aTransfers []A2aTransfer `json:"a2a_transfers"`
-	// If returned, use the next_page_token to query for the next page of results.
+	// If returned, use the next_page_token to query for the next page of results. Not returned if there are no more rows.
 	NextPageToken *string `json:"next_page_token,omitempty"`
 }
 

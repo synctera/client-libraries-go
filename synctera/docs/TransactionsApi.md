@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-    a2aTransfer := *openapiclient.NewA2aTransfer("SourceAccount_example", "TargetAccount_example", int32(123), "faker.finance.currencyCode", openapiclient.dc_sign_type("DEBIT")) // A2aTransfer | Account to account transfer to create
+    a2aTransfer := *openapiclient.NewA2aTransfer(int32(441), "LBP", openapiclient.dc_sign_type("DEBIT"), "SourceAccount_example", "TargetAccount_example") // A2aTransfer | Account to account transfer to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -102,8 +102,8 @@ import (
 )
 
 func main() {
-    achOutgoing := *openapiclient.NewAchOutgoing("AccountId_example", int32(123), "faker.finance.currencyCode", "faker.helpers.replaceSymbols(################)", "faker.helpers.replaceSymbols(#########)", "faker.address.countryCode", "faker.name.findName") // AchOutgoing | Outgoing ACH to create
-    mfaToken := "faker.helpers.replaceSymbols(######)" // string | Multi-Factor Authentication Token (optional)
+    achOutgoing := *openapiclient.NewAchOutgoing("afc3532b-cc77-4bf2-b625-bb034263bdc7", int32(536), "KYD", "Terry Aufderhar", "4586598335580180", "472840906", "LY") // AchOutgoing | Outgoing ACH to create
+    mfaToken := "409069" // string | Multi-Factor Authentication Token (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -313,7 +313,7 @@ import (
 func main() {
     aCHExecutionDate := time.Now() // string | Execution Date
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -383,7 +383,7 @@ import (
 func main() {
     customerId := TODO // string | Customer ID
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -497,7 +497,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -526,8 +526,8 @@ import (
 
 func main() {
     paymentId := TODO // string | Payment ID
-    achOutgoing := *openapiclient.NewAchOutgoing("AccountId_example", int32(123), "faker.finance.currencyCode", "faker.helpers.replaceSymbols(################)", "faker.helpers.replaceSymbols(#########)", "faker.address.countryCode", "faker.name.findName") // AchOutgoing | Outgoing ACH to update
-    mfaToken := "faker.helpers.replaceSymbols(######)" // string | Multi-Factor Authentication Token (optional)
+    achOutgoing := *openapiclient.NewAchOutgoing("afc3532b-cc77-4bf2-b625-bb034263bdc7", int32(536), "KYD", "Terry Aufderhar", "4586598335580180", "472840906", "LY") // AchOutgoing | Outgoing ACH to update
+    mfaToken := "409069" // string | Multi-Factor Authentication Token (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

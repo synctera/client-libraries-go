@@ -17,21 +17,21 @@ import (
 
 // Event Webhook event object
 type Event struct {
-	// Unique event ID of the webhook request. Use event endpoints to get more event summary data
-	Id *string `json:"id,omitempty"`
-	// Webhook the current event belongs to
-	WebhookId *string `json:"webhook_id,omitempty"`
-	Type *EventType `json:"type,omitempty"`
-	// Timestamp of the current event raised
-	EventTime *time.Time `json:"event_time,omitempty"`
-	// Metadata that stored in the webhook subscription
-	Metadata *string `json:"metadata,omitempty"`
 	// Json string of object associated with the event. For example, if your event is ACCOUNT.STATUS_CHANGE, You can refer to Acccount to parse the account event to obtain the ID, status etc.  
 	EventResource *map[string]interface{} `json:"event_resource,omitempty"`
-	// Current event status. Failing event will keep retry until it is purged.
-	Status *string `json:"status,omitempty"`
+	// Timestamp of the current event raised
+	EventTime *time.Time `json:"event_time,omitempty"`
+	// Unique event ID of the webhook request. Use event endpoints to get more event summary data
+	Id *string `json:"id,omitempty"`
+	// Metadata that stored in the webhook subscription
+	Metadata *string `json:"metadata,omitempty"`
 	// Response history of the webhook request
 	ResponseHistory *[]EventResponseHistory `json:"response_history,omitempty"`
+	// Current event status. Failing event will keep retry until it is purged.
+	Status *string `json:"status,omitempty"`
+	Type *EventTypeExplicit `json:"type,omitempty"`
+	// Webhook the current event belongs to
+	WebhookId *string `json:"webhook_id,omitempty"`
 }
 
 // NewEvent instantiates a new Event object
@@ -49,166 +49,6 @@ func NewEvent() *Event {
 func NewEventWithDefaults() *Event {
 	this := Event{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Event) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Event) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Event) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Event) SetId(v string) {
-	o.Id = &v
-}
-
-// GetWebhookId returns the WebhookId field value if set, zero value otherwise.
-func (o *Event) GetWebhookId() string {
-	if o == nil || o.WebhookId == nil {
-		var ret string
-		return ret
-	}
-	return *o.WebhookId
-}
-
-// GetWebhookIdOk returns a tuple with the WebhookId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Event) GetWebhookIdOk() (*string, bool) {
-	if o == nil || o.WebhookId == nil {
-		return nil, false
-	}
-	return o.WebhookId, true
-}
-
-// HasWebhookId returns a boolean if a field has been set.
-func (o *Event) HasWebhookId() bool {
-	if o != nil && o.WebhookId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWebhookId gets a reference to the given string and assigns it to the WebhookId field.
-func (o *Event) SetWebhookId(v string) {
-	o.WebhookId = &v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *Event) GetType() EventType {
-	if o == nil || o.Type == nil {
-		var ret EventType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Event) GetTypeOk() (*EventType, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *Event) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given EventType and assigns it to the Type field.
-func (o *Event) SetType(v EventType) {
-	o.Type = &v
-}
-
-// GetEventTime returns the EventTime field value if set, zero value otherwise.
-func (o *Event) GetEventTime() time.Time {
-	if o == nil || o.EventTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.EventTime
-}
-
-// GetEventTimeOk returns a tuple with the EventTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Event) GetEventTimeOk() (*time.Time, bool) {
-	if o == nil || o.EventTime == nil {
-		return nil, false
-	}
-	return o.EventTime, true
-}
-
-// HasEventTime returns a boolean if a field has been set.
-func (o *Event) HasEventTime() bool {
-	if o != nil && o.EventTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEventTime gets a reference to the given time.Time and assigns it to the EventTime field.
-func (o *Event) SetEventTime(v time.Time) {
-	o.EventTime = &v
-}
-
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *Event) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
-		var ret string
-		return ret
-	}
-	return *o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Event) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
-		return nil, false
-	}
-	return o.Metadata, true
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *Event) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *Event) SetMetadata(v string) {
-	o.Metadata = &v
 }
 
 // GetEventResource returns the EventResource field value if set, zero value otherwise.
@@ -243,36 +83,100 @@ func (o *Event) SetEventResource(v map[string]interface{}) {
 	o.EventResource = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Event) GetStatus() string {
-	if o == nil || o.Status == nil {
-		var ret string
+// GetEventTime returns the EventTime field value if set, zero value otherwise.
+func (o *Event) GetEventTime() time.Time {
+	if o == nil || o.EventTime == nil {
+		var ret time.Time
 		return ret
 	}
-	return *o.Status
+	return *o.EventTime
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetEventTimeOk returns a tuple with the EventTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Event) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+func (o *Event) GetEventTimeOk() (*time.Time, bool) {
+	if o == nil || o.EventTime == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.EventTime, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *Event) HasStatus() bool {
-	if o != nil && o.Status != nil {
+// HasEventTime returns a boolean if a field has been set.
+func (o *Event) HasEventTime() bool {
+	if o != nil && o.EventTime != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *Event) SetStatus(v string) {
-	o.Status = &v
+// SetEventTime gets a reference to the given time.Time and assigns it to the EventTime field.
+func (o *Event) SetEventTime(v time.Time) {
+	o.EventTime = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Event) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Event) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Event) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Event) SetId(v string) {
+	o.Id = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *Event) GetMetadata() string {
+	if o == nil || o.Metadata == nil {
+		var ret string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Event) GetMetadataOk() (*string, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *Event) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
+func (o *Event) SetMetadata(v string) {
+	o.Metadata = &v
 }
 
 // GetResponseHistory returns the ResponseHistory field value if set, zero value otherwise.
@@ -307,31 +211,127 @@ func (o *Event) SetResponseHistory(v []EventResponseHistory) {
 	o.ResponseHistory = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *Event) GetStatus() string {
+	if o == nil || o.Status == nil {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Event) GetStatusOk() (*string, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *Event) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *Event) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Event) GetType() EventTypeExplicit {
+	if o == nil || o.Type == nil {
+		var ret EventTypeExplicit
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Event) GetTypeOk() (*EventTypeExplicit, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *Event) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given EventTypeExplicit and assigns it to the Type field.
+func (o *Event) SetType(v EventTypeExplicit) {
+	o.Type = &v
+}
+
+// GetWebhookId returns the WebhookId field value if set, zero value otherwise.
+func (o *Event) GetWebhookId() string {
+	if o == nil || o.WebhookId == nil {
+		var ret string
+		return ret
+	}
+	return *o.WebhookId
+}
+
+// GetWebhookIdOk returns a tuple with the WebhookId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Event) GetWebhookIdOk() (*string, bool) {
+	if o == nil || o.WebhookId == nil {
+		return nil, false
+	}
+	return o.WebhookId, true
+}
+
+// HasWebhookId returns a boolean if a field has been set.
+func (o *Event) HasWebhookId() bool {
+	if o != nil && o.WebhookId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookId gets a reference to the given string and assigns it to the WebhookId field.
+func (o *Event) SetWebhookId(v string) {
+	o.WebhookId = &v
+}
+
 func (o Event) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.WebhookId != nil {
-		toSerialize["webhook_id"] = o.WebhookId
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	if o.EventResource != nil {
+		toSerialize["event_resource"] = o.EventResource
 	}
 	if o.EventTime != nil {
 		toSerialize["event_time"] = o.EventTime
 	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if o.EventResource != nil {
-		toSerialize["event_resource"] = o.EventResource
+	if o.ResponseHistory != nil {
+		toSerialize["response_history"] = o.ResponseHistory
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
 	}
-	if o.ResponseHistory != nil {
-		toSerialize["response_history"] = o.ResponseHistory
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
+	}
+	if o.WebhookId != nil {
+		toSerialize["webhook_id"] = o.WebhookId
 	}
 	return json.Marshal(toSerialize)
 }

@@ -50,6 +50,10 @@ type APIClient struct {
 
 	AccountsApi *AccountsApiService
 
+	CardTransactionSimulationsApi *CardTransactionSimulationsApiService
+
+	CardsApi *CardsApiService
+
 	CustomersApi *CustomersApiService
 
 	DisclosuresApi *DisclosuresApiService
@@ -61,6 +65,8 @@ type APIClient struct {
 	ReconciliationsApi *ReconciliationsApiService
 
 	TransactionsApi *TransactionsApiService
+
+	WatchlistApi *WatchlistApiService
 
 	WebhooksApi *WebhooksApiService
 }
@@ -82,12 +88,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.AccountsApi = (*AccountsApiService)(&c.common)
+	c.CardTransactionSimulationsApi = (*CardTransactionSimulationsApiService)(&c.common)
+	c.CardsApi = (*CardsApiService)(&c.common)
 	c.CustomersApi = (*CustomersApiService)(&c.common)
 	c.DisclosuresApi = (*DisclosuresApiService)(&c.common)
 	c.KYCVerificationApi = (*KYCVerificationApiService)(&c.common)
 	c.RDCDepositsApi = (*RDCDepositsApiService)(&c.common)
 	c.ReconciliationsApi = (*ReconciliationsApiService)(&c.common)
 	c.TransactionsApi = (*TransactionsApiService)(&c.common)
+	c.WatchlistApi = (*WatchlistApiService)(&c.common)
 	c.WebhooksApi = (*WebhooksApiService)(&c.common)
 
 	return c

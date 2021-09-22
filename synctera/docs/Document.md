@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ByteData** | Pointer to **string** | Base64url encoded image | [optional] 
+**DocumentType** | [**DocumentType**](DocumentType.md) |  | 
 **Id** | Pointer to **string** | Document ID | [optional] [readonly] 
 **MediaType** | [**KycMediaType**](KycMediaType.md) |  | 
-**DocumentType** | [**DocumentType**](DocumentType.md) |  | 
-**ByteData** | Pointer to **string** | Base64url encoded image | [optional] 
 
 ## Methods
 
 ### NewDocument
 
-`func NewDocument(mediaType KycMediaType, documentType DocumentType, ) *Document`
+`func NewDocument(documentType DocumentType, mediaType KycMediaType, ) *Document`
 
 NewDocument instantiates a new Document object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +27,51 @@ will change when the set of required properties is changed
 NewDocumentWithDefaults instantiates a new Document object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetByteData
+
+`func (o *Document) GetByteData() string`
+
+GetByteData returns the ByteData field if non-nil, zero value otherwise.
+
+### GetByteDataOk
+
+`func (o *Document) GetByteDataOk() (*string, bool)`
+
+GetByteDataOk returns a tuple with the ByteData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetByteData
+
+`func (o *Document) SetByteData(v string)`
+
+SetByteData sets ByteData field to given value.
+
+### HasByteData
+
+`func (o *Document) HasByteData() bool`
+
+HasByteData returns a boolean if a field has been set.
+
+### GetDocumentType
+
+`func (o *Document) GetDocumentType() DocumentType`
+
+GetDocumentType returns the DocumentType field if non-nil, zero value otherwise.
+
+### GetDocumentTypeOk
+
+`func (o *Document) GetDocumentTypeOk() (*DocumentType, bool)`
+
+GetDocumentTypeOk returns a tuple with the DocumentType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDocumentType
+
+`func (o *Document) SetDocumentType(v DocumentType)`
+
+SetDocumentType sets DocumentType field to given value.
+
 
 ### GetId
 
@@ -72,51 +117,6 @@ and a boolean to check if the value has been set.
 
 SetMediaType sets MediaType field to given value.
 
-
-### GetDocumentType
-
-`func (o *Document) GetDocumentType() DocumentType`
-
-GetDocumentType returns the DocumentType field if non-nil, zero value otherwise.
-
-### GetDocumentTypeOk
-
-`func (o *Document) GetDocumentTypeOk() (*DocumentType, bool)`
-
-GetDocumentTypeOk returns a tuple with the DocumentType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDocumentType
-
-`func (o *Document) SetDocumentType(v DocumentType)`
-
-SetDocumentType sets DocumentType field to given value.
-
-
-### GetByteData
-
-`func (o *Document) GetByteData() string`
-
-GetByteData returns the ByteData field if non-nil, zero value otherwise.
-
-### GetByteDataOk
-
-`func (o *Document) GetByteDataOk() (*string, bool)`
-
-GetByteDataOk returns a tuple with the ByteData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetByteData
-
-`func (o *Document) SetByteData(v string)`
-
-SetByteData sets ByteData field to given value.
-
-### HasByteData
-
-`func (o *Document) HasByteData() bool`
-
-HasByteData returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -12,29 +12,23 @@ package synctera
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // Balance struct for Balance
 type Balance struct {
-	// Account ID
-	Id *string `json:"id,omitempty"`
-	// Balance at the posting date
-	PostingDate *time.Time `json:"posting_date,omitempty"`
-	BalanceType *BalanceType `json:"balance_type,omitempty"`
-	// Currency of the balance. ISO 4217 alphabetic currency code
-	Currency *string `json:"currency,omitempty"`
-	// amount in ISO 4217 minor currency units
-	Amount *int32 `json:"amount,omitempty"`
-	DcSign *DcSignType `json:"dc_sign,omitempty"`
+	// balance in ISO 4217 minor currency units
+	Balance int64 `json:"balance"`
+	Type BalanceType `json:"type"`
 }
 
 // NewBalance instantiates a new Balance object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBalance() *Balance {
+func NewBalance(balance int64, type_ BalanceType) *Balance {
 	this := Balance{}
+	this.Balance = balance
+	this.Type = type_
 	return &this
 }
 
@@ -46,217 +40,61 @@ func NewBalanceWithDefaults() *Balance {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Balance) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
+// GetBalance returns the Balance field value
+func (o *Balance) GetBalance() int64 {
+	if o == nil {
+		var ret int64
 		return ret
 	}
-	return *o.Id
+
+	return o.Balance
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetBalanceOk returns a tuple with the Balance field value
 // and a boolean to check if the value has been set.
-func (o *Balance) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+func (o *Balance) GetBalanceOk() (*int64, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Balance, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *Balance) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
+// SetBalance sets field value
+func (o *Balance) SetBalance(v int64) {
+	o.Balance = v
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Balance) SetId(v string) {
-	o.Id = &v
-}
-
-// GetPostingDate returns the PostingDate field value if set, zero value otherwise.
-func (o *Balance) GetPostingDate() time.Time {
-	if o == nil || o.PostingDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.PostingDate
-}
-
-// GetPostingDateOk returns a tuple with the PostingDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Balance) GetPostingDateOk() (*time.Time, bool) {
-	if o == nil || o.PostingDate == nil {
-		return nil, false
-	}
-	return o.PostingDate, true
-}
-
-// HasPostingDate returns a boolean if a field has been set.
-func (o *Balance) HasPostingDate() bool {
-	if o != nil && o.PostingDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPostingDate gets a reference to the given time.Time and assigns it to the PostingDate field.
-func (o *Balance) SetPostingDate(v time.Time) {
-	o.PostingDate = &v
-}
-
-// GetBalanceType returns the BalanceType field value if set, zero value otherwise.
-func (o *Balance) GetBalanceType() BalanceType {
-	if o == nil || o.BalanceType == nil {
+// GetType returns the Type field value
+func (o *Balance) GetType() BalanceType {
+	if o == nil {
 		var ret BalanceType
 		return ret
 	}
-	return *o.BalanceType
+
+	return o.Type
 }
 
-// GetBalanceTypeOk returns a tuple with the BalanceType field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Balance) GetBalanceTypeOk() (*BalanceType, bool) {
-	if o == nil || o.BalanceType == nil {
+func (o *Balance) GetTypeOk() (*BalanceType, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.BalanceType, true
+	return &o.Type, true
 }
 
-// HasBalanceType returns a boolean if a field has been set.
-func (o *Balance) HasBalanceType() bool {
-	if o != nil && o.BalanceType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBalanceType gets a reference to the given BalanceType and assigns it to the BalanceType field.
-func (o *Balance) SetBalanceType(v BalanceType) {
-	o.BalanceType = &v
-}
-
-// GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *Balance) GetCurrency() string {
-	if o == nil || o.Currency == nil {
-		var ret string
-		return ret
-	}
-	return *o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Balance) GetCurrencyOk() (*string, bool) {
-	if o == nil || o.Currency == nil {
-		return nil, false
-	}
-	return o.Currency, true
-}
-
-// HasCurrency returns a boolean if a field has been set.
-func (o *Balance) HasCurrency() bool {
-	if o != nil && o.Currency != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *Balance) SetCurrency(v string) {
-	o.Currency = &v
-}
-
-// GetAmount returns the Amount field value if set, zero value otherwise.
-func (o *Balance) GetAmount() int32 {
-	if o == nil || o.Amount == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Amount
-}
-
-// GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Balance) GetAmountOk() (*int32, bool) {
-	if o == nil || o.Amount == nil {
-		return nil, false
-	}
-	return o.Amount, true
-}
-
-// HasAmount returns a boolean if a field has been set.
-func (o *Balance) HasAmount() bool {
-	if o != nil && o.Amount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAmount gets a reference to the given int32 and assigns it to the Amount field.
-func (o *Balance) SetAmount(v int32) {
-	o.Amount = &v
-}
-
-// GetDcSign returns the DcSign field value if set, zero value otherwise.
-func (o *Balance) GetDcSign() DcSignType {
-	if o == nil || o.DcSign == nil {
-		var ret DcSignType
-		return ret
-	}
-	return *o.DcSign
-}
-
-// GetDcSignOk returns a tuple with the DcSign field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Balance) GetDcSignOk() (*DcSignType, bool) {
-	if o == nil || o.DcSign == nil {
-		return nil, false
-	}
-	return o.DcSign, true
-}
-
-// HasDcSign returns a boolean if a field has been set.
-func (o *Balance) HasDcSign() bool {
-	if o != nil && o.DcSign != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDcSign gets a reference to the given DcSignType and assigns it to the DcSign field.
-func (o *Balance) SetDcSign(v DcSignType) {
-	o.DcSign = &v
+// SetType sets field value
+func (o *Balance) SetType(v BalanceType) {
+	o.Type = v
 }
 
 func (o Balance) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	if true {
+		toSerialize["balance"] = o.Balance
 	}
-	if o.PostingDate != nil {
-		toSerialize["posting_date"] = o.PostingDate
-	}
-	if o.BalanceType != nil {
-		toSerialize["balance_type"] = o.BalanceType
-	}
-	if o.Currency != nil {
-		toSerialize["currency"] = o.Currency
-	}
-	if o.Amount != nil {
-		toSerialize["amount"] = o.Amount
-	}
-	if o.DcSign != nil {
-		toSerialize["dc_sign"] = o.DcSign
+	if true {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

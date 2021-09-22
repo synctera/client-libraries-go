@@ -16,7 +16,7 @@ import (
 
 // InlineObject4 struct for InlineObject4
 type InlineObject4 struct {
-	Event *EventType `json:"event,omitempty"`
+	Event *EventType1 `json:"event,omitempty"`
 }
 
 // NewInlineObject4 instantiates a new InlineObject4 object
@@ -37,9 +37,9 @@ func NewInlineObject4WithDefaults() *InlineObject4 {
 }
 
 // GetEvent returns the Event field value if set, zero value otherwise.
-func (o *InlineObject4) GetEvent() EventType {
+func (o *InlineObject4) GetEvent() EventType1 {
 	if o == nil || o.Event == nil {
-		var ret EventType
+		var ret EventType1
 		return ret
 	}
 	return *o.Event
@@ -47,7 +47,7 @@ func (o *InlineObject4) GetEvent() EventType {
 
 // GetEventOk returns a tuple with the Event field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject4) GetEventOk() (*EventType, bool) {
+func (o *InlineObject4) GetEventOk() (*EventType1, bool) {
 	if o == nil || o.Event == nil {
 		return nil, false
 	}
@@ -63,8 +63,8 @@ func (o *InlineObject4) HasEvent() bool {
 	return false
 }
 
-// SetEvent gets a reference to the given EventType and assigns it to the Event field.
-func (o *InlineObject4) SetEvent(v EventType) {
+// SetEvent gets a reference to the given EventType1 and assigns it to the Event field.
+func (o *InlineObject4) SetEvent(v EventType1) {
 	o.Event = &v
 }
 

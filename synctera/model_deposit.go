@@ -16,28 +16,28 @@ import (
 
 // Deposit Deposit using remote deposit capture
 type Deposit struct {
-	// RDC Deposit ID
-	Id string `json:"id"`
 	// Account number
 	AccountNumber string `json:"account_number"`
-	// Bank routing number
-	RoutingNumber string `json:"routing_number"`
+	// ID of the image of the back of the check
+	BackImageId string `json:"back_image_id"`
 	// Amount on check in ISO 4217 minor currency units
 	CheckAmount int32 `json:"check_amount"`
 	// ISO 4217 currency code for the check amount
 	CheckCurrency string `json:"check_currency"`
-	// Amount deposited in ISO 4217 minor currency units
-	DepositAmount int32 `json:"deposit_amount"`
-	// ISO 4217 currency code for the deposit amount
-	DepositCurrency string `json:"deposit_currency"`
 	// Date the deposit was processed, in RFC 3339 format
 	DateProcessed string `json:"date_processed"`
 	// Date the deposit was submitted, in RFC 3339 format
 	DateSubmitted string `json:"date_submitted"`
+	// Amount deposited in ISO 4217 minor currency units
+	DepositAmount int32 `json:"deposit_amount"`
+	// ISO 4217 currency code for the deposit amount
+	DepositCurrency string `json:"deposit_currency"`
 	// ID of the image of the front of the check
 	FrontImageId string `json:"front_image_id"`
-	// ID of the image of the back of the check
-	BackImageId string `json:"back_image_id"`
+	// RDC Deposit ID
+	Id string `json:"id"`
+	// Bank routing number
+	RoutingNumber string `json:"routing_number"`
 	// ID of the OCR scan of the check image
 	ScanId string `json:"scan_id"`
 }
@@ -46,19 +46,19 @@ type Deposit struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeposit(id string, accountNumber string, routingNumber string, checkAmount int32, checkCurrency string, depositAmount int32, depositCurrency string, dateProcessed string, dateSubmitted string, frontImageId string, backImageId string, scanId string) *Deposit {
+func NewDeposit(accountNumber string, backImageId string, checkAmount int32, checkCurrency string, dateProcessed string, dateSubmitted string, depositAmount int32, depositCurrency string, frontImageId string, id string, routingNumber string, scanId string) *Deposit {
 	this := Deposit{}
-	this.Id = id
 	this.AccountNumber = accountNumber
-	this.RoutingNumber = routingNumber
+	this.BackImageId = backImageId
 	this.CheckAmount = checkAmount
 	this.CheckCurrency = checkCurrency
-	this.DepositAmount = depositAmount
-	this.DepositCurrency = depositCurrency
 	this.DateProcessed = dateProcessed
 	this.DateSubmitted = dateSubmitted
+	this.DepositAmount = depositAmount
+	this.DepositCurrency = depositCurrency
 	this.FrontImageId = frontImageId
-	this.BackImageId = backImageId
+	this.Id = id
+	this.RoutingNumber = routingNumber
 	this.ScanId = scanId
 	return &this
 }
@@ -69,30 +69,6 @@ func NewDeposit(id string, accountNumber string, routingNumber string, checkAmou
 func NewDepositWithDefaults() *Deposit {
 	this := Deposit{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *Deposit) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *Deposit) GetIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *Deposit) SetId(v string) {
-	o.Id = v
 }
 
 // GetAccountNumber returns the AccountNumber field value
@@ -119,28 +95,28 @@ func (o *Deposit) SetAccountNumber(v string) {
 	o.AccountNumber = v
 }
 
-// GetRoutingNumber returns the RoutingNumber field value
-func (o *Deposit) GetRoutingNumber() string {
+// GetBackImageId returns the BackImageId field value
+func (o *Deposit) GetBackImageId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.RoutingNumber
+	return o.BackImageId
 }
 
-// GetRoutingNumberOk returns a tuple with the RoutingNumber field value
+// GetBackImageIdOk returns a tuple with the BackImageId field value
 // and a boolean to check if the value has been set.
-func (o *Deposit) GetRoutingNumberOk() (*string, bool) {
+func (o *Deposit) GetBackImageIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.RoutingNumber, true
+	return &o.BackImageId, true
 }
 
-// SetRoutingNumber sets field value
-func (o *Deposit) SetRoutingNumber(v string) {
-	o.RoutingNumber = v
+// SetBackImageId sets field value
+func (o *Deposit) SetBackImageId(v string) {
+	o.BackImageId = v
 }
 
 // GetCheckAmount returns the CheckAmount field value
@@ -191,54 +167,6 @@ func (o *Deposit) SetCheckCurrency(v string) {
 	o.CheckCurrency = v
 }
 
-// GetDepositAmount returns the DepositAmount field value
-func (o *Deposit) GetDepositAmount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.DepositAmount
-}
-
-// GetDepositAmountOk returns a tuple with the DepositAmount field value
-// and a boolean to check if the value has been set.
-func (o *Deposit) GetDepositAmountOk() (*int32, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.DepositAmount, true
-}
-
-// SetDepositAmount sets field value
-func (o *Deposit) SetDepositAmount(v int32) {
-	o.DepositAmount = v
-}
-
-// GetDepositCurrency returns the DepositCurrency field value
-func (o *Deposit) GetDepositCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.DepositCurrency
-}
-
-// GetDepositCurrencyOk returns a tuple with the DepositCurrency field value
-// and a boolean to check if the value has been set.
-func (o *Deposit) GetDepositCurrencyOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.DepositCurrency, true
-}
-
-// SetDepositCurrency sets field value
-func (o *Deposit) SetDepositCurrency(v string) {
-	o.DepositCurrency = v
-}
-
 // GetDateProcessed returns the DateProcessed field value
 func (o *Deposit) GetDateProcessed() string {
 	if o == nil {
@@ -287,6 +215,54 @@ func (o *Deposit) SetDateSubmitted(v string) {
 	o.DateSubmitted = v
 }
 
+// GetDepositAmount returns the DepositAmount field value
+func (o *Deposit) GetDepositAmount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.DepositAmount
+}
+
+// GetDepositAmountOk returns a tuple with the DepositAmount field value
+// and a boolean to check if the value has been set.
+func (o *Deposit) GetDepositAmountOk() (*int32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.DepositAmount, true
+}
+
+// SetDepositAmount sets field value
+func (o *Deposit) SetDepositAmount(v int32) {
+	o.DepositAmount = v
+}
+
+// GetDepositCurrency returns the DepositCurrency field value
+func (o *Deposit) GetDepositCurrency() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DepositCurrency
+}
+
+// GetDepositCurrencyOk returns a tuple with the DepositCurrency field value
+// and a boolean to check if the value has been set.
+func (o *Deposit) GetDepositCurrencyOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.DepositCurrency, true
+}
+
+// SetDepositCurrency sets field value
+func (o *Deposit) SetDepositCurrency(v string) {
+	o.DepositCurrency = v
+}
+
 // GetFrontImageId returns the FrontImageId field value
 func (o *Deposit) GetFrontImageId() string {
 	if o == nil {
@@ -311,28 +287,52 @@ func (o *Deposit) SetFrontImageId(v string) {
 	o.FrontImageId = v
 }
 
-// GetBackImageId returns the BackImageId field value
-func (o *Deposit) GetBackImageId() string {
+// GetId returns the Id field value
+func (o *Deposit) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.BackImageId
+	return o.Id
 }
 
-// GetBackImageIdOk returns a tuple with the BackImageId field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *Deposit) GetBackImageIdOk() (*string, bool) {
+func (o *Deposit) GetIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.BackImageId, true
+	return &o.Id, true
 }
 
-// SetBackImageId sets field value
-func (o *Deposit) SetBackImageId(v string) {
-	o.BackImageId = v
+// SetId sets field value
+func (o *Deposit) SetId(v string) {
+	o.Id = v
+}
+
+// GetRoutingNumber returns the RoutingNumber field value
+func (o *Deposit) GetRoutingNumber() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RoutingNumber
+}
+
+// GetRoutingNumberOk returns a tuple with the RoutingNumber field value
+// and a boolean to check if the value has been set.
+func (o *Deposit) GetRoutingNumberOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.RoutingNumber, true
+}
+
+// SetRoutingNumber sets field value
+func (o *Deposit) SetRoutingNumber(v string) {
+	o.RoutingNumber = v
 }
 
 // GetScanId returns the ScanId field value
@@ -362,13 +362,10 @@ func (o *Deposit) SetScanId(v string) {
 func (o Deposit) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
 		toSerialize["account_number"] = o.AccountNumber
 	}
 	if true {
-		toSerialize["routing_number"] = o.RoutingNumber
+		toSerialize["back_image_id"] = o.BackImageId
 	}
 	if true {
 		toSerialize["check_amount"] = o.CheckAmount
@@ -377,22 +374,25 @@ func (o Deposit) MarshalJSON() ([]byte, error) {
 		toSerialize["check_currency"] = o.CheckCurrency
 	}
 	if true {
-		toSerialize["deposit_amount"] = o.DepositAmount
-	}
-	if true {
-		toSerialize["deposit_currency"] = o.DepositCurrency
-	}
-	if true {
 		toSerialize["date_processed"] = o.DateProcessed
 	}
 	if true {
 		toSerialize["date_submitted"] = o.DateSubmitted
 	}
 	if true {
+		toSerialize["deposit_amount"] = o.DepositAmount
+	}
+	if true {
+		toSerialize["deposit_currency"] = o.DepositCurrency
+	}
+	if true {
 		toSerialize["front_image_id"] = o.FrontImageId
 	}
 	if true {
-		toSerialize["back_image_id"] = o.BackImageId
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["routing_number"] = o.RoutingNumber
 	}
 	if true {
 		toSerialize["scan_id"] = o.ScanId

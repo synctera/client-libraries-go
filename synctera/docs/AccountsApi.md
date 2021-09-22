@@ -6,21 +6,27 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAccount**](AccountsApi.md#CreateAccount) | **Post** /accounts | Create an account
 [**CreateAccountAddress**](AccountsApi.md#CreateAccountAddress) | **Post** /accounts/{account_id}/addresses | Create address for an account
+[**CreateAccountRelationship**](AccountsApi.md#CreateAccountRelationship) | **Post** /accounts/{account_id}/relationships | Create account relationship
 [**DeleteAccount**](AccountsApi.md#DeleteAccount) | **Delete** /accounts/{account_id} | Delete account
 [**DeleteAccountAddress**](AccountsApi.md#DeleteAccountAddress) | **Delete** /accounts/{account_id}/addresses/{connect_id} | Delete address for an account
+[**DeleteAccountRelationship**](AccountsApi.md#DeleteAccountRelationship) | **Delete** /accounts/{account_id}/relationships/{relationship_id} | Delete account relationship
 [**GetAccount**](AccountsApi.md#GetAccount) | **Get** /accounts/{account_id} | Get account
 [**GetAccountAddress**](AccountsApi.md#GetAccountAddress) | **Get** /accounts/{account_id}/addresses/{connect_id} | Get address for an account
 [**GetAccountBalance**](AccountsApi.md#GetAccountBalance) | **Get** /accounts/{account_id}/balance | Get account balance
+[**GetAccountRelationship**](AccountsApi.md#GetAccountRelationship) | **Get** /accounts/{account_id}/relationships/{relationship_id} | Get account relationship
 [**GetAccountTransactions**](AccountsApi.md#GetAccountTransactions) | **Get** /accounts/{account_id}/transactions | Get account transactions
+[**ListAccountRelationship**](AccountsApi.md#ListAccountRelationship) | **Get** /accounts/{account_id}/relationships | List account relationships
 [**ListAccounts**](AccountsApi.md#ListAccounts) | **Get** /accounts | List accounts
+[**PatchAccount**](AccountsApi.md#PatchAccount) | **Patch** /accounts/{account_id} | Patch account
 [**UpdateAccount**](AccountsApi.md#UpdateAccount) | **Put** /accounts/{account_id} | Update account
 [**UpdateAccountAddress**](AccountsApi.md#UpdateAccountAddress) | **Put** /accounts/{account_id}/addresses/{connect_id} | Update address for an account
+[**UpdateAccountRelationship**](AccountsApi.md#UpdateAccountRelationship) | **Put** /accounts/{account_id}/relationships/{relationship_id} | Update account relationship
 
 
 
 ## CreateAccount
 
-> Account CreateAccount(ctx).Account(account).Execute()
+> Account CreateAccount(ctx).AccountCreation(accountCreation).Execute()
 
 Create an account
 
@@ -39,11 +45,11 @@ import (
 )
 
 func main() {
-    account := *openapiclient.NewAccount() // Account | Account to create
+    accountCreation := *openapiclient.NewAccountCreation() // AccountCreation | Account to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.CreateAccount(context.Background()).Account(account).Execute()
+    resp, r, err := api_client.AccountsApi.CreateAccount(context.Background()).AccountCreation(accountCreation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.CreateAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +70,7 @@ Other parameters are passed through a pointer to a apiCreateAccountRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **account** | [**Account**](Account.md) | Account to create | 
+ **accountCreation** | [**AccountCreation**](AccountCreation.md) | Account to create | 
 
 ### Return type
 
@@ -77,7 +83,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -149,7 +155,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAccountRelationship
+
+> Relationship CreateAccountRelationship(ctx, accountId).Relationship(relationship).Execute()
+
+Create account relationship
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountId := TODO // string | Account ID
+    relationship := *openapiclient.NewRelationship("CustomerId_example", "RelationshipType_example") // Relationship | Account relationship object
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.CreateAccountRelationship(context.Background(), accountId).Relationship(relationship).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.CreateAccountRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAccountRelationship`: Relationship
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.CreateAccountRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountId** | [**string**](.md) | Account ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAccountRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **relationship** | [**Relationship**](Relationship.md) | Account relationship object | 
+
+### Return type
+
+[**Relationship**](Relationship.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -219,7 +297,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -292,7 +370,80 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteAccountRelationship
+
+> DeleteResponse DeleteAccountRelationship(ctx, accountId, relationshipId).Execute()
+
+Delete account relationship
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountId := TODO // string | Account ID
+    relationshipId := TODO // string | Relationship ID of the account associate with the account entity
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.DeleteAccountRelationship(context.Background(), accountId, relationshipId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.DeleteAccountRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteAccountRelationship`: DeleteResponse
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.DeleteAccountRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountId** | [**string**](.md) | Account ID | 
+**relationshipId** | [**string**](.md) | Relationship ID of the account associate with the account entity | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAccountRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -362,7 +513,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -371,7 +522,7 @@ Name | Type | Description  | Notes
 
 ## GetAccountAddress
 
-> AccountAddress GetAccountAddress(ctx, accountId, connectId).InlineObject2(inlineObject2).Execute()
+> AccountAddress GetAccountAddress(ctx, accountId, connectId).InlineObject(inlineObject).Execute()
 
 Get address for an account
 
@@ -392,11 +543,11 @@ import (
 func main() {
     accountId := TODO // string | Account ID
     connectId := TODO // string | Connect ID of the account associate with the account entity
-    inlineObject2 := *openapiclient.NewInlineObject2() // InlineObject2 |  (optional)
+    inlineObject := *openapiclient.NewInlineObject() // InlineObject |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.GetAccountAddress(context.Background(), accountId, connectId).InlineObject2(inlineObject2).Execute()
+    resp, r, err := api_client.AccountsApi.GetAccountAddress(context.Background(), accountId, connectId).InlineObject(inlineObject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccountAddress``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -424,7 +575,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **inlineObject2** | [**InlineObject2**](InlineObject2.md) |  | 
+ **inlineObject** | [**InlineObject**](InlineObject.md) |  | 
 
 ### Return type
 
@@ -437,7 +588,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -446,7 +597,7 @@ Name | Type | Description  | Notes
 
 ## GetAccountBalance
 
-> Balance GetAccountBalance(ctx, accountId).InlineObject(inlineObject).Execute()
+> Balance GetAccountBalance(ctx, accountId).InlineObject1(inlineObject1).Execute()
 
 Get account balance
 
@@ -466,11 +617,11 @@ import (
 
 func main() {
     accountId := TODO // string | Account ID
-    inlineObject := *openapiclient.NewInlineObject() // InlineObject | 
+    inlineObject1 := *openapiclient.NewInlineObject1() // InlineObject1 | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.GetAccountBalance(context.Background(), accountId).InlineObject(inlineObject).Execute()
+    resp, r, err := api_client.AccountsApi.GetAccountBalance(context.Background(), accountId).InlineObject1(inlineObject1).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccountBalance``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -496,7 +647,7 @@ Other parameters are passed through a pointer to a apiGetAccountBalanceRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **inlineObject** | [**InlineObject**](InlineObject.md) |  | 
+ **inlineObject1** | [**InlineObject1**](InlineObject1.md) |  | 
 
 ### Return type
 
@@ -509,7 +660,80 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAccountRelationship
+
+> Relationship GetAccountRelationship(ctx, accountId, relationshipId).Execute()
+
+Get account relationship
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountId := TODO // string | Account ID
+    relationshipId := TODO // string | Relationship ID of the account associate with the account entity
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.GetAccountRelationship(context.Background(), accountId, relationshipId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccountRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAccountRelationship`: Relationship
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.GetAccountRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountId** | [**string**](.md) | Account ID | 
+**relationshipId** | [**string**](.md) | Relationship ID of the account associate with the account entity | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAccountRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**Relationship**](Relationship.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -518,7 +742,7 @@ Name | Type | Description  | Notes
 
 ## GetAccountTransactions
 
-> TransactionList GetAccountTransactions(ctx, accountId).InlineObject1(inlineObject1).Limit(limit).PageToken(pageToken).Execute()
+> TransactionList GetAccountTransactions(ctx, accountId).InlineObject2(inlineObject2).Limit(limit).PageToken(pageToken).Execute()
 
 Get account transactions
 
@@ -538,13 +762,13 @@ import (
 
 func main() {
     accountId := TODO // string | Account ID
-    inlineObject1 := *openapiclient.NewInlineObject1() // InlineObject1 | 
+    inlineObject2 := *openapiclient.NewInlineObject2() // InlineObject2 | 
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.GetAccountTransactions(context.Background(), accountId).InlineObject1(inlineObject1).Limit(limit).PageToken(pageToken).Execute()
+    resp, r, err := api_client.AccountsApi.GetAccountTransactions(context.Background(), accountId).InlineObject2(inlineObject2).Limit(limit).PageToken(pageToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccountTransactions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -570,7 +794,7 @@ Other parameters are passed through a pointer to a apiGetAccountTransactionsRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **inlineObject1** | [**InlineObject1**](InlineObject1.md) |  | 
+ **inlineObject2** | [**InlineObject2**](InlineObject2.md) |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
 
@@ -585,7 +809,81 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAccountRelationship
+
+> RelationshipList ListAccountRelationship(ctx, accountId).Limit(limit).PageToken(pageToken).Execute()
+
+List account relationships
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountId := TODO // string | Account ID
+    limit := int32(100) // int32 |  (optional) (default to 100)
+    pageToken := "bnw3qvoyid" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.ListAccountRelationship(context.Background(), accountId).Limit(limit).PageToken(pageToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccountRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAccountRelationship`: RelationshipList
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ListAccountRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountId** | [**string**](.md) | Account ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAccountRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** |  | [default to 100]
+ **pageToken** | **string** |  | 
+
+### Return type
+
+[**RelationshipList**](RelationshipList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -594,7 +892,7 @@ Name | Type | Description  | Notes
 
 ## ListAccounts
 
-> AccountList ListAccounts(ctx).CustomerId(customerId).Limit(limit).PageToken(pageToken).HasDetails(hasDetails).Execute()
+> AccountList ListAccounts(ctx).Tenant(tenant).Limit(limit).PageToken(pageToken).CustomerId(customerId).HasDetails(hasDetails).Execute()
 
 List accounts
 
@@ -613,14 +911,15 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    tenant := "2_3" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
+    customerId := TODO // string | Customer ID (optional)
     hasDetails := true // bool | If true, the returned accounts will include relationships, aliases, balances and recent transactions. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).CustomerId(customerId).Limit(limit).PageToken(pageToken).HasDetails(hasDetails).Execute()
+    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Tenant(tenant).Limit(limit).PageToken(pageToken).CustomerId(customerId).HasDetails(hasDetails).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -641,9 +940,10 @@ Other parameters are passed through a pointer to a apiListAccountsRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customerId** | [**string**](string.md) | Customer ID | 
+ **tenant** | **string** |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
+ **customerId** | [**string**](string.md) | Customer ID | 
  **hasDetails** | **bool** | If true, the returned accounts will include relationships, aliases, balances and recent transactions. | 
 
 ### Return type
@@ -657,7 +957,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PatchAccount
+
+> Account PatchAccount(ctx, accountId).Account(account).Execute()
+
+Patch account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountId := TODO // string | Account ID
+    account := *openapiclient.NewAccount() // Account | Account fields to be patched
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.PatchAccount(context.Background(), accountId).Account(account).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.PatchAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PatchAccount`: Account
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.PatchAccount`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountId** | [**string**](.md) | Account ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **account** | [**Account**](Account.md) | Account fields to be patched | 
+
+### Return type
+
+[**Account**](Account.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -729,7 +1101,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -804,7 +1176,82 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAccountRelationship
+
+> Relationship UpdateAccountRelationship(ctx, accountId, relationshipId).Relationship(relationship).Execute()
+
+Update account relationship
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountId := TODO // string | Account ID
+    relationshipId := TODO // string | Relationship ID of the account associate with the account entity
+    relationship := *openapiclient.NewRelationship("CustomerId_example", "RelationshipType_example") // Relationship | Account relationship to be updated
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.UpdateAccountRelationship(context.Background(), accountId, relationshipId).Relationship(relationship).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.UpdateAccountRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAccountRelationship`: Relationship
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.UpdateAccountRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accountId** | [**string**](.md) | Account ID | 
+**relationshipId** | [**string**](.md) | Relationship ID of the account associate with the account entity | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAccountRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **relationship** | [**Relationship**](Relationship.md) | Account relationship to be updated | 
+
+### Return type
+
+[**Relationship**](Relationship.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -32,7 +32,7 @@ import (
 
 func main() {
     customerId := TODO // string | Customer ID
-    disclosure := *openapiclient.NewDisclosure("REG_DD", "1.1", time.Now(), "VIEWED") // Disclosure | Disclosure to create
+    disclosure := *openapiclient.NewDisclosure("VIEWED", time.Now(), "REG_DD", "1.1") // Disclosure | Disclosure to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -105,7 +105,7 @@ import (
 func main() {
     customerId := TODO // string | Customer ID
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

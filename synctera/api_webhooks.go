@@ -85,7 +85,7 @@ func (a *WebhooksApiService) CreateSecretExecute(r ApiCreateSecretRequest) (Inli
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -158,29 +158,29 @@ func (a *WebhooksApiService) CreateSecretExecute(r ApiCreateSecretRequest) (Inli
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateWebhookRequest struct {
+type ApiCreateWebhook1Request struct {
 	ctx _context.Context
 	ApiService *WebhooksApiService
 	webhook *Webhook
 }
 
-func (r ApiCreateWebhookRequest) Webhook(webhook Webhook) ApiCreateWebhookRequest {
+func (r ApiCreateWebhook1Request) Webhook(webhook Webhook) ApiCreateWebhook1Request {
 	r.webhook = &webhook
 	return r
 }
 
-func (r ApiCreateWebhookRequest) Execute() (Webhook, *_nethttp.Response, error) {
-	return r.ApiService.CreateWebhookExecute(r)
+func (r ApiCreateWebhook1Request) Execute() (Webhook, *_nethttp.Response, error) {
+	return r.ApiService.CreateWebhook1Execute(r)
 }
 
 /*
- * CreateWebhook Create a webhook
+ * CreateWebhook1 Create a webhook
  * Create a webhook
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiCreateWebhookRequest
+ * @return ApiCreateWebhook1Request
  */
-func (a *WebhooksApiService) CreateWebhook(ctx _context.Context) ApiCreateWebhookRequest {
-	return ApiCreateWebhookRequest{
+func (a *WebhooksApiService) CreateWebhook1(ctx _context.Context) ApiCreateWebhook1Request {
+	return ApiCreateWebhook1Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -190,7 +190,7 @@ func (a *WebhooksApiService) CreateWebhook(ctx _context.Context) ApiCreateWebhoo
  * Execute executes the request
  * @return Webhook
  */
-func (a *WebhooksApiService) CreateWebhookExecute(r ApiCreateWebhookRequest) (Webhook, *_nethttp.Response, error) {
+func (a *WebhooksApiService) CreateWebhook1Execute(r ApiCreateWebhook1Request) (Webhook, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -200,7 +200,7 @@ func (a *WebhooksApiService) CreateWebhookExecute(r ApiCreateWebhookRequest) (We
 		localVarReturnValue  Webhook
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksApiService.CreateWebhook")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksApiService.CreateWebhook1")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -224,7 +224,7 @@ func (a *WebhooksApiService) CreateWebhookExecute(r ApiCreateWebhookRequest) (We
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -351,7 +351,7 @@ func (a *WebhooksApiService) DeleteWebhookExecute(r ApiDeleteWebhookRequest) (De
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -490,7 +490,7 @@ func (a *WebhooksApiService) GetEventExecute(r ApiGetEventRequest) (Event, *_net
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -563,26 +563,26 @@ func (a *WebhooksApiService) GetEventExecute(r ApiGetEventRequest) (Event, *_net
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetWebhookRequest struct {
+type ApiGetWebhook1Request struct {
 	ctx _context.Context
 	ApiService *WebhooksApiService
 	webhookId string
 }
 
 
-func (r ApiGetWebhookRequest) Execute() (Webhook, *_nethttp.Response, error) {
-	return r.ApiService.GetWebhookExecute(r)
+func (r ApiGetWebhook1Request) Execute() (Webhook, *_nethttp.Response, error) {
+	return r.ApiService.GetWebhook1Execute(r)
 }
 
 /*
- * GetWebhook Get a webhook
+ * GetWebhook1 Get a webhook
  * Get a webhook
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param webhookId Webhook ID
- * @return ApiGetWebhookRequest
+ * @return ApiGetWebhook1Request
  */
-func (a *WebhooksApiService) GetWebhook(ctx _context.Context, webhookId string) ApiGetWebhookRequest {
-	return ApiGetWebhookRequest{
+func (a *WebhooksApiService) GetWebhook1(ctx _context.Context, webhookId string) ApiGetWebhook1Request {
+	return ApiGetWebhook1Request{
 		ApiService: a,
 		ctx: ctx,
 		webhookId: webhookId,
@@ -593,7 +593,7 @@ func (a *WebhooksApiService) GetWebhook(ctx _context.Context, webhookId string) 
  * Execute executes the request
  * @return Webhook
  */
-func (a *WebhooksApiService) GetWebhookExecute(r ApiGetWebhookRequest) (Webhook, *_nethttp.Response, error) {
+func (a *WebhooksApiService) GetWebhook1Execute(r ApiGetWebhook1Request) (Webhook, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -603,7 +603,7 @@ func (a *WebhooksApiService) GetWebhookExecute(r ApiGetWebhookRequest) (Webhook,
 		localVarReturnValue  Webhook
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksApiService.GetWebhook")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksApiService.GetWebhook1")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -625,7 +625,7 @@ func (a *WebhooksApiService) GetWebhookExecute(r ApiGetWebhookRequest) (Webhook,
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -792,7 +792,7 @@ func (a *WebhooksApiService) ListEventsExecute(r ApiListEventsRequest) (EventLis
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -855,7 +855,7 @@ func (a *WebhooksApiService) ListEventsExecute(r ApiListEventsRequest) (EventLis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListWebhooksRequest struct {
+type ApiListWebhooks1Request struct {
 	ctx _context.Context
 	ApiService *WebhooksApiService
 	limit *int32
@@ -863,31 +863,31 @@ type ApiListWebhooksRequest struct {
 	isEnabledOnly *bool
 }
 
-func (r ApiListWebhooksRequest) Limit(limit int32) ApiListWebhooksRequest {
+func (r ApiListWebhooks1Request) Limit(limit int32) ApiListWebhooks1Request {
 	r.limit = &limit
 	return r
 }
-func (r ApiListWebhooksRequest) PageToken(pageToken string) ApiListWebhooksRequest {
+func (r ApiListWebhooks1Request) PageToken(pageToken string) ApiListWebhooks1Request {
 	r.pageToken = &pageToken
 	return r
 }
-func (r ApiListWebhooksRequest) IsEnabledOnly(isEnabledOnly bool) ApiListWebhooksRequest {
+func (r ApiListWebhooks1Request) IsEnabledOnly(isEnabledOnly bool) ApiListWebhooks1Request {
 	r.isEnabledOnly = &isEnabledOnly
 	return r
 }
 
-func (r ApiListWebhooksRequest) Execute() (WebhookList, *_nethttp.Response, error) {
-	return r.ApiService.ListWebhooksExecute(r)
+func (r ApiListWebhooks1Request) Execute() (WebhookList, *_nethttp.Response, error) {
+	return r.ApiService.ListWebhooks1Execute(r)
 }
 
 /*
- * ListWebhooks List webhooks
+ * ListWebhooks1 List webhooks
  * List all webhooks
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiListWebhooksRequest
+ * @return ApiListWebhooks1Request
  */
-func (a *WebhooksApiService) ListWebhooks(ctx _context.Context) ApiListWebhooksRequest {
-	return ApiListWebhooksRequest{
+func (a *WebhooksApiService) ListWebhooks1(ctx _context.Context) ApiListWebhooks1Request {
+	return ApiListWebhooks1Request{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -897,7 +897,7 @@ func (a *WebhooksApiService) ListWebhooks(ctx _context.Context) ApiListWebhooksR
  * Execute executes the request
  * @return WebhookList
  */
-func (a *WebhooksApiService) ListWebhooksExecute(r ApiListWebhooksRequest) (WebhookList, *_nethttp.Response, error) {
+func (a *WebhooksApiService) ListWebhooks1Execute(r ApiListWebhooks1Request) (WebhookList, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -907,7 +907,7 @@ func (a *WebhooksApiService) ListWebhooksExecute(r ApiListWebhooksRequest) (Webh
 		localVarReturnValue  WebhookList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksApiService.ListWebhooks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhooksApiService.ListWebhooks1")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -937,7 +937,7 @@ func (a *WebhooksApiService) ListWebhooksExecute(r ApiListWebhooksRequest) (Webh
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1066,7 +1066,7 @@ func (a *WebhooksApiService) ReplaceSecretExecute(r ApiReplaceSecretRequest) (In
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1215,7 +1215,7 @@ func (a *WebhooksApiService) ResendEventExecute(r ApiResendEventRequest) (Event,
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1344,7 +1344,7 @@ func (a *WebhooksApiService) RevokeSecretExecute(r ApiRevokeSecretRequest) (*_ne
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1474,7 +1474,7 @@ func (a *WebhooksApiService) TriggerEventExecute(r ApiTriggerEventRequest) (Even
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1609,7 +1609,7 @@ func (a *WebhooksApiService) UpdateWebhookExecute(r ApiUpdateWebhookRequest) (We
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

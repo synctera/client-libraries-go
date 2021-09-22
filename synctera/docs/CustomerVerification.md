@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VerificationType** | [**[]VerificationType**](VerificationType.md) |  | 
 **UserIpAddress** | Pointer to **string** | IP address | [optional] 
+**VerificationType** | [**[]VerificationType**](VerificationType.md) |  | 
 
 ## Methods
 
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewCustomerVerificationWithDefaults instantiates a new CustomerVerification object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetVerificationType
-
-`func (o *CustomerVerification) GetVerificationType() []VerificationType`
-
-GetVerificationType returns the VerificationType field if non-nil, zero value otherwise.
-
-### GetVerificationTypeOk
-
-`func (o *CustomerVerification) GetVerificationTypeOk() (*[]VerificationType, bool)`
-
-GetVerificationTypeOk returns a tuple with the VerificationType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVerificationType
-
-`func (o *CustomerVerification) SetVerificationType(v []VerificationType)`
-
-SetVerificationType sets VerificationType field to given value.
-
 
 ### GetUserIpAddress
 
@@ -70,6 +50,26 @@ SetUserIpAddress sets UserIpAddress field to given value.
 `func (o *CustomerVerification) HasUserIpAddress() bool`
 
 HasUserIpAddress returns a boolean if a field has been set.
+
+### GetVerificationType
+
+`func (o *CustomerVerification) GetVerificationType() []VerificationType`
+
+GetVerificationType returns the VerificationType field if non-nil, zero value otherwise.
+
+### GetVerificationTypeOk
+
+`func (o *CustomerVerification) GetVerificationTypeOk() (*[]VerificationType, bool)`
+
+GetVerificationTypeOk returns a tuple with the VerificationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerificationType
+
+`func (o *CustomerVerification) SetVerificationType(v []VerificationType)`
+
+SetVerificationType sets VerificationType field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

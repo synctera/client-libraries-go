@@ -16,22 +16,22 @@ import (
 
 // Relationship struct for Relationship
 type Relationship struct {
-	// Connection ID of the account
-	ConnectId *string `json:"connect_id,omitempty"`
-	// Relationship type
-	RelationshipType string `json:"relationship_type"`
 	// Customer that the current account is associated with
 	CustomerId string `json:"customer_id"`
+	// ID of account relationship
+	Id *string `json:"id,omitempty"`
+	// Relationship type
+	RelationshipType string `json:"relationship_type"`
 }
 
 // NewRelationship instantiates a new Relationship object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRelationship(relationshipType string, customerId string) *Relationship {
+func NewRelationship(customerId string, relationshipType string) *Relationship {
 	this := Relationship{}
-	this.RelationshipType = relationshipType
 	this.CustomerId = customerId
+	this.RelationshipType = relationshipType
 	return &this
 }
 
@@ -41,62 +41,6 @@ func NewRelationship(relationshipType string, customerId string) *Relationship {
 func NewRelationshipWithDefaults() *Relationship {
 	this := Relationship{}
 	return &this
-}
-
-// GetConnectId returns the ConnectId field value if set, zero value otherwise.
-func (o *Relationship) GetConnectId() string {
-	if o == nil || o.ConnectId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ConnectId
-}
-
-// GetConnectIdOk returns a tuple with the ConnectId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Relationship) GetConnectIdOk() (*string, bool) {
-	if o == nil || o.ConnectId == nil {
-		return nil, false
-	}
-	return o.ConnectId, true
-}
-
-// HasConnectId returns a boolean if a field has been set.
-func (o *Relationship) HasConnectId() bool {
-	if o != nil && o.ConnectId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectId gets a reference to the given string and assigns it to the ConnectId field.
-func (o *Relationship) SetConnectId(v string) {
-	o.ConnectId = &v
-}
-
-// GetRelationshipType returns the RelationshipType field value
-func (o *Relationship) GetRelationshipType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RelationshipType
-}
-
-// GetRelationshipTypeOk returns a tuple with the RelationshipType field value
-// and a boolean to check if the value has been set.
-func (o *Relationship) GetRelationshipTypeOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.RelationshipType, true
-}
-
-// SetRelationshipType sets field value
-func (o *Relationship) SetRelationshipType(v string) {
-	o.RelationshipType = v
 }
 
 // GetCustomerId returns the CustomerId field value
@@ -123,16 +67,72 @@ func (o *Relationship) SetCustomerId(v string) {
 	o.CustomerId = v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Relationship) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Relationship) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Relationship) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Relationship) SetId(v string) {
+	o.Id = &v
+}
+
+// GetRelationshipType returns the RelationshipType field value
+func (o *Relationship) GetRelationshipType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RelationshipType
+}
+
+// GetRelationshipTypeOk returns a tuple with the RelationshipType field value
+// and a boolean to check if the value has been set.
+func (o *Relationship) GetRelationshipTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.RelationshipType, true
+}
+
+// SetRelationshipType sets field value
+func (o *Relationship) SetRelationshipType(v string) {
+	o.RelationshipType = v
+}
+
 func (o Relationship) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ConnectId != nil {
-		toSerialize["connect_id"] = o.ConnectId
+	if true {
+		toSerialize["customer_id"] = o.CustomerId
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["relationship_type"] = o.RelationshipType
-	}
-	if true {
-		toSerialize["customer_id"] = o.CustomerId
 	}
 	return json.Marshal(toSerialize)
 }

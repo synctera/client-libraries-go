@@ -16,9 +16,9 @@ import (
 
 // CustomerVerification struct for CustomerVerification
 type CustomerVerification struct {
-	VerificationType []VerificationType `json:"verification_type"`
 	// IP address
 	UserIpAddress *string `json:"user_ip_address,omitempty"`
+	VerificationType []VerificationType `json:"verification_type"`
 }
 
 // NewCustomerVerification instantiates a new CustomerVerification object
@@ -37,30 +37,6 @@ func NewCustomerVerification(verificationType []VerificationType) *CustomerVerif
 func NewCustomerVerificationWithDefaults() *CustomerVerification {
 	this := CustomerVerification{}
 	return &this
-}
-
-// GetVerificationType returns the VerificationType field value
-func (o *CustomerVerification) GetVerificationType() []VerificationType {
-	if o == nil {
-		var ret []VerificationType
-		return ret
-	}
-
-	return o.VerificationType
-}
-
-// GetVerificationTypeOk returns a tuple with the VerificationType field value
-// and a boolean to check if the value has been set.
-func (o *CustomerVerification) GetVerificationTypeOk() (*[]VerificationType, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.VerificationType, true
-}
-
-// SetVerificationType sets field value
-func (o *CustomerVerification) SetVerificationType(v []VerificationType) {
-	o.VerificationType = v
 }
 
 // GetUserIpAddress returns the UserIpAddress field value if set, zero value otherwise.
@@ -95,13 +71,37 @@ func (o *CustomerVerification) SetUserIpAddress(v string) {
 	o.UserIpAddress = &v
 }
 
+// GetVerificationType returns the VerificationType field value
+func (o *CustomerVerification) GetVerificationType() []VerificationType {
+	if o == nil {
+		var ret []VerificationType
+		return ret
+	}
+
+	return o.VerificationType
+}
+
+// GetVerificationTypeOk returns a tuple with the VerificationType field value
+// and a boolean to check if the value has been set.
+func (o *CustomerVerification) GetVerificationTypeOk() (*[]VerificationType, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.VerificationType, true
+}
+
+// SetVerificationType sets field value
+func (o *CustomerVerification) SetVerificationType(v []VerificationType) {
+	o.VerificationType = v
+}
+
 func (o CustomerVerification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["verification_type"] = o.VerificationType
-	}
 	if o.UserIpAddress != nil {
 		toSerialize["user_ip_address"] = o.UserIpAddress
+	}
+	if true {
+		toSerialize["verification_type"] = o.VerificationType
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,22 +16,22 @@ import (
 
 // Document struct for Document
 type Document struct {
+	// Base64url encoded image
+	ByteData *string `json:"byte_data,omitempty"`
+	DocumentType DocumentType `json:"document_type"`
 	// Document ID
 	Id *string `json:"id,omitempty"`
 	MediaType KycMediaType `json:"media_type"`
-	DocumentType DocumentType `json:"document_type"`
-	// Base64url encoded image
-	ByteData *string `json:"byte_data,omitempty"`
 }
 
 // NewDocument instantiates a new Document object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDocument(mediaType KycMediaType, documentType DocumentType) *Document {
+func NewDocument(documentType DocumentType, mediaType KycMediaType) *Document {
 	this := Document{}
-	this.MediaType = mediaType
 	this.DocumentType = documentType
+	this.MediaType = mediaType
 	return &this
 }
 
@@ -41,6 +41,62 @@ func NewDocument(mediaType KycMediaType, documentType DocumentType) *Document {
 func NewDocumentWithDefaults() *Document {
 	this := Document{}
 	return &this
+}
+
+// GetByteData returns the ByteData field value if set, zero value otherwise.
+func (o *Document) GetByteData() string {
+	if o == nil || o.ByteData == nil {
+		var ret string
+		return ret
+	}
+	return *o.ByteData
+}
+
+// GetByteDataOk returns a tuple with the ByteData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Document) GetByteDataOk() (*string, bool) {
+	if o == nil || o.ByteData == nil {
+		return nil, false
+	}
+	return o.ByteData, true
+}
+
+// HasByteData returns a boolean if a field has been set.
+func (o *Document) HasByteData() bool {
+	if o != nil && o.ByteData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetByteData gets a reference to the given string and assigns it to the ByteData field.
+func (o *Document) SetByteData(v string) {
+	o.ByteData = &v
+}
+
+// GetDocumentType returns the DocumentType field value
+func (o *Document) GetDocumentType() DocumentType {
+	if o == nil {
+		var ret DocumentType
+		return ret
+	}
+
+	return o.DocumentType
+}
+
+// GetDocumentTypeOk returns a tuple with the DocumentType field value
+// and a boolean to check if the value has been set.
+func (o *Document) GetDocumentTypeOk() (*DocumentType, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.DocumentType, true
+}
+
+// SetDocumentType sets field value
+func (o *Document) SetDocumentType(v DocumentType) {
+	o.DocumentType = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -99,75 +155,19 @@ func (o *Document) SetMediaType(v KycMediaType) {
 	o.MediaType = v
 }
 
-// GetDocumentType returns the DocumentType field value
-func (o *Document) GetDocumentType() DocumentType {
-	if o == nil {
-		var ret DocumentType
-		return ret
-	}
-
-	return o.DocumentType
-}
-
-// GetDocumentTypeOk returns a tuple with the DocumentType field value
-// and a boolean to check if the value has been set.
-func (o *Document) GetDocumentTypeOk() (*DocumentType, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.DocumentType, true
-}
-
-// SetDocumentType sets field value
-func (o *Document) SetDocumentType(v DocumentType) {
-	o.DocumentType = v
-}
-
-// GetByteData returns the ByteData field value if set, zero value otherwise.
-func (o *Document) GetByteData() string {
-	if o == nil || o.ByteData == nil {
-		var ret string
-		return ret
-	}
-	return *o.ByteData
-}
-
-// GetByteDataOk returns a tuple with the ByteData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Document) GetByteDataOk() (*string, bool) {
-	if o == nil || o.ByteData == nil {
-		return nil, false
-	}
-	return o.ByteData, true
-}
-
-// HasByteData returns a boolean if a field has been set.
-func (o *Document) HasByteData() bool {
-	if o != nil && o.ByteData != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetByteData gets a reference to the given string and assigns it to the ByteData field.
-func (o *Document) SetByteData(v string) {
-	o.ByteData = &v
-}
-
 func (o Document) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ByteData != nil {
+		toSerialize["byte_data"] = o.ByteData
+	}
+	if true {
+		toSerialize["document_type"] = o.DocumentType
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["media_type"] = o.MediaType
-	}
-	if true {
-		toSerialize["document_type"] = o.DocumentType
-	}
-	if o.ByteData != nil {
-		toSerialize["byte_data"] = o.ByteData
 	}
 	return json.Marshal(toSerialize)
 }

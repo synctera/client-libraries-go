@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// Status The status of the account. Required for shadow mode on account creation 
+// Status The status of the account 
 type Status string
 
 // List of status
@@ -31,6 +31,7 @@ const (
 	STATUS_ACTIVATED_NOT_DISBURSED Status = "ACTIVATED_NOT_DISBURSED"
 	STATUS_AWAITING_FIXING Status = "AWAITING_FIXING"
 	STATUS_IN_CLOSING Status = "IN_CLOSING"
+	STATUS_RESTRICTED Status = "RESTRICTED"
 )
 
 var allowedStatusEnumValues = []Status{
@@ -45,6 +46,7 @@ var allowedStatusEnumValues = []Status{
 	"ACTIVATED_NOT_DISBURSED",
 	"AWAITING_FIXING",
 	"IN_CLOSING",
+	"RESTRICTED",
 }
 
 func (v *Status) UnmarshalJSON(src []byte) error {

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Provider** | Pointer to [**ProviderType**](ProviderType.md) |  | [optional] 
-**RawData** | Pointer to **string** |  | [optional] 
+**RawData** | Pointer to **string** | the raw data from an external provider, as a JSON string | [optional] 
 
 ## Methods
 

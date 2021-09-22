@@ -12,32 +12,32 @@ package synctera
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // CustomerVerificationResult Verification result
 type CustomerVerificationResult struct {
-	// Verification object ID
+	// Unique ID for this verification result
 	Id *string `json:"id,omitempty"`
-	// List of found issues
+	// List of potential problems found. These are subject to change. 
 	Issues *[]CustomerVerificationReasonCodes `json:"issues,omitempty"`
-	// List of the verifications run
-	VerificationsRun []VerificationType `json:"verifications_run"`
 	RawResponse *RawResponse `json:"raw_response,omitempty"`
 	// The determination of this KYC run
 	Result string `json:"result"`
 	// The date on which the KYC run was completed
-	VerificationDate string `json:"verification_date"`
+	VerificationTime time.Time `json:"verification_time"`
+	VerificationType VerificationType `json:"verification_type"`
 }
 
 // NewCustomerVerificationResult instantiates a new CustomerVerificationResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerVerificationResult(verificationsRun []VerificationType, result string, verificationDate string) *CustomerVerificationResult {
+func NewCustomerVerificationResult(result string, verificationTime time.Time, verificationType VerificationType) *CustomerVerificationResult {
 	this := CustomerVerificationResult{}
-	this.VerificationsRun = verificationsRun
 	this.Result = result
-	this.VerificationDate = verificationDate
+	this.VerificationTime = verificationTime
+	this.VerificationType = verificationType
 	return &this
 }
 
@@ -113,30 +113,6 @@ func (o *CustomerVerificationResult) SetIssues(v []CustomerVerificationReasonCod
 	o.Issues = &v
 }
 
-// GetVerificationsRun returns the VerificationsRun field value
-func (o *CustomerVerificationResult) GetVerificationsRun() []VerificationType {
-	if o == nil {
-		var ret []VerificationType
-		return ret
-	}
-
-	return o.VerificationsRun
-}
-
-// GetVerificationsRunOk returns a tuple with the VerificationsRun field value
-// and a boolean to check if the value has been set.
-func (o *CustomerVerificationResult) GetVerificationsRunOk() (*[]VerificationType, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.VerificationsRun, true
-}
-
-// SetVerificationsRun sets field value
-func (o *CustomerVerificationResult) SetVerificationsRun(v []VerificationType) {
-	o.VerificationsRun = v
-}
-
 // GetRawResponse returns the RawResponse field value if set, zero value otherwise.
 func (o *CustomerVerificationResult) GetRawResponse() RawResponse {
 	if o == nil || o.RawResponse == nil {
@@ -193,28 +169,52 @@ func (o *CustomerVerificationResult) SetResult(v string) {
 	o.Result = v
 }
 
-// GetVerificationDate returns the VerificationDate field value
-func (o *CustomerVerificationResult) GetVerificationDate() string {
+// GetVerificationTime returns the VerificationTime field value
+func (o *CustomerVerificationResult) GetVerificationTime() time.Time {
 	if o == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 
-	return o.VerificationDate
+	return o.VerificationTime
 }
 
-// GetVerificationDateOk returns a tuple with the VerificationDate field value
+// GetVerificationTimeOk returns a tuple with the VerificationTime field value
 // and a boolean to check if the value has been set.
-func (o *CustomerVerificationResult) GetVerificationDateOk() (*string, bool) {
+func (o *CustomerVerificationResult) GetVerificationTimeOk() (*time.Time, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.VerificationDate, true
+	return &o.VerificationTime, true
 }
 
-// SetVerificationDate sets field value
-func (o *CustomerVerificationResult) SetVerificationDate(v string) {
-	o.VerificationDate = v
+// SetVerificationTime sets field value
+func (o *CustomerVerificationResult) SetVerificationTime(v time.Time) {
+	o.VerificationTime = v
+}
+
+// GetVerificationType returns the VerificationType field value
+func (o *CustomerVerificationResult) GetVerificationType() VerificationType {
+	if o == nil {
+		var ret VerificationType
+		return ret
+	}
+
+	return o.VerificationType
+}
+
+// GetVerificationTypeOk returns a tuple with the VerificationType field value
+// and a boolean to check if the value has been set.
+func (o *CustomerVerificationResult) GetVerificationTypeOk() (*VerificationType, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.VerificationType, true
+}
+
+// SetVerificationType sets field value
+func (o *CustomerVerificationResult) SetVerificationType(v VerificationType) {
+	o.VerificationType = v
 }
 
 func (o CustomerVerificationResult) MarshalJSON() ([]byte, error) {
@@ -225,9 +225,6 @@ func (o CustomerVerificationResult) MarshalJSON() ([]byte, error) {
 	if o.Issues != nil {
 		toSerialize["issues"] = o.Issues
 	}
-	if true {
-		toSerialize["verifications_run"] = o.VerificationsRun
-	}
 	if o.RawResponse != nil {
 		toSerialize["raw_response"] = o.RawResponse
 	}
@@ -235,7 +232,10 @@ func (o CustomerVerificationResult) MarshalJSON() ([]byte, error) {
 		toSerialize["result"] = o.Result
 	}
 	if true {
-		toSerialize["verification_date"] = o.VerificationDate
+		toSerialize["verification_time"] = o.VerificationTime
+	}
+	if true {
+		toSerialize["verification_type"] = o.VerificationType
 	}
 	return json.Marshal(toSerialize)
 }

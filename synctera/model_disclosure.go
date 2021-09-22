@@ -17,29 +17,29 @@ import (
 
 // Disclosure Represents a disclosure
 type Disclosure struct {
+	CreationTime *time.Time `json:"creation_time,omitempty"`
+	EventType string `json:"event_type"`
 	// Disclosure ID
 	Id *string `json:"id,omitempty"`
+	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
+	// Date of disclosure
+	Timestamp time.Time `json:"timestamp"`
 	// Disclosure Type
 	Type string `json:"type"`
 	// Disclosure Version
 	Version string `json:"version"`
-	// Date of disclosure
-	Timestamp time.Time `json:"timestamp"`
-	CreationTime *time.Time `json:"creation_time,omitempty"`
-	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
-	EventType string `json:"event_type"`
 }
 
 // NewDisclosure instantiates a new Disclosure object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisclosure(type_ string, version string, timestamp time.Time, eventType string) *Disclosure {
+func NewDisclosure(eventType string, timestamp time.Time, type_ string, version string) *Disclosure {
 	this := Disclosure{}
+	this.EventType = eventType
+	this.Timestamp = timestamp
 	this.Type = type_
 	this.Version = version
-	this.Timestamp = timestamp
-	this.EventType = eventType
 	return &this
 }
 
@@ -49,6 +49,62 @@ func NewDisclosure(type_ string, version string, timestamp time.Time, eventType 
 func NewDisclosureWithDefaults() *Disclosure {
 	this := Disclosure{}
 	return &this
+}
+
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
+func (o *Disclosure) GetCreationTime() time.Time {
+	if o == nil || o.CreationTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationTime
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Disclosure) GetCreationTimeOk() (*time.Time, bool) {
+	if o == nil || o.CreationTime == nil {
+		return nil, false
+	}
+	return o.CreationTime, true
+}
+
+// HasCreationTime returns a boolean if a field has been set.
+func (o *Disclosure) HasCreationTime() bool {
+	if o != nil && o.CreationTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
+func (o *Disclosure) SetCreationTime(v time.Time) {
+	o.CreationTime = &v
+}
+
+// GetEventType returns the EventType field value
+func (o *Disclosure) GetEventType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.EventType
+}
+
+// GetEventTypeOk returns a tuple with the EventType field value
+// and a boolean to check if the value has been set.
+func (o *Disclosure) GetEventTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.EventType, true
+}
+
+// SetEventType sets field value
+func (o *Disclosure) SetEventType(v string) {
+	o.EventType = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -81,6 +137,62 @@ func (o *Disclosure) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Disclosure) SetId(v string) {
 	o.Id = &v
+}
+
+// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
+func (o *Disclosure) GetLastUpdatedTime() time.Time {
+	if o == nil || o.LastUpdatedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastUpdatedTime
+}
+
+// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Disclosure) GetLastUpdatedTimeOk() (*time.Time, bool) {
+	if o == nil || o.LastUpdatedTime == nil {
+		return nil, false
+	}
+	return o.LastUpdatedTime, true
+}
+
+// HasLastUpdatedTime returns a boolean if a field has been set.
+func (o *Disclosure) HasLastUpdatedTime() bool {
+	if o != nil && o.LastUpdatedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdatedTime gets a reference to the given time.Time and assigns it to the LastUpdatedTime field.
+func (o *Disclosure) SetLastUpdatedTime(v time.Time) {
+	o.LastUpdatedTime = &v
+}
+
+// GetTimestamp returns the Timestamp field value
+func (o *Disclosure) GetTimestamp() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.Timestamp
+}
+
+// GetTimestampOk returns a tuple with the Timestamp field value
+// and a boolean to check if the value has been set.
+func (o *Disclosure) GetTimestampOk() (*time.Time, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Timestamp, true
+}
+
+// SetTimestamp sets field value
+func (o *Disclosure) SetTimestamp(v time.Time) {
+	o.Timestamp = v
 }
 
 // GetType returns the Type field value
@@ -131,140 +243,28 @@ func (o *Disclosure) SetVersion(v string) {
 	o.Version = v
 }
 
-// GetTimestamp returns the Timestamp field value
-func (o *Disclosure) GetTimestamp() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.Timestamp
-}
-
-// GetTimestampOk returns a tuple with the Timestamp field value
-// and a boolean to check if the value has been set.
-func (o *Disclosure) GetTimestampOk() (*time.Time, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Timestamp, true
-}
-
-// SetTimestamp sets field value
-func (o *Disclosure) SetTimestamp(v time.Time) {
-	o.Timestamp = v
-}
-
-// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
-func (o *Disclosure) GetCreationTime() time.Time {
-	if o == nil || o.CreationTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreationTime
-}
-
-// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Disclosure) GetCreationTimeOk() (*time.Time, bool) {
-	if o == nil || o.CreationTime == nil {
-		return nil, false
-	}
-	return o.CreationTime, true
-}
-
-// HasCreationTime returns a boolean if a field has been set.
-func (o *Disclosure) HasCreationTime() bool {
-	if o != nil && o.CreationTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
-func (o *Disclosure) SetCreationTime(v time.Time) {
-	o.CreationTime = &v
-}
-
-// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
-func (o *Disclosure) GetLastUpdatedTime() time.Time {
-	if o == nil || o.LastUpdatedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.LastUpdatedTime
-}
-
-// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Disclosure) GetLastUpdatedTimeOk() (*time.Time, bool) {
-	if o == nil || o.LastUpdatedTime == nil {
-		return nil, false
-	}
-	return o.LastUpdatedTime, true
-}
-
-// HasLastUpdatedTime returns a boolean if a field has been set.
-func (o *Disclosure) HasLastUpdatedTime() bool {
-	if o != nil && o.LastUpdatedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastUpdatedTime gets a reference to the given time.Time and assigns it to the LastUpdatedTime field.
-func (o *Disclosure) SetLastUpdatedTime(v time.Time) {
-	o.LastUpdatedTime = &v
-}
-
-// GetEventType returns the EventType field value
-func (o *Disclosure) GetEventType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.EventType
-}
-
-// GetEventTypeOk returns a tuple with the EventType field value
-// and a boolean to check if the value has been set.
-func (o *Disclosure) GetEventTypeOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.EventType, true
-}
-
-// SetEventType sets field value
-func (o *Disclosure) SetEventType(v string) {
-	o.EventType = v
-}
-
 func (o Disclosure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CreationTime != nil {
+		toSerialize["creation_time"] = o.CreationTime
+	}
+	if true {
+		toSerialize["event_type"] = o.EventType
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.LastUpdatedTime != nil {
+		toSerialize["last_updated_time"] = o.LastUpdatedTime
+	}
+	if true {
+		toSerialize["timestamp"] = o.Timestamp
 	}
 	if true {
 		toSerialize["type"] = o.Type
 	}
 	if true {
 		toSerialize["version"] = o.Version
-	}
-	if true {
-		toSerialize["timestamp"] = o.Timestamp
-	}
-	if o.CreationTime != nil {
-		toSerialize["creation_time"] = o.CreationTime
-	}
-	if o.LastUpdatedTime != nil {
-		toSerialize["last_updated_time"] = o.LastUpdatedTime
-	}
-	if true {
-		toSerialize["event_type"] = o.EventType
 	}
 	return json.Marshal(toSerialize)
 }

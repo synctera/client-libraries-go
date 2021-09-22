@@ -15,17 +15,17 @@ import (
 	"fmt"
 )
 
-// ProviderType the model 'ProviderType'
+// ProviderType Name of the organization that provided this data
 type ProviderType string
 
 // List of provider_type
 const (
-	PROVIDERTYPE_IDEOLOGY ProviderType = "IDEOLOGY"
+	PROVIDERTYPE_IDOLOGY ProviderType = "IDOLOGY"
 	PROVIDERTYPE_SOCURE ProviderType = "SOCURE"
 )
 
 var allowedProviderTypeEnumValues = []ProviderType{
-	"IDEOLOGY",
+	"IDOLOGY",
 	"SOCURE",
 }
 

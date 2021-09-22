@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Ip** | Pointer to **string** | IP address | [optional] 
 **Os** | Pointer to **string** | Operation system | [optional] 
 **OsVersion** | Pointer to **string** | Operation system version | [optional] 
-**ScreenWidth** | Pointer to **int32** | Device screen width | [optional] 
 **ScreenHeight** | Pointer to **int32** | Device screen height | [optional] 
+**ScreenWidth** | Pointer to **int32** | Device screen width | [optional] 
 
 ## Methods
 
@@ -130,31 +130,6 @@ SetOsVersion sets OsVersion field to given value.
 
 HasOsVersion returns a boolean if a field has been set.
 
-### GetScreenWidth
-
-`func (o *Device) GetScreenWidth() int32`
-
-GetScreenWidth returns the ScreenWidth field if non-nil, zero value otherwise.
-
-### GetScreenWidthOk
-
-`func (o *Device) GetScreenWidthOk() (*int32, bool)`
-
-GetScreenWidthOk returns a tuple with the ScreenWidth field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetScreenWidth
-
-`func (o *Device) SetScreenWidth(v int32)`
-
-SetScreenWidth sets ScreenWidth field to given value.
-
-### HasScreenWidth
-
-`func (o *Device) HasScreenWidth() bool`
-
-HasScreenWidth returns a boolean if a field has been set.
-
 ### GetScreenHeight
 
 `func (o *Device) GetScreenHeight() int32`
@@ -179,6 +154,31 @@ SetScreenHeight sets ScreenHeight field to given value.
 `func (o *Device) HasScreenHeight() bool`
 
 HasScreenHeight returns a boolean if a field has been set.
+
+### GetScreenWidth
+
+`func (o *Device) GetScreenWidth() int32`
+
+GetScreenWidth returns the ScreenWidth field if non-nil, zero value otherwise.
+
+### GetScreenWidthOk
+
+`func (o *Device) GetScreenWidthOk() (*int32, bool)`
+
+GetScreenWidthOk returns a tuple with the ScreenWidth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScreenWidth
+
+`func (o *Device) SetScreenWidth(v int32)`
+
+SetScreenWidth sets ScreenWidth field to given value.
+
+### HasScreenWidth
+
+`func (o *Device) HasScreenWidth() bool`
+
+HasScreenWidth returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

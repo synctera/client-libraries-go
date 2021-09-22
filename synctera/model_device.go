@@ -24,10 +24,10 @@ type Device struct {
 	Os *string `json:"os,omitempty"`
 	// Operation system version
 	OsVersion *string `json:"os_version,omitempty"`
-	// Device screen width
-	ScreenWidth *int32 `json:"screen_width,omitempty"`
 	// Device screen height
 	ScreenHeight *int32 `json:"screen_height,omitempty"`
+	// Device screen width
+	ScreenWidth *int32 `json:"screen_width,omitempty"`
 }
 
 // NewDevice instantiates a new Device object
@@ -175,38 +175,6 @@ func (o *Device) SetOsVersion(v string) {
 	o.OsVersion = &v
 }
 
-// GetScreenWidth returns the ScreenWidth field value if set, zero value otherwise.
-func (o *Device) GetScreenWidth() int32 {
-	if o == nil || o.ScreenWidth == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ScreenWidth
-}
-
-// GetScreenWidthOk returns a tuple with the ScreenWidth field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Device) GetScreenWidthOk() (*int32, bool) {
-	if o == nil || o.ScreenWidth == nil {
-		return nil, false
-	}
-	return o.ScreenWidth, true
-}
-
-// HasScreenWidth returns a boolean if a field has been set.
-func (o *Device) HasScreenWidth() bool {
-	if o != nil && o.ScreenWidth != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScreenWidth gets a reference to the given int32 and assigns it to the ScreenWidth field.
-func (o *Device) SetScreenWidth(v int32) {
-	o.ScreenWidth = &v
-}
-
 // GetScreenHeight returns the ScreenHeight field value if set, zero value otherwise.
 func (o *Device) GetScreenHeight() int32 {
 	if o == nil || o.ScreenHeight == nil {
@@ -239,6 +207,38 @@ func (o *Device) SetScreenHeight(v int32) {
 	o.ScreenHeight = &v
 }
 
+// GetScreenWidth returns the ScreenWidth field value if set, zero value otherwise.
+func (o *Device) GetScreenWidth() int32 {
+	if o == nil || o.ScreenWidth == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ScreenWidth
+}
+
+// GetScreenWidthOk returns a tuple with the ScreenWidth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Device) GetScreenWidthOk() (*int32, bool) {
+	if o == nil || o.ScreenWidth == nil {
+		return nil, false
+	}
+	return o.ScreenWidth, true
+}
+
+// HasScreenWidth returns a boolean if a field has been set.
+func (o *Device) HasScreenWidth() bool {
+	if o != nil && o.ScreenWidth != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScreenWidth gets a reference to the given int32 and assigns it to the ScreenWidth field.
+func (o *Device) SetScreenWidth(v int32) {
+	o.ScreenWidth = &v
+}
+
 func (o Device) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -253,11 +253,11 @@ func (o Device) MarshalJSON() ([]byte, error) {
 	if o.OsVersion != nil {
 		toSerialize["os_version"] = o.OsVersion
 	}
-	if o.ScreenWidth != nil {
-		toSerialize["screen_width"] = o.ScreenWidth
-	}
 	if o.ScreenHeight != nil {
 		toSerialize["screen_height"] = o.ScreenHeight
+	}
+	if o.ScreenWidth != nil {
+		toSerialize["screen_width"] = o.ScreenWidth
 	}
 	return json.Marshal(toSerialize)
 }

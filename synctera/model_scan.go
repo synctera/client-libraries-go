@@ -16,12 +16,10 @@ import (
 
 // Scan Scanning image to be used for remote deposit capture
 type Scan struct {
-	// RDC Scan ID
-	Id string `json:"id"`
 	// Account number
 	AccountNumber string `json:"account_number"`
-	// Bank routing number
-	RoutingNumber string `json:"routing_number"`
+	// ID of the image of the back of the check
+	BackImageId string `json:"back_image_id"`
 	// Amount on check in ISO 4217 minor currency units
 	CheckAmount int32 `json:"check_amount"`
 	// ISO 4217 currency code for the check amount
@@ -30,24 +28,26 @@ type Scan struct {
 	DateScanned string `json:"date_scanned"`
 	// ID of the image of the front of the check
 	FrontImageId string `json:"front_image_id"`
-	// ID of the image of the back of the check
-	BackImageId string `json:"back_image_id"`
+	// RDC Scan ID
+	Id string `json:"id"`
+	// Bank routing number
+	RoutingNumber string `json:"routing_number"`
 }
 
 // NewScan instantiates a new Scan object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScan(id string, accountNumber string, routingNumber string, checkAmount int32, checkCurrency string, dateScanned string, frontImageId string, backImageId string) *Scan {
+func NewScan(accountNumber string, backImageId string, checkAmount int32, checkCurrency string, dateScanned string, frontImageId string, id string, routingNumber string) *Scan {
 	this := Scan{}
-	this.Id = id
 	this.AccountNumber = accountNumber
-	this.RoutingNumber = routingNumber
+	this.BackImageId = backImageId
 	this.CheckAmount = checkAmount
 	this.CheckCurrency = checkCurrency
 	this.DateScanned = dateScanned
 	this.FrontImageId = frontImageId
-	this.BackImageId = backImageId
+	this.Id = id
+	this.RoutingNumber = routingNumber
 	return &this
 }
 
@@ -57,30 +57,6 @@ func NewScan(id string, accountNumber string, routingNumber string, checkAmount 
 func NewScanWithDefaults() *Scan {
 	this := Scan{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *Scan) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *Scan) GetIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *Scan) SetId(v string) {
-	o.Id = v
 }
 
 // GetAccountNumber returns the AccountNumber field value
@@ -107,28 +83,28 @@ func (o *Scan) SetAccountNumber(v string) {
 	o.AccountNumber = v
 }
 
-// GetRoutingNumber returns the RoutingNumber field value
-func (o *Scan) GetRoutingNumber() string {
+// GetBackImageId returns the BackImageId field value
+func (o *Scan) GetBackImageId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.RoutingNumber
+	return o.BackImageId
 }
 
-// GetRoutingNumberOk returns a tuple with the RoutingNumber field value
+// GetBackImageIdOk returns a tuple with the BackImageId field value
 // and a boolean to check if the value has been set.
-func (o *Scan) GetRoutingNumberOk() (*string, bool) {
+func (o *Scan) GetBackImageIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.RoutingNumber, true
+	return &o.BackImageId, true
 }
 
-// SetRoutingNumber sets field value
-func (o *Scan) SetRoutingNumber(v string) {
-	o.RoutingNumber = v
+// SetBackImageId sets field value
+func (o *Scan) SetBackImageId(v string) {
+	o.BackImageId = v
 }
 
 // GetCheckAmount returns the CheckAmount field value
@@ -227,40 +203,61 @@ func (o *Scan) SetFrontImageId(v string) {
 	o.FrontImageId = v
 }
 
-// GetBackImageId returns the BackImageId field value
-func (o *Scan) GetBackImageId() string {
+// GetId returns the Id field value
+func (o *Scan) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.BackImageId
+	return o.Id
 }
 
-// GetBackImageIdOk returns a tuple with the BackImageId field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *Scan) GetBackImageIdOk() (*string, bool) {
+func (o *Scan) GetIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.BackImageId, true
+	return &o.Id, true
 }
 
-// SetBackImageId sets field value
-func (o *Scan) SetBackImageId(v string) {
-	o.BackImageId = v
+// SetId sets field value
+func (o *Scan) SetId(v string) {
+	o.Id = v
+}
+
+// GetRoutingNumber returns the RoutingNumber field value
+func (o *Scan) GetRoutingNumber() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RoutingNumber
+}
+
+// GetRoutingNumberOk returns a tuple with the RoutingNumber field value
+// and a boolean to check if the value has been set.
+func (o *Scan) GetRoutingNumberOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.RoutingNumber, true
+}
+
+// SetRoutingNumber sets field value
+func (o *Scan) SetRoutingNumber(v string) {
+	o.RoutingNumber = v
 }
 
 func (o Scan) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
 		toSerialize["account_number"] = o.AccountNumber
 	}
 	if true {
-		toSerialize["routing_number"] = o.RoutingNumber
+		toSerialize["back_image_id"] = o.BackImageId
 	}
 	if true {
 		toSerialize["check_amount"] = o.CheckAmount
@@ -275,7 +272,10 @@ func (o Scan) MarshalJSON() ([]byte, error) {
 		toSerialize["front_image_id"] = o.FrontImageId
 	}
 	if true {
-		toSerialize["back_image_id"] = o.BackImageId
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["routing_number"] = o.RoutingNumber
 	}
 	return json.Marshal(toSerialize)
 }

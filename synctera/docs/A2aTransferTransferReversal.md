@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IsReversal** | Pointer to **bool** | True if transfer reversal, false otherwise the original transfer | [optional] 
 **Id** | Pointer to **string** | Payment ID of the corresponding reversal/original transfer | [optional] 
+**IsReversal** | Pointer to **bool** | True if transfer reversal, false otherwise the original transfer | [optional] 
 
 ## Methods
 
@@ -25,31 +25,6 @@ will change when the set of required properties is changed
 NewA2aTransferTransferReversalWithDefaults instantiates a new A2aTransferTransferReversal object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetIsReversal
-
-`func (o *A2aTransferTransferReversal) GetIsReversal() bool`
-
-GetIsReversal returns the IsReversal field if non-nil, zero value otherwise.
-
-### GetIsReversalOk
-
-`func (o *A2aTransferTransferReversal) GetIsReversalOk() (*bool, bool)`
-
-GetIsReversalOk returns a tuple with the IsReversal field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsReversal
-
-`func (o *A2aTransferTransferReversal) SetIsReversal(v bool)`
-
-SetIsReversal sets IsReversal field to given value.
-
-### HasIsReversal
-
-`func (o *A2aTransferTransferReversal) HasIsReversal() bool`
-
-HasIsReversal returns a boolean if a field has been set.
 
 ### GetId
 
@@ -75,6 +50,31 @@ SetId sets Id field to given value.
 `func (o *A2aTransferTransferReversal) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetIsReversal
+
+`func (o *A2aTransferTransferReversal) GetIsReversal() bool`
+
+GetIsReversal returns the IsReversal field if non-nil, zero value otherwise.
+
+### GetIsReversalOk
+
+`func (o *A2aTransferTransferReversal) GetIsReversalOk() (*bool, bool)`
+
+GetIsReversalOk returns a tuple with the IsReversal field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsReversal
+
+`func (o *A2aTransferTransferReversal) SetIsReversal(v bool)`
+
+SetIsReversal sets IsReversal field to given value.
+
+### HasIsReversal
+
+`func (o *A2aTransferTransferReversal) HasIsReversal() bool`
+
+HasIsReversal returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

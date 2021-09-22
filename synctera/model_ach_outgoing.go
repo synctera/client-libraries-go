@@ -16,16 +16,23 @@ import (
 
 // AchOutgoing Represents an outgoing ACH
 type AchOutgoing struct {
-	// Outgoing ACH
-	Id *string `json:"id,omitempty"`
 	// ID of the source account
 	AccountId string `json:"account_id"`
 	// Amount to transfer in ISO 4217 minor currency units
 	Amount int32 `json:"amount"`
 	// ISO 4217 alphabetic currency code of the transfer amount
 	Currency string `json:"currency"`
-	// The type of transaction (DEBIT/CREDIT) for originating account
-	TransactionDirection *string `json:"transaction_direction,omitempty"`
+	// The date the transfer executes (default today)
+	ExecutionDate *string `json:"execution_date,omitempty"`
+	// Outgoing ACH
+	Id *string `json:"id,omitempty"`
+	// Do not perform a fraud check
+	NoFraudCheck *bool `json:"no_fraud_check,omitempty"`
+	// Overwrite non mandatory posting checks. Mandatory checks will still be processed
+	OverwriteChecks *bool `json:"overwrite_checks,omitempty"`
+	// The name of the recipient
+	RecipientName string `json:"recipient_name"`
+	RecurringData *RecurrenceData `json:"recurring_data,omitempty"`
 	// Reference information for the payment
 	ReferenceInfo *string `json:"reference_info,omitempty"`
 	// The account number of the destination account
@@ -34,30 +41,23 @@ type AchOutgoing struct {
 	TargetAccountRouting string `json:"target_account_routing"`
 	// The ISO-3166-1 Alpha-2 country code in which the target account is registered (default US)
 	TargetBankCountry string `json:"target_bank_country"`
-	// The name of the recipient
-	RecipientName string `json:"recipient_name"`
-	// The date the transfer executes (default today)
-	ExecutionDate *string `json:"execution_date,omitempty"`
-	RecurringData *RecurrenceData `json:"recurring_data,omitempty"`
-	// Do not perform a fraud check
-	NoFraudCheck *bool `json:"no_fraud_check,omitempty"`
-	// Overwrite non mandatory posting checks. Mandatory checks will still be processed
-	OverwriteChecks *bool `json:"overwrite_checks,omitempty"`
+	// The type of transaction (DEBIT/CREDIT) for originating account
+	TransactionDirection *string `json:"transaction_direction,omitempty"`
 }
 
 // NewAchOutgoing instantiates a new AchOutgoing object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAchOutgoing(accountId string, amount int32, currency string, targetAccountNo string, targetAccountRouting string, targetBankCountry string, recipientName string) *AchOutgoing {
+func NewAchOutgoing(accountId string, amount int32, currency string, recipientName string, targetAccountNo string, targetAccountRouting string, targetBankCountry string) *AchOutgoing {
 	this := AchOutgoing{}
 	this.AccountId = accountId
 	this.Amount = amount
 	this.Currency = currency
+	this.RecipientName = recipientName
 	this.TargetAccountNo = targetAccountNo
 	this.TargetAccountRouting = targetAccountRouting
 	this.TargetBankCountry = targetBankCountry
-	this.RecipientName = recipientName
 	return &this
 }
 
@@ -69,38 +69,6 @@ func NewAchOutgoingWithDefaults() *AchOutgoing {
 	var targetBankCountry string = "US"
 	this.TargetBankCountry = targetBankCountry
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *AchOutgoing) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AchOutgoing) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *AchOutgoing) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AchOutgoing) SetId(v string) {
-	o.Id = &v
 }
 
 // GetAccountId returns the AccountId field value
@@ -175,36 +143,188 @@ func (o *AchOutgoing) SetCurrency(v string) {
 	o.Currency = v
 }
 
-// GetTransactionDirection returns the TransactionDirection field value if set, zero value otherwise.
-func (o *AchOutgoing) GetTransactionDirection() string {
-	if o == nil || o.TransactionDirection == nil {
+// GetExecutionDate returns the ExecutionDate field value if set, zero value otherwise.
+func (o *AchOutgoing) GetExecutionDate() string {
+	if o == nil || o.ExecutionDate == nil {
 		var ret string
 		return ret
 	}
-	return *o.TransactionDirection
+	return *o.ExecutionDate
 }
 
-// GetTransactionDirectionOk returns a tuple with the TransactionDirection field value if set, nil otherwise
+// GetExecutionDateOk returns a tuple with the ExecutionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AchOutgoing) GetTransactionDirectionOk() (*string, bool) {
-	if o == nil || o.TransactionDirection == nil {
+func (o *AchOutgoing) GetExecutionDateOk() (*string, bool) {
+	if o == nil || o.ExecutionDate == nil {
 		return nil, false
 	}
-	return o.TransactionDirection, true
+	return o.ExecutionDate, true
 }
 
-// HasTransactionDirection returns a boolean if a field has been set.
-func (o *AchOutgoing) HasTransactionDirection() bool {
-	if o != nil && o.TransactionDirection != nil {
+// HasExecutionDate returns a boolean if a field has been set.
+func (o *AchOutgoing) HasExecutionDate() bool {
+	if o != nil && o.ExecutionDate != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTransactionDirection gets a reference to the given string and assigns it to the TransactionDirection field.
-func (o *AchOutgoing) SetTransactionDirection(v string) {
-	o.TransactionDirection = &v
+// SetExecutionDate gets a reference to the given string and assigns it to the ExecutionDate field.
+func (o *AchOutgoing) SetExecutionDate(v string) {
+	o.ExecutionDate = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AchOutgoing) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AchOutgoing) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *AchOutgoing) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AchOutgoing) SetId(v string) {
+	o.Id = &v
+}
+
+// GetNoFraudCheck returns the NoFraudCheck field value if set, zero value otherwise.
+func (o *AchOutgoing) GetNoFraudCheck() bool {
+	if o == nil || o.NoFraudCheck == nil {
+		var ret bool
+		return ret
+	}
+	return *o.NoFraudCheck
+}
+
+// GetNoFraudCheckOk returns a tuple with the NoFraudCheck field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AchOutgoing) GetNoFraudCheckOk() (*bool, bool) {
+	if o == nil || o.NoFraudCheck == nil {
+		return nil, false
+	}
+	return o.NoFraudCheck, true
+}
+
+// HasNoFraudCheck returns a boolean if a field has been set.
+func (o *AchOutgoing) HasNoFraudCheck() bool {
+	if o != nil && o.NoFraudCheck != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNoFraudCheck gets a reference to the given bool and assigns it to the NoFraudCheck field.
+func (o *AchOutgoing) SetNoFraudCheck(v bool) {
+	o.NoFraudCheck = &v
+}
+
+// GetOverwriteChecks returns the OverwriteChecks field value if set, zero value otherwise.
+func (o *AchOutgoing) GetOverwriteChecks() bool {
+	if o == nil || o.OverwriteChecks == nil {
+		var ret bool
+		return ret
+	}
+	return *o.OverwriteChecks
+}
+
+// GetOverwriteChecksOk returns a tuple with the OverwriteChecks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AchOutgoing) GetOverwriteChecksOk() (*bool, bool) {
+	if o == nil || o.OverwriteChecks == nil {
+		return nil, false
+	}
+	return o.OverwriteChecks, true
+}
+
+// HasOverwriteChecks returns a boolean if a field has been set.
+func (o *AchOutgoing) HasOverwriteChecks() bool {
+	if o != nil && o.OverwriteChecks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOverwriteChecks gets a reference to the given bool and assigns it to the OverwriteChecks field.
+func (o *AchOutgoing) SetOverwriteChecks(v bool) {
+	o.OverwriteChecks = &v
+}
+
+// GetRecipientName returns the RecipientName field value
+func (o *AchOutgoing) GetRecipientName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RecipientName
+}
+
+// GetRecipientNameOk returns a tuple with the RecipientName field value
+// and a boolean to check if the value has been set.
+func (o *AchOutgoing) GetRecipientNameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.RecipientName, true
+}
+
+// SetRecipientName sets field value
+func (o *AchOutgoing) SetRecipientName(v string) {
+	o.RecipientName = v
+}
+
+// GetRecurringData returns the RecurringData field value if set, zero value otherwise.
+func (o *AchOutgoing) GetRecurringData() RecurrenceData {
+	if o == nil || o.RecurringData == nil {
+		var ret RecurrenceData
+		return ret
+	}
+	return *o.RecurringData
+}
+
+// GetRecurringDataOk returns a tuple with the RecurringData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AchOutgoing) GetRecurringDataOk() (*RecurrenceData, bool) {
+	if o == nil || o.RecurringData == nil {
+		return nil, false
+	}
+	return o.RecurringData, true
+}
+
+// HasRecurringData returns a boolean if a field has been set.
+func (o *AchOutgoing) HasRecurringData() bool {
+	if o != nil && o.RecurringData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRecurringData gets a reference to the given RecurrenceData and assigns it to the RecurringData field.
+func (o *AchOutgoing) SetRecurringData(v RecurrenceData) {
+	o.RecurringData = &v
 }
 
 // GetReferenceInfo returns the ReferenceInfo field value if set, zero value otherwise.
@@ -311,163 +431,40 @@ func (o *AchOutgoing) SetTargetBankCountry(v string) {
 	o.TargetBankCountry = v
 }
 
-// GetRecipientName returns the RecipientName field value
-func (o *AchOutgoing) GetRecipientName() string {
-	if o == nil {
+// GetTransactionDirection returns the TransactionDirection field value if set, zero value otherwise.
+func (o *AchOutgoing) GetTransactionDirection() string {
+	if o == nil || o.TransactionDirection == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RecipientName
+	return *o.TransactionDirection
 }
 
-// GetRecipientNameOk returns a tuple with the RecipientName field value
+// GetTransactionDirectionOk returns a tuple with the TransactionDirection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AchOutgoing) GetRecipientNameOk() (*string, bool) {
-	if o == nil  {
+func (o *AchOutgoing) GetTransactionDirectionOk() (*string, bool) {
+	if o == nil || o.TransactionDirection == nil {
 		return nil, false
 	}
-	return &o.RecipientName, true
+	return o.TransactionDirection, true
 }
 
-// SetRecipientName sets field value
-func (o *AchOutgoing) SetRecipientName(v string) {
-	o.RecipientName = v
-}
-
-// GetExecutionDate returns the ExecutionDate field value if set, zero value otherwise.
-func (o *AchOutgoing) GetExecutionDate() string {
-	if o == nil || o.ExecutionDate == nil {
-		var ret string
-		return ret
-	}
-	return *o.ExecutionDate
-}
-
-// GetExecutionDateOk returns a tuple with the ExecutionDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AchOutgoing) GetExecutionDateOk() (*string, bool) {
-	if o == nil || o.ExecutionDate == nil {
-		return nil, false
-	}
-	return o.ExecutionDate, true
-}
-
-// HasExecutionDate returns a boolean if a field has been set.
-func (o *AchOutgoing) HasExecutionDate() bool {
-	if o != nil && o.ExecutionDate != nil {
+// HasTransactionDirection returns a boolean if a field has been set.
+func (o *AchOutgoing) HasTransactionDirection() bool {
+	if o != nil && o.TransactionDirection != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetExecutionDate gets a reference to the given string and assigns it to the ExecutionDate field.
-func (o *AchOutgoing) SetExecutionDate(v string) {
-	o.ExecutionDate = &v
-}
-
-// GetRecurringData returns the RecurringData field value if set, zero value otherwise.
-func (o *AchOutgoing) GetRecurringData() RecurrenceData {
-	if o == nil || o.RecurringData == nil {
-		var ret RecurrenceData
-		return ret
-	}
-	return *o.RecurringData
-}
-
-// GetRecurringDataOk returns a tuple with the RecurringData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AchOutgoing) GetRecurringDataOk() (*RecurrenceData, bool) {
-	if o == nil || o.RecurringData == nil {
-		return nil, false
-	}
-	return o.RecurringData, true
-}
-
-// HasRecurringData returns a boolean if a field has been set.
-func (o *AchOutgoing) HasRecurringData() bool {
-	if o != nil && o.RecurringData != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRecurringData gets a reference to the given RecurrenceData and assigns it to the RecurringData field.
-func (o *AchOutgoing) SetRecurringData(v RecurrenceData) {
-	o.RecurringData = &v
-}
-
-// GetNoFraudCheck returns the NoFraudCheck field value if set, zero value otherwise.
-func (o *AchOutgoing) GetNoFraudCheck() bool {
-	if o == nil || o.NoFraudCheck == nil {
-		var ret bool
-		return ret
-	}
-	return *o.NoFraudCheck
-}
-
-// GetNoFraudCheckOk returns a tuple with the NoFraudCheck field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AchOutgoing) GetNoFraudCheckOk() (*bool, bool) {
-	if o == nil || o.NoFraudCheck == nil {
-		return nil, false
-	}
-	return o.NoFraudCheck, true
-}
-
-// HasNoFraudCheck returns a boolean if a field has been set.
-func (o *AchOutgoing) HasNoFraudCheck() bool {
-	if o != nil && o.NoFraudCheck != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNoFraudCheck gets a reference to the given bool and assigns it to the NoFraudCheck field.
-func (o *AchOutgoing) SetNoFraudCheck(v bool) {
-	o.NoFraudCheck = &v
-}
-
-// GetOverwriteChecks returns the OverwriteChecks field value if set, zero value otherwise.
-func (o *AchOutgoing) GetOverwriteChecks() bool {
-	if o == nil || o.OverwriteChecks == nil {
-		var ret bool
-		return ret
-	}
-	return *o.OverwriteChecks
-}
-
-// GetOverwriteChecksOk returns a tuple with the OverwriteChecks field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AchOutgoing) GetOverwriteChecksOk() (*bool, bool) {
-	if o == nil || o.OverwriteChecks == nil {
-		return nil, false
-	}
-	return o.OverwriteChecks, true
-}
-
-// HasOverwriteChecks returns a boolean if a field has been set.
-func (o *AchOutgoing) HasOverwriteChecks() bool {
-	if o != nil && o.OverwriteChecks != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOverwriteChecks gets a reference to the given bool and assigns it to the OverwriteChecks field.
-func (o *AchOutgoing) SetOverwriteChecks(v bool) {
-	o.OverwriteChecks = &v
+// SetTransactionDirection gets a reference to the given string and assigns it to the TransactionDirection field.
+func (o *AchOutgoing) SetTransactionDirection(v string) {
+	o.TransactionDirection = &v
 }
 
 func (o AchOutgoing) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
 	if true {
 		toSerialize["account_id"] = o.AccountId
 	}
@@ -477,8 +474,23 @@ func (o AchOutgoing) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["currency"] = o.Currency
 	}
-	if o.TransactionDirection != nil {
-		toSerialize["transaction_direction"] = o.TransactionDirection
+	if o.ExecutionDate != nil {
+		toSerialize["execution_date"] = o.ExecutionDate
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if o.NoFraudCheck != nil {
+		toSerialize["no_fraud_check"] = o.NoFraudCheck
+	}
+	if o.OverwriteChecks != nil {
+		toSerialize["overwrite_checks"] = o.OverwriteChecks
+	}
+	if true {
+		toSerialize["recipient_name"] = o.RecipientName
+	}
+	if o.RecurringData != nil {
+		toSerialize["recurring_data"] = o.RecurringData
 	}
 	if o.ReferenceInfo != nil {
 		toSerialize["reference_info"] = o.ReferenceInfo
@@ -492,20 +504,8 @@ func (o AchOutgoing) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["target_bank_country"] = o.TargetBankCountry
 	}
-	if true {
-		toSerialize["recipient_name"] = o.RecipientName
-	}
-	if o.ExecutionDate != nil {
-		toSerialize["execution_date"] = o.ExecutionDate
-	}
-	if o.RecurringData != nil {
-		toSerialize["recurring_data"] = o.RecurringData
-	}
-	if o.NoFraudCheck != nil {
-		toSerialize["no_fraud_check"] = o.NoFraudCheck
-	}
-	if o.OverwriteChecks != nil {
-		toSerialize["overwrite_checks"] = o.OverwriteChecks
+	if o.TransactionDirection != nil {
+		toSerialize["transaction_direction"] = o.TransactionDirection
 	}
 	return json.Marshal(toSerialize)
 }
