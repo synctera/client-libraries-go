@@ -79,283 +79,283 @@ All URIs are relative to *https://api.synctera.com/v0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /accounts | Create an account
-*AccountsApi* | [**CreateAccountAddress**](docs/AccountsApi.md#createaccountaddress) | **Post** /accounts/{account_id}/addresses | Create address for an account
-*AccountsApi* | [**CreateAccountRelationship**](docs/AccountsApi.md#createaccountrelationship) | **Post** /accounts/{account_id}/relationships | Create account relationship
-*AccountsApi* | [**DeleteAccount**](docs/AccountsApi.md#deleteaccount) | **Delete** /accounts/{account_id} | Delete account
-*AccountsApi* | [**DeleteAccountAddress**](docs/AccountsApi.md#deleteaccountaddress) | **Delete** /accounts/{account_id}/addresses/{connect_id} | Delete address for an account
-*AccountsApi* | [**DeleteAccountRelationship**](docs/AccountsApi.md#deleteaccountrelationship) | **Delete** /accounts/{account_id}/relationships/{relationship_id} | Delete account relationship
-*AccountsApi* | [**GetAccount**](docs/AccountsApi.md#getaccount) | **Get** /accounts/{account_id} | Get account
-*AccountsApi* | [**GetAccountAddress**](docs/AccountsApi.md#getaccountaddress) | **Get** /accounts/{account_id}/addresses/{connect_id} | Get address for an account
-*AccountsApi* | [**GetAccountBalance**](docs/AccountsApi.md#getaccountbalance) | **Get** /accounts/{account_id}/balance | Get account balance
-*AccountsApi* | [**GetAccountRelationship**](docs/AccountsApi.md#getaccountrelationship) | **Get** /accounts/{account_id}/relationships/{relationship_id} | Get account relationship
-*AccountsApi* | [**GetAccountTransactions**](docs/AccountsApi.md#getaccounttransactions) | **Get** /accounts/{account_id}/transactions | Get account transactions
-*AccountsApi* | [**ListAccountRelationship**](docs/AccountsApi.md#listaccountrelationship) | **Get** /accounts/{account_id}/relationships | List account relationships
-*AccountsApi* | [**ListAccounts**](docs/AccountsApi.md#listaccounts) | **Get** /accounts | List accounts
-*AccountsApi* | [**PatchAccount**](docs/AccountsApi.md#patchaccount) | **Patch** /accounts/{account_id} | Patch account
-*AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **Put** /accounts/{account_id} | Update account
-*AccountsApi* | [**UpdateAccountAddress**](docs/AccountsApi.md#updateaccountaddress) | **Put** /accounts/{account_id}/addresses/{connect_id} | Update address for an account
-*AccountsApi* | [**UpdateAccountRelationship**](docs/AccountsApi.md#updateaccountrelationship) | **Put** /accounts/{account_id}/relationships/{relationship_id} | Update account relationship
-*CardTransactionSimulationsApi* | [**SimulateAuthorization**](docs/CardTransactionSimulationsApi.md#simulateauthorization) | **Post** /cards/transaction_simulations/authorization | Simulate authorization
-*CardTransactionSimulationsApi* | [**SimulateAuthorizationAdvice**](docs/CardTransactionSimulationsApi.md#simulateauthorizationadvice) | **Post** /cards/transaction_simulations/authorization/advice | Simulate authorization advice
-*CardTransactionSimulationsApi* | [**SimulateBalanceInquiry**](docs/CardTransactionSimulationsApi.md#simulatebalanceinquiry) | **Post** /cards/transaction_simulations/financial/balance_inquiry | Simulate balance inquiry
-*CardTransactionSimulationsApi* | [**SimulateClearing**](docs/CardTransactionSimulationsApi.md#simulateclearing) | **Post** /cards/transaction_simulations/clearing | Simulate clearing or refund
-*CardTransactionSimulationsApi* | [**SimulateFinancial**](docs/CardTransactionSimulationsApi.md#simulatefinancial) | **Post** /cards/transaction_simulations/financial | Simulate financial
-*CardTransactionSimulationsApi* | [**SimulateFinancialAdvice**](docs/CardTransactionSimulationsApi.md#simulatefinancialadvice) | **Post** /cards/transaction_simulations/financial/advice | Simulate financial advice
-*CardTransactionSimulationsApi* | [**SimulateOriginalCredit**](docs/CardTransactionSimulationsApi.md#simulateoriginalcredit) | **Post** /cards/transaction_simulations/financial/original_credit | Simulate OCT
-*CardTransactionSimulationsApi* | [**SimulateReversal**](docs/CardTransactionSimulationsApi.md#simulatereversal) | **Post** /cards/transaction_simulations/reversal | Simulate reversal
-*CardTransactionSimulationsApi* | [**SimulateWithdrawal**](docs/CardTransactionSimulationsApi.md#simulatewithdrawal) | **Post** /cards/transaction_simulations/financial/withdrawal | Simulate ATM withdrawal
-*CardsApi* | [**ActivateCard**](docs/CardsApi.md#activatecard) | **Post** /cards/{card_id}/activate | Activate a card
-*CardsApi* | [**GetCard**](docs/CardsApi.md#getcard) | **Get** /cards/{card_id} | Get Card
-*CardsApi* | [**GetCardProduct**](docs/CardsApi.md#getcardproduct) | **Get** /cards/products/{card_product_id} | Get details about a card product
-*CardsApi* | [**GetCardProducts**](docs/CardsApi.md#getcardproducts) | **Get** /cards/products | List Cards Products
-*CardsApi* | [**GetClientAccessToken**](docs/CardsApi.md#getclientaccesstoken) | **Post** /cards/{card_id}/client_token | Get a client token
-*CardsApi* | [**GetClientSingleUseToken**](docs/CardsApi.md#getclientsingleusetoken) | **Post** /cards/single_use_token | Get single-use token
-*CardsApi* | [**IssueCard**](docs/CardsApi.md#issuecard) | **Post** /cards | Issue a Card
-*CardsApi* | [**ListCards**](docs/CardsApi.md#listcards) | **Get** /cards | List Cards
-*CardsApi* | [**ListChanges**](docs/CardsApi.md#listchanges) | **Get** /cards/{card_id}/changes | List Card Changes
-*CardsApi* | [**UpdateCard**](docs/CardsApi.md#updatecard) | **Patch** /cards/{card_id} | Update Card
-*CustomersApi* | [**CreateCustomer**](docs/CustomersApi.md#createcustomer) | **Post** /customers | Create a Customer
-*CustomersApi* | [**CreateCustomerEmployment**](docs/CustomersApi.md#createcustomeremployment) | **Post** /customers/{customer_id}/employment | Create employment record
-*CustomersApi* | [**CreateCustomerRiskRating**](docs/CustomersApi.md#createcustomerriskrating) | **Post** /customers/{customer_id}/risk_ratings | Create customer risk rating
-*CustomersApi* | [**GetAllCustomerEmployment**](docs/CustomersApi.md#getallcustomeremployment) | **Get** /customers/{customer_id}/employment | List customer employment records
-*CustomersApi* | [**GetAllCustomerRiskRatings**](docs/CustomersApi.md#getallcustomerriskratings) | **Get** /customers/{customer_id}/risk_ratings | List customer risk ratings
-*CustomersApi* | [**GetCustomer**](docs/CustomersApi.md#getcustomer) | **Get** /customers/{customer_id} | Get Customer
-*CustomersApi* | [**GetCustomerAccount**](docs/CustomersApi.md#getcustomeraccount) | **Get** /customers/{customer_id}/accounts/{account_id} | Get customer account
-*CustomersApi* | [**GetCustomerRiskRating**](docs/CustomersApi.md#getcustomerriskrating) | **Get** /customers/{customer_id}/risk_ratings/{risk_rating_id} | Get customer risk rating
-*CustomersApi* | [**GetPartyEmployment**](docs/CustomersApi.md#getpartyemployment) | **Get** /customers/{customer_id}/employment/{employment_id} | Get customer employment record
-*CustomersApi* | [**ListCustomerAccounts**](docs/CustomersApi.md#listcustomeraccounts) | **Get** /customers/{customer_id}/accounts | List accounts
-*CustomersApi* | [**ListCustomerAddresses**](docs/CustomersApi.md#listcustomeraddresses) | **Get** /customers/{customer_id}/addresses | List customer addresses
-*CustomersApi* | [**ListCustomers**](docs/CustomersApi.md#listcustomers) | **Get** /customers | List Customers
-*CustomersApi* | [**PatchCustomer**](docs/CustomersApi.md#patchcustomer) | **Patch** /customers/{customer_id} | Patch Customer
-*CustomersApi* | [**UpdateCustomer**](docs/CustomersApi.md#updatecustomer) | **Put** /customers/{customer_id} | Update Customer
-*CustomersApi* | [**UpdatePartyEmployment**](docs/CustomersApi.md#updatepartyemployment) | **Put** /customers/{customer_id}/employment/{employment_id} | Update customer employment record
-*DisclosuresApi* | [**CreateDisclosure**](docs/DisclosuresApi.md#createdisclosure) | **Post** /customers/{customer_id}/disclosures | Create a Disclosure
-*DisclosuresApi* | [**ListDisclosures**](docs/DisclosuresApi.md#listdisclosures) | **Get** /customers/{customer_id}/disclosures | List Disclosures
-*KYCVerificationApi* | [**CreateCustomerVerificationResult**](docs/KYCVerificationApi.md#createcustomerverificationresult) | **Post** /customers/{customer_id}/verifications | Create a Customer Verification Result
-*KYCVerificationApi* | [**GetVerification**](docs/KYCVerificationApi.md#getverification) | **Get** /customers/{customer_id}/verifications/{verification_id} | Get Verification Result
-*KYCVerificationApi* | [**ListVerifications**](docs/KYCVerificationApi.md#listverifications) | **Get** /customers/{customer_id}/verifications | List Verification Results
-*KYCVerificationApi* | [**VerifyCustomer**](docs/KYCVerificationApi.md#verifycustomer) | **Post** /customers/{customer_id}/verify | Verify a customer&#39;s identity
-*RDCDepositsApi* | [**CreateRdcDeposit**](docs/RDCDepositsApi.md#createrdcdeposit) | **Post** /accounts/{account_id}/rdc/deposit | Create an RDC Deposit
-*RDCDepositsApi* | [**CreateRdcImage**](docs/RDCDepositsApi.md#createrdcimage) | **Post** /accounts/{account_id}/rdc/images | Create an RDC Image
-*RDCDepositsApi* | [**CreateRdcScan**](docs/RDCDepositsApi.md#createrdcscan) | **Post** /accounts/{account_id}/rdc/scans | Create an RDC Scan
-*RDCDepositsApi* | [**GetRdcDeposit**](docs/RDCDepositsApi.md#getrdcdeposit) | **Get** /accounts/{account_id}/rdc/deposit/{deposit_id} | Get RDC Deposit
-*RDCDepositsApi* | [**GetRdcImage**](docs/RDCDepositsApi.md#getrdcimage) | **Get** /accounts/{account_id}/rdc/images/{image_id} | Get RDC Image
-*RDCDepositsApi* | [**GetRdcScan**](docs/RDCDepositsApi.md#getrdcscan) | **Get** /accounts/{account_id}/rdc/scans/{scan_id} | Get RDC Scan
-*RDCDepositsApi* | [**ListRdcDeposits**](docs/RDCDepositsApi.md#listrdcdeposits) | **Get** /accounts/{account_id}/rdc/deposit | List RDC Deposits
-*RDCDepositsApi* | [**ListRdcImageIds**](docs/RDCDepositsApi.md#listrdcimageids) | **Get** /accounts/{account_id}/rdc/images | List RDC Image Ids
-*RDCDepositsApi* | [**ListRdcScans**](docs/RDCDepositsApi.md#listrdcscans) | **Get** /accounts/{account_id}/rdc/scans | List RDC Scans
-*ReconciliationsApi* | [**CreateReconciliation**](docs/ReconciliationsApi.md#createreconciliation) | **Post** /reconciliations | Create a reconciliation
-*ReconciliationsApi* | [**GetReconciliation**](docs/ReconciliationsApi.md#getreconciliation) | **Get** /reconciliations/{reconciliation_id} | Get reconciliation
-*ReconciliationsApi* | [**ListReconciliations**](docs/ReconciliationsApi.md#listreconciliations) | **Get** /reconciliations | List reconciliations
-*TransactionsApi* | [**A2aTransfer**](docs/TransactionsApi.md#a2atransfer) | **Post** /transactions/a2a_transfer | Account to account transfer
-*TransactionsApi* | [**CreateOutgoingACH**](docs/TransactionsApi.md#createoutgoingach) | **Post** /transactions/ach | Create outgoing ACH
-*TransactionsApi* | [**DeleteOutgoingACH**](docs/TransactionsApi.md#deleteoutgoingach) | **Delete** /transactions/ach/{payment_id} | Delete pending outgoing ACH
-*TransactionsApi* | [**GetA2ATransfer**](docs/TransactionsApi.md#geta2atransfer) | **Get** /transactions/a2a_transfer/{payment_id} | Get account to account transfer
-*TransactionsApi* | [**GetOutgoingACH**](docs/TransactionsApi.md#getoutgoingach) | **Get** /transactions/ach | Get Pending ACH List
-*TransactionsApi* | [**ListA2ATransfer**](docs/TransactionsApi.md#lista2atransfer) | **Get** /transactions/a2a_transfer/list/{customer_id} | List account to account transfer
-*TransactionsApi* | [**ReverseA2ATransfer**](docs/TransactionsApi.md#reversea2atransfer) | **Post** /transactions/a2a_transfer/{payment_id} | Reverse existing account to account transfer
-*TransactionsApi* | [**UpdateOutgoingACH**](docs/TransactionsApi.md#updateoutgoingach) | **Put** /transactions/ach/{payment_id} | Update outgoing ACH
-*WatchlistApi* | [**GetWatchlistAlert**](docs/WatchlistApi.md#getwatchlistalert) | **Get** /customers/{customer_id}/watchlists/alerts/{alert_id} | Retrieve watchlist monitoring alert
-*WatchlistApi* | [**GetWatchlistSubscription**](docs/WatchlistApi.md#getwatchlistsubscription) | **Get** /customers/{customer_id}/watchlists/subscriptions/{subscription_id} | Retrieve watchlist monitoring subscription
-*WatchlistApi* | [**ListWatchlistAlerts**](docs/WatchlistApi.md#listwatchlistalerts) | **Get** /customers/{customer_id}/watchlists/alerts | List watchlist monitoring alerts for a customer
-*WatchlistApi* | [**ListWatchlistSubscriptions**](docs/WatchlistApi.md#listwatchlistsubscriptions) | **Get** /customers/{customer_id}/watchlists/subscriptions | List watchlist monitoring subscriptions for a customer
-*WatchlistApi* | [**SuppressWatchlistEntityAlert**](docs/WatchlistApi.md#suppresswatchlistentityalert) | **Post** /customers/{customer_id}/watchlists/suppressions | Suppress entity alert
-*WatchlistApi* | [**UpdateWatchlistAlert**](docs/WatchlistApi.md#updatewatchlistalert) | **Put** /customers/{customer_id}/watchlists/alerts/{alert_id} | Update watchlist alert
-*WatchlistApi* | [**UpdateWatchlistSubscription**](docs/WatchlistApi.md#updatewatchlistsubscription) | **Put** /customers/{customer_id}/watchlists/subscriptions/{subscription_id} | Update watchlist monitoring subscription
-*WatchlistApi* | [**WatchlistSubscribe**](docs/WatchlistApi.md#watchlistsubscribe) | **Post** /customers/{customer_id}/watchlists/subscriptions | Subscribe a customer to watchlist monitoring
-*WebhooksApi* | [**CreateSecret**](docs/WebhooksApi.md#createsecret) | **Post** /webhooks/secret | Create a secret
-*WebhooksApi* | [**CreateWebhook1**](docs/WebhooksApi.md#createwebhook1) | **Post** /webhooks | Create a webhook
-*WebhooksApi* | [**DeleteWebhook**](docs/WebhooksApi.md#deletewebhook) | **Delete** /webhooks/{webhook_id} | Delete a webhook
-*WebhooksApi* | [**GetEvent**](docs/WebhooksApi.md#getevent) | **Get** /webhooks/{webhook_id}/events/{event_id} | Get webhook event
-*WebhooksApi* | [**GetWebhook1**](docs/WebhooksApi.md#getwebhook1) | **Get** /webhooks/{webhook_id} | Get a webhook
-*WebhooksApi* | [**ListEvents**](docs/WebhooksApi.md#listevents) | **Get** /webhooks/{webhook_id}/events | List webhook events
-*WebhooksApi* | [**ListWebhooks1**](docs/WebhooksApi.md#listwebhooks1) | **Get** /webhooks | List webhooks
-*WebhooksApi* | [**ReplaceSecret**](docs/WebhooksApi.md#replacesecret) | **Put** /webhooks/secret | Replace an existing secret
-*WebhooksApi* | [**ResendEvent**](docs/WebhooksApi.md#resendevent) | **Post** /webhooks/{webhook_id}/events/{event_id}/resend | Resend an event
-*WebhooksApi* | [**RevokeSecret**](docs/WebhooksApi.md#revokesecret) | **Delete** /webhooks/secret | Revoke the secret
-*WebhooksApi* | [**TriggerEvent**](docs/WebhooksApi.md#triggerevent) | **Post** /webhooks/trigger | Trigger an event
-*WebhooksApi* | [**UpdateWebhook**](docs/WebhooksApi.md#updatewebhook) | **Put** /webhooks/{webhook_id} | Update a webhook
+*AccountsApi* | [**CreateAccount**](synctera/docs/AccountsApi.md#createaccount) | **Post** /accounts | Create an account
+*AccountsApi* | [**CreateAccountAddress**](synctera/docs/AccountsApi.md#createaccountaddress) | **Post** /accounts/{account_id}/addresses | Create address for an account
+*AccountsApi* | [**CreateAccountRelationship**](synctera/docs/AccountsApi.md#createaccountrelationship) | **Post** /accounts/{account_id}/relationships | Create account relationship
+*AccountsApi* | [**DeleteAccount**](synctera/docs/AccountsApi.md#deleteaccount) | **Delete** /accounts/{account_id} | Delete account
+*AccountsApi* | [**DeleteAccountAddress**](synctera/docs/AccountsApi.md#deleteaccountaddress) | **Delete** /accounts/{account_id}/addresses/{connect_id} | Delete address for an account
+*AccountsApi* | [**DeleteAccountRelationship**](synctera/docs/AccountsApi.md#deleteaccountrelationship) | **Delete** /accounts/{account_id}/relationships/{relationship_id} | Delete account relationship
+*AccountsApi* | [**GetAccount**](synctera/docs/AccountsApi.md#getaccount) | **Get** /accounts/{account_id} | Get account
+*AccountsApi* | [**GetAccountAddress**](synctera/docs/AccountsApi.md#getaccountaddress) | **Get** /accounts/{account_id}/addresses/{connect_id} | Get address for an account
+*AccountsApi* | [**GetAccountBalance**](synctera/docs/AccountsApi.md#getaccountbalance) | **Get** /accounts/{account_id}/balance | Get account balance
+*AccountsApi* | [**GetAccountRelationship**](synctera/docs/AccountsApi.md#getaccountrelationship) | **Get** /accounts/{account_id}/relationships/{relationship_id} | Get account relationship
+*AccountsApi* | [**GetAccountTransactions**](synctera/docs/AccountsApi.md#getaccounttransactions) | **Get** /accounts/{account_id}/transactions | Get account transactions
+*AccountsApi* | [**ListAccountRelationship**](synctera/docs/AccountsApi.md#listaccountrelationship) | **Get** /accounts/{account_id}/relationships | List account relationships
+*AccountsApi* | [**ListAccounts**](synctera/docs/AccountsApi.md#listaccounts) | **Get** /accounts | List accounts
+*AccountsApi* | [**PatchAccount**](synctera/docs/AccountsApi.md#patchaccount) | **Patch** /accounts/{account_id} | Patch account
+*AccountsApi* | [**UpdateAccount**](synctera/docs/AccountsApi.md#updateaccount) | **Put** /accounts/{account_id} | Update account
+*AccountsApi* | [**UpdateAccountAddress**](synctera/docs/AccountsApi.md#updateaccountaddress) | **Put** /accounts/{account_id}/addresses/{connect_id} | Update address for an account
+*AccountsApi* | [**UpdateAccountRelationship**](synctera/docs/AccountsApi.md#updateaccountrelationship) | **Put** /accounts/{account_id}/relationships/{relationship_id} | Update account relationship
+*CardTransactionSimulationsApi* | [**SimulateAuthorization**](synctera/docs/CardTransactionSimulationsApi.md#simulateauthorization) | **Post** /cards/transaction_simulations/authorization | Simulate authorization
+*CardTransactionSimulationsApi* | [**SimulateAuthorizationAdvice**](synctera/docs/CardTransactionSimulationsApi.md#simulateauthorizationadvice) | **Post** /cards/transaction_simulations/authorization/advice | Simulate authorization advice
+*CardTransactionSimulationsApi* | [**SimulateBalanceInquiry**](synctera/docs/CardTransactionSimulationsApi.md#simulatebalanceinquiry) | **Post** /cards/transaction_simulations/financial/balance_inquiry | Simulate balance inquiry
+*CardTransactionSimulationsApi* | [**SimulateClearing**](synctera/docs/CardTransactionSimulationsApi.md#simulateclearing) | **Post** /cards/transaction_simulations/clearing | Simulate clearing or refund
+*CardTransactionSimulationsApi* | [**SimulateFinancial**](synctera/docs/CardTransactionSimulationsApi.md#simulatefinancial) | **Post** /cards/transaction_simulations/financial | Simulate financial
+*CardTransactionSimulationsApi* | [**SimulateFinancialAdvice**](synctera/docs/CardTransactionSimulationsApi.md#simulatefinancialadvice) | **Post** /cards/transaction_simulations/financial/advice | Simulate financial advice
+*CardTransactionSimulationsApi* | [**SimulateOriginalCredit**](synctera/docs/CardTransactionSimulationsApi.md#simulateoriginalcredit) | **Post** /cards/transaction_simulations/financial/original_credit | Simulate OCT
+*CardTransactionSimulationsApi* | [**SimulateReversal**](synctera/docs/CardTransactionSimulationsApi.md#simulatereversal) | **Post** /cards/transaction_simulations/reversal | Simulate reversal
+*CardTransactionSimulationsApi* | [**SimulateWithdrawal**](synctera/docs/CardTransactionSimulationsApi.md#simulatewithdrawal) | **Post** /cards/transaction_simulations/financial/withdrawal | Simulate ATM withdrawal
+*CardsApi* | [**ActivateCard**](synctera/docs/CardsApi.md#activatecard) | **Post** /cards/{card_id}/activate | Activate a card
+*CardsApi* | [**GetCard**](synctera/docs/CardsApi.md#getcard) | **Get** /cards/{card_id} | Get Card
+*CardsApi* | [**GetCardProduct**](synctera/docs/CardsApi.md#getcardproduct) | **Get** /cards/products/{card_product_id} | Get details about a card product
+*CardsApi* | [**GetCardProducts**](synctera/docs/CardsApi.md#getcardproducts) | **Get** /cards/products | List Cards Products
+*CardsApi* | [**GetClientAccessToken**](synctera/docs/CardsApi.md#getclientaccesstoken) | **Post** /cards/{card_id}/client_token | Get a client token
+*CardsApi* | [**GetClientSingleUseToken**](synctera/docs/CardsApi.md#getclientsingleusetoken) | **Post** /cards/single_use_token | Get single-use token
+*CardsApi* | [**IssueCard**](synctera/docs/CardsApi.md#issuecard) | **Post** /cards | Issue a Card
+*CardsApi* | [**ListCards**](synctera/docs/CardsApi.md#listcards) | **Get** /cards | List Cards
+*CardsApi* | [**ListChanges**](synctera/docs/CardsApi.md#listchanges) | **Get** /cards/{card_id}/changes | List Card Changes
+*CardsApi* | [**UpdateCard**](synctera/docs/CardsApi.md#updatecard) | **Patch** /cards/{card_id} | Update Card
+*CustomersApi* | [**CreateCustomer**](synctera/docs/CustomersApi.md#createcustomer) | **Post** /customers | Create a Customer
+*CustomersApi* | [**CreateCustomerEmployment**](synctera/docs/CustomersApi.md#createcustomeremployment) | **Post** /customers/{customer_id}/employment | Create employment record
+*CustomersApi* | [**CreateCustomerRiskRating**](synctera/docs/CustomersApi.md#createcustomerriskrating) | **Post** /customers/{customer_id}/risk_ratings | Create customer risk rating
+*CustomersApi* | [**GetAllCustomerEmployment**](synctera/docs/CustomersApi.md#getallcustomeremployment) | **Get** /customers/{customer_id}/employment | List customer employment records
+*CustomersApi* | [**GetAllCustomerRiskRatings**](synctera/docs/CustomersApi.md#getallcustomerriskratings) | **Get** /customers/{customer_id}/risk_ratings | List customer risk ratings
+*CustomersApi* | [**GetCustomer**](synctera/docs/CustomersApi.md#getcustomer) | **Get** /customers/{customer_id} | Get Customer
+*CustomersApi* | [**GetCustomerAccount**](synctera/docs/CustomersApi.md#getcustomeraccount) | **Get** /customers/{customer_id}/accounts/{account_id} | Get customer account
+*CustomersApi* | [**GetCustomerRiskRating**](synctera/docs/CustomersApi.md#getcustomerriskrating) | **Get** /customers/{customer_id}/risk_ratings/{risk_rating_id} | Get customer risk rating
+*CustomersApi* | [**GetPartyEmployment**](synctera/docs/CustomersApi.md#getpartyemployment) | **Get** /customers/{customer_id}/employment/{employment_id} | Get customer employment record
+*CustomersApi* | [**ListCustomerAccounts**](synctera/docs/CustomersApi.md#listcustomeraccounts) | **Get** /customers/{customer_id}/accounts | List accounts
+*CustomersApi* | [**ListCustomerAddresses**](synctera/docs/CustomersApi.md#listcustomeraddresses) | **Get** /customers/{customer_id}/addresses | List customer addresses
+*CustomersApi* | [**ListCustomers**](synctera/docs/CustomersApi.md#listcustomers) | **Get** /customers | List Customers
+*CustomersApi* | [**PatchCustomer**](synctera/docs/CustomersApi.md#patchcustomer) | **Patch** /customers/{customer_id} | Patch Customer
+*CustomersApi* | [**UpdateCustomer**](synctera/docs/CustomersApi.md#updatecustomer) | **Put** /customers/{customer_id} | Update Customer
+*CustomersApi* | [**UpdatePartyEmployment**](synctera/docs/CustomersApi.md#updatepartyemployment) | **Put** /customers/{customer_id}/employment/{employment_id} | Update customer employment record
+*DisclosuresApi* | [**CreateDisclosure**](synctera/docs/DisclosuresApi.md#createdisclosure) | **Post** /customers/{customer_id}/disclosures | Create a Disclosure
+*DisclosuresApi* | [**ListDisclosures**](synctera/docs/DisclosuresApi.md#listdisclosures) | **Get** /customers/{customer_id}/disclosures | List Disclosures
+*KYCVerificationApi* | [**CreateCustomerVerificationResult**](synctera/docs/KYCVerificationApi.md#createcustomerverificationresult) | **Post** /customers/{customer_id}/verifications | Create a Customer Verification Result
+*KYCVerificationApi* | [**GetVerification**](synctera/docs/KYCVerificationApi.md#getverification) | **Get** /customers/{customer_id}/verifications/{verification_id} | Get Verification Result
+*KYCVerificationApi* | [**ListVerifications**](synctera/docs/KYCVerificationApi.md#listverifications) | **Get** /customers/{customer_id}/verifications | List Verification Results
+*KYCVerificationApi* | [**VerifyCustomer**](synctera/docs/KYCVerificationApi.md#verifycustomer) | **Post** /customers/{customer_id}/verify | Verify a customer&#39;s identity
+*RDCDepositsApi* | [**CreateRdcDeposit**](synctera/docs/RDCDepositsApi.md#createrdcdeposit) | **Post** /accounts/{account_id}/rdc/deposit | Create an RDC Deposit
+*RDCDepositsApi* | [**CreateRdcImage**](synctera/docs/RDCDepositsApi.md#createrdcimage) | **Post** /accounts/{account_id}/rdc/images | Create an RDC Image
+*RDCDepositsApi* | [**CreateRdcScan**](synctera/docs/RDCDepositsApi.md#createrdcscan) | **Post** /accounts/{account_id}/rdc/scans | Create an RDC Scan
+*RDCDepositsApi* | [**GetRdcDeposit**](synctera/docs/RDCDepositsApi.md#getrdcdeposit) | **Get** /accounts/{account_id}/rdc/deposit/{deposit_id} | Get RDC Deposit
+*RDCDepositsApi* | [**GetRdcImage**](synctera/docs/RDCDepositsApi.md#getrdcimage) | **Get** /accounts/{account_id}/rdc/images/{image_id} | Get RDC Image
+*RDCDepositsApi* | [**GetRdcScan**](synctera/docs/RDCDepositsApi.md#getrdcscan) | **Get** /accounts/{account_id}/rdc/scans/{scan_id} | Get RDC Scan
+*RDCDepositsApi* | [**ListRdcDeposits**](synctera/docs/RDCDepositsApi.md#listrdcdeposits) | **Get** /accounts/{account_id}/rdc/deposit | List RDC Deposits
+*RDCDepositsApi* | [**ListRdcImageIds**](synctera/docs/RDCDepositsApi.md#listrdcimageids) | **Get** /accounts/{account_id}/rdc/images | List RDC Image Ids
+*RDCDepositsApi* | [**ListRdcScans**](synctera/docs/RDCDepositsApi.md#listrdcscans) | **Get** /accounts/{account_id}/rdc/scans | List RDC Scans
+*ReconciliationsApi* | [**CreateReconciliation**](synctera/docs/ReconciliationsApi.md#createreconciliation) | **Post** /reconciliations | Create a reconciliation
+*ReconciliationsApi* | [**GetReconciliation**](synctera/docs/ReconciliationsApi.md#getreconciliation) | **Get** /reconciliations/{reconciliation_id} | Get reconciliation
+*ReconciliationsApi* | [**ListReconciliations**](synctera/docs/ReconciliationsApi.md#listreconciliations) | **Get** /reconciliations | List reconciliations
+*TransactionsApi* | [**A2aTransfer**](synctera/docs/TransactionsApi.md#a2atransfer) | **Post** /transactions/a2a_transfer | Account to account transfer
+*TransactionsApi* | [**CreateOutgoingACH**](synctera/docs/TransactionsApi.md#createoutgoingach) | **Post** /transactions/ach | Create outgoing ACH
+*TransactionsApi* | [**DeleteOutgoingACH**](synctera/docs/TransactionsApi.md#deleteoutgoingach) | **Delete** /transactions/ach/{payment_id} | Delete pending outgoing ACH
+*TransactionsApi* | [**GetA2ATransfer**](synctera/docs/TransactionsApi.md#geta2atransfer) | **Get** /transactions/a2a_transfer/{payment_id} | Get account to account transfer
+*TransactionsApi* | [**GetOutgoingACH**](synctera/docs/TransactionsApi.md#getoutgoingach) | **Get** /transactions/ach | Get Pending ACH List
+*TransactionsApi* | [**ListA2ATransfer**](synctera/docs/TransactionsApi.md#lista2atransfer) | **Get** /transactions/a2a_transfer/list/{customer_id} | List account to account transfer
+*TransactionsApi* | [**ReverseA2ATransfer**](synctera/docs/TransactionsApi.md#reversea2atransfer) | **Post** /transactions/a2a_transfer/{payment_id} | Reverse existing account to account transfer
+*TransactionsApi* | [**UpdateOutgoingACH**](synctera/docs/TransactionsApi.md#updateoutgoingach) | **Put** /transactions/ach/{payment_id} | Update outgoing ACH
+*WatchlistApi* | [**GetWatchlistAlert**](synctera/docs/WatchlistApi.md#getwatchlistalert) | **Get** /customers/{customer_id}/watchlists/alerts/{alert_id} | Retrieve watchlist monitoring alert
+*WatchlistApi* | [**GetWatchlistSubscription**](synctera/docs/WatchlistApi.md#getwatchlistsubscription) | **Get** /customers/{customer_id}/watchlists/subscriptions/{subscription_id} | Retrieve watchlist monitoring subscription
+*WatchlistApi* | [**ListWatchlistAlerts**](synctera/docs/WatchlistApi.md#listwatchlistalerts) | **Get** /customers/{customer_id}/watchlists/alerts | List watchlist monitoring alerts for a customer
+*WatchlistApi* | [**ListWatchlistSubscriptions**](synctera/docs/WatchlistApi.md#listwatchlistsubscriptions) | **Get** /customers/{customer_id}/watchlists/subscriptions | List watchlist monitoring subscriptions for a customer
+*WatchlistApi* | [**SuppressWatchlistEntityAlert**](synctera/docs/WatchlistApi.md#suppresswatchlistentityalert) | **Post** /customers/{customer_id}/watchlists/suppressions | Suppress entity alert
+*WatchlistApi* | [**UpdateWatchlistAlert**](synctera/docs/WatchlistApi.md#updatewatchlistalert) | **Put** /customers/{customer_id}/watchlists/alerts/{alert_id} | Update watchlist alert
+*WatchlistApi* | [**UpdateWatchlistSubscription**](synctera/docs/WatchlistApi.md#updatewatchlistsubscription) | **Put** /customers/{customer_id}/watchlists/subscriptions/{subscription_id} | Update watchlist monitoring subscription
+*WatchlistApi* | [**WatchlistSubscribe**](synctera/docs/WatchlistApi.md#watchlistsubscribe) | **Post** /customers/{customer_id}/watchlists/subscriptions | Subscribe a customer to watchlist monitoring
+*WebhooksApi* | [**CreateSecret**](synctera/docs/WebhooksApi.md#createsecret) | **Post** /webhooks/secret | Create a secret
+*WebhooksApi* | [**CreateWebhook1**](synctera/docs/WebhooksApi.md#createwebhook1) | **Post** /webhooks | Create a webhook
+*WebhooksApi* | [**DeleteWebhook**](synctera/docs/WebhooksApi.md#deletewebhook) | **Delete** /webhooks/{webhook_id} | Delete a webhook
+*WebhooksApi* | [**GetEvent**](synctera/docs/WebhooksApi.md#getevent) | **Get** /webhooks/{webhook_id}/events/{event_id} | Get webhook event
+*WebhooksApi* | [**GetWebhook1**](synctera/docs/WebhooksApi.md#getwebhook1) | **Get** /webhooks/{webhook_id} | Get a webhook
+*WebhooksApi* | [**ListEvents**](synctera/docs/WebhooksApi.md#listevents) | **Get** /webhooks/{webhook_id}/events | List webhook events
+*WebhooksApi* | [**ListWebhooks1**](synctera/docs/WebhooksApi.md#listwebhooks1) | **Get** /webhooks | List webhooks
+*WebhooksApi* | [**ReplaceSecret**](synctera/docs/WebhooksApi.md#replacesecret) | **Put** /webhooks/secret | Replace an existing secret
+*WebhooksApi* | [**ResendEvent**](synctera/docs/WebhooksApi.md#resendevent) | **Post** /webhooks/{webhook_id}/events/{event_id}/resend | Resend an event
+*WebhooksApi* | [**RevokeSecret**](synctera/docs/WebhooksApi.md#revokesecret) | **Delete** /webhooks/secret | Revoke the secret
+*WebhooksApi* | [**TriggerEvent**](synctera/docs/WebhooksApi.md#triggerevent) | **Post** /webhooks/trigger | Trigger an event
+*WebhooksApi* | [**UpdateWebhook**](synctera/docs/WebhooksApi.md#updatewebhook) | **Put** /webhooks/{webhook_id} | Update a webhook
 
 
 ## Documentation For Models
 
- - [A2aTransfer](docs/A2aTransfer.md)
- - [A2aTransferList](docs/A2aTransferList.md)
- - [A2aTransferListAllOf](docs/A2aTransferListAllOf.md)
- - [A2aTransferTransferReversal](docs/A2aTransferTransferReversal.md)
- - [Account](docs/Account.md)
- - [AccountAddress](docs/AccountAddress.md)
- - [AccountCreation](docs/AccountCreation.md)
- - [AccountCreationAllOf](docs/AccountCreationAllOf.md)
- - [AccountList](docs/AccountList.md)
- - [AccountListAllOf](docs/AccountListAllOf.md)
- - [AccountType](docs/AccountType.md)
- - [AchOutgoing](docs/AchOutgoing.md)
- - [AchOutgoingList](docs/AchOutgoingList.md)
- - [AchOutgoingListAllOf](docs/AchOutgoingListAllOf.md)
- - [Address](docs/Address.md)
- - [Address1](docs/Address1.md)
- - [AddressList](docs/AddressList.md)
- - [AddressListAllOf](docs/AddressListAllOf.md)
- - [Alias](docs/Alias.md)
- - [AuthRequestModel](docs/AuthRequestModel.md)
- - [AuthorizationAdviceModel](docs/AuthorizationAdviceModel.md)
- - [Balance](docs/Balance.md)
- - [BalanceInquiryRequestModel](docs/BalanceInquiryRequestModel.md)
- - [BalanceType](docs/BalanceType.md)
- - [BaseCard](docs/BaseCard.md)
- - [BaseCardAllOf](docs/BaseCardAllOf.md)
- - [BasePerson](docs/BasePerson.md)
- - [BillingAddress](docs/BillingAddress.md)
- - [CardAcceptorModel](docs/CardAcceptorModel.md)
- - [CardActivation](docs/CardActivation.md)
- - [CardChange](docs/CardChange.md)
- - [CardChangeReasonCode](docs/CardChangeReasonCode.md)
- - [CardChangeState](docs/CardChangeState.md)
- - [CardChangesList](docs/CardChangesList.md)
- - [CardChangesListAllOf](docs/CardChangesListAllOf.md)
- - [CardEditRequest](docs/CardEditRequest.md)
- - [CardFormat](docs/CardFormat.md)
- - [CardFulfillmentStatus](docs/CardFulfillmentStatus.md)
- - [CardIssuanceRequest](docs/CardIssuanceRequest.md)
- - [CardListResponse](docs/CardListResponse.md)
- - [CardListResponseAllOf](docs/CardListResponseAllOf.md)
- - [CardOptions](docs/CardOptions.md)
- - [CardPin](docs/CardPin.md)
- - [CardProduct](docs/CardProduct.md)
- - [CardProductAllOf](docs/CardProductAllOf.md)
- - [CardProductList](docs/CardProductList.md)
- - [CardProductListAllOf](docs/CardProductListAllOf.md)
- - [CardResponse](docs/CardResponse.md)
- - [CardStatus](docs/CardStatus.md)
- - [CardStatusObject](docs/CardStatusObject.md)
- - [ChangeChannel](docs/ChangeChannel.md)
- - [ChangeType](docs/ChangeType.md)
- - [ClearingModel](docs/ClearingModel.md)
- - [ClientToken](docs/ClientToken.md)
- - [CreateWebhookRequest](docs/CreateWebhookRequest.md)
- - [CustomHeaders](docs/CustomHeaders.md)
- - [Customer](docs/Customer.md)
- - [CustomerAllOf](docs/CustomerAllOf.md)
- - [CustomerInPath](docs/CustomerInPath.md)
- - [CustomerKycStatus](docs/CustomerKycStatus.md)
- - [CustomerList](docs/CustomerList.md)
- - [CustomerListAllOf](docs/CustomerListAllOf.md)
- - [CustomerVerification](docs/CustomerVerification.md)
- - [CustomerVerificationReasonCodes](docs/CustomerVerificationReasonCodes.md)
- - [CustomerVerificationResult](docs/CustomerVerificationResult.md)
- - [CustomerVerificationResultList](docs/CustomerVerificationResultList.md)
- - [CustomerVerificationResultListAllOf](docs/CustomerVerificationResultListAllOf.md)
- - [DcSignType](docs/DcSignType.md)
- - [DeleteResponse](docs/DeleteResponse.md)
- - [Deposit](docs/Deposit.md)
- - [DepositList](docs/DepositList.md)
- - [DepositListAllOf](docs/DepositListAllOf.md)
- - [Device](docs/Device.md)
- - [Disclosure](docs/Disclosure.md)
- - [DisclosureResponse](docs/DisclosureResponse.md)
- - [Document](docs/Document.md)
- - [DocumentList](docs/DocumentList.md)
- - [DocumentListAllOf](docs/DocumentListAllOf.md)
- - [DocumentType](docs/DocumentType.md)
- - [EmbossName](docs/EmbossName.md)
- - [Employment](docs/Employment.md)
- - [EmploymentList](docs/EmploymentList.md)
- - [EmploymentListAllOf](docs/EmploymentListAllOf.md)
- - [Event](docs/Event.md)
- - [EventList](docs/EventList.md)
- - [EventListAllOf](docs/EventListAllOf.md)
- - [EventResend](docs/EventResend.md)
- - [EventResponseHistory](docs/EventResponseHistory.md)
- - [EventType](docs/EventType.md)
- - [EventType1](docs/EventType1.md)
- - [EventTypeExplicit](docs/EventTypeExplicit.md)
- - [EventTypeWildcard](docs/EventTypeWildcard.md)
- - [FinancialRequestModel](docs/FinancialRequestModel.md)
- - [Form](docs/Form.md)
- - [Image](docs/Image.md)
- - [ImageList](docs/ImageList.md)
- - [ImageListAllOf](docs/ImageListAllOf.md)
- - [IngestionStatus](docs/IngestionStatus.md)
- - [InlineObject](docs/InlineObject.md)
- - [InlineObject1](docs/InlineObject1.md)
- - [InlineObject2](docs/InlineObject2.md)
- - [InlineObject3](docs/InlineObject3.md)
- - [InlineObject4](docs/InlineObject4.md)
- - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse201](docs/InlineResponse201.md)
- - [KycMediaType](docs/KycMediaType.md)
- - [ModelError](docs/ModelError.md)
- - [NetworkFeeModel](docs/NetworkFeeModel.md)
- - [OriginalCreditRequestModel](docs/OriginalCreditRequestModel.md)
- - [OriginalCreditSenderData](docs/OriginalCreditSenderData.md)
- - [PaginatedResponse](docs/PaginatedResponse.md)
- - [PhysicalCard](docs/PhysicalCard.md)
- - [PhysicalCardAllOf](docs/PhysicalCardAllOf.md)
- - [PhysicalCardIssuanceRequest](docs/PhysicalCardIssuanceRequest.md)
- - [PhysicalCardPlusStatus](docs/PhysicalCardPlusStatus.md)
- - [PhysicalCardResponse](docs/PhysicalCardResponse.md)
- - [PhysicalCardResponseStatus](docs/PhysicalCardResponseStatus.md)
- - [PingResponse](docs/PingResponse.md)
- - [Prospect](docs/Prospect.md)
- - [ProspectAllOf](docs/ProspectAllOf.md)
- - [ProviderType](docs/ProviderType.md)
- - [RawResponse](docs/RawResponse.md)
- - [RdcMediaType](docs/RdcMediaType.md)
- - [RecipientName](docs/RecipientName.md)
- - [Reconciliation](docs/Reconciliation.md)
- - [ReconciliationInput](docs/ReconciliationInput.md)
- - [ReconciliationList](docs/ReconciliationList.md)
- - [ReconciliationListAllOf](docs/ReconciliationListAllOf.md)
- - [RecurrenceData](docs/RecurrenceData.md)
- - [Relationship](docs/Relationship.md)
- - [Relationship1](docs/Relationship1.md)
- - [RelationshipList](docs/RelationshipList.md)
- - [RelationshipListAllOf](docs/RelationshipListAllOf.md)
- - [RelationshipRole](docs/RelationshipRole.md)
- - [ResendResponse](docs/ResendResponse.md)
- - [ReversalModel](docs/ReversalModel.md)
- - [RiskRating](docs/RiskRating.md)
- - [RiskRatingList](docs/RiskRatingList.md)
- - [RiskRatingListAllOf](docs/RiskRatingListAllOf.md)
- - [Scan](docs/Scan.md)
- - [ScanList](docs/ScanList.md)
- - [ScanListAllOf](docs/ScanListAllOf.md)
- - [Shipping](docs/Shipping.md)
- - [SingleUseTokenRequest](docs/SingleUseTokenRequest.md)
- - [SingleUseTokenResponse](docs/SingleUseTokenResponse.md)
- - [SocureEvent](docs/SocureEvent.md)
- - [SocureEventBody](docs/SocureEventBody.md)
- - [SocureGlobalWatchlist](docs/SocureGlobalWatchlist.md)
- - [SocureMatch](docs/SocureMatch.md)
- - [SocureMatchComments](docs/SocureMatchComments.md)
- - [Status](docs/Status.md)
- - [Transaction](docs/Transaction.md)
- - [TransactionList](docs/TransactionList.md)
- - [TransactionListAllOf](docs/TransactionListAllOf.md)
- - [TransactionOptions](docs/TransactionOptions.md)
- - [VerificationType](docs/VerificationType.md)
- - [VirtualCard](docs/VirtualCard.md)
- - [VirtualCardIssuanceRequest](docs/VirtualCardIssuanceRequest.md)
- - [VirtualCardPlusStatus](docs/VirtualCardPlusStatus.md)
- - [VirtualCardResponse](docs/VirtualCardResponse.md)
- - [VirtualCardResponseStatus](docs/VirtualCardResponseStatus.md)
- - [WatchlistAlert](docs/WatchlistAlert.md)
- - [WatchlistAlertList](docs/WatchlistAlertList.md)
- - [WatchlistAlertListAllOf](docs/WatchlistAlertListAllOf.md)
- - [WatchlistSubscription](docs/WatchlistSubscription.md)
- - [WatchlistSubscriptionList](docs/WatchlistSubscriptionList.md)
- - [WatchlistSubscriptionListAllOf](docs/WatchlistSubscriptionListAllOf.md)
- - [WatchlistSuppress](docs/WatchlistSuppress.md)
- - [Webhook](docs/Webhook.md)
- - [WebhookConfig](docs/WebhookConfig.md)
- - [WebhookList](docs/WebhookList.md)
- - [WebhookListAllOf](docs/WebhookListAllOf.md)
- - [WebhookRequest](docs/WebhookRequest.md)
- - [WebhookResponse](docs/WebhookResponse.md)
- - [WebhookResponseAllOf](docs/WebhookResponseAllOf.md)
- - [WithdrawalRequestModel](docs/WithdrawalRequestModel.md)
+ - [A2aTransfer](synctera/docs/A2aTransfer.md)
+ - [A2aTransferList](synctera/docs/A2aTransferList.md)
+ - [A2aTransferListAllOf](synctera/docs/A2aTransferListAllOf.md)
+ - [A2aTransferTransferReversal](synctera/docs/A2aTransferTransferReversal.md)
+ - [Account](synctera/docs/Account.md)
+ - [AccountAddress](synctera/docs/AccountAddress.md)
+ - [AccountCreation](synctera/docs/AccountCreation.md)
+ - [AccountCreationAllOf](synctera/docs/AccountCreationAllOf.md)
+ - [AccountList](synctera/docs/AccountList.md)
+ - [AccountListAllOf](synctera/docs/AccountListAllOf.md)
+ - [AccountType](synctera/docs/AccountType.md)
+ - [AchOutgoing](synctera/docs/AchOutgoing.md)
+ - [AchOutgoingList](synctera/docs/AchOutgoingList.md)
+ - [AchOutgoingListAllOf](synctera/docs/AchOutgoingListAllOf.md)
+ - [Address](synctera/docs/Address.md)
+ - [Address1](synctera/docs/Address1.md)
+ - [AddressList](synctera/docs/AddressList.md)
+ - [AddressListAllOf](synctera/docs/AddressListAllOf.md)
+ - [Alias](synctera/docs/Alias.md)
+ - [AuthRequestModel](synctera/docs/AuthRequestModel.md)
+ - [AuthorizationAdviceModel](synctera/docs/AuthorizationAdviceModel.md)
+ - [Balance](synctera/docs/Balance.md)
+ - [BalanceInquiryRequestModel](synctera/docs/BalanceInquiryRequestModel.md)
+ - [BalanceType](synctera/docs/BalanceType.md)
+ - [BaseCard](synctera/docs/BaseCard.md)
+ - [BaseCardAllOf](synctera/docs/BaseCardAllOf.md)
+ - [BasePerson](synctera/docs/BasePerson.md)
+ - [BillingAddress](synctera/docs/BillingAddress.md)
+ - [CardAcceptorModel](synctera/docs/CardAcceptorModel.md)
+ - [CardActivation](synctera/docs/CardActivation.md)
+ - [CardChange](synctera/docs/CardChange.md)
+ - [CardChangeReasonCode](synctera/docs/CardChangeReasonCode.md)
+ - [CardChangeState](synctera/docs/CardChangeState.md)
+ - [CardChangesList](synctera/docs/CardChangesList.md)
+ - [CardChangesListAllOf](synctera/docs/CardChangesListAllOf.md)
+ - [CardEditRequest](synctera/docs/CardEditRequest.md)
+ - [CardFormat](synctera/docs/CardFormat.md)
+ - [CardFulfillmentStatus](synctera/docs/CardFulfillmentStatus.md)
+ - [CardIssuanceRequest](synctera/docs/CardIssuanceRequest.md)
+ - [CardListResponse](synctera/docs/CardListResponse.md)
+ - [CardListResponseAllOf](synctera/docs/CardListResponseAllOf.md)
+ - [CardOptions](synctera/docs/CardOptions.md)
+ - [CardPin](synctera/docs/CardPin.md)
+ - [CardProduct](synctera/docs/CardProduct.md)
+ - [CardProductAllOf](synctera/docs/CardProductAllOf.md)
+ - [CardProductList](synctera/docs/CardProductList.md)
+ - [CardProductListAllOf](synctera/docs/CardProductListAllOf.md)
+ - [CardResponse](synctera/docs/CardResponse.md)
+ - [CardStatus](synctera/docs/CardStatus.md)
+ - [CardStatusObject](synctera/docs/CardStatusObject.md)
+ - [ChangeChannel](synctera/docs/ChangeChannel.md)
+ - [ChangeType](synctera/docs/ChangeType.md)
+ - [ClearingModel](synctera/docs/ClearingModel.md)
+ - [ClientToken](synctera/docs/ClientToken.md)
+ - [CreateWebhookRequest](synctera/docs/CreateWebhookRequest.md)
+ - [CustomHeaders](synctera/docs/CustomHeaders.md)
+ - [Customer](synctera/docs/Customer.md)
+ - [CustomerAllOf](synctera/docs/CustomerAllOf.md)
+ - [CustomerInPath](synctera/docs/CustomerInPath.md)
+ - [CustomerKycStatus](synctera/docs/CustomerKycStatus.md)
+ - [CustomerList](synctera/docs/CustomerList.md)
+ - [CustomerListAllOf](synctera/docs/CustomerListAllOf.md)
+ - [CustomerVerification](synctera/docs/CustomerVerification.md)
+ - [CustomerVerificationReasonCodes](synctera/docs/CustomerVerificationReasonCodes.md)
+ - [CustomerVerificationResult](synctera/docs/CustomerVerificationResult.md)
+ - [CustomerVerificationResultList](synctera/docs/CustomerVerificationResultList.md)
+ - [CustomerVerificationResultListAllOf](synctera/docs/CustomerVerificationResultListAllOf.md)
+ - [DcSignType](synctera/docs/DcSignType.md)
+ - [DeleteResponse](synctera/docs/DeleteResponse.md)
+ - [Deposit](synctera/docs/Deposit.md)
+ - [DepositList](synctera/docs/DepositList.md)
+ - [DepositListAllOf](synctera/docs/DepositListAllOf.md)
+ - [Device](synctera/docs/Device.md)
+ - [Disclosure](synctera/docs/Disclosure.md)
+ - [DisclosureResponse](synctera/docs/DisclosureResponse.md)
+ - [Document](synctera/docs/Document.md)
+ - [DocumentList](synctera/docs/DocumentList.md)
+ - [DocumentListAllOf](synctera/docs/DocumentListAllOf.md)
+ - [DocumentType](synctera/docs/DocumentType.md)
+ - [EmbossName](synctera/docs/EmbossName.md)
+ - [Employment](synctera/docs/Employment.md)
+ - [EmploymentList](synctera/docs/EmploymentList.md)
+ - [EmploymentListAllOf](synctera/docs/EmploymentListAllOf.md)
+ - [Event](synctera/docs/Event.md)
+ - [EventList](synctera/docs/EventList.md)
+ - [EventListAllOf](synctera/docs/EventListAllOf.md)
+ - [EventResend](synctera/docs/EventResend.md)
+ - [EventResponseHistory](synctera/docs/EventResponseHistory.md)
+ - [EventType](synctera/docs/EventType.md)
+ - [EventType1](synctera/docs/EventType1.md)
+ - [EventTypeExplicit](synctera/docs/EventTypeExplicit.md)
+ - [EventTypeWildcard](synctera/docs/EventTypeWildcard.md)
+ - [FinancialRequestModel](synctera/docs/FinancialRequestModel.md)
+ - [Form](synctera/docs/Form.md)
+ - [Image](synctera/docs/Image.md)
+ - [ImageList](synctera/docs/ImageList.md)
+ - [ImageListAllOf](synctera/docs/ImageListAllOf.md)
+ - [IngestionStatus](synctera/docs/IngestionStatus.md)
+ - [InlineObject](synctera/docs/InlineObject.md)
+ - [InlineObject1](synctera/docs/InlineObject1.md)
+ - [InlineObject2](synctera/docs/InlineObject2.md)
+ - [InlineObject3](synctera/docs/InlineObject3.md)
+ - [InlineObject4](synctera/docs/InlineObject4.md)
+ - [InlineResponse200](synctera/docs/InlineResponse200.md)
+ - [InlineResponse201](synctera/docs/InlineResponse201.md)
+ - [KycMediaType](synctera/docs/KycMediaType.md)
+ - [ModelError](synctera/docs/ModelError.md)
+ - [NetworkFeeModel](synctera/docs/NetworkFeeModel.md)
+ - [OriginalCreditRequestModel](synctera/docs/OriginalCreditRequestModel.md)
+ - [OriginalCreditSenderData](synctera/docs/OriginalCreditSenderData.md)
+ - [PaginatedResponse](synctera/docs/PaginatedResponse.md)
+ - [PhysicalCard](synctera/docs/PhysicalCard.md)
+ - [PhysicalCardAllOf](synctera/docs/PhysicalCardAllOf.md)
+ - [PhysicalCardIssuanceRequest](synctera/docs/PhysicalCardIssuanceRequest.md)
+ - [PhysicalCardPlusStatus](synctera/docs/PhysicalCardPlusStatus.md)
+ - [PhysicalCardResponse](synctera/docs/PhysicalCardResponse.md)
+ - [PhysicalCardResponseStatus](synctera/docs/PhysicalCardResponseStatus.md)
+ - [PingResponse](synctera/docs/PingResponse.md)
+ - [Prospect](synctera/docs/Prospect.md)
+ - [ProspectAllOf](synctera/docs/ProspectAllOf.md)
+ - [ProviderType](synctera/docs/ProviderType.md)
+ - [RawResponse](synctera/docs/RawResponse.md)
+ - [RdcMediaType](synctera/docs/RdcMediaType.md)
+ - [RecipientName](synctera/docs/RecipientName.md)
+ - [Reconciliation](synctera/docs/Reconciliation.md)
+ - [ReconciliationInput](synctera/docs/ReconciliationInput.md)
+ - [ReconciliationList](synctera/docs/ReconciliationList.md)
+ - [ReconciliationListAllOf](synctera/docs/ReconciliationListAllOf.md)
+ - [RecurrenceData](synctera/docs/RecurrenceData.md)
+ - [Relationship](synctera/docs/Relationship.md)
+ - [Relationship1](synctera/docs/Relationship1.md)
+ - [RelationshipList](synctera/docs/RelationshipList.md)
+ - [RelationshipListAllOf](synctera/docs/RelationshipListAllOf.md)
+ - [RelationshipRole](synctera/docs/RelationshipRole.md)
+ - [ResendResponse](synctera/docs/ResendResponse.md)
+ - [ReversalModel](synctera/docs/ReversalModel.md)
+ - [RiskRating](synctera/docs/RiskRating.md)
+ - [RiskRatingList](synctera/docs/RiskRatingList.md)
+ - [RiskRatingListAllOf](synctera/docs/RiskRatingListAllOf.md)
+ - [Scan](synctera/docs/Scan.md)
+ - [ScanList](synctera/docs/ScanList.md)
+ - [ScanListAllOf](synctera/docs/ScanListAllOf.md)
+ - [Shipping](synctera/docs/Shipping.md)
+ - [SingleUseTokenRequest](synctera/docs/SingleUseTokenRequest.md)
+ - [SingleUseTokenResponse](synctera/docs/SingleUseTokenResponse.md)
+ - [SocureEvent](synctera/docs/SocureEvent.md)
+ - [SocureEventBody](synctera/docs/SocureEventBody.md)
+ - [SocureGlobalWatchlist](synctera/docs/SocureGlobalWatchlist.md)
+ - [SocureMatch](synctera/docs/SocureMatch.md)
+ - [SocureMatchComments](synctera/docs/SocureMatchComments.md)
+ - [Status](synctera/docs/Status.md)
+ - [Transaction](synctera/docs/Transaction.md)
+ - [TransactionList](synctera/docs/TransactionList.md)
+ - [TransactionListAllOf](synctera/docs/TransactionListAllOf.md)
+ - [TransactionOptions](synctera/docs/TransactionOptions.md)
+ - [VerificationType](synctera/docs/VerificationType.md)
+ - [VirtualCard](synctera/docs/VirtualCard.md)
+ - [VirtualCardIssuanceRequest](synctera/docs/VirtualCardIssuanceRequest.md)
+ - [VirtualCardPlusStatus](synctera/docs/VirtualCardPlusStatus.md)
+ - [VirtualCardResponse](synctera/docs/VirtualCardResponse.md)
+ - [VirtualCardResponseStatus](synctera/docs/VirtualCardResponseStatus.md)
+ - [WatchlistAlert](synctera/docs/WatchlistAlert.md)
+ - [WatchlistAlertList](synctera/docs/WatchlistAlertList.md)
+ - [WatchlistAlertListAllOf](synctera/docs/WatchlistAlertListAllOf.md)
+ - [WatchlistSubscription](synctera/docs/WatchlistSubscription.md)
+ - [WatchlistSubscriptionList](synctera/docs/WatchlistSubscriptionList.md)
+ - [WatchlistSubscriptionListAllOf](synctera/docs/WatchlistSubscriptionListAllOf.md)
+ - [WatchlistSuppress](synctera/docs/WatchlistSuppress.md)
+ - [Webhook](synctera/docs/Webhook.md)
+ - [WebhookConfig](synctera/docs/WebhookConfig.md)
+ - [WebhookList](synctera/docs/WebhookList.md)
+ - [WebhookListAllOf](synctera/docs/WebhookListAllOf.md)
+ - [WebhookRequest](synctera/docs/WebhookRequest.md)
+ - [WebhookResponse](synctera/docs/WebhookResponse.md)
+ - [WebhookResponseAllOf](synctera/docs/WebhookResponseAllOf.md)
+ - [WithdrawalRequestModel](synctera/docs/WithdrawalRequestModel.md)
 
 
 ## Documentation For Authorization
