@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FileName** | **string** | Filename of the data to be reconciled | 
 **ByteData** | **string** | Base64url encoded image | 
+**FileName** | **string** | Filename of the data to be reconciled | 
 
 ## Methods
 
 ### NewReconciliationInput
 
-`func NewReconciliationInput(fileName string, byteData string, ) *ReconciliationInput`
+`func NewReconciliationInput(byteData string, fileName string, ) *ReconciliationInput`
 
 NewReconciliationInput instantiates a new ReconciliationInput object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewReconciliationInputWithDefaults instantiates a new ReconciliationInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetFileName
-
-`func (o *ReconciliationInput) GetFileName() string`
-
-GetFileName returns the FileName field if non-nil, zero value otherwise.
-
-### GetFileNameOk
-
-`func (o *ReconciliationInput) GetFileNameOk() (*string, bool)`
-
-GetFileNameOk returns a tuple with the FileName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFileName
-
-`func (o *ReconciliationInput) SetFileName(v string)`
-
-SetFileName sets FileName field to given value.
-
 
 ### GetByteData
 
@@ -64,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *ReconciliationInput) SetByteData(v string)`
 
 SetByteData sets ByteData field to given value.
+
+
+### GetFileName
+
+`func (o *ReconciliationInput) GetFileName() string`
+
+GetFileName returns the FileName field if non-nil, zero value otherwise.
+
+### GetFileNameOk
+
+`func (o *ReconciliationInput) GetFileNameOk() (*string, bool)`
+
+GetFileNameOk returns a tuple with the FileName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileName
+
+`func (o *ReconciliationInput) SetFileName(v string)`
+
+SetFileName sets FileName field to given value.
 
 
 

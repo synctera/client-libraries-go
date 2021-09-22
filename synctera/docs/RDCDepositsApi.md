@@ -38,7 +38,7 @@ import (
 
 func main() {
     accountId := TODO // string | Account ID
-    deposit := *openapiclient.NewDeposit("Id_example", "faker.random.alphaNumeric(14)", "123456789", int32(123), "USD", int32(123), "USD", "2019-01-02T03:04:05.678Z", "2019-01-02T03:04:05.678Z", "FrontImageId_example", "BackImageId_example", "ScanId_example") // Deposit | Attributes of the RDC deposit to create (optional)
+    deposit := *openapiclient.NewDeposit("s5syi2g103tlbd", "fba7833f-7479-4a4e-835a-12d5f75d656a", int32(9601), "USD", "2019-01-02T03:04:05.678Z", "2019-01-02T03:04:05.678Z", int32(4185), "USD", "b845d3e3-624a-41ab-865d-7a948e3bf5c3", "72c5476e-bc65-472e-9750-a22e2ddd5fd7", "123456789", "99837229-8bc2-488c-b67f-a33fecc15194") // Deposit | Attributes of the RDC deposit to create (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -110,7 +110,7 @@ import (
 
 func main() {
     accountId := TODO // string | Account ID
-    image := *openapiclient.NewImage("Id_example", openapiclient.rdc_media_type("PDF"), string(123), "2019-01-02T03:04:05.678Z") // Image | RDC image to create (optional)
+    image := *openapiclient.NewImage(string(123), "2019-01-02T03:04:05.678Z", "01237b61-b079-4d0b-9da4-2f98854f65ba", openapiclient.rdc_media_type("PDF")) // Image | RDC image to create (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -182,7 +182,7 @@ import (
 
 func main() {
     accountId := TODO // string | Account ID
-    scan := *openapiclient.NewScan("Id_example", "faker.random.alphaNumeric(14)", "123456789", int32(123), "USD", "2019-01-02T03:04:05.678Z", "FrontImageId_example", "BackImageId_example") // Scan | RDC scan to create (optional)
+    scan := *openapiclient.NewScan("cq50w9nodt6e2s", "f9d0efdb-1af4-4260-a24d-0ddfdf143abc", int32(2814), "USD", "2019-01-02T03:04:05.678Z", "3f1aaaea-f87f-4b20-9535-98fea39f1d83", "0225e45a-96d0-4546-a84c-52cf28081bf1", "123456789") // Scan | RDC scan to create (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -474,7 +474,7 @@ import (
 func main() {
     accountId := TODO // string | Account ID
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -548,7 +548,7 @@ import (
 func main() {
     accountId := TODO // string | Account ID
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -592,7 +592,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -622,7 +622,7 @@ import (
 func main() {
     accountId := TODO // string | Account ID
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -666,7 +666,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

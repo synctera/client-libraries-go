@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Scans** | [**[]Scan**](Scan.md) | Array of RDC scans | 
-**NextPageToken** | Pointer to **string** | If returned, use the next_page_token to query for the next page of results. | [optional] 
+**NextPageToken** | Pointer to **string** | If returned, use the next_page_token to query for the next page of results. Not returned if there are no more rows. | [optional] 
 
 ## Methods
 

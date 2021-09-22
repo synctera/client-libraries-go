@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Customers** | [**[]Customer**](Customer.md) | Array of Customers | 
-**NextPageToken** | Pointer to **string** | If returned, use the next_page_token to query for the next page of results. | [optional] 
+**Customers** | [**[]CustomerInPath**](CustomerInPath.md) | Array of Customers | 
+**NextPageToken** | Pointer to **string** | If returned, use the next_page_token to query for the next page of results. Not returned if there are no more rows. | [optional] 
 
 ## Methods
 
 ### NewCustomerList
 
-`func NewCustomerList(customers []Customer, ) *CustomerList`
+`func NewCustomerList(customers []CustomerInPath, ) *CustomerList`
 
 NewCustomerList instantiates a new CustomerList object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCustomers
 
-`func (o *CustomerList) GetCustomers() []Customer`
+`func (o *CustomerList) GetCustomers() []CustomerInPath`
 
 GetCustomers returns the Customers field if non-nil, zero value otherwise.
 
 ### GetCustomersOk
 
-`func (o *CustomerList) GetCustomersOk() (*[]Customer, bool)`
+`func (o *CustomerList) GetCustomersOk() (*[]CustomerInPath, bool)`
 
 GetCustomersOk returns a tuple with the Customers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomers
 
-`func (o *CustomerList) SetCustomers(v []Customer)`
+`func (o *CustomerList) SetCustomers(v []CustomerInPath)`
 
 SetCustomers sets Customers field to given value.
 

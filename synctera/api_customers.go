@@ -30,21 +30,21 @@ type CustomersApiService service
 type ApiCreateCustomerRequest struct {
 	ctx _context.Context
 	ApiService *CustomersApiService
-	customer *Customer
+	customerInPath *CustomerInPath
 }
 
-func (r ApiCreateCustomerRequest) Customer(customer Customer) ApiCreateCustomerRequest {
-	r.customer = &customer
+func (r ApiCreateCustomerRequest) CustomerInPath(customerInPath CustomerInPath) ApiCreateCustomerRequest {
+	r.customerInPath = &customerInPath
 	return r
 }
 
-func (r ApiCreateCustomerRequest) Execute() (Customer, *_nethttp.Response, error) {
+func (r ApiCreateCustomerRequest) Execute() (CustomerInPath, *_nethttp.Response, error) {
 	return r.ApiService.CreateCustomerExecute(r)
 }
 
 /*
  * CreateCustomer Create a Customer
- * The customer object represents your customer's identity. You can then verify the identity of this customer and associate them with other people and accounts
+ * The customer object represents your customer's identity. You can then verify the identity of this customer and associate them with other people and accounts.
 
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @return ApiCreateCustomerRequest
@@ -58,16 +58,16 @@ func (a *CustomersApiService) CreateCustomer(ctx _context.Context) ApiCreateCust
 
 /*
  * Execute executes the request
- * @return Customer
+ * @return CustomerInPath
  */
-func (a *CustomersApiService) CreateCustomerExecute(r ApiCreateCustomerRequest) (Customer, *_nethttp.Response, error) {
+func (a *CustomersApiService) CreateCustomerExecute(r ApiCreateCustomerRequest) (CustomerInPath, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Customer
+		localVarReturnValue  CustomerInPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.CreateCustomer")
@@ -80,8 +80,8 @@ func (a *CustomersApiService) CreateCustomerExecute(r ApiCreateCustomerRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.customer == nil {
-		return localVarReturnValue, nil, reportError("customer is required and must be specified")
+	if r.customerInPath == nil {
+		return localVarReturnValue, nil, reportError("customerInPath is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -94,7 +94,7 @@ func (a *CustomersApiService) CreateCustomerExecute(r ApiCreateCustomerRequest) 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -102,7 +102,7 @@ func (a *CustomersApiService) CreateCustomerExecute(r ApiCreateCustomerRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customer
+	localVarPostBody = r.customerInPath
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -189,55 +189,363 @@ func (a *CustomersApiService) CreateCustomerExecute(r ApiCreateCustomerRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateProspectRequest struct {
+type ApiCreateCustomerEmploymentRequest struct {
 	ctx _context.Context
 	ApiService *CustomersApiService
+	customerId string
+	employment *Employment
 }
 
+func (r ApiCreateCustomerEmploymentRequest) Employment(employment Employment) ApiCreateCustomerEmploymentRequest {
+	r.employment = &employment
+	return r
+}
 
-func (r ApiCreateProspectRequest) Execute() (ProspectResponse, *_nethttp.Response, error) {
-	return r.ApiService.CreateProspectExecute(r)
+func (r ApiCreateCustomerEmploymentRequest) Execute() (Employment, *_nethttp.Response, error) {
+	return r.ApiService.CreateCustomerEmploymentExecute(r)
 }
 
 /*
- * CreateProspect Create a Prospect
- * Creates a prospect and returns an unique identifier. Use this ID to track disclosures displayed during the KYC flow.  The prospect can be upgraded to a `customer` by updated `customer` resource with collected information.
-
+ * CreateCustomerEmployment Create employment record
+ * Create a record of customer employment
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiCreateProspectRequest
+ * @param customerId Customer ID
+ * @return ApiCreateCustomerEmploymentRequest
  */
-func (a *CustomersApiService) CreateProspect(ctx _context.Context) ApiCreateProspectRequest {
-	return ApiCreateProspectRequest{
+func (a *CustomersApiService) CreateCustomerEmployment(ctx _context.Context, customerId string) ApiCreateCustomerEmploymentRequest {
+	return ApiCreateCustomerEmploymentRequest{
 		ApiService: a,
 		ctx: ctx,
+		customerId: customerId,
 	}
 }
 
 /*
  * Execute executes the request
- * @return ProspectResponse
+ * @return Employment
  */
-func (a *CustomersApiService) CreateProspectExecute(r ApiCreateProspectRequest) (ProspectResponse, *_nethttp.Response, error) {
+func (a *CustomersApiService) CreateCustomerEmploymentExecute(r ApiCreateCustomerEmploymentRequest) (Employment, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ProspectResponse
+		localVarReturnValue  Employment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.CreateProspect")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.CreateCustomerEmployment")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/customers/prospect"
+	localVarPath := localBasePath + "/customers/{customer_id}/employment"
+	localVarPath = strings.Replace(localVarPath, "{"+"customer_id"+"}", _neturl.PathEscape(parameterToString(r.customerId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.employment == nil {
+		return localVarReturnValue, nil, reportError("employment is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.employment
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCreateCustomerRiskRatingRequest struct {
+	ctx _context.Context
+	ApiService *CustomersApiService
+	customerId string
+	riskRating *RiskRating
+}
+
+func (r ApiCreateCustomerRiskRatingRequest) RiskRating(riskRating RiskRating) ApiCreateCustomerRiskRatingRequest {
+	r.riskRating = &riskRating
+	return r
+}
+
+func (r ApiCreateCustomerRiskRatingRequest) Execute() (RiskRating, *_nethttp.Response, error) {
+	return r.ApiService.CreateCustomerRiskRatingExecute(r)
+}
+
+/*
+ * CreateCustomerRiskRating Create customer risk rating
+ * Create customer risk rating
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param customerId Customer ID
+ * @return ApiCreateCustomerRiskRatingRequest
+ */
+func (a *CustomersApiService) CreateCustomerRiskRating(ctx _context.Context, customerId string) ApiCreateCustomerRiskRatingRequest {
+	return ApiCreateCustomerRiskRatingRequest{
+		ApiService: a,
+		ctx: ctx,
+		customerId: customerId,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return RiskRating
+ */
+func (a *CustomersApiService) CreateCustomerRiskRatingExecute(r ApiCreateCustomerRiskRatingRequest) (RiskRating, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  RiskRating
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.CreateCustomerRiskRating")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customers/{customer_id}/risk_ratings"
+	localVarPath = strings.Replace(localVarPath, "{"+"customer_id"+"}", _neturl.PathEscape(parameterToString(r.customerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.riskRating
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetAllCustomerEmploymentRequest struct {
+	ctx _context.Context
+	ApiService *CustomersApiService
+	customerId string
+	includeHistory *bool
+}
+
+func (r ApiGetAllCustomerEmploymentRequest) IncludeHistory(includeHistory bool) ApiGetAllCustomerEmploymentRequest {
+	r.includeHistory = &includeHistory
+	return r
+}
+
+func (r ApiGetAllCustomerEmploymentRequest) Execute() (EmploymentList, *_nethttp.Response, error) {
+	return r.ApiService.GetAllCustomerEmploymentExecute(r)
+}
+
+/*
+ * GetAllCustomerEmployment List customer employment records
+ * Get records of customer employment
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param customerId Customer ID
+ * @return ApiGetAllCustomerEmploymentRequest
+ */
+func (a *CustomersApiService) GetAllCustomerEmployment(ctx _context.Context, customerId string) ApiGetAllCustomerEmploymentRequest {
+	return ApiGetAllCustomerEmploymentRequest{
+		ApiService: a,
+		ctx: ctx,
+		customerId: customerId,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return EmploymentList
+ */
+func (a *CustomersApiService) GetAllCustomerEmploymentExecute(r ApiGetAllCustomerEmploymentRequest) (EmploymentList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  EmploymentList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.GetAllCustomerEmployment")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customers/{customer_id}/employment"
+	localVarPath = strings.Replace(localVarPath, "{"+"customer_id"+"}", _neturl.PathEscape(parameterToString(r.customerId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.includeHistory != nil {
+		localVarQueryParams.Add("include_history", parameterToString(*r.includeHistory, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -248,7 +556,7 @@ func (a *CustomersApiService) CreateProspectExecute(r ApiCreateProspectRequest) 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -277,6 +585,159 @@ func (a *CustomersApiService) CreateProspectExecute(r ApiCreateProspectRequest) 
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetAllCustomerRiskRatingsRequest struct {
+	ctx _context.Context
+	ApiService *CustomersApiService
+	customerId string
+	includeHistory *bool
+}
+
+func (r ApiGetAllCustomerRiskRatingsRequest) IncludeHistory(includeHistory bool) ApiGetAllCustomerRiskRatingsRequest {
+	r.includeHistory = &includeHistory
+	return r
+}
+
+func (r ApiGetAllCustomerRiskRatingsRequest) Execute() (RiskRatingList, *_nethttp.Response, error) {
+	return r.ApiService.GetAllCustomerRiskRatingsExecute(r)
+}
+
+/*
+ * GetAllCustomerRiskRatings List customer risk ratings
+ * Get list of customer risk ratings
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param customerId Customer ID
+ * @return ApiGetAllCustomerRiskRatingsRequest
+ */
+func (a *CustomersApiService) GetAllCustomerRiskRatings(ctx _context.Context, customerId string) ApiGetAllCustomerRiskRatingsRequest {
+	return ApiGetAllCustomerRiskRatingsRequest{
+		ApiService: a,
+		ctx: ctx,
+		customerId: customerId,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return RiskRatingList
+ */
+func (a *CustomersApiService) GetAllCustomerRiskRatingsExecute(r ApiGetAllCustomerRiskRatingsRequest) (RiskRatingList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  RiskRatingList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.GetAllCustomerRiskRatings")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customers/{customer_id}/risk_ratings"
+	localVarPath = strings.Replace(localVarPath, "{"+"customer_id"+"}", _neturl.PathEscape(parameterToString(r.customerId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.includeHistory != nil {
+		localVarQueryParams.Add("include_history", parameterToString(*r.includeHistory, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -288,6 +749,16 @@ func (a *CustomersApiService) CreateProspectExecute(r ApiCreateProspectRequest) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -328,7 +799,7 @@ type ApiGetCustomerRequest struct {
 }
 
 
-func (r ApiGetCustomerRequest) Execute() (Customer, *_nethttp.Response, error) {
+func (r ApiGetCustomerRequest) Execute() (CustomerInPath, *_nethttp.Response, error) {
 	return r.ApiService.GetCustomerExecute(r)
 }
 
@@ -349,16 +820,16 @@ func (a *CustomersApiService) GetCustomer(ctx _context.Context, customerId strin
 
 /*
  * Execute executes the request
- * @return Customer
+ * @return CustomerInPath
  */
-func (a *CustomersApiService) GetCustomerExecute(r ApiGetCustomerRequest) (Customer, *_nethttp.Response, error) {
+func (a *CustomersApiService) GetCustomerExecute(r ApiGetCustomerRequest) (CustomerInPath, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Customer
+		localVarReturnValue  CustomerInPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.GetCustomer")
@@ -383,7 +854,7 @@ func (a *CustomersApiService) GetCustomerExecute(r ApiGetCustomerRequest) (Custo
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -542,7 +1013,7 @@ func (a *CustomersApiService) GetCustomerAccountExecute(r ApiGetCustomerAccountR
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -592,6 +1063,304 @@ func (a *CustomersApiService) GetCustomerAccountExecute(r ApiGetCustomerAccountR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetCustomerRiskRatingRequest struct {
+	ctx _context.Context
+	ApiService *CustomersApiService
+	customerId string
+	riskRatingId string
+}
+
+
+func (r ApiGetCustomerRiskRatingRequest) Execute() (RiskRating, *_nethttp.Response, error) {
+	return r.ApiService.GetCustomerRiskRatingExecute(r)
+}
+
+/*
+ * GetCustomerRiskRating Get customer risk rating
+ * Get a customer risk rating
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param customerId Customer ID
+ * @param riskRatingId Risk Rating ID
+ * @return ApiGetCustomerRiskRatingRequest
+ */
+func (a *CustomersApiService) GetCustomerRiskRating(ctx _context.Context, customerId string, riskRatingId string) ApiGetCustomerRiskRatingRequest {
+	return ApiGetCustomerRiskRatingRequest{
+		ApiService: a,
+		ctx: ctx,
+		customerId: customerId,
+		riskRatingId: riskRatingId,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return RiskRating
+ */
+func (a *CustomersApiService) GetCustomerRiskRatingExecute(r ApiGetCustomerRiskRatingRequest) (RiskRating, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  RiskRating
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.GetCustomerRiskRating")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customers/{customer_id}/risk_ratings/{risk_rating_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"customer_id"+"}", _neturl.PathEscape(parameterToString(r.customerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"risk_rating_id"+"}", _neturl.PathEscape(parameterToString(r.riskRatingId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetPartyEmploymentRequest struct {
+	ctx _context.Context
+	ApiService *CustomersApiService
+	customerId string
+	employmentId string
+}
+
+
+func (r ApiGetPartyEmploymentRequest) Execute() (Employment, *_nethttp.Response, error) {
+	return r.ApiService.GetPartyEmploymentExecute(r)
+}
+
+/*
+ * GetPartyEmployment Get customer employment record
+ * Get a single record of customer employment
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param customerId Customer ID
+ * @param employmentId Employment ID
+ * @return ApiGetPartyEmploymentRequest
+ */
+func (a *CustomersApiService) GetPartyEmployment(ctx _context.Context, customerId string, employmentId string) ApiGetPartyEmploymentRequest {
+	return ApiGetPartyEmploymentRequest{
+		ApiService: a,
+		ctx: ctx,
+		customerId: customerId,
+		employmentId: employmentId,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return Employment
+ */
+func (a *CustomersApiService) GetPartyEmploymentExecute(r ApiGetPartyEmploymentRequest) (Employment, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Employment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.GetPartyEmployment")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customers/{customer_id}/employment/{employment_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"customer_id"+"}", _neturl.PathEscape(parameterToString(r.customerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"employment_id"+"}", _neturl.PathEscape(parameterToString(r.employmentId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -713,7 +1482,178 @@ func (a *CustomersApiService) ListCustomerAccountsExecute(r ApiListCustomerAccou
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListCustomerAddressesRequest struct {
+	ctx _context.Context
+	ApiService *CustomersApiService
+	customerId string
+	limit *int32
+	pageToken *string
+}
+
+func (r ApiListCustomerAddressesRequest) Limit(limit int32) ApiListCustomerAddressesRequest {
+	r.limit = &limit
+	return r
+}
+func (r ApiListCustomerAddressesRequest) PageToken(pageToken string) ApiListCustomerAddressesRequest {
+	r.pageToken = &pageToken
+	return r
+}
+
+func (r ApiListCustomerAddressesRequest) Execute() (AddressList, *_nethttp.Response, error) {
+	return r.ApiService.ListCustomerAddressesExecute(r)
+}
+
+/*
+ * ListCustomerAddresses List customer addresses
+ * Retrieves paginated list of addresses associated with a customer
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param customerId Customer ID
+ * @return ApiListCustomerAddressesRequest
+ */
+func (a *CustomersApiService) ListCustomerAddresses(ctx _context.Context, customerId string) ApiListCustomerAddressesRequest {
+	return ApiListCustomerAddressesRequest{
+		ApiService: a,
+		ctx: ctx,
+		customerId: customerId,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return AddressList
+ */
+func (a *CustomersApiService) ListCustomerAddressesExecute(r ApiListCustomerAddressesRequest) (AddressList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AddressList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.ListCustomerAddresses")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customers/{customer_id}/addresses"
+	localVarPath = strings.Replace(localVarPath, "{"+"customer_id"+"}", _neturl.PathEscape(parameterToString(r.customerId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.pageToken != nil {
+		localVarQueryParams.Add("page_token", parameterToString(*r.pageToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -809,10 +1749,15 @@ func (a *CustomersApiService) ListCustomerAccountsExecute(r ApiListCustomerAccou
 type ApiListCustomersRequest struct {
 	ctx _context.Context
 	ApiService *CustomersApiService
+	tenant *string
 	limit *int32
 	pageToken *string
 }
 
+func (r ApiListCustomersRequest) Tenant(tenant string) ApiListCustomersRequest {
+	r.tenant = &tenant
+	return r
+}
 func (r ApiListCustomersRequest) Limit(limit int32) ApiListCustomersRequest {
 	r.limit = &limit
 	return r
@@ -864,6 +1809,9 @@ func (a *CustomersApiService) ListCustomersExecute(r ApiListCustomersRequest) (C
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.tenant != nil {
+		localVarQueryParams.Add("tenant", parameterToString(*r.tenant, ""))
+	}
 	if r.limit != nil {
 		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
 	}
@@ -880,7 +1828,7 @@ func (a *CustomersApiService) ListCustomersExecute(r ApiListCustomersRequest) (C
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -957,15 +1905,15 @@ type ApiPatchCustomerRequest struct {
 	ctx _context.Context
 	ApiService *CustomersApiService
 	customerId string
-	customer *Customer
+	customerInPath *CustomerInPath
 }
 
-func (r ApiPatchCustomerRequest) Customer(customer Customer) ApiPatchCustomerRequest {
-	r.customer = &customer
+func (r ApiPatchCustomerRequest) CustomerInPath(customerInPath CustomerInPath) ApiPatchCustomerRequest {
+	r.customerInPath = &customerInPath
 	return r
 }
 
-func (r ApiPatchCustomerRequest) Execute() (Customer, *_nethttp.Response, error) {
+func (r ApiPatchCustomerRequest) Execute() (CustomerInPath, *_nethttp.Response, error) {
 	return r.ApiService.PatchCustomerExecute(r)
 }
 
@@ -985,16 +1933,16 @@ func (a *CustomersApiService) PatchCustomer(ctx _context.Context, customerId str
 
 /*
  * Execute executes the request
- * @return Customer
+ * @return CustomerInPath
  */
-func (a *CustomersApiService) PatchCustomerExecute(r ApiPatchCustomerRequest) (Customer, *_nethttp.Response, error) {
+func (a *CustomersApiService) PatchCustomerExecute(r ApiPatchCustomerRequest) (CustomerInPath, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Customer
+		localVarReturnValue  CustomerInPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.PatchCustomer")
@@ -1008,8 +1956,8 @@ func (a *CustomersApiService) PatchCustomerExecute(r ApiPatchCustomerRequest) (C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.customer == nil {
-		return localVarReturnValue, nil, reportError("customer is required and must be specified")
+	if r.customerInPath == nil {
+		return localVarReturnValue, nil, reportError("customerInPath is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1022,7 +1970,7 @@ func (a *CustomersApiService) PatchCustomerExecute(r ApiPatchCustomerRequest) (C
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1030,7 +1978,7 @@ func (a *CustomersApiService) PatchCustomerExecute(r ApiPatchCustomerRequest) (C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customer
+	localVarPostBody = r.customerInPath
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1121,20 +2069,24 @@ type ApiUpdateCustomerRequest struct {
 	ctx _context.Context
 	ApiService *CustomersApiService
 	customerId string
-	customer *Customer
+	customerInPath *CustomerInPath
 }
 
-func (r ApiUpdateCustomerRequest) Customer(customer Customer) ApiUpdateCustomerRequest {
-	r.customer = &customer
+func (r ApiUpdateCustomerRequest) CustomerInPath(customerInPath CustomerInPath) ApiUpdateCustomerRequest {
+	r.customerInPath = &customerInPath
 	return r
 }
 
-func (r ApiUpdateCustomerRequest) Execute() (Customer, *_nethttp.Response, error) {
+func (r ApiUpdateCustomerRequest) Execute() (CustomerInPath, *_nethttp.Response, error) {
 	return r.ApiService.UpdateCustomerExecute(r)
 }
 
 /*
  * UpdateCustomer Update Customer
+ * Update customer based on ID
+Required fields:
+  - status
+
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param customerId Customer ID
  * @return ApiUpdateCustomerRequest
@@ -1149,16 +2101,16 @@ func (a *CustomersApiService) UpdateCustomer(ctx _context.Context, customerId st
 
 /*
  * Execute executes the request
- * @return Customer
+ * @return CustomerInPath
  */
-func (a *CustomersApiService) UpdateCustomerExecute(r ApiUpdateCustomerRequest) (Customer, *_nethttp.Response, error) {
+func (a *CustomersApiService) UpdateCustomerExecute(r ApiUpdateCustomerRequest) (CustomerInPath, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Customer
+		localVarReturnValue  CustomerInPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.UpdateCustomer")
@@ -1172,8 +2124,8 @@ func (a *CustomersApiService) UpdateCustomerExecute(r ApiUpdateCustomerRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.customer == nil {
-		return localVarReturnValue, nil, reportError("customer is required and must be specified")
+	if r.customerInPath == nil {
+		return localVarReturnValue, nil, reportError("customerInPath is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1186,7 +2138,7 @@ func (a *CustomersApiService) UpdateCustomerExecute(r ApiUpdateCustomerRequest) 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1194,7 +2146,7 @@ func (a *CustomersApiService) UpdateCustomerExecute(r ApiUpdateCustomerRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customer
+	localVarPostBody = r.customerInPath
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1238,6 +2190,155 @@ func (a *CustomersApiService) UpdateCustomerExecute(r ApiUpdateCustomerRequest) 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdatePartyEmploymentRequest struct {
+	ctx _context.Context
+	ApiService *CustomersApiService
+	customerId string
+	employmentId string
+	employment *Employment
+}
+
+func (r ApiUpdatePartyEmploymentRequest) Employment(employment Employment) ApiUpdatePartyEmploymentRequest {
+	r.employment = &employment
+	return r
+}
+
+func (r ApiUpdatePartyEmploymentRequest) Execute() (Employment, *_nethttp.Response, error) {
+	return r.ApiService.UpdatePartyEmploymentExecute(r)
+}
+
+/*
+ * UpdatePartyEmployment Update customer employment record
+ * Update a single record of customer employment
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param customerId Customer ID
+ * @param employmentId Employment ID
+ * @return ApiUpdatePartyEmploymentRequest
+ */
+func (a *CustomersApiService) UpdatePartyEmployment(ctx _context.Context, customerId string, employmentId string) ApiUpdatePartyEmploymentRequest {
+	return ApiUpdatePartyEmploymentRequest{
+		ApiService: a,
+		ctx: ctx,
+		customerId: customerId,
+		employmentId: employmentId,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return Employment
+ */
+func (a *CustomersApiService) UpdatePartyEmploymentExecute(r ApiUpdatePartyEmploymentRequest) (Employment, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Employment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomersApiService.UpdatePartyEmployment")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/customers/{customer_id}/employment/{employment_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"customer_id"+"}", _neturl.PathEscape(parameterToString(r.customerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"employment_id"+"}", _neturl.PathEscape(parameterToString(r.employmentId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.employment == nil {
+		return localVarReturnValue, nil, reportError("employment is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.employment
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

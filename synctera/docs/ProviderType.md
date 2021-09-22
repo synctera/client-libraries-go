@@ -3,7 +3,7 @@
 ## Enum
 
 
-* `IDEOLOGY` (value: `"IDEOLOGY"`)
+* `IDOLOGY` (value: `"IDOLOGY"`)
 
 * `SOCURE` (value: `"SOCURE"`)
 

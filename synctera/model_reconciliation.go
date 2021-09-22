@@ -16,10 +16,10 @@ import (
 
 // Reconciliation Reconciliation
 type Reconciliation struct {
-	// Reconciliation ID
-	Id string `json:"id"`
 	// Filename of the data to be reconciled
 	FileName string `json:"file_name"`
+	// Reconciliation ID
+	Id string `json:"id"`
 	IngestionStatus IngestionStatus `json:"ingestion_status"`
 }
 
@@ -27,10 +27,10 @@ type Reconciliation struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReconciliation(id string, fileName string, ingestionStatus IngestionStatus) *Reconciliation {
+func NewReconciliation(fileName string, id string, ingestionStatus IngestionStatus) *Reconciliation {
 	this := Reconciliation{}
-	this.Id = id
 	this.FileName = fileName
+	this.Id = id
 	this.IngestionStatus = ingestionStatus
 	return &this
 }
@@ -41,30 +41,6 @@ func NewReconciliation(id string, fileName string, ingestionStatus IngestionStat
 func NewReconciliationWithDefaults() *Reconciliation {
 	this := Reconciliation{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *Reconciliation) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *Reconciliation) GetIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *Reconciliation) SetId(v string) {
-	o.Id = v
 }
 
 // GetFileName returns the FileName field value
@@ -89,6 +65,30 @@ func (o *Reconciliation) GetFileNameOk() (*string, bool) {
 // SetFileName sets field value
 func (o *Reconciliation) SetFileName(v string) {
 	o.FileName = v
+}
+
+// GetId returns the Id field value
+func (o *Reconciliation) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *Reconciliation) GetIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *Reconciliation) SetId(v string) {
+	o.Id = v
 }
 
 // GetIngestionStatus returns the IngestionStatus field value
@@ -118,10 +118,10 @@ func (o *Reconciliation) SetIngestionStatus(v IngestionStatus) {
 func (o Reconciliation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["id"] = o.Id
+		toSerialize["file_name"] = o.FileName
 	}
 	if true {
-		toSerialize["file_name"] = o.FileName
+		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["ingestion_status"] = o.IngestionStatus

@@ -17,6 +17,7 @@ import (
 // RawResponse struct for RawResponse
 type RawResponse struct {
 	Provider *ProviderType `json:"provider,omitempty"`
+	// the raw data from an external provider, as a JSON string
 	RawData *string `json:"raw_data,omitempty"`
 }
 

@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | RDC Deposit ID | [readonly] 
 **AccountNumber** | **string** | Account number | [readonly] 
-**RoutingNumber** | **string** | Bank routing number | [readonly] 
+**BackImageId** | **string** | ID of the image of the back of the check | [readonly] 
 **CheckAmount** | **int32** | Amount on check in ISO 4217 minor currency units | [readonly] 
 **CheckCurrency** | **string** | ISO 4217 currency code for the check amount | [readonly] 
-**DepositAmount** | **int32** | Amount deposited in ISO 4217 minor currency units | [readonly] 
-**DepositCurrency** | **string** | ISO 4217 currency code for the deposit amount | [readonly] 
 **DateProcessed** | **string** | Date the deposit was processed, in RFC 3339 format | [readonly] 
 **DateSubmitted** | **string** | Date the deposit was submitted, in RFC 3339 format | [readonly] 
+**DepositAmount** | **int32** | Amount deposited in ISO 4217 minor currency units | [readonly] 
+**DepositCurrency** | **string** | ISO 4217 currency code for the deposit amount | [readonly] 
 **FrontImageId** | **string** | ID of the image of the front of the check | [readonly] 
-**BackImageId** | **string** | ID of the image of the back of the check | [readonly] 
+**Id** | **string** | RDC Deposit ID | [readonly] 
+**RoutingNumber** | **string** | Bank routing number | [readonly] 
 **ScanId** | **string** | ID of the OCR scan of the check image | 
 
 ## Methods
 
 ### NewDeposit
 
-`func NewDeposit(id string, accountNumber string, routingNumber string, checkAmount int32, checkCurrency string, depositAmount int32, depositCurrency string, dateProcessed string, dateSubmitted string, frontImageId string, backImageId string, scanId string, ) *Deposit`
+`func NewDeposit(accountNumber string, backImageId string, checkAmount int32, checkCurrency string, dateProcessed string, dateSubmitted string, depositAmount int32, depositCurrency string, frontImageId string, id string, routingNumber string, scanId string, ) *Deposit`
 
 NewDeposit instantiates a new Deposit object
 This constructor will assign default values to properties that have it defined,
@@ -35,26 +35,6 @@ will change when the set of required properties is changed
 NewDepositWithDefaults instantiates a new Deposit object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Deposit) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Deposit) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Deposit) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetAccountNumber
 
@@ -76,24 +56,24 @@ and a boolean to check if the value has been set.
 SetAccountNumber sets AccountNumber field to given value.
 
 
-### GetRoutingNumber
+### GetBackImageId
 
-`func (o *Deposit) GetRoutingNumber() string`
+`func (o *Deposit) GetBackImageId() string`
 
-GetRoutingNumber returns the RoutingNumber field if non-nil, zero value otherwise.
+GetBackImageId returns the BackImageId field if non-nil, zero value otherwise.
 
-### GetRoutingNumberOk
+### GetBackImageIdOk
 
-`func (o *Deposit) GetRoutingNumberOk() (*string, bool)`
+`func (o *Deposit) GetBackImageIdOk() (*string, bool)`
 
-GetRoutingNumberOk returns a tuple with the RoutingNumber field if it's non-nil, zero value otherwise
+GetBackImageIdOk returns a tuple with the BackImageId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRoutingNumber
+### SetBackImageId
 
-`func (o *Deposit) SetRoutingNumber(v string)`
+`func (o *Deposit) SetBackImageId(v string)`
 
-SetRoutingNumber sets RoutingNumber field to given value.
+SetBackImageId sets BackImageId field to given value.
 
 
 ### GetCheckAmount
@@ -136,46 +116,6 @@ and a boolean to check if the value has been set.
 SetCheckCurrency sets CheckCurrency field to given value.
 
 
-### GetDepositAmount
-
-`func (o *Deposit) GetDepositAmount() int32`
-
-GetDepositAmount returns the DepositAmount field if non-nil, zero value otherwise.
-
-### GetDepositAmountOk
-
-`func (o *Deposit) GetDepositAmountOk() (*int32, bool)`
-
-GetDepositAmountOk returns a tuple with the DepositAmount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDepositAmount
-
-`func (o *Deposit) SetDepositAmount(v int32)`
-
-SetDepositAmount sets DepositAmount field to given value.
-
-
-### GetDepositCurrency
-
-`func (o *Deposit) GetDepositCurrency() string`
-
-GetDepositCurrency returns the DepositCurrency field if non-nil, zero value otherwise.
-
-### GetDepositCurrencyOk
-
-`func (o *Deposit) GetDepositCurrencyOk() (*string, bool)`
-
-GetDepositCurrencyOk returns a tuple with the DepositCurrency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDepositCurrency
-
-`func (o *Deposit) SetDepositCurrency(v string)`
-
-SetDepositCurrency sets DepositCurrency field to given value.
-
-
 ### GetDateProcessed
 
 `func (o *Deposit) GetDateProcessed() string`
@@ -216,6 +156,46 @@ and a boolean to check if the value has been set.
 SetDateSubmitted sets DateSubmitted field to given value.
 
 
+### GetDepositAmount
+
+`func (o *Deposit) GetDepositAmount() int32`
+
+GetDepositAmount returns the DepositAmount field if non-nil, zero value otherwise.
+
+### GetDepositAmountOk
+
+`func (o *Deposit) GetDepositAmountOk() (*int32, bool)`
+
+GetDepositAmountOk returns a tuple with the DepositAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDepositAmount
+
+`func (o *Deposit) SetDepositAmount(v int32)`
+
+SetDepositAmount sets DepositAmount field to given value.
+
+
+### GetDepositCurrency
+
+`func (o *Deposit) GetDepositCurrency() string`
+
+GetDepositCurrency returns the DepositCurrency field if non-nil, zero value otherwise.
+
+### GetDepositCurrencyOk
+
+`func (o *Deposit) GetDepositCurrencyOk() (*string, bool)`
+
+GetDepositCurrencyOk returns a tuple with the DepositCurrency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDepositCurrency
+
+`func (o *Deposit) SetDepositCurrency(v string)`
+
+SetDepositCurrency sets DepositCurrency field to given value.
+
+
 ### GetFrontImageId
 
 `func (o *Deposit) GetFrontImageId() string`
@@ -236,24 +216,44 @@ and a boolean to check if the value has been set.
 SetFrontImageId sets FrontImageId field to given value.
 
 
-### GetBackImageId
+### GetId
 
-`func (o *Deposit) GetBackImageId() string`
+`func (o *Deposit) GetId() string`
 
-GetBackImageId returns the BackImageId field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetBackImageIdOk
+### GetIdOk
 
-`func (o *Deposit) GetBackImageIdOk() (*string, bool)`
+`func (o *Deposit) GetIdOk() (*string, bool)`
 
-GetBackImageIdOk returns a tuple with the BackImageId field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBackImageId
+### SetId
 
-`func (o *Deposit) SetBackImageId(v string)`
+`func (o *Deposit) SetId(v string)`
 
-SetBackImageId sets BackImageId field to given value.
+SetId sets Id field to given value.
+
+
+### GetRoutingNumber
+
+`func (o *Deposit) GetRoutingNumber() string`
+
+GetRoutingNumber returns the RoutingNumber field if non-nil, zero value otherwise.
+
+### GetRoutingNumberOk
+
+`func (o *Deposit) GetRoutingNumberOk() (*string, bool)`
+
+GetRoutingNumberOk returns a tuple with the RoutingNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoutingNumber
+
+`func (o *Deposit) SetRoutingNumber(v string)`
+
+SetRoutingNumber sets RoutingNumber field to given value.
 
 
 ### GetScanId

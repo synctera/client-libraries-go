@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Reconciliation ID | [readonly] 
 **FileName** | **string** | Filename of the data to be reconciled | [readonly] 
+**Id** | **string** | Reconciliation ID | [readonly] 
 **IngestionStatus** | [**IngestionStatus**](IngestionStatus.md) |  | 
 
 ## Methods
 
 ### NewReconciliation
 
-`func NewReconciliation(id string, fileName string, ingestionStatus IngestionStatus, ) *Reconciliation`
+`func NewReconciliation(fileName string, id string, ingestionStatus IngestionStatus, ) *Reconciliation`
 
 NewReconciliation instantiates a new Reconciliation object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewReconciliationWithDefaults instantiates a new Reconciliation object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Reconciliation) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Reconciliation) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Reconciliation) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetFileName
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *Reconciliation) SetFileName(v string)`
 
 SetFileName sets FileName field to given value.
+
+
+### GetId
+
+`func (o *Reconciliation) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Reconciliation) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Reconciliation) SetId(v string)`
+
+SetId sets Id field to given value.
 
 
 ### GetIngestionStatus

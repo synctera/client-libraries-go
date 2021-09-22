@@ -3,49 +3,25 @@
 ## Enum
 
 
-* `ACCOUNT` (value: `"ACCOUNT.*"`)
+* `USERTRANSITION` (value: `"usertransition"`)
 
-* `ACCOUNT_STATUS_CHANGED` (value: `"ACCOUNT.STATUS_CHANGED"`)
+* `BUSINESSTRANSITION` (value: `"businesstransition"`)
 
-* `TRANSACTION` (value: `"TRANSACTION.*"`)
+* `CARDTRANSITION` (value: `"cardtransition"`)
 
-* `TRANSACTION_POSTED` (value: `"TRANSACTION.POSTED"`)
+* `TRANSACTION` (value: `"transaction"`)
 
-* `TRANSACTION_FAILED` (value: `"TRANSACTION.FAILED"`)
+* `DIGITALWALLETTOKENTRANSITION` (value: `"digitalwallettokentransition"`)
 
-* `KYC` (value: `"KYC.*"`)
+* `CHARGEBACKTRANSITION` (value: `"chargebacktransition"`)
 
-* `KYC_CUSTOMER_MANUAL_REVIEW` (value: `"KYC.CUSTOMER_MANUAL_REVIEW"`)
+* `COMMANDOMODETRANSITION` (value: `"commandomodetransition"`)
 
-* `KYC_PASS` (value: `"KYC.PASS"`)
+* `CASETRANSITION` (value: `"casetransition"`)
 
-* `KYC_FAILED_MANUAL_REVIEW` (value: `"KYC.FAILED_MANUAL_REVIEW"`)
+* `DIRECTDEPOSITTRANSITION` (value: `"directdeposittransition"`)
 
-* `KYC_FOUND_ON_WATCHLIST` (value: `"KYC.FOUND_ON_WATCHLIST"`)
-
-* `KYC_ADDITIONAL_DOC_REQUIRED` (value: `"KYC.ADDITIONAL_DOC_REQUIRED"`)
-
-* `LEDGER` (value: `"LEDGER.*"`)
-
-* `LEDGER_BALANCE_CHANGED_ACH_REVERSALS` (value: `"LEDGER.BALANCE_CHANGED.ACH_REVERSALS"`)
-
-* `LEDGER_BALANCE_CHANGED_INTEREST` (value: `"LEDGER.BALANCE_CHANGED.INTEREST"`)
-
-* `LEDGER_BALANCE_CHANGED_WIRES` (value: `"LEDGER.BALANCE_CHANGED.WIRES"`)
-
-* `LEDGER_BALANCE_CHANGED_CHECK_DEPOSIT` (value: `"LEDGER.BALANCE_CHANGED.CHECK_DEPOSIT"`)
-
-* `CARD` (value: `"CARD.*"`)
-
-* `CARD_FULFILLMENT_UPDATE` (value: `"CARD.FULFILLMENT_UPDATE"`)
-
-* `CARD_TERMINATION` (value: `"CARD.TERMINATION"`)
-
-* `CARD_STATUS_CHANGE` (value: `"CARD.STATUS_CHANGE"`)
-
-* `RECONCILIATION` (value: `"RECONCILIATION.*"`)
-
-* `RECONCILIATION_PROCESSED` (value: `"RECONCILIATION.PROCESSED"`)
+* `BANKTRANSFERTRANSITION` (value: `"banktransfertransition"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

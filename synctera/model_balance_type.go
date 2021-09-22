@@ -20,19 +20,13 @@ type BalanceType string
 
 // List of balance_type
 const (
+	BALANCETYPE_ACCOUNT_BALANCE BalanceType = "ACCOUNT_BALANCE"
 	BALANCETYPE_AVAILABLE_BALANCE BalanceType = "AVAILABLE_BALANCE"
-	BALANCETYPE_ACH BalanceType = "ACH"
-	BALANCETYPE_MARQETA BalanceType = "MARQETA"
-	BALANCETYPE_MASTERCARD BalanceType = "MASTERCARD"
-	BALANCETYPE_PULSE BalanceType = "PULSE"
 )
 
 var allowedBalanceTypeEnumValues = []BalanceType{
+	"ACCOUNT_BALANCE",
 	"AVAILABLE_BALANCE",
-	"ACH",
-	"MARQETA",
-	"MASTERCARD",
-	"PULSE",
 }
 
 func (v *BalanceType) UnmarshalJSON(src []byte) error {

@@ -17,8 +17,8 @@ import (
 // CustomerList struct for CustomerList
 type CustomerList struct {
 	// Array of Customers
-	Customers []Customer `json:"customers"`
-	// If returned, use the next_page_token to query for the next page of results.
+	Customers []CustomerInPath `json:"customers"`
+	// If returned, use the next_page_token to query for the next page of results. Not returned if there are no more rows.
 	NextPageToken *string `json:"next_page_token,omitempty"`
 }
 
@@ -26,7 +26,7 @@ type CustomerList struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerList(customers []Customer) *CustomerList {
+func NewCustomerList(customers []CustomerInPath) *CustomerList {
 	this := CustomerList{}
 	this.Customers = customers
 	return &this
@@ -41,9 +41,9 @@ func NewCustomerListWithDefaults() *CustomerList {
 }
 
 // GetCustomers returns the Customers field value
-func (o *CustomerList) GetCustomers() []Customer {
+func (o *CustomerList) GetCustomers() []CustomerInPath {
 	if o == nil {
-		var ret []Customer
+		var ret []CustomerInPath
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *CustomerList) GetCustomers() []Customer {
 
 // GetCustomersOk returns a tuple with the Customers field value
 // and a boolean to check if the value has been set.
-func (o *CustomerList) GetCustomersOk() (*[]Customer, bool) {
+func (o *CustomerList) GetCustomersOk() (*[]CustomerInPath, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *CustomerList) GetCustomersOk() (*[]Customer, bool) {
 }
 
 // SetCustomers sets field value
-func (o *CustomerList) SetCustomers(v []Customer) {
+func (o *CustomerList) SetCustomers(v []CustomerInPath) {
 	o.Customers = v
 }
 

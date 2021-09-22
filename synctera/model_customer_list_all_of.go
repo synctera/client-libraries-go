@@ -17,14 +17,14 @@ import (
 // CustomerListAllOf struct for CustomerListAllOf
 type CustomerListAllOf struct {
 	// Array of Customers
-	Customers []Customer `json:"customers"`
+	Customers []CustomerInPath `json:"customers"`
 }
 
 // NewCustomerListAllOf instantiates a new CustomerListAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerListAllOf(customers []Customer) *CustomerListAllOf {
+func NewCustomerListAllOf(customers []CustomerInPath) *CustomerListAllOf {
 	this := CustomerListAllOf{}
 	this.Customers = customers
 	return &this
@@ -39,9 +39,9 @@ func NewCustomerListAllOfWithDefaults() *CustomerListAllOf {
 }
 
 // GetCustomers returns the Customers field value
-func (o *CustomerListAllOf) GetCustomers() []Customer {
+func (o *CustomerListAllOf) GetCustomers() []CustomerInPath {
 	if o == nil {
-		var ret []Customer
+		var ret []CustomerInPath
 		return ret
 	}
 
@@ -50,7 +50,7 @@ func (o *CustomerListAllOf) GetCustomers() []Customer {
 
 // GetCustomersOk returns a tuple with the Customers field value
 // and a boolean to check if the value has been set.
-func (o *CustomerListAllOf) GetCustomersOk() (*[]Customer, bool) {
+func (o *CustomerListAllOf) GetCustomersOk() (*[]CustomerInPath, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *CustomerListAllOf) GetCustomersOk() (*[]Customer, bool) {
 }
 
 // SetCustomers sets field value
-func (o *CustomerListAllOf) SetCustomers(v []Customer) {
+func (o *CustomerListAllOf) SetCustomers(v []CustomerInPath) {
 	o.Customers = v
 }
 

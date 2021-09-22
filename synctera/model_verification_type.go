@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// VerificationType Type of verification to run: `KYC` - KYC verification to validate name, date of birth, tax id, etc match, OFAC` - OFAC / sanctions check, `PEP` - Politically exposed persons check, `FRAUD` - Check if transaction is fraudulent, `DOCUMENT` - Validate if document matches Person's identity
+// VerificationType the model 'VerificationType'
 type VerificationType string
 
 // List of verification_type

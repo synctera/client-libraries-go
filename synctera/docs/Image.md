@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | RDC image id | [readonly] 
-**MediaType** | [**RdcMediaType**](RdcMediaType.md) |  | 
 **ByteData** | **string** | Base64url encoded image | 
 **DateUploaded** | **string** | Date the image was uploaded, in RFC 3339 format | [readonly] 
+**Id** | **string** | RDC image id | [readonly] 
+**MediaType** | [**RdcMediaType**](RdcMediaType.md) |  | 
 
 ## Methods
 
 ### NewImage
 
-`func NewImage(id string, mediaType RdcMediaType, byteData string, dateUploaded string, ) *Image`
+`func NewImage(byteData string, dateUploaded string, id string, mediaType RdcMediaType, ) *Image`
 
 NewImage instantiates a new Image object
 This constructor will assign default values to properties that have it defined,
@@ -27,46 +27,6 @@ will change when the set of required properties is changed
 NewImageWithDefaults instantiates a new Image object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Image) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Image) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Image) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetMediaType
-
-`func (o *Image) GetMediaType() RdcMediaType`
-
-GetMediaType returns the MediaType field if non-nil, zero value otherwise.
-
-### GetMediaTypeOk
-
-`func (o *Image) GetMediaTypeOk() (*RdcMediaType, bool)`
-
-GetMediaTypeOk returns a tuple with the MediaType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMediaType
-
-`func (o *Image) SetMediaType(v RdcMediaType)`
-
-SetMediaType sets MediaType field to given value.
-
 
 ### GetByteData
 
@@ -106,6 +66,46 @@ and a boolean to check if the value has been set.
 `func (o *Image) SetDateUploaded(v string)`
 
 SetDateUploaded sets DateUploaded field to given value.
+
+
+### GetId
+
+`func (o *Image) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Image) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Image) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetMediaType
+
+`func (o *Image) GetMediaType() RdcMediaType`
+
+GetMediaType returns the MediaType field if non-nil, zero value otherwise.
+
+### GetMediaTypeOk
+
+`func (o *Image) GetMediaTypeOk() (*RdcMediaType, bool)`
+
+GetMediaTypeOk returns a tuple with the MediaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMediaType
+
+`func (o *Image) SetMediaType(v RdcMediaType)`
+
+SetMediaType sets MediaType field to given value.
 
 
 

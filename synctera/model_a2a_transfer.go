@@ -16,38 +16,38 @@ import (
 
 // A2aTransfer struct for A2aTransfer
 type A2aTransfer struct {
-	// Account ID that is instructing the transfer
-	SourceAccount string `json:"source_account"`
-	// Account ID that is receiving the transfer
-	TargetAccount string `json:"target_account"`
 	// amount in ISO 4217 minor currency units
 	Amount int32 `json:"amount"`
 	// Account currency or account settlement currency. ISO 4217 alphabetic currency code.
 	Currency string `json:"currency"`
 	DcSign DcSignType `json:"dc_sign"`
-	// User specified information of this transfer
-	ReferenceInfo *string `json:"reference_info,omitempty"`
 	// Execution date of the transfer. Default is the current date
 	ExecutionDate *string `json:"execution_date,omitempty"`
-	RecurringData *RecurrenceData `json:"recurring_data,omitempty"`
-	TransferReversal *A2aTransferTransferReversal `json:"transfer_reversal,omitempty"`
 	// Flag to indicate the overwrite checks
 	IsOverwriteChecks *bool `json:"is_overwrite_checks,omitempty"`
 	// Payment ID
 	PaymentId *string `json:"payment_id,omitempty"`
+	RecurringData *RecurrenceData `json:"recurring_data,omitempty"`
+	// User specified information of this transfer
+	ReferenceInfo *string `json:"reference_info,omitempty"`
+	// Account ID that is instructing the transfer
+	SourceAccount string `json:"source_account"`
+	// Account ID that is receiving the transfer
+	TargetAccount string `json:"target_account"`
+	TransferReversal *A2aTransferTransferReversal `json:"transfer_reversal,omitempty"`
 }
 
 // NewA2aTransfer instantiates a new A2aTransfer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewA2aTransfer(sourceAccount string, targetAccount string, amount int32, currency string, dcSign DcSignType) *A2aTransfer {
+func NewA2aTransfer(amount int32, currency string, dcSign DcSignType, sourceAccount string, targetAccount string) *A2aTransfer {
 	this := A2aTransfer{}
-	this.SourceAccount = sourceAccount
-	this.TargetAccount = targetAccount
 	this.Amount = amount
 	this.Currency = currency
 	this.DcSign = dcSign
+	this.SourceAccount = sourceAccount
+	this.TargetAccount = targetAccount
 	return &this
 }
 
@@ -57,54 +57,6 @@ func NewA2aTransfer(sourceAccount string, targetAccount string, amount int32, cu
 func NewA2aTransferWithDefaults() *A2aTransfer {
 	this := A2aTransfer{}
 	return &this
-}
-
-// GetSourceAccount returns the SourceAccount field value
-func (o *A2aTransfer) GetSourceAccount() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SourceAccount
-}
-
-// GetSourceAccountOk returns a tuple with the SourceAccount field value
-// and a boolean to check if the value has been set.
-func (o *A2aTransfer) GetSourceAccountOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.SourceAccount, true
-}
-
-// SetSourceAccount sets field value
-func (o *A2aTransfer) SetSourceAccount(v string) {
-	o.SourceAccount = v
-}
-
-// GetTargetAccount returns the TargetAccount field value
-func (o *A2aTransfer) GetTargetAccount() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.TargetAccount
-}
-
-// GetTargetAccountOk returns a tuple with the TargetAccount field value
-// and a boolean to check if the value has been set.
-func (o *A2aTransfer) GetTargetAccountOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.TargetAccount, true
-}
-
-// SetTargetAccount sets field value
-func (o *A2aTransfer) SetTargetAccount(v string) {
-	o.TargetAccount = v
 }
 
 // GetAmount returns the Amount field value
@@ -179,38 +131,6 @@ func (o *A2aTransfer) SetDcSign(v DcSignType) {
 	o.DcSign = v
 }
 
-// GetReferenceInfo returns the ReferenceInfo field value if set, zero value otherwise.
-func (o *A2aTransfer) GetReferenceInfo() string {
-	if o == nil || o.ReferenceInfo == nil {
-		var ret string
-		return ret
-	}
-	return *o.ReferenceInfo
-}
-
-// GetReferenceInfoOk returns a tuple with the ReferenceInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *A2aTransfer) GetReferenceInfoOk() (*string, bool) {
-	if o == nil || o.ReferenceInfo == nil {
-		return nil, false
-	}
-	return o.ReferenceInfo, true
-}
-
-// HasReferenceInfo returns a boolean if a field has been set.
-func (o *A2aTransfer) HasReferenceInfo() bool {
-	if o != nil && o.ReferenceInfo != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReferenceInfo gets a reference to the given string and assigns it to the ReferenceInfo field.
-func (o *A2aTransfer) SetReferenceInfo(v string) {
-	o.ReferenceInfo = &v
-}
-
 // GetExecutionDate returns the ExecutionDate field value if set, zero value otherwise.
 func (o *A2aTransfer) GetExecutionDate() string {
 	if o == nil || o.ExecutionDate == nil {
@@ -241,70 +161,6 @@ func (o *A2aTransfer) HasExecutionDate() bool {
 // SetExecutionDate gets a reference to the given string and assigns it to the ExecutionDate field.
 func (o *A2aTransfer) SetExecutionDate(v string) {
 	o.ExecutionDate = &v
-}
-
-// GetRecurringData returns the RecurringData field value if set, zero value otherwise.
-func (o *A2aTransfer) GetRecurringData() RecurrenceData {
-	if o == nil || o.RecurringData == nil {
-		var ret RecurrenceData
-		return ret
-	}
-	return *o.RecurringData
-}
-
-// GetRecurringDataOk returns a tuple with the RecurringData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *A2aTransfer) GetRecurringDataOk() (*RecurrenceData, bool) {
-	if o == nil || o.RecurringData == nil {
-		return nil, false
-	}
-	return o.RecurringData, true
-}
-
-// HasRecurringData returns a boolean if a field has been set.
-func (o *A2aTransfer) HasRecurringData() bool {
-	if o != nil && o.RecurringData != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRecurringData gets a reference to the given RecurrenceData and assigns it to the RecurringData field.
-func (o *A2aTransfer) SetRecurringData(v RecurrenceData) {
-	o.RecurringData = &v
-}
-
-// GetTransferReversal returns the TransferReversal field value if set, zero value otherwise.
-func (o *A2aTransfer) GetTransferReversal() A2aTransferTransferReversal {
-	if o == nil || o.TransferReversal == nil {
-		var ret A2aTransferTransferReversal
-		return ret
-	}
-	return *o.TransferReversal
-}
-
-// GetTransferReversalOk returns a tuple with the TransferReversal field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *A2aTransfer) GetTransferReversalOk() (*A2aTransferTransferReversal, bool) {
-	if o == nil || o.TransferReversal == nil {
-		return nil, false
-	}
-	return o.TransferReversal, true
-}
-
-// HasTransferReversal returns a boolean if a field has been set.
-func (o *A2aTransfer) HasTransferReversal() bool {
-	if o != nil && o.TransferReversal != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTransferReversal gets a reference to the given A2aTransferTransferReversal and assigns it to the TransferReversal field.
-func (o *A2aTransfer) SetTransferReversal(v A2aTransferTransferReversal) {
-	o.TransferReversal = &v
 }
 
 // GetIsOverwriteChecks returns the IsOverwriteChecks field value if set, zero value otherwise.
@@ -371,14 +227,152 @@ func (o *A2aTransfer) SetPaymentId(v string) {
 	o.PaymentId = &v
 }
 
+// GetRecurringData returns the RecurringData field value if set, zero value otherwise.
+func (o *A2aTransfer) GetRecurringData() RecurrenceData {
+	if o == nil || o.RecurringData == nil {
+		var ret RecurrenceData
+		return ret
+	}
+	return *o.RecurringData
+}
+
+// GetRecurringDataOk returns a tuple with the RecurringData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *A2aTransfer) GetRecurringDataOk() (*RecurrenceData, bool) {
+	if o == nil || o.RecurringData == nil {
+		return nil, false
+	}
+	return o.RecurringData, true
+}
+
+// HasRecurringData returns a boolean if a field has been set.
+func (o *A2aTransfer) HasRecurringData() bool {
+	if o != nil && o.RecurringData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRecurringData gets a reference to the given RecurrenceData and assigns it to the RecurringData field.
+func (o *A2aTransfer) SetRecurringData(v RecurrenceData) {
+	o.RecurringData = &v
+}
+
+// GetReferenceInfo returns the ReferenceInfo field value if set, zero value otherwise.
+func (o *A2aTransfer) GetReferenceInfo() string {
+	if o == nil || o.ReferenceInfo == nil {
+		var ret string
+		return ret
+	}
+	return *o.ReferenceInfo
+}
+
+// GetReferenceInfoOk returns a tuple with the ReferenceInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *A2aTransfer) GetReferenceInfoOk() (*string, bool) {
+	if o == nil || o.ReferenceInfo == nil {
+		return nil, false
+	}
+	return o.ReferenceInfo, true
+}
+
+// HasReferenceInfo returns a boolean if a field has been set.
+func (o *A2aTransfer) HasReferenceInfo() bool {
+	if o != nil && o.ReferenceInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReferenceInfo gets a reference to the given string and assigns it to the ReferenceInfo field.
+func (o *A2aTransfer) SetReferenceInfo(v string) {
+	o.ReferenceInfo = &v
+}
+
+// GetSourceAccount returns the SourceAccount field value
+func (o *A2aTransfer) GetSourceAccount() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SourceAccount
+}
+
+// GetSourceAccountOk returns a tuple with the SourceAccount field value
+// and a boolean to check if the value has been set.
+func (o *A2aTransfer) GetSourceAccountOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.SourceAccount, true
+}
+
+// SetSourceAccount sets field value
+func (o *A2aTransfer) SetSourceAccount(v string) {
+	o.SourceAccount = v
+}
+
+// GetTargetAccount returns the TargetAccount field value
+func (o *A2aTransfer) GetTargetAccount() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TargetAccount
+}
+
+// GetTargetAccountOk returns a tuple with the TargetAccount field value
+// and a boolean to check if the value has been set.
+func (o *A2aTransfer) GetTargetAccountOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.TargetAccount, true
+}
+
+// SetTargetAccount sets field value
+func (o *A2aTransfer) SetTargetAccount(v string) {
+	o.TargetAccount = v
+}
+
+// GetTransferReversal returns the TransferReversal field value if set, zero value otherwise.
+func (o *A2aTransfer) GetTransferReversal() A2aTransferTransferReversal {
+	if o == nil || o.TransferReversal == nil {
+		var ret A2aTransferTransferReversal
+		return ret
+	}
+	return *o.TransferReversal
+}
+
+// GetTransferReversalOk returns a tuple with the TransferReversal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *A2aTransfer) GetTransferReversalOk() (*A2aTransferTransferReversal, bool) {
+	if o == nil || o.TransferReversal == nil {
+		return nil, false
+	}
+	return o.TransferReversal, true
+}
+
+// HasTransferReversal returns a boolean if a field has been set.
+func (o *A2aTransfer) HasTransferReversal() bool {
+	if o != nil && o.TransferReversal != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTransferReversal gets a reference to the given A2aTransferTransferReversal and assigns it to the TransferReversal field.
+func (o *A2aTransfer) SetTransferReversal(v A2aTransferTransferReversal) {
+	o.TransferReversal = &v
+}
+
 func (o A2aTransfer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["source_account"] = o.SourceAccount
-	}
-	if true {
-		toSerialize["target_account"] = o.TargetAccount
-	}
 	if true {
 		toSerialize["amount"] = o.Amount
 	}
@@ -388,23 +382,29 @@ func (o A2aTransfer) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["dc_sign"] = o.DcSign
 	}
-	if o.ReferenceInfo != nil {
-		toSerialize["reference_info"] = o.ReferenceInfo
-	}
 	if o.ExecutionDate != nil {
 		toSerialize["execution_date"] = o.ExecutionDate
-	}
-	if o.RecurringData != nil {
-		toSerialize["recurring_data"] = o.RecurringData
-	}
-	if o.TransferReversal != nil {
-		toSerialize["transfer_reversal"] = o.TransferReversal
 	}
 	if o.IsOverwriteChecks != nil {
 		toSerialize["is_overwrite_checks"] = o.IsOverwriteChecks
 	}
 	if o.PaymentId != nil {
 		toSerialize["payment_id"] = o.PaymentId
+	}
+	if o.RecurringData != nil {
+		toSerialize["recurring_data"] = o.RecurringData
+	}
+	if o.ReferenceInfo != nil {
+		toSerialize["reference_info"] = o.ReferenceInfo
+	}
+	if true {
+		toSerialize["source_account"] = o.SourceAccount
+	}
+	if true {
+		toSerialize["target_account"] = o.TargetAccount
+	}
+	if o.TransferReversal != nil {
+		toSerialize["transfer_reversal"] = o.TransferReversal
 	}
 	return json.Marshal(toSerialize)
 }

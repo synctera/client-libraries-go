@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Transaction ID | [optional] 
 **AccountId** | Pointer to **string** | Account ID | [optional] 
-**Currency** | Pointer to **string** | Currency of the transaction. ISO 4217 alphabetic currency code | [optional] 
 **Amount** | Pointer to **int32** | Transaction amount in ISO 4217 minor currency units | [optional] 
+**AuthorizationRef** | Pointer to **string** | Reference for the authorization | [optional] 
+**Currency** | Pointer to **string** | Currency of the transaction. ISO 4217 alphabetic currency code | [optional] 
 **DcSign** | Pointer to [**DcSignType**](DcSignType.md) |  | [optional] 
 **EffectiveDate** | Pointer to **time.Time** | The effective date of the transaction (value_date) | [optional] 
-**ProfitCenter** | Pointer to **string** | Profit center of the transaction | [optional] 
-**AuthorizationRef** | Pointer to **string** | Reference for the authorization | [optional] 
 **ExtReference** | Pointer to **string** | External reference from Synctera for the transaction | [optional] 
+**Id** | Pointer to **string** | Transaction ID | [optional] 
+**ProfitCenter** | Pointer to **string** | Profit center of the transaction | [optional] 
 **Status** | Pointer to **string** | The status of the transaction | [optional] 
 **TransactionType** | Pointer to **string** | Transaction type | [optional] 
 
@@ -34,31 +34,6 @@ will change when the set of required properties is changed
 NewTransactionWithDefaults instantiates a new Transaction object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Transaction) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Transaction) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Transaction) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Transaction) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetAccountId
 
@@ -85,31 +60,6 @@ SetAccountId sets AccountId field to given value.
 
 HasAccountId returns a boolean if a field has been set.
 
-### GetCurrency
-
-`func (o *Transaction) GetCurrency() string`
-
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
-
-### GetCurrencyOk
-
-`func (o *Transaction) GetCurrencyOk() (*string, bool)`
-
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrency
-
-`func (o *Transaction) SetCurrency(v string)`
-
-SetCurrency sets Currency field to given value.
-
-### HasCurrency
-
-`func (o *Transaction) HasCurrency() bool`
-
-HasCurrency returns a boolean if a field has been set.
-
 ### GetAmount
 
 `func (o *Transaction) GetAmount() int32`
@@ -134,6 +84,56 @@ SetAmount sets Amount field to given value.
 `func (o *Transaction) HasAmount() bool`
 
 HasAmount returns a boolean if a field has been set.
+
+### GetAuthorizationRef
+
+`func (o *Transaction) GetAuthorizationRef() string`
+
+GetAuthorizationRef returns the AuthorizationRef field if non-nil, zero value otherwise.
+
+### GetAuthorizationRefOk
+
+`func (o *Transaction) GetAuthorizationRefOk() (*string, bool)`
+
+GetAuthorizationRefOk returns a tuple with the AuthorizationRef field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizationRef
+
+`func (o *Transaction) SetAuthorizationRef(v string)`
+
+SetAuthorizationRef sets AuthorizationRef field to given value.
+
+### HasAuthorizationRef
+
+`func (o *Transaction) HasAuthorizationRef() bool`
+
+HasAuthorizationRef returns a boolean if a field has been set.
+
+### GetCurrency
+
+`func (o *Transaction) GetCurrency() string`
+
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
+
+### GetCurrencyOk
+
+`func (o *Transaction) GetCurrencyOk() (*string, bool)`
+
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrency
+
+`func (o *Transaction) SetCurrency(v string)`
+
+SetCurrency sets Currency field to given value.
+
+### HasCurrency
+
+`func (o *Transaction) HasCurrency() bool`
+
+HasCurrency returns a boolean if a field has been set.
 
 ### GetDcSign
 
@@ -185,56 +185,6 @@ SetEffectiveDate sets EffectiveDate field to given value.
 
 HasEffectiveDate returns a boolean if a field has been set.
 
-### GetProfitCenter
-
-`func (o *Transaction) GetProfitCenter() string`
-
-GetProfitCenter returns the ProfitCenter field if non-nil, zero value otherwise.
-
-### GetProfitCenterOk
-
-`func (o *Transaction) GetProfitCenterOk() (*string, bool)`
-
-GetProfitCenterOk returns a tuple with the ProfitCenter field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProfitCenter
-
-`func (o *Transaction) SetProfitCenter(v string)`
-
-SetProfitCenter sets ProfitCenter field to given value.
-
-### HasProfitCenter
-
-`func (o *Transaction) HasProfitCenter() bool`
-
-HasProfitCenter returns a boolean if a field has been set.
-
-### GetAuthorizationRef
-
-`func (o *Transaction) GetAuthorizationRef() string`
-
-GetAuthorizationRef returns the AuthorizationRef field if non-nil, zero value otherwise.
-
-### GetAuthorizationRefOk
-
-`func (o *Transaction) GetAuthorizationRefOk() (*string, bool)`
-
-GetAuthorizationRefOk returns a tuple with the AuthorizationRef field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthorizationRef
-
-`func (o *Transaction) SetAuthorizationRef(v string)`
-
-SetAuthorizationRef sets AuthorizationRef field to given value.
-
-### HasAuthorizationRef
-
-`func (o *Transaction) HasAuthorizationRef() bool`
-
-HasAuthorizationRef returns a boolean if a field has been set.
-
 ### GetExtReference
 
 `func (o *Transaction) GetExtReference() string`
@@ -259,6 +209,56 @@ SetExtReference sets ExtReference field to given value.
 `func (o *Transaction) HasExtReference() bool`
 
 HasExtReference returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Transaction) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Transaction) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Transaction) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *Transaction) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetProfitCenter
+
+`func (o *Transaction) GetProfitCenter() string`
+
+GetProfitCenter returns the ProfitCenter field if non-nil, zero value otherwise.
+
+### GetProfitCenterOk
+
+`func (o *Transaction) GetProfitCenterOk() (*string, bool)`
+
+GetProfitCenterOk returns a tuple with the ProfitCenter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfitCenter
+
+`func (o *Transaction) SetProfitCenter(v string)`
+
+SetProfitCenter sets ProfitCenter field to given value.
+
+### HasProfitCenter
+
+`func (o *Transaction) HasProfitCenter() bool`
+
+HasProfitCenter returns a boolean if a field has been set.
 
 ### GetStatus
 

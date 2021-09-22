@@ -16,10 +16,10 @@ import (
 
 // A2aTransferTransferReversal If transfer reversal happens, both original and reversal transfers will be set for the cross reference
 type A2aTransferTransferReversal struct {
-	// True if transfer reversal, false otherwise the original transfer
-	IsReversal *bool `json:"is_reversal,omitempty"`
 	// Payment ID of the corresponding reversal/original transfer
 	Id *string `json:"id,omitempty"`
+	// True if transfer reversal, false otherwise the original transfer
+	IsReversal *bool `json:"is_reversal,omitempty"`
 }
 
 // NewA2aTransferTransferReversal instantiates a new A2aTransferTransferReversal object
@@ -37,38 +37,6 @@ func NewA2aTransferTransferReversal() *A2aTransferTransferReversal {
 func NewA2aTransferTransferReversalWithDefaults() *A2aTransferTransferReversal {
 	this := A2aTransferTransferReversal{}
 	return &this
-}
-
-// GetIsReversal returns the IsReversal field value if set, zero value otherwise.
-func (o *A2aTransferTransferReversal) GetIsReversal() bool {
-	if o == nil || o.IsReversal == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsReversal
-}
-
-// GetIsReversalOk returns a tuple with the IsReversal field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *A2aTransferTransferReversal) GetIsReversalOk() (*bool, bool) {
-	if o == nil || o.IsReversal == nil {
-		return nil, false
-	}
-	return o.IsReversal, true
-}
-
-// HasIsReversal returns a boolean if a field has been set.
-func (o *A2aTransferTransferReversal) HasIsReversal() bool {
-	if o != nil && o.IsReversal != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIsReversal gets a reference to the given bool and assigns it to the IsReversal field.
-func (o *A2aTransferTransferReversal) SetIsReversal(v bool) {
-	o.IsReversal = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -103,13 +71,45 @@ func (o *A2aTransferTransferReversal) SetId(v string) {
 	o.Id = &v
 }
 
+// GetIsReversal returns the IsReversal field value if set, zero value otherwise.
+func (o *A2aTransferTransferReversal) GetIsReversal() bool {
+	if o == nil || o.IsReversal == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsReversal
+}
+
+// GetIsReversalOk returns a tuple with the IsReversal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *A2aTransferTransferReversal) GetIsReversalOk() (*bool, bool) {
+	if o == nil || o.IsReversal == nil {
+		return nil, false
+	}
+	return o.IsReversal, true
+}
+
+// HasIsReversal returns a boolean if a field has been set.
+func (o *A2aTransferTransferReversal) HasIsReversal() bool {
+	if o != nil && o.IsReversal != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsReversal gets a reference to the given bool and assigns it to the IsReversal field.
+func (o *A2aTransferTransferReversal) SetIsReversal(v bool) {
+	o.IsReversal = &v
+}
+
 func (o A2aTransferTransferReversal) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.IsReversal != nil {
-		toSerialize["is_reversal"] = o.IsReversal
-	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.IsReversal != nil {
+		toSerialize["is_reversal"] = o.IsReversal
 	}
 	return json.Marshal(toSerialize)
 }

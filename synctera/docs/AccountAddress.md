@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Address** | Pointer to [**Address**](address.md) |  | [optional] [readonly] 
+**AddressId** | Pointer to **int32** | Address unique ID | [optional] 
 **ConnectId** | Pointer to **string** | Connection ID of the account | [optional] 
+**CustomerId** | Pointer to **string** | Customer ID | [optional] 
 **DocumentTypeId** | Pointer to **int32** | Document | [optional] 
 **Duplicate** | Pointer to **bool** | Indicator of duplicate of the address | [optional] 
-**CustomerId** | Pointer to **string** | Customer ID | [optional] 
-**AddressId** | Pointer to **int32** | Address unique ID | [optional] 
-**Address** | Pointer to [**Address**](address.md) |  | [optional] [readonly] 
 
 ## Methods
 
@@ -29,6 +29,56 @@ will change when the set of required properties is changed
 NewAccountAddressWithDefaults instantiates a new AccountAddress object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAddress
+
+`func (o *AccountAddress) GetAddress() Address`
+
+GetAddress returns the Address field if non-nil, zero value otherwise.
+
+### GetAddressOk
+
+`func (o *AccountAddress) GetAddressOk() (*Address, bool)`
+
+GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddress
+
+`func (o *AccountAddress) SetAddress(v Address)`
+
+SetAddress sets Address field to given value.
+
+### HasAddress
+
+`func (o *AccountAddress) HasAddress() bool`
+
+HasAddress returns a boolean if a field has been set.
+
+### GetAddressId
+
+`func (o *AccountAddress) GetAddressId() int32`
+
+GetAddressId returns the AddressId field if non-nil, zero value otherwise.
+
+### GetAddressIdOk
+
+`func (o *AccountAddress) GetAddressIdOk() (*int32, bool)`
+
+GetAddressIdOk returns a tuple with the AddressId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddressId
+
+`func (o *AccountAddress) SetAddressId(v int32)`
+
+SetAddressId sets AddressId field to given value.
+
+### HasAddressId
+
+`func (o *AccountAddress) HasAddressId() bool`
+
+HasAddressId returns a boolean if a field has been set.
 
 ### GetConnectId
 
@@ -54,6 +104,31 @@ SetConnectId sets ConnectId field to given value.
 `func (o *AccountAddress) HasConnectId() bool`
 
 HasConnectId returns a boolean if a field has been set.
+
+### GetCustomerId
+
+`func (o *AccountAddress) GetCustomerId() string`
+
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+
+### GetCustomerIdOk
+
+`func (o *AccountAddress) GetCustomerIdOk() (*string, bool)`
+
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerId
+
+`func (o *AccountAddress) SetCustomerId(v string)`
+
+SetCustomerId sets CustomerId field to given value.
+
+### HasCustomerId
+
+`func (o *AccountAddress) HasCustomerId() bool`
+
+HasCustomerId returns a boolean if a field has been set.
 
 ### GetDocumentTypeId
 
@@ -104,81 +179,6 @@ SetDuplicate sets Duplicate field to given value.
 `func (o *AccountAddress) HasDuplicate() bool`
 
 HasDuplicate returns a boolean if a field has been set.
-
-### GetCustomerId
-
-`func (o *AccountAddress) GetCustomerId() string`
-
-GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
-
-### GetCustomerIdOk
-
-`func (o *AccountAddress) GetCustomerIdOk() (*string, bool)`
-
-GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCustomerId
-
-`func (o *AccountAddress) SetCustomerId(v string)`
-
-SetCustomerId sets CustomerId field to given value.
-
-### HasCustomerId
-
-`func (o *AccountAddress) HasCustomerId() bool`
-
-HasCustomerId returns a boolean if a field has been set.
-
-### GetAddressId
-
-`func (o *AccountAddress) GetAddressId() int32`
-
-GetAddressId returns the AddressId field if non-nil, zero value otherwise.
-
-### GetAddressIdOk
-
-`func (o *AccountAddress) GetAddressIdOk() (*int32, bool)`
-
-GetAddressIdOk returns a tuple with the AddressId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAddressId
-
-`func (o *AccountAddress) SetAddressId(v int32)`
-
-SetAddressId sets AddressId field to given value.
-
-### HasAddressId
-
-`func (o *AccountAddress) HasAddressId() bool`
-
-HasAddressId returns a boolean if a field has been set.
-
-### GetAddress
-
-`func (o *AccountAddress) GetAddress() Address`
-
-GetAddress returns the Address field if non-nil, zero value otherwise.
-
-### GetAddressOk
-
-`func (o *AccountAddress) GetAddressOk() (*Address, bool)`
-
-GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAddress
-
-`func (o *AccountAddress) SetAddress(v Address)`
-
-SetAddress sets Address field to given value.
-
-### HasAddress
-
-`func (o *AccountAddress) HasAddress() bool`
-
-HasAddress returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

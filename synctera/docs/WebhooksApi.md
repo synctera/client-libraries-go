@@ -5,12 +5,12 @@ All URIs are relative to *https://api.synctera.com/v0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateSecret**](WebhooksApi.md#CreateSecret) | **Post** /webhooks/secret | Create a secret
-[**CreateWebhook**](WebhooksApi.md#CreateWebhook) | **Post** /webhooks | Create a webhook
+[**CreateWebhook1**](WebhooksApi.md#CreateWebhook1) | **Post** /webhooks | Create a webhook
 [**DeleteWebhook**](WebhooksApi.md#DeleteWebhook) | **Delete** /webhooks/{webhook_id} | Delete a webhook
 [**GetEvent**](WebhooksApi.md#GetEvent) | **Get** /webhooks/{webhook_id}/events/{event_id} | Get webhook event
-[**GetWebhook**](WebhooksApi.md#GetWebhook) | **Get** /webhooks/{webhook_id} | Get a webhook
+[**GetWebhook1**](WebhooksApi.md#GetWebhook1) | **Get** /webhooks/{webhook_id} | Get a webhook
 [**ListEvents**](WebhooksApi.md#ListEvents) | **Get** /webhooks/{webhook_id}/events | List webhook events
-[**ListWebhooks**](WebhooksApi.md#ListWebhooks) | **Get** /webhooks | List webhooks
+[**ListWebhooks1**](WebhooksApi.md#ListWebhooks1) | **Get** /webhooks | List webhooks
 [**ReplaceSecret**](WebhooksApi.md#ReplaceSecret) | **Put** /webhooks/secret | Replace an existing secret
 [**ResendEvent**](WebhooksApi.md#ResendEvent) | **Post** /webhooks/{webhook_id}/events/{event_id}/resend | Resend an event
 [**RevokeSecret**](WebhooksApi.md#RevokeSecret) | **Delete** /webhooks/secret | Revoke the secret
@@ -73,16 +73,16 @@ Other parameters are passed through a pointer to a apiCreateSecretRequest struct
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## CreateWebhook
+## CreateWebhook1
 
-> Webhook CreateWebhook(ctx).Webhook(webhook).Execute()
+> Webhook CreateWebhook1(ctx).Webhook(webhook).Execute()
 
 Create a webhook
 
@@ -101,17 +101,17 @@ import (
 )
 
 func main() {
-    webhook := *openapiclient.NewWebhook("Url_example", []openapiclient.EventType{openapiclient.event_type("ACCOUNT.*")}, false) // Webhook | Webhook to create
+    webhook := *openapiclient.NewWebhook([]openapiclient.EventType1{openapiclient.event_type1{EventTypeExplicit: penapiclient.event_type_explicit("ACCOUNT.CREATED")}}, false, "Url_example") // Webhook | Webhook to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhooksApi.CreateWebhook(context.Background()).Webhook(webhook).Execute()
+    resp, r, err := api_client.WebhooksApi.CreateWebhook1(context.Background()).Webhook(webhook).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WebhooksApi.CreateWebhook``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WebhooksApi.CreateWebhook1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateWebhook`: Webhook
-    fmt.Fprintf(os.Stdout, "Response from `WebhooksApi.CreateWebhook`: %v\n", resp)
+    // response from `CreateWebhook1`: Webhook
+    fmt.Fprintf(os.Stdout, "Response from `WebhooksApi.CreateWebhook1`: %v\n", resp)
 }
 ```
 
@@ -121,7 +121,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateWebhookRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateWebhook1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -282,16 +282,16 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## GetWebhook
+## GetWebhook1
 
-> Webhook GetWebhook(ctx, webhookId).Execute()
+> Webhook GetWebhook1(ctx, webhookId).Execute()
 
 Get a webhook
 
@@ -314,13 +314,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhooksApi.GetWebhook(context.Background(), webhookId).Execute()
+    resp, r, err := api_client.WebhooksApi.GetWebhook1(context.Background(), webhookId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WebhooksApi.GetWebhook``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WebhooksApi.GetWebhook1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWebhook`: Webhook
-    fmt.Fprintf(os.Stdout, "Response from `WebhooksApi.GetWebhook`: %v\n", resp)
+    // response from `GetWebhook1`: Webhook
+    fmt.Fprintf(os.Stdout, "Response from `WebhooksApi.GetWebhook1`: %v\n", resp)
 }
 ```
 
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetWebhookRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetWebhook1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -385,7 +385,7 @@ func main() {
     startDate := time.Now() // string | Start date of the search range (optional)
     endDate := time.Now() // string | End date of the search range (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -431,16 +431,16 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## ListWebhooks
+## ListWebhooks1
 
-> WebhookList ListWebhooks(ctx).Limit(limit).PageToken(pageToken).IsEnabledOnly(isEnabledOnly).Execute()
+> WebhookList ListWebhooks1(ctx).Limit(limit).PageToken(pageToken).IsEnabledOnly(isEnabledOnly).Execute()
 
 List webhooks
 
@@ -460,18 +460,18 @@ import (
 
 func main() {
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
+    pageToken := "bnw3qvoyid" // string |  (optional)
     isEnabledOnly := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhooksApi.ListWebhooks(context.Background()).Limit(limit).PageToken(pageToken).IsEnabledOnly(isEnabledOnly).Execute()
+    resp, r, err := api_client.WebhooksApi.ListWebhooks1(context.Background()).Limit(limit).PageToken(pageToken).IsEnabledOnly(isEnabledOnly).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WebhooksApi.ListWebhooks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WebhooksApi.ListWebhooks1``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWebhooks`: WebhookList
-    fmt.Fprintf(os.Stdout, "Response from `WebhooksApi.ListWebhooks`: %v\n", resp)
+    // response from `ListWebhooks1`: WebhookList
+    fmt.Fprintf(os.Stdout, "Response from `WebhooksApi.ListWebhooks1`: %v\n", resp)
 }
 ```
 
@@ -481,7 +481,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListWebhooksRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListWebhooks1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -567,7 +567,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -642,7 +642,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -701,7 +701,7 @@ Other parameters are passed through a pointer to a apiRevokeSecretRequest struct
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -767,7 +767,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -796,7 +796,7 @@ import (
 
 func main() {
     webhookId := TODO // string | Webhook ID
-    webhook := *openapiclient.NewWebhook("Url_example", []openapiclient.EventType{openapiclient.event_type("ACCOUNT.*")}, false) // Webhook | Webhook to update
+    webhook := *openapiclient.NewWebhook([]openapiclient.EventType1{openapiclient.event_type1{EventTypeExplicit: penapiclient.event_type_explicit("ACCOUNT.CREATED")}}, false, "Url_example") // Webhook | Webhook to update
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -839,7 +839,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

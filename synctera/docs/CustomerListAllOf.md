@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Customers** | [**[]Customer**](Customer.md) | Array of Customers | 
+**Customers** | [**[]CustomerInPath**](CustomerInPath.md) | Array of Customers | 
 
 ## Methods
 
 ### NewCustomerListAllOf
 
-`func NewCustomerListAllOf(customers []Customer, ) *CustomerListAllOf`
+`func NewCustomerListAllOf(customers []CustomerInPath, ) *CustomerListAllOf`
 
 NewCustomerListAllOf instantiates a new CustomerListAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCustomers
 
-`func (o *CustomerListAllOf) GetCustomers() []Customer`
+`func (o *CustomerListAllOf) GetCustomers() []CustomerInPath`
 
 GetCustomers returns the Customers field if non-nil, zero value otherwise.
 
 ### GetCustomersOk
 
-`func (o *CustomerListAllOf) GetCustomersOk() (*[]Customer, bool)`
+`func (o *CustomerListAllOf) GetCustomersOk() (*[]CustomerInPath, bool)`
 
 GetCustomersOk returns a tuple with the Customers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomers
 
-`func (o *CustomerListAllOf) SetCustomers(v []Customer)`
+`func (o *CustomerListAllOf) SetCustomers(v []CustomerInPath)`
 
 SetCustomers sets Customers field to given value.
 

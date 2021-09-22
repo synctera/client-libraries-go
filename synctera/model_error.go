@@ -16,8 +16,14 @@ import (
 
 // ModelError struct for ModelError
 type ModelError struct {
-	// Detailed description of error
-	ErrorDetails *string `json:"error_details,omitempty"`
+	// a human-readable string explaining this particular error
+	Detail *string `json:"detail,omitempty"`
+	// the HTTP status code for this response
+	Status *int32 `json:"status,omitempty"`
+	// a human-readable string for this general category of error
+	Title *string `json:"title,omitempty"`
+	// a URI that identifies this general category of error
+	Type *string `json:"type,omitempty"`
 }
 
 // NewModelError instantiates a new ModelError object
@@ -37,42 +43,147 @@ func NewModelErrorWithDefaults() *ModelError {
 	return &this
 }
 
-// GetErrorDetails returns the ErrorDetails field value if set, zero value otherwise.
-func (o *ModelError) GetErrorDetails() string {
-	if o == nil || o.ErrorDetails == nil {
+// GetDetail returns the Detail field value if set, zero value otherwise.
+func (o *ModelError) GetDetail() string {
+	if o == nil || o.Detail == nil {
 		var ret string
 		return ret
 	}
-	return *o.ErrorDetails
+	return *o.Detail
 }
 
-// GetErrorDetailsOk returns a tuple with the ErrorDetails field value if set, nil otherwise
+// GetDetailOk returns a tuple with the Detail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelError) GetErrorDetailsOk() (*string, bool) {
-	if o == nil || o.ErrorDetails == nil {
+func (o *ModelError) GetDetailOk() (*string, bool) {
+	if o == nil || o.Detail == nil {
 		return nil, false
 	}
-	return o.ErrorDetails, true
+	return o.Detail, true
 }
 
-// HasErrorDetails returns a boolean if a field has been set.
-func (o *ModelError) HasErrorDetails() bool {
-	if o != nil && o.ErrorDetails != nil {
+// HasDetail returns a boolean if a field has been set.
+func (o *ModelError) HasDetail() bool {
+	if o != nil && o.Detail != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetErrorDetails gets a reference to the given string and assigns it to the ErrorDetails field.
-func (o *ModelError) SetErrorDetails(v string) {
-	o.ErrorDetails = &v
+// SetDetail gets a reference to the given string and assigns it to the Detail field.
+func (o *ModelError) SetDetail(v string) {
+	o.Detail = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ModelError) GetStatus() int32 {
+	if o == nil || o.Status == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelError) GetStatusOk() (*int32, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ModelError) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given int32 and assigns it to the Status field.
+func (o *ModelError) SetStatus(v int32) {
+	o.Status = &v
+}
+
+// GetTitle returns the Title field value if set, zero value otherwise.
+func (o *ModelError) GetTitle() string {
+	if o == nil || o.Title == nil {
+		var ret string
+		return ret
+	}
+	return *o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelError) GetTitleOk() (*string, bool) {
+	if o == nil || o.Title == nil {
+		return nil, false
+	}
+	return o.Title, true
+}
+
+// HasTitle returns a boolean if a field has been set.
+func (o *ModelError) HasTitle() bool {
+	if o != nil && o.Title != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
+func (o *ModelError) SetTitle(v string) {
+	o.Title = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ModelError) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ModelError) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *ModelError) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *ModelError) SetType(v string) {
+	o.Type = &v
 }
 
 func (o ModelError) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ErrorDetails != nil {
-		toSerialize["error_details"] = o.ErrorDetails
+	if o.Detail != nil {
+		toSerialize["detail"] = o.Detail
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
+	}
+	if o.Title != nil {
+		toSerialize["title"] = o.Title
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

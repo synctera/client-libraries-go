@@ -16,18 +16,16 @@ import (
 
 // Alias struct for Alias
 type Alias struct {
-	// Connection ID of the account
-	ConnectId *string `json:"connect_id,omitempty"`
-	// Alias ID
-	Id *string `json:"id,omitempty"`
-	// Alias type
-	AliasType *string `json:"alias_type,omitempty"`
-	// Alias name
-	AliasName *string `json:"alias_name,omitempty"`
-	// Alias
-	AliasSource *string `json:"alias_source,omitempty"`
 	// Additional information for the alias
 	AliasInfo *string `json:"alias_info,omitempty"`
+	// Alias name
+	AliasName *string `json:"alias_name,omitempty"`
+	// Alias source
+	AliasSource *string `json:"alias_source,omitempty"`
+	// Alias type
+	AliasType *string `json:"alias_type,omitempty"`
+	// Alias ID
+	Id *string `json:"id,omitempty"`
 }
 
 // NewAlias instantiates a new Alias object
@@ -47,100 +45,36 @@ func NewAliasWithDefaults() *Alias {
 	return &this
 }
 
-// GetConnectId returns the ConnectId field value if set, zero value otherwise.
-func (o *Alias) GetConnectId() string {
-	if o == nil || o.ConnectId == nil {
+// GetAliasInfo returns the AliasInfo field value if set, zero value otherwise.
+func (o *Alias) GetAliasInfo() string {
+	if o == nil || o.AliasInfo == nil {
 		var ret string
 		return ret
 	}
-	return *o.ConnectId
+	return *o.AliasInfo
 }
 
-// GetConnectIdOk returns a tuple with the ConnectId field value if set, nil otherwise
+// GetAliasInfoOk returns a tuple with the AliasInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Alias) GetConnectIdOk() (*string, bool) {
-	if o == nil || o.ConnectId == nil {
+func (o *Alias) GetAliasInfoOk() (*string, bool) {
+	if o == nil || o.AliasInfo == nil {
 		return nil, false
 	}
-	return o.ConnectId, true
+	return o.AliasInfo, true
 }
 
-// HasConnectId returns a boolean if a field has been set.
-func (o *Alias) HasConnectId() bool {
-	if o != nil && o.ConnectId != nil {
+// HasAliasInfo returns a boolean if a field has been set.
+func (o *Alias) HasAliasInfo() bool {
+	if o != nil && o.AliasInfo != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetConnectId gets a reference to the given string and assigns it to the ConnectId field.
-func (o *Alias) SetConnectId(v string) {
-	o.ConnectId = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Alias) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Alias) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Alias) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Alias) SetId(v string) {
-	o.Id = &v
-}
-
-// GetAliasType returns the AliasType field value if set, zero value otherwise.
-func (o *Alias) GetAliasType() string {
-	if o == nil || o.AliasType == nil {
-		var ret string
-		return ret
-	}
-	return *o.AliasType
-}
-
-// GetAliasTypeOk returns a tuple with the AliasType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Alias) GetAliasTypeOk() (*string, bool) {
-	if o == nil || o.AliasType == nil {
-		return nil, false
-	}
-	return o.AliasType, true
-}
-
-// HasAliasType returns a boolean if a field has been set.
-func (o *Alias) HasAliasType() bool {
-	if o != nil && o.AliasType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAliasType gets a reference to the given string and assigns it to the AliasType field.
-func (o *Alias) SetAliasType(v string) {
-	o.AliasType = &v
+// SetAliasInfo gets a reference to the given string and assigns it to the AliasInfo field.
+func (o *Alias) SetAliasInfo(v string) {
+	o.AliasInfo = &v
 }
 
 // GetAliasName returns the AliasName field value if set, zero value otherwise.
@@ -207,48 +141,74 @@ func (o *Alias) SetAliasSource(v string) {
 	o.AliasSource = &v
 }
 
-// GetAliasInfo returns the AliasInfo field value if set, zero value otherwise.
-func (o *Alias) GetAliasInfo() string {
-	if o == nil || o.AliasInfo == nil {
+// GetAliasType returns the AliasType field value if set, zero value otherwise.
+func (o *Alias) GetAliasType() string {
+	if o == nil || o.AliasType == nil {
 		var ret string
 		return ret
 	}
-	return *o.AliasInfo
+	return *o.AliasType
 }
 
-// GetAliasInfoOk returns a tuple with the AliasInfo field value if set, nil otherwise
+// GetAliasTypeOk returns a tuple with the AliasType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Alias) GetAliasInfoOk() (*string, bool) {
-	if o == nil || o.AliasInfo == nil {
+func (o *Alias) GetAliasTypeOk() (*string, bool) {
+	if o == nil || o.AliasType == nil {
 		return nil, false
 	}
-	return o.AliasInfo, true
+	return o.AliasType, true
 }
 
-// HasAliasInfo returns a boolean if a field has been set.
-func (o *Alias) HasAliasInfo() bool {
-	if o != nil && o.AliasInfo != nil {
+// HasAliasType returns a boolean if a field has been set.
+func (o *Alias) HasAliasType() bool {
+	if o != nil && o.AliasType != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAliasInfo gets a reference to the given string and assigns it to the AliasInfo field.
-func (o *Alias) SetAliasInfo(v string) {
-	o.AliasInfo = &v
+// SetAliasType gets a reference to the given string and assigns it to the AliasType field.
+func (o *Alias) SetAliasType(v string) {
+	o.AliasType = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Alias) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Alias) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Alias) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Alias) SetId(v string) {
+	o.Id = &v
 }
 
 func (o Alias) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ConnectId != nil {
-		toSerialize["connect_id"] = o.ConnectId
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.AliasType != nil {
-		toSerialize["alias_type"] = o.AliasType
+	if o.AliasInfo != nil {
+		toSerialize["alias_info"] = o.AliasInfo
 	}
 	if o.AliasName != nil {
 		toSerialize["alias_name"] = o.AliasName
@@ -256,8 +216,11 @@ func (o Alias) MarshalJSON() ([]byte, error) {
 	if o.AliasSource != nil {
 		toSerialize["alias_source"] = o.AliasSource
 	}
-	if o.AliasInfo != nil {
-		toSerialize["alias_info"] = o.AliasInfo
+	if o.AliasType != nil {
+		toSerialize["alias_type"] = o.AliasType
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	return json.Marshal(toSerialize)
 }

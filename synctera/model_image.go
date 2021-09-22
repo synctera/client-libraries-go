@@ -16,25 +16,25 @@ import (
 
 // Image Image uploaded for a remote deposit capture
 type Image struct {
-	// RDC image id
-	Id string `json:"id"`
-	MediaType RdcMediaType `json:"media_type"`
 	// Base64url encoded image
 	ByteData string `json:"byte_data"`
 	// Date the image was uploaded, in RFC 3339 format
 	DateUploaded string `json:"date_uploaded"`
+	// RDC image id
+	Id string `json:"id"`
+	MediaType RdcMediaType `json:"media_type"`
 }
 
 // NewImage instantiates a new Image object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImage(id string, mediaType RdcMediaType, byteData string, dateUploaded string) *Image {
+func NewImage(byteData string, dateUploaded string, id string, mediaType RdcMediaType) *Image {
 	this := Image{}
-	this.Id = id
-	this.MediaType = mediaType
 	this.ByteData = byteData
 	this.DateUploaded = dateUploaded
+	this.Id = id
+	this.MediaType = mediaType
 	return &this
 }
 
@@ -44,54 +44,6 @@ func NewImage(id string, mediaType RdcMediaType, byteData string, dateUploaded s
 func NewImageWithDefaults() *Image {
 	this := Image{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *Image) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *Image) GetIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *Image) SetId(v string) {
-	o.Id = v
-}
-
-// GetMediaType returns the MediaType field value
-func (o *Image) GetMediaType() RdcMediaType {
-	if o == nil {
-		var ret RdcMediaType
-		return ret
-	}
-
-	return o.MediaType
-}
-
-// GetMediaTypeOk returns a tuple with the MediaType field value
-// and a boolean to check if the value has been set.
-func (o *Image) GetMediaTypeOk() (*RdcMediaType, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.MediaType, true
-}
-
-// SetMediaType sets field value
-func (o *Image) SetMediaType(v RdcMediaType) {
-	o.MediaType = v
 }
 
 // GetByteData returns the ByteData field value
@@ -142,19 +94,67 @@ func (o *Image) SetDateUploaded(v string) {
 	o.DateUploaded = v
 }
 
+// GetId returns the Id field value
+func (o *Image) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *Image) GetIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *Image) SetId(v string) {
+	o.Id = v
+}
+
+// GetMediaType returns the MediaType field value
+func (o *Image) GetMediaType() RdcMediaType {
+	if o == nil {
+		var ret RdcMediaType
+		return ret
+	}
+
+	return o.MediaType
+}
+
+// GetMediaTypeOk returns a tuple with the MediaType field value
+// and a boolean to check if the value has been set.
+func (o *Image) GetMediaTypeOk() (*RdcMediaType, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.MediaType, true
+}
+
+// SetMediaType sets field value
+func (o *Image) SetMediaType(v RdcMediaType) {
+	o.MediaType = v
+}
+
 func (o Image) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["media_type"] = o.MediaType
-	}
 	if true {
 		toSerialize["byte_data"] = o.ByteData
 	}
 	if true {
 		toSerialize["date_uploaded"] = o.DateUploaded
+	}
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["media_type"] = o.MediaType
 	}
 	return json.Marshal(toSerialize)
 }

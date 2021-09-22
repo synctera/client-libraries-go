@@ -17,23 +17,23 @@ import (
 
 // Transaction struct for Transaction
 type Transaction struct {
-	// Transaction ID
-	Id *string `json:"id,omitempty"`
 	// Account ID
 	AccountId *string `json:"account_id,omitempty"`
-	// Currency of the transaction. ISO 4217 alphabetic currency code
-	Currency *string `json:"currency,omitempty"`
 	// Transaction amount in ISO 4217 minor currency units
 	Amount *int32 `json:"amount,omitempty"`
+	// Reference for the authorization
+	AuthorizationRef *string `json:"authorization_ref,omitempty"`
+	// Currency of the transaction. ISO 4217 alphabetic currency code
+	Currency *string `json:"currency,omitempty"`
 	DcSign *DcSignType `json:"dc_sign,omitempty"`
 	// The effective date of the transaction (value_date)
 	EffectiveDate *time.Time `json:"effective_date,omitempty"`
-	// Profit center of the transaction
-	ProfitCenter *string `json:"profit_center,omitempty"`
-	// Reference for the authorization
-	AuthorizationRef *string `json:"authorization_ref,omitempty"`
 	// External reference from Synctera for the transaction
 	ExtReference *string `json:"ext_reference,omitempty"`
+	// Transaction ID
+	Id *string `json:"id,omitempty"`
+	// Profit center of the transaction
+	ProfitCenter *string `json:"profit_center,omitempty"`
 	// The status of the transaction
 	Status *string `json:"status,omitempty"`
 	// Transaction type
@@ -55,38 +55,6 @@ func NewTransaction() *Transaction {
 func NewTransactionWithDefaults() *Transaction {
 	this := Transaction{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Transaction) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Transaction) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Transaction) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Transaction) SetId(v string) {
-	o.Id = &v
 }
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
@@ -121,38 +89,6 @@ func (o *Transaction) SetAccountId(v string) {
 	o.AccountId = &v
 }
 
-// GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *Transaction) GetCurrency() string {
-	if o == nil || o.Currency == nil {
-		var ret string
-		return ret
-	}
-	return *o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Transaction) GetCurrencyOk() (*string, bool) {
-	if o == nil || o.Currency == nil {
-		return nil, false
-	}
-	return o.Currency, true
-}
-
-// HasCurrency returns a boolean if a field has been set.
-func (o *Transaction) HasCurrency() bool {
-	if o != nil && o.Currency != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *Transaction) SetCurrency(v string) {
-	o.Currency = &v
-}
-
 // GetAmount returns the Amount field value if set, zero value otherwise.
 func (o *Transaction) GetAmount() int32 {
 	if o == nil || o.Amount == nil {
@@ -183,6 +119,70 @@ func (o *Transaction) HasAmount() bool {
 // SetAmount gets a reference to the given int32 and assigns it to the Amount field.
 func (o *Transaction) SetAmount(v int32) {
 	o.Amount = &v
+}
+
+// GetAuthorizationRef returns the AuthorizationRef field value if set, zero value otherwise.
+func (o *Transaction) GetAuthorizationRef() string {
+	if o == nil || o.AuthorizationRef == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthorizationRef
+}
+
+// GetAuthorizationRefOk returns a tuple with the AuthorizationRef field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Transaction) GetAuthorizationRefOk() (*string, bool) {
+	if o == nil || o.AuthorizationRef == nil {
+		return nil, false
+	}
+	return o.AuthorizationRef, true
+}
+
+// HasAuthorizationRef returns a boolean if a field has been set.
+func (o *Transaction) HasAuthorizationRef() bool {
+	if o != nil && o.AuthorizationRef != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizationRef gets a reference to the given string and assigns it to the AuthorizationRef field.
+func (o *Transaction) SetAuthorizationRef(v string) {
+	o.AuthorizationRef = &v
+}
+
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *Transaction) GetCurrency() string {
+	if o == nil || o.Currency == nil {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Transaction) GetCurrencyOk() (*string, bool) {
+	if o == nil || o.Currency == nil {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *Transaction) HasCurrency() bool {
+	if o != nil && o.Currency != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *Transaction) SetCurrency(v string) {
+	o.Currency = &v
 }
 
 // GetDcSign returns the DcSign field value if set, zero value otherwise.
@@ -249,70 +249,6 @@ func (o *Transaction) SetEffectiveDate(v time.Time) {
 	o.EffectiveDate = &v
 }
 
-// GetProfitCenter returns the ProfitCenter field value if set, zero value otherwise.
-func (o *Transaction) GetProfitCenter() string {
-	if o == nil || o.ProfitCenter == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProfitCenter
-}
-
-// GetProfitCenterOk returns a tuple with the ProfitCenter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Transaction) GetProfitCenterOk() (*string, bool) {
-	if o == nil || o.ProfitCenter == nil {
-		return nil, false
-	}
-	return o.ProfitCenter, true
-}
-
-// HasProfitCenter returns a boolean if a field has been set.
-func (o *Transaction) HasProfitCenter() bool {
-	if o != nil && o.ProfitCenter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProfitCenter gets a reference to the given string and assigns it to the ProfitCenter field.
-func (o *Transaction) SetProfitCenter(v string) {
-	o.ProfitCenter = &v
-}
-
-// GetAuthorizationRef returns the AuthorizationRef field value if set, zero value otherwise.
-func (o *Transaction) GetAuthorizationRef() string {
-	if o == nil || o.AuthorizationRef == nil {
-		var ret string
-		return ret
-	}
-	return *o.AuthorizationRef
-}
-
-// GetAuthorizationRefOk returns a tuple with the AuthorizationRef field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Transaction) GetAuthorizationRefOk() (*string, bool) {
-	if o == nil || o.AuthorizationRef == nil {
-		return nil, false
-	}
-	return o.AuthorizationRef, true
-}
-
-// HasAuthorizationRef returns a boolean if a field has been set.
-func (o *Transaction) HasAuthorizationRef() bool {
-	if o != nil && o.AuthorizationRef != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthorizationRef gets a reference to the given string and assigns it to the AuthorizationRef field.
-func (o *Transaction) SetAuthorizationRef(v string) {
-	o.AuthorizationRef = &v
-}
-
 // GetExtReference returns the ExtReference field value if set, zero value otherwise.
 func (o *Transaction) GetExtReference() string {
 	if o == nil || o.ExtReference == nil {
@@ -343,6 +279,70 @@ func (o *Transaction) HasExtReference() bool {
 // SetExtReference gets a reference to the given string and assigns it to the ExtReference field.
 func (o *Transaction) SetExtReference(v string) {
 	o.ExtReference = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Transaction) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Transaction) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Transaction) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Transaction) SetId(v string) {
+	o.Id = &v
+}
+
+// GetProfitCenter returns the ProfitCenter field value if set, zero value otherwise.
+func (o *Transaction) GetProfitCenter() string {
+	if o == nil || o.ProfitCenter == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProfitCenter
+}
+
+// GetProfitCenterOk returns a tuple with the ProfitCenter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Transaction) GetProfitCenterOk() (*string, bool) {
+	if o == nil || o.ProfitCenter == nil {
+		return nil, false
+	}
+	return o.ProfitCenter, true
+}
+
+// HasProfitCenter returns a boolean if a field has been set.
+func (o *Transaction) HasProfitCenter() bool {
+	if o != nil && o.ProfitCenter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProfitCenter gets a reference to the given string and assigns it to the ProfitCenter field.
+func (o *Transaction) SetProfitCenter(v string) {
+	o.ProfitCenter = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -411,17 +411,17 @@ func (o *Transaction) SetTransactionType(v string) {
 
 func (o Transaction) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
 	if o.AccountId != nil {
 		toSerialize["account_id"] = o.AccountId
 	}
-	if o.Currency != nil {
-		toSerialize["currency"] = o.Currency
-	}
 	if o.Amount != nil {
 		toSerialize["amount"] = o.Amount
+	}
+	if o.AuthorizationRef != nil {
+		toSerialize["authorization_ref"] = o.AuthorizationRef
+	}
+	if o.Currency != nil {
+		toSerialize["currency"] = o.Currency
 	}
 	if o.DcSign != nil {
 		toSerialize["dc_sign"] = o.DcSign
@@ -429,14 +429,14 @@ func (o Transaction) MarshalJSON() ([]byte, error) {
 	if o.EffectiveDate != nil {
 		toSerialize["effective_date"] = o.EffectiveDate
 	}
-	if o.ProfitCenter != nil {
-		toSerialize["profit_center"] = o.ProfitCenter
-	}
-	if o.AuthorizationRef != nil {
-		toSerialize["authorization_ref"] = o.AuthorizationRef
-	}
 	if o.ExtReference != nil {
 		toSerialize["ext_reference"] = o.ExtReference
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if o.ProfitCenter != nil {
+		toSerialize["profit_center"] = o.ProfitCenter
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status

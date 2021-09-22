@@ -16,17 +16,17 @@ import (
 
 // AccountAddress struct for AccountAddress
 type AccountAddress struct {
+	Address *Address `json:"address,omitempty"`
+	// Address unique ID
+	AddressId *int32 `json:"address_id,omitempty"`
 	// Connection ID of the account
 	ConnectId *string `json:"connect_id,omitempty"`
+	// Customer ID
+	CustomerId *string `json:"customer_id,omitempty"`
 	// Document
 	DocumentTypeId *int32 `json:"document_type_id,omitempty"`
 	// Indicator of duplicate of the address
 	Duplicate *bool `json:"duplicate,omitempty"`
-	// Customer ID
-	CustomerId *string `json:"customer_id,omitempty"`
-	// Address unique ID
-	AddressId *int32 `json:"address_id,omitempty"`
-	Address *Address `json:"address,omitempty"`
 }
 
 // NewAccountAddress instantiates a new AccountAddress object
@@ -44,6 +44,70 @@ func NewAccountAddress() *AccountAddress {
 func NewAccountAddressWithDefaults() *AccountAddress {
 	this := AccountAddress{}
 	return &this
+}
+
+// GetAddress returns the Address field value if set, zero value otherwise.
+func (o *AccountAddress) GetAddress() Address {
+	if o == nil || o.Address == nil {
+		var ret Address
+		return ret
+	}
+	return *o.Address
+}
+
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountAddress) GetAddressOk() (*Address, bool) {
+	if o == nil || o.Address == nil {
+		return nil, false
+	}
+	return o.Address, true
+}
+
+// HasAddress returns a boolean if a field has been set.
+func (o *AccountAddress) HasAddress() bool {
+	if o != nil && o.Address != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given Address and assigns it to the Address field.
+func (o *AccountAddress) SetAddress(v Address) {
+	o.Address = &v
+}
+
+// GetAddressId returns the AddressId field value if set, zero value otherwise.
+func (o *AccountAddress) GetAddressId() int32 {
+	if o == nil || o.AddressId == nil {
+		var ret int32
+		return ret
+	}
+	return *o.AddressId
+}
+
+// GetAddressIdOk returns a tuple with the AddressId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountAddress) GetAddressIdOk() (*int32, bool) {
+	if o == nil || o.AddressId == nil {
+		return nil, false
+	}
+	return o.AddressId, true
+}
+
+// HasAddressId returns a boolean if a field has been set.
+func (o *AccountAddress) HasAddressId() bool {
+	if o != nil && o.AddressId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAddressId gets a reference to the given int32 and assigns it to the AddressId field.
+func (o *AccountAddress) SetAddressId(v int32) {
+	o.AddressId = &v
 }
 
 // GetConnectId returns the ConnectId field value if set, zero value otherwise.
@@ -76,6 +140,38 @@ func (o *AccountAddress) HasConnectId() bool {
 // SetConnectId gets a reference to the given string and assigns it to the ConnectId field.
 func (o *AccountAddress) SetConnectId(v string) {
 	o.ConnectId = &v
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+func (o *AccountAddress) GetCustomerId() string {
+	if o == nil || o.CustomerId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountAddress) GetCustomerIdOk() (*string, bool) {
+	if o == nil || o.CustomerId == nil {
+		return nil, false
+	}
+	return o.CustomerId, true
+}
+
+// HasCustomerId returns a boolean if a field has been set.
+func (o *AccountAddress) HasCustomerId() bool {
+	if o != nil && o.CustomerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+func (o *AccountAddress) SetCustomerId(v string) {
+	o.CustomerId = &v
 }
 
 // GetDocumentTypeId returns the DocumentTypeId field value if set, zero value otherwise.
@@ -142,121 +238,25 @@ func (o *AccountAddress) SetDuplicate(v bool) {
 	o.Duplicate = &v
 }
 
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
-func (o *AccountAddress) GetCustomerId() string {
-	if o == nil || o.CustomerId == nil {
-		var ret string
-		return ret
-	}
-	return *o.CustomerId
-}
-
-// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountAddress) GetCustomerIdOk() (*string, bool) {
-	if o == nil || o.CustomerId == nil {
-		return nil, false
-	}
-	return o.CustomerId, true
-}
-
-// HasCustomerId returns a boolean if a field has been set.
-func (o *AccountAddress) HasCustomerId() bool {
-	if o != nil && o.CustomerId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
-func (o *AccountAddress) SetCustomerId(v string) {
-	o.CustomerId = &v
-}
-
-// GetAddressId returns the AddressId field value if set, zero value otherwise.
-func (o *AccountAddress) GetAddressId() int32 {
-	if o == nil || o.AddressId == nil {
-		var ret int32
-		return ret
-	}
-	return *o.AddressId
-}
-
-// GetAddressIdOk returns a tuple with the AddressId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountAddress) GetAddressIdOk() (*int32, bool) {
-	if o == nil || o.AddressId == nil {
-		return nil, false
-	}
-	return o.AddressId, true
-}
-
-// HasAddressId returns a boolean if a field has been set.
-func (o *AccountAddress) HasAddressId() bool {
-	if o != nil && o.AddressId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAddressId gets a reference to the given int32 and assigns it to the AddressId field.
-func (o *AccountAddress) SetAddressId(v int32) {
-	o.AddressId = &v
-}
-
-// GetAddress returns the Address field value if set, zero value otherwise.
-func (o *AccountAddress) GetAddress() Address {
-	if o == nil || o.Address == nil {
-		var ret Address
-		return ret
-	}
-	return *o.Address
-}
-
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountAddress) GetAddressOk() (*Address, bool) {
-	if o == nil || o.Address == nil {
-		return nil, false
-	}
-	return o.Address, true
-}
-
-// HasAddress returns a boolean if a field has been set.
-func (o *AccountAddress) HasAddress() bool {
-	if o != nil && o.Address != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given Address and assigns it to the Address field.
-func (o *AccountAddress) SetAddress(v Address) {
-	o.Address = &v
-}
-
 func (o AccountAddress) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Address != nil {
+		toSerialize["address"] = o.Address
+	}
+	if o.AddressId != nil {
+		toSerialize["address_id"] = o.AddressId
+	}
 	if o.ConnectId != nil {
 		toSerialize["connect_id"] = o.ConnectId
+	}
+	if o.CustomerId != nil {
+		toSerialize["customer_id"] = o.CustomerId
 	}
 	if o.DocumentTypeId != nil {
 		toSerialize["document_type_id"] = o.DocumentTypeId
 	}
 	if o.Duplicate != nil {
 		toSerialize["duplicate"] = o.Duplicate
-	}
-	if o.CustomerId != nil {
-		toSerialize["customer_id"] = o.CustomerId
-	}
-	if o.AddressId != nil {
-		toSerialize["address_id"] = o.AddressId
-	}
-	if o.Address != nil {
-		toSerialize["address"] = o.Address
 	}
 	return json.Marshal(toSerialize)
 }

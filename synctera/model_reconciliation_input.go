@@ -16,20 +16,20 @@ import (
 
 // ReconciliationInput Input data for a reconciliation
 type ReconciliationInput struct {
-	// Filename of the data to be reconciled
-	FileName string `json:"file_name"`
 	// Base64url encoded image
 	ByteData string `json:"byte_data"`
+	// Filename of the data to be reconciled
+	FileName string `json:"file_name"`
 }
 
 // NewReconciliationInput instantiates a new ReconciliationInput object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReconciliationInput(fileName string, byteData string) *ReconciliationInput {
+func NewReconciliationInput(byteData string, fileName string) *ReconciliationInput {
 	this := ReconciliationInput{}
-	this.FileName = fileName
 	this.ByteData = byteData
+	this.FileName = fileName
 	return &this
 }
 
@@ -39,30 +39,6 @@ func NewReconciliationInput(fileName string, byteData string) *ReconciliationInp
 func NewReconciliationInputWithDefaults() *ReconciliationInput {
 	this := ReconciliationInput{}
 	return &this
-}
-
-// GetFileName returns the FileName field value
-func (o *ReconciliationInput) GetFileName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.FileName
-}
-
-// GetFileNameOk returns a tuple with the FileName field value
-// and a boolean to check if the value has been set.
-func (o *ReconciliationInput) GetFileNameOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.FileName, true
-}
-
-// SetFileName sets field value
-func (o *ReconciliationInput) SetFileName(v string) {
-	o.FileName = v
 }
 
 // GetByteData returns the ByteData field value
@@ -89,13 +65,37 @@ func (o *ReconciliationInput) SetByteData(v string) {
 	o.ByteData = v
 }
 
+// GetFileName returns the FileName field value
+func (o *ReconciliationInput) GetFileName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.FileName
+}
+
+// GetFileNameOk returns a tuple with the FileName field value
+// and a boolean to check if the value has been set.
+func (o *ReconciliationInput) GetFileNameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.FileName, true
+}
+
+// SetFileName sets field value
+func (o *ReconciliationInput) SetFileName(v string) {
+	o.FileName = v
+}
+
 func (o ReconciliationInput) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["file_name"] = o.FileName
+		toSerialize["byte_data"] = o.ByteData
 	}
 	if true {
-		toSerialize["byte_data"] = o.ByteData
+		toSerialize["file_name"] = o.FileName
 	}
 	return json.Marshal(toSerialize)
 }

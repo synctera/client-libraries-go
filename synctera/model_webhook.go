@@ -17,31 +17,31 @@ import (
 
 // Webhook Webhook object
 type Webhook struct {
-	// The unique ID of the webhook
-	Id *string `json:"id,omitempty"`
-	// URL that the webhook will send request to
-	Url string `json:"url"`
 	// A description of what the webhook is used for
 	Description *string `json:"description,omitempty"`
 	// A list of the events that will trigger the webhook
-	EnabledEvents []EventType `json:"enabled_events"`
-	// Additional information stored to the webhook
-	Metadata *string `json:"metadata,omitempty"`
-	// Timestamp that this webhook was created or the last time any field was changed
-	LastUpdated *time.Time `json:"last_updated,omitempty"`
+	EnabledEvents []EventType1 `json:"enabled_events"`
+	// The unique ID of the webhook
+	Id *string `json:"id,omitempty"`
 	// Set the webhook to be enabled or disabled
 	IsEnabled bool `json:"is_enabled"`
+	// Timestamp that this webhook was created or the last time any field was changed
+	LastUpdated *time.Time `json:"last_updated,omitempty"`
+	// Additional information stored to the webhook
+	Metadata *string `json:"metadata,omitempty"`
+	// URL that the webhook will send request to
+	Url string `json:"url"`
 }
 
 // NewWebhook instantiates a new Webhook object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebhook(url string, enabledEvents []EventType, isEnabled bool) *Webhook {
+func NewWebhook(enabledEvents []EventType1, isEnabled bool, url string) *Webhook {
 	this := Webhook{}
-	this.Url = url
 	this.EnabledEvents = enabledEvents
 	this.IsEnabled = isEnabled
+	this.Url = url
 	return &this
 }
 
@@ -51,62 +51,6 @@ func NewWebhook(url string, enabledEvents []EventType, isEnabled bool) *Webhook 
 func NewWebhookWithDefaults() *Webhook {
 	this := Webhook{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Webhook) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Webhook) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Webhook) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Webhook) SetId(v string) {
-	o.Id = &v
-}
-
-// GetUrl returns the Url field value
-func (o *Webhook) GetUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Url
-}
-
-// GetUrlOk returns a tuple with the Url field value
-// and a boolean to check if the value has been set.
-func (o *Webhook) GetUrlOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Url, true
-}
-
-// SetUrl sets field value
-func (o *Webhook) SetUrl(v string) {
-	o.Url = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -142,9 +86,9 @@ func (o *Webhook) SetDescription(v string) {
 }
 
 // GetEnabledEvents returns the EnabledEvents field value
-func (o *Webhook) GetEnabledEvents() []EventType {
+func (o *Webhook) GetEnabledEvents() []EventType1 {
 	if o == nil {
-		var ret []EventType
+		var ret []EventType1
 		return ret
 	}
 
@@ -153,7 +97,7 @@ func (o *Webhook) GetEnabledEvents() []EventType {
 
 // GetEnabledEventsOk returns a tuple with the EnabledEvents field value
 // and a boolean to check if the value has been set.
-func (o *Webhook) GetEnabledEventsOk() (*[]EventType, bool) {
+func (o *Webhook) GetEnabledEventsOk() (*[]EventType1, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -161,40 +105,64 @@ func (o *Webhook) GetEnabledEventsOk() (*[]EventType, bool) {
 }
 
 // SetEnabledEvents sets field value
-func (o *Webhook) SetEnabledEvents(v []EventType) {
+func (o *Webhook) SetEnabledEvents(v []EventType1) {
 	o.EnabledEvents = v
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *Webhook) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Webhook) GetId() string {
+	if o == nil || o.Id == nil {
 		var ret string
 		return ret
 	}
-	return *o.Metadata
+	return *o.Id
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Webhook) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
+func (o *Webhook) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
-	return o.Metadata, true
+	return o.Id, true
 }
 
-// HasMetadata returns a boolean if a field has been set.
-func (o *Webhook) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+// HasId returns a boolean if a field has been set.
+func (o *Webhook) HasId() bool {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *Webhook) SetMetadata(v string) {
-	o.Metadata = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Webhook) SetId(v string) {
+	o.Id = &v
+}
+
+// GetIsEnabled returns the IsEnabled field value
+func (o *Webhook) GetIsEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsEnabled
+}
+
+// GetIsEnabledOk returns a tuple with the IsEnabled field value
+// and a boolean to check if the value has been set.
+func (o *Webhook) GetIsEnabledOk() (*bool, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.IsEnabled, true
+}
+
+// SetIsEnabled sets field value
+func (o *Webhook) SetIsEnabled(v bool) {
+	o.IsEnabled = v
 }
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
@@ -229,52 +197,84 @@ func (o *Webhook) SetLastUpdated(v time.Time) {
 	o.LastUpdated = &v
 }
 
-// GetIsEnabled returns the IsEnabled field value
-func (o *Webhook) GetIsEnabled() bool {
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *Webhook) GetMetadata() string {
+	if o == nil || o.Metadata == nil {
+		var ret string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Webhook) GetMetadataOk() (*string, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *Webhook) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
+func (o *Webhook) SetMetadata(v string) {
+	o.Metadata = &v
+}
+
+// GetUrl returns the Url field value
+func (o *Webhook) GetUrl() string {
 	if o == nil {
-		var ret bool
+		var ret string
 		return ret
 	}
 
-	return o.IsEnabled
+	return o.Url
 }
 
-// GetIsEnabledOk returns a tuple with the IsEnabled field value
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
-func (o *Webhook) GetIsEnabledOk() (*bool, bool) {
+func (o *Webhook) GetUrlOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.IsEnabled, true
+	return &o.Url, true
 }
 
-// SetIsEnabled sets field value
-func (o *Webhook) SetIsEnabled(v bool) {
-	o.IsEnabled = v
+// SetUrl sets field value
+func (o *Webhook) SetUrl(v string) {
+	o.Url = v
 }
 
 func (o Webhook) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["url"] = o.Url
-	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
 	if true {
 		toSerialize["enabled_events"] = o.EnabledEvents
 	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["is_enabled"] = o.IsEnabled
 	}
 	if o.LastUpdated != nil {
 		toSerialize["last_updated"] = o.LastUpdated
 	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	if true {
-		toSerialize["is_enabled"] = o.IsEnabled
+		toSerialize["url"] = o.Url
 	}
 	return json.Marshal(toSerialize)
 }

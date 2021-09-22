@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | RDC Scan ID | [readonly] 
 **AccountNumber** | **string** | Account number | [readonly] 
-**RoutingNumber** | **string** | Bank routing number | [readonly] 
+**BackImageId** | **string** | ID of the image of the back of the check | 
 **CheckAmount** | **int32** | Amount on check in ISO 4217 minor currency units | [readonly] 
 **CheckCurrency** | **string** | ISO 4217 currency code for the check amount | [readonly] 
 **DateScanned** | **string** | Date the check image was scanned, in RFC 3339 format | [readonly] 
 **FrontImageId** | **string** | ID of the image of the front of the check | 
-**BackImageId** | **string** | ID of the image of the back of the check | 
+**Id** | **string** | RDC Scan ID | [readonly] 
+**RoutingNumber** | **string** | Bank routing number | [readonly] 
 
 ## Methods
 
 ### NewScan
 
-`func NewScan(id string, accountNumber string, routingNumber string, checkAmount int32, checkCurrency string, dateScanned string, frontImageId string, backImageId string, ) *Scan`
+`func NewScan(accountNumber string, backImageId string, checkAmount int32, checkCurrency string, dateScanned string, frontImageId string, id string, routingNumber string, ) *Scan`
 
 NewScan instantiates a new Scan object
 This constructor will assign default values to properties that have it defined,
@@ -31,26 +31,6 @@ will change when the set of required properties is changed
 NewScanWithDefaults instantiates a new Scan object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Scan) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Scan) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Scan) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetAccountNumber
 
@@ -72,24 +52,24 @@ and a boolean to check if the value has been set.
 SetAccountNumber sets AccountNumber field to given value.
 
 
-### GetRoutingNumber
+### GetBackImageId
 
-`func (o *Scan) GetRoutingNumber() string`
+`func (o *Scan) GetBackImageId() string`
 
-GetRoutingNumber returns the RoutingNumber field if non-nil, zero value otherwise.
+GetBackImageId returns the BackImageId field if non-nil, zero value otherwise.
 
-### GetRoutingNumberOk
+### GetBackImageIdOk
 
-`func (o *Scan) GetRoutingNumberOk() (*string, bool)`
+`func (o *Scan) GetBackImageIdOk() (*string, bool)`
 
-GetRoutingNumberOk returns a tuple with the RoutingNumber field if it's non-nil, zero value otherwise
+GetBackImageIdOk returns a tuple with the BackImageId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRoutingNumber
+### SetBackImageId
 
-`func (o *Scan) SetRoutingNumber(v string)`
+`func (o *Scan) SetBackImageId(v string)`
 
-SetRoutingNumber sets RoutingNumber field to given value.
+SetBackImageId sets BackImageId field to given value.
 
 
 ### GetCheckAmount
@@ -172,24 +152,44 @@ and a boolean to check if the value has been set.
 SetFrontImageId sets FrontImageId field to given value.
 
 
-### GetBackImageId
+### GetId
 
-`func (o *Scan) GetBackImageId() string`
+`func (o *Scan) GetId() string`
 
-GetBackImageId returns the BackImageId field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetBackImageIdOk
+### GetIdOk
 
-`func (o *Scan) GetBackImageIdOk() (*string, bool)`
+`func (o *Scan) GetIdOk() (*string, bool)`
 
-GetBackImageIdOk returns a tuple with the BackImageId field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBackImageId
+### SetId
 
-`func (o *Scan) SetBackImageId(v string)`
+`func (o *Scan) SetId(v string)`
 
-SetBackImageId sets BackImageId field to given value.
+SetId sets Id field to given value.
+
+
+### GetRoutingNumber
+
+`func (o *Scan) GetRoutingNumber() string`
+
+GetRoutingNumber returns the RoutingNumber field if non-nil, zero value otherwise.
+
+### GetRoutingNumberOk
+
+`func (o *Scan) GetRoutingNumberOk() (*string, bool)`
+
+GetRoutingNumberOk returns a tuple with the RoutingNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoutingNumber
+
+`func (o *Scan) SetRoutingNumber(v string)`
+
+SetRoutingNumber sets RoutingNumber field to given value.
 
 
 

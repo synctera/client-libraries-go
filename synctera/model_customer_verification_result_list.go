@@ -18,7 +18,7 @@ import (
 type CustomerVerificationResultList struct {
 	// Array of Verification results
 	Verifications []CustomerVerificationResult `json:"verifications"`
-	// If returned, use the next_page_token to query for the next page of results.
+	// If returned, use the next_page_token to query for the next page of results. Not returned if there are no more rows.
 	NextPageToken *string `json:"next_page_token,omitempty"`
 }
 
