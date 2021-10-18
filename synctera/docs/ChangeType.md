@@ -5,7 +5,7 @@
 
 * `STATUS` (value: `"STATUS"`)
 
-* `FULFILMENT` (value: `"FULFILMENT"`)
+* `FULFILLMENT` (value: `"FULFILLMENT"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

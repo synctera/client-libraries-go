@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-    a2aTransfer := *openapiclient.NewA2aTransfer(int32(441), "LBP", openapiclient.dc_sign_type("DEBIT"), "SourceAccount_example", "TargetAccount_example") // A2aTransfer | Account to account transfer to create
+    a2aTransfer := *openapiclient.NewA2aTransfer(int32(33), "KHR", openapiclient.dc_sign_type("DEBIT"), "SourceAccount_example", "TargetAccount_example") // A2aTransfer | Account to account transfer to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -102,8 +102,8 @@ import (
 )
 
 func main() {
-    achOutgoing := *openapiclient.NewAchOutgoing("afc3532b-cc77-4bf2-b625-bb034263bdc7", int32(536), "KYD", "Terry Aufderhar", "4586598335580180", "472840906", "LY") // AchOutgoing | Outgoing ACH to create
-    mfaToken := "409069" // string | Multi-Factor Authentication Token (optional)
+    achOutgoing := *openapiclient.NewAchOutgoing("73aa78e4-5385-48cb-add2-a640d77f3b9e", int32(853), "UZS", "Carroll Anderson", "5265228211464851", "405234648", "KN") // AchOutgoing | Outgoing ACH to create
+    mfaToken := "526255" // string | Multi-Factor Authentication Token (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -313,7 +313,7 @@ import (
 func main() {
     aCHExecutionDate := time.Now() // string | Execution Date
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -381,9 +381,9 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -403,7 +403,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -526,8 +526,8 @@ import (
 
 func main() {
     paymentId := TODO // string | Payment ID
-    achOutgoing := *openapiclient.NewAchOutgoing("afc3532b-cc77-4bf2-b625-bb034263bdc7", int32(536), "KYD", "Terry Aufderhar", "4586598335580180", "472840906", "LY") // AchOutgoing | Outgoing ACH to update
-    mfaToken := "409069" // string | Multi-Factor Authentication Token (optional)
+    achOutgoing := *openapiclient.NewAchOutgoing("73aa78e4-5385-48cb-add2-a640d77f3b9e", int32(853), "UZS", "Carroll Anderson", "5265228211464851", "405234648", "KN") // AchOutgoing | Outgoing ACH to update
+    mfaToken := "526255" // string | Multi-Factor Authentication Token (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **AccessStatus** | Pointer to **string** | Access status for account. Default ACTIVE | [optional] 
 **AccountNumber** | Pointer to **string** | Account number | [optional] 
 **AccountTemplateId** | Pointer to **string** | Account template ID | [optional] 
-**AccountTemplateVersion** | Pointer to **float32** | Account template version | [optional] 
 **AccountType** | Pointer to [**AccountType**](AccountType.md) |  | [optional] 
 **Balances** | Pointer to [**[]Balance**](Balance.md) | A list of balances for account based on different type | [optional] [readonly] 
 **Currency** | Pointer to **string** | Account currency or account settlement currency. ISO 4217 alphabetic currency code. Default USD | [optional] 
@@ -114,31 +113,6 @@ SetAccountTemplateId sets AccountTemplateId field to given value.
 `func (o *AccountCreation) HasAccountTemplateId() bool`
 
 HasAccountTemplateId returns a boolean if a field has been set.
-
-### GetAccountTemplateVersion
-
-`func (o *AccountCreation) GetAccountTemplateVersion() float32`
-
-GetAccountTemplateVersion returns the AccountTemplateVersion field if non-nil, zero value otherwise.
-
-### GetAccountTemplateVersionOk
-
-`func (o *AccountCreation) GetAccountTemplateVersionOk() (*float32, bool)`
-
-GetAccountTemplateVersionOk returns a tuple with the AccountTemplateVersion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountTemplateVersion
-
-`func (o *AccountCreation) SetAccountTemplateVersion(v float32)`
-
-SetAccountTemplateVersion sets AccountTemplateVersion field to given value.
-
-### HasAccountTemplateVersion
-
-`func (o *AccountCreation) HasAccountTemplateVersion() bool`
-
-HasAccountTemplateVersion returns a boolean if a field has been set.
 
 ### GetAccountType
 

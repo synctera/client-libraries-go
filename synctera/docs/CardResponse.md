@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **Carrier** | Pointer to **string** | The carrier with whom the card is shipped | [optional] [readonly] 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
 **ShippingStatus** | Pointer to **string** | The status of indicating the shipping status of the card | [optional] [readonly] 
-**StatusReason** | **string** | The reason for the current card status | 
+**StatusReason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
 **TrackingNumber** | Pointer to **string** | The tracking number | [optional] [readonly] 
 **Status** | [**CardStatusObject**](CardStatusObject.md) |  | 
 
@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 
 ### NewCardResponse
 
-`func NewCardResponse(form string, accountId string, cardProductId string, creationTime time.Time, customerId string, embossName EmbossName, expirationMonth string, expirationYear string, id string, lastFour string, network string, type_ string, shipping Shipping, cardFulfillmentStatus CardFulfillmentStatus, cardStatus CardStatus, statusReason string, status CardStatusObject, ) *CardResponse`
+`func NewCardResponse(form string, accountId string, cardProductId string, creationTime time.Time, customerId string, embossName EmbossName, expirationMonth string, expirationYear string, id string, lastFour string, network string, type_ string, shipping Shipping, cardFulfillmentStatus CardFulfillmentStatus, cardStatus CardStatus, statusReason CardStatusReasonCode, status CardStatusObject, ) *CardResponse`
 
 NewCardResponse instantiates a new CardResponse object
 This constructor will assign default values to properties that have it defined,
@@ -630,20 +630,20 @@ HasShippingStatus returns a boolean if a field has been set.
 
 ### GetStatusReason
 
-`func (o *CardResponse) GetStatusReason() string`
+`func (o *CardResponse) GetStatusReason() CardStatusReasonCode`
 
 GetStatusReason returns the StatusReason field if non-nil, zero value otherwise.
 
 ### GetStatusReasonOk
 
-`func (o *CardResponse) GetStatusReasonOk() (*string, bool)`
+`func (o *CardResponse) GetStatusReasonOk() (*CardStatusReasonCode, bool)`
 
 GetStatusReasonOk returns a tuple with the StatusReason field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatusReason
 
-`func (o *CardResponse) SetStatusReason(v string)`
+`func (o *CardResponse) SetStatusReason(v CardStatusReasonCode)`
 
 SetStatusReason sets StatusReason field to given value.
 

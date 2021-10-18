@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **CardStatus** | [**CardStatus**](CardStatus.md) |  | 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
 **Metadata** | Pointer to **map[string]string** | Additional data to include in the request structured as key-value pairs | [optional] 
-**Reason** | [**CardChangeReasonCode**](CardChangeReasonCode.md) |  | 
+**Reason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
 **Shipping** | Pointer to [**Shipping**](Shipping.md) |  | [optional] 
 
 ## Methods
 
 ### NewCardEditRequest
 
-`func NewCardEditRequest(cardStatus CardStatus, reason CardChangeReasonCode, ) *CardEditRequest`
+`func NewCardEditRequest(cardStatus CardStatus, reason CardStatusReasonCode, ) *CardEditRequest`
 
 NewCardEditRequest instantiates a new CardEditRequest object
 This constructor will assign default values to properties that have it defined,
@@ -101,20 +101,20 @@ HasMetadata returns a boolean if a field has been set.
 
 ### GetReason
 
-`func (o *CardEditRequest) GetReason() CardChangeReasonCode`
+`func (o *CardEditRequest) GetReason() CardStatusReasonCode`
 
 GetReason returns the Reason field if non-nil, zero value otherwise.
 
 ### GetReasonOk
 
-`func (o *CardEditRequest) GetReasonOk() (*CardChangeReasonCode, bool)`
+`func (o *CardEditRequest) GetReasonOk() (*CardStatusReasonCode, bool)`
 
 GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReason
 
-`func (o *CardEditRequest) SetReason(v CardChangeReasonCode)`
+`func (o *CardEditRequest) SetReason(v CardStatusReasonCode)`
 
 SetReason sets Reason field to given value.
 

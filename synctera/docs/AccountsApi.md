@@ -111,7 +111,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     accountAddress := *openapiclient.NewAccountAddress() // AccountAddress | Account address to create
 
     configuration := openapiclient.NewConfiguration()
@@ -132,7 +132,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -183,7 +183,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     relationship := *openapiclient.NewRelationship("CustomerId_example", "RelationshipType_example") // Relationship | Account relationship object
 
     configuration := openapiclient.NewConfiguration()
@@ -204,7 +204,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -255,7 +255,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -275,7 +275,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -325,7 +325,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     connectId := TODO // string | Connect ID of the account associate with the account entity
 
     configuration := openapiclient.NewConfiguration()
@@ -346,7 +346,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 **connectId** | [**string**](.md) | Connect ID of the account associate with the account entity | 
 
 ### Other Parameters
@@ -398,7 +398,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     relationshipId := TODO // string | Relationship ID of the account associate with the account entity
 
     configuration := openapiclient.NewConfiguration()
@@ -419,7 +419,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 **relationshipId** | [**string**](.md) | Relationship ID of the account associate with the account entity | 
 
 ### Other Parameters
@@ -471,7 +471,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -491,7 +491,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -541,7 +541,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     connectId := TODO // string | Connect ID of the account associate with the account entity
     inlineObject := *openapiclient.NewInlineObject() // InlineObject |  (optional)
 
@@ -563,7 +563,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 **connectId** | [**string**](.md) | Connect ID of the account associate with the account entity | 
 
 ### Other Parameters
@@ -616,7 +616,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     inlineObject1 := *openapiclient.NewInlineObject1() // InlineObject1 | 
 
     configuration := openapiclient.NewConfiguration()
@@ -637,7 +637,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -688,7 +688,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     relationshipId := TODO // string | Relationship ID of the account associate with the account entity
 
     configuration := openapiclient.NewConfiguration()
@@ -709,7 +709,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 **relationshipId** | [**string**](.md) | Relationship ID of the account associate with the account entity | 
 
 ### Other Parameters
@@ -761,10 +761,10 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     inlineObject2 := *openapiclient.NewInlineObject2() // InlineObject2 | 
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -784,7 +784,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -837,9 +837,9 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -859,7 +859,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -892,7 +892,7 @@ Name | Type | Description  | Notes
 
 ## ListAccounts
 
-> AccountList ListAccounts(ctx).Tenant(tenant).Limit(limit).PageToken(pageToken).CustomerId(customerId).HasDetails(hasDetails).Execute()
+> AccountList ListAccounts(ctx).Id(id).AccountNumber(accountNumber).Status(status).CustomerId(customerId).FirstName(firstName).LastName(lastName).Tenant(tenant).Limit(limit).PageToken(pageToken).HasDetails(hasDetails).Execute()
 
 List accounts
 
@@ -911,15 +911,20 @@ import (
 )
 
 func main() {
+    id := TODO // string | Unique identifier for the account(s). Multiple account IDs can be provided as a comma-separated list.  (optional)
+    accountNumber := "2345678108180014864" // string | Account number. Any * characters in the string are wildcards, and match any characters.  (optional)
+    status := openapiclient.status("APPLICATION_SUBMITTED") // Status |  (optional)
+    customerId := TODO // string | The customer's unique identifier (optional)
+    firstName := "Alice" // string |  (optional)
+    lastName := "Smith" // string |  (optional)
     tenant := "2_3" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
-    customerId := TODO // string | Customer ID (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
     hasDetails := true // bool | If true, the returned accounts will include relationships, aliases, balances and recent transactions. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Tenant(tenant).Limit(limit).PageToken(pageToken).CustomerId(customerId).HasDetails(hasDetails).Execute()
+    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Id(id).AccountNumber(accountNumber).Status(status).CustomerId(customerId).FirstName(firstName).LastName(lastName).Tenant(tenant).Limit(limit).PageToken(pageToken).HasDetails(hasDetails).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -940,10 +945,15 @@ Other parameters are passed through a pointer to a apiListAccountsRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | [**string**](string.md) | Unique identifier for the account(s). Multiple account IDs can be provided as a comma-separated list.  | 
+ **accountNumber** | **string** | Account number. Any * characters in the string are wildcards, and match any characters.  | 
+ **status** | [**Status**](Status.md) |  | 
+ **customerId** | [**string**](string.md) | The customer&#39;s unique identifier | 
+ **firstName** | **string** |  | 
+ **lastName** | **string** |  | 
  **tenant** | **string** |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
- **customerId** | [**string**](string.md) | Customer ID | 
  **hasDetails** | **bool** | If true, the returned accounts will include relationships, aliases, balances and recent transactions. | 
 
 ### Return type
@@ -985,7 +995,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     account := *openapiclient.NewAccount() // Account | Account fields to be patched
 
     configuration := openapiclient.NewConfiguration()
@@ -1006,7 +1016,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -1057,7 +1067,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     account := *openapiclient.NewAccount() // Account | Account to update
 
     configuration := openapiclient.NewConfiguration()
@@ -1078,7 +1088,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -1129,7 +1139,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     connectId := TODO // string | Connect ID of the account associate with the account entity
     accountAddress := *openapiclient.NewAccountAddress() // AccountAddress | Account address to be updated
 
@@ -1151,7 +1161,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 **connectId** | [**string**](.md) | Connect ID of the account associate with the account entity | 
 
 ### Other Parameters
@@ -1204,7 +1214,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     relationshipId := TODO // string | Relationship ID of the account associate with the account entity
     relationship := *openapiclient.NewRelationship("CustomerId_example", "RelationshipType_example") // Relationship | Account relationship to be updated
 
@@ -1226,7 +1236,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 **relationshipId** | [**string**](.md) | Relationship ID of the account associate with the account entity | 
 
 ### Other Parameters

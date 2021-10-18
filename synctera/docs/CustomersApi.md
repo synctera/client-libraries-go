@@ -44,7 +44,7 @@ import (
 )
 
 func main() {
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Lily", "Franecki", "Status_example")} // CustomerInPath | Customer to create
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Ethan", "Cronin", "Status_example")} // CustomerInPath | Customer to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -110,7 +110,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     employment := *openapiclient.NewEmployment("ABC, Inc.") // Employment | Customer employment record to create
 
     configuration := openapiclient.NewConfiguration()
@@ -131,7 +131,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -182,7 +182,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     riskRating := *openapiclient.NewRiskRating() // RiskRating | Create a customer risk rating. With a risk rating in request body, Synctera validates the data and saves it. With no request body, Synctera runs an automated risk analysis and saves the result.  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -203,7 +203,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -254,7 +254,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     includeHistory := true // bool | If true, include old (inactive) records as well (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
@@ -275,7 +275,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -326,7 +326,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     includeHistory := true // bool | If true, include old (inactive) records as well (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
@@ -347,7 +347,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -398,7 +398,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -418,7 +418,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -468,8 +468,8 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
-    accountId := TODO // string | Account ID
+    customerId := TODO // string | The customer's unique identifier
+    accountId := TODO // string | Unique identifier for the account.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -489,8 +489,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
-**accountId** | [**string**](.md) | Account ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -541,7 +541,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     riskRatingId := TODO // string | Risk Rating ID
 
     configuration := openapiclient.NewConfiguration()
@@ -562,7 +562,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 **riskRatingId** | [**string**](.md) | Risk Rating ID | 
 
 ### Other Parameters
@@ -614,7 +614,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     employmentId := TODO // string | Employment ID
 
     configuration := openapiclient.NewConfiguration()
@@ -635,7 +635,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 **employmentId** | [**string**](.md) | Employment ID | 
 
 ### Other Parameters
@@ -687,9 +687,9 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -709,7 +709,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -761,9 +761,9 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -783,7 +783,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -816,7 +816,7 @@ Name | Type | Description  | Notes
 
 ## ListCustomers
 
-> CustomerList ListCustomers(ctx).Tenant(tenant).Limit(limit).PageToken(pageToken).Execute()
+> CustomerList ListCustomers(ctx).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Tenant(tenant).Limit(limit).PageToken(pageToken).Execute()
 
 List Customers
 
@@ -835,13 +835,19 @@ import (
 )
 
 func main() {
+    firstName := "Alice" // string |  (optional)
+    lastName := "Smith" // string |  (optional)
+    phoneNumber := "+12065550100" // string |  (optional)
+    email := "john.doe@example.com" // string |  (optional)
+    ssnLast4 := "6789" // string |  (optional)
+    status := "ACTIVE" // string |  (optional)
     tenant := "2_3" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.ListCustomers(context.Background()).Tenant(tenant).Limit(limit).PageToken(pageToken).Execute()
+    resp, r, err := api_client.CustomersApi.ListCustomers(context.Background()).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Tenant(tenant).Limit(limit).PageToken(pageToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.ListCustomers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -862,6 +868,12 @@ Other parameters are passed through a pointer to a apiListCustomersRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **firstName** | **string** |  | 
+ **lastName** | **string** |  | 
+ **phoneNumber** | **string** |  | 
+ **email** | **string** |  | 
+ **ssnLast4** | **string** |  | 
+ **status** | **string** |  | 
  **tenant** | **string** |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
@@ -886,7 +898,7 @@ Name | Type | Description  | Notes
 
 ## PatchCustomer
 
-> CustomerInPath PatchCustomer(ctx, customerId).CustomerInPath(customerInPath).Execute()
+> CustomerInPath PatchCustomer(ctx, customerId).PatchCustomer(patchCustomer).Execute()
 
 Patch Customer
 
@@ -899,17 +911,16 @@ import (
     "context"
     "fmt"
     "os"
-    "time"
     openapiclient "./openapi"
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Lily", "Franecki", "Status_example")} // CustomerInPath | Customer to be patched
+    customerId := TODO // string | The customer's unique identifier
+    patchCustomer := *openapiclient.NewPatchCustomer() // PatchCustomer | Customer to be patched
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.PatchCustomer(context.Background(), customerId).CustomerInPath(customerInPath).Execute()
+    resp, r, err := api_client.CustomersApi.PatchCustomer(context.Background(), customerId).PatchCustomer(patchCustomer).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.PatchCustomer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -925,7 +936,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -935,7 +946,7 @@ Other parameters are passed through a pointer to a apiPatchCustomerRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **customerInPath** | [**CustomerInPath**](CustomerInPath.md) | Customer to be patched | 
+ **patchCustomer** | [**PatchCustomer**](PatchCustomer.md) | Customer to be patched | 
 
 ### Return type
 
@@ -977,8 +988,8 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Lily", "Franecki", "Status_example")} // CustomerInPath | Customer to be updated
+    customerId := TODO // string | The customer's unique identifier
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Ethan", "Cronin", "Status_example")} // CustomerInPath | Customer to be updated
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -998,7 +1009,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -1049,7 +1060,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     employmentId := TODO // string | Employment ID
     employment := *openapiclient.NewEmployment("ABC, Inc.") // Employment | Party Employment to update
 
@@ -1071,7 +1082,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 **employmentId** | [**string**](.md) | Employment ID | 
 
 ### Other Parameters

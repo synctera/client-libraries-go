@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChangeType** | [**ChangeType**](ChangeType.md) |  | 
 **Channel** | [**ChangeChannel**](ChangeChannel.md) |  | 
-**Id** | **string** | Card ID | [readonly] 
+**Id** | **string** | Unique token | [readonly] 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
-**Reason** | Pointer to [**CardChangeReasonCode**](CardChangeReasonCode.md) |  | [optional] 
+**Reason** | Pointer to [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | [optional] 
 **StateNew** | [**CardChangeState**](CardChangeState.md) |  | 
 **StateOld** | [**CardChangeState**](CardChangeState.md) |  | 
 **UpdatedAt** | **time.Time** | Date of change | [readonly] 
@@ -120,20 +120,20 @@ HasMemo returns a boolean if a field has been set.
 
 ### GetReason
 
-`func (o *CardChange) GetReason() CardChangeReasonCode`
+`func (o *CardChange) GetReason() CardStatusReasonCode`
 
 GetReason returns the Reason field if non-nil, zero value otherwise.
 
 ### GetReasonOk
 
-`func (o *CardChange) GetReasonOk() (*CardChangeReasonCode, bool)`
+`func (o *CardChange) GetReasonOk() (*CardStatusReasonCode, bool)`
 
 GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReason
 
-`func (o *CardChange) SetReason(v CardChangeReasonCode)`
+`func (o *CardChange) SetReason(v CardStatusReasonCode)`
 
 SetReason sets Reason field to given value.
 

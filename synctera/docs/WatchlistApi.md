@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     alertId := TODO // string | Unique identifier for this watchlist alert.
 
     configuration := openapiclient.NewConfiguration()
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 **alertId** | [**string**](.md) | Unique identifier for this watchlist alert. | 
 
 ### Other Parameters
@@ -105,7 +105,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     subscriptionId := TODO // string | Watchlist monitoring subscription ID
 
     configuration := openapiclient.NewConfiguration()
@@ -126,7 +126,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 **subscriptionId** | [**string**](.md) | Watchlist monitoring subscription ID | 
 
 ### Other Parameters
@@ -176,7 +176,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -196,7 +196,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -244,7 +244,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -264,7 +264,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -312,7 +312,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     watchlistSuppress := *openapiclient.NewWatchlistSuppress("ProviderSubjectId_example", "ProviderSubscriptionId_example", "Status_example") // WatchlistSuppress | A watchlist suppression object
 
     configuration := openapiclient.NewConfiguration()
@@ -331,7 +331,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -380,7 +380,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     alertId := TODO // string | Unique identifier for this watchlist alert.
     watchlistAlert := *openapiclient.NewWatchlistAlert("Status_example") // WatchlistAlert | A watchlist body
 
@@ -400,7 +400,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 **alertId** | [**string**](.md) | Unique identifier for this watchlist alert. | 
 
 ### Other Parameters
@@ -451,9 +451,9 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     subscriptionId := TODO // string | Watchlist monitoring subscription ID
-    watchlistSubscription := *openapiclient.NewWatchlistSubscription() // WatchlistSubscription | Watchlist monitoring subscription to be updated. The only field that matters is `status`; all other fields are ignored. 
+    watchlistSubscription := *openapiclient.NewWatchlistSubscription(false) // WatchlistSubscription | Watchlist monitoring subscription to be updated. The only field that matters is `status`; all other fields are ignored. 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -473,7 +473,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 **subscriptionId** | [**string**](.md) | Watchlist monitoring subscription ID | 
 
 ### Other Parameters
@@ -524,8 +524,8 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
-    watchlistSubscription := *openapiclient.NewWatchlistSubscription() // WatchlistSubscription | A watchlist subscription
+    customerId := TODO // string | The customer's unique identifier
+    watchlistSubscription := *openapiclient.NewWatchlistSubscription(false) // WatchlistSubscription | A watchlist subscription
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -545,7 +545,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 

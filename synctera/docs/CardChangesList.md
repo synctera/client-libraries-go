@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Changes** | [**[]CardChange**](CardChange.md) | Array of changes | 
+**Changes** | [**[]CardChange**](CardChange.md) | List of changes in descending chronological order | 
 **NextPageToken** | Pointer to **string** | If returned, use the next_page_token to query for the next page of results. Not returned if there are no more rows. | [optional] 
 
 ## Methods

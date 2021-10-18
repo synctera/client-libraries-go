@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     customerVerificationResult := *openapiclient.NewCustomerVerificationResult("ACCEPTED", time.Now(), openapiclient.verification_type("fraud")) // CustomerVerificationResult | Customer verification result to create
 
     configuration := openapiclient.NewConfiguration()
@@ -54,7 +54,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -105,7 +105,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     verificationId := TODO // string | Verification ID
 
     configuration := openapiclient.NewConfiguration()
@@ -126,7 +126,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 **verificationId** | [**string**](.md) | Verification ID | 
 
 ### Other Parameters
@@ -178,10 +178,10 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
-    includeHistory := true // bool | Whether to include a history of records or not (optional)
+    customerId := TODO // string | The customer's unique identifier
+    includeHistory := true // bool | If true, include old (inactive) records as well (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -201,7 +201,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -211,7 +211,7 @@ Other parameters are passed through a pointer to a apiListVerificationsRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeHistory** | **bool** | Whether to include a history of records or not | 
+ **includeHistory** | **bool** | If true, include old (inactive) records as well | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## VerifyCustomer
 
-> CustomerVerificationResult VerifyCustomer(ctx, customerId).CustomerVerification(customerVerification).Execute()
+> CustomerVerifyResponse VerifyCustomer(ctx, customerId).CustomerVerification(customerVerification).Execute()
 
 Verify a customer's identity
 
@@ -254,8 +254,8 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
-    customerVerification := *openapiclient.NewCustomerVerification([]openapiclient.VerificationType{openapiclient.verification_type("fraud")}) // CustomerVerification | Customer verification request
+    customerId := TODO // string | The customer's unique identifier
+    customerVerification := *openapiclient.NewCustomerVerification(false, []openapiclient.VerificationType{openapiclient.verification_type("fraud")}) // CustomerVerification | Customer verification request
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -264,7 +264,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `KYCVerificationApi.VerifyCustomer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `VerifyCustomer`: CustomerVerificationResult
+    // response from `VerifyCustomer`: CustomerVerifyResponse
     fmt.Fprintf(os.Stdout, "Response from `KYCVerificationApi.VerifyCustomer`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerVerificationResult**](CustomerVerificationResult.md)
+[**CustomerVerifyResponse**](CustomerVerifyResponse.md)
 
 ### Authorization
 

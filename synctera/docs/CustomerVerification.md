@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserIpAddress** | Pointer to **string** | IP address | [optional] 
+**CustomerConsent** | **bool** | Whether this customer has consented to a KYC check  | 
+**CustomerIpAddress** | Pointer to **string** | IP address | [optional] 
 **VerificationType** | [**[]VerificationType**](VerificationType.md) |  | 
 
 ## Methods
 
 ### NewCustomerVerification
 
-`func NewCustomerVerification(verificationType []VerificationType, ) *CustomerVerification`
+`func NewCustomerVerification(customerConsent bool, verificationType []VerificationType, ) *CustomerVerification`
 
 NewCustomerVerification instantiates a new CustomerVerification object
 This constructor will assign default values to properties that have it defined,
@@ -26,30 +27,50 @@ NewCustomerVerificationWithDefaults instantiates a new CustomerVerification obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetUserIpAddress
+### GetCustomerConsent
 
-`func (o *CustomerVerification) GetUserIpAddress() string`
+`func (o *CustomerVerification) GetCustomerConsent() bool`
 
-GetUserIpAddress returns the UserIpAddress field if non-nil, zero value otherwise.
+GetCustomerConsent returns the CustomerConsent field if non-nil, zero value otherwise.
 
-### GetUserIpAddressOk
+### GetCustomerConsentOk
 
-`func (o *CustomerVerification) GetUserIpAddressOk() (*string, bool)`
+`func (o *CustomerVerification) GetCustomerConsentOk() (*bool, bool)`
 
-GetUserIpAddressOk returns a tuple with the UserIpAddress field if it's non-nil, zero value otherwise
+GetCustomerConsentOk returns a tuple with the CustomerConsent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUserIpAddress
+### SetCustomerConsent
 
-`func (o *CustomerVerification) SetUserIpAddress(v string)`
+`func (o *CustomerVerification) SetCustomerConsent(v bool)`
 
-SetUserIpAddress sets UserIpAddress field to given value.
+SetCustomerConsent sets CustomerConsent field to given value.
 
-### HasUserIpAddress
 
-`func (o *CustomerVerification) HasUserIpAddress() bool`
+### GetCustomerIpAddress
 
-HasUserIpAddress returns a boolean if a field has been set.
+`func (o *CustomerVerification) GetCustomerIpAddress() string`
+
+GetCustomerIpAddress returns the CustomerIpAddress field if non-nil, zero value otherwise.
+
+### GetCustomerIpAddressOk
+
+`func (o *CustomerVerification) GetCustomerIpAddressOk() (*string, bool)`
+
+GetCustomerIpAddressOk returns a tuple with the CustomerIpAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerIpAddress
+
+`func (o *CustomerVerification) SetCustomerIpAddress(v string)`
+
+SetCustomerIpAddress sets CustomerIpAddress field to given value.
+
+### HasCustomerIpAddress
+
+`func (o *CustomerVerification) HasCustomerIpAddress() bool`
+
+HasCustomerIpAddress returns a boolean if a field has been set.
 
 ### GetVerificationType
 

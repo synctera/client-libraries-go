@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     disclosure := *openapiclient.NewDisclosure("VIEWED", time.Now(), "REG_DD", "1.1") // Disclosure | Disclosure to create
 
     configuration := openapiclient.NewConfiguration()
@@ -52,7 +52,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -103,9 +103,9 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | Customer ID
+    customerId := TODO // string | The customer's unique identifier
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -125,7 +125,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | Customer ID | 
+**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 

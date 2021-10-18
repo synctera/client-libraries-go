@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Carrier** | Pointer to **string** | The carrier with whom the card is shipped | [optional] [readonly] 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
 **ShippingStatus** | Pointer to **string** | The status of indicating the shipping status of the card | [optional] [readonly] 
-**StatusReason** | Pointer to **string** | The reason for the current card status | [optional] 
+**StatusReason** | Pointer to [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | [optional] 
 **TrackingNumber** | Pointer to **string** | The tracking number | [optional] [readonly] 
 
 ## Methods
@@ -153,20 +153,20 @@ HasShippingStatus returns a boolean if a field has been set.
 
 ### GetStatusReason
 
-`func (o *CardStatusObject) GetStatusReason() string`
+`func (o *CardStatusObject) GetStatusReason() CardStatusReasonCode`
 
 GetStatusReason returns the StatusReason field if non-nil, zero value otherwise.
 
 ### GetStatusReasonOk
 
-`func (o *CardStatusObject) GetStatusReasonOk() (*string, bool)`
+`func (o *CardStatusObject) GetStatusReasonOk() (*CardStatusReasonCode, bool)`
 
 GetStatusReasonOk returns a tuple with the StatusReason field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatusReason
 
-`func (o *CardStatusObject) SetStatusReason(v string)`
+`func (o *CardStatusObject) SetStatusReason(v CardStatusReasonCode)`
 
 SetStatusReason sets StatusReason field to given value.
 

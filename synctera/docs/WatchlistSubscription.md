@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoRenew** | Pointer to **bool** | Whether this subscription should automatically renew when the subscription period is over (default: vendor-dependent).  | [optional] 
 **Created** | Pointer to **time.Time** | When this subscription was created | [optional] 
+**CustomerConsent** | **bool** | Whether this customer has consented to being enrolled for watchlist monitoring  | 
 **Id** | Pointer to **string** | Unique identifier for this subscription | [optional] 
 **PeriodEnd** | Pointer to **string** | The date when monitoring of this individual should end. | [optional] 
 **PeriodStart** | Pointer to **string** | The date when monitoring of this individual should begin (default: today). | [optional] 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewWatchlistSubscription
 
-`func NewWatchlistSubscription() *WatchlistSubscription`
+`func NewWatchlistSubscription(customerConsent bool, ) *WatchlistSubscription`
 
 NewWatchlistSubscription instantiates a new WatchlistSubscription object
 This constructor will assign default values to properties that have it defined,
@@ -80,6 +81,26 @@ SetCreated sets Created field to given value.
 `func (o *WatchlistSubscription) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### GetCustomerConsent
+
+`func (o *WatchlistSubscription) GetCustomerConsent() bool`
+
+GetCustomerConsent returns the CustomerConsent field if non-nil, zero value otherwise.
+
+### GetCustomerConsentOk
+
+`func (o *WatchlistSubscription) GetCustomerConsentOk() (*bool, bool)`
+
+GetCustomerConsentOk returns a tuple with the CustomerConsent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerConsent
+
+`func (o *WatchlistSubscription) SetCustomerConsent(v bool)`
+
+SetCustomerConsent sets CustomerConsent field to given value.
+
 
 ### GetId
 

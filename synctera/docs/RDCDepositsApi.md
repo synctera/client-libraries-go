@@ -37,8 +37,8 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
-    deposit := *openapiclient.NewDeposit("s5syi2g103tlbd", "fba7833f-7479-4a4e-835a-12d5f75d656a", int32(9601), "USD", "2019-01-02T03:04:05.678Z", "2019-01-02T03:04:05.678Z", int32(4185), "USD", "b845d3e3-624a-41ab-865d-7a948e3bf5c3", "72c5476e-bc65-472e-9750-a22e2ddd5fd7", "123456789", "99837229-8bc2-488c-b67f-a33fecc15194") // Deposit | Attributes of the RDC deposit to create (optional)
+    accountId := TODO // string | Unique identifier for the account.
+    deposit := *openapiclient.NewDeposit("ebtvp5drake7q5", "aeeebecc-d562-4f63-97a7-9d677ac2acb5", int32(7066), "USD", "2019-01-02T03:04:05.678Z", "2019-01-02T03:04:05.678Z", int32(3888), "USD", "90d02995-e5e3-4d40-913d-ffce37564df8", "bca15c71-1dac-4126-9f52-9f7167f90e22", "123456789", "729cd85e-1102-4433-87f1-b1e9bf81492d") // Deposit | Attributes of the RDC deposit to create (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -58,7 +58,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -109,8 +109,8 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
-    image := *openapiclient.NewImage(string(123), "2019-01-02T03:04:05.678Z", "01237b61-b079-4d0b-9da4-2f98854f65ba", openapiclient.rdc_media_type("PDF")) // Image | RDC image to create (optional)
+    accountId := TODO // string | Unique identifier for the account.
+    image := *openapiclient.NewImage(string(123), "2019-01-02T03:04:05.678Z", "cff73b67-6c9e-4505-9502-66f823efcf12", openapiclient.rdc_media_type("PDF")) // Image | RDC image to create (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -130,7 +130,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -181,8 +181,8 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
-    scan := *openapiclient.NewScan("cq50w9nodt6e2s", "f9d0efdb-1af4-4260-a24d-0ddfdf143abc", int32(2814), "USD", "2019-01-02T03:04:05.678Z", "3f1aaaea-f87f-4b20-9535-98fea39f1d83", "0225e45a-96d0-4546-a84c-52cf28081bf1", "123456789") // Scan | RDC scan to create (optional)
+    accountId := TODO // string | Unique identifier for the account.
+    scan := *openapiclient.NewScan("9xw2r4pa08c6oi", "7cf4e55c-1ac9-401b-9957-3f230c49b014", int32(5156), "USD", "2019-01-02T03:04:05.678Z", "16a99add-359a-485e-8cc8-f214d5dcc9e6", "d337d6d0-12b1-4207-8c4c-6c56d7a873a2", "123456789") // Scan | RDC scan to create (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -202,7 +202,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -253,7 +253,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     depositId := TODO // string | ID of a deposit for a remote deposit capture
 
     configuration := openapiclient.NewConfiguration()
@@ -274,7 +274,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 **depositId** | [**string**](.md) | ID of a deposit for a remote deposit capture | 
 
 ### Other Parameters
@@ -326,7 +326,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     imageId := TODO // string | ID of an image uploaded for a remote deposit capture
 
     configuration := openapiclient.NewConfiguration()
@@ -347,7 +347,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 **imageId** | [**string**](.md) | ID of an image uploaded for a remote deposit capture | 
 
 ### Other Parameters
@@ -399,7 +399,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     scanId := TODO // string | ID of an OCR scan of a check image uploaded for a remote deposit capture
 
     configuration := openapiclient.NewConfiguration()
@@ -420,7 +420,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 **scanId** | [**string**](.md) | ID of an OCR scan of a check image uploaded for a remote deposit capture | 
 
 ### Other Parameters
@@ -472,9 +472,9 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -494,7 +494,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -546,9 +546,9 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -568,7 +568,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 
@@ -620,9 +620,9 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account ID
+    accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "bnw3qvoyid" // string |  (optional)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -642,7 +642,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account ID | 
+**accountId** | [**string**](.md) | Unique identifier for the account. | 
 
 ### Other Parameters
 

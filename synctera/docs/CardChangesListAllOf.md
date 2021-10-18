@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Changes** | [**[]CardChange**](CardChange.md) | Array of changes | 
+**Changes** | [**[]CardChange**](CardChange.md) | List of changes in descending chronological order | 
 
 ## Methods
 

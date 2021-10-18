@@ -377,7 +377,7 @@ import (
 )
 
 func main() {
-    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("2bb80c78-08e9-47ab-a292-9d1ece03f48c", "fcf74cd1-0385-43c8-83dd-7d9f8bf06ab5") // SingleUseTokenRequest | User token details
+    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("74b50c5f-c9cb-4a5a-a9f0-27f2939c97ef", "5231ce22-b497-493d-b633-45d9a7e405b3") // SingleUseTokenRequest | User token details
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -443,7 +443,7 @@ import (
 )
 
 func main() {
-    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "6930b909-9bd5-4374-bf54-70842a830aa5", "97e06dc4-29db-4185-bb4e-ffd87d4f7c59", "6eaf4653-d181-4cc6-892d-9f29d5c261e0", "Type_example")} // CardIssuanceRequest | Card to issue
+    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "ee1043a7-7cd8-4e1a-9f6c-73d73c13bc07", "ba6c499f-f5ab-4ff0-8040-f6fa99abcda0", "6451a2b9-a794-4265-8fbf-dcd455795def", "Type_example")} // CardIssuanceRequest | Card to issue
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 
 ## ListCards
 
-> CardListResponse ListCards(ctx).CustomerId(customerId).AccountId(accountId).EmbossName(embossName).LastFour(lastFour).ExpirationDate(expirationDate).CardType(cardType).CardBrand(cardBrand).Form(form).CardProductId(cardProductId).CardStatus(cardStatus).PostalCode(postalCode).Execute()
+> CardListResponse ListCards(ctx).CustomerId(customerId).AccountId(accountId).EmbossName(embossName).LastFour(lastFour).ExpirationDate(expirationDate).CardType(cardType).CardBrand(cardBrand).Form(form).CardProductId(cardProductId).CardStatus(cardStatus).PostalCode(postalCode).Limit(limit).PageToken(pageToken).Execute()
 
 List Cards
 
@@ -520,11 +520,13 @@ func main() {
     form := openapiclient.form("PHYSICAL") // Form | The format of the card (optional)
     cardProductId := TODO // string | The unique identifier of a cards product (optional)
     cardStatus := openapiclient.card_status("ACTIVE") // CardStatus | The status of a card (optional)
-    postalCode := "30995" // string | The postal code of a card user (optional)
+    postalCode := "28.0" // string | The postal code of a card user (optional)
+    limit := int32(100) // int32 |  (optional) (default to 100)
+    pageToken := "0pqid5u7lx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.ListCards(context.Background()).CustomerId(customerId).AccountId(accountId).EmbossName(embossName).LastFour(lastFour).ExpirationDate(expirationDate).CardType(cardType).CardBrand(cardBrand).Form(form).CardProductId(cardProductId).CardStatus(cardStatus).PostalCode(postalCode).Execute()
+    resp, r, err := api_client.CardsApi.ListCards(context.Background()).CustomerId(customerId).AccountId(accountId).EmbossName(embossName).LastFour(lastFour).ExpirationDate(expirationDate).CardType(cardType).CardBrand(cardBrand).Form(form).CardProductId(cardProductId).CardStatus(cardStatus).PostalCode(postalCode).Limit(limit).PageToken(pageToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ListCards``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -556,6 +558,8 @@ Name | Type | Description  | Notes
  **cardProductId** | [**string**](string.md) | The unique identifier of a cards product | 
  **cardStatus** | [**CardStatus**](CardStatus.md) | The status of a card | 
  **postalCode** | **string** | The postal code of a card user | 
+ **limit** | **int32** |  | [default to 100]
+ **pageToken** | **string** |  | 
 
 ### Return type
 
@@ -667,7 +671,7 @@ import (
 
 func main() {
     cardId := TODO // string | The unique identifier of a card
-    cardEditRequest := *openapiclient.NewCardEditRequest(openapiclient.card_status("ACTIVE"), openapiclient.card_change_reason_code("NEW")) // CardEditRequest | Card edits
+    cardEditRequest := *openapiclient.NewCardEditRequest(openapiclient.card_status("ACTIVE"), openapiclient.card_status_reason_code("NEW")) // CardEditRequest | Card edits
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

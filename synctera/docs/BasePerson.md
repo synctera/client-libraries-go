@@ -13,10 +13,10 @@ Name | Type | Description | Notes
 **LastUpdatedTime** | Pointer to **time.Time** |  | [optional] [readonly] 
 **LegalAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
 **MiddleName** | Pointer to **string** | Customer&#39;s middle name | [optional] 
-**PhoneNumber** | Pointer to **string** | Customer&#39;s mobile phone number with country code in E.164 format e.g. +19178675309 | [optional] 
+**PhoneNumber** | Pointer to **string** | Customer&#39;s mobile phone number with country code in E.164 format | [optional] 
 **RelatedCustomers** | Pointer to [**[]Relationship1**](Relationship1.md) | Customer&#39;s relationships with other accounts eg. guardian | [optional] 
 **ShippingAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
-**Ssn** | Pointer to **string** | Customer&#39;s full tax ID eg SSN formatted with hyphens 123-45-6789. This optional parameter is required when running KYC on a customer. Must be compiled with ^\\d{3}-\\d{2}-\\d{4}$. Response contains the last 4 digits only (e.g. 6789). | [optional] 
+**Ssn** | Pointer to **string** | Customer&#39;s full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Input must match the pattern ^\\d{3}-\\d{2}-\\d{4}$. The response contains the last 4 digits only (e.g. 6789). | [optional] 
 
 ## Methods
 

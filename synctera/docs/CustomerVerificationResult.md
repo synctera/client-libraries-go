@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique ID for this verification result | [optional] 
-**Issues** | Pointer to [**[]CustomerVerificationReasonCodes**](CustomerVerificationReasonCodes.md) | List of potential problems found. These are subject to change.  | [optional] 
+**Issues** | Pointer to **[]string** | List of potential problems found. These are subject to change.  | [optional] 
 **RawResponse** | Pointer to [**RawResponse**](RawResponse.md) |  | [optional] 
 **Result** | **string** | The determination of this KYC run | 
+**VendorInfo** | Pointer to [**VendorInfo**](VendorInfo.md) |  | [optional] 
 **VerificationTime** | **time.Time** | The date on which the KYC run was completed | 
 **VerificationType** | [**VerificationType**](VerificationType.md) |  | 
 
@@ -57,20 +58,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetIssues
 
-`func (o *CustomerVerificationResult) GetIssues() []CustomerVerificationReasonCodes`
+`func (o *CustomerVerificationResult) GetIssues() []string`
 
 GetIssues returns the Issues field if non-nil, zero value otherwise.
 
 ### GetIssuesOk
 
-`func (o *CustomerVerificationResult) GetIssuesOk() (*[]CustomerVerificationReasonCodes, bool)`
+`func (o *CustomerVerificationResult) GetIssuesOk() (*[]string, bool)`
 
 GetIssuesOk returns a tuple with the Issues field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIssues
 
-`func (o *CustomerVerificationResult) SetIssues(v []CustomerVerificationReasonCodes)`
+`func (o *CustomerVerificationResult) SetIssues(v []string)`
 
 SetIssues sets Issues field to given value.
 
@@ -124,6 +125,31 @@ and a boolean to check if the value has been set.
 
 SetResult sets Result field to given value.
 
+
+### GetVendorInfo
+
+`func (o *CustomerVerificationResult) GetVendorInfo() VendorInfo`
+
+GetVendorInfo returns the VendorInfo field if non-nil, zero value otherwise.
+
+### GetVendorInfoOk
+
+`func (o *CustomerVerificationResult) GetVendorInfoOk() (*VendorInfo, bool)`
+
+GetVendorInfoOk returns a tuple with the VendorInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendorInfo
+
+`func (o *CustomerVerificationResult) SetVendorInfo(v VendorInfo)`
+
+SetVendorInfo sets VendorInfo field to given value.
+
+### HasVendorInfo
+
+`func (o *CustomerVerificationResult) HasVendorInfo() bool`
+
+HasVendorInfo returns a boolean if a field has been set.
 
 ### GetVerificationTime
 
