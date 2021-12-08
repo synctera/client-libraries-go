@@ -10,11 +10,8 @@ Method | HTTP request | Description
 [**GetAllCustomerEmployment**](CustomersApi.md#GetAllCustomerEmployment) | **Get** /customers/{customer_id}/employment | List customer employment records
 [**GetAllCustomerRiskRatings**](CustomersApi.md#GetAllCustomerRiskRatings) | **Get** /customers/{customer_id}/risk_ratings | List customer risk ratings
 [**GetCustomer**](CustomersApi.md#GetCustomer) | **Get** /customers/{customer_id} | Get Customer
-[**GetCustomerAccount**](CustomersApi.md#GetCustomerAccount) | **Get** /customers/{customer_id}/accounts/{account_id} | Get customer account
 [**GetCustomerRiskRating**](CustomersApi.md#GetCustomerRiskRating) | **Get** /customers/{customer_id}/risk_ratings/{risk_rating_id} | Get customer risk rating
 [**GetPartyEmployment**](CustomersApi.md#GetPartyEmployment) | **Get** /customers/{customer_id}/employment/{employment_id} | Get customer employment record
-[**ListCustomerAccounts**](CustomersApi.md#ListCustomerAccounts) | **Get** /customers/{customer_id}/accounts | List accounts
-[**ListCustomerAddresses**](CustomersApi.md#ListCustomerAddresses) | **Get** /customers/{customer_id}/addresses | List customer addresses
 [**ListCustomers**](CustomersApi.md#ListCustomers) | **Get** /customers | List Customers
 [**PatchCustomer**](CustomersApi.md#PatchCustomer) | **Patch** /customers/{customer_id} | Patch Customer
 [**UpdateCustomer**](CustomersApi.md#UpdateCustomer) | **Put** /customers/{customer_id} | Update Customer
@@ -44,7 +41,7 @@ import (
 )
 
 func main() {
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Ethan", "Cronin", "Status_example")} // CustomerInPath | Customer to create
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Joaquin", "Mayert", "Status_example")} // CustomerInPath | Customer to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -111,7 +108,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    employment := *openapiclient.NewEmployment("ABC, Inc.") // Employment | Customer employment record to create
+    employment := *openapiclient.NewEmployment("ABC, Inc.") // Employment | Customer employment record to create.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -141,7 +138,7 @@ Other parameters are passed through a pointer to a apiCreateCustomerEmploymentRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **employment** | [**Employment**](Employment.md) | Customer employment record to create | 
+ **employment** | [**Employment**](Employment.md) | Customer employment record to create. | 
 
 ### Return type
 
@@ -255,7 +252,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    includeHistory := true // bool | If true, include old (inactive) records as well (optional) (default to false)
+    includeHistory := true // bool | If true, include old (inactive) records as well. (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -285,7 +282,7 @@ Other parameters are passed through a pointer to a apiGetAllCustomerEmploymentRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeHistory** | **bool** | If true, include old (inactive) records as well | [default to false]
+ **includeHistory** | **bool** | If true, include old (inactive) records as well. | [default to false]
 
 ### Return type
 
@@ -327,7 +324,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    includeHistory := true // bool | If true, include old (inactive) records as well (optional) (default to false)
+    includeHistory := true // bool | If true, include old (inactive) records as well. (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -357,7 +354,7 @@ Other parameters are passed through a pointer to a apiGetAllCustomerRiskRatingsR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeHistory** | **bool** | If true, include old (inactive) records as well | [default to false]
+ **includeHistory** | **bool** | If true, include old (inactive) records as well. | [default to false]
 
 ### Return type
 
@@ -432,79 +429,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomerInPath**](CustomerInPath.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetCustomerAccount
-
-> Account GetCustomerAccount(ctx, customerId, accountId).Execute()
-
-Get customer account
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    customerId := TODO // string | The customer's unique identifier
-    accountId := TODO // string | Unique identifier for the account.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.GetCustomerAccount(context.Background(), customerId, accountId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.GetCustomerAccount``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCustomerAccount`: Account
-    fmt.Fprintf(os.Stdout, "Response from `CustomersApi.GetCustomerAccount`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-**accountId** | [**string**](.md) | Unique identifier for the account. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCustomerAccountRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**Account**](Account.md)
 
 ### Authorization
 
@@ -615,7 +539,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    employmentId := TODO // string | Employment ID
+    employmentId := TODO // string | Unique ID for the employment record.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -636,7 +560,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-**employmentId** | [**string**](.md) | Employment ID | 
+**employmentId** | [**string**](.md) | Unique ID for the employment record. | 
 
 ### Other Parameters
 
@@ -666,157 +590,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListCustomerAccounts
-
-> AccountList ListCustomerAccounts(ctx, customerId).Limit(limit).PageToken(pageToken).Execute()
-
-List accounts
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    customerId := TODO // string | The customer's unique identifier
-    limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.ListCustomerAccounts(context.Background(), customerId).Limit(limit).PageToken(pageToken).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.ListCustomerAccounts``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListCustomerAccounts`: AccountList
-    fmt.Fprintf(os.Stdout, "Response from `CustomersApi.ListCustomerAccounts`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListCustomerAccountsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **limit** | **int32** |  | [default to 100]
- **pageToken** | **string** |  | 
-
-### Return type
-
-[**AccountList**](AccountList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListCustomerAddresses
-
-> AddressList ListCustomerAddresses(ctx, customerId).Limit(limit).PageToken(pageToken).Execute()
-
-List customer addresses
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    customerId := TODO // string | The customer's unique identifier
-    limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.ListCustomerAddresses(context.Background(), customerId).Limit(limit).PageToken(pageToken).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.ListCustomerAddresses``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListCustomerAddresses`: AddressList
-    fmt.Fprintf(os.Stdout, "Response from `CustomersApi.ListCustomerAddresses`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListCustomerAddressesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **limit** | **int32** |  | [default to 100]
- **pageToken** | **string** |  | 
-
-### Return type
-
-[**AddressList**](AddressList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListCustomers
 
-> CustomerList ListCustomers(ctx).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Tenant(tenant).Limit(limit).PageToken(pageToken).Execute()
+> CustomerList ListCustomers(ctx).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Limit(limit).PageToken(pageToken).Execute()
 
 List Customers
 
@@ -835,19 +611,19 @@ import (
 )
 
 func main() {
+    id := []string{"Inner_example"} // []string | Only return resources with the specified customer ID(s). Multiple IDs can be provided as a comma-separated list.  (optional)
     firstName := "Alice" // string |  (optional)
     lastName := "Smith" // string |  (optional)
     phoneNumber := "+12065550100" // string |  (optional)
     email := "john.doe@example.com" // string |  (optional)
     ssnLast4 := "6789" // string |  (optional)
     status := "ACTIVE" // string |  (optional)
-    tenant := "2_3" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
+    pageToken := "19waxl0g93" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.ListCustomers(context.Background()).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Tenant(tenant).Limit(limit).PageToken(pageToken).Execute()
+    resp, r, err := api_client.CustomersApi.ListCustomers(context.Background()).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Limit(limit).PageToken(pageToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.ListCustomers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -868,13 +644,13 @@ Other parameters are passed through a pointer to a apiListCustomersRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **[]string** | Only return resources with the specified customer ID(s). Multiple IDs can be provided as a comma-separated list.  | 
  **firstName** | **string** |  | 
  **lastName** | **string** |  | 
  **phoneNumber** | **string** |  | 
  **email** | **string** |  | 
  **ssnLast4** | **string** |  | 
  **status** | **string** |  | 
- **tenant** | **string** |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
 
@@ -989,7 +765,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Ethan", "Cronin", "Status_example")} // CustomerInPath | Customer to be updated
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Joaquin", "Mayert", "Status_example")} // CustomerInPath | Customer to be updated
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1061,8 +837,8 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    employmentId := TODO // string | Employment ID
-    employment := *openapiclient.NewEmployment("ABC, Inc.") // Employment | Party Employment to update
+    employmentId := TODO // string | Unique ID for the employment record.
+    employment := *openapiclient.NewEmployment("ABC, Inc.") // Employment | Customer employment to update.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1083,7 +859,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-**employmentId** | [**string**](.md) | Employment ID | 
+**employmentId** | [**string**](.md) | Unique ID for the employment record. | 
 
 ### Other Parameters
 
@@ -1094,7 +870,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **employment** | [**Employment**](Employment.md) | Party Employment to update | 
+ **employment** | [**Employment**](Employment.md) | Customer employment to update. | 
 
 ### Return type
 

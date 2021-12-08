@@ -21,6 +21,7 @@ type CardFulfillmentStatus string
 // List of card_fulfillment_status
 const (
 	CARDFULFILLMENTSTATUS_ISSUED CardFulfillmentStatus = "ISSUED"
+	CARDFULFILLMENTSTATUS_REISSUED CardFulfillmentStatus = "REISSUED"
 	CARDFULFILLMENTSTATUS_ORDERED CardFulfillmentStatus = "ORDERED"
 	CARDFULFILLMENTSTATUS_REJECTED CardFulfillmentStatus = "REJECTED"
 	CARDFULFILLMENTSTATUS_REORDERED CardFulfillmentStatus = "REORDERED"
@@ -30,6 +31,7 @@ const (
 
 var allowedCardFulfillmentStatusEnumValues = []CardFulfillmentStatus{
 	"ISSUED",
+	"REISSUED",
 	"ORDERED",
 	"REJECTED",
 	"REORDERED",

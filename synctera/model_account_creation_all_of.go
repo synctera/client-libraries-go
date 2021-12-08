@@ -16,8 +16,8 @@ import (
 
 // AccountCreationAllOf struct for AccountCreationAllOf
 type AccountCreationAllOf struct {
-	// A list of the aliases for account. Account alias is the account number of different balance types to link to the same account ID
-	Aliases *[]Alias `json:"aliases,omitempty"`
+	// Account template ID
+	AccountTemplateId *string `json:"account_template_id,omitempty"`
 	// List of the relationship for this account to the parties
 	Relationships *[]Relationship `json:"relationships,omitempty"`
 }
@@ -39,36 +39,36 @@ func NewAccountCreationAllOfWithDefaults() *AccountCreationAllOf {
 	return &this
 }
 
-// GetAliases returns the Aliases field value if set, zero value otherwise.
-func (o *AccountCreationAllOf) GetAliases() []Alias {
-	if o == nil || o.Aliases == nil {
-		var ret []Alias
+// GetAccountTemplateId returns the AccountTemplateId field value if set, zero value otherwise.
+func (o *AccountCreationAllOf) GetAccountTemplateId() string {
+	if o == nil || o.AccountTemplateId == nil {
+		var ret string
 		return ret
 	}
-	return *o.Aliases
+	return *o.AccountTemplateId
 }
 
-// GetAliasesOk returns a tuple with the Aliases field value if set, nil otherwise
+// GetAccountTemplateIdOk returns a tuple with the AccountTemplateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreationAllOf) GetAliasesOk() (*[]Alias, bool) {
-	if o == nil || o.Aliases == nil {
+func (o *AccountCreationAllOf) GetAccountTemplateIdOk() (*string, bool) {
+	if o == nil || o.AccountTemplateId == nil {
 		return nil, false
 	}
-	return o.Aliases, true
+	return o.AccountTemplateId, true
 }
 
-// HasAliases returns a boolean if a field has been set.
-func (o *AccountCreationAllOf) HasAliases() bool {
-	if o != nil && o.Aliases != nil {
+// HasAccountTemplateId returns a boolean if a field has been set.
+func (o *AccountCreationAllOf) HasAccountTemplateId() bool {
+	if o != nil && o.AccountTemplateId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAliases gets a reference to the given []Alias and assigns it to the Aliases field.
-func (o *AccountCreationAllOf) SetAliases(v []Alias) {
-	o.Aliases = &v
+// SetAccountTemplateId gets a reference to the given string and assigns it to the AccountTemplateId field.
+func (o *AccountCreationAllOf) SetAccountTemplateId(v string) {
+	o.AccountTemplateId = &v
 }
 
 // GetRelationships returns the Relationships field value if set, zero value otherwise.
@@ -105,8 +105,8 @@ func (o *AccountCreationAllOf) SetRelationships(v []Relationship) {
 
 func (o AccountCreationAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Aliases != nil {
-		toSerialize["aliases"] = o.Aliases
+	if o.AccountTemplateId != nil {
+		toSerialize["account_template_id"] = o.AccountTemplateId
 	}
 	if o.Relationships != nil {
 		toSerialize["relationships"] = o.Relationships

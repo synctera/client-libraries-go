@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-    reconciliationInput := *openapiclient.NewReconciliationInput(string(123), "ga89sh3paxj3h8") // ReconciliationInput | Reconciliation to perform (optional)
+    reconciliationInput := *openapiclient.NewReconciliationInput(string(123), "9xjizpkj23nigx") // ReconciliationInput | Reconciliation to perform (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -168,7 +168,7 @@ import (
 
 func main() {
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
+    pageToken := "19waxl0g93" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

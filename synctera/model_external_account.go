@@ -18,14 +18,16 @@ import (
 // ExternalAccount struct for ExternalAccount
 type ExternalAccount struct {
 	AccountIdentifiers AccountIdentifiers `json:"account_identifiers"`
+	// The names of the account owners. Values may be masked, in which case the array will be empty. 
+	AccountOwnerNames []string `json:"account_owner_names"`
 	CreationTime time.Time `json:"creation_time"`
 	// The identifier for the customer associated with this account
 	CustomerId string `json:"customer_id"`
 	// External account unique identifier
 	Id string `json:"id"`
 	LastUpdatedTime time.Time `json:"last_updated_time"`
-	// User-supplied metadata
-	Metadata map[string]interface{} `json:"metadata"`
+	// User-supplied JSON format metadata.
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// A user-meaningful name for the account
 	Nickname *string `json:"nickname,omitempty"`
 	RoutingIdentifiers AccountRouting `json:"routing_identifiers"`
@@ -33,21 +35,21 @@ type ExternalAccount struct {
 	Status string `json:"status"`
 	// The type of the account
 	Type string `json:"type"`
-	Verification AccountVerification `json:"verification"`
+	Verification NullableAccountVerification `json:"verification"`
 }
 
 // NewExternalAccount instantiates a new ExternalAccount object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExternalAccount(accountIdentifiers AccountIdentifiers, creationTime time.Time, customerId string, id string, lastUpdatedTime time.Time, metadata map[string]interface{}, routingIdentifiers AccountRouting, status string, type_ string, verification AccountVerification) *ExternalAccount {
+func NewExternalAccount(accountIdentifiers AccountIdentifiers, accountOwnerNames []string, creationTime time.Time, customerId string, id string, lastUpdatedTime time.Time, routingIdentifiers AccountRouting, status string, type_ string, verification NullableAccountVerification) *ExternalAccount {
 	this := ExternalAccount{}
 	this.AccountIdentifiers = accountIdentifiers
+	this.AccountOwnerNames = accountOwnerNames
 	this.CreationTime = creationTime
 	this.CustomerId = customerId
 	this.Id = id
 	this.LastUpdatedTime = lastUpdatedTime
-	this.Metadata = metadata
 	this.RoutingIdentifiers = routingIdentifiers
 	this.Status = status
 	this.Type = type_
@@ -85,6 +87,30 @@ func (o *ExternalAccount) GetAccountIdentifiersOk() (*AccountIdentifiers, bool) 
 // SetAccountIdentifiers sets field value
 func (o *ExternalAccount) SetAccountIdentifiers(v AccountIdentifiers) {
 	o.AccountIdentifiers = v
+}
+
+// GetAccountOwnerNames returns the AccountOwnerNames field value
+func (o *ExternalAccount) GetAccountOwnerNames() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.AccountOwnerNames
+}
+
+// GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccount) GetAccountOwnerNamesOk() (*[]string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.AccountOwnerNames, true
+}
+
+// SetAccountOwnerNames sets field value
+func (o *ExternalAccount) SetAccountOwnerNames(v []string) {
+	o.AccountOwnerNames = v
 }
 
 // GetCreationTime returns the CreationTime field value
@@ -183,28 +209,36 @@ func (o *ExternalAccount) SetLastUpdatedTime(v time.Time) {
 	o.LastUpdatedTime = v
 }
 
-// GetMetadata returns the Metadata field value
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *ExternalAccount) GetMetadata() map[string]interface{} {
-	if o == nil {
+	if o == nil || o.Metadata == nil {
 		var ret map[string]interface{}
 		return ret
 	}
-
-	return o.Metadata
+	return *o.Metadata
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExternalAccount) GetMetadataOk() (*map[string]interface{}, bool) {
-	if o == nil  {
+	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
-// SetMetadata sets field value
+// HasMetadata returns a boolean if a field has been set.
+func (o *ExternalAccount) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *ExternalAccount) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetNickname returns the Nickname field value if set, zero value otherwise.
@@ -312,33 +346,38 @@ func (o *ExternalAccount) SetType(v string) {
 }
 
 // GetVerification returns the Verification field value
+// If the value is explicit nil, the zero value for AccountVerification will be returned
 func (o *ExternalAccount) GetVerification() AccountVerification {
-	if o == nil {
+	if o == nil || o.Verification.Get() == nil {
 		var ret AccountVerification
 		return ret
 	}
 
-	return o.Verification
+	return *o.Verification.Get()
 }
 
 // GetVerificationOk returns a tuple with the Verification field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExternalAccount) GetVerificationOk() (*AccountVerification, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Verification, true
+	return o.Verification.Get(), o.Verification.IsSet()
 }
 
 // SetVerification sets field value
 func (o *ExternalAccount) SetVerification(v AccountVerification) {
-	o.Verification = v
+	o.Verification.Set(&v)
 }
 
 func (o ExternalAccount) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["account_identifiers"] = o.AccountIdentifiers
+	}
+	if true {
+		toSerialize["account_owner_names"] = o.AccountOwnerNames
 	}
 	if true {
 		toSerialize["creation_time"] = o.CreationTime
@@ -352,7 +391,7 @@ func (o ExternalAccount) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["last_updated_time"] = o.LastUpdatedTime
 	}
-	if true {
+	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
 	if o.Nickname != nil {
@@ -368,7 +407,7 @@ func (o ExternalAccount) MarshalJSON() ([]byte, error) {
 		toSerialize["type"] = o.Type
 	}
 	if true {
-		toSerialize["verification"] = o.Verification
+		toSerialize["verification"] = o.Verification.Get()
 	}
 	return json.Marshal(toSerialize)
 }

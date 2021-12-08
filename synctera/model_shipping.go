@@ -16,27 +16,28 @@ import (
 
 // Shipping Details about the shipping method. If supplied this will override the default shipping address of the customer or account.
 type Shipping struct {
-	Address *Address1 `json:"address,omitempty"`
+	Address *Address `json:"address,omitempty"`
 	// The name of the person to send in care of
 	CareOfLine *string `json:"care_of_line,omitempty"`
 	// Is the shipment expedited
 	IsExpeditedFulfillment *bool `json:"is_expedited_fulfillment,omitempty"`
 	// The shipping method
 	Method *string `json:"method,omitempty"`
-	RecipientName RecipientName `json:"recipient_name"`
+	// The phone number of the recipient
+	PhoneNumber *string `json:"phone_number,omitempty"`
+	RecipientName *RecipientName `json:"recipient_name,omitempty"`
 }
 
 // NewShipping instantiates a new Shipping object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewShipping(recipientName RecipientName) *Shipping {
+func NewShipping() *Shipping {
 	this := Shipping{}
 	var isExpeditedFulfillment bool = false
 	this.IsExpeditedFulfillment = &isExpeditedFulfillment
 	var method string = "LOCAL_MAIL"
 	this.Method = &method
-	this.RecipientName = recipientName
 	return &this
 }
 
@@ -53,9 +54,9 @@ func NewShippingWithDefaults() *Shipping {
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
-func (o *Shipping) GetAddress() Address1 {
+func (o *Shipping) GetAddress() Address {
 	if o == nil || o.Address == nil {
-		var ret Address1
+		var ret Address
 		return ret
 	}
 	return *o.Address
@@ -63,7 +64,7 @@ func (o *Shipping) GetAddress() Address1 {
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Shipping) GetAddressOk() (*Address1, bool) {
+func (o *Shipping) GetAddressOk() (*Address, bool) {
 	if o == nil || o.Address == nil {
 		return nil, false
 	}
@@ -79,8 +80,8 @@ func (o *Shipping) HasAddress() bool {
 	return false
 }
 
-// SetAddress gets a reference to the given Address1 and assigns it to the Address field.
-func (o *Shipping) SetAddress(v Address1) {
+// SetAddress gets a reference to the given Address and assigns it to the Address field.
+func (o *Shipping) SetAddress(v Address) {
 	o.Address = &v
 }
 
@@ -180,28 +181,68 @@ func (o *Shipping) SetMethod(v string) {
 	o.Method = &v
 }
 
-// GetRecipientName returns the RecipientName field value
+// GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
+func (o *Shipping) GetPhoneNumber() string {
+	if o == nil || o.PhoneNumber == nil {
+		var ret string
+		return ret
+	}
+	return *o.PhoneNumber
+}
+
+// GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Shipping) GetPhoneNumberOk() (*string, bool) {
+	if o == nil || o.PhoneNumber == nil {
+		return nil, false
+	}
+	return o.PhoneNumber, true
+}
+
+// HasPhoneNumber returns a boolean if a field has been set.
+func (o *Shipping) HasPhoneNumber() bool {
+	if o != nil && o.PhoneNumber != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPhoneNumber gets a reference to the given string and assigns it to the PhoneNumber field.
+func (o *Shipping) SetPhoneNumber(v string) {
+	o.PhoneNumber = &v
+}
+
+// GetRecipientName returns the RecipientName field value if set, zero value otherwise.
 func (o *Shipping) GetRecipientName() RecipientName {
-	if o == nil {
+	if o == nil || o.RecipientName == nil {
 		var ret RecipientName
 		return ret
 	}
-
-	return o.RecipientName
+	return *o.RecipientName
 }
 
-// GetRecipientNameOk returns a tuple with the RecipientName field value
+// GetRecipientNameOk returns a tuple with the RecipientName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Shipping) GetRecipientNameOk() (*RecipientName, bool) {
-	if o == nil  {
+	if o == nil || o.RecipientName == nil {
 		return nil, false
 	}
-	return &o.RecipientName, true
+	return o.RecipientName, true
 }
 
-// SetRecipientName sets field value
+// HasRecipientName returns a boolean if a field has been set.
+func (o *Shipping) HasRecipientName() bool {
+	if o != nil && o.RecipientName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRecipientName gets a reference to the given RecipientName and assigns it to the RecipientName field.
 func (o *Shipping) SetRecipientName(v RecipientName) {
-	o.RecipientName = v
+	o.RecipientName = &v
 }
 
 func (o Shipping) MarshalJSON() ([]byte, error) {
@@ -218,7 +259,10 @@ func (o Shipping) MarshalJSON() ([]byte, error) {
 	if o.Method != nil {
 		toSerialize["method"] = o.Method
 	}
-	if true {
+	if o.PhoneNumber != nil {
+		toSerialize["phone_number"] = o.PhoneNumber
+	}
+	if o.RecipientName != nil {
 		toSerialize["recipient_name"] = o.RecipientName
 	}
 	return json.Marshal(toSerialize)

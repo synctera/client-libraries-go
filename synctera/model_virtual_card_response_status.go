@@ -16,15 +16,20 @@ import (
 
 // VirtualCardResponseStatus struct for VirtualCardResponseStatus
 type VirtualCardResponseStatus struct {
-	Status *CardStatusObject `json:"status,omitempty"`
+	CardStatus CardStatus `json:"card_status"`
+	// Additional details about the reason for the status change
+	Memo *string `json:"memo,omitempty"`
+	StatusReason CardStatusReasonCode `json:"status_reason"`
 }
 
 // NewVirtualCardResponseStatus instantiates a new VirtualCardResponseStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualCardResponseStatus() *VirtualCardResponseStatus {
+func NewVirtualCardResponseStatus(cardStatus CardStatus, statusReason CardStatusReasonCode) *VirtualCardResponseStatus {
 	this := VirtualCardResponseStatus{}
+	this.CardStatus = cardStatus
+	this.StatusReason = statusReason
 	return &this
 }
 
@@ -36,42 +41,96 @@ func NewVirtualCardResponseStatusWithDefaults() *VirtualCardResponseStatus {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *VirtualCardResponseStatus) GetStatus() CardStatusObject {
-	if o == nil || o.Status == nil {
-		var ret CardStatusObject
+// GetCardStatus returns the CardStatus field value
+func (o *VirtualCardResponseStatus) GetCardStatus() CardStatus {
+	if o == nil {
+		var ret CardStatus
 		return ret
 	}
-	return *o.Status
+
+	return o.CardStatus
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetCardStatusOk returns a tuple with the CardStatus field value
 // and a boolean to check if the value has been set.
-func (o *VirtualCardResponseStatus) GetStatusOk() (*CardStatusObject, bool) {
-	if o == nil || o.Status == nil {
+func (o *VirtualCardResponseStatus) GetCardStatusOk() (*CardStatus, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.CardStatus, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *VirtualCardResponseStatus) HasStatus() bool {
-	if o != nil && o.Status != nil {
+// SetCardStatus sets field value
+func (o *VirtualCardResponseStatus) SetCardStatus(v CardStatus) {
+	o.CardStatus = v
+}
+
+// GetMemo returns the Memo field value if set, zero value otherwise.
+func (o *VirtualCardResponseStatus) GetMemo() string {
+	if o == nil || o.Memo == nil {
+		var ret string
+		return ret
+	}
+	return *o.Memo
+}
+
+// GetMemoOk returns a tuple with the Memo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualCardResponseStatus) GetMemoOk() (*string, bool) {
+	if o == nil || o.Memo == nil {
+		return nil, false
+	}
+	return o.Memo, true
+}
+
+// HasMemo returns a boolean if a field has been set.
+func (o *VirtualCardResponseStatus) HasMemo() bool {
+	if o != nil && o.Memo != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given CardStatusObject and assigns it to the Status field.
-func (o *VirtualCardResponseStatus) SetStatus(v CardStatusObject) {
-	o.Status = &v
+// SetMemo gets a reference to the given string and assigns it to the Memo field.
+func (o *VirtualCardResponseStatus) SetMemo(v string) {
+	o.Memo = &v
+}
+
+// GetStatusReason returns the StatusReason field value
+func (o *VirtualCardResponseStatus) GetStatusReason() CardStatusReasonCode {
+	if o == nil {
+		var ret CardStatusReasonCode
+		return ret
+	}
+
+	return o.StatusReason
+}
+
+// GetStatusReasonOk returns a tuple with the StatusReason field value
+// and a boolean to check if the value has been set.
+func (o *VirtualCardResponseStatus) GetStatusReasonOk() (*CardStatusReasonCode, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.StatusReason, true
+}
+
+// SetStatusReason sets field value
+func (o *VirtualCardResponseStatus) SetStatusReason(v CardStatusReasonCode) {
+	o.StatusReason = v
 }
 
 func (o VirtualCardResponseStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	if true {
+		toSerialize["card_status"] = o.CardStatus
+	}
+	if o.Memo != nil {
+		toSerialize["memo"] = o.Memo
+	}
+	if true {
+		toSerialize["status_reason"] = o.StatusReason
 	}
 	return json.Marshal(toSerialize)
 }

@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerId** | **string** | Customer that the current account is associated with | 
 **Id** | Pointer to **string** | ID of account relationship | [optional] [readonly] 
-**RelationshipType** | **string** | Relationship type | 
+**RelationshipType** | [**AccountRelationshipType**](AccountRelationshipType.md) |  | 
 
 ## Methods
 
 ### NewRelationship
 
-`func NewRelationship(customerId string, relationshipType string, ) *Relationship`
+`func NewRelationship(customerId string, relationshipType AccountRelationshipType, ) *Relationship`
 
 NewRelationship instantiates a new Relationship object
 This constructor will assign default values to properties that have it defined,
@@ -74,20 +74,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetRelationshipType
 
-`func (o *Relationship) GetRelationshipType() string`
+`func (o *Relationship) GetRelationshipType() AccountRelationshipType`
 
 GetRelationshipType returns the RelationshipType field if non-nil, zero value otherwise.
 
 ### GetRelationshipTypeOk
 
-`func (o *Relationship) GetRelationshipTypeOk() (*string, bool)`
+`func (o *Relationship) GetRelationshipTypeOk() (*AccountRelationshipType, bool)`
 
 GetRelationshipTypeOk returns a tuple with the RelationshipType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRelationshipType
 
-`func (o *Relationship) SetRelationshipType(v string)`
+`func (o *Relationship) SetRelationshipType(v AccountRelationshipType)`
 
 SetRelationshipType sets RelationshipType field to given value.
 

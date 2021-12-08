@@ -23,21 +23,18 @@ type PlaidAccountVerification struct {
 	Status string `json:"status"`
 	// The vendor used for verifying the account
 	Vendor string `json:"vendor"`
-	// The token provided from Plaid to access the accounts.
-	AccessToken string `json:"access_token"`
 }
 
 // NewPlaidAccountVerification instantiates a new PlaidAccountVerification object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlaidAccountVerification(creationTime time.Time, lastUpdatedTime time.Time, status string, vendor string, accessToken string) *PlaidAccountVerification {
+func NewPlaidAccountVerification(creationTime time.Time, lastUpdatedTime time.Time, status string, vendor string) *PlaidAccountVerification {
 	this := PlaidAccountVerification{}
 	this.CreationTime = creationTime
 	this.LastUpdatedTime = lastUpdatedTime
 	this.Status = status
 	this.Vendor = vendor
-	this.AccessToken = accessToken
 	return &this
 }
 
@@ -145,30 +142,6 @@ func (o *PlaidAccountVerification) SetVendor(v string) {
 	o.Vendor = v
 }
 
-// GetAccessToken returns the AccessToken field value
-func (o *PlaidAccountVerification) GetAccessToken() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AccessToken
-}
-
-// GetAccessTokenOk returns a tuple with the AccessToken field value
-// and a boolean to check if the value has been set.
-func (o *PlaidAccountVerification) GetAccessTokenOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.AccessToken, true
-}
-
-// SetAccessToken sets field value
-func (o *PlaidAccountVerification) SetAccessToken(v string) {
-	o.AccessToken = v
-}
-
 func (o PlaidAccountVerification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -182,9 +155,6 @@ func (o PlaidAccountVerification) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["vendor"] = o.Vendor
-	}
-	if true {
-		toSerialize["access_token"] = o.AccessToken
 	}
 	return json.Marshal(toSerialize)
 }

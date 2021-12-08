@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ContentType** | **string** | Describes the content-type encoding received from the vendor | 
-**Vendor** | **string** |  | 
-**Xml** | **string** | Data representaion in XML | 
+**ContentType** | **string** | Describes the content-type encoding received from the vendor. | 
+**Details** | [**[]Detail**](Detail.md) | Array of vendor specific information. | 
+**Vendor** | **string** | Name of the vendor used. | 
+**Xml** | **string** | Data representaion in XML. | 
 
 ## Methods
 
 ### NewVendorXml
 
-`func NewVendorXml(contentType string, vendor string, xml string, ) *VendorXml`
+`func NewVendorXml(contentType string, details []Detail, vendor string, xml string, ) *VendorXml`
 
 NewVendorXml instantiates a new VendorXml object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +46,26 @@ and a boolean to check if the value has been set.
 `func (o *VendorXml) SetContentType(v string)`
 
 SetContentType sets ContentType field to given value.
+
+
+### GetDetails
+
+`func (o *VendorXml) GetDetails() []Detail`
+
+GetDetails returns the Details field if non-nil, zero value otherwise.
+
+### GetDetailsOk
+
+`func (o *VendorXml) GetDetailsOk() (*[]Detail, bool)`
+
+GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetails
+
+`func (o *VendorXml) SetDetails(v []Detail)`
+
+SetDetails sets Details field to given value.
 
 
 ### GetVendor

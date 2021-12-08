@@ -8,10 +8,8 @@ Name | Type | Description | Notes
 **AddressLine2** | Pointer to **string** | String address line 2 | [optional] 
 **City** | **string** | City | 
 **CountryCode** | **string** | ISO-3166-1 Alpha-2 country code | 
-**Id** | Pointer to **string** | Address unique identifier | [optional] 
 **PostalCode** | **string** | Postal code | 
 **State** | **string** | State, region, province, or prefecture | 
-**Type** | Pointer to **string** | type of address | [optional] 
 
 ## Methods
 
@@ -117,31 +115,6 @@ and a boolean to check if the value has been set.
 SetCountryCode sets CountryCode field to given value.
 
 
-### GetId
-
-`func (o *Address1) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Address1) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Address1) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Address1) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
 ### GetPostalCode
 
 `func (o *Address1) GetPostalCode() string`
@@ -181,31 +154,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-
-### GetType
-
-`func (o *Address1) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *Address1) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *Address1) SetType(v string)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *Address1) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

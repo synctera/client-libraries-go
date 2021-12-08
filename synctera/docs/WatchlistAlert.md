@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **ProviderWatchlistName** | Pointer to **string** | The name of the provider for this alert | [optional] 
 **Status** | **string** | The status of this alert | 
 **Urls** | Pointer to **[]string** | Where to get more information about this alert (according to our third-party data provider).  | [optional] 
-**VendorInfo** | Pointer to [**VendorInfo**](VendorInfo.md) |  | [optional] 
+**VendorInfo** | Pointer to [**VendorInfo1**](VendorInfo1.md) |  | [optional] 
 
 ## Methods
 
@@ -230,20 +230,20 @@ HasUrls returns a boolean if a field has been set.
 
 ### GetVendorInfo
 
-`func (o *WatchlistAlert) GetVendorInfo() VendorInfo`
+`func (o *WatchlistAlert) GetVendorInfo() VendorInfo1`
 
 GetVendorInfo returns the VendorInfo field if non-nil, zero value otherwise.
 
 ### GetVendorInfoOk
 
-`func (o *WatchlistAlert) GetVendorInfoOk() (*VendorInfo, bool)`
+`func (o *WatchlistAlert) GetVendorInfoOk() (*VendorInfo1, bool)`
 
 GetVendorInfoOk returns a tuple with the VendorInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVendorInfo
 
-`func (o *WatchlistAlert) SetVendorInfo(v VendorInfo)`
+`func (o *WatchlistAlert) SetVendorInfo(v VendorInfo1)`
 
 SetVendorInfo sets VendorInfo field to given value.
 

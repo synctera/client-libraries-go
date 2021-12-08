@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HasDetails** | Pointer to **bool** | Include the address information (e.g. street number) if set to True. Address reference only if set to false. Default is false | [optional] 
+**IsRollingSecret** | Pointer to **bool** | Set true to let the current secret expire in the next 24 hours. Set false to let the current secret expire immediately. | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewInlineObjectWithDefaults instantiates a new InlineObject object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetHasDetails
+### GetIsRollingSecret
 
-`func (o *InlineObject) GetHasDetails() bool`
+`func (o *InlineObject) GetIsRollingSecret() bool`
 
-GetHasDetails returns the HasDetails field if non-nil, zero value otherwise.
+GetIsRollingSecret returns the IsRollingSecret field if non-nil, zero value otherwise.
 
-### GetHasDetailsOk
+### GetIsRollingSecretOk
 
-`func (o *InlineObject) GetHasDetailsOk() (*bool, bool)`
+`func (o *InlineObject) GetIsRollingSecretOk() (*bool, bool)`
 
-GetHasDetailsOk returns a tuple with the HasDetails field if it's non-nil, zero value otherwise
+GetIsRollingSecretOk returns a tuple with the IsRollingSecret field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHasDetails
+### SetIsRollingSecret
 
-`func (o *InlineObject) SetHasDetails(v bool)`
+`func (o *InlineObject) SetIsRollingSecret(v bool)`
 
-SetHasDetails sets HasDetails field to given value.
+SetIsRollingSecret sets IsRollingSecret field to given value.
 
-### HasHasDetails
+### HasIsRollingSecret
 
-`func (o *InlineObject) HasHasDetails() bool`
+`func (o *InlineObject) HasIsRollingSecret() bool`
 
-HasHasDetails returns a boolean if a field has been set.
+HasIsRollingSecret returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

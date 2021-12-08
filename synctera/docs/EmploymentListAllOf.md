@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Employment** | [**[]Employment**](Employment.md) | Array of customer employment records | 
+**Employment** | [**[]Employment**](Employment.md) | Array of customer employment records. | 
 
 ## Methods
 

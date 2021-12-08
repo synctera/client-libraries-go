@@ -1006,11 +1006,11 @@ func (a *WebhooksApiService) ListWebhooks1Execute(r ApiListWebhooks1Request) (We
 type ApiReplaceSecretRequest struct {
 	ctx _context.Context
 	ApiService *WebhooksApiService
-	inlineObject3 *InlineObject3
+	inlineObject *InlineObject
 }
 
-func (r ApiReplaceSecretRequest) InlineObject3(inlineObject3 InlineObject3) ApiReplaceSecretRequest {
-	r.inlineObject3 = &inlineObject3
+func (r ApiReplaceSecretRequest) InlineObject(inlineObject InlineObject) ApiReplaceSecretRequest {
+	r.inlineObject = &inlineObject
 	return r
 }
 
@@ -1055,8 +1055,8 @@ func (a *WebhooksApiService) ReplaceSecretExecute(r ApiReplaceSecretRequest) (In
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.inlineObject3 == nil {
-		return localVarReturnValue, nil, reportError("inlineObject3 is required and must be specified")
+	if r.inlineObject == nil {
+		return localVarReturnValue, nil, reportError("inlineObject is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1077,7 +1077,7 @@ func (a *WebhooksApiService) ReplaceSecretExecute(r ApiReplaceSecretRequest) (In
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineObject3
+	localVarPostBody = r.inlineObject
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1415,11 +1415,11 @@ func (a *WebhooksApiService) RevokeSecretExecute(r ApiRevokeSecretRequest) (*_ne
 type ApiTriggerEventRequest struct {
 	ctx _context.Context
 	ApiService *WebhooksApiService
-	inlineObject4 *InlineObject4
+	inlineObject1 *InlineObject1
 }
 
-func (r ApiTriggerEventRequest) InlineObject4(inlineObject4 InlineObject4) ApiTriggerEventRequest {
-	r.inlineObject4 = &inlineObject4
+func (r ApiTriggerEventRequest) InlineObject1(inlineObject1 InlineObject1) ApiTriggerEventRequest {
+	r.inlineObject1 = &inlineObject1
 	return r
 }
 
@@ -1464,8 +1464,8 @@ func (a *WebhooksApiService) TriggerEventExecute(r ApiTriggerEventRequest) (Even
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.inlineObject4 == nil {
-		return localVarReturnValue, nil, reportError("inlineObject4 is required and must be specified")
+	if r.inlineObject1 == nil {
+		return localVarReturnValue, nil, reportError("inlineObject1 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1486,7 +1486,7 @@ func (a *WebhooksApiService) TriggerEventExecute(r ApiTriggerEventRequest) (Even
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineObject4
+	localVarPostBody = r.inlineObject1
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

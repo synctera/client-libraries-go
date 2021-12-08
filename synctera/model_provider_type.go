@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// ProviderType Name of the organization that provided this data
+// ProviderType Name of the organization that provided this data.
 type ProviderType string
 
 // List of provider_type

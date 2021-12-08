@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// VerificationType the model 'VerificationType'
+// VerificationType The type of check run on the customer.
 type VerificationType string
 
 // List of verification_type

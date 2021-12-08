@@ -385,7 +385,7 @@ func main() {
     startDate := time.Now() // string | Start date of the search range (optional)
     endDate := time.Now() // string | End date of the search range (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
+    pageToken := "19waxl0g93" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -460,7 +460,7 @@ import (
 
 func main() {
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
+    pageToken := "19waxl0g93" // string |  (optional)
     isEnabledOnly := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
 
 ## ReplaceSecret
 
-> InlineResponse200 ReplaceSecret(ctx).InlineObject3(inlineObject3).Execute()
+> InlineResponse200 ReplaceSecret(ctx).InlineObject(inlineObject).Execute()
 
 Replace an existing secret
 
@@ -529,11 +529,11 @@ import (
 )
 
 func main() {
-    inlineObject3 := *openapiclient.NewInlineObject3() // InlineObject3 | 
+    inlineObject := *openapiclient.NewInlineObject() // InlineObject | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhooksApi.ReplaceSecret(context.Background()).InlineObject3(inlineObject3).Execute()
+    resp, r, err := api_client.WebhooksApi.ReplaceSecret(context.Background()).InlineObject(inlineObject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WebhooksApi.ReplaceSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -554,7 +554,7 @@ Other parameters are passed through a pointer to a apiReplaceSecretRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject3** | [**InlineObject3**](InlineObject3.md) |  | 
+ **inlineObject** | [**InlineObject**](InlineObject.md) |  | 
 
 ### Return type
 
@@ -710,7 +710,7 @@ Other parameters are passed through a pointer to a apiRevokeSecretRequest struct
 
 ## TriggerEvent
 
-> Event TriggerEvent(ctx).InlineObject4(inlineObject4).Execute()
+> Event TriggerEvent(ctx).InlineObject1(inlineObject1).Execute()
 
 Trigger an event
 
@@ -729,11 +729,11 @@ import (
 )
 
 func main() {
-    inlineObject4 := *openapiclient.NewInlineObject4() // InlineObject4 | 
+    inlineObject1 := *openapiclient.NewInlineObject1() // InlineObject1 | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhooksApi.TriggerEvent(context.Background()).InlineObject4(inlineObject4).Execute()
+    resp, r, err := api_client.WebhooksApi.TriggerEvent(context.Background()).InlineObject1(inlineObject1).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WebhooksApi.TriggerEvent``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -754,7 +754,7 @@ Other parameters are passed through a pointer to a apiTriggerEventRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject4** | [**InlineObject4**](InlineObject4.md) |  | 
+ **inlineObject1** | [**InlineObject1**](InlineObject1.md) |  | 
 
 ### Return type
 

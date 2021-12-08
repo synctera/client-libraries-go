@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EmployerName** | **string** | Name of customer&#39;s employer | 
-**EmploymentFrom** | Pointer to **time.Time** | First day of employment | [optional] 
-**EmploymentHours** | Pointer to **float32** | Number of hours spent per week working for specified employment | [optional] 
-**EmploymentIncome** | Pointer to **int32** | Annual income in cents | [optional] 
-**EmploymentIncomeCurrency** | Pointer to **string** | The 3-letter alphabetic ISO 4217 code for the currency in which the employee was paid  | [optional] 
-**EmploymentInfo** | Pointer to **map[string]interface{}** | A collection of arbitrary key-value pairs providing additional information about this employment relationship  | [optional] 
-**EmploymentOccupation** | Pointer to **string** | Customer&#39;s work title, profession, or field | [optional] 
-**EmploymentTo** | Pointer to **time.Time** | Last day of employment | [optional] 
-**Id** | Pointer to **string** | Unique ID for this employment relationship | [optional] [readonly] 
+**EmployerName** | **string** | Name of customer&#39;s employer. | 
+**EmploymentFrom** | Pointer to **time.Time** | First day of employment. | [optional] 
+**EmploymentHours** | Pointer to **float32** | Number of hours spent per week working for specified employment. | [optional] 
+**EmploymentIncome** | Pointer to **int32** | Annual income in cents. | [optional] 
+**EmploymentIncomeCurrency** | Pointer to **string** | The 3-letter alphabetic ISO 4217 code for the currency in which the employee was paid.  | [optional] 
+**EmploymentInfo** | Pointer to **map[string]interface{}** | A collection of arbitrary key-value pairs providing additional information about this employment relationship.  | [optional] 
+**EmploymentOccupation** | Pointer to **string** | Customer&#39;s work title, profession, or field. | [optional] 
+**EmploymentTo** | Pointer to **time.Time** | Last day of employment. | [optional] 
+**Id** | Pointer to **string** | Unique ID for this employment relationship. | [optional] [readonly] 
 
 ## Methods
 

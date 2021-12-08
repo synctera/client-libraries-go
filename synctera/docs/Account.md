@@ -4,17 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessStatus** | Pointer to **string** | Access status for account. Default ACTIVE | [optional] 
-**AccountNumber** | Pointer to **string** | Account number | [optional] 
-**AccountTemplateId** | Pointer to **string** | Account template ID | [optional] 
+**AccessStatus** | Pointer to [**AccountAccessStatus**](AccountAccessStatus.md) |  | [optional] 
+**AccountNumber** | Pointer to **string** | Account number | [optional] [readonly] 
+**AccountPurpose** | Pointer to **string** | Purpose of the account | [optional] 
 **AccountType** | Pointer to [**AccountType**](AccountType.md) |  | [optional] 
 **Balances** | Pointer to [**[]Balance**](Balance.md) | A list of balances for account based on different type | [optional] [readonly] 
+**BankRouting** | Pointer to **string** | Bank routing number | [optional] [readonly] 
 **Currency** | Pointer to **string** | Account currency or account settlement currency. ISO 4217 alphabetic currency code. Default USD | [optional] 
+**CustomerIds** | Pointer to **[]string** | A list of the customer IDs of the account holders. | [optional] [readonly] 
 **ExchangeRateType** | Pointer to **string** | Exchange rate type | [optional] 
+**FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that the current account associate with | [optional] 
 **Iban** | Pointer to **string** | International bank account number | [optional] 
 **Id** | Pointer to **string** | Account ID | [optional] [readonly] 
+**InterestProductId** | Pointer to **string** | An interest from account product that the current account associate with | [optional] 
 **IsAccountPool** | Pointer to **bool** | Account is investment (variable balance) account or a multi-balance account pool. Default false | [optional] 
-**RecentTransactions** | Pointer to [**[]Transaction**](Transaction.md) | The most recent 10 transactions of the account | [optional] [readonly] 
+**OverdraftLimit** | Pointer to **int64** | Account&#39;s overdraft limit | [optional] 
 **Status** | Pointer to [**Status**](Status.md) |  | [optional] 
 **SwiftCode** | Pointer to **string** | SWIFT code | [optional] 
 
@@ -39,20 +43,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAccessStatus
 
-`func (o *Account) GetAccessStatus() string`
+`func (o *Account) GetAccessStatus() AccountAccessStatus`
 
 GetAccessStatus returns the AccessStatus field if non-nil, zero value otherwise.
 
 ### GetAccessStatusOk
 
-`func (o *Account) GetAccessStatusOk() (*string, bool)`
+`func (o *Account) GetAccessStatusOk() (*AccountAccessStatus, bool)`
 
 GetAccessStatusOk returns a tuple with the AccessStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessStatus
 
-`func (o *Account) SetAccessStatus(v string)`
+`func (o *Account) SetAccessStatus(v AccountAccessStatus)`
 
 SetAccessStatus sets AccessStatus field to given value.
 
@@ -87,30 +91,30 @@ SetAccountNumber sets AccountNumber field to given value.
 
 HasAccountNumber returns a boolean if a field has been set.
 
-### GetAccountTemplateId
+### GetAccountPurpose
 
-`func (o *Account) GetAccountTemplateId() string`
+`func (o *Account) GetAccountPurpose() string`
 
-GetAccountTemplateId returns the AccountTemplateId field if non-nil, zero value otherwise.
+GetAccountPurpose returns the AccountPurpose field if non-nil, zero value otherwise.
 
-### GetAccountTemplateIdOk
+### GetAccountPurposeOk
 
-`func (o *Account) GetAccountTemplateIdOk() (*string, bool)`
+`func (o *Account) GetAccountPurposeOk() (*string, bool)`
 
-GetAccountTemplateIdOk returns a tuple with the AccountTemplateId field if it's non-nil, zero value otherwise
+GetAccountPurposeOk returns a tuple with the AccountPurpose field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountTemplateId
+### SetAccountPurpose
 
-`func (o *Account) SetAccountTemplateId(v string)`
+`func (o *Account) SetAccountPurpose(v string)`
 
-SetAccountTemplateId sets AccountTemplateId field to given value.
+SetAccountPurpose sets AccountPurpose field to given value.
 
-### HasAccountTemplateId
+### HasAccountPurpose
 
-`func (o *Account) HasAccountTemplateId() bool`
+`func (o *Account) HasAccountPurpose() bool`
 
-HasAccountTemplateId returns a boolean if a field has been set.
+HasAccountPurpose returns a boolean if a field has been set.
 
 ### GetAccountType
 
@@ -162,6 +166,31 @@ SetBalances sets Balances field to given value.
 
 HasBalances returns a boolean if a field has been set.
 
+### GetBankRouting
+
+`func (o *Account) GetBankRouting() string`
+
+GetBankRouting returns the BankRouting field if non-nil, zero value otherwise.
+
+### GetBankRoutingOk
+
+`func (o *Account) GetBankRoutingOk() (*string, bool)`
+
+GetBankRoutingOk returns a tuple with the BankRouting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBankRouting
+
+`func (o *Account) SetBankRouting(v string)`
+
+SetBankRouting sets BankRouting field to given value.
+
+### HasBankRouting
+
+`func (o *Account) HasBankRouting() bool`
+
+HasBankRouting returns a boolean if a field has been set.
+
 ### GetCurrency
 
 `func (o *Account) GetCurrency() string`
@@ -187,6 +216,31 @@ SetCurrency sets Currency field to given value.
 
 HasCurrency returns a boolean if a field has been set.
 
+### GetCustomerIds
+
+`func (o *Account) GetCustomerIds() []string`
+
+GetCustomerIds returns the CustomerIds field if non-nil, zero value otherwise.
+
+### GetCustomerIdsOk
+
+`func (o *Account) GetCustomerIdsOk() (*[]string, bool)`
+
+GetCustomerIdsOk returns a tuple with the CustomerIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerIds
+
+`func (o *Account) SetCustomerIds(v []string)`
+
+SetCustomerIds sets CustomerIds field to given value.
+
+### HasCustomerIds
+
+`func (o *Account) HasCustomerIds() bool`
+
+HasCustomerIds returns a boolean if a field has been set.
+
 ### GetExchangeRateType
 
 `func (o *Account) GetExchangeRateType() string`
@@ -211,6 +265,31 @@ SetExchangeRateType sets ExchangeRateType field to given value.
 `func (o *Account) HasExchangeRateType() bool`
 
 HasExchangeRateType returns a boolean if a field has been set.
+
+### GetFeeProductIds
+
+`func (o *Account) GetFeeProductIds() []string`
+
+GetFeeProductIds returns the FeeProductIds field if non-nil, zero value otherwise.
+
+### GetFeeProductIdsOk
+
+`func (o *Account) GetFeeProductIdsOk() (*[]string, bool)`
+
+GetFeeProductIdsOk returns a tuple with the FeeProductIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeeProductIds
+
+`func (o *Account) SetFeeProductIds(v []string)`
+
+SetFeeProductIds sets FeeProductIds field to given value.
+
+### HasFeeProductIds
+
+`func (o *Account) HasFeeProductIds() bool`
+
+HasFeeProductIds returns a boolean if a field has been set.
 
 ### GetIban
 
@@ -262,6 +341,31 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### GetInterestProductId
+
+`func (o *Account) GetInterestProductId() string`
+
+GetInterestProductId returns the InterestProductId field if non-nil, zero value otherwise.
+
+### GetInterestProductIdOk
+
+`func (o *Account) GetInterestProductIdOk() (*string, bool)`
+
+GetInterestProductIdOk returns a tuple with the InterestProductId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterestProductId
+
+`func (o *Account) SetInterestProductId(v string)`
+
+SetInterestProductId sets InterestProductId field to given value.
+
+### HasInterestProductId
+
+`func (o *Account) HasInterestProductId() bool`
+
+HasInterestProductId returns a boolean if a field has been set.
+
 ### GetIsAccountPool
 
 `func (o *Account) GetIsAccountPool() bool`
@@ -287,30 +391,30 @@ SetIsAccountPool sets IsAccountPool field to given value.
 
 HasIsAccountPool returns a boolean if a field has been set.
 
-### GetRecentTransactions
+### GetOverdraftLimit
 
-`func (o *Account) GetRecentTransactions() []Transaction`
+`func (o *Account) GetOverdraftLimit() int64`
 
-GetRecentTransactions returns the RecentTransactions field if non-nil, zero value otherwise.
+GetOverdraftLimit returns the OverdraftLimit field if non-nil, zero value otherwise.
 
-### GetRecentTransactionsOk
+### GetOverdraftLimitOk
 
-`func (o *Account) GetRecentTransactionsOk() (*[]Transaction, bool)`
+`func (o *Account) GetOverdraftLimitOk() (*int64, bool)`
 
-GetRecentTransactionsOk returns a tuple with the RecentTransactions field if it's non-nil, zero value otherwise
+GetOverdraftLimitOk returns a tuple with the OverdraftLimit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRecentTransactions
+### SetOverdraftLimit
 
-`func (o *Account) SetRecentTransactions(v []Transaction)`
+`func (o *Account) SetOverdraftLimit(v int64)`
 
-SetRecentTransactions sets RecentTransactions field to given value.
+SetOverdraftLimit sets OverdraftLimit field to given value.
 
-### HasRecentTransactions
+### HasOverdraftLimit
 
-`func (o *Account) HasRecentTransactions() bool`
+`func (o *Account) HasOverdraftLimit() bool`
 
-HasRecentTransactions returns a boolean if a field has been set.
+HasOverdraftLimit returns a boolean if a field has been set.
 
 ### GetStatus
 

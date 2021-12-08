@@ -17,23 +17,23 @@ import (
 
 // Employment A period of time in which a customer is (was) employed by a particular employer. 
 type Employment struct {
-	// Name of customer's employer
+	// Name of customer's employer.
 	EmployerName string `json:"employer_name"`
-	// First day of employment
+	// First day of employment.
 	EmploymentFrom *time.Time `json:"employment_from,omitempty"`
-	// Number of hours spent per week working for specified employment
+	// Number of hours spent per week working for specified employment.
 	EmploymentHours *float32 `json:"employment_hours,omitempty"`
-	// Annual income in cents
+	// Annual income in cents.
 	EmploymentIncome *int32 `json:"employment_income,omitempty"`
-	// The 3-letter alphabetic ISO 4217 code for the currency in which the employee was paid 
+	// The 3-letter alphabetic ISO 4217 code for the currency in which the employee was paid. 
 	EmploymentIncomeCurrency *string `json:"employment_income_currency,omitempty"`
-	// A collection of arbitrary key-value pairs providing additional information about this employment relationship 
+	// A collection of arbitrary key-value pairs providing additional information about this employment relationship. 
 	EmploymentInfo *map[string]interface{} `json:"employment_info,omitempty"`
-	// Customer's work title, profession, or field
+	// Customer's work title, profession, or field.
 	EmploymentOccupation *string `json:"employment_occupation,omitempty"`
-	// Last day of employment
+	// Last day of employment.
 	EmploymentTo *time.Time `json:"employment_to,omitempty"`
-	// Unique ID for this employment relationship
+	// Unique ID for this employment relationship.
 	Id *string `json:"id,omitempty"`
 }
 

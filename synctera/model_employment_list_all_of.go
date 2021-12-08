@@ -16,7 +16,7 @@ import (
 
 // EmploymentListAllOf struct for EmploymentListAllOf
 type EmploymentListAllOf struct {
-	// Array of customer employment records
+	// Array of customer employment records.
 	Employment []Employment `json:"employment"`
 }
 

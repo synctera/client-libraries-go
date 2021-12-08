@@ -21,6 +21,7 @@ type PhysicalCardResponse struct {
 	Form string `json:"form"`
 	// The ID of the account to which the card will be linked
 	AccountId string `json:"account_id"`
+	CardBrand CardBrand `json:"card_brand"`
 	// The card product to which the card is attached
 	CardProductId string `json:"card_product_id"`
 	// The timestamp representing when the card issuance request was made
@@ -40,42 +41,36 @@ type PhysicalCardResponse struct {
 	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
 	// Additional data to include in the request structured as key-value pairs
 	Metadata *map[string]string `json:"metadata,omitempty"`
-	// The network on which the card transacts
-	Network string `json:"network"`
 	// The reason the card needs to be reissued
 	ReissueReason *string `json:"reissue_reason,omitempty"`
-	// If this card was issued as a reissuance of another card, this ID refers to the card was replaced
+	// When reissuing a card, specify the card to be replaced here. When getting a card's details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced. 
 	ReissuedFromId *string `json:"reissued_from_id,omitempty"`
-	// If this card was reissued, this ID refers to the card that replaced it
+	// If this card was reissued, this ID refers to the card that replaced it.
 	ReissuedToId *string `json:"reissued_to_id,omitempty"`
+	Shipping Shipping `json:"shipping"`
 	// Indicates the type of card to be issued
 	Type string `json:"type"`
-	// barcode to scan for card activation
-	Barcode *string `json:"barcode,omitempty"`
 	// indicates whether a pin has been set on the card
 	IsPinSet *bool `json:"is_pin_set,omitempty"`
-	Shipping Shipping `json:"shipping"`
-	CardFulfillmentStatus CardFulfillmentStatus `json:"card_fulfillment_status"`
 	CardStatus CardStatus `json:"card_status"`
-	// The carrier with whom the card is shipped
-	Carrier *string `json:"carrier,omitempty"`
 	// Additional details about the reason for the status change
 	Memo *string `json:"memo,omitempty"`
-	// The status of indicating the shipping status of the card
-	ShippingStatus *string `json:"shipping_status,omitempty"`
 	StatusReason CardStatusReasonCode `json:"status_reason"`
+	CardFulfillmentStatus CardFulfillmentStatus `json:"card_fulfillment_status"`
 	// The tracking number
 	TrackingNumber *string `json:"tracking_number,omitempty"`
+	PhysicalCardFormat PhysicalCardFormat `json:"physical_card_format"`
 }
 
 // NewPhysicalCardResponse instantiates a new PhysicalCardResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPhysicalCardResponse(form string, accountId string, cardProductId string, creationTime time.Time, customerId string, embossName EmbossName, expirationMonth string, expirationYear string, id string, lastFour string, network string, type_ string, shipping Shipping, cardFulfillmentStatus CardFulfillmentStatus, cardStatus CardStatus, statusReason CardStatusReasonCode) *PhysicalCardResponse {
+func NewPhysicalCardResponse(form string, accountId string, cardBrand CardBrand, cardProductId string, creationTime time.Time, customerId string, embossName EmbossName, expirationMonth string, expirationYear string, id string, lastFour string, shipping Shipping, type_ string, cardStatus CardStatus, statusReason CardStatusReasonCode, cardFulfillmentStatus CardFulfillmentStatus, physicalCardFormat PhysicalCardFormat) *PhysicalCardResponse {
 	this := PhysicalCardResponse{}
 	this.Form = form
 	this.AccountId = accountId
+	this.CardBrand = cardBrand
 	this.CardProductId = cardProductId
 	this.CreationTime = creationTime
 	this.CustomerId = customerId
@@ -84,14 +79,14 @@ func NewPhysicalCardResponse(form string, accountId string, cardProductId string
 	this.ExpirationYear = expirationYear
 	this.Id = id
 	this.LastFour = lastFour
-	this.Network = network
+	this.Shipping = shipping
 	this.Type = type_
 	var isPinSet bool = false
 	this.IsPinSet = &isPinSet
-	this.Shipping = shipping
-	this.CardFulfillmentStatus = cardFulfillmentStatus
 	this.CardStatus = cardStatus
 	this.StatusReason = statusReason
+	this.CardFulfillmentStatus = cardFulfillmentStatus
+	this.PhysicalCardFormat = physicalCardFormat
 	return &this
 }
 
@@ -151,6 +146,30 @@ func (o *PhysicalCardResponse) GetAccountIdOk() (*string, bool) {
 // SetAccountId sets field value
 func (o *PhysicalCardResponse) SetAccountId(v string) {
 	o.AccountId = v
+}
+
+// GetCardBrand returns the CardBrand field value
+func (o *PhysicalCardResponse) GetCardBrand() CardBrand {
+	if o == nil {
+		var ret CardBrand
+		return ret
+	}
+
+	return o.CardBrand
+}
+
+// GetCardBrandOk returns a tuple with the CardBrand field value
+// and a boolean to check if the value has been set.
+func (o *PhysicalCardResponse) GetCardBrandOk() (*CardBrand, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.CardBrand, true
+}
+
+// SetCardBrand sets field value
+func (o *PhysicalCardResponse) SetCardBrand(v CardBrand) {
+	o.CardBrand = v
 }
 
 // GetCardProductId returns the CardProductId field value
@@ -441,30 +460,6 @@ func (o *PhysicalCardResponse) SetMetadata(v map[string]string) {
 	o.Metadata = &v
 }
 
-// GetNetwork returns the Network field value
-func (o *PhysicalCardResponse) GetNetwork() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Network
-}
-
-// GetNetworkOk returns a tuple with the Network field value
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardResponse) GetNetworkOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Network, true
-}
-
-// SetNetwork sets field value
-func (o *PhysicalCardResponse) SetNetwork(v string) {
-	o.Network = v
-}
-
 // GetReissueReason returns the ReissueReason field value if set, zero value otherwise.
 func (o *PhysicalCardResponse) GetReissueReason() string {
 	if o == nil || o.ReissueReason == nil {
@@ -561,6 +556,30 @@ func (o *PhysicalCardResponse) SetReissuedToId(v string) {
 	o.ReissuedToId = &v
 }
 
+// GetShipping returns the Shipping field value
+func (o *PhysicalCardResponse) GetShipping() Shipping {
+	if o == nil {
+		var ret Shipping
+		return ret
+	}
+
+	return o.Shipping
+}
+
+// GetShippingOk returns a tuple with the Shipping field value
+// and a boolean to check if the value has been set.
+func (o *PhysicalCardResponse) GetShippingOk() (*Shipping, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Shipping, true
+}
+
+// SetShipping sets field value
+func (o *PhysicalCardResponse) SetShipping(v Shipping) {
+	o.Shipping = v
+}
+
 // GetType returns the Type field value
 func (o *PhysicalCardResponse) GetType() string {
 	if o == nil {
@@ -583,38 +602,6 @@ func (o *PhysicalCardResponse) GetTypeOk() (*string, bool) {
 // SetType sets field value
 func (o *PhysicalCardResponse) SetType(v string) {
 	o.Type = v
-}
-
-// GetBarcode returns the Barcode field value if set, zero value otherwise.
-func (o *PhysicalCardResponse) GetBarcode() string {
-	if o == nil || o.Barcode == nil {
-		var ret string
-		return ret
-	}
-	return *o.Barcode
-}
-
-// GetBarcodeOk returns a tuple with the Barcode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardResponse) GetBarcodeOk() (*string, bool) {
-	if o == nil || o.Barcode == nil {
-		return nil, false
-	}
-	return o.Barcode, true
-}
-
-// HasBarcode returns a boolean if a field has been set.
-func (o *PhysicalCardResponse) HasBarcode() bool {
-	if o != nil && o.Barcode != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBarcode gets a reference to the given string and assigns it to the Barcode field.
-func (o *PhysicalCardResponse) SetBarcode(v string) {
-	o.Barcode = &v
 }
 
 // GetIsPinSet returns the IsPinSet field value if set, zero value otherwise.
@@ -649,54 +636,6 @@ func (o *PhysicalCardResponse) SetIsPinSet(v bool) {
 	o.IsPinSet = &v
 }
 
-// GetShipping returns the Shipping field value
-func (o *PhysicalCardResponse) GetShipping() Shipping {
-	if o == nil {
-		var ret Shipping
-		return ret
-	}
-
-	return o.Shipping
-}
-
-// GetShippingOk returns a tuple with the Shipping field value
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardResponse) GetShippingOk() (*Shipping, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Shipping, true
-}
-
-// SetShipping sets field value
-func (o *PhysicalCardResponse) SetShipping(v Shipping) {
-	o.Shipping = v
-}
-
-// GetCardFulfillmentStatus returns the CardFulfillmentStatus field value
-func (o *PhysicalCardResponse) GetCardFulfillmentStatus() CardFulfillmentStatus {
-	if o == nil {
-		var ret CardFulfillmentStatus
-		return ret
-	}
-
-	return o.CardFulfillmentStatus
-}
-
-// GetCardFulfillmentStatusOk returns a tuple with the CardFulfillmentStatus field value
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardResponse) GetCardFulfillmentStatusOk() (*CardFulfillmentStatus, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.CardFulfillmentStatus, true
-}
-
-// SetCardFulfillmentStatus sets field value
-func (o *PhysicalCardResponse) SetCardFulfillmentStatus(v CardFulfillmentStatus) {
-	o.CardFulfillmentStatus = v
-}
-
 // GetCardStatus returns the CardStatus field value
 func (o *PhysicalCardResponse) GetCardStatus() CardStatus {
 	if o == nil {
@@ -719,38 +658,6 @@ func (o *PhysicalCardResponse) GetCardStatusOk() (*CardStatus, bool) {
 // SetCardStatus sets field value
 func (o *PhysicalCardResponse) SetCardStatus(v CardStatus) {
 	o.CardStatus = v
-}
-
-// GetCarrier returns the Carrier field value if set, zero value otherwise.
-func (o *PhysicalCardResponse) GetCarrier() string {
-	if o == nil || o.Carrier == nil {
-		var ret string
-		return ret
-	}
-	return *o.Carrier
-}
-
-// GetCarrierOk returns a tuple with the Carrier field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardResponse) GetCarrierOk() (*string, bool) {
-	if o == nil || o.Carrier == nil {
-		return nil, false
-	}
-	return o.Carrier, true
-}
-
-// HasCarrier returns a boolean if a field has been set.
-func (o *PhysicalCardResponse) HasCarrier() bool {
-	if o != nil && o.Carrier != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCarrier gets a reference to the given string and assigns it to the Carrier field.
-func (o *PhysicalCardResponse) SetCarrier(v string) {
-	o.Carrier = &v
 }
 
 // GetMemo returns the Memo field value if set, zero value otherwise.
@@ -785,38 +692,6 @@ func (o *PhysicalCardResponse) SetMemo(v string) {
 	o.Memo = &v
 }
 
-// GetShippingStatus returns the ShippingStatus field value if set, zero value otherwise.
-func (o *PhysicalCardResponse) GetShippingStatus() string {
-	if o == nil || o.ShippingStatus == nil {
-		var ret string
-		return ret
-	}
-	return *o.ShippingStatus
-}
-
-// GetShippingStatusOk returns a tuple with the ShippingStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardResponse) GetShippingStatusOk() (*string, bool) {
-	if o == nil || o.ShippingStatus == nil {
-		return nil, false
-	}
-	return o.ShippingStatus, true
-}
-
-// HasShippingStatus returns a boolean if a field has been set.
-func (o *PhysicalCardResponse) HasShippingStatus() bool {
-	if o != nil && o.ShippingStatus != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetShippingStatus gets a reference to the given string and assigns it to the ShippingStatus field.
-func (o *PhysicalCardResponse) SetShippingStatus(v string) {
-	o.ShippingStatus = &v
-}
-
 // GetStatusReason returns the StatusReason field value
 func (o *PhysicalCardResponse) GetStatusReason() CardStatusReasonCode {
 	if o == nil {
@@ -839,6 +714,30 @@ func (o *PhysicalCardResponse) GetStatusReasonOk() (*CardStatusReasonCode, bool)
 // SetStatusReason sets field value
 func (o *PhysicalCardResponse) SetStatusReason(v CardStatusReasonCode) {
 	o.StatusReason = v
+}
+
+// GetCardFulfillmentStatus returns the CardFulfillmentStatus field value
+func (o *PhysicalCardResponse) GetCardFulfillmentStatus() CardFulfillmentStatus {
+	if o == nil {
+		var ret CardFulfillmentStatus
+		return ret
+	}
+
+	return o.CardFulfillmentStatus
+}
+
+// GetCardFulfillmentStatusOk returns a tuple with the CardFulfillmentStatus field value
+// and a boolean to check if the value has been set.
+func (o *PhysicalCardResponse) GetCardFulfillmentStatusOk() (*CardFulfillmentStatus, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.CardFulfillmentStatus, true
+}
+
+// SetCardFulfillmentStatus sets field value
+func (o *PhysicalCardResponse) SetCardFulfillmentStatus(v CardFulfillmentStatus) {
+	o.CardFulfillmentStatus = v
 }
 
 // GetTrackingNumber returns the TrackingNumber field value if set, zero value otherwise.
@@ -873,6 +772,30 @@ func (o *PhysicalCardResponse) SetTrackingNumber(v string) {
 	o.TrackingNumber = &v
 }
 
+// GetPhysicalCardFormat returns the PhysicalCardFormat field value
+func (o *PhysicalCardResponse) GetPhysicalCardFormat() PhysicalCardFormat {
+	if o == nil {
+		var ret PhysicalCardFormat
+		return ret
+	}
+
+	return o.PhysicalCardFormat
+}
+
+// GetPhysicalCardFormatOk returns a tuple with the PhysicalCardFormat field value
+// and a boolean to check if the value has been set.
+func (o *PhysicalCardResponse) GetPhysicalCardFormatOk() (*PhysicalCardFormat, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.PhysicalCardFormat, true
+}
+
+// SetPhysicalCardFormat sets field value
+func (o *PhysicalCardResponse) SetPhysicalCardFormat(v PhysicalCardFormat) {
+	o.PhysicalCardFormat = v
+}
+
 func (o PhysicalCardResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -880,6 +803,9 @@ func (o PhysicalCardResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["account_id"] = o.AccountId
+	}
+	if true {
+		toSerialize["card_brand"] = o.CardBrand
 	}
 	if true {
 		toSerialize["card_product_id"] = o.CardProductId
@@ -914,9 +840,6 @@ func (o PhysicalCardResponse) MarshalJSON() ([]byte, error) {
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if true {
-		toSerialize["network"] = o.Network
-	}
 	if o.ReissueReason != nil {
 		toSerialize["reissue_reason"] = o.ReissueReason
 	}
@@ -927,37 +850,31 @@ func (o PhysicalCardResponse) MarshalJSON() ([]byte, error) {
 		toSerialize["reissued_to_id"] = o.ReissuedToId
 	}
 	if true {
-		toSerialize["type"] = o.Type
+		toSerialize["shipping"] = o.Shipping
 	}
-	if o.Barcode != nil {
-		toSerialize["barcode"] = o.Barcode
+	if true {
+		toSerialize["type"] = o.Type
 	}
 	if o.IsPinSet != nil {
 		toSerialize["is_pin_set"] = o.IsPinSet
 	}
 	if true {
-		toSerialize["shipping"] = o.Shipping
-	}
-	if true {
-		toSerialize["card_fulfillment_status"] = o.CardFulfillmentStatus
-	}
-	if true {
 		toSerialize["card_status"] = o.CardStatus
-	}
-	if o.Carrier != nil {
-		toSerialize["carrier"] = o.Carrier
 	}
 	if o.Memo != nil {
 		toSerialize["memo"] = o.Memo
 	}
-	if o.ShippingStatus != nil {
-		toSerialize["shipping_status"] = o.ShippingStatus
-	}
 	if true {
 		toSerialize["status_reason"] = o.StatusReason
 	}
+	if true {
+		toSerialize["card_fulfillment_status"] = o.CardFulfillmentStatus
+	}
 	if o.TrackingNumber != nil {
 		toSerialize["tracking_number"] = o.TrackingNumber
+	}
+	if true {
+		toSerialize["physical_card_format"] = o.PhysicalCardFormat
 	}
 	return json.Marshal(toSerialize)
 }

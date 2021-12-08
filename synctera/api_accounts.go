@@ -168,152 +168,6 @@ func (a *AccountsApiService) CreateAccountExecute(r ApiCreateAccountRequest) (Ac
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateAccountAddressRequest struct {
-	ctx _context.Context
-	ApiService *AccountsApiService
-	accountId string
-	accountAddress *AccountAddress
-}
-
-// Account address to create
-func (r ApiCreateAccountAddressRequest) AccountAddress(accountAddress AccountAddress) ApiCreateAccountAddressRequest {
-	r.accountAddress = &accountAddress
-	return r
-}
-
-func (r ApiCreateAccountAddressRequest) Execute() (AccountAddress, *_nethttp.Response, error) {
-	return r.ApiService.CreateAccountAddressExecute(r)
-}
-
-/*
-CreateAccountAddress Create address for an account
-
-Create account address
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId Unique identifier for the account.
- @return ApiCreateAccountAddressRequest
-*/
-func (a *AccountsApiService) CreateAccountAddress(ctx _context.Context, accountId string) ApiCreateAccountAddressRequest {
-	return ApiCreateAccountAddressRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-	}
-}
-
-// Execute executes the request
-//  @return AccountAddress
-func (a *AccountsApiService) CreateAccountAddressExecute(r ApiCreateAccountAddressRequest) (AccountAddress, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AccountAddress
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.CreateAccountAddress")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/accounts/{account_id}/addresses"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", _neturl.PathEscape(parameterToString(r.accountId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.accountAddress == nil {
-		return localVarReturnValue, nil, reportError("accountAddress is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.accountAddress
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 461 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiCreateAccountRelationshipRequest struct {
 	ctx _context.Context
 	ApiService *AccountsApiService
@@ -450,6 +304,234 @@ func (a *AccountsApiService) CreateAccountRelationshipExecute(r ApiCreateAccount
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateAccountResourceProductRequest struct {
+	ctx _context.Context
+	ApiService *AccountsApiService
+	accountProduct *AccountProduct
+}
+
+// Account product to create
+func (r ApiCreateAccountResourceProductRequest) AccountProduct(accountProduct AccountProduct) ApiCreateAccountResourceProductRequest {
+	r.accountProduct = &accountProduct
+	return r
+}
+
+func (r ApiCreateAccountResourceProductRequest) Execute() (AccountProduct, *_nethttp.Response, error) {
+	return r.ApiService.CreateAccountResourceProductExecute(r)
+}
+
+/*
+CreateAccountResourceProduct Create an account product
+
+Create an account product.
+
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateAccountResourceProductRequest
+*/
+func (a *AccountsApiService) CreateAccountResourceProduct(ctx _context.Context) ApiCreateAccountResourceProductRequest {
+	return ApiCreateAccountResourceProductRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return AccountProduct
+func (a *AccountsApiService) CreateAccountResourceProductExecute(r ApiCreateAccountResourceProductRequest) (AccountProduct, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AccountProduct
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.CreateAccountResourceProduct")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/accounts/products"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.accountProduct == nil {
+		return localVarReturnValue, nil, reportError("accountProduct is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.accountProduct
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCreateAccountTemplateRequest struct {
+	ctx _context.Context
+	ApiService *AccountsApiService
+	accountTemplate *AccountTemplate
+}
+
+// Account template to create
+func (r ApiCreateAccountTemplateRequest) AccountTemplate(accountTemplate AccountTemplate) ApiCreateAccountTemplateRequest {
+	r.accountTemplate = &accountTemplate
+	return r
+}
+
+func (r ApiCreateAccountTemplateRequest) Execute() (AccountTemplate, *_nethttp.Response, error) {
+	return r.ApiService.CreateAccountTemplateExecute(r)
+}
+
+/*
+CreateAccountTemplate Create an account template
+
+Create an account template. An account template is need when create an account in a lead mode
+
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateAccountTemplateRequest
+*/
+func (a *AccountsApiService) CreateAccountTemplate(ctx _context.Context) ApiCreateAccountTemplateRequest {
+	return ApiCreateAccountTemplateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return AccountTemplate
+func (a *AccountsApiService) CreateAccountTemplateExecute(r ApiCreateAccountTemplateRequest) (AccountTemplate, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AccountTemplate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.CreateAccountTemplate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/accounts/templates"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.accountTemplate == nil {
+		return localVarReturnValue, nil, reportError("accountTemplate is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.accountTemplate
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDeleteAccountRequest struct {
 	ctx _context.Context
 	ApiService *AccountsApiService
@@ -497,145 +579,6 @@ func (a *AccountsApiService) DeleteAccountExecute(r ApiDeleteAccountRequest) (De
 
 	localVarPath := localBasePath + "/accounts/{account_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", _neturl.PathEscape(parameterToString(r.accountId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 461 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiDeleteAccountAddressRequest struct {
-	ctx _context.Context
-	ApiService *AccountsApiService
-	accountId string
-	connectId string
-}
-
-
-func (r ApiDeleteAccountAddressRequest) Execute() (DeleteResponse, *_nethttp.Response, error) {
-	return r.ApiService.DeleteAccountAddressExecute(r)
-}
-
-/*
-DeleteAccountAddress Delete address for an account
-
-Delete account address
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId Unique identifier for the account.
- @param connectId Connect ID of the account associate with the account entity
- @return ApiDeleteAccountAddressRequest
-*/
-func (a *AccountsApiService) DeleteAccountAddress(ctx _context.Context, accountId string, connectId string) ApiDeleteAccountAddressRequest {
-	return ApiDeleteAccountAddressRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		connectId: connectId,
-	}
-}
-
-// Execute executes the request
-//  @return DeleteResponse
-func (a *AccountsApiService) DeleteAccountAddressExecute(r ApiDeleteAccountAddressRequest) (DeleteResponse, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DeleteResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.DeleteAccountAddress")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/accounts/{account_id}/addresses/{connect_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", _neturl.PathEscape(parameterToString(r.accountId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"connect_id"+"}", _neturl.PathEscape(parameterToString(r.connectId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -998,297 +941,6 @@ func (a *AccountsApiService) GetAccountExecute(r ApiGetAccountRequest) (Account,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAccountAddressRequest struct {
-	ctx _context.Context
-	ApiService *AccountsApiService
-	accountId string
-	connectId string
-	inlineObject *InlineObject
-}
-
-func (r ApiGetAccountAddressRequest) InlineObject(inlineObject InlineObject) ApiGetAccountAddressRequest {
-	r.inlineObject = &inlineObject
-	return r
-}
-
-func (r ApiGetAccountAddressRequest) Execute() (AccountAddress, *_nethttp.Response, error) {
-	return r.ApiService.GetAccountAddressExecute(r)
-}
-
-/*
-GetAccountAddress Get address for an account
-
-Get account address by ID
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId Unique identifier for the account.
- @param connectId Connect ID of the account associate with the account entity
- @return ApiGetAccountAddressRequest
-*/
-func (a *AccountsApiService) GetAccountAddress(ctx _context.Context, accountId string, connectId string) ApiGetAccountAddressRequest {
-	return ApiGetAccountAddressRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		connectId: connectId,
-	}
-}
-
-// Execute executes the request
-//  @return AccountAddress
-func (a *AccountsApiService) GetAccountAddressExecute(r ApiGetAccountAddressRequest) (AccountAddress, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AccountAddress
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.GetAccountAddress")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/accounts/{account_id}/addresses/{connect_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", _neturl.PathEscape(parameterToString(r.accountId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"connect_id"+"}", _neturl.PathEscape(parameterToString(r.connectId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.inlineObject
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 461 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetAccountBalanceRequest struct {
-	ctx _context.Context
-	ApiService *AccountsApiService
-	accountId string
-	inlineObject1 *InlineObject1
-}
-
-func (r ApiGetAccountBalanceRequest) InlineObject1(inlineObject1 InlineObject1) ApiGetAccountBalanceRequest {
-	r.inlineObject1 = &inlineObject1
-	return r
-}
-
-func (r ApiGetAccountBalanceRequest) Execute() (Balance, *_nethttp.Response, error) {
-	return r.ApiService.GetAccountBalanceExecute(r)
-}
-
-/*
-GetAccountBalance Get account balance
-
-Get account balance
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId Unique identifier for the account.
- @return ApiGetAccountBalanceRequest
-*/
-func (a *AccountsApiService) GetAccountBalance(ctx _context.Context, accountId string) ApiGetAccountBalanceRequest {
-	return ApiGetAccountBalanceRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-	}
-}
-
-// Execute executes the request
-//  @return Balance
-func (a *AccountsApiService) GetAccountBalanceExecute(r ApiGetAccountBalanceRequest) (Balance, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Balance
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.GetAccountBalance")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/accounts/{account_id}/balance"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", _neturl.PathEscape(parameterToString(r.accountId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.inlineObject1 == nil {
-		return localVarReturnValue, nil, reportError("inlineObject1 is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.inlineObject1
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 461 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGetAccountRelationshipRequest struct {
 	ctx _context.Context
 	ApiService *AccountsApiService
@@ -1428,84 +1080,60 @@ func (a *AccountsApiService) GetAccountRelationshipExecute(r ApiGetAccountRelati
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAccountTransactionsRequest struct {
+type ApiGetAccountTemplateRequest struct {
 	ctx _context.Context
 	ApiService *AccountsApiService
-	accountId string
-	inlineObject2 *InlineObject2
-	limit *int32
-	pageToken *string
+	templateId string
 }
 
-func (r ApiGetAccountTransactionsRequest) InlineObject2(inlineObject2 InlineObject2) ApiGetAccountTransactionsRequest {
-	r.inlineObject2 = &inlineObject2
-	return r
-}
-func (r ApiGetAccountTransactionsRequest) Limit(limit int32) ApiGetAccountTransactionsRequest {
-	r.limit = &limit
-	return r
-}
-func (r ApiGetAccountTransactionsRequest) PageToken(pageToken string) ApiGetAccountTransactionsRequest {
-	r.pageToken = &pageToken
-	return r
-}
 
-func (r ApiGetAccountTransactionsRequest) Execute() (TransactionList, *_nethttp.Response, error) {
-	return r.ApiService.GetAccountTransactionsExecute(r)
+func (r ApiGetAccountTemplateRequest) Execute() (AccountTemplate, *_nethttp.Response, error) {
+	return r.ApiService.GetAccountTemplateExecute(r)
 }
 
 /*
-GetAccountTransactions Get account transactions
+GetAccountTemplate Get account template
 
-Get account transactions
+Get an account template
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId Unique identifier for the account.
- @return ApiGetAccountTransactionsRequest
+ @param templateId Account Template ID
+ @return ApiGetAccountTemplateRequest
 */
-func (a *AccountsApiService) GetAccountTransactions(ctx _context.Context, accountId string) ApiGetAccountTransactionsRequest {
-	return ApiGetAccountTransactionsRequest{
+func (a *AccountsApiService) GetAccountTemplate(ctx _context.Context, templateId string) ApiGetAccountTemplateRequest {
+	return ApiGetAccountTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
-		accountId: accountId,
+		templateId: templateId,
 	}
 }
 
 // Execute executes the request
-//  @return TransactionList
-func (a *AccountsApiService) GetAccountTransactionsExecute(r ApiGetAccountTransactionsRequest) (TransactionList, *_nethttp.Response, error) {
+//  @return AccountTemplate
+func (a *AccountsApiService) GetAccountTemplateExecute(r ApiGetAccountTemplateRequest) (AccountTemplate, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  TransactionList
+		localVarReturnValue  AccountTemplate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.GetAccountTransactions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.GetAccountTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/accounts/{account_id}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", _neturl.PathEscape(parameterToString(r.accountId, "")), -1)
+	localVarPath := localBasePath + "/accounts/templates/{template_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"template_id"+"}", _neturl.PathEscape(parameterToString(r.templateId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.inlineObject2 == nil {
-		return localVarReturnValue, nil, reportError("inlineObject2 is required and must be specified")
-	}
 
-	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
-	}
-	if r.pageToken != nil {
-		localVarQueryParams.Add("page_token", parameterToString(*r.pageToken, ""))
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1514,15 +1142,13 @@ func (a *AccountsApiService) GetAccountTransactionsExecute(r ApiGetAccountTransa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.inlineObject2
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1544,35 +1170,6 @@ func (a *AccountsApiService) GetAccountTransactionsExecute(r ApiGetAccountTransa
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 461 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1740,33 +1337,303 @@ func (a *AccountsApiService) ListAccountRelationshipExecute(r ApiListAccountRela
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListAccountResourceProductsRequest struct {
+	ctx _context.Context
+	ApiService *AccountsApiService
+	productType *string
+	limit *int32
+	pageToken *string
+	startDate *string
+	endDate *string
+}
+
+// Type of account product
+func (r ApiListAccountResourceProductsRequest) ProductType(productType string) ApiListAccountResourceProductsRequest {
+	r.productType = &productType
+	return r
+}
+func (r ApiListAccountResourceProductsRequest) Limit(limit int32) ApiListAccountResourceProductsRequest {
+	r.limit = &limit
+	return r
+}
+func (r ApiListAccountResourceProductsRequest) PageToken(pageToken string) ApiListAccountResourceProductsRequest {
+	r.pageToken = &pageToken
+	return r
+}
+// Date range filtering for type INTEREST. All rates in interest resource have to have valid_from later or equal to start_date.
+func (r ApiListAccountResourceProductsRequest) StartDate(startDate string) ApiListAccountResourceProductsRequest {
+	r.startDate = &startDate
+	return r
+}
+// Date range filtering for type INTEREST. All rates in interest resource have to have valid_to earlier or equal to end_date.
+func (r ApiListAccountResourceProductsRequest) EndDate(endDate string) ApiListAccountResourceProductsRequest {
+	r.endDate = &endDate
+	return r
+}
+
+func (r ApiListAccountResourceProductsRequest) Execute() (AccountProductList, *_nethttp.Response, error) {
+	return r.ApiService.ListAccountResourceProductsExecute(r)
+}
+
+/*
+ListAccountResourceProducts List account products
+
+List account Products
+
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAccountResourceProductsRequest
+*/
+func (a *AccountsApiService) ListAccountResourceProducts(ctx _context.Context) ApiListAccountResourceProductsRequest {
+	return ApiListAccountResourceProductsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return AccountProductList
+func (a *AccountsApiService) ListAccountResourceProductsExecute(r ApiListAccountResourceProductsRequest) (AccountProductList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AccountProductList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ListAccountResourceProducts")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/accounts/products"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.productType == nil {
+		return localVarReturnValue, nil, reportError("productType is required and must be specified")
+	}
+
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.pageToken != nil {
+		localVarQueryParams.Add("page_token", parameterToString(*r.pageToken, ""))
+	}
+	if r.startDate != nil {
+		localVarQueryParams.Add("start_date", parameterToString(*r.startDate, ""))
+	}
+	if r.endDate != nil {
+		localVarQueryParams.Add("end_date", parameterToString(*r.endDate, ""))
+	}
+	localVarQueryParams.Add("product_type", parameterToString(*r.productType, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListAccountTemplatesRequest struct {
+	ctx _context.Context
+	ApiService *AccountsApiService
+	limit *int32
+	pageToken *string
+}
+
+func (r ApiListAccountTemplatesRequest) Limit(limit int32) ApiListAccountTemplatesRequest {
+	r.limit = &limit
+	return r
+}
+func (r ApiListAccountTemplatesRequest) PageToken(pageToken string) ApiListAccountTemplatesRequest {
+	r.pageToken = &pageToken
+	return r
+}
+
+func (r ApiListAccountTemplatesRequest) Execute() (TemplateList, *_nethttp.Response, error) {
+	return r.ApiService.ListAccountTemplatesExecute(r)
+}
+
+/*
+ListAccountTemplates List account templates
+
+List account templates
+
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAccountTemplatesRequest
+*/
+func (a *AccountsApiService) ListAccountTemplates(ctx _context.Context) ApiListAccountTemplatesRequest {
+	return ApiListAccountTemplatesRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return TemplateList
+func (a *AccountsApiService) ListAccountTemplatesExecute(r ApiListAccountTemplatesRequest) (TemplateList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  TemplateList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ListAccountTemplates")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/accounts/templates"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.pageToken != nil {
+		localVarQueryParams.Add("page_token", parameterToString(*r.pageToken, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListAccountsRequest struct {
 	ctx _context.Context
 	ApiService *AccountsApiService
-	id *string
-	accountNumber *string
+	id *[]string
+	accountNumber *[]string
 	status *Status
+	interestProductId *string
 	customerId *string
 	firstName *string
 	lastName *string
-	tenant *string
 	limit *int32
 	pageToken *string
-	hasDetails *bool
 }
 
-// Unique identifier for the account(s). Multiple account IDs can be provided as a comma-separated list. 
-func (r ApiListAccountsRequest) Id(id string) ApiListAccountsRequest {
+// Account ID(s). Multiple IDs can be provided as a comma-separated list. 
+func (r ApiListAccountsRequest) Id(id []string) ApiListAccountsRequest {
 	r.id = &id
 	return r
 }
-// Account number. Any * characters in the string are wildcards, and match any characters. 
-func (r ApiListAccountsRequest) AccountNumber(accountNumber string) ApiListAccountsRequest {
+// Account number(s). Multiple account numbers can be provided as a comma-separated list. When only a single account number is provided, any * characters in the string are wildcards, and match any characters. 
+func (r ApiListAccountsRequest) AccountNumber(accountNumber []string) ApiListAccountsRequest {
 	r.accountNumber = &accountNumber
 	return r
 }
 func (r ApiListAccountsRequest) Status(status Status) ApiListAccountsRequest {
 	r.status = &status
+	return r
+}
+// Interest product ID that accounts associate with. Multiple IDs can be provided as a comma-separated list.
+func (r ApiListAccountsRequest) InterestProductId(interestProductId string) ApiListAccountsRequest {
+	r.interestProductId = &interestProductId
 	return r
 }
 // The customer&#39;s unique identifier
@@ -1782,21 +1649,12 @@ func (r ApiListAccountsRequest) LastName(lastName string) ApiListAccountsRequest
 	r.lastName = &lastName
 	return r
 }
-func (r ApiListAccountsRequest) Tenant(tenant string) ApiListAccountsRequest {
-	r.tenant = &tenant
-	return r
-}
 func (r ApiListAccountsRequest) Limit(limit int32) ApiListAccountsRequest {
 	r.limit = &limit
 	return r
 }
 func (r ApiListAccountsRequest) PageToken(pageToken string) ApiListAccountsRequest {
 	r.pageToken = &pageToken
-	return r
-}
-// If true, the returned accounts will include relationships, aliases, balances and recent transactions.
-func (r ApiListAccountsRequest) HasDetails(hasDetails bool) ApiListAccountsRequest {
-	r.hasDetails = &hasDetails
 	return r
 }
 
@@ -1843,13 +1701,16 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) (Acco
 	localVarFormParams := _neturl.Values{}
 
 	if r.id != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id, ""))
+		localVarQueryParams.Add("id", parameterToString(*r.id, "csv"))
 	}
 	if r.accountNumber != nil {
-		localVarQueryParams.Add("account_number", parameterToString(*r.accountNumber, ""))
+		localVarQueryParams.Add("account_number", parameterToString(*r.accountNumber, "csv"))
 	}
 	if r.status != nil {
 		localVarQueryParams.Add("status", parameterToString(*r.status, ""))
+	}
+	if r.interestProductId != nil {
+		localVarQueryParams.Add("interest_product_id", parameterToString(*r.interestProductId, ""))
 	}
 	if r.customerId != nil {
 		localVarQueryParams.Add("customer_id", parameterToString(*r.customerId, ""))
@@ -1860,17 +1721,11 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) (Acco
 	if r.lastName != nil {
 		localVarQueryParams.Add("last_name", parameterToString(*r.lastName, ""))
 	}
-	if r.tenant != nil {
-		localVarQueryParams.Add("tenant", parameterToString(*r.tenant, ""))
-	}
 	if r.limit != nil {
 		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
 	}
 	if r.pageToken != nil {
 		localVarQueryParams.Add("page_token", parameterToString(*r.pageToken, ""))
-	}
-	if r.hasDetails != nil {
-		localVarQueryParams.Add("has_details", parameterToString(*r.hasDetails, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2289,156 +2144,6 @@ func (a *AccountsApiService) UpdateAccountExecute(r ApiUpdateAccountRequest) (Ac
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateAccountAddressRequest struct {
-	ctx _context.Context
-	ApiService *AccountsApiService
-	accountId string
-	connectId string
-	accountAddress *AccountAddress
-}
-
-// Account address to be updated
-func (r ApiUpdateAccountAddressRequest) AccountAddress(accountAddress AccountAddress) ApiUpdateAccountAddressRequest {
-	r.accountAddress = &accountAddress
-	return r
-}
-
-func (r ApiUpdateAccountAddressRequest) Execute() (AccountAddress, *_nethttp.Response, error) {
-	return r.ApiService.UpdateAccountAddressExecute(r)
-}
-
-/*
-UpdateAccountAddress Update address for an account
-
-Update account address
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId Unique identifier for the account.
- @param connectId Connect ID of the account associate with the account entity
- @return ApiUpdateAccountAddressRequest
-*/
-func (a *AccountsApiService) UpdateAccountAddress(ctx _context.Context, accountId string, connectId string) ApiUpdateAccountAddressRequest {
-	return ApiUpdateAccountAddressRequest{
-		ApiService: a,
-		ctx: ctx,
-		accountId: accountId,
-		connectId: connectId,
-	}
-}
-
-// Execute executes the request
-//  @return AccountAddress
-func (a *AccountsApiService) UpdateAccountAddressExecute(r ApiUpdateAccountAddressRequest) (AccountAddress, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AccountAddress
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.UpdateAccountAddress")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/accounts/{account_id}/addresses/{connect_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", _neturl.PathEscape(parameterToString(r.accountId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"connect_id"+"}", _neturl.PathEscape(parameterToString(r.connectId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.accountAddress == nil {
-		return localVarReturnValue, nil, reportError("accountAddress is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.accountAddress
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 461 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiUpdateAccountRelationshipRequest struct {
 	ctx _context.Context
 	ApiService *AccountsApiService
@@ -2573,6 +2278,124 @@ func (a *AccountsApiService) UpdateAccountRelationshipExecute(r ApiUpdateAccount
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateAccountTemplateRequest struct {
+	ctx _context.Context
+	ApiService *AccountsApiService
+	templateId string
+	accountTemplate *AccountTemplate
+}
+
+// Account template to update
+func (r ApiUpdateAccountTemplateRequest) AccountTemplate(accountTemplate AccountTemplate) ApiUpdateAccountTemplateRequest {
+	r.accountTemplate = &accountTemplate
+	return r
+}
+
+func (r ApiUpdateAccountTemplateRequest) Execute() (AccountTemplate, *_nethttp.Response, error) {
+	return r.ApiService.UpdateAccountTemplateExecute(r)
+}
+
+/*
+UpdateAccountTemplate Update account template
+
+Update account template
+
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param templateId Account Template ID
+ @return ApiUpdateAccountTemplateRequest
+*/
+func (a *AccountsApiService) UpdateAccountTemplate(ctx _context.Context, templateId string) ApiUpdateAccountTemplateRequest {
+	return ApiUpdateAccountTemplateRequest{
+		ApiService: a,
+		ctx: ctx,
+		templateId: templateId,
+	}
+}
+
+// Execute executes the request
+//  @return AccountTemplate
+func (a *AccountsApiService) UpdateAccountTemplateExecute(r ApiUpdateAccountTemplateRequest) (AccountTemplate, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AccountTemplate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.UpdateAccountTemplate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/accounts/templates/{template_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"template_id"+"}", _neturl.PathEscape(parameterToString(r.templateId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.accountTemplate == nil {
+		return localVarReturnValue, nil, reportError("accountTemplate is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.accountTemplate
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

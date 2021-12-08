@@ -16,17 +16,10 @@ import (
 
 // CardStatusObject The status of the card
 type CardStatusObject struct {
-	CardFulfillmentStatus *CardFulfillmentStatus `json:"card_fulfillment_status,omitempty"`
 	CardStatus CardStatus `json:"card_status"`
-	// The carrier with whom the card is shipped
-	Carrier *string `json:"carrier,omitempty"`
 	// Additional details about the reason for the status change
 	Memo *string `json:"memo,omitempty"`
-	// The status of indicating the shipping status of the card
-	ShippingStatus *string `json:"shipping_status,omitempty"`
 	StatusReason *CardStatusReasonCode `json:"status_reason,omitempty"`
-	// The tracking number
-	TrackingNumber *string `json:"tracking_number,omitempty"`
 }
 
 // NewCardStatusObject instantiates a new CardStatusObject object
@@ -45,38 +38,6 @@ func NewCardStatusObject(cardStatus CardStatus) *CardStatusObject {
 func NewCardStatusObjectWithDefaults() *CardStatusObject {
 	this := CardStatusObject{}
 	return &this
-}
-
-// GetCardFulfillmentStatus returns the CardFulfillmentStatus field value if set, zero value otherwise.
-func (o *CardStatusObject) GetCardFulfillmentStatus() CardFulfillmentStatus {
-	if o == nil || o.CardFulfillmentStatus == nil {
-		var ret CardFulfillmentStatus
-		return ret
-	}
-	return *o.CardFulfillmentStatus
-}
-
-// GetCardFulfillmentStatusOk returns a tuple with the CardFulfillmentStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CardStatusObject) GetCardFulfillmentStatusOk() (*CardFulfillmentStatus, bool) {
-	if o == nil || o.CardFulfillmentStatus == nil {
-		return nil, false
-	}
-	return o.CardFulfillmentStatus, true
-}
-
-// HasCardFulfillmentStatus returns a boolean if a field has been set.
-func (o *CardStatusObject) HasCardFulfillmentStatus() bool {
-	if o != nil && o.CardFulfillmentStatus != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCardFulfillmentStatus gets a reference to the given CardFulfillmentStatus and assigns it to the CardFulfillmentStatus field.
-func (o *CardStatusObject) SetCardFulfillmentStatus(v CardFulfillmentStatus) {
-	o.CardFulfillmentStatus = &v
 }
 
 // GetCardStatus returns the CardStatus field value
@@ -101,38 +62,6 @@ func (o *CardStatusObject) GetCardStatusOk() (*CardStatus, bool) {
 // SetCardStatus sets field value
 func (o *CardStatusObject) SetCardStatus(v CardStatus) {
 	o.CardStatus = v
-}
-
-// GetCarrier returns the Carrier field value if set, zero value otherwise.
-func (o *CardStatusObject) GetCarrier() string {
-	if o == nil || o.Carrier == nil {
-		var ret string
-		return ret
-	}
-	return *o.Carrier
-}
-
-// GetCarrierOk returns a tuple with the Carrier field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CardStatusObject) GetCarrierOk() (*string, bool) {
-	if o == nil || o.Carrier == nil {
-		return nil, false
-	}
-	return o.Carrier, true
-}
-
-// HasCarrier returns a boolean if a field has been set.
-func (o *CardStatusObject) HasCarrier() bool {
-	if o != nil && o.Carrier != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCarrier gets a reference to the given string and assigns it to the Carrier field.
-func (o *CardStatusObject) SetCarrier(v string) {
-	o.Carrier = &v
 }
 
 // GetMemo returns the Memo field value if set, zero value otherwise.
@@ -167,38 +96,6 @@ func (o *CardStatusObject) SetMemo(v string) {
 	o.Memo = &v
 }
 
-// GetShippingStatus returns the ShippingStatus field value if set, zero value otherwise.
-func (o *CardStatusObject) GetShippingStatus() string {
-	if o == nil || o.ShippingStatus == nil {
-		var ret string
-		return ret
-	}
-	return *o.ShippingStatus
-}
-
-// GetShippingStatusOk returns a tuple with the ShippingStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CardStatusObject) GetShippingStatusOk() (*string, bool) {
-	if o == nil || o.ShippingStatus == nil {
-		return nil, false
-	}
-	return o.ShippingStatus, true
-}
-
-// HasShippingStatus returns a boolean if a field has been set.
-func (o *CardStatusObject) HasShippingStatus() bool {
-	if o != nil && o.ShippingStatus != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetShippingStatus gets a reference to the given string and assigns it to the ShippingStatus field.
-func (o *CardStatusObject) SetShippingStatus(v string) {
-	o.ShippingStatus = &v
-}
-
 // GetStatusReason returns the StatusReason field value if set, zero value otherwise.
 func (o *CardStatusObject) GetStatusReason() CardStatusReasonCode {
 	if o == nil || o.StatusReason == nil {
@@ -231,60 +128,16 @@ func (o *CardStatusObject) SetStatusReason(v CardStatusReasonCode) {
 	o.StatusReason = &v
 }
 
-// GetTrackingNumber returns the TrackingNumber field value if set, zero value otherwise.
-func (o *CardStatusObject) GetTrackingNumber() string {
-	if o == nil || o.TrackingNumber == nil {
-		var ret string
-		return ret
-	}
-	return *o.TrackingNumber
-}
-
-// GetTrackingNumberOk returns a tuple with the TrackingNumber field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CardStatusObject) GetTrackingNumberOk() (*string, bool) {
-	if o == nil || o.TrackingNumber == nil {
-		return nil, false
-	}
-	return o.TrackingNumber, true
-}
-
-// HasTrackingNumber returns a boolean if a field has been set.
-func (o *CardStatusObject) HasTrackingNumber() bool {
-	if o != nil && o.TrackingNumber != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTrackingNumber gets a reference to the given string and assigns it to the TrackingNumber field.
-func (o *CardStatusObject) SetTrackingNumber(v string) {
-	o.TrackingNumber = &v
-}
-
 func (o CardStatusObject) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CardFulfillmentStatus != nil {
-		toSerialize["card_fulfillment_status"] = o.CardFulfillmentStatus
-	}
 	if true {
 		toSerialize["card_status"] = o.CardStatus
-	}
-	if o.Carrier != nil {
-		toSerialize["carrier"] = o.Carrier
 	}
 	if o.Memo != nil {
 		toSerialize["memo"] = o.Memo
 	}
-	if o.ShippingStatus != nil {
-		toSerialize["shipping_status"] = o.ShippingStatus
-	}
 	if o.StatusReason != nil {
 		toSerialize["status_reason"] = o.StatusReason
-	}
-	if o.TrackingNumber != nil {
-		toSerialize["tracking_number"] = o.TrackingNumber
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,19 +16,17 @@ import (
 
 // AccountRouting struct for AccountRouting
 type AccountRouting struct {
-	// The routing number used for US ACH payments. Only appears if `bank_countries` contains `US`. 
+	// The routing number used for US ACH payments. Only appears if `bank_countries` contains `US`. Value may be masked, in which case only the last four digits are returned. 
 	AchRoutingNumber *string `json:"ach_routing_number,omitempty"`
 	// The countries that this bank operates the account in
 	BankCountries []string `json:"bank_countries"`
 	// The name of the bank managing the account
 	BankName string `json:"bank_name"`
-	// The branch number used for EFT payments, identifying a branch at a Canadian bank. Only appears if `bank_countries` contains `CA`. 
-	EftBranchNumber *string `json:"eft_branch_number,omitempty"`
-	// The institution number used for EFT payments, identifying a Canadian bank. Only appears if `bank_countries` contains `CA`. 
-	EftInstitutionNumber *string `json:"eft_institution_number,omitempty"`
-	// The SWIFT code for the bank
-	SwiftCode string `json:"swift_code"`
-	// The routing number used for domestic wire payments. Only appears if `bank_countries` contains `US`. 
+	// The routing number used for EFT payments, identifying a Canadian bank, consisting of the institution number and the branch number. Only appears if `bank_countries` contains `CA`. Value may be masked, in which case only the last four digits are returned. 
+	EftRoutingNumber *string `json:"eft_routing_number,omitempty"`
+	// The SWIFT code for the bank. Value may be masked, in which case only the last four characters are returned. 
+	SwiftCode *string `json:"swift_code,omitempty"`
+	// The routing number used for domestic wire payments. Only appears if `bank_countries` contains `US`. Value may be masked, in which case only the last four digits are returned. 
 	WireRoutingNumber *string `json:"wire_routing_number,omitempty"`
 }
 
@@ -36,11 +34,10 @@ type AccountRouting struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountRouting(bankCountries []string, bankName string, swiftCode string) *AccountRouting {
+func NewAccountRouting(bankCountries []string, bankName string) *AccountRouting {
 	this := AccountRouting{}
 	this.BankCountries = bankCountries
 	this.BankName = bankName
-	this.SwiftCode = swiftCode
 	return &this
 }
 
@@ -132,92 +129,68 @@ func (o *AccountRouting) SetBankName(v string) {
 	o.BankName = v
 }
 
-// GetEftBranchNumber returns the EftBranchNumber field value if set, zero value otherwise.
-func (o *AccountRouting) GetEftBranchNumber() string {
-	if o == nil || o.EftBranchNumber == nil {
+// GetEftRoutingNumber returns the EftRoutingNumber field value if set, zero value otherwise.
+func (o *AccountRouting) GetEftRoutingNumber() string {
+	if o == nil || o.EftRoutingNumber == nil {
 		var ret string
 		return ret
 	}
-	return *o.EftBranchNumber
+	return *o.EftRoutingNumber
 }
 
-// GetEftBranchNumberOk returns a tuple with the EftBranchNumber field value if set, nil otherwise
+// GetEftRoutingNumberOk returns a tuple with the EftRoutingNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountRouting) GetEftBranchNumberOk() (*string, bool) {
-	if o == nil || o.EftBranchNumber == nil {
+func (o *AccountRouting) GetEftRoutingNumberOk() (*string, bool) {
+	if o == nil || o.EftRoutingNumber == nil {
 		return nil, false
 	}
-	return o.EftBranchNumber, true
+	return o.EftRoutingNumber, true
 }
 
-// HasEftBranchNumber returns a boolean if a field has been set.
-func (o *AccountRouting) HasEftBranchNumber() bool {
-	if o != nil && o.EftBranchNumber != nil {
+// HasEftRoutingNumber returns a boolean if a field has been set.
+func (o *AccountRouting) HasEftRoutingNumber() bool {
+	if o != nil && o.EftRoutingNumber != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEftBranchNumber gets a reference to the given string and assigns it to the EftBranchNumber field.
-func (o *AccountRouting) SetEftBranchNumber(v string) {
-	o.EftBranchNumber = &v
+// SetEftRoutingNumber gets a reference to the given string and assigns it to the EftRoutingNumber field.
+func (o *AccountRouting) SetEftRoutingNumber(v string) {
+	o.EftRoutingNumber = &v
 }
 
-// GetEftInstitutionNumber returns the EftInstitutionNumber field value if set, zero value otherwise.
-func (o *AccountRouting) GetEftInstitutionNumber() string {
-	if o == nil || o.EftInstitutionNumber == nil {
-		var ret string
-		return ret
-	}
-	return *o.EftInstitutionNumber
-}
-
-// GetEftInstitutionNumberOk returns a tuple with the EftInstitutionNumber field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountRouting) GetEftInstitutionNumberOk() (*string, bool) {
-	if o == nil || o.EftInstitutionNumber == nil {
-		return nil, false
-	}
-	return o.EftInstitutionNumber, true
-}
-
-// HasEftInstitutionNumber returns a boolean if a field has been set.
-func (o *AccountRouting) HasEftInstitutionNumber() bool {
-	if o != nil && o.EftInstitutionNumber != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEftInstitutionNumber gets a reference to the given string and assigns it to the EftInstitutionNumber field.
-func (o *AccountRouting) SetEftInstitutionNumber(v string) {
-	o.EftInstitutionNumber = &v
-}
-
-// GetSwiftCode returns the SwiftCode field value
+// GetSwiftCode returns the SwiftCode field value if set, zero value otherwise.
 func (o *AccountRouting) GetSwiftCode() string {
-	if o == nil {
+	if o == nil || o.SwiftCode == nil {
 		var ret string
 		return ret
 	}
-
-	return o.SwiftCode
+	return *o.SwiftCode
 }
 
-// GetSwiftCodeOk returns a tuple with the SwiftCode field value
+// GetSwiftCodeOk returns a tuple with the SwiftCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountRouting) GetSwiftCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.SwiftCode == nil {
 		return nil, false
 	}
-	return &o.SwiftCode, true
+	return o.SwiftCode, true
 }
 
-// SetSwiftCode sets field value
+// HasSwiftCode returns a boolean if a field has been set.
+func (o *AccountRouting) HasSwiftCode() bool {
+	if o != nil && o.SwiftCode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSwiftCode gets a reference to the given string and assigns it to the SwiftCode field.
 func (o *AccountRouting) SetSwiftCode(v string) {
-	o.SwiftCode = v
+	o.SwiftCode = &v
 }
 
 // GetWireRoutingNumber returns the WireRoutingNumber field value if set, zero value otherwise.
@@ -263,13 +236,10 @@ func (o AccountRouting) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["bank_name"] = o.BankName
 	}
-	if o.EftBranchNumber != nil {
-		toSerialize["eft_branch_number"] = o.EftBranchNumber
+	if o.EftRoutingNumber != nil {
+		toSerialize["eft_routing_number"] = o.EftRoutingNumber
 	}
-	if o.EftInstitutionNumber != nil {
-		toSerialize["eft_institution_number"] = o.EftInstitutionNumber
-	}
-	if true {
+	if o.SwiftCode != nil {
 		toSerialize["swift_code"] = o.SwiftCode
 	}
 	if o.WireRoutingNumber != nil {

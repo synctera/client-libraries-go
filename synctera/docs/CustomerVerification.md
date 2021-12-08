@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerConsent** | **bool** | Whether this customer has consented to a KYC check  | 
-**CustomerIpAddress** | Pointer to **string** | IP address | [optional] 
-**VerificationType** | [**[]VerificationType**](VerificationType.md) |  | 
+**CustomerConsent** | **bool** | Whether this customer has consented to a KYC check.  | 
+**CustomerIpAddress** | Pointer to **string** | IP address of the customer being verified. | [optional] 
+**DocumentId** | Pointer to **string** | The ID of the uploaded government-issued identification document provided by the DV API endpoint.  | [optional] 
+**VerificationType** | [**[]VerificationType**](VerificationType.md) | List of possible checks to run on a customer. | 
 
 ## Methods
 
@@ -71,6 +72,31 @@ SetCustomerIpAddress sets CustomerIpAddress field to given value.
 `func (o *CustomerVerification) HasCustomerIpAddress() bool`
 
 HasCustomerIpAddress returns a boolean if a field has been set.
+
+### GetDocumentId
+
+`func (o *CustomerVerification) GetDocumentId() string`
+
+GetDocumentId returns the DocumentId field if non-nil, zero value otherwise.
+
+### GetDocumentIdOk
+
+`func (o *CustomerVerification) GetDocumentIdOk() (*string, bool)`
+
+GetDocumentIdOk returns a tuple with the DocumentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDocumentId
+
+`func (o *CustomerVerification) SetDocumentId(v string)`
+
+SetDocumentId sets DocumentId field to given value.
+
+### HasDocumentId
+
+`func (o *CustomerVerification) HasDocumentId() bool`
+
+HasDocumentId returns a boolean if a field has been set.
 
 ### GetVerificationType
 

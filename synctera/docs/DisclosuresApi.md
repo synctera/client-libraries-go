@@ -32,7 +32,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    disclosure := *openapiclient.NewDisclosure("VIEWED", time.Now(), "REG_DD", "1.1") // Disclosure | Disclosure to create
+    disclosure := *openapiclient.NewDisclosure("VIEWED", time.Now(), "REG_DD", "v1.1") // Disclosure | Disclosure to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -105,7 +105,7 @@ import (
 func main() {
     customerId := TODO // string | The customer's unique identifier
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
+    pageToken := "19waxl0g93" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

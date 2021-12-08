@@ -16,32 +16,39 @@ import (
 
 // AccountCreation struct for AccountCreation
 type AccountCreation struct {
-	// Access status for account. Default ACTIVE
-	AccessStatus *string `json:"access_status,omitempty"`
+	AccessStatus *AccountAccessStatus `json:"access_status,omitempty"`
 	// Account number
 	AccountNumber *string `json:"account_number,omitempty"`
-	// Account template ID
-	AccountTemplateId *string `json:"account_template_id,omitempty"`
+	// Purpose of the account
+	AccountPurpose *string `json:"account_purpose,omitempty"`
 	AccountType *AccountType `json:"account_type,omitempty"`
 	// A list of balances for account based on different type
 	Balances *[]Balance `json:"balances,omitempty"`
+	// Bank routing number
+	BankRouting *string `json:"bank_routing,omitempty"`
 	// Account currency or account settlement currency. ISO 4217 alphabetic currency code. Default USD
 	Currency *string `json:"currency,omitempty"`
+	// A list of the customer IDs of the account holders.
+	CustomerIds *[]string `json:"customer_ids,omitempty"`
 	// Exchange rate type
 	ExchangeRateType *string `json:"exchange_rate_type,omitempty"`
+	// A list of fee resources from account product that the current account associate with
+	FeeProductIds *[]string `json:"fee_product_ids,omitempty"`
 	// International bank account number
 	Iban *string `json:"iban,omitempty"`
 	// Account ID
 	Id *string `json:"id,omitempty"`
+	// An interest from account product that the current account associate with
+	InterestProductId *string `json:"interest_product_id,omitempty"`
 	// Account is investment (variable balance) account or a multi-balance account pool. Default false
 	IsAccountPool *bool `json:"is_account_pool,omitempty"`
-	// The most recent 10 transactions of the account
-	RecentTransactions *[]Transaction `json:"recent_transactions,omitempty"`
+	// Account's overdraft limit
+	OverdraftLimit *int64 `json:"overdraft_limit,omitempty"`
 	Status *Status `json:"status,omitempty"`
 	// SWIFT code
 	SwiftCode *string `json:"swift_code,omitempty"`
-	// A list of the aliases for account. Account alias is the account number of different balance types to link to the same account ID
-	Aliases *[]Alias `json:"aliases,omitempty"`
+	// Account template ID
+	AccountTemplateId *string `json:"account_template_id,omitempty"`
 	// List of the relationship for this account to the parties
 	Relationships *[]Relationship `json:"relationships,omitempty"`
 }
@@ -64,9 +71,9 @@ func NewAccountCreationWithDefaults() *AccountCreation {
 }
 
 // GetAccessStatus returns the AccessStatus field value if set, zero value otherwise.
-func (o *AccountCreation) GetAccessStatus() string {
+func (o *AccountCreation) GetAccessStatus() AccountAccessStatus {
 	if o == nil || o.AccessStatus == nil {
-		var ret string
+		var ret AccountAccessStatus
 		return ret
 	}
 	return *o.AccessStatus
@@ -74,7 +81,7 @@ func (o *AccountCreation) GetAccessStatus() string {
 
 // GetAccessStatusOk returns a tuple with the AccessStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreation) GetAccessStatusOk() (*string, bool) {
+func (o *AccountCreation) GetAccessStatusOk() (*AccountAccessStatus, bool) {
 	if o == nil || o.AccessStatus == nil {
 		return nil, false
 	}
@@ -90,8 +97,8 @@ func (o *AccountCreation) HasAccessStatus() bool {
 	return false
 }
 
-// SetAccessStatus gets a reference to the given string and assigns it to the AccessStatus field.
-func (o *AccountCreation) SetAccessStatus(v string) {
+// SetAccessStatus gets a reference to the given AccountAccessStatus and assigns it to the AccessStatus field.
+func (o *AccountCreation) SetAccessStatus(v AccountAccessStatus) {
 	o.AccessStatus = &v
 }
 
@@ -127,36 +134,36 @@ func (o *AccountCreation) SetAccountNumber(v string) {
 	o.AccountNumber = &v
 }
 
-// GetAccountTemplateId returns the AccountTemplateId field value if set, zero value otherwise.
-func (o *AccountCreation) GetAccountTemplateId() string {
-	if o == nil || o.AccountTemplateId == nil {
+// GetAccountPurpose returns the AccountPurpose field value if set, zero value otherwise.
+func (o *AccountCreation) GetAccountPurpose() string {
+	if o == nil || o.AccountPurpose == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccountTemplateId
+	return *o.AccountPurpose
 }
 
-// GetAccountTemplateIdOk returns a tuple with the AccountTemplateId field value if set, nil otherwise
+// GetAccountPurposeOk returns a tuple with the AccountPurpose field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreation) GetAccountTemplateIdOk() (*string, bool) {
-	if o == nil || o.AccountTemplateId == nil {
+func (o *AccountCreation) GetAccountPurposeOk() (*string, bool) {
+	if o == nil || o.AccountPurpose == nil {
 		return nil, false
 	}
-	return o.AccountTemplateId, true
+	return o.AccountPurpose, true
 }
 
-// HasAccountTemplateId returns a boolean if a field has been set.
-func (o *AccountCreation) HasAccountTemplateId() bool {
-	if o != nil && o.AccountTemplateId != nil {
+// HasAccountPurpose returns a boolean if a field has been set.
+func (o *AccountCreation) HasAccountPurpose() bool {
+	if o != nil && o.AccountPurpose != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountTemplateId gets a reference to the given string and assigns it to the AccountTemplateId field.
-func (o *AccountCreation) SetAccountTemplateId(v string) {
-	o.AccountTemplateId = &v
+// SetAccountPurpose gets a reference to the given string and assigns it to the AccountPurpose field.
+func (o *AccountCreation) SetAccountPurpose(v string) {
+	o.AccountPurpose = &v
 }
 
 // GetAccountType returns the AccountType field value if set, zero value otherwise.
@@ -223,6 +230,38 @@ func (o *AccountCreation) SetBalances(v []Balance) {
 	o.Balances = &v
 }
 
+// GetBankRouting returns the BankRouting field value if set, zero value otherwise.
+func (o *AccountCreation) GetBankRouting() string {
+	if o == nil || o.BankRouting == nil {
+		var ret string
+		return ret
+	}
+	return *o.BankRouting
+}
+
+// GetBankRoutingOk returns a tuple with the BankRouting field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCreation) GetBankRoutingOk() (*string, bool) {
+	if o == nil || o.BankRouting == nil {
+		return nil, false
+	}
+	return o.BankRouting, true
+}
+
+// HasBankRouting returns a boolean if a field has been set.
+func (o *AccountCreation) HasBankRouting() bool {
+	if o != nil && o.BankRouting != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBankRouting gets a reference to the given string and assigns it to the BankRouting field.
+func (o *AccountCreation) SetBankRouting(v string) {
+	o.BankRouting = &v
+}
+
 // GetCurrency returns the Currency field value if set, zero value otherwise.
 func (o *AccountCreation) GetCurrency() string {
 	if o == nil || o.Currency == nil {
@@ -255,6 +294,38 @@ func (o *AccountCreation) SetCurrency(v string) {
 	o.Currency = &v
 }
 
+// GetCustomerIds returns the CustomerIds field value if set, zero value otherwise.
+func (o *AccountCreation) GetCustomerIds() []string {
+	if o == nil || o.CustomerIds == nil {
+		var ret []string
+		return ret
+	}
+	return *o.CustomerIds
+}
+
+// GetCustomerIdsOk returns a tuple with the CustomerIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCreation) GetCustomerIdsOk() (*[]string, bool) {
+	if o == nil || o.CustomerIds == nil {
+		return nil, false
+	}
+	return o.CustomerIds, true
+}
+
+// HasCustomerIds returns a boolean if a field has been set.
+func (o *AccountCreation) HasCustomerIds() bool {
+	if o != nil && o.CustomerIds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerIds gets a reference to the given []string and assigns it to the CustomerIds field.
+func (o *AccountCreation) SetCustomerIds(v []string) {
+	o.CustomerIds = &v
+}
+
 // GetExchangeRateType returns the ExchangeRateType field value if set, zero value otherwise.
 func (o *AccountCreation) GetExchangeRateType() string {
 	if o == nil || o.ExchangeRateType == nil {
@@ -285,6 +356,38 @@ func (o *AccountCreation) HasExchangeRateType() bool {
 // SetExchangeRateType gets a reference to the given string and assigns it to the ExchangeRateType field.
 func (o *AccountCreation) SetExchangeRateType(v string) {
 	o.ExchangeRateType = &v
+}
+
+// GetFeeProductIds returns the FeeProductIds field value if set, zero value otherwise.
+func (o *AccountCreation) GetFeeProductIds() []string {
+	if o == nil || o.FeeProductIds == nil {
+		var ret []string
+		return ret
+	}
+	return *o.FeeProductIds
+}
+
+// GetFeeProductIdsOk returns a tuple with the FeeProductIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCreation) GetFeeProductIdsOk() (*[]string, bool) {
+	if o == nil || o.FeeProductIds == nil {
+		return nil, false
+	}
+	return o.FeeProductIds, true
+}
+
+// HasFeeProductIds returns a boolean if a field has been set.
+func (o *AccountCreation) HasFeeProductIds() bool {
+	if o != nil && o.FeeProductIds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFeeProductIds gets a reference to the given []string and assigns it to the FeeProductIds field.
+func (o *AccountCreation) SetFeeProductIds(v []string) {
+	o.FeeProductIds = &v
 }
 
 // GetIban returns the Iban field value if set, zero value otherwise.
@@ -351,6 +454,38 @@ func (o *AccountCreation) SetId(v string) {
 	o.Id = &v
 }
 
+// GetInterestProductId returns the InterestProductId field value if set, zero value otherwise.
+func (o *AccountCreation) GetInterestProductId() string {
+	if o == nil || o.InterestProductId == nil {
+		var ret string
+		return ret
+	}
+	return *o.InterestProductId
+}
+
+// GetInterestProductIdOk returns a tuple with the InterestProductId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCreation) GetInterestProductIdOk() (*string, bool) {
+	if o == nil || o.InterestProductId == nil {
+		return nil, false
+	}
+	return o.InterestProductId, true
+}
+
+// HasInterestProductId returns a boolean if a field has been set.
+func (o *AccountCreation) HasInterestProductId() bool {
+	if o != nil && o.InterestProductId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInterestProductId gets a reference to the given string and assigns it to the InterestProductId field.
+func (o *AccountCreation) SetInterestProductId(v string) {
+	o.InterestProductId = &v
+}
+
 // GetIsAccountPool returns the IsAccountPool field value if set, zero value otherwise.
 func (o *AccountCreation) GetIsAccountPool() bool {
 	if o == nil || o.IsAccountPool == nil {
@@ -383,36 +518,36 @@ func (o *AccountCreation) SetIsAccountPool(v bool) {
 	o.IsAccountPool = &v
 }
 
-// GetRecentTransactions returns the RecentTransactions field value if set, zero value otherwise.
-func (o *AccountCreation) GetRecentTransactions() []Transaction {
-	if o == nil || o.RecentTransactions == nil {
-		var ret []Transaction
+// GetOverdraftLimit returns the OverdraftLimit field value if set, zero value otherwise.
+func (o *AccountCreation) GetOverdraftLimit() int64 {
+	if o == nil || o.OverdraftLimit == nil {
+		var ret int64
 		return ret
 	}
-	return *o.RecentTransactions
+	return *o.OverdraftLimit
 }
 
-// GetRecentTransactionsOk returns a tuple with the RecentTransactions field value if set, nil otherwise
+// GetOverdraftLimitOk returns a tuple with the OverdraftLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreation) GetRecentTransactionsOk() (*[]Transaction, bool) {
-	if o == nil || o.RecentTransactions == nil {
+func (o *AccountCreation) GetOverdraftLimitOk() (*int64, bool) {
+	if o == nil || o.OverdraftLimit == nil {
 		return nil, false
 	}
-	return o.RecentTransactions, true
+	return o.OverdraftLimit, true
 }
 
-// HasRecentTransactions returns a boolean if a field has been set.
-func (o *AccountCreation) HasRecentTransactions() bool {
-	if o != nil && o.RecentTransactions != nil {
+// HasOverdraftLimit returns a boolean if a field has been set.
+func (o *AccountCreation) HasOverdraftLimit() bool {
+	if o != nil && o.OverdraftLimit != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetRecentTransactions gets a reference to the given []Transaction and assigns it to the RecentTransactions field.
-func (o *AccountCreation) SetRecentTransactions(v []Transaction) {
-	o.RecentTransactions = &v
+// SetOverdraftLimit gets a reference to the given int64 and assigns it to the OverdraftLimit field.
+func (o *AccountCreation) SetOverdraftLimit(v int64) {
+	o.OverdraftLimit = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -479,36 +614,36 @@ func (o *AccountCreation) SetSwiftCode(v string) {
 	o.SwiftCode = &v
 }
 
-// GetAliases returns the Aliases field value if set, zero value otherwise.
-func (o *AccountCreation) GetAliases() []Alias {
-	if o == nil || o.Aliases == nil {
-		var ret []Alias
+// GetAccountTemplateId returns the AccountTemplateId field value if set, zero value otherwise.
+func (o *AccountCreation) GetAccountTemplateId() string {
+	if o == nil || o.AccountTemplateId == nil {
+		var ret string
 		return ret
 	}
-	return *o.Aliases
+	return *o.AccountTemplateId
 }
 
-// GetAliasesOk returns a tuple with the Aliases field value if set, nil otherwise
+// GetAccountTemplateIdOk returns a tuple with the AccountTemplateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreation) GetAliasesOk() (*[]Alias, bool) {
-	if o == nil || o.Aliases == nil {
+func (o *AccountCreation) GetAccountTemplateIdOk() (*string, bool) {
+	if o == nil || o.AccountTemplateId == nil {
 		return nil, false
 	}
-	return o.Aliases, true
+	return o.AccountTemplateId, true
 }
 
-// HasAliases returns a boolean if a field has been set.
-func (o *AccountCreation) HasAliases() bool {
-	if o != nil && o.Aliases != nil {
+// HasAccountTemplateId returns a boolean if a field has been set.
+func (o *AccountCreation) HasAccountTemplateId() bool {
+	if o != nil && o.AccountTemplateId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAliases gets a reference to the given []Alias and assigns it to the Aliases field.
-func (o *AccountCreation) SetAliases(v []Alias) {
-	o.Aliases = &v
+// SetAccountTemplateId gets a reference to the given string and assigns it to the AccountTemplateId field.
+func (o *AccountCreation) SetAccountTemplateId(v string) {
+	o.AccountTemplateId = &v
 }
 
 // GetRelationships returns the Relationships field value if set, zero value otherwise.
@@ -551,8 +686,8 @@ func (o AccountCreation) MarshalJSON() ([]byte, error) {
 	if o.AccountNumber != nil {
 		toSerialize["account_number"] = o.AccountNumber
 	}
-	if o.AccountTemplateId != nil {
-		toSerialize["account_template_id"] = o.AccountTemplateId
+	if o.AccountPurpose != nil {
+		toSerialize["account_purpose"] = o.AccountPurpose
 	}
 	if o.AccountType != nil {
 		toSerialize["account_type"] = o.AccountType
@@ -560,11 +695,20 @@ func (o AccountCreation) MarshalJSON() ([]byte, error) {
 	if o.Balances != nil {
 		toSerialize["balances"] = o.Balances
 	}
+	if o.BankRouting != nil {
+		toSerialize["bank_routing"] = o.BankRouting
+	}
 	if o.Currency != nil {
 		toSerialize["currency"] = o.Currency
 	}
+	if o.CustomerIds != nil {
+		toSerialize["customer_ids"] = o.CustomerIds
+	}
 	if o.ExchangeRateType != nil {
 		toSerialize["exchange_rate_type"] = o.ExchangeRateType
+	}
+	if o.FeeProductIds != nil {
+		toSerialize["fee_product_ids"] = o.FeeProductIds
 	}
 	if o.Iban != nil {
 		toSerialize["iban"] = o.Iban
@@ -572,11 +716,14 @@ func (o AccountCreation) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
+	if o.InterestProductId != nil {
+		toSerialize["interest_product_id"] = o.InterestProductId
+	}
 	if o.IsAccountPool != nil {
 		toSerialize["is_account_pool"] = o.IsAccountPool
 	}
-	if o.RecentTransactions != nil {
-		toSerialize["recent_transactions"] = o.RecentTransactions
+	if o.OverdraftLimit != nil {
+		toSerialize["overdraft_limit"] = o.OverdraftLimit
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
@@ -584,8 +731,8 @@ func (o AccountCreation) MarshalJSON() ([]byte, error) {
 	if o.SwiftCode != nil {
 		toSerialize["swift_code"] = o.SwiftCode
 	}
-	if o.Aliases != nil {
-		toSerialize["aliases"] = o.Aliases
+	if o.AccountTemplateId != nil {
+		toSerialize["account_template_id"] = o.AccountTemplateId
 	}
 	if o.Relationships != nil {
 		toSerialize["relationships"] = o.Relationships

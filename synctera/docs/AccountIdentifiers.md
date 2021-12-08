@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Iban** | **string** | The IBAN of the account | 
-**Number** | **string** | The account number | 
+**Iban** | Pointer to **string** | The IBAN of the account. Value may be masked, in which case only the last four digits are returned.  | [optional] 
+**Number** | **string** | The account number. Value may be masked, in which case only the last four digits are returned.  | 
 
 ## Methods
 
 ### NewAccountIdentifiers
 
-`func NewAccountIdentifiers(iban string, number string, ) *AccountIdentifiers`
+`func NewAccountIdentifiers(number string, ) *AccountIdentifiers`
 
 NewAccountIdentifiers instantiates a new AccountIdentifiers object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetIban sets Iban field to given value.
 
+### HasIban
+
+`func (o *AccountIdentifiers) HasIban() bool`
+
+HasIban returns a boolean if a field has been set.
 
 ### GetNumber
 

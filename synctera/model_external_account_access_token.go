@@ -22,6 +22,8 @@ type ExternalAccountAccessToken struct {
 	VendorAccessToken *string `json:"vendor_access_token,omitempty"`
 	// The account_id value of the account associated with the returned vendor_access_token
 	VendorCustomerId string `json:"vendor_customer_id"`
+	// The ID of the institution the access token is requested for 
+	VendorInstitutionId *string `json:"vendor_institution_id,omitempty"`
 	// The user's public token obtained from successful link login. 
 	VendorPublicToken string `json:"vendor_public_token"`
 }
@@ -133,6 +135,38 @@ func (o *ExternalAccountAccessToken) SetVendorCustomerId(v string) {
 	o.VendorCustomerId = v
 }
 
+// GetVendorInstitutionId returns the VendorInstitutionId field value if set, zero value otherwise.
+func (o *ExternalAccountAccessToken) GetVendorInstitutionId() string {
+	if o == nil || o.VendorInstitutionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.VendorInstitutionId
+}
+
+// GetVendorInstitutionIdOk returns a tuple with the VendorInstitutionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExternalAccountAccessToken) GetVendorInstitutionIdOk() (*string, bool) {
+	if o == nil || o.VendorInstitutionId == nil {
+		return nil, false
+	}
+	return o.VendorInstitutionId, true
+}
+
+// HasVendorInstitutionId returns a boolean if a field has been set.
+func (o *ExternalAccountAccessToken) HasVendorInstitutionId() bool {
+	if o != nil && o.VendorInstitutionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVendorInstitutionId gets a reference to the given string and assigns it to the VendorInstitutionId field.
+func (o *ExternalAccountAccessToken) SetVendorInstitutionId(v string) {
+	o.VendorInstitutionId = &v
+}
+
 // GetVendorPublicToken returns the VendorPublicToken field value
 func (o *ExternalAccountAccessToken) GetVendorPublicToken() string {
 	if o == nil {
@@ -167,6 +201,9 @@ func (o ExternalAccountAccessToken) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["vendor_customer_id"] = o.VendorCustomerId
+	}
+	if o.VendorInstitutionId != nil {
+		toSerialize["vendor_institution_id"] = o.VendorInstitutionId
 	}
 	if true {
 		toSerialize["vendor_public_token"] = o.VendorPublicToken

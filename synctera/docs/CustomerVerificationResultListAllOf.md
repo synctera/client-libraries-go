@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Verifications** | [**[]CustomerVerificationResult**](CustomerVerificationResult.md) | Array of Verification results | 
+**Verifications** | [**[]CustomerVerificationResult**](CustomerVerificationResult.md) | Array of verification results. | 
 
 ## Methods
 

@@ -20,15 +20,14 @@ type Relationship struct {
 	CustomerId string `json:"customer_id"`
 	// ID of account relationship
 	Id *string `json:"id,omitempty"`
-	// Relationship type
-	RelationshipType string `json:"relationship_type"`
+	RelationshipType AccountRelationshipType `json:"relationship_type"`
 }
 
 // NewRelationship instantiates a new Relationship object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRelationship(customerId string, relationshipType string) *Relationship {
+func NewRelationship(customerId string, relationshipType AccountRelationshipType) *Relationship {
 	this := Relationship{}
 	this.CustomerId = customerId
 	this.RelationshipType = relationshipType
@@ -100,9 +99,9 @@ func (o *Relationship) SetId(v string) {
 }
 
 // GetRelationshipType returns the RelationshipType field value
-func (o *Relationship) GetRelationshipType() string {
+func (o *Relationship) GetRelationshipType() AccountRelationshipType {
 	if o == nil {
-		var ret string
+		var ret AccountRelationshipType
 		return ret
 	}
 
@@ -111,7 +110,7 @@ func (o *Relationship) GetRelationshipType() string {
 
 // GetRelationshipTypeOk returns a tuple with the RelationshipType field value
 // and a boolean to check if the value has been set.
-func (o *Relationship) GetRelationshipTypeOk() (*string, bool) {
+func (o *Relationship) GetRelationshipTypeOk() (*AccountRelationshipType, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -119,7 +118,7 @@ func (o *Relationship) GetRelationshipTypeOk() (*string, bool) {
 }
 
 // SetRelationshipType sets field value
-func (o *Relationship) SetRelationshipType(v string) {
+func (o *Relationship) SetRelationshipType(v AccountRelationshipType) {
 	o.RelationshipType = v
 }
 

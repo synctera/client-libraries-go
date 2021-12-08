@@ -8,10 +8,11 @@ Name | Type | Description | Notes
 **Email** | Pointer to **string** | Customer&#39;s email | [optional] 
 **FirstName** | Pointer to **string** | Customer&#39;s first name | [optional] 
 **LastName** | Pointer to **string** | Customer&#39;s last name | [optional] 
-**LegalAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
+**LegalAddress** | Pointer to [**Address1**](Address1.md) |  | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | User-supplied JSON format metadata. Do not use to store PII. | [optional] 
 **MiddleName** | Pointer to **string** | Customer&#39;s middle name | [optional] 
 **PhoneNumber** | Pointer to **string** | Customer&#39;s mobile phone number with country code in E.164 format | [optional] 
-**ShippingAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
+**ShippingAddress** | Pointer to [**Address1**](Address1.md) |  | [optional] 
 **Ssn** | Pointer to **string** | Customer&#39;s full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Must be compiled with ^\\d{3}-\\d{2}-\\d{4}$. Response contains the last 4 digits only (e.g. 6789). | [optional] 
 **Status** | Pointer to **string** | Customer&#39;s status | [optional] 
 
@@ -136,20 +137,20 @@ HasLastName returns a boolean if a field has been set.
 
 ### GetLegalAddress
 
-`func (o *PatchCustomer) GetLegalAddress() Address`
+`func (o *PatchCustomer) GetLegalAddress() Address1`
 
 GetLegalAddress returns the LegalAddress field if non-nil, zero value otherwise.
 
 ### GetLegalAddressOk
 
-`func (o *PatchCustomer) GetLegalAddressOk() (*Address, bool)`
+`func (o *PatchCustomer) GetLegalAddressOk() (*Address1, bool)`
 
 GetLegalAddressOk returns a tuple with the LegalAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLegalAddress
 
-`func (o *PatchCustomer) SetLegalAddress(v Address)`
+`func (o *PatchCustomer) SetLegalAddress(v Address1)`
 
 SetLegalAddress sets LegalAddress field to given value.
 
@@ -158,6 +159,31 @@ SetLegalAddress sets LegalAddress field to given value.
 `func (o *PatchCustomer) HasLegalAddress() bool`
 
 HasLegalAddress returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *PatchCustomer) GetMetadata() map[string]interface{}`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *PatchCustomer) GetMetadataOk() (*map[string]interface{}, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *PatchCustomer) SetMetadata(v map[string]interface{})`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *PatchCustomer) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 ### GetMiddleName
 
@@ -211,20 +237,20 @@ HasPhoneNumber returns a boolean if a field has been set.
 
 ### GetShippingAddress
 
-`func (o *PatchCustomer) GetShippingAddress() Address`
+`func (o *PatchCustomer) GetShippingAddress() Address1`
 
 GetShippingAddress returns the ShippingAddress field if non-nil, zero value otherwise.
 
 ### GetShippingAddressOk
 
-`func (o *PatchCustomer) GetShippingAddressOk() (*Address, bool)`
+`func (o *PatchCustomer) GetShippingAddressOk() (*Address1, bool)`
 
 GetShippingAddressOk returns a tuple with the ShippingAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingAddress
 
-`func (o *PatchCustomer) SetShippingAddress(v Address)`
+`func (o *PatchCustomer) SetShippingAddress(v Address1)`
 
 SetShippingAddress sets ShippingAddress field to given value.
 

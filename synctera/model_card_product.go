@@ -12,24 +12,47 @@ package synctera
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // CardProduct Cards Product
 type CardProduct struct {
-	// PHYSICAL or VIRTUAL.
-	Form string `json:"form"`
+	// ID of the Account Range for which card product was created
+	AccountRangeId *string `json:"account_range_id,omitempty"`
+	// indicates whether program is active
 	Active *bool `json:"active,omitempty"`
+	// Identifies whether a new account range will be automatically allocated
+	AutoAllocateRange *bool `json:"auto_allocate_range,omitempty"`
+	// The ID of the bank partner works with within this product
+	BankId *int32 `json:"bank_id,omitempty"`
+	// Bin ID
+	BinId *string `json:"bin_id,omitempty"`
+	CardFormat *CardFormat `json:"card_format,omitempty"`
+	// Program ID
+	CardProgramId *string `json:"card_program_id,omitempty"`
+	// The timestamp representing when the card product was created
+	CreationTime *time.Time `json:"creation_time,omitempty"`
+	// The time when bin is decommissioned
+	EndDate *time.Time `json:"end_date,omitempty"`
+	// Card Product ID
 	Id *string `json:"id,omitempty"`
+	// The timestamp representing when the card product was last modified
+	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
+	// The name of the card product
 	Name *string `json:"name,omitempty"`
+	// The ID of the partner card product belongs to
+	PartnerId *int32 `json:"partner_id,omitempty"`
+	PhysicalCardFormat *PhysicalCardFormat `json:"physical_card_format,omitempty"`
+	// The time when bin goes live
+	StartDate *time.Time `json:"start_date,omitempty"`
 }
 
 // NewCardProduct instantiates a new CardProduct object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCardProduct(form string) *CardProduct {
+func NewCardProduct() *CardProduct {
 	this := CardProduct{}
-	this.Form = form
 	return &this
 }
 
@@ -41,28 +64,36 @@ func NewCardProductWithDefaults() *CardProduct {
 	return &this
 }
 
-// GetForm returns the Form field value
-func (o *CardProduct) GetForm() string {
-	if o == nil {
+// GetAccountRangeId returns the AccountRangeId field value if set, zero value otherwise.
+func (o *CardProduct) GetAccountRangeId() string {
+	if o == nil || o.AccountRangeId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Form
+	return *o.AccountRangeId
 }
 
-// GetFormOk returns a tuple with the Form field value
+// GetAccountRangeIdOk returns a tuple with the AccountRangeId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CardProduct) GetFormOk() (*string, bool) {
-	if o == nil  {
+func (o *CardProduct) GetAccountRangeIdOk() (*string, bool) {
+	if o == nil || o.AccountRangeId == nil {
 		return nil, false
 	}
-	return &o.Form, true
+	return o.AccountRangeId, true
 }
 
-// SetForm sets field value
-func (o *CardProduct) SetForm(v string) {
-	o.Form = v
+// HasAccountRangeId returns a boolean if a field has been set.
+func (o *CardProduct) HasAccountRangeId() bool {
+	if o != nil && o.AccountRangeId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountRangeId gets a reference to the given string and assigns it to the AccountRangeId field.
+func (o *CardProduct) SetAccountRangeId(v string) {
+	o.AccountRangeId = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -97,6 +128,230 @@ func (o *CardProduct) SetActive(v bool) {
 	o.Active = &v
 }
 
+// GetAutoAllocateRange returns the AutoAllocateRange field value if set, zero value otherwise.
+func (o *CardProduct) GetAutoAllocateRange() bool {
+	if o == nil || o.AutoAllocateRange == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoAllocateRange
+}
+
+// GetAutoAllocateRangeOk returns a tuple with the AutoAllocateRange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetAutoAllocateRangeOk() (*bool, bool) {
+	if o == nil || o.AutoAllocateRange == nil {
+		return nil, false
+	}
+	return o.AutoAllocateRange, true
+}
+
+// HasAutoAllocateRange returns a boolean if a field has been set.
+func (o *CardProduct) HasAutoAllocateRange() bool {
+	if o != nil && o.AutoAllocateRange != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoAllocateRange gets a reference to the given bool and assigns it to the AutoAllocateRange field.
+func (o *CardProduct) SetAutoAllocateRange(v bool) {
+	o.AutoAllocateRange = &v
+}
+
+// GetBankId returns the BankId field value if set, zero value otherwise.
+func (o *CardProduct) GetBankId() int32 {
+	if o == nil || o.BankId == nil {
+		var ret int32
+		return ret
+	}
+	return *o.BankId
+}
+
+// GetBankIdOk returns a tuple with the BankId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetBankIdOk() (*int32, bool) {
+	if o == nil || o.BankId == nil {
+		return nil, false
+	}
+	return o.BankId, true
+}
+
+// HasBankId returns a boolean if a field has been set.
+func (o *CardProduct) HasBankId() bool {
+	if o != nil && o.BankId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBankId gets a reference to the given int32 and assigns it to the BankId field.
+func (o *CardProduct) SetBankId(v int32) {
+	o.BankId = &v
+}
+
+// GetBinId returns the BinId field value if set, zero value otherwise.
+func (o *CardProduct) GetBinId() string {
+	if o == nil || o.BinId == nil {
+		var ret string
+		return ret
+	}
+	return *o.BinId
+}
+
+// GetBinIdOk returns a tuple with the BinId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetBinIdOk() (*string, bool) {
+	if o == nil || o.BinId == nil {
+		return nil, false
+	}
+	return o.BinId, true
+}
+
+// HasBinId returns a boolean if a field has been set.
+func (o *CardProduct) HasBinId() bool {
+	if o != nil && o.BinId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBinId gets a reference to the given string and assigns it to the BinId field.
+func (o *CardProduct) SetBinId(v string) {
+	o.BinId = &v
+}
+
+// GetCardFormat returns the CardFormat field value if set, zero value otherwise.
+func (o *CardProduct) GetCardFormat() CardFormat {
+	if o == nil || o.CardFormat == nil {
+		var ret CardFormat
+		return ret
+	}
+	return *o.CardFormat
+}
+
+// GetCardFormatOk returns a tuple with the CardFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetCardFormatOk() (*CardFormat, bool) {
+	if o == nil || o.CardFormat == nil {
+		return nil, false
+	}
+	return o.CardFormat, true
+}
+
+// HasCardFormat returns a boolean if a field has been set.
+func (o *CardProduct) HasCardFormat() bool {
+	if o != nil && o.CardFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCardFormat gets a reference to the given CardFormat and assigns it to the CardFormat field.
+func (o *CardProduct) SetCardFormat(v CardFormat) {
+	o.CardFormat = &v
+}
+
+// GetCardProgramId returns the CardProgramId field value if set, zero value otherwise.
+func (o *CardProduct) GetCardProgramId() string {
+	if o == nil || o.CardProgramId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CardProgramId
+}
+
+// GetCardProgramIdOk returns a tuple with the CardProgramId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetCardProgramIdOk() (*string, bool) {
+	if o == nil || o.CardProgramId == nil {
+		return nil, false
+	}
+	return o.CardProgramId, true
+}
+
+// HasCardProgramId returns a boolean if a field has been set.
+func (o *CardProduct) HasCardProgramId() bool {
+	if o != nil && o.CardProgramId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCardProgramId gets a reference to the given string and assigns it to the CardProgramId field.
+func (o *CardProduct) SetCardProgramId(v string) {
+	o.CardProgramId = &v
+}
+
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
+func (o *CardProduct) GetCreationTime() time.Time {
+	if o == nil || o.CreationTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationTime
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetCreationTimeOk() (*time.Time, bool) {
+	if o == nil || o.CreationTime == nil {
+		return nil, false
+	}
+	return o.CreationTime, true
+}
+
+// HasCreationTime returns a boolean if a field has been set.
+func (o *CardProduct) HasCreationTime() bool {
+	if o != nil && o.CreationTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
+func (o *CardProduct) SetCreationTime(v time.Time) {
+	o.CreationTime = &v
+}
+
+// GetEndDate returns the EndDate field value if set, zero value otherwise.
+func (o *CardProduct) GetEndDate() time.Time {
+	if o == nil || o.EndDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.EndDate
+}
+
+// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetEndDateOk() (*time.Time, bool) {
+	if o == nil || o.EndDate == nil {
+		return nil, false
+	}
+	return o.EndDate, true
+}
+
+// HasEndDate returns a boolean if a field has been set.
+func (o *CardProduct) HasEndDate() bool {
+	if o != nil && o.EndDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
+func (o *CardProduct) SetEndDate(v time.Time) {
+	o.EndDate = &v
+}
+
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CardProduct) GetId() string {
 	if o == nil || o.Id == nil {
@@ -127,6 +382,38 @@ func (o *CardProduct) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CardProduct) SetId(v string) {
 	o.Id = &v
+}
+
+// GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
+func (o *CardProduct) GetLastModifiedTime() time.Time {
+	if o == nil || o.LastModifiedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastModifiedTime
+}
+
+// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetLastModifiedTimeOk() (*time.Time, bool) {
+	if o == nil || o.LastModifiedTime == nil {
+		return nil, false
+	}
+	return o.LastModifiedTime, true
+}
+
+// HasLastModifiedTime returns a boolean if a field has been set.
+func (o *CardProduct) HasLastModifiedTime() bool {
+	if o != nil && o.LastModifiedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedTime gets a reference to the given time.Time and assigns it to the LastModifiedTime field.
+func (o *CardProduct) SetLastModifiedTime(v time.Time) {
+	o.LastModifiedTime = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -161,19 +448,148 @@ func (o *CardProduct) SetName(v string) {
 	o.Name = &v
 }
 
+// GetPartnerId returns the PartnerId field value if set, zero value otherwise.
+func (o *CardProduct) GetPartnerId() int32 {
+	if o == nil || o.PartnerId == nil {
+		var ret int32
+		return ret
+	}
+	return *o.PartnerId
+}
+
+// GetPartnerIdOk returns a tuple with the PartnerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetPartnerIdOk() (*int32, bool) {
+	if o == nil || o.PartnerId == nil {
+		return nil, false
+	}
+	return o.PartnerId, true
+}
+
+// HasPartnerId returns a boolean if a field has been set.
+func (o *CardProduct) HasPartnerId() bool {
+	if o != nil && o.PartnerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerId gets a reference to the given int32 and assigns it to the PartnerId field.
+func (o *CardProduct) SetPartnerId(v int32) {
+	o.PartnerId = &v
+}
+
+// GetPhysicalCardFormat returns the PhysicalCardFormat field value if set, zero value otherwise.
+func (o *CardProduct) GetPhysicalCardFormat() PhysicalCardFormat {
+	if o == nil || o.PhysicalCardFormat == nil {
+		var ret PhysicalCardFormat
+		return ret
+	}
+	return *o.PhysicalCardFormat
+}
+
+// GetPhysicalCardFormatOk returns a tuple with the PhysicalCardFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetPhysicalCardFormatOk() (*PhysicalCardFormat, bool) {
+	if o == nil || o.PhysicalCardFormat == nil {
+		return nil, false
+	}
+	return o.PhysicalCardFormat, true
+}
+
+// HasPhysicalCardFormat returns a boolean if a field has been set.
+func (o *CardProduct) HasPhysicalCardFormat() bool {
+	if o != nil && o.PhysicalCardFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPhysicalCardFormat gets a reference to the given PhysicalCardFormat and assigns it to the PhysicalCardFormat field.
+func (o *CardProduct) SetPhysicalCardFormat(v PhysicalCardFormat) {
+	o.PhysicalCardFormat = &v
+}
+
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
+func (o *CardProduct) GetStartDate() time.Time {
+	if o == nil || o.StartDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProduct) GetStartDateOk() (*time.Time, bool) {
+	if o == nil || o.StartDate == nil {
+		return nil, false
+	}
+	return o.StartDate, true
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *CardProduct) HasStartDate() bool {
+	if o != nil && o.StartDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
+func (o *CardProduct) SetStartDate(v time.Time) {
+	o.StartDate = &v
+}
+
 func (o CardProduct) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["form"] = o.Form
+	if o.AccountRangeId != nil {
+		toSerialize["account_range_id"] = o.AccountRangeId
 	}
 	if o.Active != nil {
 		toSerialize["active"] = o.Active
 	}
+	if o.AutoAllocateRange != nil {
+		toSerialize["auto_allocate_range"] = o.AutoAllocateRange
+	}
+	if o.BankId != nil {
+		toSerialize["bank_id"] = o.BankId
+	}
+	if o.BinId != nil {
+		toSerialize["bin_id"] = o.BinId
+	}
+	if o.CardFormat != nil {
+		toSerialize["card_format"] = o.CardFormat
+	}
+	if o.CardProgramId != nil {
+		toSerialize["card_program_id"] = o.CardProgramId
+	}
+	if o.CreationTime != nil {
+		toSerialize["creation_time"] = o.CreationTime
+	}
+	if o.EndDate != nil {
+		toSerialize["end_date"] = o.EndDate
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
+	if o.LastModifiedTime != nil {
+		toSerialize["last_modified_time"] = o.LastModifiedTime
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.PartnerId != nil {
+		toSerialize["partner_id"] = o.PartnerId
+	}
+	if o.PhysicalCardFormat != nil {
+		toSerialize["physical_card_format"] = o.PhysicalCardFormat
+	}
+	if o.StartDate != nil {
+		toSerialize["start_date"] = o.StartDate
 	}
 	return json.Marshal(toSerialize)
 }

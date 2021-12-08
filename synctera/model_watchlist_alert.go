@@ -33,7 +33,7 @@ type WatchlistAlert struct {
 	Status string `json:"status"`
 	// Where to get more information about this alert (according to our third-party data provider). 
 	Urls *[]string `json:"urls,omitempty"`
-	VendorInfo *VendorInfo `json:"vendor_info,omitempty"`
+	VendorInfo *VendorInfo1 `json:"vendor_info,omitempty"`
 }
 
 // NewWatchlistAlert instantiates a new WatchlistAlert object
@@ -303,9 +303,9 @@ func (o *WatchlistAlert) SetUrls(v []string) {
 }
 
 // GetVendorInfo returns the VendorInfo field value if set, zero value otherwise.
-func (o *WatchlistAlert) GetVendorInfo() VendorInfo {
+func (o *WatchlistAlert) GetVendorInfo() VendorInfo1 {
 	if o == nil || o.VendorInfo == nil {
-		var ret VendorInfo
+		var ret VendorInfo1
 		return ret
 	}
 	return *o.VendorInfo
@@ -313,7 +313,7 @@ func (o *WatchlistAlert) GetVendorInfo() VendorInfo {
 
 // GetVendorInfoOk returns a tuple with the VendorInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WatchlistAlert) GetVendorInfoOk() (*VendorInfo, bool) {
+func (o *WatchlistAlert) GetVendorInfoOk() (*VendorInfo1, bool) {
 	if o == nil || o.VendorInfo == nil {
 		return nil, false
 	}
@@ -329,8 +329,8 @@ func (o *WatchlistAlert) HasVendorInfo() bool {
 	return false
 }
 
-// SetVendorInfo gets a reference to the given VendorInfo and assigns it to the VendorInfo field.
-func (o *WatchlistAlert) SetVendorInfo(v VendorInfo) {
+// SetVendorInfo gets a reference to the given VendorInfo1 and assigns it to the VendorInfo field.
+func (o *WatchlistAlert) SetVendorInfo(v VendorInfo1) {
 	o.VendorInfo = &v
 }
 

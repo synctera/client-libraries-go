@@ -21,6 +21,7 @@ type VirtualCardPlusStatus struct {
 	Form string `json:"form"`
 	// The ID of the account to which the card will be linked
 	AccountId *string `json:"account_id,omitempty"`
+	CardBrand *CardBrand `json:"card_brand,omitempty"`
 	// The card product to which the card is attached
 	CardProductId *string `json:"card_product_id,omitempty"`
 	// The timestamp representing when the card issuance request was made
@@ -40,26 +41,30 @@ type VirtualCardPlusStatus struct {
 	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
 	// Additional data to include in the request structured as key-value pairs
 	Metadata *map[string]string `json:"metadata,omitempty"`
-	// The network on which the card transacts
-	Network *string `json:"network,omitempty"`
 	// The reason the card needs to be reissued
 	ReissueReason *string `json:"reissue_reason,omitempty"`
-	// If this card was issued as a reissuance of another card, this ID refers to the card was replaced
+	// When reissuing a card, specify the card to be replaced here. When getting a card's details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced. 
 	ReissuedFromId *string `json:"reissued_from_id,omitempty"`
-	// If this card was reissued, this ID refers to the card that replaced it
+	// If this card was reissued, this ID refers to the card that replaced it.
 	ReissuedToId *string `json:"reissued_to_id,omitempty"`
+	Shipping *Shipping `json:"shipping,omitempty"`
 	// Indicates the type of card to be issued
 	Type *string `json:"type,omitempty"`
-	Status *CardStatusObject `json:"status,omitempty"`
+	CardStatus CardStatus `json:"card_status"`
+	// Additional details about the reason for the status change
+	Memo *string `json:"memo,omitempty"`
+	StatusReason CardStatusReasonCode `json:"status_reason"`
 }
 
 // NewVirtualCardPlusStatus instantiates a new VirtualCardPlusStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualCardPlusStatus(form string) *VirtualCardPlusStatus {
+func NewVirtualCardPlusStatus(form string, cardStatus CardStatus, statusReason CardStatusReasonCode) *VirtualCardPlusStatus {
 	this := VirtualCardPlusStatus{}
 	this.Form = form
+	this.CardStatus = cardStatus
+	this.StatusReason = statusReason
 	return &this
 }
 
@@ -125,6 +130,38 @@ func (o *VirtualCardPlusStatus) HasAccountId() bool {
 // SetAccountId gets a reference to the given string and assigns it to the AccountId field.
 func (o *VirtualCardPlusStatus) SetAccountId(v string) {
 	o.AccountId = &v
+}
+
+// GetCardBrand returns the CardBrand field value if set, zero value otherwise.
+func (o *VirtualCardPlusStatus) GetCardBrand() CardBrand {
+	if o == nil || o.CardBrand == nil {
+		var ret CardBrand
+		return ret
+	}
+	return *o.CardBrand
+}
+
+// GetCardBrandOk returns a tuple with the CardBrand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualCardPlusStatus) GetCardBrandOk() (*CardBrand, bool) {
+	if o == nil || o.CardBrand == nil {
+		return nil, false
+	}
+	return o.CardBrand, true
+}
+
+// HasCardBrand returns a boolean if a field has been set.
+func (o *VirtualCardPlusStatus) HasCardBrand() bool {
+	if o != nil && o.CardBrand != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCardBrand gets a reference to the given CardBrand and assigns it to the CardBrand field.
+func (o *VirtualCardPlusStatus) SetCardBrand(v CardBrand) {
+	o.CardBrand = &v
 }
 
 // GetCardProductId returns the CardProductId field value if set, zero value otherwise.
@@ -479,38 +516,6 @@ func (o *VirtualCardPlusStatus) SetMetadata(v map[string]string) {
 	o.Metadata = &v
 }
 
-// GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *VirtualCardPlusStatus) GetNetwork() string {
-	if o == nil || o.Network == nil {
-		var ret string
-		return ret
-	}
-	return *o.Network
-}
-
-// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VirtualCardPlusStatus) GetNetworkOk() (*string, bool) {
-	if o == nil || o.Network == nil {
-		return nil, false
-	}
-	return o.Network, true
-}
-
-// HasNetwork returns a boolean if a field has been set.
-func (o *VirtualCardPlusStatus) HasNetwork() bool {
-	if o != nil && o.Network != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNetwork gets a reference to the given string and assigns it to the Network field.
-func (o *VirtualCardPlusStatus) SetNetwork(v string) {
-	o.Network = &v
-}
-
 // GetReissueReason returns the ReissueReason field value if set, zero value otherwise.
 func (o *VirtualCardPlusStatus) GetReissueReason() string {
 	if o == nil || o.ReissueReason == nil {
@@ -607,6 +612,38 @@ func (o *VirtualCardPlusStatus) SetReissuedToId(v string) {
 	o.ReissuedToId = &v
 }
 
+// GetShipping returns the Shipping field value if set, zero value otherwise.
+func (o *VirtualCardPlusStatus) GetShipping() Shipping {
+	if o == nil || o.Shipping == nil {
+		var ret Shipping
+		return ret
+	}
+	return *o.Shipping
+}
+
+// GetShippingOk returns a tuple with the Shipping field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualCardPlusStatus) GetShippingOk() (*Shipping, bool) {
+	if o == nil || o.Shipping == nil {
+		return nil, false
+	}
+	return o.Shipping, true
+}
+
+// HasShipping returns a boolean if a field has been set.
+func (o *VirtualCardPlusStatus) HasShipping() bool {
+	if o != nil && o.Shipping != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetShipping gets a reference to the given Shipping and assigns it to the Shipping field.
+func (o *VirtualCardPlusStatus) SetShipping(v Shipping) {
+	o.Shipping = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *VirtualCardPlusStatus) GetType() string {
 	if o == nil || o.Type == nil {
@@ -639,36 +676,84 @@ func (o *VirtualCardPlusStatus) SetType(v string) {
 	o.Type = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *VirtualCardPlusStatus) GetStatus() CardStatusObject {
-	if o == nil || o.Status == nil {
-		var ret CardStatusObject
+// GetCardStatus returns the CardStatus field value
+func (o *VirtualCardPlusStatus) GetCardStatus() CardStatus {
+	if o == nil {
+		var ret CardStatus
 		return ret
 	}
-	return *o.Status
+
+	return o.CardStatus
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetCardStatusOk returns a tuple with the CardStatus field value
 // and a boolean to check if the value has been set.
-func (o *VirtualCardPlusStatus) GetStatusOk() (*CardStatusObject, bool) {
-	if o == nil || o.Status == nil {
+func (o *VirtualCardPlusStatus) GetCardStatusOk() (*CardStatus, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.CardStatus, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *VirtualCardPlusStatus) HasStatus() bool {
-	if o != nil && o.Status != nil {
+// SetCardStatus sets field value
+func (o *VirtualCardPlusStatus) SetCardStatus(v CardStatus) {
+	o.CardStatus = v
+}
+
+// GetMemo returns the Memo field value if set, zero value otherwise.
+func (o *VirtualCardPlusStatus) GetMemo() string {
+	if o == nil || o.Memo == nil {
+		var ret string
+		return ret
+	}
+	return *o.Memo
+}
+
+// GetMemoOk returns a tuple with the Memo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualCardPlusStatus) GetMemoOk() (*string, bool) {
+	if o == nil || o.Memo == nil {
+		return nil, false
+	}
+	return o.Memo, true
+}
+
+// HasMemo returns a boolean if a field has been set.
+func (o *VirtualCardPlusStatus) HasMemo() bool {
+	if o != nil && o.Memo != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given CardStatusObject and assigns it to the Status field.
-func (o *VirtualCardPlusStatus) SetStatus(v CardStatusObject) {
-	o.Status = &v
+// SetMemo gets a reference to the given string and assigns it to the Memo field.
+func (o *VirtualCardPlusStatus) SetMemo(v string) {
+	o.Memo = &v
+}
+
+// GetStatusReason returns the StatusReason field value
+func (o *VirtualCardPlusStatus) GetStatusReason() CardStatusReasonCode {
+	if o == nil {
+		var ret CardStatusReasonCode
+		return ret
+	}
+
+	return o.StatusReason
+}
+
+// GetStatusReasonOk returns a tuple with the StatusReason field value
+// and a boolean to check if the value has been set.
+func (o *VirtualCardPlusStatus) GetStatusReasonOk() (*CardStatusReasonCode, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.StatusReason, true
+}
+
+// SetStatusReason sets field value
+func (o *VirtualCardPlusStatus) SetStatusReason(v CardStatusReasonCode) {
+	o.StatusReason = v
 }
 
 func (o VirtualCardPlusStatus) MarshalJSON() ([]byte, error) {
@@ -678,6 +763,9 @@ func (o VirtualCardPlusStatus) MarshalJSON() ([]byte, error) {
 	}
 	if o.AccountId != nil {
 		toSerialize["account_id"] = o.AccountId
+	}
+	if o.CardBrand != nil {
+		toSerialize["card_brand"] = o.CardBrand
 	}
 	if o.CardProductId != nil {
 		toSerialize["card_product_id"] = o.CardProductId
@@ -712,9 +800,6 @@ func (o VirtualCardPlusStatus) MarshalJSON() ([]byte, error) {
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if o.Network != nil {
-		toSerialize["network"] = o.Network
-	}
 	if o.ReissueReason != nil {
 		toSerialize["reissue_reason"] = o.ReissueReason
 	}
@@ -724,11 +809,20 @@ func (o VirtualCardPlusStatus) MarshalJSON() ([]byte, error) {
 	if o.ReissuedToId != nil {
 		toSerialize["reissued_to_id"] = o.ReissuedToId
 	}
+	if o.Shipping != nil {
+		toSerialize["shipping"] = o.Shipping
+	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	if true {
+		toSerialize["card_status"] = o.CardStatus
+	}
+	if o.Memo != nil {
+		toSerialize["memo"] = o.Memo
+	}
+	if true {
+		toSerialize["status_reason"] = o.StatusReason
 	}
 	return json.Marshal(toSerialize)
 }

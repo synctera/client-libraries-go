@@ -4,10 +4,8 @@ All URIs are relative to *https://api.synctera.com/v0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ActivateCard**](CardsApi.md#ActivateCard) | **Post** /cards/{card_id}/activate | Activate a card
+[**ActivateCard**](CardsApi.md#ActivateCard) | **Post** /cards/activate | Activate a card
 [**GetCard**](CardsApi.md#GetCard) | **Get** /cards/{card_id} | Get Card
-[**GetCardProduct**](CardsApi.md#GetCardProduct) | **Get** /cards/products/{card_product_id} | Get details about a card product
-[**GetCardProducts**](CardsApi.md#GetCardProducts) | **Get** /cards/products | List Cards Products
 [**GetClientAccessToken**](CardsApi.md#GetClientAccessToken) | **Post** /cards/{card_id}/client_token | Get a client token
 [**GetClientSingleUseToken**](CardsApi.md#GetClientSingleUseToken) | **Post** /cards/single_use_token | Get single-use token
 [**IssueCard**](CardsApi.md#IssueCard) | **Post** /cards | Issue a Card
@@ -19,7 +17,7 @@ Method | HTTP request | Description
 
 ## ActivateCard
 
-> CardResponse ActivateCard(ctx, cardId).CardActivation(cardActivation).Execute()
+> CardResponse ActivateCard(ctx).CardActivationRequest(cardActivationRequest).Execute()
 
 Activate a card
 
@@ -38,12 +36,11 @@ import (
 )
 
 func main() {
-    cardId := TODO // string | The unique identifier of a card
-    cardActivation := *openapiclient.NewCardActivation() // CardActivation | Card activation code
+    cardActivationRequest := *openapiclient.NewCardActivationRequest("ActivationCode_example", "e4fbbc46-b170-4ce5-9c54-46202548e42b") // CardActivationRequest | Card activation code
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.ActivateCard(context.Background(), cardId).CardActivation(cardActivation).Execute()
+    resp, r, err := api_client.CardsApi.ActivateCard(context.Background()).CardActivationRequest(cardActivationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ActivateCard``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,10 +53,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardId** | [**string**](.md) | The unique identifier of a card | 
 
 ### Other Parameters
 
@@ -68,8 +61,7 @@ Other parameters are passed through a pointer to a apiActivateCardRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **cardActivation** | [**CardActivation**](CardActivation.md) | Card activation code | 
+ **cardActivationRequest** | [**CardActivationRequest**](CardActivationRequest.md) | Card activation code | 
 
 ### Return type
 
@@ -110,7 +102,7 @@ import (
 )
 
 func main() {
-    cardId := TODO // string | The unique identifier of a card
+    cardId := TODO // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -130,7 +122,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardId** | [**string**](.md) | The unique identifier of a card | 
+**cardId** | [**string**](.md) |  | 
 
 ### Other Parameters
 
@@ -144,133 +136,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CardResponse**](CardResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetCardProduct
-
-> CardProduct GetCardProduct(ctx, cardProductId).Execute()
-
-Get details about a card product
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    cardProductId := TODO // string | The unique identifier of a cards product
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.GetCardProduct(context.Background(), cardProductId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.GetCardProduct``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCardProduct`: CardProduct
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.GetCardProduct`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardProductId** | [**string**](.md) | The unique identifier of a cards product | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCardProductRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**CardProduct**](CardProduct.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetCardProducts
-
-> CardProductList GetCardProducts(ctx).Execute()
-
-List Cards Products
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.GetCardProducts(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.GetCardProducts``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCardProducts`: CardProductList
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.GetCardProducts`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCardProductsRequest struct via the builder pattern
-
-
-### Return type
-
-[**CardProductList**](CardProductList.md)
 
 ### Authorization
 
@@ -307,7 +172,7 @@ import (
 )
 
 func main() {
-    cardId := TODO // string | The unique identifier of a card
+    cardId := TODO // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -327,7 +192,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardId** | [**string**](.md) | The unique identifier of a card | 
+**cardId** | [**string**](.md) |  | 
 
 ### Other Parameters
 
@@ -377,7 +242,7 @@ import (
 )
 
 func main() {
-    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("74b50c5f-c9cb-4a5a-a9f0-27f2939c97ef", "5231ce22-b497-493d-b633-45d9a7e405b3") // SingleUseTokenRequest | User token details
+    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("18649151-0762-4ee8-9a31-4990ef244f3f", "511c7eb9-80d3-4046-9a78-66cb7b4374ee") // SingleUseTokenRequest | User token details
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -443,7 +308,7 @@ import (
 )
 
 func main() {
-    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "ee1043a7-7cd8-4e1a-9f6c-73d73c13bc07", "ba6c499f-f5ab-4ff0-8040-f6fa99abcda0", "6451a2b9-a794-4265-8fbf-dcd455795def", "Type_example")} // CardIssuanceRequest | Card to issue
+    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "5e7b8e75-504a-46fd-a348-2ad50f39591e", "decc9718-35f5-47b4-9743-31932ac7f9ae", "9ec15e11-8d0e-4a67-a0c9-b6589190abb8", "Type_example")} // CardIssuanceRequest | Card to issue
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -490,7 +355,7 @@ Name | Type | Description  | Notes
 
 ## ListCards
 
-> CardListResponse ListCards(ctx).CustomerId(customerId).AccountId(accountId).EmbossName(embossName).LastFour(lastFour).ExpirationDate(expirationDate).CardType(cardType).CardBrand(cardBrand).Form(form).CardProductId(cardProductId).CardStatus(cardStatus).PostalCode(postalCode).Limit(limit).PageToken(pageToken).Execute()
+> CardListResponse ListCards(ctx).Tenant(tenant).CustomerId(customerId).AccountId(accountId).EmbossName(embossName).LastFour(lastFour).ExpirationDate(expirationDate).CardType(cardType).CardBrand(cardBrand).Form(form).CardProductId(cardProductId).CardStatus(cardStatus).PostalCode(postalCode).Limit(limit).PageToken(pageToken).Execute()
 
 List Cards
 
@@ -510,23 +375,24 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | The unique identifier for a customer (optional)
-    accountId := TODO // string | The unique identifier for an account (optional)
+    tenant := "tenant_example" // string |  (optional)
+    customerId := TODO // string |  (optional)
+    accountId := TODO // string |  (optional)
     embossName := "embossName_example" // string | emboss name (optional)
     lastFour := "1234" // string | The last 4 digits of the card PAN (optional)
     expirationDate := time.Now() // string | The date representing when the card would expire at (optional)
     cardType := "cardType_example" // string | Indicates the type of card (optional)
-    cardBrand := "cardBrand_example" // string | The brand of a card product (optional)
+    cardBrand := openapiclient.card_brand("MASTERCARD") // CardBrand | The brand of a card product (optional)
     form := openapiclient.form("PHYSICAL") // Form | The format of the card (optional)
-    cardProductId := TODO // string | The unique identifier of a cards product (optional)
+    cardProductId := TODO // string |  (optional)
     cardStatus := openapiclient.card_status("ACTIVE") // CardStatus | The status of a card (optional)
-    postalCode := "28.0" // string | The postal code of a card user (optional)
+    postalCode := "49633" // string | The postal code of a card user (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
+    pageToken := "19waxl0g93" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.ListCards(context.Background()).CustomerId(customerId).AccountId(accountId).EmbossName(embossName).LastFour(lastFour).ExpirationDate(expirationDate).CardType(cardType).CardBrand(cardBrand).Form(form).CardProductId(cardProductId).CardStatus(cardStatus).PostalCode(postalCode).Limit(limit).PageToken(pageToken).Execute()
+    resp, r, err := api_client.CardsApi.ListCards(context.Background()).Tenant(tenant).CustomerId(customerId).AccountId(accountId).EmbossName(embossName).LastFour(lastFour).ExpirationDate(expirationDate).CardType(cardType).CardBrand(cardBrand).Form(form).CardProductId(cardProductId).CardStatus(cardStatus).PostalCode(postalCode).Limit(limit).PageToken(pageToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ListCards``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -547,15 +413,16 @@ Other parameters are passed through a pointer to a apiListCardsRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customerId** | [**string**](string.md) | The unique identifier for a customer | 
- **accountId** | [**string**](string.md) | The unique identifier for an account | 
+ **tenant** | **string** |  | 
+ **customerId** | [**string**](string.md) |  | 
+ **accountId** | [**string**](string.md) |  | 
  **embossName** | **string** | emboss name | 
  **lastFour** | **string** | The last 4 digits of the card PAN | 
  **expirationDate** | **string** | The date representing when the card would expire at | 
  **cardType** | **string** | Indicates the type of card | 
- **cardBrand** | **string** | The brand of a card product | 
+ **cardBrand** | [**CardBrand**](CardBrand.md) | The brand of a card product | 
  **form** | [**Form**](Form.md) | The format of the card | 
- **cardProductId** | [**string**](string.md) | The unique identifier of a cards product | 
+ **cardProductId** | [**string**](string.md) |  | 
  **cardStatus** | [**CardStatus**](CardStatus.md) | The status of a card | 
  **postalCode** | **string** | The postal code of a card user | 
  **limit** | **int32** |  | [default to 100]
@@ -600,7 +467,7 @@ import (
 )
 
 func main() {
-    cardId := TODO // string | The unique identifier of a card
+    cardId := TODO // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -620,7 +487,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardId** | [**string**](.md) | The unique identifier of a card | 
+**cardId** | [**string**](.md) |  | 
 
 ### Other Parameters
 
@@ -670,7 +537,7 @@ import (
 )
 
 func main() {
-    cardId := TODO // string | The unique identifier of a card
+    cardId := TODO // string | 
     cardEditRequest := *openapiclient.NewCardEditRequest(openapiclient.card_status("ACTIVE"), openapiclient.card_status_reason_code("NEW")) // CardEditRequest | Card edits
 
     configuration := openapiclient.NewConfiguration()
@@ -691,7 +558,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardId** | [**string**](.md) | The unique identifier of a card | 
+**cardId** | [**string**](.md) |  | 
 
 ### Other Parameters
 

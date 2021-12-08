@@ -16,7 +16,7 @@ import (
 
 // EmploymentList struct for EmploymentList
 type EmploymentList struct {
-	// Array of customer employment records
+	// Array of customer employment records.
 	Employment []Employment `json:"employment"`
 	// If returned, use the next_page_token to query for the next page of results. Not returned if there are no more rows.
 	NextPageToken *string `json:"next_page_token,omitempty"`

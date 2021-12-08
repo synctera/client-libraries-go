@@ -30,13 +30,12 @@ type CardsApiService service
 type ApiActivateCardRequest struct {
 	ctx _context.Context
 	ApiService *CardsApiService
-	cardId string
-	cardActivation *CardActivation
+	cardActivationRequest *CardActivationRequest
 }
 
 // Card activation code
-func (r ApiActivateCardRequest) CardActivation(cardActivation CardActivation) ApiActivateCardRequest {
-	r.cardActivation = &cardActivation
+func (r ApiActivateCardRequest) CardActivationRequest(cardActivationRequest CardActivationRequest) ApiActivateCardRequest {
+	r.cardActivationRequest = &cardActivationRequest
 	return r
 }
 
@@ -51,14 +50,12 @@ Activate a card
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cardId The unique identifier of a card
  @return ApiActivateCardRequest
 */
-func (a *CardsApiService) ActivateCard(ctx _context.Context, cardId string) ApiActivateCardRequest {
+func (a *CardsApiService) ActivateCard(ctx _context.Context) ApiActivateCardRequest {
 	return ApiActivateCardRequest{
 		ApiService: a,
 		ctx: ctx,
-		cardId: cardId,
 	}
 }
 
@@ -79,14 +76,13 @@ func (a *CardsApiService) ActivateCardExecute(r ApiActivateCardRequest) (CardRes
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/cards/{card_id}/activate"
-	localVarPath = strings.Replace(localVarPath, "{"+"card_id"+"}", _neturl.PathEscape(parameterToString(r.cardId, "")), -1)
+	localVarPath := localBasePath + "/cards/activate"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.cardActivation == nil {
-		return localVarReturnValue, nil, reportError("cardActivation is required and must be specified")
+	if r.cardActivationRequest == nil {
+		return localVarReturnValue, nil, reportError("cardActivationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -107,7 +103,7 @@ func (a *CardsApiService) ActivateCardExecute(r ApiActivateCardRequest) (CardRes
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cardActivation
+	localVarPostBody = r.cardActivationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -212,7 +208,7 @@ Get the details about a card that has been issued
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cardId The unique identifier of a card
+ @param cardId
  @return ApiGetCardRequest
 */
 func (a *CardsApiService) GetCard(ctx _context.Context, cardId string) ApiGetCardRequest {
@@ -350,278 +346,6 @@ func (a *CardsApiService) GetCardExecute(r ApiGetCardRequest) (CardResponse, *_n
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetCardProductRequest struct {
-	ctx _context.Context
-	ApiService *CardsApiService
-	cardProductId string
-}
-
-
-func (r ApiGetCardProductRequest) Execute() (CardProduct, *_nethttp.Response, error) {
-	return r.ApiService.GetCardProductExecute(r)
-}
-
-/*
-GetCardProduct Get details about a card product
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cardProductId The unique identifier of a cards product
- @return ApiGetCardProductRequest
-*/
-func (a *CardsApiService) GetCardProduct(ctx _context.Context, cardProductId string) ApiGetCardProductRequest {
-	return ApiGetCardProductRequest{
-		ApiService: a,
-		ctx: ctx,
-		cardProductId: cardProductId,
-	}
-}
-
-// Execute executes the request
-//  @return CardProduct
-func (a *CardsApiService) GetCardProductExecute(r ApiGetCardProductRequest) (CardProduct, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CardProduct
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CardsApiService.GetCardProduct")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/cards/products/{card_product_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"card_product_id"+"}", _neturl.PathEscape(parameterToString(r.cardProductId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetCardProductsRequest struct {
-	ctx _context.Context
-	ApiService *CardsApiService
-}
-
-
-func (r ApiGetCardProductsRequest) Execute() (CardProductList, *_nethttp.Response, error) {
-	return r.ApiService.GetCardProductsExecute(r)
-}
-
-/*
-GetCardProducts List Cards Products
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetCardProductsRequest
-*/
-func (a *CardsApiService) GetCardProducts(ctx _context.Context) ApiGetCardProductsRequest {
-	return ApiGetCardProductsRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return CardProductList
-func (a *CardsApiService) GetCardProductsExecute(r ApiGetCardProductsRequest) (CardProductList, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CardProductList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CardsApiService.GetCardProducts")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/cards/products"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGetClientAccessTokenRequest struct {
 	ctx _context.Context
 	ApiService *CardsApiService
@@ -640,7 +364,7 @@ Create a client access token for interacting with a card.  This token will be us
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cardId The unique identifier of a card
+ @param cardId
  @return ApiGetClientAccessTokenRequest
 */
 func (a *CardsApiService) GetClientAccessToken(ctx _context.Context, cardId string) ApiGetClientAccessTokenRequest {
@@ -1107,13 +831,14 @@ func (a *CardsApiService) IssueCardExecute(r ApiIssueCardRequest) (CardResponse,
 type ApiListCardsRequest struct {
 	ctx _context.Context
 	ApiService *CardsApiService
+	tenant *string
 	customerId *string
 	accountId *string
 	embossName *string
 	lastFour *string
 	expirationDate *string
 	cardType *string
-	cardBrand *string
+	cardBrand *CardBrand
 	form *Form
 	cardProductId *string
 	cardStatus *CardStatus
@@ -1122,12 +847,14 @@ type ApiListCardsRequest struct {
 	pageToken *string
 }
 
-// The unique identifier for a customer
+func (r ApiListCardsRequest) Tenant(tenant string) ApiListCardsRequest {
+	r.tenant = &tenant
+	return r
+}
 func (r ApiListCardsRequest) CustomerId(customerId string) ApiListCardsRequest {
 	r.customerId = &customerId
 	return r
 }
-// The unique identifier for an account
 func (r ApiListCardsRequest) AccountId(accountId string) ApiListCardsRequest {
 	r.accountId = &accountId
 	return r
@@ -1153,7 +880,7 @@ func (r ApiListCardsRequest) CardType(cardType string) ApiListCardsRequest {
 	return r
 }
 // The brand of a card product
-func (r ApiListCardsRequest) CardBrand(cardBrand string) ApiListCardsRequest {
+func (r ApiListCardsRequest) CardBrand(cardBrand CardBrand) ApiListCardsRequest {
 	r.cardBrand = &cardBrand
 	return r
 }
@@ -1162,7 +889,6 @@ func (r ApiListCardsRequest) Form(form Form) ApiListCardsRequest {
 	r.form = &form
 	return r
 }
-// The unique identifier of a cards product
 func (r ApiListCardsRequest) CardProductId(cardProductId string) ApiListCardsRequest {
 	r.cardProductId = &cardProductId
 	return r
@@ -1229,6 +955,9 @@ func (a *CardsApiService) ListCardsExecute(r ApiListCardsRequest) (CardListRespo
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.tenant != nil {
+		localVarQueryParams.Add("tenant", parameterToString(*r.tenant, ""))
+	}
 	if r.customerId != nil {
 		localVarQueryParams.Add("customer_id", parameterToString(*r.customerId, ""))
 	}
@@ -1389,7 +1118,7 @@ List card change history
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cardId The unique identifier of a card
+ @param cardId
  @return ApiListChangesRequest
 */
 func (a *CardsApiService) ListChanges(ctx _context.Context, cardId string) ApiListChangesRequest {
@@ -1551,7 +1280,7 @@ Integrators can update the card resource to change status, update shipping (if t
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cardId The unique identifier of a card
+ @param cardId
  @return ApiUpdateCardRequest
 */
 func (a *CardsApiService) UpdateCard(ctx _context.Context, cardId string) ApiUpdateCardRequest {
