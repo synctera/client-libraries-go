@@ -5,22 +5,22 @@ All URIs are relative to *https://api.synctera.com/v0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAccount**](AccountsApi.md#CreateAccount) | **Post** /accounts | Create an account
-[**CreateAccountAddress**](AccountsApi.md#CreateAccountAddress) | **Post** /accounts/{account_id}/addresses | Create address for an account
 [**CreateAccountRelationship**](AccountsApi.md#CreateAccountRelationship) | **Post** /accounts/{account_id}/relationships | Create account relationship
+[**CreateAccountResourceProduct**](AccountsApi.md#CreateAccountResourceProduct) | **Post** /accounts/products | Create an account product
+[**CreateAccountTemplate**](AccountsApi.md#CreateAccountTemplate) | **Post** /accounts/templates | Create an account template
 [**DeleteAccount**](AccountsApi.md#DeleteAccount) | **Delete** /accounts/{account_id} | Delete account
-[**DeleteAccountAddress**](AccountsApi.md#DeleteAccountAddress) | **Delete** /accounts/{account_id}/addresses/{connect_id} | Delete address for an account
 [**DeleteAccountRelationship**](AccountsApi.md#DeleteAccountRelationship) | **Delete** /accounts/{account_id}/relationships/{relationship_id} | Delete account relationship
 [**GetAccount**](AccountsApi.md#GetAccount) | **Get** /accounts/{account_id} | Get account
-[**GetAccountAddress**](AccountsApi.md#GetAccountAddress) | **Get** /accounts/{account_id}/addresses/{connect_id} | Get address for an account
-[**GetAccountBalance**](AccountsApi.md#GetAccountBalance) | **Get** /accounts/{account_id}/balance | Get account balance
 [**GetAccountRelationship**](AccountsApi.md#GetAccountRelationship) | **Get** /accounts/{account_id}/relationships/{relationship_id} | Get account relationship
-[**GetAccountTransactions**](AccountsApi.md#GetAccountTransactions) | **Get** /accounts/{account_id}/transactions | Get account transactions
+[**GetAccountTemplate**](AccountsApi.md#GetAccountTemplate) | **Get** /accounts/templates/{template_id} | Get account template
 [**ListAccountRelationship**](AccountsApi.md#ListAccountRelationship) | **Get** /accounts/{account_id}/relationships | List account relationships
+[**ListAccountResourceProducts**](AccountsApi.md#ListAccountResourceProducts) | **Get** /accounts/products | List account products
+[**ListAccountTemplates**](AccountsApi.md#ListAccountTemplates) | **Get** /accounts/templates | List account templates
 [**ListAccounts**](AccountsApi.md#ListAccounts) | **Get** /accounts | List accounts
 [**PatchAccount**](AccountsApi.md#PatchAccount) | **Patch** /accounts/{account_id} | Patch account
 [**UpdateAccount**](AccountsApi.md#UpdateAccount) | **Put** /accounts/{account_id} | Update account
-[**UpdateAccountAddress**](AccountsApi.md#UpdateAccountAddress) | **Put** /accounts/{account_id}/addresses/{connect_id} | Update address for an account
 [**UpdateAccountRelationship**](AccountsApi.md#UpdateAccountRelationship) | **Put** /accounts/{account_id}/relationships/{relationship_id} | Update account relationship
+[**UpdateAccountTemplate**](AccountsApi.md#UpdateAccountTemplate) | **Put** /accounts/templates/{template_id} | Update account template
 
 
 
@@ -90,78 +90,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateAccountAddress
-
-> AccountAddress CreateAccountAddress(ctx, accountId).AccountAddress(accountAddress).Execute()
-
-Create address for an account
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    accountId := TODO // string | Unique identifier for the account.
-    accountAddress := *openapiclient.NewAccountAddress() // AccountAddress | Account address to create
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.CreateAccountAddress(context.Background(), accountId).AccountAddress(accountAddress).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.CreateAccountAddress``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateAccountAddress`: AccountAddress
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.CreateAccountAddress`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Unique identifier for the account. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateAccountAddressRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **accountAddress** | [**AccountAddress**](AccountAddress.md) | Account address to create | 
-
-### Return type
-
-[**AccountAddress**](AccountAddress.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CreateAccountRelationship
 
 > Relationship CreateAccountRelationship(ctx, accountId).Relationship(relationship).Execute()
@@ -184,7 +112,7 @@ import (
 
 func main() {
     accountId := TODO // string | Unique identifier for the account.
-    relationship := *openapiclient.NewRelationship("CustomerId_example", "RelationshipType_example") // Relationship | Account relationship object
+    relationship := *openapiclient.NewRelationship("CustomerId_example", openapiclient.account_relationship_type("ACCOUNT_HOLDER")) // Relationship | Account relationship object
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -228,6 +156,138 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAccountResourceProduct
+
+> AccountProduct CreateAccountResourceProduct(ctx).AccountProduct(accountProduct).Execute()
+
+Create an account product
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountProduct := openapiclient.account_product{Fee: openapiclient.NewFee(int64(123), "Currency_example", "FeeType_example", "ProductType_example")} // AccountProduct | Account product to create
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.CreateAccountResourceProduct(context.Background()).AccountProduct(accountProduct).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.CreateAccountResourceProduct``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAccountResourceProduct`: AccountProduct
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.CreateAccountResourceProduct`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAccountResourceProductRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountProduct** | [**AccountProduct**](AccountProduct.md) | Account product to create | 
+
+### Return type
+
+[**AccountProduct**](AccountProduct.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAccountTemplate
+
+> AccountTemplate CreateAccountTemplate(ctx).AccountTemplate(accountTemplate).Execute()
+
+Create an account template
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accountTemplate := *openapiclient.NewAccountTemplate(false, "Name_example", *openapiclient.NewTemplateFields(openapiclient.account_type("SAVING"), "US", "USD")) // AccountTemplate | Account template to create
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.CreateAccountTemplate(context.Background()).AccountTemplate(accountTemplate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.CreateAccountTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAccountTemplate`: AccountTemplate
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.CreateAccountTemplate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAccountTemplateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountTemplate** | [**AccountTemplate**](AccountTemplate.md) | Account template to create | 
+
+### Return type
+
+[**AccountTemplate**](AccountTemplate.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -284,79 +344,6 @@ Other parameters are passed through a pointer to a apiDeleteAccountRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**DeleteResponse**](DeleteResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeleteAccountAddress
-
-> DeleteResponse DeleteAccountAddress(ctx, accountId, connectId).Execute()
-
-Delete address for an account
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    accountId := TODO // string | Unique identifier for the account.
-    connectId := TODO // string | Connect ID of the account associate with the account entity
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.DeleteAccountAddress(context.Background(), accountId, connectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.DeleteAccountAddress``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteAccountAddress`: DeleteResponse
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.DeleteAccountAddress`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Unique identifier for the account. | 
-**connectId** | [**string**](.md) | Connect ID of the account associate with the account entity | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteAccountAddressRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
 
 
 ### Return type
@@ -520,153 +507,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAccountAddress
-
-> AccountAddress GetAccountAddress(ctx, accountId, connectId).InlineObject(inlineObject).Execute()
-
-Get address for an account
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    accountId := TODO // string | Unique identifier for the account.
-    connectId := TODO // string | Connect ID of the account associate with the account entity
-    inlineObject := *openapiclient.NewInlineObject() // InlineObject |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.GetAccountAddress(context.Background(), accountId, connectId).InlineObject(inlineObject).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccountAddress``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccountAddress`: AccountAddress
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.GetAccountAddress`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Unique identifier for the account. | 
-**connectId** | [**string**](.md) | Connect ID of the account associate with the account entity | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAccountAddressRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **inlineObject** | [**InlineObject**](InlineObject.md) |  | 
-
-### Return type
-
-[**AccountAddress**](AccountAddress.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetAccountBalance
-
-> Balance GetAccountBalance(ctx, accountId).InlineObject1(inlineObject1).Execute()
-
-Get account balance
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    accountId := TODO // string | Unique identifier for the account.
-    inlineObject1 := *openapiclient.NewInlineObject1() // InlineObject1 | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.GetAccountBalance(context.Background(), accountId).InlineObject1(inlineObject1).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccountBalance``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccountBalance`: Balance
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.GetAccountBalance`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Unique identifier for the account. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAccountBalanceRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **inlineObject1** | [**InlineObject1**](InlineObject1.md) |  | 
-
-### Return type
-
-[**Balance**](Balance.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetAccountRelationship
 
 > Relationship GetAccountRelationship(ctx, accountId, relationshipId).Execute()
@@ -740,11 +580,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAccountTransactions
+## GetAccountTemplate
 
-> TransactionList GetAccountTransactions(ctx, accountId).InlineObject2(inlineObject2).Limit(limit).PageToken(pageToken).Execute()
+> AccountTemplate GetAccountTemplate(ctx, templateId).Execute()
 
-Get account transactions
+Get account template
 
 
 
@@ -761,20 +601,17 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Unique identifier for the account.
-    inlineObject2 := *openapiclient.NewInlineObject2() // InlineObject2 | 
-    limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
+    templateId := TODO // string | Account Template ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.GetAccountTransactions(context.Background(), accountId).InlineObject2(inlineObject2).Limit(limit).PageToken(pageToken).Execute()
+    resp, r, err := api_client.AccountsApi.GetAccountTemplate(context.Background(), templateId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccountTransactions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccountTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccountTransactions`: TransactionList
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.GetAccountTransactions`: %v\n", resp)
+    // response from `GetAccountTemplate`: AccountTemplate
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.GetAccountTemplate`: %v\n", resp)
 }
 ```
 
@@ -784,23 +621,20 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Unique identifier for the account. | 
+**templateId** | [**string**](.md) | Account Template ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAccountTransactionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAccountTemplateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **inlineObject2** | [**InlineObject2**](InlineObject2.md) |  | 
- **limit** | **int32** |  | [default to 100]
- **pageToken** | **string** |  | 
 
 ### Return type
 
-[**TransactionList**](TransactionList.md)
+[**AccountTemplate**](AccountTemplate.md)
 
 ### Authorization
 
@@ -808,8 +642,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -839,7 +673,7 @@ import (
 func main() {
     accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
+    pageToken := "19waxl0g93" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -890,9 +724,152 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListAccountResourceProducts
+
+> AccountProductList ListAccountResourceProducts(ctx).ProductType(productType).Limit(limit).PageToken(pageToken).StartDate(startDate).EndDate(endDate).Execute()
+
+List account products
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    productType := "productType_example" // string | Type of account product
+    limit := int32(100) // int32 |  (optional) (default to 100)
+    pageToken := "19waxl0g93" // string |  (optional)
+    startDate := time.Now() // string | Date range filtering for type INTEREST. All rates in interest resource have to have valid_from later or equal to start_date. (optional)
+    endDate := time.Now() // string | Date range filtering for type INTEREST. All rates in interest resource have to have valid_to earlier or equal to end_date. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.ListAccountResourceProducts(context.Background()).ProductType(productType).Limit(limit).PageToken(pageToken).StartDate(startDate).EndDate(endDate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccountResourceProducts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAccountResourceProducts`: AccountProductList
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ListAccountResourceProducts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAccountResourceProductsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productType** | **string** | Type of account product | 
+ **limit** | **int32** |  | [default to 100]
+ **pageToken** | **string** |  | 
+ **startDate** | **string** | Date range filtering for type INTEREST. All rates in interest resource have to have valid_from later or equal to start_date. | 
+ **endDate** | **string** | Date range filtering for type INTEREST. All rates in interest resource have to have valid_to earlier or equal to end_date. | 
+
+### Return type
+
+[**AccountProductList**](AccountProductList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAccountTemplates
+
+> TemplateList ListAccountTemplates(ctx).Limit(limit).PageToken(pageToken).Execute()
+
+List account templates
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    limit := int32(100) // int32 |  (optional) (default to 100)
+    pageToken := "19waxl0g93" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.ListAccountTemplates(context.Background()).Limit(limit).PageToken(pageToken).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccountTemplates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAccountTemplates`: TemplateList
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ListAccountTemplates`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAccountTemplatesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** |  | [default to 100]
+ **pageToken** | **string** |  | 
+
+### Return type
+
+[**TemplateList**](TemplateList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListAccounts
 
-> AccountList ListAccounts(ctx).Id(id).AccountNumber(accountNumber).Status(status).CustomerId(customerId).FirstName(firstName).LastName(lastName).Tenant(tenant).Limit(limit).PageToken(pageToken).HasDetails(hasDetails).Execute()
+> AccountList ListAccounts(ctx).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).Execute()
 
 List accounts
 
@@ -911,20 +888,19 @@ import (
 )
 
 func main() {
-    id := TODO // string | Unique identifier for the account(s). Multiple account IDs can be provided as a comma-separated list.  (optional)
-    accountNumber := "2345678108180014864" // string | Account number. Any * characters in the string are wildcards, and match any characters.  (optional)
+    id := []string{"Inner_example"} // []string | Account ID(s). Multiple IDs can be provided as a comma-separated list.  (optional)
+    accountNumber := []string{"Inner_example"} // []string | Account number(s). Multiple account numbers can be provided as a comma-separated list. When only a single account number is provided, any * characters in the string are wildcards, and match any characters.  (optional)
     status := openapiclient.status("APPLICATION_SUBMITTED") // Status |  (optional)
+    interestProductId := "interestProductId_example" // string | Interest product ID that accounts associate with. Multiple IDs can be provided as a comma-separated list. (optional)
     customerId := TODO // string | The customer's unique identifier (optional)
     firstName := "Alice" // string |  (optional)
     lastName := "Smith" // string |  (optional)
-    tenant := "2_3" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
-    hasDetails := true // bool | If true, the returned accounts will include relationships, aliases, balances and recent transactions. (optional)
+    pageToken := "19waxl0g93" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Id(id).AccountNumber(accountNumber).Status(status).CustomerId(customerId).FirstName(firstName).LastName(lastName).Tenant(tenant).Limit(limit).PageToken(pageToken).HasDetails(hasDetails).Execute()
+    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -945,16 +921,15 @@ Other parameters are passed through a pointer to a apiListAccountsRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**](string.md) | Unique identifier for the account(s). Multiple account IDs can be provided as a comma-separated list.  | 
- **accountNumber** | **string** | Account number. Any * characters in the string are wildcards, and match any characters.  | 
+ **id** | **[]string** | Account ID(s). Multiple IDs can be provided as a comma-separated list.  | 
+ **accountNumber** | **[]string** | Account number(s). Multiple account numbers can be provided as a comma-separated list. When only a single account number is provided, any * characters in the string are wildcards, and match any characters.  | 
  **status** | [**Status**](Status.md) |  | 
+ **interestProductId** | **string** | Interest product ID that accounts associate with. Multiple IDs can be provided as a comma-separated list. | 
  **customerId** | [**string**](string.md) | The customer&#39;s unique identifier | 
  **firstName** | **string** |  | 
  **lastName** | **string** |  | 
- **tenant** | **string** |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
- **hasDetails** | **bool** | If true, the returned accounts will include relationships, aliases, balances and recent transactions. | 
 
 ### Return type
 
@@ -1118,81 +1093,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAccountAddress
-
-> AccountAddress UpdateAccountAddress(ctx, accountId, connectId).AccountAddress(accountAddress).Execute()
-
-Update address for an account
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    accountId := TODO // string | Unique identifier for the account.
-    connectId := TODO // string | Connect ID of the account associate with the account entity
-    accountAddress := *openapiclient.NewAccountAddress() // AccountAddress | Account address to be updated
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.UpdateAccountAddress(context.Background(), accountId, connectId).AccountAddress(accountAddress).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.UpdateAccountAddress``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateAccountAddress`: AccountAddress
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.UpdateAccountAddress`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Unique identifier for the account. | 
-**connectId** | [**string**](.md) | Connect ID of the account associate with the account entity | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateAccountAddressRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **accountAddress** | [**AccountAddress**](AccountAddress.md) | Account address to be updated | 
-
-### Return type
-
-[**AccountAddress**](AccountAddress.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## UpdateAccountRelationship
 
 > Relationship UpdateAccountRelationship(ctx, accountId, relationshipId).Relationship(relationship).Execute()
@@ -1216,7 +1116,7 @@ import (
 func main() {
     accountId := TODO // string | Unique identifier for the account.
     relationshipId := TODO // string | Relationship ID of the account associate with the account entity
-    relationship := *openapiclient.NewRelationship("CustomerId_example", "RelationshipType_example") // Relationship | Account relationship to be updated
+    relationship := *openapiclient.NewRelationship("CustomerId_example", openapiclient.account_relationship_type("ACCOUNT_HOLDER")) // Relationship | Account relationship to be updated
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1262,6 +1162,78 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAccountTemplate
+
+> AccountTemplate UpdateAccountTemplate(ctx, templateId).AccountTemplate(accountTemplate).Execute()
+
+Update account template
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    templateId := TODO // string | Account Template ID
+    accountTemplate := *openapiclient.NewAccountTemplate(false, "Name_example", *openapiclient.NewTemplateFields(openapiclient.account_type("SAVING"), "US", "USD")) // AccountTemplate | Account template to update
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AccountsApi.UpdateAccountTemplate(context.Background(), templateId).AccountTemplate(accountTemplate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.UpdateAccountTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAccountTemplate`: AccountTemplate
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.UpdateAccountTemplate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**templateId** | [**string**](.md) | Account Template ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAccountTemplateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **accountTemplate** | [**AccountTemplate**](AccountTemplate.md) | Account template to update | 
+
+### Return type
+
+[**AccountTemplate**](AccountTemplate.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

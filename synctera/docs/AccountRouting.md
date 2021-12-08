@@ -4,19 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AchRoutingNumber** | Pointer to **string** | The routing number used for US ACH payments. Only appears if &#x60;bank_countries&#x60; contains &#x60;US&#x60;.  | [optional] 
+**AchRoutingNumber** | Pointer to **string** | The routing number used for US ACH payments. Only appears if &#x60;bank_countries&#x60; contains &#x60;US&#x60;. Value may be masked, in which case only the last four digits are returned.  | [optional] 
 **BankCountries** | **[]string** | The countries that this bank operates the account in | 
 **BankName** | **string** | The name of the bank managing the account | 
-**EftBranchNumber** | Pointer to **string** | The branch number used for EFT payments, identifying a branch at a Canadian bank. Only appears if &#x60;bank_countries&#x60; contains &#x60;CA&#x60;.  | [optional] 
-**EftInstitutionNumber** | Pointer to **string** | The institution number used for EFT payments, identifying a Canadian bank. Only appears if &#x60;bank_countries&#x60; contains &#x60;CA&#x60;.  | [optional] 
-**SwiftCode** | **string** | The SWIFT code for the bank | 
-**WireRoutingNumber** | Pointer to **string** | The routing number used for domestic wire payments. Only appears if &#x60;bank_countries&#x60; contains &#x60;US&#x60;.  | [optional] 
+**EftRoutingNumber** | Pointer to **string** | The routing number used for EFT payments, identifying a Canadian bank, consisting of the institution number and the branch number. Only appears if &#x60;bank_countries&#x60; contains &#x60;CA&#x60;. Value may be masked, in which case only the last four digits are returned.  | [optional] 
+**SwiftCode** | Pointer to **string** | The SWIFT code for the bank. Value may be masked, in which case only the last four characters are returned.  | [optional] 
+**WireRoutingNumber** | Pointer to **string** | The routing number used for domestic wire payments. Only appears if &#x60;bank_countries&#x60; contains &#x60;US&#x60;. Value may be masked, in which case only the last four digits are returned.  | [optional] 
 
 ## Methods
 
 ### NewAccountRouting
 
-`func NewAccountRouting(bankCountries []string, bankName string, swiftCode string, ) *AccountRouting`
+`func NewAccountRouting(bankCountries []string, bankName string, ) *AccountRouting`
 
 NewAccountRouting instantiates a new AccountRouting object
 This constructor will assign default values to properties that have it defined,
@@ -96,55 +95,30 @@ and a boolean to check if the value has been set.
 SetBankName sets BankName field to given value.
 
 
-### GetEftBranchNumber
+### GetEftRoutingNumber
 
-`func (o *AccountRouting) GetEftBranchNumber() string`
+`func (o *AccountRouting) GetEftRoutingNumber() string`
 
-GetEftBranchNumber returns the EftBranchNumber field if non-nil, zero value otherwise.
+GetEftRoutingNumber returns the EftRoutingNumber field if non-nil, zero value otherwise.
 
-### GetEftBranchNumberOk
+### GetEftRoutingNumberOk
 
-`func (o *AccountRouting) GetEftBranchNumberOk() (*string, bool)`
+`func (o *AccountRouting) GetEftRoutingNumberOk() (*string, bool)`
 
-GetEftBranchNumberOk returns a tuple with the EftBranchNumber field if it's non-nil, zero value otherwise
+GetEftRoutingNumberOk returns a tuple with the EftRoutingNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEftBranchNumber
+### SetEftRoutingNumber
 
-`func (o *AccountRouting) SetEftBranchNumber(v string)`
+`func (o *AccountRouting) SetEftRoutingNumber(v string)`
 
-SetEftBranchNumber sets EftBranchNumber field to given value.
+SetEftRoutingNumber sets EftRoutingNumber field to given value.
 
-### HasEftBranchNumber
+### HasEftRoutingNumber
 
-`func (o *AccountRouting) HasEftBranchNumber() bool`
+`func (o *AccountRouting) HasEftRoutingNumber() bool`
 
-HasEftBranchNumber returns a boolean if a field has been set.
-
-### GetEftInstitutionNumber
-
-`func (o *AccountRouting) GetEftInstitutionNumber() string`
-
-GetEftInstitutionNumber returns the EftInstitutionNumber field if non-nil, zero value otherwise.
-
-### GetEftInstitutionNumberOk
-
-`func (o *AccountRouting) GetEftInstitutionNumberOk() (*string, bool)`
-
-GetEftInstitutionNumberOk returns a tuple with the EftInstitutionNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEftInstitutionNumber
-
-`func (o *AccountRouting) SetEftInstitutionNumber(v string)`
-
-SetEftInstitutionNumber sets EftInstitutionNumber field to given value.
-
-### HasEftInstitutionNumber
-
-`func (o *AccountRouting) HasEftInstitutionNumber() bool`
-
-HasEftInstitutionNumber returns a boolean if a field has been set.
+HasEftRoutingNumber returns a boolean if a field has been set.
 
 ### GetSwiftCode
 
@@ -165,6 +139,11 @@ and a boolean to check if the value has been set.
 
 SetSwiftCode sets SwiftCode field to given value.
 
+### HasSwiftCode
+
+`func (o *AccountRouting) HasSwiftCode() bool`
+
+HasSwiftCode returns a boolean if a field has been set.
 
 ### GetWireRoutingNumber
 

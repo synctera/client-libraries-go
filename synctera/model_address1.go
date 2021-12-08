@@ -24,14 +24,10 @@ type Address1 struct {
 	City string `json:"city"`
 	// ISO-3166-1 Alpha-2 country code
 	CountryCode string `json:"country_code"`
-	// Address unique identifier
-	Id *string `json:"id,omitempty"`
 	// Postal code
 	PostalCode string `json:"postal_code"`
 	// State, region, province, or prefecture
 	State string `json:"state"`
-	// type of address
-	Type *string `json:"type,omitempty"`
 }
 
 // NewAddress1 instantiates a new Address1 object
@@ -160,38 +156,6 @@ func (o *Address1) SetCountryCode(v string) {
 	o.CountryCode = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Address1) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Address1) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Address1) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Address1) SetId(v string) {
-	o.Id = &v
-}
-
 // GetPostalCode returns the PostalCode field value
 func (o *Address1) GetPostalCode() string {
 	if o == nil {
@@ -240,38 +204,6 @@ func (o *Address1) SetState(v string) {
 	o.State = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *Address1) GetType() string {
-	if o == nil || o.Type == nil {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Address1) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *Address1) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Address1) SetType(v string) {
-	o.Type = &v
-}
-
 func (o Address1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -286,17 +218,11 @@ func (o Address1) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["country_code"] = o.CountryCode
 	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
 	if true {
 		toSerialize["postal_code"] = o.PostalCode
 	}
 	if true {
 		toSerialize["state"] = o.State
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

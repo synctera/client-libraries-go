@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AliasInfo** | Pointer to **string** | Additional information for the alias | [optional] 
+**AccountId** | Pointer to **string** | Account ID | [optional] 
+**AccountNumber** | Pointer to **string** | Account number | [optional] 
+**AliasInfo** | Pointer to **map[string]interface{}** | Additional information for the alias | [optional] 
 **AliasName** | Pointer to **string** | Alias name | [optional] 
 **AliasSource** | Pointer to **string** | Alias source | [optional] 
 **AliasType** | Pointer to **string** | Alias type | [optional] 
-**Id** | Pointer to **string** | Alias ID | [optional] 
+**Id** | Pointer to **string** | Alias ID | [optional] [readonly] 
 
 ## Methods
 
@@ -29,22 +31,72 @@ NewAliasWithDefaults instantiates a new Alias object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAccountId
+
+`func (o *Alias) GetAccountId() string`
+
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+
+### GetAccountIdOk
+
+`func (o *Alias) GetAccountIdOk() (*string, bool)`
+
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountId
+
+`func (o *Alias) SetAccountId(v string)`
+
+SetAccountId sets AccountId field to given value.
+
+### HasAccountId
+
+`func (o *Alias) HasAccountId() bool`
+
+HasAccountId returns a boolean if a field has been set.
+
+### GetAccountNumber
+
+`func (o *Alias) GetAccountNumber() string`
+
+GetAccountNumber returns the AccountNumber field if non-nil, zero value otherwise.
+
+### GetAccountNumberOk
+
+`func (o *Alias) GetAccountNumberOk() (*string, bool)`
+
+GetAccountNumberOk returns a tuple with the AccountNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountNumber
+
+`func (o *Alias) SetAccountNumber(v string)`
+
+SetAccountNumber sets AccountNumber field to given value.
+
+### HasAccountNumber
+
+`func (o *Alias) HasAccountNumber() bool`
+
+HasAccountNumber returns a boolean if a field has been set.
+
 ### GetAliasInfo
 
-`func (o *Alias) GetAliasInfo() string`
+`func (o *Alias) GetAliasInfo() map[string]interface{}`
 
 GetAliasInfo returns the AliasInfo field if non-nil, zero value otherwise.
 
 ### GetAliasInfoOk
 
-`func (o *Alias) GetAliasInfoOk() (*string, bool)`
+`func (o *Alias) GetAliasInfoOk() (*map[string]interface{}, bool)`
 
 GetAliasInfoOk returns a tuple with the AliasInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAliasInfo
 
-`func (o *Alias) SetAliasInfo(v string)`
+`func (o *Alias) SetAliasInfo(v map[string]interface{})`
 
 SetAliasInfo sets AliasInfo field to given value.
 

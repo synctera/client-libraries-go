@@ -23,6 +23,8 @@ type ExternalAccountLinkToken struct {
 	CountryCodes []string `json:"country_codes"`
 	// The expiration date for the link_token. Expires in 4 hours.
 	Expiration *time.Time `json:"expiration,omitempty"`
+	// The ID of the linked external account. Optional parameter, only passed when the link token is required to be refreshed. An external account's access_token does not change when the link token is refreshed, obtaining a new access_token is not required 
+	ExternalAccountId *string `json:"external_account_id,omitempty"`
 	ExternalAccountUser ExternalAccountUser `json:"external_account_user"`
 	// The language that Link should be displayed in.
 	Language string `json:"language"`
@@ -140,6 +142,38 @@ func (o *ExternalAccountLinkToken) HasExpiration() bool {
 // SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
 func (o *ExternalAccountLinkToken) SetExpiration(v time.Time) {
 	o.Expiration = &v
+}
+
+// GetExternalAccountId returns the ExternalAccountId field value if set, zero value otherwise.
+func (o *ExternalAccountLinkToken) GetExternalAccountId() string {
+	if o == nil || o.ExternalAccountId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExternalAccountId
+}
+
+// GetExternalAccountIdOk returns a tuple with the ExternalAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExternalAccountLinkToken) GetExternalAccountIdOk() (*string, bool) {
+	if o == nil || o.ExternalAccountId == nil {
+		return nil, false
+	}
+	return o.ExternalAccountId, true
+}
+
+// HasExternalAccountId returns a boolean if a field has been set.
+func (o *ExternalAccountLinkToken) HasExternalAccountId() bool {
+	if o != nil && o.ExternalAccountId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalAccountId gets a reference to the given string and assigns it to the ExternalAccountId field.
+func (o *ExternalAccountLinkToken) SetExternalAccountId(v string) {
+	o.ExternalAccountId = &v
 }
 
 // GetExternalAccountUser returns the ExternalAccountUser field value
@@ -424,6 +458,9 @@ func (o ExternalAccountLinkToken) MarshalJSON() ([]byte, error) {
 	}
 	if o.Expiration != nil {
 		toSerialize["expiration"] = o.Expiration
+	}
+	if o.ExternalAccountId != nil {
+		toSerialize["external_account_id"] = o.ExternalAccountId
 	}
 	if true {
 		toSerialize["external_account_user"] = o.ExternalAccountUser

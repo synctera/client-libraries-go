@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// AccountVerification - struct for AccountVerification
+// AccountVerification - Information about the account verification process. If the account has not been verified, this will be null. 
 type AccountVerification struct {
 	PlaidAccountVerification *PlaidAccountVerification
 }
@@ -30,6 +30,11 @@ func PlaidAccountVerificationAsAccountVerification(v *PlaidAccountVerification) 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AccountVerification) UnmarshalJSON(data []byte) error {
 	var err error
+	// this object is nullable so check if the payload is null or empty string
+	if string(data) == "" || string(data) == "{}" {
+		return nil
+	}
+
 	match := 0
 	// try to unmarshal data into PlaidAccountVerification
 	err = json.Unmarshal(data, &dst.PlaidAccountVerification)

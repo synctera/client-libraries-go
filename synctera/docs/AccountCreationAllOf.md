@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Aliases** | Pointer to [**[]Alias**](Alias.md) | A list of the aliases for account. Account alias is the account number of different balance types to link to the same account ID | [optional] 
+**AccountTemplateId** | Pointer to **string** | Account template ID | [optional] 
 **Relationships** | Pointer to [**[]Relationship**](Relationship.md) | List of the relationship for this account to the parties | [optional] 
 
 ## Methods
@@ -26,30 +26,30 @@ NewAccountCreationAllOfWithDefaults instantiates a new AccountCreationAllOf obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAliases
+### GetAccountTemplateId
 
-`func (o *AccountCreationAllOf) GetAliases() []Alias`
+`func (o *AccountCreationAllOf) GetAccountTemplateId() string`
 
-GetAliases returns the Aliases field if non-nil, zero value otherwise.
+GetAccountTemplateId returns the AccountTemplateId field if non-nil, zero value otherwise.
 
-### GetAliasesOk
+### GetAccountTemplateIdOk
 
-`func (o *AccountCreationAllOf) GetAliasesOk() (*[]Alias, bool)`
+`func (o *AccountCreationAllOf) GetAccountTemplateIdOk() (*string, bool)`
 
-GetAliasesOk returns a tuple with the Aliases field if it's non-nil, zero value otherwise
+GetAccountTemplateIdOk returns a tuple with the AccountTemplateId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAliases
+### SetAccountTemplateId
 
-`func (o *AccountCreationAllOf) SetAliases(v []Alias)`
+`func (o *AccountCreationAllOf) SetAccountTemplateId(v string)`
 
-SetAliases sets Aliases field to given value.
+SetAccountTemplateId sets AccountTemplateId field to given value.
 
-### HasAliases
+### HasAccountTemplateId
 
-`func (o *AccountCreationAllOf) HasAliases() bool`
+`func (o *AccountCreationAllOf) HasAccountTemplateId() bool`
 
-HasAliases returns a boolean if a field has been set.
+HasAccountTemplateId returns a boolean if a field has been set.
 
 ### GetRelationships
 

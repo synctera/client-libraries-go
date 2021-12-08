@@ -21,6 +21,7 @@ type BaseCard struct {
 	Form string `json:"form"`
 	// The ID of the account to which the card will be linked
 	AccountId *string `json:"account_id,omitempty"`
+	CardBrand *CardBrand `json:"card_brand,omitempty"`
 	// The card product to which the card is attached
 	CardProductId *string `json:"card_product_id,omitempty"`
 	// The timestamp representing when the card issuance request was made
@@ -40,14 +41,13 @@ type BaseCard struct {
 	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
 	// Additional data to include in the request structured as key-value pairs
 	Metadata *map[string]string `json:"metadata,omitempty"`
-	// The network on which the card transacts
-	Network *string `json:"network,omitempty"`
 	// The reason the card needs to be reissued
 	ReissueReason *string `json:"reissue_reason,omitempty"`
-	// If this card was issued as a reissuance of another card, this ID refers to the card was replaced
+	// When reissuing a card, specify the card to be replaced here. When getting a card's details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced. 
 	ReissuedFromId *string `json:"reissued_from_id,omitempty"`
-	// If this card was reissued, this ID refers to the card that replaced it
+	// If this card was reissued, this ID refers to the card that replaced it.
 	ReissuedToId *string `json:"reissued_to_id,omitempty"`
+	Shipping *Shipping `json:"shipping,omitempty"`
 	// Indicates the type of card to be issued
 	Type *string `json:"type,omitempty"`
 }
@@ -124,6 +124,38 @@ func (o *BaseCard) HasAccountId() bool {
 // SetAccountId gets a reference to the given string and assigns it to the AccountId field.
 func (o *BaseCard) SetAccountId(v string) {
 	o.AccountId = &v
+}
+
+// GetCardBrand returns the CardBrand field value if set, zero value otherwise.
+func (o *BaseCard) GetCardBrand() CardBrand {
+	if o == nil || o.CardBrand == nil {
+		var ret CardBrand
+		return ret
+	}
+	return *o.CardBrand
+}
+
+// GetCardBrandOk returns a tuple with the CardBrand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCard) GetCardBrandOk() (*CardBrand, bool) {
+	if o == nil || o.CardBrand == nil {
+		return nil, false
+	}
+	return o.CardBrand, true
+}
+
+// HasCardBrand returns a boolean if a field has been set.
+func (o *BaseCard) HasCardBrand() bool {
+	if o != nil && o.CardBrand != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCardBrand gets a reference to the given CardBrand and assigns it to the CardBrand field.
+func (o *BaseCard) SetCardBrand(v CardBrand) {
+	o.CardBrand = &v
 }
 
 // GetCardProductId returns the CardProductId field value if set, zero value otherwise.
@@ -478,38 +510,6 @@ func (o *BaseCard) SetMetadata(v map[string]string) {
 	o.Metadata = &v
 }
 
-// GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *BaseCard) GetNetwork() string {
-	if o == nil || o.Network == nil {
-		var ret string
-		return ret
-	}
-	return *o.Network
-}
-
-// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseCard) GetNetworkOk() (*string, bool) {
-	if o == nil || o.Network == nil {
-		return nil, false
-	}
-	return o.Network, true
-}
-
-// HasNetwork returns a boolean if a field has been set.
-func (o *BaseCard) HasNetwork() bool {
-	if o != nil && o.Network != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNetwork gets a reference to the given string and assigns it to the Network field.
-func (o *BaseCard) SetNetwork(v string) {
-	o.Network = &v
-}
-
 // GetReissueReason returns the ReissueReason field value if set, zero value otherwise.
 func (o *BaseCard) GetReissueReason() string {
 	if o == nil || o.ReissueReason == nil {
@@ -606,6 +606,38 @@ func (o *BaseCard) SetReissuedToId(v string) {
 	o.ReissuedToId = &v
 }
 
+// GetShipping returns the Shipping field value if set, zero value otherwise.
+func (o *BaseCard) GetShipping() Shipping {
+	if o == nil || o.Shipping == nil {
+		var ret Shipping
+		return ret
+	}
+	return *o.Shipping
+}
+
+// GetShippingOk returns a tuple with the Shipping field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCard) GetShippingOk() (*Shipping, bool) {
+	if o == nil || o.Shipping == nil {
+		return nil, false
+	}
+	return o.Shipping, true
+}
+
+// HasShipping returns a boolean if a field has been set.
+func (o *BaseCard) HasShipping() bool {
+	if o != nil && o.Shipping != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetShipping gets a reference to the given Shipping and assigns it to the Shipping field.
+func (o *BaseCard) SetShipping(v Shipping) {
+	o.Shipping = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *BaseCard) GetType() string {
 	if o == nil || o.Type == nil {
@@ -646,6 +678,9 @@ func (o BaseCard) MarshalJSON() ([]byte, error) {
 	if o.AccountId != nil {
 		toSerialize["account_id"] = o.AccountId
 	}
+	if o.CardBrand != nil {
+		toSerialize["card_brand"] = o.CardBrand
+	}
 	if o.CardProductId != nil {
 		toSerialize["card_product_id"] = o.CardProductId
 	}
@@ -679,9 +714,6 @@ func (o BaseCard) MarshalJSON() ([]byte, error) {
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if o.Network != nil {
-		toSerialize["network"] = o.Network
-	}
 	if o.ReissueReason != nil {
 		toSerialize["reissue_reason"] = o.ReissueReason
 	}
@@ -690,6 +722,9 @@ func (o BaseCard) MarshalJSON() ([]byte, error) {
 	}
 	if o.ReissuedToId != nil {
 		toSerialize["reissued_to_id"] = o.ReissuedToId
+	}
+	if o.Shipping != nil {
+		toSerialize["shipping"] = o.Shipping
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type

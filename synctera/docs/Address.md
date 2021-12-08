@@ -8,17 +8,14 @@ Name | Type | Description | Notes
 **AddressLine2** | Pointer to **string** | String address line 2 | [optional] 
 **City** | **string** | City | 
 **CountryCode** | **string** | ISO-3166-1 Alpha-2 country code | 
-**DefaultAddressFlg** | **bool** | Denotes whether this address is the person&#39;s default address | 
-**Id** | Pointer to **string** | Address unique identifier | [optional] 
 **PostalCode** | **string** | Postal code | 
 **State** | **string** | State, region, province, or prefecture | 
-**Type** | Pointer to **string** | type of address | [optional] 
 
 ## Methods
 
 ### NewAddress
 
-`func NewAddress(addressLine1 string, city string, countryCode string, defaultAddressFlg bool, postalCode string, state string, ) *Address`
+`func NewAddress(addressLine1 string, city string, countryCode string, postalCode string, state string, ) *Address`
 
 NewAddress instantiates a new Address object
 This constructor will assign default values to properties that have it defined,
@@ -118,51 +115,6 @@ and a boolean to check if the value has been set.
 SetCountryCode sets CountryCode field to given value.
 
 
-### GetDefaultAddressFlg
-
-`func (o *Address) GetDefaultAddressFlg() bool`
-
-GetDefaultAddressFlg returns the DefaultAddressFlg field if non-nil, zero value otherwise.
-
-### GetDefaultAddressFlgOk
-
-`func (o *Address) GetDefaultAddressFlgOk() (*bool, bool)`
-
-GetDefaultAddressFlgOk returns a tuple with the DefaultAddressFlg field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultAddressFlg
-
-`func (o *Address) SetDefaultAddressFlg(v bool)`
-
-SetDefaultAddressFlg sets DefaultAddressFlg field to given value.
-
-
-### GetId
-
-`func (o *Address) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Address) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Address) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Address) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
 ### GetPostalCode
 
 `func (o *Address) GetPostalCode() string`
@@ -202,31 +154,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-
-### GetType
-
-`func (o *Address) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *Address) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *Address) SetType(v string)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *Address) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

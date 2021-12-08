@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ClientName** | **string** | The name of your application, as it should be displayed in Link. Maximum length of 30 characters. | 
 **CountryCodes** | **[]string** | Country codes in the ISO-3166-1 alpha-2 country code standard. | 
 **Expiration** | Pointer to **time.Time** | The expiration date for the link_token. Expires in 4 hours. | [optional] 
+**ExternalAccountId** | Pointer to **string** | The ID of the linked external account. Optional parameter, only passed when the link token is required to be refreshed. An external account&#39;s access_token does not change when the link token is refreshed, obtaining a new access_token is not required  | [optional] 
 **ExternalAccountUser** | [**ExternalAccountUser**](ExternalAccountUser.md) |  | 
 **Language** | **string** | The language that Link should be displayed in. | 
 **LinkCustomizationName** | Pointer to **string** | The name of the Link customization from the Plaid Dashboard to be applied to Link. If not specified, the default customization will be used. When using a Link customization, the language in the customization must match the language selected via the language parameter, and the countries in the customization should match the country codes selected via country_codes.  | [optional] 
@@ -100,6 +101,31 @@ SetExpiration sets Expiration field to given value.
 `func (o *ExternalAccountLinkToken) HasExpiration() bool`
 
 HasExpiration returns a boolean if a field has been set.
+
+### GetExternalAccountId
+
+`func (o *ExternalAccountLinkToken) GetExternalAccountId() string`
+
+GetExternalAccountId returns the ExternalAccountId field if non-nil, zero value otherwise.
+
+### GetExternalAccountIdOk
+
+`func (o *ExternalAccountLinkToken) GetExternalAccountIdOk() (*string, bool)`
+
+GetExternalAccountIdOk returns a tuple with the ExternalAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalAccountId
+
+`func (o *ExternalAccountLinkToken) SetExternalAccountId(v string)`
+
+SetExternalAccountId sets ExternalAccountId field to given value.
+
+### HasExternalAccountId
+
+`func (o *ExternalAccountLinkToken) HasExternalAccountId() bool`
+
+HasExternalAccountId returns a boolean if a field has been set.
 
 ### GetExternalAccountUser
 

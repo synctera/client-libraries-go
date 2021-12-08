@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **KycStatus** | [**CustomerKycStatus**](CustomerKycStatus.md) |  | 
-**Verifications** | [**[]CustomerVerificationResult**](CustomerVerificationResult.md) | Array of Verification results | 
+**Verifications** | [**[]CustomerVerificationResult**](CustomerVerificationResult.md) | Array of verification results. | 
 
 ## Methods
 

@@ -25,25 +25,25 @@ type Prospect struct {
 	LastName *string `json:"last_name,omitempty"`
 	// Customer's status
 	Status string `json:"status"`
-	// List of accounts that belong to the customer
-	Accounts *[]Account `json:"accounts,omitempty"`
 	CreationTime *time.Time `json:"creation_time,omitempty"`
-	// List of the Customer's associated devices
-	Devices *[]Device `json:"devices,omitempty"`
 	// Customer's email
 	Email *string `json:"email,omitempty"`
 	// Customer unique identifier
 	Id *string `json:"id,omitempty"`
+	// Customer's KYC exemption
+	KycExempt *bool `json:"kyc_exempt,omitempty"`
 	KycStatus *CustomerKycStatus `json:"kyc_status,omitempty"`
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
-	LegalAddress *Address `json:"legal_address,omitempty"`
+	LegalAddress *Address1 `json:"legal_address,omitempty"`
+	// User-supplied metadata. Do not use to store PII.
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// Customer's middle name
 	MiddleName *string `json:"middle_name,omitempty"`
 	// Customer's mobile phone number with country code in E.164 format
 	PhoneNumber *string `json:"phone_number,omitempty"`
 	// Customer's relationships with other accounts eg. guardian
 	RelatedCustomers *[]Relationship1 `json:"related_customers,omitempty"`
-	ShippingAddress *Address `json:"shipping_address,omitempty"`
+	ShippingAddress *Address1 `json:"shipping_address,omitempty"`
 	// Customer's full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Input must match the pattern ^\\d{3}-\\d{2}-\\d{4}$. The response contains the last 4 digits only (e.g. 6789).
 	Ssn *string `json:"ssn,omitempty"`
 }
@@ -186,38 +186,6 @@ func (o *Prospect) SetStatus(v string) {
 	o.Status = v
 }
 
-// GetAccounts returns the Accounts field value if set, zero value otherwise.
-func (o *Prospect) GetAccounts() []Account {
-	if o == nil || o.Accounts == nil {
-		var ret []Account
-		return ret
-	}
-	return *o.Accounts
-}
-
-// GetAccountsOk returns a tuple with the Accounts field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Prospect) GetAccountsOk() (*[]Account, bool) {
-	if o == nil || o.Accounts == nil {
-		return nil, false
-	}
-	return o.Accounts, true
-}
-
-// HasAccounts returns a boolean if a field has been set.
-func (o *Prospect) HasAccounts() bool {
-	if o != nil && o.Accounts != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAccounts gets a reference to the given []Account and assigns it to the Accounts field.
-func (o *Prospect) SetAccounts(v []Account) {
-	o.Accounts = &v
-}
-
 // GetCreationTime returns the CreationTime field value if set, zero value otherwise.
 func (o *Prospect) GetCreationTime() time.Time {
 	if o == nil || o.CreationTime == nil {
@@ -248,38 +216,6 @@ func (o *Prospect) HasCreationTime() bool {
 // SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
 func (o *Prospect) SetCreationTime(v time.Time) {
 	o.CreationTime = &v
-}
-
-// GetDevices returns the Devices field value if set, zero value otherwise.
-func (o *Prospect) GetDevices() []Device {
-	if o == nil || o.Devices == nil {
-		var ret []Device
-		return ret
-	}
-	return *o.Devices
-}
-
-// GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Prospect) GetDevicesOk() (*[]Device, bool) {
-	if o == nil || o.Devices == nil {
-		return nil, false
-	}
-	return o.Devices, true
-}
-
-// HasDevices returns a boolean if a field has been set.
-func (o *Prospect) HasDevices() bool {
-	if o != nil && o.Devices != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDevices gets a reference to the given []Device and assigns it to the Devices field.
-func (o *Prospect) SetDevices(v []Device) {
-	o.Devices = &v
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
@@ -344,6 +280,38 @@ func (o *Prospect) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Prospect) SetId(v string) {
 	o.Id = &v
+}
+
+// GetKycExempt returns the KycExempt field value if set, zero value otherwise.
+func (o *Prospect) GetKycExempt() bool {
+	if o == nil || o.KycExempt == nil {
+		var ret bool
+		return ret
+	}
+	return *o.KycExempt
+}
+
+// GetKycExemptOk returns a tuple with the KycExempt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Prospect) GetKycExemptOk() (*bool, bool) {
+	if o == nil || o.KycExempt == nil {
+		return nil, false
+	}
+	return o.KycExempt, true
+}
+
+// HasKycExempt returns a boolean if a field has been set.
+func (o *Prospect) HasKycExempt() bool {
+	if o != nil && o.KycExempt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKycExempt gets a reference to the given bool and assigns it to the KycExempt field.
+func (o *Prospect) SetKycExempt(v bool) {
+	o.KycExempt = &v
 }
 
 // GetKycStatus returns the KycStatus field value if set, zero value otherwise.
@@ -411,9 +379,9 @@ func (o *Prospect) SetLastUpdatedTime(v time.Time) {
 }
 
 // GetLegalAddress returns the LegalAddress field value if set, zero value otherwise.
-func (o *Prospect) GetLegalAddress() Address {
+func (o *Prospect) GetLegalAddress() Address1 {
 	if o == nil || o.LegalAddress == nil {
-		var ret Address
+		var ret Address1
 		return ret
 	}
 	return *o.LegalAddress
@@ -421,7 +389,7 @@ func (o *Prospect) GetLegalAddress() Address {
 
 // GetLegalAddressOk returns a tuple with the LegalAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Prospect) GetLegalAddressOk() (*Address, bool) {
+func (o *Prospect) GetLegalAddressOk() (*Address1, bool) {
 	if o == nil || o.LegalAddress == nil {
 		return nil, false
 	}
@@ -437,9 +405,41 @@ func (o *Prospect) HasLegalAddress() bool {
 	return false
 }
 
-// SetLegalAddress gets a reference to the given Address and assigns it to the LegalAddress field.
-func (o *Prospect) SetLegalAddress(v Address) {
+// SetLegalAddress gets a reference to the given Address1 and assigns it to the LegalAddress field.
+func (o *Prospect) SetLegalAddress(v Address1) {
 	o.LegalAddress = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *Prospect) GetMetadata() map[string]interface{} {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Prospect) GetMetadataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *Prospect) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *Prospect) SetMetadata(v map[string]interface{}) {
+	o.Metadata = &v
 }
 
 // GetMiddleName returns the MiddleName field value if set, zero value otherwise.
@@ -539,9 +539,9 @@ func (o *Prospect) SetRelatedCustomers(v []Relationship1) {
 }
 
 // GetShippingAddress returns the ShippingAddress field value if set, zero value otherwise.
-func (o *Prospect) GetShippingAddress() Address {
+func (o *Prospect) GetShippingAddress() Address1 {
 	if o == nil || o.ShippingAddress == nil {
-		var ret Address
+		var ret Address1
 		return ret
 	}
 	return *o.ShippingAddress
@@ -549,7 +549,7 @@ func (o *Prospect) GetShippingAddress() Address {
 
 // GetShippingAddressOk returns a tuple with the ShippingAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Prospect) GetShippingAddressOk() (*Address, bool) {
+func (o *Prospect) GetShippingAddressOk() (*Address1, bool) {
 	if o == nil || o.ShippingAddress == nil {
 		return nil, false
 	}
@@ -565,8 +565,8 @@ func (o *Prospect) HasShippingAddress() bool {
 	return false
 }
 
-// SetShippingAddress gets a reference to the given Address and assigns it to the ShippingAddress field.
-func (o *Prospect) SetShippingAddress(v Address) {
+// SetShippingAddress gets a reference to the given Address1 and assigns it to the ShippingAddress field.
+func (o *Prospect) SetShippingAddress(v Address1) {
 	o.ShippingAddress = &v
 }
 
@@ -616,20 +616,17 @@ func (o Prospect) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["status"] = o.Status
 	}
-	if o.Accounts != nil {
-		toSerialize["accounts"] = o.Accounts
-	}
 	if o.CreationTime != nil {
 		toSerialize["creation_time"] = o.CreationTime
-	}
-	if o.Devices != nil {
-		toSerialize["devices"] = o.Devices
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.KycExempt != nil {
+		toSerialize["kyc_exempt"] = o.KycExempt
 	}
 	if o.KycStatus != nil {
 		toSerialize["kyc_status"] = o.KycStatus
@@ -639,6 +636,9 @@ func (o Prospect) MarshalJSON() ([]byte, error) {
 	}
 	if o.LegalAddress != nil {
 		toSerialize["legal_address"] = o.LegalAddress
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if o.MiddleName != nil {
 		toSerialize["middle_name"] = o.MiddleName

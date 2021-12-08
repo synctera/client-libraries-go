@@ -12,14 +12,11 @@ package synctera
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // InlineObject1 struct for InlineObject1
 type InlineObject1 struct {
-	BalanceType *BalanceType `json:"balance_type,omitempty"`
-	// Posting date of the balance. Default is today's date
-	PostingDate *time.Time `json:"posting_date,omitempty"`
+	Event *EventType1 `json:"event,omitempty"`
 }
 
 // NewInlineObject1 instantiates a new InlineObject1 object
@@ -39,77 +36,42 @@ func NewInlineObject1WithDefaults() *InlineObject1 {
 	return &this
 }
 
-// GetBalanceType returns the BalanceType field value if set, zero value otherwise.
-func (o *InlineObject1) GetBalanceType() BalanceType {
-	if o == nil || o.BalanceType == nil {
-		var ret BalanceType
+// GetEvent returns the Event field value if set, zero value otherwise.
+func (o *InlineObject1) GetEvent() EventType1 {
+	if o == nil || o.Event == nil {
+		var ret EventType1
 		return ret
 	}
-	return *o.BalanceType
+	return *o.Event
 }
 
-// GetBalanceTypeOk returns a tuple with the BalanceType field value if set, nil otherwise
+// GetEventOk returns a tuple with the Event field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject1) GetBalanceTypeOk() (*BalanceType, bool) {
-	if o == nil || o.BalanceType == nil {
+func (o *InlineObject1) GetEventOk() (*EventType1, bool) {
+	if o == nil || o.Event == nil {
 		return nil, false
 	}
-	return o.BalanceType, true
+	return o.Event, true
 }
 
-// HasBalanceType returns a boolean if a field has been set.
-func (o *InlineObject1) HasBalanceType() bool {
-	if o != nil && o.BalanceType != nil {
+// HasEvent returns a boolean if a field has been set.
+func (o *InlineObject1) HasEvent() bool {
+	if o != nil && o.Event != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetBalanceType gets a reference to the given BalanceType and assigns it to the BalanceType field.
-func (o *InlineObject1) SetBalanceType(v BalanceType) {
-	o.BalanceType = &v
-}
-
-// GetPostingDate returns the PostingDate field value if set, zero value otherwise.
-func (o *InlineObject1) GetPostingDate() time.Time {
-	if o == nil || o.PostingDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.PostingDate
-}
-
-// GetPostingDateOk returns a tuple with the PostingDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InlineObject1) GetPostingDateOk() (*time.Time, bool) {
-	if o == nil || o.PostingDate == nil {
-		return nil, false
-	}
-	return o.PostingDate, true
-}
-
-// HasPostingDate returns a boolean if a field has been set.
-func (o *InlineObject1) HasPostingDate() bool {
-	if o != nil && o.PostingDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPostingDate gets a reference to the given time.Time and assigns it to the PostingDate field.
-func (o *InlineObject1) SetPostingDate(v time.Time) {
-	o.PostingDate = &v
+// SetEvent gets a reference to the given EventType1 and assigns it to the Event field.
+func (o *InlineObject1) SetEvent(v EventType1) {
+	o.Event = &v
 }
 
 func (o InlineObject1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BalanceType != nil {
-		toSerialize["balance_type"] = o.BalanceType
-	}
-	if o.PostingDate != nil {
-		toSerialize["posting_date"] = o.PostingDate
+	if o.Event != nil {
+		toSerialize["event"] = o.Event
 	}
 	return json.Marshal(toSerialize)
 }

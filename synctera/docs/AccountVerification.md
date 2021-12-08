@@ -8,13 +8,12 @@ Name | Type | Description | Notes
 **LastUpdatedTime** | **time.Time** |  | 
 **Status** | **string** | The status of verification | 
 **Vendor** | **string** | The vendor used for verifying the account | 
-**AccessToken** | **string** | The token provided from Plaid to access the accounts. | 
 
 ## Methods
 
 ### NewAccountVerification
 
-`func NewAccountVerification(creationTime time.Time, lastUpdatedTime time.Time, status string, vendor string, accessToken string, ) *AccountVerification`
+`func NewAccountVerification(creationTime time.Time, lastUpdatedTime time.Time, status string, vendor string, ) *AccountVerification`
 
 NewAccountVerification instantiates a new AccountVerification object
 This constructor will assign default values to properties that have it defined,
@@ -107,26 +106,6 @@ and a boolean to check if the value has been set.
 `func (o *AccountVerification) SetVendor(v string)`
 
 SetVendor sets Vendor field to given value.
-
-
-### GetAccessToken
-
-`func (o *AccountVerification) GetAccessToken() string`
-
-GetAccessToken returns the AccessToken field if non-nil, zero value otherwise.
-
-### GetAccessTokenOk
-
-`func (o *AccountVerification) GetAccessTokenOk() (*string, bool)`
-
-GetAccessTokenOk returns a tuple with the AccessToken field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessToken
-
-`func (o *AccountVerification) SetAccessToken(v string)`
-
-SetAccessToken sets AccessToken field to given value.
 
 
 

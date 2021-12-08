@@ -17,7 +17,7 @@ import (
 // CustomerVerifyResponse struct for CustomerVerifyResponse
 type CustomerVerifyResponse struct {
 	KycStatus CustomerKycStatus `json:"kyc_status"`
-	// Array of Verification results
+	// Array of verification results.
 	Verifications []CustomerVerificationResult `json:"verifications"`
 	// If returned, use the next_page_token to query for the next page of results. Not returned if there are no more rows.
 	NextPageToken *string `json:"next_page_token,omitempty"`

@@ -22,7 +22,6 @@ type CardEditRequest struct {
 	// Additional data to include in the request structured as key-value pairs
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	Reason CardStatusReasonCode `json:"reason"`
-	Shipping *Shipping `json:"shipping,omitempty"`
 }
 
 // NewCardEditRequest instantiates a new CardEditRequest object
@@ -156,38 +155,6 @@ func (o *CardEditRequest) SetReason(v CardStatusReasonCode) {
 	o.Reason = v
 }
 
-// GetShipping returns the Shipping field value if set, zero value otherwise.
-func (o *CardEditRequest) GetShipping() Shipping {
-	if o == nil || o.Shipping == nil {
-		var ret Shipping
-		return ret
-	}
-	return *o.Shipping
-}
-
-// GetShippingOk returns a tuple with the Shipping field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CardEditRequest) GetShippingOk() (*Shipping, bool) {
-	if o == nil || o.Shipping == nil {
-		return nil, false
-	}
-	return o.Shipping, true
-}
-
-// HasShipping returns a boolean if a field has been set.
-func (o *CardEditRequest) HasShipping() bool {
-	if o != nil && o.Shipping != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetShipping gets a reference to the given Shipping and assigns it to the Shipping field.
-func (o *CardEditRequest) SetShipping(v Shipping) {
-	o.Shipping = &v
-}
-
 func (o CardEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -201,9 +168,6 @@ func (o CardEditRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["reason"] = o.Reason
-	}
-	if o.Shipping != nil {
-		toSerialize["shipping"] = o.Shipping
 	}
 	return json.Marshal(toSerialize)
 }

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Unique ID for this verification result | [optional] 
+**Id** | Pointer to **string** | Unique ID for this verification result. | [optional] 
 **Issues** | Pointer to **[]string** | List of potential problems found. These are subject to change.  | [optional] 
 **RawResponse** | Pointer to [**RawResponse**](RawResponse.md) |  | [optional] 
-**Result** | **string** | The determination of this KYC run | 
+**Result** | **string** | The determination of this verification. | 
 **VendorInfo** | Pointer to [**VendorInfo**](VendorInfo.md) |  | [optional] 
-**VerificationTime** | **time.Time** | The date on which the KYC run was completed | 
+**VerificationTime** | **time.Time** | The date and time the verification was completed. | 
 **VerificationType** | [**VerificationType**](VerificationType.md) |  | 
 
 ## Methods

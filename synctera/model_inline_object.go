@@ -16,8 +16,8 @@ import (
 
 // InlineObject struct for InlineObject
 type InlineObject struct {
-	// Include the address information (e.g. street number) if set to True. Address reference only if set to false. Default is false
-	HasDetails *bool `json:"has_details,omitempty"`
+	// Set true to let the current secret expire in the next 24 hours. Set false to let the current secret expire immediately.
+	IsRollingSecret *bool `json:"is_rolling_secret,omitempty"`
 }
 
 // NewInlineObject instantiates a new InlineObject object
@@ -37,42 +37,42 @@ func NewInlineObjectWithDefaults() *InlineObject {
 	return &this
 }
 
-// GetHasDetails returns the HasDetails field value if set, zero value otherwise.
-func (o *InlineObject) GetHasDetails() bool {
-	if o == nil || o.HasDetails == nil {
+// GetIsRollingSecret returns the IsRollingSecret field value if set, zero value otherwise.
+func (o *InlineObject) GetIsRollingSecret() bool {
+	if o == nil || o.IsRollingSecret == nil {
 		var ret bool
 		return ret
 	}
-	return *o.HasDetails
+	return *o.IsRollingSecret
 }
 
-// GetHasDetailsOk returns a tuple with the HasDetails field value if set, nil otherwise
+// GetIsRollingSecretOk returns a tuple with the IsRollingSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject) GetHasDetailsOk() (*bool, bool) {
-	if o == nil || o.HasDetails == nil {
+func (o *InlineObject) GetIsRollingSecretOk() (*bool, bool) {
+	if o == nil || o.IsRollingSecret == nil {
 		return nil, false
 	}
-	return o.HasDetails, true
+	return o.IsRollingSecret, true
 }
 
-// HasHasDetails returns a boolean if a field has been set.
-func (o *InlineObject) HasHasDetails() bool {
-	if o != nil && o.HasDetails != nil {
+// HasIsRollingSecret returns a boolean if a field has been set.
+func (o *InlineObject) HasIsRollingSecret() bool {
+	if o != nil && o.IsRollingSecret != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetHasDetails gets a reference to the given bool and assigns it to the HasDetails field.
-func (o *InlineObject) SetHasDetails(v bool) {
-	o.HasDetails = &v
+// SetIsRollingSecret gets a reference to the given bool and assigns it to the IsRollingSecret field.
+func (o *InlineObject) SetIsRollingSecret(v bool) {
+	o.IsRollingSecret = &v
 }
 
 func (o InlineObject) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.HasDetails != nil {
-		toSerialize["has_details"] = o.HasDetails
+	if o.IsRollingSecret != nil {
+		toSerialize["is_rolling_secret"] = o.IsRollingSecret
 	}
 	return json.Marshal(toSerialize)
 }

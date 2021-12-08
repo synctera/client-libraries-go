@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Form** | **string** | PHYSICAL or VIRTUAL. | 
 **AccountId** | Pointer to **string** | The ID of the account to which the card will be linked | [optional] 
+**CardBrand** | Pointer to [**CardBrand**](CardBrand.md) |  | [optional] 
 **CardProductId** | Pointer to **string** | The card product to which the card is attached | [optional] 
 **CreationTime** | Pointer to **time.Time** | The timestamp representing when the card issuance request was made | [optional] [readonly] 
 **CustomerId** | Pointer to **string** | The ID of the customer to whom the card will be issued | [optional] 
@@ -17,27 +18,23 @@ Name | Type | Description | Notes
 **LastFour** | Pointer to **string** | The last 4 digits of the card PAN | [optional] [readonly] 
 **LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the card was last modified at | [optional] [readonly] 
 **Metadata** | Pointer to **map[string]string** | Additional data to include in the request structured as key-value pairs | [optional] 
-**Network** | Pointer to **string** | The network on which the card transacts | [optional] [readonly] 
 **ReissueReason** | Pointer to **string** | The reason the card needs to be reissued | [optional] 
-**ReissuedFromId** | Pointer to **string** | If this card was issued as a reissuance of another card, this ID refers to the card was replaced | [optional] [readonly] 
-**ReissuedToId** | Pointer to **string** | If this card was reissued, this ID refers to the card that replaced it | [optional] [readonly] 
-**Type** | Pointer to **string** | Indicates the type of card to be issued | [optional] 
-**Barcode** | Pointer to **string** | barcode to scan for card activation | [optional] [readonly] 
-**IsPinSet** | Pointer to **bool** | indicates whether a pin has been set on the card | [optional] [readonly] [default to false]
+**ReissuedFromId** | Pointer to **string** | When reissuing a card, specify the card to be replaced here. When getting a card&#39;s details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced.  | [optional] 
+**ReissuedToId** | Pointer to **string** | If this card was reissued, this ID refers to the card that replaced it. | [optional] [readonly] 
 **Shipping** | Pointer to [**Shipping**](Shipping.md) |  | [optional] 
-**CardFulfillmentStatus** | [**CardFulfillmentStatus**](CardFulfillmentStatus.md) |  | 
+**Type** | Pointer to **string** | Indicates the type of card to be issued | [optional] 
+**IsPinSet** | Pointer to **bool** | indicates whether a pin has been set on the card | [optional] [readonly] [default to false]
 **CardStatus** | [**CardStatus**](CardStatus.md) |  | 
-**Carrier** | Pointer to **string** | The carrier with whom the card is shipped | [optional] [readonly] 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
-**ShippingStatus** | Pointer to **string** | The status of indicating the shipping status of the card | [optional] [readonly] 
 **StatusReason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
+**CardFulfillmentStatus** | [**CardFulfillmentStatus**](CardFulfillmentStatus.md) |  | 
 **TrackingNumber** | Pointer to **string** | The tracking number | [optional] [readonly] 
 
 ## Methods
 
 ### NewPhysicalCardPlusStatus
 
-`func NewPhysicalCardPlusStatus(form string, cardFulfillmentStatus CardFulfillmentStatus, cardStatus CardStatus, statusReason CardStatusReasonCode, ) *PhysicalCardPlusStatus`
+`func NewPhysicalCardPlusStatus(form string, cardStatus CardStatus, statusReason CardStatusReasonCode, cardFulfillmentStatus CardFulfillmentStatus, ) *PhysicalCardPlusStatus`
 
 NewPhysicalCardPlusStatus instantiates a new PhysicalCardPlusStatus object
 This constructor will assign default values to properties that have it defined,
@@ -96,6 +93,31 @@ SetAccountId sets AccountId field to given value.
 `func (o *PhysicalCardPlusStatus) HasAccountId() bool`
 
 HasAccountId returns a boolean if a field has been set.
+
+### GetCardBrand
+
+`func (o *PhysicalCardPlusStatus) GetCardBrand() CardBrand`
+
+GetCardBrand returns the CardBrand field if non-nil, zero value otherwise.
+
+### GetCardBrandOk
+
+`func (o *PhysicalCardPlusStatus) GetCardBrandOk() (*CardBrand, bool)`
+
+GetCardBrandOk returns a tuple with the CardBrand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardBrand
+
+`func (o *PhysicalCardPlusStatus) SetCardBrand(v CardBrand)`
+
+SetCardBrand sets CardBrand field to given value.
+
+### HasCardBrand
+
+`func (o *PhysicalCardPlusStatus) HasCardBrand() bool`
+
+HasCardBrand returns a boolean if a field has been set.
 
 ### GetCardProductId
 
@@ -372,31 +394,6 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-### GetNetwork
-
-`func (o *PhysicalCardPlusStatus) GetNetwork() string`
-
-GetNetwork returns the Network field if non-nil, zero value otherwise.
-
-### GetNetworkOk
-
-`func (o *PhysicalCardPlusStatus) GetNetworkOk() (*string, bool)`
-
-GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNetwork
-
-`func (o *PhysicalCardPlusStatus) SetNetwork(v string)`
-
-SetNetwork sets Network field to given value.
-
-### HasNetwork
-
-`func (o *PhysicalCardPlusStatus) HasNetwork() bool`
-
-HasNetwork returns a boolean if a field has been set.
-
 ### GetReissueReason
 
 `func (o *PhysicalCardPlusStatus) GetReissueReason() string`
@@ -472,6 +469,31 @@ SetReissuedToId sets ReissuedToId field to given value.
 
 HasReissuedToId returns a boolean if a field has been set.
 
+### GetShipping
+
+`func (o *PhysicalCardPlusStatus) GetShipping() Shipping`
+
+GetShipping returns the Shipping field if non-nil, zero value otherwise.
+
+### GetShippingOk
+
+`func (o *PhysicalCardPlusStatus) GetShippingOk() (*Shipping, bool)`
+
+GetShippingOk returns a tuple with the Shipping field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShipping
+
+`func (o *PhysicalCardPlusStatus) SetShipping(v Shipping)`
+
+SetShipping sets Shipping field to given value.
+
+### HasShipping
+
+`func (o *PhysicalCardPlusStatus) HasShipping() bool`
+
+HasShipping returns a boolean if a field has been set.
+
 ### GetType
 
 `func (o *PhysicalCardPlusStatus) GetType() string`
@@ -496,31 +518,6 @@ SetType sets Type field to given value.
 `func (o *PhysicalCardPlusStatus) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
-### GetBarcode
-
-`func (o *PhysicalCardPlusStatus) GetBarcode() string`
-
-GetBarcode returns the Barcode field if non-nil, zero value otherwise.
-
-### GetBarcodeOk
-
-`func (o *PhysicalCardPlusStatus) GetBarcodeOk() (*string, bool)`
-
-GetBarcodeOk returns a tuple with the Barcode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBarcode
-
-`func (o *PhysicalCardPlusStatus) SetBarcode(v string)`
-
-SetBarcode sets Barcode field to given value.
-
-### HasBarcode
-
-`func (o *PhysicalCardPlusStatus) HasBarcode() bool`
-
-HasBarcode returns a boolean if a field has been set.
 
 ### GetIsPinSet
 
@@ -547,51 +544,6 @@ SetIsPinSet sets IsPinSet field to given value.
 
 HasIsPinSet returns a boolean if a field has been set.
 
-### GetShipping
-
-`func (o *PhysicalCardPlusStatus) GetShipping() Shipping`
-
-GetShipping returns the Shipping field if non-nil, zero value otherwise.
-
-### GetShippingOk
-
-`func (o *PhysicalCardPlusStatus) GetShippingOk() (*Shipping, bool)`
-
-GetShippingOk returns a tuple with the Shipping field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShipping
-
-`func (o *PhysicalCardPlusStatus) SetShipping(v Shipping)`
-
-SetShipping sets Shipping field to given value.
-
-### HasShipping
-
-`func (o *PhysicalCardPlusStatus) HasShipping() bool`
-
-HasShipping returns a boolean if a field has been set.
-
-### GetCardFulfillmentStatus
-
-`func (o *PhysicalCardPlusStatus) GetCardFulfillmentStatus() CardFulfillmentStatus`
-
-GetCardFulfillmentStatus returns the CardFulfillmentStatus field if non-nil, zero value otherwise.
-
-### GetCardFulfillmentStatusOk
-
-`func (o *PhysicalCardPlusStatus) GetCardFulfillmentStatusOk() (*CardFulfillmentStatus, bool)`
-
-GetCardFulfillmentStatusOk returns a tuple with the CardFulfillmentStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCardFulfillmentStatus
-
-`func (o *PhysicalCardPlusStatus) SetCardFulfillmentStatus(v CardFulfillmentStatus)`
-
-SetCardFulfillmentStatus sets CardFulfillmentStatus field to given value.
-
-
 ### GetCardStatus
 
 `func (o *PhysicalCardPlusStatus) GetCardStatus() CardStatus`
@@ -611,31 +563,6 @@ and a boolean to check if the value has been set.
 
 SetCardStatus sets CardStatus field to given value.
 
-
-### GetCarrier
-
-`func (o *PhysicalCardPlusStatus) GetCarrier() string`
-
-GetCarrier returns the Carrier field if non-nil, zero value otherwise.
-
-### GetCarrierOk
-
-`func (o *PhysicalCardPlusStatus) GetCarrierOk() (*string, bool)`
-
-GetCarrierOk returns a tuple with the Carrier field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCarrier
-
-`func (o *PhysicalCardPlusStatus) SetCarrier(v string)`
-
-SetCarrier sets Carrier field to given value.
-
-### HasCarrier
-
-`func (o *PhysicalCardPlusStatus) HasCarrier() bool`
-
-HasCarrier returns a boolean if a field has been set.
 
 ### GetMemo
 
@@ -662,31 +589,6 @@ SetMemo sets Memo field to given value.
 
 HasMemo returns a boolean if a field has been set.
 
-### GetShippingStatus
-
-`func (o *PhysicalCardPlusStatus) GetShippingStatus() string`
-
-GetShippingStatus returns the ShippingStatus field if non-nil, zero value otherwise.
-
-### GetShippingStatusOk
-
-`func (o *PhysicalCardPlusStatus) GetShippingStatusOk() (*string, bool)`
-
-GetShippingStatusOk returns a tuple with the ShippingStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShippingStatus
-
-`func (o *PhysicalCardPlusStatus) SetShippingStatus(v string)`
-
-SetShippingStatus sets ShippingStatus field to given value.
-
-### HasShippingStatus
-
-`func (o *PhysicalCardPlusStatus) HasShippingStatus() bool`
-
-HasShippingStatus returns a boolean if a field has been set.
-
 ### GetStatusReason
 
 `func (o *PhysicalCardPlusStatus) GetStatusReason() CardStatusReasonCode`
@@ -705,6 +607,26 @@ and a boolean to check if the value has been set.
 `func (o *PhysicalCardPlusStatus) SetStatusReason(v CardStatusReasonCode)`
 
 SetStatusReason sets StatusReason field to given value.
+
+
+### GetCardFulfillmentStatus
+
+`func (o *PhysicalCardPlusStatus) GetCardFulfillmentStatus() CardFulfillmentStatus`
+
+GetCardFulfillmentStatus returns the CardFulfillmentStatus field if non-nil, zero value otherwise.
+
+### GetCardFulfillmentStatusOk
+
+`func (o *PhysicalCardPlusStatus) GetCardFulfillmentStatusOk() (*CardFulfillmentStatus, bool)`
+
+GetCardFulfillmentStatusOk returns a tuple with the CardFulfillmentStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardFulfillmentStatus
+
+`func (o *PhysicalCardPlusStatus) SetCardFulfillmentStatus(v CardFulfillmentStatus)`
+
+SetCardFulfillmentStatus sets CardFulfillmentStatus field to given value.
 
 
 ### GetTrackingNumber

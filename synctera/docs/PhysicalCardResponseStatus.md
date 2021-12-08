@@ -4,19 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CardFulfillmentStatus** | [**CardFulfillmentStatus**](CardFulfillmentStatus.md) |  | 
 **CardStatus** | [**CardStatus**](CardStatus.md) |  | 
-**Carrier** | Pointer to **string** | The carrier with whom the card is shipped | [optional] [readonly] 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
-**ShippingStatus** | Pointer to **string** | The status of indicating the shipping status of the card | [optional] [readonly] 
 **StatusReason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
+**CardFulfillmentStatus** | [**CardFulfillmentStatus**](CardFulfillmentStatus.md) |  | 
 **TrackingNumber** | Pointer to **string** | The tracking number | [optional] [readonly] 
 
 ## Methods
 
 ### NewPhysicalCardResponseStatus
 
-`func NewPhysicalCardResponseStatus(cardFulfillmentStatus CardFulfillmentStatus, cardStatus CardStatus, statusReason CardStatusReasonCode, ) *PhysicalCardResponseStatus`
+`func NewPhysicalCardResponseStatus(cardStatus CardStatus, statusReason CardStatusReasonCode, cardFulfillmentStatus CardFulfillmentStatus, ) *PhysicalCardResponseStatus`
 
 NewPhysicalCardResponseStatus instantiates a new PhysicalCardResponseStatus object
 This constructor will assign default values to properties that have it defined,
@@ -30,26 +28,6 @@ will change when the set of required properties is changed
 NewPhysicalCardResponseStatusWithDefaults instantiates a new PhysicalCardResponseStatus object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCardFulfillmentStatus
-
-`func (o *PhysicalCardResponseStatus) GetCardFulfillmentStatus() CardFulfillmentStatus`
-
-GetCardFulfillmentStatus returns the CardFulfillmentStatus field if non-nil, zero value otherwise.
-
-### GetCardFulfillmentStatusOk
-
-`func (o *PhysicalCardResponseStatus) GetCardFulfillmentStatusOk() (*CardFulfillmentStatus, bool)`
-
-GetCardFulfillmentStatusOk returns a tuple with the CardFulfillmentStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCardFulfillmentStatus
-
-`func (o *PhysicalCardResponseStatus) SetCardFulfillmentStatus(v CardFulfillmentStatus)`
-
-SetCardFulfillmentStatus sets CardFulfillmentStatus field to given value.
-
 
 ### GetCardStatus
 
@@ -70,31 +48,6 @@ and a boolean to check if the value has been set.
 
 SetCardStatus sets CardStatus field to given value.
 
-
-### GetCarrier
-
-`func (o *PhysicalCardResponseStatus) GetCarrier() string`
-
-GetCarrier returns the Carrier field if non-nil, zero value otherwise.
-
-### GetCarrierOk
-
-`func (o *PhysicalCardResponseStatus) GetCarrierOk() (*string, bool)`
-
-GetCarrierOk returns a tuple with the Carrier field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCarrier
-
-`func (o *PhysicalCardResponseStatus) SetCarrier(v string)`
-
-SetCarrier sets Carrier field to given value.
-
-### HasCarrier
-
-`func (o *PhysicalCardResponseStatus) HasCarrier() bool`
-
-HasCarrier returns a boolean if a field has been set.
 
 ### GetMemo
 
@@ -121,31 +74,6 @@ SetMemo sets Memo field to given value.
 
 HasMemo returns a boolean if a field has been set.
 
-### GetShippingStatus
-
-`func (o *PhysicalCardResponseStatus) GetShippingStatus() string`
-
-GetShippingStatus returns the ShippingStatus field if non-nil, zero value otherwise.
-
-### GetShippingStatusOk
-
-`func (o *PhysicalCardResponseStatus) GetShippingStatusOk() (*string, bool)`
-
-GetShippingStatusOk returns a tuple with the ShippingStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShippingStatus
-
-`func (o *PhysicalCardResponseStatus) SetShippingStatus(v string)`
-
-SetShippingStatus sets ShippingStatus field to given value.
-
-### HasShippingStatus
-
-`func (o *PhysicalCardResponseStatus) HasShippingStatus() bool`
-
-HasShippingStatus returns a boolean if a field has been set.
-
 ### GetStatusReason
 
 `func (o *PhysicalCardResponseStatus) GetStatusReason() CardStatusReasonCode`
@@ -164,6 +92,26 @@ and a boolean to check if the value has been set.
 `func (o *PhysicalCardResponseStatus) SetStatusReason(v CardStatusReasonCode)`
 
 SetStatusReason sets StatusReason field to given value.
+
+
+### GetCardFulfillmentStatus
+
+`func (o *PhysicalCardResponseStatus) GetCardFulfillmentStatus() CardFulfillmentStatus`
+
+GetCardFulfillmentStatus returns the CardFulfillmentStatus field if non-nil, zero value otherwise.
+
+### GetCardFulfillmentStatusOk
+
+`func (o *PhysicalCardResponseStatus) GetCardFulfillmentStatusOk() (*CardFulfillmentStatus, bool)`
+
+GetCardFulfillmentStatusOk returns a tuple with the CardFulfillmentStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardFulfillmentStatus
+
+`func (o *PhysicalCardResponseStatus) SetCardFulfillmentStatus(v CardFulfillmentStatus)`
+
+SetCardFulfillmentStatus sets CardFulfillmentStatus field to given value.
 
 
 ### GetTrackingNumber

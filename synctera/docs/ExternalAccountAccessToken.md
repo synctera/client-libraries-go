@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **RequestId** | Pointer to **string** | A unique identifier for the request, which can be used for troubleshooting | [optional] [readonly] 
 **VendorAccessToken** | Pointer to **string** | The access token associated with the Item data is being requested for. | [optional] [readonly] 
 **VendorCustomerId** | **string** | The account_id value of the account associated with the returned vendor_access_token | [readonly] 
+**VendorInstitutionId** | Pointer to **string** | The ID of the institution the access token is requested for  | [optional] 
 **VendorPublicToken** | **string** | The user&#39;s public token obtained from successful link login.  | 
 
 ## Methods
@@ -97,6 +98,31 @@ and a boolean to check if the value has been set.
 
 SetVendorCustomerId sets VendorCustomerId field to given value.
 
+
+### GetVendorInstitutionId
+
+`func (o *ExternalAccountAccessToken) GetVendorInstitutionId() string`
+
+GetVendorInstitutionId returns the VendorInstitutionId field if non-nil, zero value otherwise.
+
+### GetVendorInstitutionIdOk
+
+`func (o *ExternalAccountAccessToken) GetVendorInstitutionIdOk() (*string, bool)`
+
+GetVendorInstitutionIdOk returns a tuple with the VendorInstitutionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendorInstitutionId
+
+`func (o *ExternalAccountAccessToken) SetVendorInstitutionId(v string)`
+
+SetVendorInstitutionId sets VendorInstitutionId field to given value.
+
+### HasVendorInstitutionId
+
+`func (o *ExternalAccountAccessToken) HasVendorInstitutionId() bool`
+
+HasVendorInstitutionId returns a boolean if a field has been set.
 
 ### GetVendorPublicToken
 

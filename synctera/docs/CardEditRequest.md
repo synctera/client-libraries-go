@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
 **Metadata** | Pointer to **map[string]string** | Additional data to include in the request structured as key-value pairs | [optional] 
 **Reason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
-**Shipping** | Pointer to [**Shipping**](Shipping.md) |  | [optional] 
 
 ## Methods
 
@@ -118,31 +117,6 @@ and a boolean to check if the value has been set.
 
 SetReason sets Reason field to given value.
 
-
-### GetShipping
-
-`func (o *CardEditRequest) GetShipping() Shipping`
-
-GetShipping returns the Shipping field if non-nil, zero value otherwise.
-
-### GetShippingOk
-
-`func (o *CardEditRequest) GetShippingOk() (*Shipping, bool)`
-
-GetShippingOk returns a tuple with the Shipping field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShipping
-
-`func (o *CardEditRequest) SetShipping(v Shipping)`
-
-SetShipping sets Shipping field to given value.
-
-### HasShipping
-
-`func (o *CardEditRequest) HasShipping() bool`
-
-HasShipping returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

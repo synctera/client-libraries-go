@@ -16,9 +16,9 @@ import (
 
 // AccountIdentifiers struct for AccountIdentifiers
 type AccountIdentifiers struct {
-	// The IBAN of the account
-	Iban string `json:"iban"`
-	// The account number
+	// The IBAN of the account. Value may be masked, in which case only the last four digits are returned. 
+	Iban *string `json:"iban,omitempty"`
+	// The account number. Value may be masked, in which case only the last four digits are returned. 
 	Number string `json:"number"`
 }
 
@@ -26,9 +26,8 @@ type AccountIdentifiers struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountIdentifiers(iban string, number string) *AccountIdentifiers {
+func NewAccountIdentifiers(number string) *AccountIdentifiers {
 	this := AccountIdentifiers{}
-	this.Iban = iban
 	this.Number = number
 	return &this
 }
@@ -41,28 +40,36 @@ func NewAccountIdentifiersWithDefaults() *AccountIdentifiers {
 	return &this
 }
 
-// GetIban returns the Iban field value
+// GetIban returns the Iban field value if set, zero value otherwise.
 func (o *AccountIdentifiers) GetIban() string {
-	if o == nil {
+	if o == nil || o.Iban == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Iban
+	return *o.Iban
 }
 
-// GetIbanOk returns a tuple with the Iban field value
+// GetIbanOk returns a tuple with the Iban field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountIdentifiers) GetIbanOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.Iban == nil {
 		return nil, false
 	}
-	return &o.Iban, true
+	return o.Iban, true
 }
 
-// SetIban sets field value
+// HasIban returns a boolean if a field has been set.
+func (o *AccountIdentifiers) HasIban() bool {
+	if o != nil && o.Iban != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIban gets a reference to the given string and assigns it to the Iban field.
 func (o *AccountIdentifiers) SetIban(v string) {
-	o.Iban = v
+	o.Iban = &v
 }
 
 // GetNumber returns the Number field value
@@ -91,7 +98,7 @@ func (o *AccountIdentifiers) SetNumber(v string) {
 
 func (o AccountIdentifiers) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.Iban != nil {
 		toSerialize["iban"] = o.Iban
 	}
 	if true {

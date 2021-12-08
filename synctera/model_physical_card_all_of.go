@@ -16,11 +16,8 @@ import (
 
 // PhysicalCardAllOf struct for PhysicalCardAllOf
 type PhysicalCardAllOf struct {
-	// barcode to scan for card activation
-	Barcode *string `json:"barcode,omitempty"`
 	// indicates whether a pin has been set on the card
 	IsPinSet *bool `json:"is_pin_set,omitempty"`
-	Shipping *Shipping `json:"shipping,omitempty"`
 }
 
 // NewPhysicalCardAllOf instantiates a new PhysicalCardAllOf object
@@ -42,38 +39,6 @@ func NewPhysicalCardAllOfWithDefaults() *PhysicalCardAllOf {
 	var isPinSet bool = false
 	this.IsPinSet = &isPinSet
 	return &this
-}
-
-// GetBarcode returns the Barcode field value if set, zero value otherwise.
-func (o *PhysicalCardAllOf) GetBarcode() string {
-	if o == nil || o.Barcode == nil {
-		var ret string
-		return ret
-	}
-	return *o.Barcode
-}
-
-// GetBarcodeOk returns a tuple with the Barcode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardAllOf) GetBarcodeOk() (*string, bool) {
-	if o == nil || o.Barcode == nil {
-		return nil, false
-	}
-	return o.Barcode, true
-}
-
-// HasBarcode returns a boolean if a field has been set.
-func (o *PhysicalCardAllOf) HasBarcode() bool {
-	if o != nil && o.Barcode != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBarcode gets a reference to the given string and assigns it to the Barcode field.
-func (o *PhysicalCardAllOf) SetBarcode(v string) {
-	o.Barcode = &v
 }
 
 // GetIsPinSet returns the IsPinSet field value if set, zero value otherwise.
@@ -108,48 +73,10 @@ func (o *PhysicalCardAllOf) SetIsPinSet(v bool) {
 	o.IsPinSet = &v
 }
 
-// GetShipping returns the Shipping field value if set, zero value otherwise.
-func (o *PhysicalCardAllOf) GetShipping() Shipping {
-	if o == nil || o.Shipping == nil {
-		var ret Shipping
-		return ret
-	}
-	return *o.Shipping
-}
-
-// GetShippingOk returns a tuple with the Shipping field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardAllOf) GetShippingOk() (*Shipping, bool) {
-	if o == nil || o.Shipping == nil {
-		return nil, false
-	}
-	return o.Shipping, true
-}
-
-// HasShipping returns a boolean if a field has been set.
-func (o *PhysicalCardAllOf) HasShipping() bool {
-	if o != nil && o.Shipping != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetShipping gets a reference to the given Shipping and assigns it to the Shipping field.
-func (o *PhysicalCardAllOf) SetShipping(v Shipping) {
-	o.Shipping = &v
-}
-
 func (o PhysicalCardAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Barcode != nil {
-		toSerialize["barcode"] = o.Barcode
-	}
 	if o.IsPinSet != nil {
 		toSerialize["is_pin_set"] = o.IsPinSet
-	}
-	if o.Shipping != nil {
-		toSerialize["shipping"] = o.Shipping
 	}
 	return json.Marshal(toSerialize)
 }

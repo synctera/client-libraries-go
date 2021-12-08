@@ -17,7 +17,7 @@ import (
 // CustomerVerifyResponseAllOf struct for CustomerVerifyResponseAllOf
 type CustomerVerifyResponseAllOf struct {
 	KycStatus CustomerKycStatus `json:"kyc_status"`
-	// Array of Verification results
+	// Array of verification results.
 	Verifications []CustomerVerificationResult `json:"verifications"`
 }
 

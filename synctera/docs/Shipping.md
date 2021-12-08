@@ -4,17 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to [**Address1**](Address1.md) |  | [optional] 
+**Address** | Pointer to [**Address**](Address.md) |  | [optional] 
 **CareOfLine** | Pointer to **string** | The name of the person to send in care of | [optional] 
 **IsExpeditedFulfillment** | Pointer to **bool** | Is the shipment expedited | [optional] [default to false]
 **Method** | Pointer to **string** | The shipping method | [optional] [default to "LOCAL_MAIL"]
-**RecipientName** | [**RecipientName**](RecipientName.md) |  | 
+**PhoneNumber** | Pointer to **string** | The phone number of the recipient | [optional] 
+**RecipientName** | Pointer to [**RecipientName**](RecipientName.md) |  | [optional] 
 
 ## Methods
 
 ### NewShipping
 
-`func NewShipping(recipientName RecipientName, ) *Shipping`
+`func NewShipping() *Shipping`
 
 NewShipping instantiates a new Shipping object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAddress
 
-`func (o *Shipping) GetAddress() Address1`
+`func (o *Shipping) GetAddress() Address`
 
 GetAddress returns the Address field if non-nil, zero value otherwise.
 
 ### GetAddressOk
 
-`func (o *Shipping) GetAddressOk() (*Address1, bool)`
+`func (o *Shipping) GetAddressOk() (*Address, bool)`
 
 GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAddress
 
-`func (o *Shipping) SetAddress(v Address1)`
+`func (o *Shipping) SetAddress(v Address)`
 
 SetAddress sets Address field to given value.
 
@@ -129,6 +130,31 @@ SetMethod sets Method field to given value.
 
 HasMethod returns a boolean if a field has been set.
 
+### GetPhoneNumber
+
+`func (o *Shipping) GetPhoneNumber() string`
+
+GetPhoneNumber returns the PhoneNumber field if non-nil, zero value otherwise.
+
+### GetPhoneNumberOk
+
+`func (o *Shipping) GetPhoneNumberOk() (*string, bool)`
+
+GetPhoneNumberOk returns a tuple with the PhoneNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhoneNumber
+
+`func (o *Shipping) SetPhoneNumber(v string)`
+
+SetPhoneNumber sets PhoneNumber field to given value.
+
+### HasPhoneNumber
+
+`func (o *Shipping) HasPhoneNumber() bool`
+
+HasPhoneNumber returns a boolean if a field has been set.
+
 ### GetRecipientName
 
 `func (o *Shipping) GetRecipientName() RecipientName`
@@ -148,6 +174,11 @@ and a boolean to check if the value has been set.
 
 SetRecipientName sets RecipientName field to given value.
 
+### HasRecipientName
+
+`func (o *Shipping) HasRecipientName() bool`
+
+HasRecipientName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

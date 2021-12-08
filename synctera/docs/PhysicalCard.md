@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Form** | **string** | PHYSICAL or VIRTUAL. | 
 **AccountId** | Pointer to **string** | The ID of the account to which the card will be linked | [optional] 
+**CardBrand** | Pointer to [**CardBrand**](CardBrand.md) |  | [optional] 
 **CardProductId** | Pointer to **string** | The card product to which the card is attached | [optional] 
 **CreationTime** | Pointer to **time.Time** | The timestamp representing when the card issuance request was made | [optional] [readonly] 
 **CustomerId** | Pointer to **string** | The ID of the customer to whom the card will be issued | [optional] 
@@ -17,14 +18,12 @@ Name | Type | Description | Notes
 **LastFour** | Pointer to **string** | The last 4 digits of the card PAN | [optional] [readonly] 
 **LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the card was last modified at | [optional] [readonly] 
 **Metadata** | Pointer to **map[string]string** | Additional data to include in the request structured as key-value pairs | [optional] 
-**Network** | Pointer to **string** | The network on which the card transacts | [optional] [readonly] 
 **ReissueReason** | Pointer to **string** | The reason the card needs to be reissued | [optional] 
-**ReissuedFromId** | Pointer to **string** | If this card was issued as a reissuance of another card, this ID refers to the card was replaced | [optional] [readonly] 
-**ReissuedToId** | Pointer to **string** | If this card was reissued, this ID refers to the card that replaced it | [optional] [readonly] 
-**Type** | Pointer to **string** | Indicates the type of card to be issued | [optional] 
-**Barcode** | Pointer to **string** | barcode to scan for card activation | [optional] [readonly] 
-**IsPinSet** | Pointer to **bool** | indicates whether a pin has been set on the card | [optional] [readonly] [default to false]
+**ReissuedFromId** | Pointer to **string** | When reissuing a card, specify the card to be replaced here. When getting a card&#39;s details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced.  | [optional] 
+**ReissuedToId** | Pointer to **string** | If this card was reissued, this ID refers to the card that replaced it. | [optional] [readonly] 
 **Shipping** | Pointer to [**Shipping**](Shipping.md) |  | [optional] 
+**Type** | Pointer to **string** | Indicates the type of card to be issued | [optional] 
+**IsPinSet** | Pointer to **bool** | indicates whether a pin has been set on the card | [optional] [readonly] [default to false]
 
 ## Methods
 
@@ -89,6 +88,31 @@ SetAccountId sets AccountId field to given value.
 `func (o *PhysicalCard) HasAccountId() bool`
 
 HasAccountId returns a boolean if a field has been set.
+
+### GetCardBrand
+
+`func (o *PhysicalCard) GetCardBrand() CardBrand`
+
+GetCardBrand returns the CardBrand field if non-nil, zero value otherwise.
+
+### GetCardBrandOk
+
+`func (o *PhysicalCard) GetCardBrandOk() (*CardBrand, bool)`
+
+GetCardBrandOk returns a tuple with the CardBrand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardBrand
+
+`func (o *PhysicalCard) SetCardBrand(v CardBrand)`
+
+SetCardBrand sets CardBrand field to given value.
+
+### HasCardBrand
+
+`func (o *PhysicalCard) HasCardBrand() bool`
+
+HasCardBrand returns a boolean if a field has been set.
 
 ### GetCardProductId
 
@@ -365,31 +389,6 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-### GetNetwork
-
-`func (o *PhysicalCard) GetNetwork() string`
-
-GetNetwork returns the Network field if non-nil, zero value otherwise.
-
-### GetNetworkOk
-
-`func (o *PhysicalCard) GetNetworkOk() (*string, bool)`
-
-GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNetwork
-
-`func (o *PhysicalCard) SetNetwork(v string)`
-
-SetNetwork sets Network field to given value.
-
-### HasNetwork
-
-`func (o *PhysicalCard) HasNetwork() bool`
-
-HasNetwork returns a boolean if a field has been set.
-
 ### GetReissueReason
 
 `func (o *PhysicalCard) GetReissueReason() string`
@@ -465,6 +464,31 @@ SetReissuedToId sets ReissuedToId field to given value.
 
 HasReissuedToId returns a boolean if a field has been set.
 
+### GetShipping
+
+`func (o *PhysicalCard) GetShipping() Shipping`
+
+GetShipping returns the Shipping field if non-nil, zero value otherwise.
+
+### GetShippingOk
+
+`func (o *PhysicalCard) GetShippingOk() (*Shipping, bool)`
+
+GetShippingOk returns a tuple with the Shipping field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShipping
+
+`func (o *PhysicalCard) SetShipping(v Shipping)`
+
+SetShipping sets Shipping field to given value.
+
+### HasShipping
+
+`func (o *PhysicalCard) HasShipping() bool`
+
+HasShipping returns a boolean if a field has been set.
+
 ### GetType
 
 `func (o *PhysicalCard) GetType() string`
@@ -490,31 +514,6 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
-### GetBarcode
-
-`func (o *PhysicalCard) GetBarcode() string`
-
-GetBarcode returns the Barcode field if non-nil, zero value otherwise.
-
-### GetBarcodeOk
-
-`func (o *PhysicalCard) GetBarcodeOk() (*string, bool)`
-
-GetBarcodeOk returns a tuple with the Barcode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBarcode
-
-`func (o *PhysicalCard) SetBarcode(v string)`
-
-SetBarcode sets Barcode field to given value.
-
-### HasBarcode
-
-`func (o *PhysicalCard) HasBarcode() bool`
-
-HasBarcode returns a boolean if a field has been set.
-
 ### GetIsPinSet
 
 `func (o *PhysicalCard) GetIsPinSet() bool`
@@ -539,31 +538,6 @@ SetIsPinSet sets IsPinSet field to given value.
 `func (o *PhysicalCard) HasIsPinSet() bool`
 
 HasIsPinSet returns a boolean if a field has been set.
-
-### GetShipping
-
-`func (o *PhysicalCard) GetShipping() Shipping`
-
-GetShipping returns the Shipping field if non-nil, zero value otherwise.
-
-### GetShippingOk
-
-`func (o *PhysicalCard) GetShippingOk() (*Shipping, bool)`
-
-GetShippingOk returns a tuple with the Shipping field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShipping
-
-`func (o *PhysicalCard) SetShipping(v Shipping)`
-
-SetShipping sets Shipping field to given value.
-
-### HasShipping
-
-`func (o *PhysicalCard) HasShipping() bool`
-
-HasShipping returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

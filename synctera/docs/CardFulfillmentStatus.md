@@ -5,6 +5,8 @@
 
 * `ISSUED` (value: `"ISSUED"`)
 
+* `REISSUED` (value: `"REISSUED"`)
+
 * `ORDERED` (value: `"ORDERED"`)
 
 * `REJECTED` (value: `"REJECTED"`)

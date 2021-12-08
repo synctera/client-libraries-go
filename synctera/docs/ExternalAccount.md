@@ -5,22 +5,23 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountIdentifiers** | [**AccountIdentifiers**](AccountIdentifiers.md) |  | 
+**AccountOwnerNames** | **[]string** | The names of the account owners. Values may be masked, in which case the array will be empty.  | 
 **CreationTime** | **time.Time** |  | 
 **CustomerId** | **string** | The identifier for the customer associated with this account | 
 **Id** | **string** | External account unique identifier | [readonly] 
 **LastUpdatedTime** | **time.Time** |  | 
-**Metadata** | **map[string]interface{}** | User-supplied metadata | 
+**Metadata** | Pointer to **map[string]interface{}** | User-supplied JSON format metadata. | [optional] 
 **Nickname** | Pointer to **string** | A user-meaningful name for the account | [optional] 
 **RoutingIdentifiers** | [**AccountRouting**](AccountRouting.md) |  | 
 **Status** | **string** | The current state of the account | 
 **Type** | **string** | The type of the account | 
-**Verification** | [**AccountVerification**](AccountVerification.md) |  | 
+**Verification** | [**NullableAccountVerification**](AccountVerification.md) |  | 
 
 ## Methods
 
 ### NewExternalAccount
 
-`func NewExternalAccount(accountIdentifiers AccountIdentifiers, creationTime time.Time, customerId string, id string, lastUpdatedTime time.Time, metadata map[string]interface{}, routingIdentifiers AccountRouting, status string, type_ string, verification AccountVerification, ) *ExternalAccount`
+`func NewExternalAccount(accountIdentifiers AccountIdentifiers, accountOwnerNames []string, creationTime time.Time, customerId string, id string, lastUpdatedTime time.Time, routingIdentifiers AccountRouting, status string, type_ string, verification NullableAccountVerification, ) *ExternalAccount`
 
 NewExternalAccount instantiates a new ExternalAccount object
 This constructor will assign default values to properties that have it defined,
@@ -53,6 +54,26 @@ and a boolean to check if the value has been set.
 `func (o *ExternalAccount) SetAccountIdentifiers(v AccountIdentifiers)`
 
 SetAccountIdentifiers sets AccountIdentifiers field to given value.
+
+
+### GetAccountOwnerNames
+
+`func (o *ExternalAccount) GetAccountOwnerNames() []string`
+
+GetAccountOwnerNames returns the AccountOwnerNames field if non-nil, zero value otherwise.
+
+### GetAccountOwnerNamesOk
+
+`func (o *ExternalAccount) GetAccountOwnerNamesOk() (*[]string, bool)`
+
+GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountOwnerNames
+
+`func (o *ExternalAccount) SetAccountOwnerNames(v []string)`
+
+SetAccountOwnerNames sets AccountOwnerNames field to given value.
 
 
 ### GetCreationTime
@@ -154,6 +175,11 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
+### HasMetadata
+
+`func (o *ExternalAccount) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 ### GetNickname
 
@@ -260,6 +286,16 @@ and a boolean to check if the value has been set.
 SetVerification sets Verification field to given value.
 
 
+### SetVerificationNil
+
+`func (o *ExternalAccount) SetVerificationNil(b bool)`
+
+ SetVerificationNil sets the value for Verification to be an explicit nil
+
+### UnsetVerification
+`func (o *ExternalAccount) UnsetVerification()`
+
+UnsetVerification ensures that no value is present for Verification, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -16,10 +16,13 @@ import (
 
 // VendorJson struct for VendorJson
 type VendorJson struct {
-	// Describes the content-type encoding received from the vendor
+	// Describes the content-type encoding received from the vendor.
 	ContentType string `json:"content_type"`
-	// Data representation in JSON
+	// Array of vendor specific information.
+	Details []Detail `json:"details"`
+	// Data representation in JSON.
 	Json map[string]interface{} `json:"json"`
+	// Name of the vendor used.
 	Vendor string `json:"vendor"`
 }
 
@@ -27,9 +30,10 @@ type VendorJson struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVendorJson(contentType string, json map[string]interface{}, vendor string) *VendorJson {
+func NewVendorJson(contentType string, details []Detail, json map[string]interface{}, vendor string) *VendorJson {
 	this := VendorJson{}
 	this.ContentType = contentType
+	this.Details = details
 	this.Json = json
 	this.Vendor = vendor
 	return &this
@@ -65,6 +69,30 @@ func (o *VendorJson) GetContentTypeOk() (*string, bool) {
 // SetContentType sets field value
 func (o *VendorJson) SetContentType(v string) {
 	o.ContentType = v
+}
+
+// GetDetails returns the Details field value
+func (o *VendorJson) GetDetails() []Detail {
+	if o == nil {
+		var ret []Detail
+		return ret
+	}
+
+	return o.Details
+}
+
+// GetDetailsOk returns a tuple with the Details field value
+// and a boolean to check if the value has been set.
+func (o *VendorJson) GetDetailsOk() (*[]Detail, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Details, true
+}
+
+// SetDetails sets field value
+func (o *VendorJson) SetDetails(v []Detail) {
+	o.Details = v
 }
 
 // GetJson returns the Json field value
@@ -119,6 +147,9 @@ func (o VendorJson) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["content_type"] = o.ContentType
+	}
+	if true {
+		toSerialize["details"] = o.Details
 	}
 	if true {
 		toSerialize["json"] = o.Json

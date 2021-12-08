@@ -17,15 +17,17 @@ import (
 
 // CustomerVerificationResult Verification result
 type CustomerVerificationResult struct {
-	// Unique ID for this verification result
+	// Unique ID for this verification result.
 	Id *string `json:"id,omitempty"`
 	// List of potential problems found. These are subject to change. 
+	// Deprecated
 	Issues *[]string `json:"issues,omitempty"`
+	// Deprecated
 	RawResponse *RawResponse `json:"raw_response,omitempty"`
-	// The determination of this KYC run
+	// The determination of this verification.
 	Result string `json:"result"`
 	VendorInfo *VendorInfo `json:"vendor_info,omitempty"`
-	// The date on which the KYC run was completed
+	// The date and time the verification was completed.
 	VerificationTime time.Time `json:"verification_time"`
 	VerificationType VerificationType `json:"verification_type"`
 }
@@ -83,6 +85,7 @@ func (o *CustomerVerificationResult) SetId(v string) {
 }
 
 // GetIssues returns the Issues field value if set, zero value otherwise.
+// Deprecated
 func (o *CustomerVerificationResult) GetIssues() []string {
 	if o == nil || o.Issues == nil {
 		var ret []string
@@ -93,6 +96,7 @@ func (o *CustomerVerificationResult) GetIssues() []string {
 
 // GetIssuesOk returns a tuple with the Issues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *CustomerVerificationResult) GetIssuesOk() (*[]string, bool) {
 	if o == nil || o.Issues == nil {
 		return nil, false
@@ -110,11 +114,13 @@ func (o *CustomerVerificationResult) HasIssues() bool {
 }
 
 // SetIssues gets a reference to the given []string and assigns it to the Issues field.
+// Deprecated
 func (o *CustomerVerificationResult) SetIssues(v []string) {
 	o.Issues = &v
 }
 
 // GetRawResponse returns the RawResponse field value if set, zero value otherwise.
+// Deprecated
 func (o *CustomerVerificationResult) GetRawResponse() RawResponse {
 	if o == nil || o.RawResponse == nil {
 		var ret RawResponse
@@ -125,6 +131,7 @@ func (o *CustomerVerificationResult) GetRawResponse() RawResponse {
 
 // GetRawResponseOk returns a tuple with the RawResponse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *CustomerVerificationResult) GetRawResponseOk() (*RawResponse, bool) {
 	if o == nil || o.RawResponse == nil {
 		return nil, false
@@ -142,6 +149,7 @@ func (o *CustomerVerificationResult) HasRawResponse() bool {
 }
 
 // SetRawResponse gets a reference to the given RawResponse and assigns it to the RawResponse field.
+// Deprecated
 func (o *CustomerVerificationResult) SetRawResponse(v RawResponse) {
 	o.RawResponse = &v
 }

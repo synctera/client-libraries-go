@@ -21,6 +21,7 @@ type PhysicalCardIssuanceRequest struct {
 	Form string `json:"form"`
 	// The ID of the account to which the card will be linked
 	AccountId string `json:"account_id"`
+	CardBrand *CardBrand `json:"card_brand,omitempty"`
 	// The card product to which the card is attached
 	CardProductId string `json:"card_product_id"`
 	// The timestamp representing when the card issuance request was made
@@ -40,21 +41,17 @@ type PhysicalCardIssuanceRequest struct {
 	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
 	// Additional data to include in the request structured as key-value pairs
 	Metadata *map[string]string `json:"metadata,omitempty"`
-	// The network on which the card transacts
-	Network *string `json:"network,omitempty"`
 	// The reason the card needs to be reissued
 	ReissueReason *string `json:"reissue_reason,omitempty"`
-	// If this card was issued as a reissuance of another card, this ID refers to the card was replaced
+	// When reissuing a card, specify the card to be replaced here. When getting a card's details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced. 
 	ReissuedFromId *string `json:"reissued_from_id,omitempty"`
-	// If this card was reissued, this ID refers to the card that replaced it
+	// If this card was reissued, this ID refers to the card that replaced it.
 	ReissuedToId *string `json:"reissued_to_id,omitempty"`
+	Shipping *Shipping `json:"shipping,omitempty"`
 	// Indicates the type of card to be issued
 	Type string `json:"type"`
-	// barcode to scan for card activation
-	Barcode *string `json:"barcode,omitempty"`
 	// indicates whether a pin has been set on the card
 	IsPinSet *bool `json:"is_pin_set,omitempty"`
-	Shipping *Shipping `json:"shipping,omitempty"`
 }
 
 // NewPhysicalCardIssuanceRequest instantiates a new PhysicalCardIssuanceRequest object
@@ -129,6 +126,38 @@ func (o *PhysicalCardIssuanceRequest) GetAccountIdOk() (*string, bool) {
 // SetAccountId sets field value
 func (o *PhysicalCardIssuanceRequest) SetAccountId(v string) {
 	o.AccountId = v
+}
+
+// GetCardBrand returns the CardBrand field value if set, zero value otherwise.
+func (o *PhysicalCardIssuanceRequest) GetCardBrand() CardBrand {
+	if o == nil || o.CardBrand == nil {
+		var ret CardBrand
+		return ret
+	}
+	return *o.CardBrand
+}
+
+// GetCardBrandOk returns a tuple with the CardBrand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PhysicalCardIssuanceRequest) GetCardBrandOk() (*CardBrand, bool) {
+	if o == nil || o.CardBrand == nil {
+		return nil, false
+	}
+	return o.CardBrand, true
+}
+
+// HasCardBrand returns a boolean if a field has been set.
+func (o *PhysicalCardIssuanceRequest) HasCardBrand() bool {
+	if o != nil && o.CardBrand != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCardBrand gets a reference to the given CardBrand and assigns it to the CardBrand field.
+func (o *PhysicalCardIssuanceRequest) SetCardBrand(v CardBrand) {
+	o.CardBrand = &v
 }
 
 // GetCardProductId returns the CardProductId field value
@@ -467,38 +496,6 @@ func (o *PhysicalCardIssuanceRequest) SetMetadata(v map[string]string) {
 	o.Metadata = &v
 }
 
-// GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *PhysicalCardIssuanceRequest) GetNetwork() string {
-	if o == nil || o.Network == nil {
-		var ret string
-		return ret
-	}
-	return *o.Network
-}
-
-// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardIssuanceRequest) GetNetworkOk() (*string, bool) {
-	if o == nil || o.Network == nil {
-		return nil, false
-	}
-	return o.Network, true
-}
-
-// HasNetwork returns a boolean if a field has been set.
-func (o *PhysicalCardIssuanceRequest) HasNetwork() bool {
-	if o != nil && o.Network != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNetwork gets a reference to the given string and assigns it to the Network field.
-func (o *PhysicalCardIssuanceRequest) SetNetwork(v string) {
-	o.Network = &v
-}
-
 // GetReissueReason returns the ReissueReason field value if set, zero value otherwise.
 func (o *PhysicalCardIssuanceRequest) GetReissueReason() string {
 	if o == nil || o.ReissueReason == nil {
@@ -595,6 +592,38 @@ func (o *PhysicalCardIssuanceRequest) SetReissuedToId(v string) {
 	o.ReissuedToId = &v
 }
 
+// GetShipping returns the Shipping field value if set, zero value otherwise.
+func (o *PhysicalCardIssuanceRequest) GetShipping() Shipping {
+	if o == nil || o.Shipping == nil {
+		var ret Shipping
+		return ret
+	}
+	return *o.Shipping
+}
+
+// GetShippingOk returns a tuple with the Shipping field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PhysicalCardIssuanceRequest) GetShippingOk() (*Shipping, bool) {
+	if o == nil || o.Shipping == nil {
+		return nil, false
+	}
+	return o.Shipping, true
+}
+
+// HasShipping returns a boolean if a field has been set.
+func (o *PhysicalCardIssuanceRequest) HasShipping() bool {
+	if o != nil && o.Shipping != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetShipping gets a reference to the given Shipping and assigns it to the Shipping field.
+func (o *PhysicalCardIssuanceRequest) SetShipping(v Shipping) {
+	o.Shipping = &v
+}
+
 // GetType returns the Type field value
 func (o *PhysicalCardIssuanceRequest) GetType() string {
 	if o == nil {
@@ -617,38 +646,6 @@ func (o *PhysicalCardIssuanceRequest) GetTypeOk() (*string, bool) {
 // SetType sets field value
 func (o *PhysicalCardIssuanceRequest) SetType(v string) {
 	o.Type = v
-}
-
-// GetBarcode returns the Barcode field value if set, zero value otherwise.
-func (o *PhysicalCardIssuanceRequest) GetBarcode() string {
-	if o == nil || o.Barcode == nil {
-		var ret string
-		return ret
-	}
-	return *o.Barcode
-}
-
-// GetBarcodeOk returns a tuple with the Barcode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardIssuanceRequest) GetBarcodeOk() (*string, bool) {
-	if o == nil || o.Barcode == nil {
-		return nil, false
-	}
-	return o.Barcode, true
-}
-
-// HasBarcode returns a boolean if a field has been set.
-func (o *PhysicalCardIssuanceRequest) HasBarcode() bool {
-	if o != nil && o.Barcode != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBarcode gets a reference to the given string and assigns it to the Barcode field.
-func (o *PhysicalCardIssuanceRequest) SetBarcode(v string) {
-	o.Barcode = &v
 }
 
 // GetIsPinSet returns the IsPinSet field value if set, zero value otherwise.
@@ -683,38 +680,6 @@ func (o *PhysicalCardIssuanceRequest) SetIsPinSet(v bool) {
 	o.IsPinSet = &v
 }
 
-// GetShipping returns the Shipping field value if set, zero value otherwise.
-func (o *PhysicalCardIssuanceRequest) GetShipping() Shipping {
-	if o == nil || o.Shipping == nil {
-		var ret Shipping
-		return ret
-	}
-	return *o.Shipping
-}
-
-// GetShippingOk returns a tuple with the Shipping field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PhysicalCardIssuanceRequest) GetShippingOk() (*Shipping, bool) {
-	if o == nil || o.Shipping == nil {
-		return nil, false
-	}
-	return o.Shipping, true
-}
-
-// HasShipping returns a boolean if a field has been set.
-func (o *PhysicalCardIssuanceRequest) HasShipping() bool {
-	if o != nil && o.Shipping != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetShipping gets a reference to the given Shipping and assigns it to the Shipping field.
-func (o *PhysicalCardIssuanceRequest) SetShipping(v Shipping) {
-	o.Shipping = &v
-}
-
 func (o PhysicalCardIssuanceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -722,6 +687,9 @@ func (o PhysicalCardIssuanceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["account_id"] = o.AccountId
+	}
+	if o.CardBrand != nil {
+		toSerialize["card_brand"] = o.CardBrand
 	}
 	if true {
 		toSerialize["card_product_id"] = o.CardProductId
@@ -756,9 +724,6 @@ func (o PhysicalCardIssuanceRequest) MarshalJSON() ([]byte, error) {
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if o.Network != nil {
-		toSerialize["network"] = o.Network
-	}
 	if o.ReissueReason != nil {
 		toSerialize["reissue_reason"] = o.ReissueReason
 	}
@@ -768,17 +733,14 @@ func (o PhysicalCardIssuanceRequest) MarshalJSON() ([]byte, error) {
 	if o.ReissuedToId != nil {
 		toSerialize["reissued_to_id"] = o.ReissuedToId
 	}
+	if o.Shipping != nil {
+		toSerialize["shipping"] = o.Shipping
+	}
 	if true {
 		toSerialize["type"] = o.Type
 	}
-	if o.Barcode != nil {
-		toSerialize["barcode"] = o.Barcode
-	}
 	if o.IsPinSet != nil {
 		toSerialize["is_pin_set"] = o.IsPinSet
-	}
-	if o.Shipping != nil {
-		toSerialize["shipping"] = o.Shipping
 	}
 	return json.Marshal(toSerialize)
 }

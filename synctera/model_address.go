@@ -24,28 +24,21 @@ type Address struct {
 	City string `json:"city"`
 	// ISO-3166-1 Alpha-2 country code
 	CountryCode string `json:"country_code"`
-	// Denotes whether this address is the person's default address
-	DefaultAddressFlg bool `json:"default_address_flg"`
-	// Address unique identifier
-	Id *string `json:"id,omitempty"`
 	// Postal code
 	PostalCode string `json:"postal_code"`
 	// State, region, province, or prefecture
 	State string `json:"state"`
-	// type of address
-	Type *string `json:"type,omitempty"`
 }
 
 // NewAddress instantiates a new Address object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddress(addressLine1 string, city string, countryCode string, defaultAddressFlg bool, postalCode string, state string) *Address {
+func NewAddress(addressLine1 string, city string, countryCode string, postalCode string, state string) *Address {
 	this := Address{}
 	this.AddressLine1 = addressLine1
 	this.City = city
 	this.CountryCode = countryCode
-	this.DefaultAddressFlg = defaultAddressFlg
 	this.PostalCode = postalCode
 	this.State = state
 	return &this
@@ -163,62 +156,6 @@ func (o *Address) SetCountryCode(v string) {
 	o.CountryCode = v
 }
 
-// GetDefaultAddressFlg returns the DefaultAddressFlg field value
-func (o *Address) GetDefaultAddressFlg() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.DefaultAddressFlg
-}
-
-// GetDefaultAddressFlgOk returns a tuple with the DefaultAddressFlg field value
-// and a boolean to check if the value has been set.
-func (o *Address) GetDefaultAddressFlgOk() (*bool, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.DefaultAddressFlg, true
-}
-
-// SetDefaultAddressFlg sets field value
-func (o *Address) SetDefaultAddressFlg(v bool) {
-	o.DefaultAddressFlg = v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Address) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Address) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Address) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Address) SetId(v string) {
-	o.Id = &v
-}
-
 // GetPostalCode returns the PostalCode field value
 func (o *Address) GetPostalCode() string {
 	if o == nil {
@@ -267,38 +204,6 @@ func (o *Address) SetState(v string) {
 	o.State = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *Address) GetType() string {
-	if o == nil || o.Type == nil {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Address) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *Address) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Address) SetType(v string) {
-	o.Type = &v
-}
-
 func (o Address) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -314,19 +219,10 @@ func (o Address) MarshalJSON() ([]byte, error) {
 		toSerialize["country_code"] = o.CountryCode
 	}
 	if true {
-		toSerialize["default_address_flg"] = o.DefaultAddressFlg
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
 		toSerialize["postal_code"] = o.PostalCode
 	}
 	if true {
 		toSerialize["state"] = o.State
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

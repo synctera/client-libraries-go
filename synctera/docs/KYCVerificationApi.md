@@ -4,9 +4,9 @@ All URIs are relative to *https://api.synctera.com/v0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomerVerificationResult**](KYCVerificationApi.md#CreateCustomerVerificationResult) | **Post** /customers/{customer_id}/verifications | Create a Customer Verification Result
-[**GetVerification**](KYCVerificationApi.md#GetVerification) | **Get** /customers/{customer_id}/verifications/{verification_id} | Get Verification Result
-[**ListVerifications**](KYCVerificationApi.md#ListVerifications) | **Get** /customers/{customer_id}/verifications | List Verification Results
+[**CreateCustomerVerificationResult**](KYCVerificationApi.md#CreateCustomerVerificationResult) | **Post** /customers/{customer_id}/verifications | Create a customer verification result
+[**GetVerification**](KYCVerificationApi.md#GetVerification) | **Get** /customers/{customer_id}/verifications/{verification_id} | Get verification result
+[**ListVerifications**](KYCVerificationApi.md#ListVerifications) | **Get** /customers/{customer_id}/verifications | List verification results
 [**VerifyCustomer**](KYCVerificationApi.md#VerifyCustomer) | **Post** /customers/{customer_id}/verify | Verify a customer&#39;s identity
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > CustomerVerificationResult CreateCustomerVerificationResult(ctx, customerId).CustomerVerificationResult(customerVerificationResult).Execute()
 
-Create a Customer Verification Result
+Create a customer verification result
 
 
 
@@ -34,7 +34,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    customerVerificationResult := *openapiclient.NewCustomerVerificationResult("ACCEPTED", time.Now(), openapiclient.verification_type("fraud")) // CustomerVerificationResult | Customer verification result to create
+    customerVerificationResult := *openapiclient.NewCustomerVerificationResult("ACCEPTED", time.Now(), openapiclient.verification_type("fraud")) // CustomerVerificationResult | Customer verification result to create.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -64,7 +64,7 @@ Other parameters are passed through a pointer to a apiCreateCustomerVerification
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **customerVerificationResult** | [**CustomerVerificationResult**](CustomerVerificationResult.md) | Customer verification result to create | 
+ **customerVerificationResult** | [**CustomerVerificationResult**](CustomerVerificationResult.md) | Customer verification result to create. | 
 
 ### Return type
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > CustomerVerificationResult GetVerification(ctx, customerId, verificationId).Execute()
 
-Get Verification Result
+Get verification result
 
 
 
@@ -106,7 +106,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    verificationId := TODO // string | Verification ID
+    verificationId := TODO // string | Unique identifier for the verification.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-**verificationId** | [**string**](.md) | Verification ID | 
+**verificationId** | [**string**](.md) | Unique identifier for the verification. | 
 
 ### Other Parameters
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 > CustomerVerificationResultList ListVerifications(ctx, customerId).IncludeHistory(includeHistory).Limit(limit).PageToken(pageToken).Execute()
 
-List Verification Results
+List verification results
 
 
 
@@ -179,9 +179,9 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    includeHistory := true // bool | If true, include old (inactive) records as well (optional)
+    includeHistory := true // bool | If true, include old (inactive) records as well. (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0pqid5u7lx" // string |  (optional)
+    pageToken := "19waxl0g93" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -211,7 +211,7 @@ Other parameters are passed through a pointer to a apiListVerificationsRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeHistory** | **bool** | If true, include old (inactive) records as well | 
+ **includeHistory** | **bool** | If true, include old (inactive) records as well. | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
 
@@ -255,7 +255,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    customerVerification := *openapiclient.NewCustomerVerification(false, []openapiclient.VerificationType{openapiclient.verification_type("fraud")}) // CustomerVerification | Customer verification request
+    customerVerification := *openapiclient.NewCustomerVerification(false, []openapiclient.VerificationType{openapiclient.verification_type("fraud")}) // CustomerVerification | Customer verification request.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -285,7 +285,7 @@ Other parameters are passed through a pointer to a apiVerifyCustomerRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **customerVerification** | [**CustomerVerification**](CustomerVerification.md) | Customer verification request | 
+ **customerVerification** | [**CustomerVerification**](CustomerVerification.md) | Customer verification request. | 
 
 ### Return type
 

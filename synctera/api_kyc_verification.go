@@ -34,7 +34,7 @@ type ApiCreateCustomerVerificationResultRequest struct {
 	customerVerificationResult *CustomerVerificationResult
 }
 
-// Customer verification result to create
+// Customer verification result to create.
 func (r ApiCreateCustomerVerificationResultRequest) CustomerVerificationResult(customerVerificationResult CustomerVerificationResult) ApiCreateCustomerVerificationResultRequest {
 	r.customerVerificationResult = &customerVerificationResult
 	return r
@@ -45,9 +45,9 @@ func (r ApiCreateCustomerVerificationResultRequest) Execute() (CustomerVerificat
 }
 
 /*
-CreateCustomerVerificationResult Create a Customer Verification Result
+CreateCustomerVerificationResult Create a customer verification result
 
-Create a verification result for a customer
+Create a verification result for a customer.
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -207,13 +207,13 @@ func (r ApiGetVerificationRequest) Execute() (CustomerVerificationResult, *_neth
 }
 
 /*
-GetVerification Get Verification Result
+GetVerification Get verification result
 
-Get verification result
+Get verification result by ID.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param customerId The customer's unique identifier
- @param verificationId Verification ID
+ @param verificationId Unique identifier for the verification.
  @return ApiGetVerificationRequest
 */
 func (a *KYCVerificationApiService) GetVerification(ctx _context.Context, customerId string, verificationId string) ApiGetVerificationRequest {
@@ -362,7 +362,7 @@ type ApiListVerificationsRequest struct {
 	pageToken *string
 }
 
-// If true, include old (inactive) records as well
+// If true, include old (inactive) records as well.
 func (r ApiListVerificationsRequest) IncludeHistory(includeHistory bool) ApiListVerificationsRequest {
 	r.includeHistory = &includeHistory
 	return r
@@ -381,9 +381,9 @@ func (r ApiListVerificationsRequest) Execute() (CustomerVerificationResultList, 
 }
 
 /*
-ListVerifications List Verification Results
+ListVerifications List verification results
 
-List verification results
+List verification results.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param customerId The customer's unique identifier
@@ -540,7 +540,7 @@ type ApiVerifyCustomerRequest struct {
 	customerVerification *CustomerVerification
 }
 
-// Customer verification request
+// Customer verification request.
 func (r ApiVerifyCustomerRequest) CustomerVerification(customerVerification CustomerVerification) ApiVerifyCustomerRequest {
 	r.customerVerification = &customerVerification
 	return r
@@ -553,7 +553,7 @@ func (r ApiVerifyCustomerRequest) Execute() (CustomerVerifyResponse, *_nethttp.R
 /*
 VerifyCustomer Verify a customer's identity
 
-Initiate identity verification and run the specified identity checks
+Initiate identity verification for a customer and run the specified identity checks.
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

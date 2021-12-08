@@ -16,10 +16,13 @@ import (
 
 // VendorXml struct for VendorXml
 type VendorXml struct {
-	// Describes the content-type encoding received from the vendor
+	// Describes the content-type encoding received from the vendor.
 	ContentType string `json:"content_type"`
+	// Array of vendor specific information.
+	Details []Detail `json:"details"`
+	// Name of the vendor used.
 	Vendor string `json:"vendor"`
-	// Data representaion in XML
+	// Data representaion in XML.
 	Xml string `json:"xml"`
 }
 
@@ -27,9 +30,10 @@ type VendorXml struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVendorXml(contentType string, vendor string, xml string) *VendorXml {
+func NewVendorXml(contentType string, details []Detail, vendor string, xml string) *VendorXml {
 	this := VendorXml{}
 	this.ContentType = contentType
+	this.Details = details
 	this.Vendor = vendor
 	this.Xml = xml
 	return &this
@@ -65,6 +69,30 @@ func (o *VendorXml) GetContentTypeOk() (*string, bool) {
 // SetContentType sets field value
 func (o *VendorXml) SetContentType(v string) {
 	o.ContentType = v
+}
+
+// GetDetails returns the Details field value
+func (o *VendorXml) GetDetails() []Detail {
+	if o == nil {
+		var ret []Detail
+		return ret
+	}
+
+	return o.Details
+}
+
+// GetDetailsOk returns a tuple with the Details field value
+// and a boolean to check if the value has been set.
+func (o *VendorXml) GetDetailsOk() (*[]Detail, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Details, true
+}
+
+// SetDetails sets field value
+func (o *VendorXml) SetDetails(v []Detail) {
+	o.Details = v
 }
 
 // GetVendor returns the Vendor field value
@@ -119,6 +147,9 @@ func (o VendorXml) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["content_type"] = o.ContentType
+	}
+	if true {
+		toSerialize["details"] = o.Details
 	}
 	if true {
 		toSerialize["vendor"] = o.Vendor

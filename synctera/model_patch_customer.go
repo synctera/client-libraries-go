@@ -24,12 +24,14 @@ type PatchCustomer struct {
 	FirstName *string `json:"first_name,omitempty"`
 	// Customer's last name
 	LastName *string `json:"last_name,omitempty"`
-	LegalAddress *Address `json:"legal_address,omitempty"`
+	LegalAddress *Address1 `json:"legal_address,omitempty"`
+	// User-supplied JSON format metadata. Do not use to store PII.
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// Customer's middle name
 	MiddleName *string `json:"middle_name,omitempty"`
 	// Customer's mobile phone number with country code in E.164 format
 	PhoneNumber *string `json:"phone_number,omitempty"`
-	ShippingAddress *Address `json:"shipping_address,omitempty"`
+	ShippingAddress *Address1 `json:"shipping_address,omitempty"`
 	// Customer's full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Must be compiled with ^\\d{3}-\\d{2}-\\d{4}$. Response contains the last 4 digits only (e.g. 6789).
 	Ssn *string `json:"ssn,omitempty"`
 	// Customer's status
@@ -182,9 +184,9 @@ func (o *PatchCustomer) SetLastName(v string) {
 }
 
 // GetLegalAddress returns the LegalAddress field value if set, zero value otherwise.
-func (o *PatchCustomer) GetLegalAddress() Address {
+func (o *PatchCustomer) GetLegalAddress() Address1 {
 	if o == nil || o.LegalAddress == nil {
-		var ret Address
+		var ret Address1
 		return ret
 	}
 	return *o.LegalAddress
@@ -192,7 +194,7 @@ func (o *PatchCustomer) GetLegalAddress() Address {
 
 // GetLegalAddressOk returns a tuple with the LegalAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchCustomer) GetLegalAddressOk() (*Address, bool) {
+func (o *PatchCustomer) GetLegalAddressOk() (*Address1, bool) {
 	if o == nil || o.LegalAddress == nil {
 		return nil, false
 	}
@@ -208,9 +210,41 @@ func (o *PatchCustomer) HasLegalAddress() bool {
 	return false
 }
 
-// SetLegalAddress gets a reference to the given Address and assigns it to the LegalAddress field.
-func (o *PatchCustomer) SetLegalAddress(v Address) {
+// SetLegalAddress gets a reference to the given Address1 and assigns it to the LegalAddress field.
+func (o *PatchCustomer) SetLegalAddress(v Address1) {
 	o.LegalAddress = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *PatchCustomer) GetMetadata() map[string]interface{} {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchCustomer) GetMetadataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *PatchCustomer) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *PatchCustomer) SetMetadata(v map[string]interface{}) {
+	o.Metadata = &v
 }
 
 // GetMiddleName returns the MiddleName field value if set, zero value otherwise.
@@ -278,9 +312,9 @@ func (o *PatchCustomer) SetPhoneNumber(v string) {
 }
 
 // GetShippingAddress returns the ShippingAddress field value if set, zero value otherwise.
-func (o *PatchCustomer) GetShippingAddress() Address {
+func (o *PatchCustomer) GetShippingAddress() Address1 {
 	if o == nil || o.ShippingAddress == nil {
-		var ret Address
+		var ret Address1
 		return ret
 	}
 	return *o.ShippingAddress
@@ -288,7 +322,7 @@ func (o *PatchCustomer) GetShippingAddress() Address {
 
 // GetShippingAddressOk returns a tuple with the ShippingAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchCustomer) GetShippingAddressOk() (*Address, bool) {
+func (o *PatchCustomer) GetShippingAddressOk() (*Address1, bool) {
 	if o == nil || o.ShippingAddress == nil {
 		return nil, false
 	}
@@ -304,8 +338,8 @@ func (o *PatchCustomer) HasShippingAddress() bool {
 	return false
 }
 
-// SetShippingAddress gets a reference to the given Address and assigns it to the ShippingAddress field.
-func (o *PatchCustomer) SetShippingAddress(v Address) {
+// SetShippingAddress gets a reference to the given Address1 and assigns it to the ShippingAddress field.
+func (o *PatchCustomer) SetShippingAddress(v Address1) {
 	o.ShippingAddress = &v
 }
 
@@ -389,6 +423,9 @@ func (o PatchCustomer) MarshalJSON() ([]byte, error) {
 	}
 	if o.LegalAddress != nil {
 		toSerialize["legal_address"] = o.LegalAddress
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if o.MiddleName != nil {
 		toSerialize["middle_name"] = o.MiddleName

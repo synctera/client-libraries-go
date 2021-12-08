@@ -61,7 +61,11 @@ type APIClient struct {
 
 	ExternalAccountsApi *ExternalAccountsApiService
 
+	InternalAccountsApi *InternalAccountsApiService
+
 	KYCVerificationApi *KYCVerificationApiService
+
+	PaymentsApi *PaymentsApiService
 
 	RDCDepositsApi *RDCDepositsApiService
 
@@ -96,7 +100,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CustomersApi = (*CustomersApiService)(&c.common)
 	c.DisclosuresApi = (*DisclosuresApiService)(&c.common)
 	c.ExternalAccountsApi = (*ExternalAccountsApiService)(&c.common)
+	c.InternalAccountsApi = (*InternalAccountsApiService)(&c.common)
 	c.KYCVerificationApi = (*KYCVerificationApiService)(&c.common)
+	c.PaymentsApi = (*PaymentsApiService)(&c.common)
 	c.RDCDepositsApi = (*RDCDepositsApiService)(&c.common)
 	c.ReconciliationsApi = (*ReconciliationsApiService)(&c.common)
 	c.TransactionsApi = (*TransactionsApiService)(&c.common)

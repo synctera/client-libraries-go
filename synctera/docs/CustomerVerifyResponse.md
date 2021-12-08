@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **KycStatus** | [**CustomerKycStatus**](CustomerKycStatus.md) |  | 
-**Verifications** | [**[]CustomerVerificationResult**](CustomerVerificationResult.md) | Array of Verification results | 
+**Verifications** | [**[]CustomerVerificationResult**](CustomerVerificationResult.md) | Array of verification results. | 
 **NextPageToken** | Pointer to **string** | If returned, use the next_page_token to query for the next page of results. Not returned if there are no more rows. | [optional] 
 
 ## Methods

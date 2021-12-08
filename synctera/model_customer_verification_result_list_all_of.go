@@ -16,7 +16,7 @@ import (
 
 // CustomerVerificationResultListAllOf struct for CustomerVerificationResultListAllOf
 type CustomerVerificationResultListAllOf struct {
-	// Array of Verification results
+	// Array of verification results.
 	Verifications []CustomerVerificationResult `json:"verifications"`
 }
 

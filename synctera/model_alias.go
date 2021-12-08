@@ -16,8 +16,12 @@ import (
 
 // Alias struct for Alias
 type Alias struct {
+	// Account ID
+	AccountId *string `json:"account_id,omitempty"`
+	// Account number
+	AccountNumber *string `json:"account_number,omitempty"`
 	// Additional information for the alias
-	AliasInfo *string `json:"alias_info,omitempty"`
+	AliasInfo *map[string]interface{} `json:"alias_info,omitempty"`
 	// Alias name
 	AliasName *string `json:"alias_name,omitempty"`
 	// Alias source
@@ -45,10 +49,74 @@ func NewAliasWithDefaults() *Alias {
 	return &this
 }
 
-// GetAliasInfo returns the AliasInfo field value if set, zero value otherwise.
-func (o *Alias) GetAliasInfo() string {
-	if o == nil || o.AliasInfo == nil {
+// GetAccountId returns the AccountId field value if set, zero value otherwise.
+func (o *Alias) GetAccountId() string {
+	if o == nil || o.AccountId == nil {
 		var ret string
+		return ret
+	}
+	return *o.AccountId
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Alias) GetAccountIdOk() (*string, bool) {
+	if o == nil || o.AccountId == nil {
+		return nil, false
+	}
+	return o.AccountId, true
+}
+
+// HasAccountId returns a boolean if a field has been set.
+func (o *Alias) HasAccountId() bool {
+	if o != nil && o.AccountId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountId gets a reference to the given string and assigns it to the AccountId field.
+func (o *Alias) SetAccountId(v string) {
+	o.AccountId = &v
+}
+
+// GetAccountNumber returns the AccountNumber field value if set, zero value otherwise.
+func (o *Alias) GetAccountNumber() string {
+	if o == nil || o.AccountNumber == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccountNumber
+}
+
+// GetAccountNumberOk returns a tuple with the AccountNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Alias) GetAccountNumberOk() (*string, bool) {
+	if o == nil || o.AccountNumber == nil {
+		return nil, false
+	}
+	return o.AccountNumber, true
+}
+
+// HasAccountNumber returns a boolean if a field has been set.
+func (o *Alias) HasAccountNumber() bool {
+	if o != nil && o.AccountNumber != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountNumber gets a reference to the given string and assigns it to the AccountNumber field.
+func (o *Alias) SetAccountNumber(v string) {
+	o.AccountNumber = &v
+}
+
+// GetAliasInfo returns the AliasInfo field value if set, zero value otherwise.
+func (o *Alias) GetAliasInfo() map[string]interface{} {
+	if o == nil || o.AliasInfo == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.AliasInfo
@@ -56,7 +124,7 @@ func (o *Alias) GetAliasInfo() string {
 
 // GetAliasInfoOk returns a tuple with the AliasInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Alias) GetAliasInfoOk() (*string, bool) {
+func (o *Alias) GetAliasInfoOk() (*map[string]interface{}, bool) {
 	if o == nil || o.AliasInfo == nil {
 		return nil, false
 	}
@@ -72,8 +140,8 @@ func (o *Alias) HasAliasInfo() bool {
 	return false
 }
 
-// SetAliasInfo gets a reference to the given string and assigns it to the AliasInfo field.
-func (o *Alias) SetAliasInfo(v string) {
+// SetAliasInfo gets a reference to the given map[string]interface{} and assigns it to the AliasInfo field.
+func (o *Alias) SetAliasInfo(v map[string]interface{}) {
 	o.AliasInfo = &v
 }
 
@@ -207,6 +275,12 @@ func (o *Alias) SetId(v string) {
 
 func (o Alias) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccountId != nil {
+		toSerialize["account_id"] = o.AccountId
+	}
+	if o.AccountNumber != nil {
+		toSerialize["account_number"] = o.AccountNumber
+	}
 	if o.AliasInfo != nil {
 		toSerialize["alias_info"] = o.AliasInfo
 	}

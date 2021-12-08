@@ -16,10 +16,13 @@ import (
 
 // CustomerVerification struct for CustomerVerification
 type CustomerVerification struct {
-	// Whether this customer has consented to a KYC check 
+	// Whether this customer has consented to a KYC check. 
 	CustomerConsent bool `json:"customer_consent"`
-	// IP address
+	// IP address of the customer being verified.
 	CustomerIpAddress *string `json:"customer_ip_address,omitempty"`
+	// The ID of the uploaded government-issued identification document provided by the DV API endpoint. 
+	DocumentId *string `json:"document_id,omitempty"`
+	// List of possible checks to run on a customer.
 	VerificationType []VerificationType `json:"verification_type"`
 }
 
@@ -98,6 +101,38 @@ func (o *CustomerVerification) SetCustomerIpAddress(v string) {
 	o.CustomerIpAddress = &v
 }
 
+// GetDocumentId returns the DocumentId field value if set, zero value otherwise.
+func (o *CustomerVerification) GetDocumentId() string {
+	if o == nil || o.DocumentId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DocumentId
+}
+
+// GetDocumentIdOk returns a tuple with the DocumentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerVerification) GetDocumentIdOk() (*string, bool) {
+	if o == nil || o.DocumentId == nil {
+		return nil, false
+	}
+	return o.DocumentId, true
+}
+
+// HasDocumentId returns a boolean if a field has been set.
+func (o *CustomerVerification) HasDocumentId() bool {
+	if o != nil && o.DocumentId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDocumentId gets a reference to the given string and assigns it to the DocumentId field.
+func (o *CustomerVerification) SetDocumentId(v string) {
+	o.DocumentId = &v
+}
+
 // GetVerificationType returns the VerificationType field value
 func (o *CustomerVerification) GetVerificationType() []VerificationType {
 	if o == nil {
@@ -129,6 +164,9 @@ func (o CustomerVerification) MarshalJSON() ([]byte, error) {
 	}
 	if o.CustomerIpAddress != nil {
 		toSerialize["customer_ip_address"] = o.CustomerIpAddress
+	}
+	if o.DocumentId != nil {
+		toSerialize["document_id"] = o.DocumentId
 	}
 	if true {
 		toSerialize["verification_type"] = o.VerificationType
