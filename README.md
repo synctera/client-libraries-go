@@ -1,4 +1,4 @@
-# Go API client for synctera
+# Go API client for openapi
 
 <h2>Let's build something great.</h2><p>Welcome to the official reference documentation for Synctera APIs. Our APIs are the best way to automate your company's banking needs and are designed to be easy to understand and implement.</p><p>We're continuously growing this library and what you see here is just the start, but if you need something specific or have a question, <a class='text-blue-600' href='https://synctera.com/contact' target='_blank' rel='noreferrer'>contact us</a>.</p>
 
@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import sw "./synctera"
+import sw "./openapi"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -334,6 +334,8 @@ Class | Method | HTTP request | Description
  - [InternalAccountsList](synctera/docs/InternalAccountsList.md)
  - [InternalAccountsListAllOf](synctera/docs/InternalAccountsListAllOf.md)
  - [InternalTransfer](synctera/docs/InternalTransfer.md)
+ - [InternalTransferResponse](synctera/docs/InternalTransferResponse.md)
+ - [InternalTransferResponseAllOf](synctera/docs/InternalTransferResponseAllOf.md)
  - [ModelError](synctera/docs/ModelError.md)
  - [NetworkFeeModel](synctera/docs/NetworkFeeModel.md)
  - [OriginalCreditRequestModel](synctera/docs/OriginalCreditRequestModel.md)

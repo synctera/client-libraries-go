@@ -41,7 +41,7 @@ import (
 )
 
 func main() {
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Joaquin", "Mayert", "Status_example")} // CustomerInPath | Customer to create
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Mozell", "Mayert", "Status_example")} // CustomerInPath | Customer to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -619,7 +619,7 @@ func main() {
     ssnLast4 := "6789" // string |  (optional)
     status := "ACTIVE" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -765,7 +765,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Joaquin", "Mayert", "Status_example")} // CustomerInPath | Customer to be updated
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Mozell", "Mayert", "Status_example")} // CustomerInPath | Customer to be updated
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

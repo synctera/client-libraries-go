@@ -673,7 +673,7 @@ import (
 func main() {
     accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -748,7 +748,7 @@ import (
 func main() {
     productType := "productType_example" // string | Type of account product
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
     startDate := time.Now() // string | Date range filtering for type INTEREST. All rates in interest resource have to have valid_from later or equal to start_date. (optional)
     endDate := time.Now() // string | Date range filtering for type INTEREST. All rates in interest resource have to have valid_to earlier or equal to end_date. (optional)
 
@@ -821,7 +821,7 @@ import (
 
 func main() {
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -896,7 +896,7 @@ func main() {
     firstName := "Alice" // string |  (optional)
     lastName := "Smith" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

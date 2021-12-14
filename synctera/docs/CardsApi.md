@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-    cardActivationRequest := *openapiclient.NewCardActivationRequest("ActivationCode_example", "e4fbbc46-b170-4ce5-9c54-46202548e42b") // CardActivationRequest | Card activation code
+    cardActivationRequest := *openapiclient.NewCardActivationRequest("ActivationCode_example", "fe1fa42f-10e3-48d2-ab7d-e3324950a42e") // CardActivationRequest | Card activation code
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -242,7 +242,7 @@ import (
 )
 
 func main() {
-    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("18649151-0762-4ee8-9a31-4990ef244f3f", "511c7eb9-80d3-4046-9a78-66cb7b4374ee") // SingleUseTokenRequest | User token details
+    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("409302b6-a448-4697-89bc-bacb678f103f", "538f0f18-df33-4903-8d5a-bc0f719d3ef1") // SingleUseTokenRequest | User token details
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -308,7 +308,7 @@ import (
 )
 
 func main() {
-    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "5e7b8e75-504a-46fd-a348-2ad50f39591e", "decc9718-35f5-47b4-9743-31932ac7f9ae", "9ec15e11-8d0e-4a67-a0c9-b6589190abb8", "Type_example")} // CardIssuanceRequest | Card to issue
+    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "4903b265-ca1f-404b-b2be-9d8a783bb580", "f88e0735-5190-42c8-9baf-5bcaffa8e486", "14ffe289-490f-40be-9881-60c84d6e36bc", "Type_example")} // CardIssuanceRequest | Card to issue
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -388,7 +388,7 @@ func main() {
     cardStatus := openapiclient.card_status("ACTIVE") // CardStatus | The status of a card (optional)
     postalCode := "49633" // string | The postal code of a card user (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

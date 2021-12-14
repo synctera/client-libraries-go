@@ -303,6 +303,16 @@ and a boolean to check if the value has been set.
 SetRiskInfo sets RiskInfo field to given value.
 
 
+### SetRiskInfoNil
+
+`func (o *PendingTransactionHistoryData) SetRiskInfoNil(b bool)`
+
+ SetRiskInfoNil sets the value for RiskInfo to be an explicit nil
+
+### UnsetRiskInfo
+`func (o *PendingTransactionHistoryData) UnsetRiskInfo()`
+
+UnsetRiskInfo ensures that no value is present for RiskInfo, not even an explicit nil
 ### GetStatus
 
 `func (o *PendingTransactionHistoryData) GetStatus() string`
@@ -403,6 +413,16 @@ and a boolean to check if the value has been set.
 SetUserData sets UserData field to given value.
 
 
+### SetUserDataNil
+
+`func (o *PendingTransactionHistoryData) SetUserDataNil(b bool)`
+
+ SetUserDataNil sets the value for UserData to be an explicit nil
+
+### UnsetUserData
+`func (o *PendingTransactionHistoryData) UnsetUserData()`
+
+UnsetUserData ensures that no value is present for UserData, not even an explicit nil
 ### GetWasPartial
 
 `func (o *PendingTransactionHistoryData) GetWasPartial() bool`

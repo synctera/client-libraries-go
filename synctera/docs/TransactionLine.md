@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccountId** | **string** | The account uuid associated with this transaction line | 
 **AccountNo** | **string** | The account number associated with this transaction line | 
 **Amount** | **int32** | The amount (in cents) of the transaction | 
 **AvailableBalance** | **int32** | The account \&quot;available balance\&quot; at the point in time this transaction was posted | 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewTransactionLine
 
-`func NewTransactionLine(accountNo string, amount int32, availableBalance int32, balance int32, created time.Time, currency string, dcSign DcSign, isFee bool, isGlAcc bool, isOffset bool, isPrimary bool, meta map[string]interface{}, network string, relatedLine int32, seq int32, tenant string, updated time.Time, uuid string, ) *TransactionLine`
+`func NewTransactionLine(accountId string, accountNo string, amount int32, availableBalance int32, balance int32, created time.Time, currency string, dcSign DcSign, isFee bool, isGlAcc bool, isOffset bool, isPrimary bool, meta map[string]interface{}, network string, relatedLine int32, seq int32, tenant string, updated time.Time, uuid string, ) *TransactionLine`
 
 NewTransactionLine instantiates a new TransactionLine object
 This constructor will assign default values to properties that have it defined,
@@ -41,6 +42,26 @@ will change when the set of required properties is changed
 NewTransactionLineWithDefaults instantiates a new TransactionLine object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccountId
+
+`func (o *TransactionLine) GetAccountId() string`
+
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+
+### GetAccountIdOk
+
+`func (o *TransactionLine) GetAccountIdOk() (*string, bool)`
+
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountId
+
+`func (o *TransactionLine) SetAccountId(v string)`
+
+SetAccountId sets AccountId field to given value.
+
 
 ### GetAccountNo
 
@@ -282,6 +303,16 @@ and a boolean to check if the value has been set.
 SetMeta sets Meta field to given value.
 
 
+### SetMetaNil
+
+`func (o *TransactionLine) SetMetaNil(b bool)`
+
+ SetMetaNil sets the value for Meta to be an explicit nil
+
+### UnsetMeta
+`func (o *TransactionLine) UnsetMeta()`
+
+UnsetMeta ensures that no value is present for Meta, not even an explicit nil
 ### GetNetwork
 
 `func (o *TransactionLine) GetNetwork() string`

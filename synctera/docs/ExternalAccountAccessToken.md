@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestId** | Pointer to **string** | A unique identifier for the request, which can be used for troubleshooting | [optional] [readonly] 
 **VendorAccessToken** | Pointer to **string** | The access token associated with the Item data is being requested for. | [optional] [readonly] 
-**VendorCustomerId** | **string** | The account_id value of the account associated with the returned vendor_access_token | [readonly] 
-**VendorInstitutionId** | Pointer to **string** | The ID of the institution the access token is requested for  | [optional] 
+**VendorCustomerId** | **string** | The account_id value of the account associated with the returned vendor_access_token | 
+**VendorInstitutionId** | **string** | The ID of the institution the access token is requested for  | 
 **VendorPublicToken** | **string** | The user&#39;s public token obtained from successful link login.  | 
 
 ## Methods
 
 ### NewExternalAccountAccessToken
 
-`func NewExternalAccountAccessToken(vendorCustomerId string, vendorPublicToken string, ) *ExternalAccountAccessToken`
+`func NewExternalAccountAccessToken(vendorCustomerId string, vendorInstitutionId string, vendorPublicToken string, ) *ExternalAccountAccessToken`
 
 NewExternalAccountAccessToken instantiates a new ExternalAccountAccessToken object
 This constructor will assign default values to properties that have it defined,
@@ -118,11 +118,6 @@ and a boolean to check if the value has been set.
 
 SetVendorInstitutionId sets VendorInstitutionId field to given value.
 
-### HasVendorInstitutionId
-
-`func (o *ExternalAccountAccessToken) HasVendorInstitutionId() bool`
-
-HasVendorInstitutionId returns a boolean if a field has been set.
 
 ### GetVendorPublicToken
 
