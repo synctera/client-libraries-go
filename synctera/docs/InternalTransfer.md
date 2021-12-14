@@ -7,18 +7,18 @@ Name | Type | Description | Notes
 **Amount** | **int32** | The amount (in cents) to transfer from originating account to receiving account. | 
 **Currency** | **string** | ISO 4217 alphabetic currency code of the transfer amount | 
 **Memo** | Pointer to **string** | A short note to the recipient | [optional] 
-**OriginatingAccountAlias** | Pointer to **string** | An alias representing a GL account to debit | [optional] 
-**OriginatingAccountId** | **string** | The UUID of the account being debited | 
-**ReceivingAccountAlias** | Pointer to **string** | An alias representing a GL account to credit | [optional] 
-**ReceivingAccountFullname** | Pointer to **string** | The full name of the owner of the receiving account. Only required when type is \&quot;outgoing_remittance\&quot; | [optional] 
-**ReceivingAccountId** | **string** | The UUID of the account being credited | 
+**OriginatingAccountAlias** | Pointer to **string** | An alias representing a GL account to debit. This is alternative to specifying by account id | [optional] 
+**OriginatingAccountId** | Pointer to **string** | The UUID of the account being debited | [optional] 
+**ReceivingAccountAlias** | Pointer to **string** | An alias representing a GL account to credit. This is an alternative to specifying by account id | [optional] 
+**ReceivingAccountCustomerId** | Pointer to **string** | The customer id of the owner of the receiving account. Only required when type is \&quot;outgoing_remittance\&quot; | [optional] 
+**ReceivingAccountId** | Pointer to **string** | The UUID of the account being credited | [optional] 
 **Type** | **string** | The desired transaction type to use for this transfer | 
 
 ## Methods
 
 ### NewInternalTransfer
 
-`func NewInternalTransfer(amount int32, currency string, originatingAccountId string, receivingAccountId string, type_ string, ) *InternalTransfer`
+`func NewInternalTransfer(amount int32, currency string, type_ string, ) *InternalTransfer`
 
 NewInternalTransfer instantiates a new InternalTransfer object
 This constructor will assign default values to properties that have it defined,
@@ -142,6 +142,11 @@ and a boolean to check if the value has been set.
 
 SetOriginatingAccountId sets OriginatingAccountId field to given value.
 
+### HasOriginatingAccountId
+
+`func (o *InternalTransfer) HasOriginatingAccountId() bool`
+
+HasOriginatingAccountId returns a boolean if a field has been set.
 
 ### GetReceivingAccountAlias
 
@@ -168,30 +173,30 @@ SetReceivingAccountAlias sets ReceivingAccountAlias field to given value.
 
 HasReceivingAccountAlias returns a boolean if a field has been set.
 
-### GetReceivingAccountFullname
+### GetReceivingAccountCustomerId
 
-`func (o *InternalTransfer) GetReceivingAccountFullname() string`
+`func (o *InternalTransfer) GetReceivingAccountCustomerId() string`
 
-GetReceivingAccountFullname returns the ReceivingAccountFullname field if non-nil, zero value otherwise.
+GetReceivingAccountCustomerId returns the ReceivingAccountCustomerId field if non-nil, zero value otherwise.
 
-### GetReceivingAccountFullnameOk
+### GetReceivingAccountCustomerIdOk
 
-`func (o *InternalTransfer) GetReceivingAccountFullnameOk() (*string, bool)`
+`func (o *InternalTransfer) GetReceivingAccountCustomerIdOk() (*string, bool)`
 
-GetReceivingAccountFullnameOk returns a tuple with the ReceivingAccountFullname field if it's non-nil, zero value otherwise
+GetReceivingAccountCustomerIdOk returns a tuple with the ReceivingAccountCustomerId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetReceivingAccountFullname
+### SetReceivingAccountCustomerId
 
-`func (o *InternalTransfer) SetReceivingAccountFullname(v string)`
+`func (o *InternalTransfer) SetReceivingAccountCustomerId(v string)`
 
-SetReceivingAccountFullname sets ReceivingAccountFullname field to given value.
+SetReceivingAccountCustomerId sets ReceivingAccountCustomerId field to given value.
 
-### HasReceivingAccountFullname
+### HasReceivingAccountCustomerId
 
-`func (o *InternalTransfer) HasReceivingAccountFullname() bool`
+`func (o *InternalTransfer) HasReceivingAccountCustomerId() bool`
 
-HasReceivingAccountFullname returns a boolean if a field has been set.
+HasReceivingAccountCustomerId returns a boolean if a field has been set.
 
 ### GetReceivingAccountId
 
@@ -212,6 +217,11 @@ and a boolean to check if the value has been set.
 
 SetReceivingAccountId sets ReceivingAccountId field to given value.
 
+### HasReceivingAccountId
+
+`func (o *InternalTransfer) HasReceivingAccountId() bool`
+
+HasReceivingAccountId returns a boolean if a field has been set.
 
 ### GetType
 

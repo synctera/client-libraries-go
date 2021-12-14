@@ -38,7 +38,7 @@ import (
 
 func main() {
     accountId := TODO // string | Unique identifier for the account.
-    deposit := *openapiclient.NewDeposit("yfkmyiowedjns0", "6094a058-37c6-4c2c-bfb2-689a63cf6729", int32(1704), "USD", "2019-01-02T03:04:05.678Z", "2019-01-02T03:04:05.678Z", int32(5021), "USD", "455670a5-aefe-473a-8074-33c750c40fa3", "ec3d9e73-d973-45e3-b228-e8d4505fc4ff", "123456789", "9265016f-c771-48b2-a93f-98914edafc28") // Deposit | Attributes of the RDC deposit to create (optional)
+    deposit := *openapiclient.NewDeposit("zl03l21ecqlmuk", "a9cf61a6-459c-4775-a1fe-24478c491d7e", int32(5176), "USD", "2019-01-02T03:04:05.678Z", "2019-01-02T03:04:05.678Z", int32(3561), "USD", "1a433f80-ff63-4153-8d7d-7b67cdc5ceb2", "c62bc781-8978-49d3-9109-27aadc2d71e4", "123456789", "c6860cd0-3da4-4556-86b4-5be044f56d90") // Deposit | Attributes of the RDC deposit to create (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -110,7 +110,7 @@ import (
 
 func main() {
     accountId := TODO // string | Unique identifier for the account.
-    image := *openapiclient.NewImage(string(123), "2019-01-02T03:04:05.678Z", "71f22ac5-83e6-4645-931a-240083a10ac8", openapiclient.rdc_media_type("PDF")) // Image | RDC image to create (optional)
+    image := *openapiclient.NewImage(string(123), "2019-01-02T03:04:05.678Z", "f18babb4-1dc2-498a-a05d-992083a99cd1", openapiclient.rdc_media_type("PDF")) // Image | RDC image to create (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -182,7 +182,7 @@ import (
 
 func main() {
     accountId := TODO // string | Unique identifier for the account.
-    scan := *openapiclient.NewScan("8si3dv70k6xovs", "c88ecd40-d441-4171-ad35-d4e85f7e7a24", int32(8501), "USD", "2019-01-02T03:04:05.678Z", "1d1645a1-ee83-4262-824d-d6132e919335", "48b2fe14-611b-4622-a043-70ae134b1ef2", "123456789") // Scan | RDC scan to create (optional)
+    scan := *openapiclient.NewScan("ezyyq4k2sf3wdn", "8463a333-b216-4121-818a-8788978355ac", int32(9002), "USD", "2019-01-02T03:04:05.678Z", "5615ff98-f948-45a9-83c5-ae1f4a57cc19", "6e2c215f-3011-4cdf-892e-8cfe2ee1df74", "123456789") // Scan | RDC scan to create (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -474,7 +474,7 @@ import (
 func main() {
     accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -548,7 +548,7 @@ import (
 func main() {
     accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -622,7 +622,7 @@ import (
 func main() {
     accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CardProgramId** | Pointer to **string** | Program ID | [optional] 
 **CreationTime** | Pointer to **time.Time** | The timestamp representing when the card product was created | [optional] [readonly] 
 **EndDate** | Pointer to **time.Time** | The time when bin is decommissioned | [optional] 
+**FundingSourceId** | Pointer to **string** | Funding source ID | [optional] 
 **Id** | Pointer to **string** | Card Product ID | [optional] [readonly] 
 **LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the card product was last modified | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the card product | [optional] 
@@ -263,6 +264,31 @@ SetEndDate sets EndDate field to given value.
 `func (o *CardProduct) HasEndDate() bool`
 
 HasEndDate returns a boolean if a field has been set.
+
+### GetFundingSourceId
+
+`func (o *CardProduct) GetFundingSourceId() string`
+
+GetFundingSourceId returns the FundingSourceId field if non-nil, zero value otherwise.
+
+### GetFundingSourceIdOk
+
+`func (o *CardProduct) GetFundingSourceIdOk() (*string, bool)`
+
+GetFundingSourceIdOk returns a tuple with the FundingSourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFundingSourceId
+
+`func (o *CardProduct) SetFundingSourceId(v string)`
+
+SetFundingSourceId sets FundingSourceId field to given value.
+
+### HasFundingSourceId
+
+`func (o *CardProduct) HasFundingSourceId() bool`
+
+HasFundingSourceId returns a boolean if a field has been set.
 
 ### GetId
 

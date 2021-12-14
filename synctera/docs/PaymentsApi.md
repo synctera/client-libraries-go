@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-    outgoingAch := *openapiclient.NewOutgoingAch(int32(607), "USD", "b89508a8-d402-4244-a9c7-4b922c708f47", "debit", time.Now(), "34520cae-2e8a-438d-a233-2b18abb648ad", "653af5db-4c36-4b8e-87f8-9e976fbf5b64", *openapiclient.NewRiskData("ClientIp_example")) // OutgoingAch | Outgoing ACH
+    outgoingAch := *openapiclient.NewOutgoingAch(int32(607), "USD", "43f9209e-a1d2-417d-8ef6-de388ab27069", "debit", time.Now(), "993350b8-7b62-40bf-b6cc-6009f837ba84", "324dc450-3564-4a7b-87b0-8a824a02b5f3", *openapiclient.NewRiskData("ClientIp_example")) // OutgoingAch | Outgoing ACH
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

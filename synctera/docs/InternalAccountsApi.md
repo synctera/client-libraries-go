@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-    internalAccount := *openapiclient.NewInternalAccount("BWP", "Status_example") // InternalAccount | 
+    internalAccount := *openapiclient.NewInternalAccount("SLL", "Status_example") // InternalAccount | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -97,7 +97,7 @@ import (
 
 func main() {
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

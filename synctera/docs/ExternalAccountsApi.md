@@ -37,7 +37,7 @@ import (
 )
 
 func main() {
-    addAccountsRequest := *openapiclient.NewAddAccountsRequest(*openapiclient.NewAddAccountsRequestAccountIdentifiers("78277121"), []string{"Lamar Champlin"}, "2aeac692-383a-4c54-a99f-8a4104adfe05", "CustomerType_example", *openapiclient.NewAddAccountsRequestRoutingIdentifiers("756392185", []string{"BankCountries_example"}, "Chase"), "Type_example") // AddAccountsRequest | 
+    addAccountsRequest := *openapiclient.NewAddAccountsRequest(*openapiclient.NewAddAccountsRequestAccountIdentifiers("78277121"), []string{"Miss Laura Johnston"}, "55c73585-180a-492e-90b5-27fea68561a4", "CustomerType_example", *openapiclient.NewAddAccountsRequestRoutingIdentifiers("756392185", []string{"BankCountries_example"}, "Chase"), "Type_example") // AddAccountsRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-    addVendorAccountsRequest := *openapiclient.NewAddVendorAccountsRequest("2a1e99bd-df88-4bd5-a6af-a24687ebbb21", "CustomerType_example", openapiclient.external_account_vendor_values("PLAID"), "access-sandbox-de3ce8ef-33f8-452c-a685-8671031fc0f6", []string{"blgvvBlXw3cq5GMPwqB6s6q4dLKB9WcVqGDGo"}) // AddVendorAccountsRequest | 
+    addVendorAccountsRequest := *openapiclient.NewAddVendorAccountsRequest("55f6e08c-002a-4fbb-aa97-3235ab760b84", "CustomerType_example", openapiclient.external_account_vendor_values("PLAID"), "access-sandbox-de3ce8ef-33f8-452c-a685-8671031fc0f6", []string{"blgvvBlXw3cq5GMPwqB6s6q4dLKB9WcVqGDGo"}) // AddVendorAccountsRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -167,7 +167,7 @@ import (
 )
 
 func main() {
-    externalAccountAccessToken := *openapiclient.NewExternalAccountAccessToken("VendorCustomerId_example", "VendorPublicToken_example") // ExternalAccountAccessToken | 
+    externalAccountAccessToken := *openapiclient.NewExternalAccountAccessToken("VendorCustomerId_example", "VendorInstitutionId_example", "VendorPublicToken_example") // ExternalAccountAccessToken | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -231,7 +231,7 @@ import (
 )
 
 func main() {
-    externalAccountLinkToken := *openapiclient.NewExternalAccountLinkToken("ClientName_example", []string{"CountryCodes_example"}, *openapiclient.NewExternalAccountUser("aa3df486-1964-4e97-9088-bfb9807d6c83"), "Language_example") // ExternalAccountLinkToken | 
+    externalAccountLinkToken := *openapiclient.NewExternalAccountLinkToken("ClientName_example", []string{"CountryCodes_example"}, *openapiclient.NewExternalAccountUser("4d99ac03-ea07-4ef2-912e-751b530208db"), "Language_example") // ExternalAccountLinkToken | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -512,9 +512,9 @@ import (
 )
 
 func main() {
-    customerId := []string{"a23532f3-c720-4e1b-8064-12912e0e38bd"} // []string | A list of customer unique identifiers, with a comma separating any values. (optional)
+    customerId := []string{"f396ed38-faa7-481e-9ffe-821d1ddb5171"} // []string | A list of customer unique identifiers, with a comma separating any values. (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "19waxl0g93" // string |  (optional)
+    pageToken := "0w75x33ztx" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

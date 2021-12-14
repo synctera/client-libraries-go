@@ -13,18 +13,19 @@ Name | Type | Description | Notes
 **CardProgramId** | **string** | Program ID | 
 **CreationTime** | Pointer to **time.Time** | The timestamp representing when the card product was created | [optional] [readonly] 
 **EndDate** | Pointer to **time.Time** | The time when bin is decommissioned | [optional] 
+**FundingSourceId** | **string** | Funding source ID | 
 **Id** | Pointer to **string** | Card Product ID | [optional] [readonly] 
 **LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the card product was last modified | [optional] [readonly] 
 **Name** | **string** | The name of the card product | 
 **PartnerId** | **int32** | The ID of the partner card product belongs to | 
 **PhysicalCardFormat** | [**PhysicalCardFormat**](PhysicalCardFormat.md) |  | 
-**StartDate** | Pointer to **time.Time** | The time when bin goes live | [optional] 
+**StartDate** | **time.Time** | The time when bin goes live | 
 
 ## Methods
 
 ### NewCardProductCreateRequest
 
-`func NewCardProductCreateRequest(accountRangeId string, active bool, autoAllocateRange bool, bankId int32, binId string, cardFormat CardFormat, cardProgramId string, name string, partnerId int32, physicalCardFormat PhysicalCardFormat, ) *CardProductCreateRequest`
+`func NewCardProductCreateRequest(accountRangeId string, active bool, autoAllocateRange bool, bankId int32, binId string, cardFormat CardFormat, cardProgramId string, fundingSourceId string, name string, partnerId int32, physicalCardFormat PhysicalCardFormat, startDate time.Time, ) *CardProductCreateRequest`
 
 NewCardProductCreateRequest instantiates a new CardProductCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -229,6 +230,26 @@ SetEndDate sets EndDate field to given value.
 
 HasEndDate returns a boolean if a field has been set.
 
+### GetFundingSourceId
+
+`func (o *CardProductCreateRequest) GetFundingSourceId() string`
+
+GetFundingSourceId returns the FundingSourceId field if non-nil, zero value otherwise.
+
+### GetFundingSourceIdOk
+
+`func (o *CardProductCreateRequest) GetFundingSourceIdOk() (*string, bool)`
+
+GetFundingSourceIdOk returns a tuple with the FundingSourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFundingSourceId
+
+`func (o *CardProductCreateRequest) SetFundingSourceId(v string)`
+
+SetFundingSourceId sets FundingSourceId field to given value.
+
+
 ### GetId
 
 `func (o *CardProductCreateRequest) GetId() string`
@@ -358,11 +379,6 @@ and a boolean to check if the value has been set.
 
 SetStartDate sets StartDate field to given value.
 
-### HasStartDate
-
-`func (o *CardProductCreateRequest) HasStartDate() bool`
-
-HasStartDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

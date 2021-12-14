@@ -90,6 +90,16 @@ and a boolean to check if the value has been set.
 SetMetadata sets Metadata field to given value.
 
 
+### SetMetadataNil
+
+`func (o *PostedTransactionData) SetMetadataNil(b bool)`
+
+ SetMetadataNil sets the value for Metadata to be an explicit nil
+
+### UnsetMetadata
+`func (o *PostedTransactionData) UnsetMetadata()`
+
+UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetOriginalTrx
 
 `func (o *PostedTransactionData) GetOriginalTrx() string`
@@ -135,6 +145,16 @@ and a boolean to check if the value has been set.
 SetRiskInfo sets RiskInfo field to given value.
 
 
+### SetRiskInfoNil
+
+`func (o *PostedTransactionData) SetRiskInfoNil(b bool)`
+
+ SetRiskInfoNil sets the value for RiskInfo to be an explicit nil
+
+### UnsetRiskInfo
+`func (o *PostedTransactionData) UnsetRiskInfo()`
+
+UnsetRiskInfo ensures that no value is present for RiskInfo, not even an explicit nil
 ### GetUserData
 
 `func (o *PostedTransactionData) GetUserData() map[string]interface{}`
@@ -155,6 +175,16 @@ and a boolean to check if the value has been set.
 SetUserData sets UserData field to given value.
 
 
+### SetUserDataNil
+
+`func (o *PostedTransactionData) SetUserDataNil(b bool)`
+
+ SetUserDataNil sets the value for UserData to be an explicit nil
+
+### UnsetUserData
+`func (o *PostedTransactionData) UnsetUserData()`
+
+UnsetUserData ensures that no value is present for UserData, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
