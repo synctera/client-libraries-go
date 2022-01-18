@@ -673,7 +673,7 @@ import (
 func main() {
     accountId := TODO // string | Unique identifier for the account.
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -748,7 +748,7 @@ import (
 func main() {
     productType := "productType_example" // string | Type of account product
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
     startDate := time.Now() // string | Date range filtering for type INTEREST. All rates in interest resource have to have valid_from later or equal to start_date. (optional)
     endDate := time.Now() // string | Date range filtering for type INTEREST. All rates in interest resource have to have valid_to earlier or equal to end_date. (optional)
 
@@ -821,7 +821,7 @@ import (
 
 func main() {
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -869,7 +869,7 @@ Name | Type | Description  | Notes
 
 ## ListAccounts
 
-> AccountList ListAccounts(ctx).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).Execute()
+> AccountList ListAccounts(ctx).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
 
 List accounts
 
@@ -896,11 +896,12 @@ func main() {
     firstName := "Alice" // string |  (optional)
     lastName := "Smith" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
+    sortBy := []string{"SortBy_example"} // []string | Specifies the sort order for the returned accounts.  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).Execute()
+    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -930,6 +931,7 @@ Name | Type | Description  | Notes
  **lastName** | **string** |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
+ **sortBy** | **[]string** | Specifies the sort order for the returned accounts.  | 
 
 ### Return type
 

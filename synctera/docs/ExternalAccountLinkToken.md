@@ -6,23 +6,22 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientName** | **string** | The name of your application, as it should be displayed in Link. Maximum length of 30 characters. | 
 **CountryCodes** | **[]string** | Country codes in the ISO-3166-1 alpha-2 country code standard. | 
-**Expiration** | Pointer to **time.Time** | The expiration date for the link_token. Expires in 4 hours. | [optional] 
-**ExternalAccountId** | Pointer to **string** | The ID of the linked external account. Optional parameter, only passed when the link token is required to be refreshed. An external account&#39;s access_token does not change when the link token is refreshed, obtaining a new access_token is not required  | [optional] 
-**ExternalAccountUser** | [**ExternalAccountUser**](ExternalAccountUser.md) |  | 
-**Language** | **string** | The language that Link should be displayed in. | 
+**CustomerId** | **string** | The ID of the customer | 
+**Expiration** | Pointer to **time.Time** | The expiration date for the link_token. Expires in 4 hours. | [optional] [readonly] 
+**Language** | **string** | The language that corresponds to the link token. For Plaid, see their [documentation](https://plaid.com/docs/api/tokens/#link-token-create-request-language) for a list of allowed values.  | 
 **LinkCustomizationName** | Pointer to **string** | The name of the Link customization from the Plaid Dashboard to be applied to Link. If not specified, the default customization will be used. When using a Link customization, the language in the customization must match the language selected via the language parameter, and the countries in the customization should match the country codes selected via country_codes.  | [optional] 
 **LinkToken** | Pointer to **string** | A link_token, which can be supplied to Link in order to initialize it and receive a public_token, which can be exchanged for an access_token.  | [optional] [readonly] 
-**Products** | Pointer to **[]string** |  | [optional] 
 **RedirectUri** | Pointer to **string** | A URI indicating the destination where a user should be forwarded after completing the Link flow; used to support OAuth authentication flows when launching Link in the browser or via a webview.  | [optional] 
 **RequestId** | Pointer to **string** | A unique identifier for the request, which can be used for troubleshooting. | [optional] [readonly] 
-**VendorAccessToken** | Pointer to **string** | The access_token associated with the Item to update, used when updating or modifying an existing access_token. Used when launching Link in update mode, when completing the Same-day (manual) Micro-deposit flow, or (optionally) when initializing Link as part of the Payment Initiation (UK and Europe) flow.  | [optional] 
-**Webhook** | Pointer to **string** | The destination URL to which any webhooks should be sent. | [optional] 
+**Type** | **string** | The type of the link token. DEPOSITORY for checking and savings accounts, CREDIT for credit card type accounts. | 
+**VendorAccessToken** | Pointer to **string** | The access token associated with the Item data is being requested for. | [optional] 
+**VendorInstitutionId** | Pointer to **string** | The ID of the institution the access token is requested for. If present the link token will be created in an update mode.  | [optional] 
 
 ## Methods
 
 ### NewExternalAccountLinkToken
 
-`func NewExternalAccountLinkToken(clientName string, countryCodes []string, externalAccountUser ExternalAccountUser, language string, ) *ExternalAccountLinkToken`
+`func NewExternalAccountLinkToken(clientName string, countryCodes []string, customerId string, language string, type_ string, ) *ExternalAccountLinkToken`
 
 NewExternalAccountLinkToken instantiates a new ExternalAccountLinkToken object
 This constructor will assign default values to properties that have it defined,
@@ -77,6 +76,26 @@ and a boolean to check if the value has been set.
 SetCountryCodes sets CountryCodes field to given value.
 
 
+### GetCustomerId
+
+`func (o *ExternalAccountLinkToken) GetCustomerId() string`
+
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+
+### GetCustomerIdOk
+
+`func (o *ExternalAccountLinkToken) GetCustomerIdOk() (*string, bool)`
+
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerId
+
+`func (o *ExternalAccountLinkToken) SetCustomerId(v string)`
+
+SetCustomerId sets CustomerId field to given value.
+
+
 ### GetExpiration
 
 `func (o *ExternalAccountLinkToken) GetExpiration() time.Time`
@@ -101,51 +120,6 @@ SetExpiration sets Expiration field to given value.
 `func (o *ExternalAccountLinkToken) HasExpiration() bool`
 
 HasExpiration returns a boolean if a field has been set.
-
-### GetExternalAccountId
-
-`func (o *ExternalAccountLinkToken) GetExternalAccountId() string`
-
-GetExternalAccountId returns the ExternalAccountId field if non-nil, zero value otherwise.
-
-### GetExternalAccountIdOk
-
-`func (o *ExternalAccountLinkToken) GetExternalAccountIdOk() (*string, bool)`
-
-GetExternalAccountIdOk returns a tuple with the ExternalAccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExternalAccountId
-
-`func (o *ExternalAccountLinkToken) SetExternalAccountId(v string)`
-
-SetExternalAccountId sets ExternalAccountId field to given value.
-
-### HasExternalAccountId
-
-`func (o *ExternalAccountLinkToken) HasExternalAccountId() bool`
-
-HasExternalAccountId returns a boolean if a field has been set.
-
-### GetExternalAccountUser
-
-`func (o *ExternalAccountLinkToken) GetExternalAccountUser() ExternalAccountUser`
-
-GetExternalAccountUser returns the ExternalAccountUser field if non-nil, zero value otherwise.
-
-### GetExternalAccountUserOk
-
-`func (o *ExternalAccountLinkToken) GetExternalAccountUserOk() (*ExternalAccountUser, bool)`
-
-GetExternalAccountUserOk returns a tuple with the ExternalAccountUser field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExternalAccountUser
-
-`func (o *ExternalAccountLinkToken) SetExternalAccountUser(v ExternalAccountUser)`
-
-SetExternalAccountUser sets ExternalAccountUser field to given value.
-
 
 ### GetLanguage
 
@@ -217,31 +191,6 @@ SetLinkToken sets LinkToken field to given value.
 
 HasLinkToken returns a boolean if a field has been set.
 
-### GetProducts
-
-`func (o *ExternalAccountLinkToken) GetProducts() []string`
-
-GetProducts returns the Products field if non-nil, zero value otherwise.
-
-### GetProductsOk
-
-`func (o *ExternalAccountLinkToken) GetProductsOk() (*[]string, bool)`
-
-GetProductsOk returns a tuple with the Products field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProducts
-
-`func (o *ExternalAccountLinkToken) SetProducts(v []string)`
-
-SetProducts sets Products field to given value.
-
-### HasProducts
-
-`func (o *ExternalAccountLinkToken) HasProducts() bool`
-
-HasProducts returns a boolean if a field has been set.
-
 ### GetRedirectUri
 
 `func (o *ExternalAccountLinkToken) GetRedirectUri() string`
@@ -292,6 +241,26 @@ SetRequestId sets RequestId field to given value.
 
 HasRequestId returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *ExternalAccountLinkToken) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ExternalAccountLinkToken) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ExternalAccountLinkToken) SetType(v string)`
+
+SetType sets Type field to given value.
+
+
 ### GetVendorAccessToken
 
 `func (o *ExternalAccountLinkToken) GetVendorAccessToken() string`
@@ -317,30 +286,30 @@ SetVendorAccessToken sets VendorAccessToken field to given value.
 
 HasVendorAccessToken returns a boolean if a field has been set.
 
-### GetWebhook
+### GetVendorInstitutionId
 
-`func (o *ExternalAccountLinkToken) GetWebhook() string`
+`func (o *ExternalAccountLinkToken) GetVendorInstitutionId() string`
 
-GetWebhook returns the Webhook field if non-nil, zero value otherwise.
+GetVendorInstitutionId returns the VendorInstitutionId field if non-nil, zero value otherwise.
 
-### GetWebhookOk
+### GetVendorInstitutionIdOk
 
-`func (o *ExternalAccountLinkToken) GetWebhookOk() (*string, bool)`
+`func (o *ExternalAccountLinkToken) GetVendorInstitutionIdOk() (*string, bool)`
 
-GetWebhookOk returns a tuple with the Webhook field if it's non-nil, zero value otherwise
+GetVendorInstitutionIdOk returns a tuple with the VendorInstitutionId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWebhook
+### SetVendorInstitutionId
 
-`func (o *ExternalAccountLinkToken) SetWebhook(v string)`
+`func (o *ExternalAccountLinkToken) SetVendorInstitutionId(v string)`
 
-SetWebhook sets Webhook field to given value.
+SetVendorInstitutionId sets VendorInstitutionId field to given value.
 
-### HasWebhook
+### HasVendorInstitutionId
 
-`func (o *ExternalAccountLinkToken) HasWebhook() bool`
+`func (o *ExternalAccountLinkToken) HasVendorInstitutionId() bool`
 
-HasWebhook returns a boolean if a field has been set.
+HasVendorInstitutionId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EventResource** | Pointer to **map[string]interface{}** | Json string of object associated with the event. For example, if your event is ACCOUNT.STATUS_CHANGE, You can refer to Acccount to parse the account event to obtain the ID, status etc.   | [optional] 
+**EventResource** | Pointer to **map[string]interface{}** | Json string of object associated with the event. For example, if your event is ACCOUNT.CREATED, You can refer to Acccount to parse the account event to obtain the ID, status etc.  | [optional] 
 **EventTime** | Pointer to **time.Time** | Timestamp of the current event raised | [optional] 
 **Id** | Pointer to **string** | Unique event ID of the webhook request. Use event endpoints to get more event summary data | [optional] [readonly] 
 **Metadata** | Pointer to **string** | Metadata that stored in the webhook subscription | [optional] 

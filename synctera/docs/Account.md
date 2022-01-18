@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **IsAccountPool** | Pointer to **bool** | Account is investment (variable balance) account or a multi-balance account pool. Default false | [optional] 
 **LastUpdatedTime** | Pointer to **time.Time** | Timestamp of the last account modification in RFC3337 format | [optional] [readonly] 
 **OverdraftLimit** | Pointer to **int64** | Account&#39;s overdraft limit | [optional] 
+**SpendingLimits** | Pointer to [**SpendingLimits**](SpendingLimits.md) |  | [optional] 
 **Status** | Pointer to [**Status**](Status.md) |  | [optional] 
 **SwiftCode** | Pointer to **string** | SWIFT code | [optional] 
 
@@ -467,6 +468,31 @@ SetOverdraftLimit sets OverdraftLimit field to given value.
 `func (o *Account) HasOverdraftLimit() bool`
 
 HasOverdraftLimit returns a boolean if a field has been set.
+
+### GetSpendingLimits
+
+`func (o *Account) GetSpendingLimits() SpendingLimits`
+
+GetSpendingLimits returns the SpendingLimits field if non-nil, zero value otherwise.
+
+### GetSpendingLimitsOk
+
+`func (o *Account) GetSpendingLimitsOk() (*SpendingLimits, bool)`
+
+GetSpendingLimitsOk returns a tuple with the SpendingLimits field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpendingLimits
+
+`func (o *Account) SetSpendingLimits(v SpendingLimits)`
+
+SetSpendingLimits sets SpendingLimits field to given value.
+
+### HasSpendingLimits
+
+`func (o *Account) HasSpendingLimits() bool`
+
+HasSpendingLimits returns a boolean if a field has been set.
 
 ### GetStatus
 

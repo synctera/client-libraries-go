@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Unique ID for this verification result. | [optional] 
-**Issues** | Pointer to **[]string** | List of potential problems found. These are subject to change.  | [optional] 
+**Id** | Pointer to **string** | Unique ID for this verification result. | [optional] [readonly] 
+**Issues** | Pointer to **[]string** | List of potential problems found. These are subject to change.  | [optional] [readonly] 
 **RawResponse** | Pointer to [**RawResponse**](RawResponse.md) |  | [optional] 
 **Result** | **string** | The determination of this verification. | 
 **VendorInfo** | Pointer to [**VendorInfo**](VendorInfo.md) |  | [optional] 

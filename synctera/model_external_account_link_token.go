@@ -21,38 +21,39 @@ type ExternalAccountLinkToken struct {
 	ClientName string `json:"client_name"`
 	// Country codes in the ISO-3166-1 alpha-2 country code standard.
 	CountryCodes []string `json:"country_codes"`
+	// The ID of the customer
+	CustomerId string `json:"customer_id"`
 	// The expiration date for the link_token. Expires in 4 hours.
 	Expiration *time.Time `json:"expiration,omitempty"`
-	// The ID of the linked external account. Optional parameter, only passed when the link token is required to be refreshed. An external account's access_token does not change when the link token is refreshed, obtaining a new access_token is not required 
-	ExternalAccountId *string `json:"external_account_id,omitempty"`
-	ExternalAccountUser ExternalAccountUser `json:"external_account_user"`
-	// The language that Link should be displayed in.
+	// The language that corresponds to the link token. For Plaid, see their [documentation](https://plaid.com/docs/api/tokens/#link-token-create-request-language) for a list of allowed values. 
 	Language string `json:"language"`
 	// The name of the Link customization from the Plaid Dashboard to be applied to Link. If not specified, the default customization will be used. When using a Link customization, the language in the customization must match the language selected via the language parameter, and the countries in the customization should match the country codes selected via country_codes. 
 	LinkCustomizationName *string `json:"link_customization_name,omitempty"`
 	// A link_token, which can be supplied to Link in order to initialize it and receive a public_token, which can be exchanged for an access_token. 
 	LinkToken *string `json:"link_token,omitempty"`
-	Products *[]string `json:"products,omitempty"`
 	// A URI indicating the destination where a user should be forwarded after completing the Link flow; used to support OAuth authentication flows when launching Link in the browser or via a webview. 
 	RedirectUri *string `json:"redirect_uri,omitempty"`
 	// A unique identifier for the request, which can be used for troubleshooting.
 	RequestId *string `json:"request_id,omitempty"`
-	// The access_token associated with the Item to update, used when updating or modifying an existing access_token. Used when launching Link in update mode, when completing the Same-day (manual) Micro-deposit flow, or (optionally) when initializing Link as part of the Payment Initiation (UK and Europe) flow. 
+	// The type of the link token. DEPOSITORY for checking and savings accounts, CREDIT for credit card type accounts.
+	Type string `json:"type"`
+	// The access token associated with the Item data is being requested for.
 	VendorAccessToken *string `json:"vendor_access_token,omitempty"`
-	// The destination URL to which any webhooks should be sent.
-	Webhook *string `json:"webhook,omitempty"`
+	// The ID of the institution the access token is requested for. If present the link token will be created in an update mode. 
+	VendorInstitutionId *string `json:"vendor_institution_id,omitempty"`
 }
 
 // NewExternalAccountLinkToken instantiates a new ExternalAccountLinkToken object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExternalAccountLinkToken(clientName string, countryCodes []string, externalAccountUser ExternalAccountUser, language string) *ExternalAccountLinkToken {
+func NewExternalAccountLinkToken(clientName string, countryCodes []string, customerId string, language string, type_ string) *ExternalAccountLinkToken {
 	this := ExternalAccountLinkToken{}
 	this.ClientName = clientName
 	this.CountryCodes = countryCodes
-	this.ExternalAccountUser = externalAccountUser
+	this.CustomerId = customerId
 	this.Language = language
+	this.Type = type_
 	return &this
 }
 
@@ -112,6 +113,30 @@ func (o *ExternalAccountLinkToken) SetCountryCodes(v []string) {
 	o.CountryCodes = v
 }
 
+// GetCustomerId returns the CustomerId field value
+func (o *ExternalAccountLinkToken) GetCustomerId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccountLinkToken) GetCustomerIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.CustomerId, true
+}
+
+// SetCustomerId sets field value
+func (o *ExternalAccountLinkToken) SetCustomerId(v string) {
+	o.CustomerId = v
+}
+
 // GetExpiration returns the Expiration field value if set, zero value otherwise.
 func (o *ExternalAccountLinkToken) GetExpiration() time.Time {
 	if o == nil || o.Expiration == nil {
@@ -142,62 +167,6 @@ func (o *ExternalAccountLinkToken) HasExpiration() bool {
 // SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
 func (o *ExternalAccountLinkToken) SetExpiration(v time.Time) {
 	o.Expiration = &v
-}
-
-// GetExternalAccountId returns the ExternalAccountId field value if set, zero value otherwise.
-func (o *ExternalAccountLinkToken) GetExternalAccountId() string {
-	if o == nil || o.ExternalAccountId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ExternalAccountId
-}
-
-// GetExternalAccountIdOk returns a tuple with the ExternalAccountId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ExternalAccountLinkToken) GetExternalAccountIdOk() (*string, bool) {
-	if o == nil || o.ExternalAccountId == nil {
-		return nil, false
-	}
-	return o.ExternalAccountId, true
-}
-
-// HasExternalAccountId returns a boolean if a field has been set.
-func (o *ExternalAccountLinkToken) HasExternalAccountId() bool {
-	if o != nil && o.ExternalAccountId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalAccountId gets a reference to the given string and assigns it to the ExternalAccountId field.
-func (o *ExternalAccountLinkToken) SetExternalAccountId(v string) {
-	o.ExternalAccountId = &v
-}
-
-// GetExternalAccountUser returns the ExternalAccountUser field value
-func (o *ExternalAccountLinkToken) GetExternalAccountUser() ExternalAccountUser {
-	if o == nil {
-		var ret ExternalAccountUser
-		return ret
-	}
-
-	return o.ExternalAccountUser
-}
-
-// GetExternalAccountUserOk returns a tuple with the ExternalAccountUser field value
-// and a boolean to check if the value has been set.
-func (o *ExternalAccountLinkToken) GetExternalAccountUserOk() (*ExternalAccountUser, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.ExternalAccountUser, true
-}
-
-// SetExternalAccountUser sets field value
-func (o *ExternalAccountLinkToken) SetExternalAccountUser(v ExternalAccountUser) {
-	o.ExternalAccountUser = v
 }
 
 // GetLanguage returns the Language field value
@@ -288,38 +257,6 @@ func (o *ExternalAccountLinkToken) SetLinkToken(v string) {
 	o.LinkToken = &v
 }
 
-// GetProducts returns the Products field value if set, zero value otherwise.
-func (o *ExternalAccountLinkToken) GetProducts() []string {
-	if o == nil || o.Products == nil {
-		var ret []string
-		return ret
-	}
-	return *o.Products
-}
-
-// GetProductsOk returns a tuple with the Products field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ExternalAccountLinkToken) GetProductsOk() (*[]string, bool) {
-	if o == nil || o.Products == nil {
-		return nil, false
-	}
-	return o.Products, true
-}
-
-// HasProducts returns a boolean if a field has been set.
-func (o *ExternalAccountLinkToken) HasProducts() bool {
-	if o != nil && o.Products != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProducts gets a reference to the given []string and assigns it to the Products field.
-func (o *ExternalAccountLinkToken) SetProducts(v []string) {
-	o.Products = &v
-}
-
 // GetRedirectUri returns the RedirectUri field value if set, zero value otherwise.
 func (o *ExternalAccountLinkToken) GetRedirectUri() string {
 	if o == nil || o.RedirectUri == nil {
@@ -384,6 +321,30 @@ func (o *ExternalAccountLinkToken) SetRequestId(v string) {
 	o.RequestId = &v
 }
 
+// GetType returns the Type field value
+func (o *ExternalAccountLinkToken) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccountLinkToken) GetTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *ExternalAccountLinkToken) SetType(v string) {
+	o.Type = v
+}
+
 // GetVendorAccessToken returns the VendorAccessToken field value if set, zero value otherwise.
 func (o *ExternalAccountLinkToken) GetVendorAccessToken() string {
 	if o == nil || o.VendorAccessToken == nil {
@@ -416,36 +377,36 @@ func (o *ExternalAccountLinkToken) SetVendorAccessToken(v string) {
 	o.VendorAccessToken = &v
 }
 
-// GetWebhook returns the Webhook field value if set, zero value otherwise.
-func (o *ExternalAccountLinkToken) GetWebhook() string {
-	if o == nil || o.Webhook == nil {
+// GetVendorInstitutionId returns the VendorInstitutionId field value if set, zero value otherwise.
+func (o *ExternalAccountLinkToken) GetVendorInstitutionId() string {
+	if o == nil || o.VendorInstitutionId == nil {
 		var ret string
 		return ret
 	}
-	return *o.Webhook
+	return *o.VendorInstitutionId
 }
 
-// GetWebhookOk returns a tuple with the Webhook field value if set, nil otherwise
+// GetVendorInstitutionIdOk returns a tuple with the VendorInstitutionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExternalAccountLinkToken) GetWebhookOk() (*string, bool) {
-	if o == nil || o.Webhook == nil {
+func (o *ExternalAccountLinkToken) GetVendorInstitutionIdOk() (*string, bool) {
+	if o == nil || o.VendorInstitutionId == nil {
 		return nil, false
 	}
-	return o.Webhook, true
+	return o.VendorInstitutionId, true
 }
 
-// HasWebhook returns a boolean if a field has been set.
-func (o *ExternalAccountLinkToken) HasWebhook() bool {
-	if o != nil && o.Webhook != nil {
+// HasVendorInstitutionId returns a boolean if a field has been set.
+func (o *ExternalAccountLinkToken) HasVendorInstitutionId() bool {
+	if o != nil && o.VendorInstitutionId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetWebhook gets a reference to the given string and assigns it to the Webhook field.
-func (o *ExternalAccountLinkToken) SetWebhook(v string) {
-	o.Webhook = &v
+// SetVendorInstitutionId gets a reference to the given string and assigns it to the VendorInstitutionId field.
+func (o *ExternalAccountLinkToken) SetVendorInstitutionId(v string) {
+	o.VendorInstitutionId = &v
 }
 
 func (o ExternalAccountLinkToken) MarshalJSON() ([]byte, error) {
@@ -456,14 +417,11 @@ func (o ExternalAccountLinkToken) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["country_codes"] = o.CountryCodes
 	}
+	if true {
+		toSerialize["customer_id"] = o.CustomerId
+	}
 	if o.Expiration != nil {
 		toSerialize["expiration"] = o.Expiration
-	}
-	if o.ExternalAccountId != nil {
-		toSerialize["external_account_id"] = o.ExternalAccountId
-	}
-	if true {
-		toSerialize["external_account_user"] = o.ExternalAccountUser
 	}
 	if true {
 		toSerialize["language"] = o.Language
@@ -474,20 +432,20 @@ func (o ExternalAccountLinkToken) MarshalJSON() ([]byte, error) {
 	if o.LinkToken != nil {
 		toSerialize["link_token"] = o.LinkToken
 	}
-	if o.Products != nil {
-		toSerialize["products"] = o.Products
-	}
 	if o.RedirectUri != nil {
 		toSerialize["redirect_uri"] = o.RedirectUri
 	}
 	if o.RequestId != nil {
 		toSerialize["request_id"] = o.RequestId
 	}
+	if true {
+		toSerialize["type"] = o.Type
+	}
 	if o.VendorAccessToken != nil {
 		toSerialize["vendor_access_token"] = o.VendorAccessToken
 	}
-	if o.Webhook != nil {
-		toSerialize["webhook"] = o.Webhook
+	if o.VendorInstitutionId != nil {
+		toSerialize["vendor_institution_id"] = o.VendorInstitutionId
 	}
 	return json.Marshal(toSerialize)
 }

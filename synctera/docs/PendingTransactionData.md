@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **DcSign** | [**DcSign**](DcSign.md) |  | 
 **EffectiveDate** | **time.Time** | The effective date of the transaction once it gets posted | 
 **ExpiresAt** | **time.Time** | The date that at which this hold is no longer valid. | 
+**ExternalData** | **map[string]interface{}** | an unstructured json blob representing additional transaction information supplied by the integrator. | 
 **ForcePost** | **bool** | Whether or not the hold was forced (spending controls ignored) | 
 **History** | [**[]PendingTransactionHistory**](PendingTransactionHistory.md) | An array representing any previous states of the hold, if it has been modified (For example, increasing or decreasing the hold amount). | 
 **Network** | **string** | The network this transaction is associated with | 
@@ -29,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewPendingTransactionData
 
-`func NewPendingTransactionData(amount int32, availBalance int32, balance int32, currency string, dcSign DcSign, effectiveDate time.Time, expiresAt time.Time, forcePost bool, history []PendingTransactionHistory, network string, operation string, reason string, reqAmount int32, riskInfo map[string]interface{}, status string, subtype string, totalAmount int32, type_ string, userData map[string]interface{}, wasPartial bool, ) *PendingTransactionData`
+`func NewPendingTransactionData(amount int32, availBalance int32, balance int32, currency string, dcSign DcSign, effectiveDate time.Time, expiresAt time.Time, externalData map[string]interface{}, forcePost bool, history []PendingTransactionHistory, network string, operation string, reason string, reqAmount int32, riskInfo map[string]interface{}, status string, subtype string, totalAmount int32, type_ string, userData map[string]interface{}, wasPartial bool, ) *PendingTransactionData`
 
 NewPendingTransactionData instantiates a new PendingTransactionData object
 This constructor will assign default values to properties that have it defined,
@@ -184,6 +185,36 @@ and a boolean to check if the value has been set.
 SetExpiresAt sets ExpiresAt field to given value.
 
 
+### GetExternalData
+
+`func (o *PendingTransactionData) GetExternalData() map[string]interface{}`
+
+GetExternalData returns the ExternalData field if non-nil, zero value otherwise.
+
+### GetExternalDataOk
+
+`func (o *PendingTransactionData) GetExternalDataOk() (*map[string]interface{}, bool)`
+
+GetExternalDataOk returns a tuple with the ExternalData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalData
+
+`func (o *PendingTransactionData) SetExternalData(v map[string]interface{})`
+
+SetExternalData sets ExternalData field to given value.
+
+
+### SetExternalDataNil
+
+`func (o *PendingTransactionData) SetExternalDataNil(b bool)`
+
+ SetExternalDataNil sets the value for ExternalData to be an explicit nil
+
+### UnsetExternalData
+`func (o *PendingTransactionData) UnsetExternalData()`
+
+UnsetExternalData ensures that no value is present for ExternalData, not even an explicit nil
 ### GetForcePost
 
 `func (o *PendingTransactionData) GetForcePost() bool`

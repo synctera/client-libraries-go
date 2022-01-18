@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ContentType** | **string** | Describes the content-type encoding received from the vendor. | 
-**Details** | [**[]Detail**](Detail.md) | Array of vendor specific information. | 
+**Details** | Pointer to [**[]Detail**](Detail.md) | Array of vendor specific information. | [optional] [readonly] 
 **Json** | **map[string]interface{}** | Data representation in JSON. | 
 **Vendor** | **string** | Name of the vendor used. | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewVendorJson
 
-`func NewVendorJson(contentType string, details []Detail, json map[string]interface{}, vendor string, ) *VendorJson`
+`func NewVendorJson(contentType string, json map[string]interface{}, vendor string, ) *VendorJson`
 
 NewVendorJson instantiates a new VendorJson object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +67,11 @@ and a boolean to check if the value has been set.
 
 SetDetails sets Details field to given value.
 
+### HasDetails
+
+`func (o *VendorJson) HasDetails() bool`
+
+HasDetails returns a boolean if a field has been set.
 
 ### GetJson
 

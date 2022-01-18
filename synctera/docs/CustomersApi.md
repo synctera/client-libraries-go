@@ -41,7 +41,7 @@ import (
 )
 
 func main() {
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Mozell", "Mayert", "Status_example")} // CustomerInPath | Customer to create
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Sallie", "Abernathy", "Status_example")} // CustomerInPath | Customer to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -592,7 +592,7 @@ Name | Type | Description  | Notes
 
 ## ListCustomers
 
-> CustomerList ListCustomers(ctx).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Limit(limit).PageToken(pageToken).Execute()
+> CustomerList ListCustomers(ctx).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
 
 List Customers
 
@@ -619,11 +619,12 @@ func main() {
     ssnLast4 := "6789" // string |  (optional)
     status := "ACTIVE" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
+    sortBy := []string{"SortBy_example"} // []string | Specifies the sort order for the returned customers.  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.ListCustomers(context.Background()).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Limit(limit).PageToken(pageToken).Execute()
+    resp, r, err := api_client.CustomersApi.ListCustomers(context.Background()).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.ListCustomers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -653,6 +654,7 @@ Name | Type | Description  | Notes
  **status** | **string** |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
+ **sortBy** | **[]string** | Specifies the sort order for the returned customers.  | 
 
 ### Return type
 
@@ -677,6 +679,8 @@ Name | Type | Description  | Notes
 > CustomerInPath PatchCustomer(ctx, customerId).PatchCustomer(patchCustomer).Execute()
 
 Patch Customer
+
+
 
 ### Example
 
@@ -765,7 +769,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Mozell", "Mayert", "Status_example")} // CustomerInPath | Customer to be updated
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "Sallie", "Abernathy", "Status_example")} // CustomerInPath | Customer to be updated
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

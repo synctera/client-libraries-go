@@ -22,6 +22,8 @@ type InternalTransfer struct {
 	Currency string `json:"currency"`
 	// A short note to the recipient
 	Memo *string `json:"memo,omitempty"`
+	// Arbitrary key-value metadata to associate with the transaction
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// An alias representing a GL account to debit. This is alternative to specifying by account id
 	OriginatingAccountAlias *string `json:"originating_account_alias,omitempty"`
 	// The UUID of the account being debited
@@ -134,6 +136,38 @@ func (o *InternalTransfer) HasMemo() bool {
 // SetMemo gets a reference to the given string and assigns it to the Memo field.
 func (o *InternalTransfer) SetMemo(v string) {
 	o.Memo = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *InternalTransfer) GetMetadata() map[string]interface{} {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InternalTransfer) GetMetadataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *InternalTransfer) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *InternalTransfer) SetMetadata(v map[string]interface{}) {
+	o.Metadata = &v
 }
 
 // GetOriginatingAccountAlias returns the OriginatingAccountAlias field value if set, zero value otherwise.
@@ -330,6 +364,9 @@ func (o InternalTransfer) MarshalJSON() ([]byte, error) {
 	}
 	if o.Memo != nil {
 		toSerialize["memo"] = o.Memo
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if o.OriginatingAccountAlias != nil {
 		toSerialize["originating_account_alias"] = o.OriginatingAccountAlias

@@ -385,7 +385,7 @@ func main() {
     startDate := time.Now() // string | Start date of the search range (optional)
     endDate := time.Now() // string | End date of the search range (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -460,7 +460,7 @@ import (
 
 func main() {
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
     isEnabledOnly := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()

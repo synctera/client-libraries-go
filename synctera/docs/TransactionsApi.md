@@ -248,7 +248,7 @@ func main() {
     toDate := time.Now() // string | Only display transactions with a posting date less than or equal to to_date (optional)
     status := "status_example" // string | The status of the transaction (optional) (default to "PENDING")
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -326,7 +326,7 @@ func main() {
     fromDate := time.Now() // string | Only display transactions with a posting date greater than from_date (optional)
     toDate := time.Now() // string | Only display transactions with a posting date less than or equal to to_date (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

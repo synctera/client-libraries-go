@@ -33,6 +33,7 @@ type TemplateFields struct {
 	IsP2pEnabled *bool `json:"is_p2p_enabled,omitempty"`
 	// Account's overdraft limit. Default is 0
 	OverdraftLimit *int64 `json:"overdraft_limit,omitempty"`
+	SpendingLimits *SpendingLimits `json:"spending_limits,omitempty"`
 }
 
 // NewTemplateFields instantiates a new TemplateFields object
@@ -319,6 +320,38 @@ func (o *TemplateFields) SetOverdraftLimit(v int64) {
 	o.OverdraftLimit = &v
 }
 
+// GetSpendingLimits returns the SpendingLimits field value if set, zero value otherwise.
+func (o *TemplateFields) GetSpendingLimits() SpendingLimits {
+	if o == nil || o.SpendingLimits == nil {
+		var ret SpendingLimits
+		return ret
+	}
+	return *o.SpendingLimits
+}
+
+// GetSpendingLimitsOk returns a tuple with the SpendingLimits field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateFields) GetSpendingLimitsOk() (*SpendingLimits, bool) {
+	if o == nil || o.SpendingLimits == nil {
+		return nil, false
+	}
+	return o.SpendingLimits, true
+}
+
+// HasSpendingLimits returns a boolean if a field has been set.
+func (o *TemplateFields) HasSpendingLimits() bool {
+	if o != nil && o.SpendingLimits != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSpendingLimits gets a reference to the given SpendingLimits and assigns it to the SpendingLimits field.
+func (o *TemplateFields) SetSpendingLimits(v SpendingLimits) {
+	o.SpendingLimits = &v
+}
+
 func (o TemplateFields) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -347,6 +380,9 @@ func (o TemplateFields) MarshalJSON() ([]byte, error) {
 	}
 	if o.OverdraftLimit != nil {
 		toSerialize["overdraft_limit"] = o.OverdraftLimit
+	}
+	if o.SpendingLimits != nil {
+		toSerialize["spending_limits"] = o.SpendingLimits
 	}
 	return json.Marshal(toSerialize)
 }

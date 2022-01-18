@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Amount** | **int32** | The amount (in cents) to transfer from originating account to receiving account. | 
 **Currency** | **string** | ISO 4217 alphabetic currency code of the transfer amount | 
 **Memo** | Pointer to **string** | A short note to the recipient | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata to associate with the transaction | [optional] 
 **OriginatingAccountAlias** | Pointer to **string** | An alias representing a GL account to debit. This is alternative to specifying by account id | [optional] 
 **OriginatingAccountId** | Pointer to **string** | The UUID of the account being debited | [optional] 
 **ReceivingAccountAlias** | Pointer to **string** | An alias representing a GL account to credit. This is an alternative to specifying by account id | [optional] 
@@ -97,6 +98,31 @@ SetMemo sets Memo field to given value.
 `func (o *InternalTransfer) HasMemo() bool`
 
 HasMemo returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *InternalTransfer) GetMetadata() map[string]interface{}`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *InternalTransfer) GetMetadataOk() (*map[string]interface{}, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *InternalTransfer) SetMetadata(v map[string]interface{})`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *InternalTransfer) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 ### GetOriginatingAccountAlias
 

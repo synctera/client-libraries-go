@@ -17,8 +17,10 @@ import (
 
 // BaseAccountVerification struct for BaseAccountVerification
 type BaseAccountVerification struct {
-	CreationTime time.Time `json:"creation_time"`
-	LastUpdatedTime time.Time `json:"last_updated_time"`
+	// The time at which verification was first completed.
+	CreationTime *time.Time `json:"creation_time,omitempty"`
+	// The time at which verification was last updated.
+	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
 	// The status of verification
 	Status string `json:"status"`
 	// The vendor used for verifying the account
@@ -29,10 +31,8 @@ type BaseAccountVerification struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBaseAccountVerification(creationTime time.Time, lastUpdatedTime time.Time, status string, vendor string) *BaseAccountVerification {
+func NewBaseAccountVerification(status string, vendor string) *BaseAccountVerification {
 	this := BaseAccountVerification{}
-	this.CreationTime = creationTime
-	this.LastUpdatedTime = lastUpdatedTime
 	this.Status = status
 	this.Vendor = vendor
 	return &this
@@ -46,52 +46,68 @@ func NewBaseAccountVerificationWithDefaults() *BaseAccountVerification {
 	return &this
 }
 
-// GetCreationTime returns the CreationTime field value
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
 func (o *BaseAccountVerification) GetCreationTime() time.Time {
-	if o == nil {
+	if o == nil || o.CreationTime == nil {
 		var ret time.Time
 		return ret
 	}
-
-	return o.CreationTime
+	return *o.CreationTime
 }
 
-// GetCreationTimeOk returns a tuple with the CreationTime field value
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccountVerification) GetCreationTimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil || o.CreationTime == nil {
 		return nil, false
 	}
-	return &o.CreationTime, true
+	return o.CreationTime, true
 }
 
-// SetCreationTime sets field value
+// HasCreationTime returns a boolean if a field has been set.
+func (o *BaseAccountVerification) HasCreationTime() bool {
+	if o != nil && o.CreationTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
 func (o *BaseAccountVerification) SetCreationTime(v time.Time) {
-	o.CreationTime = v
+	o.CreationTime = &v
 }
 
-// GetLastUpdatedTime returns the LastUpdatedTime field value
+// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
 func (o *BaseAccountVerification) GetLastUpdatedTime() time.Time {
-	if o == nil {
+	if o == nil || o.LastUpdatedTime == nil {
 		var ret time.Time
 		return ret
 	}
-
-	return o.LastUpdatedTime
+	return *o.LastUpdatedTime
 }
 
-// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value
+// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseAccountVerification) GetLastUpdatedTimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil || o.LastUpdatedTime == nil {
 		return nil, false
 	}
-	return &o.LastUpdatedTime, true
+	return o.LastUpdatedTime, true
 }
 
-// SetLastUpdatedTime sets field value
+// HasLastUpdatedTime returns a boolean if a field has been set.
+func (o *BaseAccountVerification) HasLastUpdatedTime() bool {
+	if o != nil && o.LastUpdatedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdatedTime gets a reference to the given time.Time and assigns it to the LastUpdatedTime field.
 func (o *BaseAccountVerification) SetLastUpdatedTime(v time.Time) {
-	o.LastUpdatedTime = v
+	o.LastUpdatedTime = &v
 }
 
 // GetStatus returns the Status field value
@@ -144,10 +160,10 @@ func (o *BaseAccountVerification) SetVendor(v string) {
 
 func (o BaseAccountVerification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.CreationTime != nil {
 		toSerialize["creation_time"] = o.CreationTime
 	}
-	if true {
+	if o.LastUpdatedTime != nil {
 		toSerialize["last_updated_time"] = o.LastUpdatedTime
 	}
 	if true {

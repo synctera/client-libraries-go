@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **IsCardEnabled** | Pointer to **bool** | Enable card transaction on ledger. Default is false | [optional] 
 **IsP2pEnabled** | Pointer to **bool** | Enable P2P transaction on ledger. Default is false | [optional] 
 **OverdraftLimit** | Pointer to **int64** | Account&#39;s overdraft limit. Default is 0 | [optional] 
+**SpendingLimits** | Pointer to [**SpendingLimits**](SpendingLimits.md) |  | [optional] 
 
 ## Methods
 
@@ -242,6 +243,31 @@ SetOverdraftLimit sets OverdraftLimit field to given value.
 `func (o *TemplateFields) HasOverdraftLimit() bool`
 
 HasOverdraftLimit returns a boolean if a field has been set.
+
+### GetSpendingLimits
+
+`func (o *TemplateFields) GetSpendingLimits() SpendingLimits`
+
+GetSpendingLimits returns the SpendingLimits field if non-nil, zero value otherwise.
+
+### GetSpendingLimitsOk
+
+`func (o *TemplateFields) GetSpendingLimitsOk() (*SpendingLimits, bool)`
+
+GetSpendingLimitsOk returns a tuple with the SpendingLimits field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpendingLimits
+
+`func (o *TemplateFields) SetSpendingLimits(v SpendingLimits)`
+
+SetSpendingLimits sets SpendingLimits field to given value.
+
+### HasSpendingLimits
+
+`func (o *TemplateFields) HasSpendingLimits() bool`
+
+HasSpendingLimits returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

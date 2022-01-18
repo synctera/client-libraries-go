@@ -5,6 +5,8 @@ All URIs are relative to *https://api.synctera.com/v0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ActivateCard**](CardsApi.md#ActivateCard) | **Post** /cards/activate | Activate a card
+[**CreateDigitalWalletApple**](CardsApi.md#CreateDigitalWalletApple) | **Post** /cards/digitalwallet/applepay | Create digital wallet token provision request for Apple Pay
+[**CreateDigitalWalletGoogle**](CardsApi.md#CreateDigitalWalletGoogle) | **Post** /cards/digitalwallet/googlepay | Create digital wallet token provision request for Google Pay
 [**GetCard**](CardsApi.md#GetCard) | **Get** /cards/{card_id} | Get Card
 [**GetClientAccessToken**](CardsApi.md#GetClientAccessToken) | **Post** /cards/{card_id}/client_token | Get a client token
 [**GetClientSingleUseToken**](CardsApi.md#GetClientSingleUseToken) | **Post** /cards/single_use_token | Get single-use token
@@ -36,7 +38,7 @@ import (
 )
 
 func main() {
-    cardActivationRequest := *openapiclient.NewCardActivationRequest("ActivationCode_example", "fe1fa42f-10e3-48d2-ab7d-e3324950a42e") // CardActivationRequest | Card activation code
+    cardActivationRequest := *openapiclient.NewCardActivationRequest("ActivationCode_example", "8fa91c36-7d05-4111-aeac-353c8b68cd7d") // CardActivationRequest | Card activation code
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -74,6 +76,124 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateDigitalWalletApple
+
+> AppleDigitalWalletProvisionResponse CreateDigitalWalletApple(ctx).Execute()
+
+Create digital wallet token provision request for Apple Pay
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.CardsApi.CreateDigitalWalletApple(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateDigitalWalletApple``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDigitalWalletApple`: AppleDigitalWalletProvisionResponse
+    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateDigitalWalletApple`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDigitalWalletAppleRequest struct via the builder pattern
+
+
+### Return type
+
+[**AppleDigitalWalletProvisionResponse**](AppleDigitalWalletProvisionResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateDigitalWalletGoogle
+
+> GoogleDigitalWalletProvisionResponse CreateDigitalWalletGoogle(ctx).Execute()
+
+Create digital wallet token provision request for Google Pay
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.CardsApi.CreateDigitalWalletGoogle(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateDigitalWalletGoogle``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDigitalWalletGoogle`: GoogleDigitalWalletProvisionResponse
+    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateDigitalWalletGoogle`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDigitalWalletGoogleRequest struct via the builder pattern
+
+
+### Return type
+
+[**GoogleDigitalWalletProvisionResponse**](GoogleDigitalWalletProvisionResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -242,7 +362,7 @@ import (
 )
 
 func main() {
-    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("409302b6-a448-4697-89bc-bacb678f103f", "538f0f18-df33-4903-8d5a-bc0f719d3ef1") // SingleUseTokenRequest | User token details
+    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("dc39cb13-6c10-4721-ac62-bed3e77f76e4", "6340ea6c-d45e-4494-a8f2-5f6dd43525b4") // SingleUseTokenRequest | User token details
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -308,7 +428,7 @@ import (
 )
 
 func main() {
-    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "4903b265-ca1f-404b-b2be-9d8a783bb580", "f88e0735-5190-42c8-9baf-5bcaffa8e486", "14ffe289-490f-40be-9881-60c84d6e36bc", "Type_example")} // CardIssuanceRequest | Card to issue
+    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "1debdba4-1e39-4a6d-bd18-4a12cf192c26", "171e5bb3-0c62-42bb-a690-f6fe391c2dd6", "09e593a9-d329-4ddf-8d07-a8b1ea578ae8", "Type_example")} // CardIssuanceRequest | Card to issue
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -388,7 +508,7 @@ func main() {
     cardStatus := openapiclient.card_status("ACTIVE") // CardStatus | The status of a card (optional)
     postalCode := "49633" // string | The postal code of a card user (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "0w75x33ztx" // string |  (optional)
+    pageToken := "akic8nczf2" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -538,7 +658,7 @@ import (
 
 func main() {
     cardId := TODO // string | 
-    cardEditRequest := *openapiclient.NewCardEditRequest(openapiclient.card_status("ACTIVE"), openapiclient.card_status_reason_code("NEW")) // CardEditRequest | Card edits
+    cardEditRequest := *openapiclient.NewCardEditRequest(openapiclient.card_status_request("ACTIVE"), openapiclient.card_status_reason_code("NEW")) // CardEditRequest | Card edits
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

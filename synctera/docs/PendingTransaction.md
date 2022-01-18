@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccountId** | **string** | The account id associated with the hold | 
 **AccountNo** | **string** | The account number associated with the hold | 
 **Created** | **time.Time** | The creation date of the hold | 
 **Data** | [**PendingTransactionData**](PendingTransactionData.md) |  | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewPendingTransaction
 
-`func NewPendingTransaction(accountNo string, created time.Time, data PendingTransactionData, id int32, idemkey string, tenant string, updated time.Time, uuid string, ) *PendingTransaction`
+`func NewPendingTransaction(accountId string, accountNo string, created time.Time, data PendingTransactionData, id int32, idemkey string, tenant string, updated time.Time, uuid string, ) *PendingTransaction`
 
 NewPendingTransaction instantiates a new PendingTransaction object
 This constructor will assign default values to properties that have it defined,
@@ -31,6 +32,26 @@ will change when the set of required properties is changed
 NewPendingTransactionWithDefaults instantiates a new PendingTransaction object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccountId
+
+`func (o *PendingTransaction) GetAccountId() string`
+
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+
+### GetAccountIdOk
+
+`func (o *PendingTransaction) GetAccountIdOk() (*string, bool)`
+
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountId
+
+`func (o *PendingTransaction) SetAccountId(v string)`
+
+SetAccountId sets AccountId field to given value.
+
 
 ### GetAccountNo
 

@@ -24,6 +24,8 @@ type BasePerson struct {
 	Id *string `json:"id,omitempty"`
 	// Customer's KYC exemption
 	KycExempt *bool `json:"kyc_exempt,omitempty"`
+	// Date and time KYC was last run on the customer
+	KycLastRun *time.Time `json:"kyc_last_run,omitempty"`
 	KycStatus *CustomerKycStatus `json:"kyc_status,omitempty"`
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
 	LegalAddress *Address1 `json:"legal_address,omitempty"`
@@ -183,6 +185,38 @@ func (o *BasePerson) HasKycExempt() bool {
 // SetKycExempt gets a reference to the given bool and assigns it to the KycExempt field.
 func (o *BasePerson) SetKycExempt(v bool) {
 	o.KycExempt = &v
+}
+
+// GetKycLastRun returns the KycLastRun field value if set, zero value otherwise.
+func (o *BasePerson) GetKycLastRun() time.Time {
+	if o == nil || o.KycLastRun == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.KycLastRun
+}
+
+// GetKycLastRunOk returns a tuple with the KycLastRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BasePerson) GetKycLastRunOk() (*time.Time, bool) {
+	if o == nil || o.KycLastRun == nil {
+		return nil, false
+	}
+	return o.KycLastRun, true
+}
+
+// HasKycLastRun returns a boolean if a field has been set.
+func (o *BasePerson) HasKycLastRun() bool {
+	if o != nil && o.KycLastRun != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKycLastRun gets a reference to the given time.Time and assigns it to the KycLastRun field.
+func (o *BasePerson) SetKycLastRun(v time.Time) {
+	o.KycLastRun = &v
 }
 
 // GetKycStatus returns the KycStatus field value if set, zero value otherwise.
@@ -486,6 +520,9 @@ func (o BasePerson) MarshalJSON() ([]byte, error) {
 	}
 	if o.KycExempt != nil {
 		toSerialize["kyc_exempt"] = o.KycExempt
+	}
+	if o.KycLastRun != nil {
+		toSerialize["kyc_last_run"] = o.KycLastRun
 	}
 	if o.KycStatus != nil {
 		toSerialize["kyc_status"] = o.KycStatus

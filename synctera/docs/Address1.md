@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddressLine1** | **string** | Street address line 1 | 
 **AddressLine2** | Pointer to **string** | String address line 2 | [optional] 
-**City** | **string** | City | 
+**City** | Pointer to **string** | City | [optional] 
 **CountryCode** | **string** | ISO-3166-1 Alpha-2 country code | 
-**PostalCode** | **string** | Postal code | 
-**State** | **string** | State, region, province, or prefecture | 
+**PostalCode** | Pointer to **string** | Postal code | [optional] 
+**State** | Pointer to **string** | State, region, province, or prefecture | [optional] 
 
 ## Methods
 
 ### NewAddress1
 
-`func NewAddress1(addressLine1 string, city string, countryCode string, postalCode string, state string, ) *Address1`
+`func NewAddress1(addressLine1 string, countryCode string, ) *Address1`
 
 NewAddress1 instantiates a new Address1 object
 This constructor will assign default values to properties that have it defined,
@@ -94,6 +94,11 @@ and a boolean to check if the value has been set.
 
 SetCity sets City field to given value.
 
+### HasCity
+
+`func (o *Address1) HasCity() bool`
+
+HasCity returns a boolean if a field has been set.
 
 ### GetCountryCode
 
@@ -134,6 +139,11 @@ and a boolean to check if the value has been set.
 
 SetPostalCode sets PostalCode field to given value.
 
+### HasPostalCode
+
+`func (o *Address1) HasPostalCode() bool`
+
+HasPostalCode returns a boolean if a field has been set.
 
 ### GetState
 
@@ -154,6 +164,11 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
+### HasState
+
+`func (o *Address1) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
