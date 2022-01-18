@@ -17,6 +17,8 @@ import (
 
 // PendingTransaction struct for PendingTransaction
 type PendingTransaction struct {
+	// The account id associated with the hold
+	AccountId string `json:"account_id"`
 	// The account number associated with the hold
 	AccountNo string `json:"account_no"`
 	// The creation date of the hold
@@ -37,8 +39,9 @@ type PendingTransaction struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPendingTransaction(accountNo string, created time.Time, data PendingTransactionData, id int32, idemkey string, tenant string, updated time.Time, uuid string) *PendingTransaction {
+func NewPendingTransaction(accountId string, accountNo string, created time.Time, data PendingTransactionData, id int32, idemkey string, tenant string, updated time.Time, uuid string) *PendingTransaction {
 	this := PendingTransaction{}
+	this.AccountId = accountId
 	this.AccountNo = accountNo
 	this.Created = created
 	this.Data = data
@@ -56,6 +59,30 @@ func NewPendingTransaction(accountNo string, created time.Time, data PendingTran
 func NewPendingTransactionWithDefaults() *PendingTransaction {
 	this := PendingTransaction{}
 	return &this
+}
+
+// GetAccountId returns the AccountId field value
+func (o *PendingTransaction) GetAccountId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AccountId
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value
+// and a boolean to check if the value has been set.
+func (o *PendingTransaction) GetAccountIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.AccountId, true
+}
+
+// SetAccountId sets field value
+func (o *PendingTransaction) SetAccountId(v string) {
+	o.AccountId = v
 }
 
 // GetAccountNo returns the AccountNo field value
@@ -252,6 +279,9 @@ func (o *PendingTransaction) SetUuid(v string) {
 
 func (o PendingTransaction) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["account_id"] = o.AccountId
+	}
 	if true {
 		toSerialize["account_no"] = o.AccountNo
 	}

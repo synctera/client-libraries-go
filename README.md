@@ -79,6 +79,7 @@ All URIs are relative to *https://api.synctera.com/v0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountTemplatesApi* | [**DeleteAccountTemplate**](synctera/docs/AccountTemplatesApi.md#deleteaccounttemplate) | **Delete** /accounts/templates/{template_id} | Delete account template
 *AccountsApi* | [**CreateAccount**](synctera/docs/AccountsApi.md#createaccount) | **Post** /accounts | Create an account
 *AccountsApi* | [**CreateAccountRelationship**](synctera/docs/AccountsApi.md#createaccountrelationship) | **Post** /accounts/{account_id}/relationships | Create account relationship
 *AccountsApi* | [**CreateAccountResourceProduct**](synctera/docs/AccountsApi.md#createaccountresourceproduct) | **Post** /accounts/products | Create an account product
@@ -106,6 +107,8 @@ Class | Method | HTTP request | Description
 *CardTransactionSimulationsApi* | [**SimulateReversal**](synctera/docs/CardTransactionSimulationsApi.md#simulatereversal) | **Post** /cards/transaction_simulations/reversal | Simulate reversal
 *CardTransactionSimulationsApi* | [**SimulateWithdrawal**](synctera/docs/CardTransactionSimulationsApi.md#simulatewithdrawal) | **Post** /cards/transaction_simulations/financial/withdrawal | Simulate ATM withdrawal
 *CardsApi* | [**ActivateCard**](synctera/docs/CardsApi.md#activatecard) | **Post** /cards/activate | Activate a card
+*CardsApi* | [**CreateDigitalWalletApple**](synctera/docs/CardsApi.md#createdigitalwalletapple) | **Post** /cards/digitalwallet/applepay | Create digital wallet token provision request for Apple Pay
+*CardsApi* | [**CreateDigitalWalletGoogle**](synctera/docs/CardsApi.md#createdigitalwalletgoogle) | **Post** /cards/digitalwallet/googlepay | Create digital wallet token provision request for Google Pay
 *CardsApi* | [**GetCard**](synctera/docs/CardsApi.md#getcard) | **Get** /cards/{card_id} | Get Card
 *CardsApi* | [**GetClientAccessToken**](synctera/docs/CardsApi.md#getclientaccesstoken) | **Post** /cards/{card_id}/client_token | Get a client token
 *CardsApi* | [**GetClientSingleUseToken**](synctera/docs/CardsApi.md#getclientsingleusetoken) | **Post** /cards/single_use_token | Get single-use token
@@ -194,6 +197,8 @@ Class | Method | HTTP request | Description
  - [AccountProduct](synctera/docs/AccountProduct.md)
  - [AccountProductList](synctera/docs/AccountProductList.md)
  - [AccountProductListAllOf](synctera/docs/AccountProductListAllOf.md)
+ - [AccountRange](synctera/docs/AccountRange.md)
+ - [AccountRangeResponse](synctera/docs/AccountRangeResponse.md)
  - [AccountRelationshipType](synctera/docs/AccountRelationshipType.md)
  - [AccountRouting](synctera/docs/AccountRouting.md)
  - [AccountTemplate](synctera/docs/AccountTemplate.md)
@@ -210,6 +215,7 @@ Class | Method | HTTP request | Description
  - [Address1](synctera/docs/Address1.md)
  - [Alias](synctera/docs/Alias.md)
  - [AliasList](synctera/docs/AliasList.md)
+ - [AppleDigitalWalletProvisionResponse](synctera/docs/AppleDigitalWalletProvisionResponse.md)
  - [AuthRequestModel](synctera/docs/AuthRequestModel.md)
  - [AuthorizationAdviceModel](synctera/docs/AuthorizationAdviceModel.md)
  - [Balance](synctera/docs/Balance.md)
@@ -226,6 +232,8 @@ Class | Method | HTTP request | Description
  - [BinAndDebitNetwork](synctera/docs/BinAndDebitNetwork.md)
  - [BinAndDebitNetworkList](synctera/docs/BinAndDebitNetworkList.md)
  - [BinAndDebitNetworkListAllOf](synctera/docs/BinAndDebitNetworkListAllOf.md)
+ - [BinNetworkMapping](synctera/docs/BinNetworkMapping.md)
+ - [BinNetworkMappingResponse](synctera/docs/BinNetworkMappingResponse.md)
  - [BinResponse](synctera/docs/BinResponse.md)
  - [BinResponseList](synctera/docs/BinResponseList.md)
  - [BinResponseListAllOf](synctera/docs/BinResponseListAllOf.md)
@@ -261,6 +269,7 @@ Class | Method | HTTP request | Description
  - [CardStatus](synctera/docs/CardStatus.md)
  - [CardStatusObject](synctera/docs/CardStatusObject.md)
  - [CardStatusReasonCode](synctera/docs/CardStatusReasonCode.md)
+ - [CardStatusRequest](synctera/docs/CardStatusRequest.md)
  - [CardWidgetUrlResponse](synctera/docs/CardWidgetUrlResponse.md)
  - [ChangeChannel](synctera/docs/ChangeChannel.md)
  - [ChangeType](synctera/docs/ChangeType.md)
@@ -270,6 +279,9 @@ Class | Method | HTTP request | Description
  - [CreateWebhookRequest](synctera/docs/CreateWebhookRequest.md)
  - [CustomHeaders](synctera/docs/CustomHeaders.md)
  - [Customer](synctera/docs/Customer.md)
+ - [CustomerAlias](synctera/docs/CustomerAlias.md)
+ - [CustomerAliasList](synctera/docs/CustomerAliasList.md)
+ - [CustomerAliasListAllOf](synctera/docs/CustomerAliasListAllOf.md)
  - [CustomerAllOf](synctera/docs/CustomerAllOf.md)
  - [CustomerInPath](synctera/docs/CustomerInPath.md)
  - [CustomerKycStatus](synctera/docs/CustomerKycStatus.md)
@@ -313,7 +325,6 @@ Class | Method | HTTP request | Description
  - [ExternalAccountBalance](synctera/docs/ExternalAccountBalance.md)
  - [ExternalAccountLinkToken](synctera/docs/ExternalAccountLinkToken.md)
  - [ExternalAccountTransaction](synctera/docs/ExternalAccountTransaction.md)
- - [ExternalAccountUser](synctera/docs/ExternalAccountUser.md)
  - [ExternalAccountVendorValues](synctera/docs/ExternalAccountVendorValues.md)
  - [ExternalAccountsList](synctera/docs/ExternalAccountsList.md)
  - [ExternalAccountsListAllOf](synctera/docs/ExternalAccountsListAllOf.md)
@@ -321,6 +332,10 @@ Class | Method | HTTP request | Description
  - [Fee](synctera/docs/Fee.md)
  - [FinancialRequestModel](synctera/docs/FinancialRequestModel.md)
  - [Form](synctera/docs/Form.md)
+ - [FundingSource](synctera/docs/FundingSource.md)
+ - [FundingSourceResponse](synctera/docs/FundingSourceResponse.md)
+ - [FundingSourceResponseList](synctera/docs/FundingSourceResponseList.md)
+ - [GoogleDigitalWalletProvisionResponse](synctera/docs/GoogleDigitalWalletProvisionResponse.md)
  - [Image](synctera/docs/Image.md)
  - [ImageList](synctera/docs/ImageList.md)
  - [ImageListAllOf](synctera/docs/ImageListAllOf.md)
@@ -368,6 +383,7 @@ Class | Method | HTTP request | Description
  - [Prospect](synctera/docs/Prospect.md)
  - [ProspectAllOf](synctera/docs/ProspectAllOf.md)
  - [ProviderType](synctera/docs/ProviderType.md)
+ - [PushTokenizeRequestData](synctera/docs/PushTokenizeRequestData.md)
  - [RateDetails](synctera/docs/RateDetails.md)
  - [RawResponse](synctera/docs/RawResponse.md)
  - [RdcMediaType](synctera/docs/RdcMediaType.md)
@@ -394,11 +410,14 @@ Class | Method | HTTP request | Description
  - [Shipping](synctera/docs/Shipping.md)
  - [SingleUseTokenRequest](synctera/docs/SingleUseTokenRequest.md)
  - [SingleUseTokenResponse](synctera/docs/SingleUseTokenResponse.md)
- - [SocureEvent](synctera/docs/SocureEvent.md)
  - [SocureEventBody](synctera/docs/SocureEventBody.md)
  - [SocureGlobalWatchlist](synctera/docs/SocureGlobalWatchlist.md)
  - [SocureMatch](synctera/docs/SocureMatch.md)
  - [SocureMatchComments](synctera/docs/SocureMatchComments.md)
+ - [SocureWatchlistResult](synctera/docs/SocureWatchlistResult.md)
+ - [SpendingLimitWithTime](synctera/docs/SpendingLimitWithTime.md)
+ - [SpendingLimits](synctera/docs/SpendingLimits.md)
+ - [SpendingLimitsTransaction](synctera/docs/SpendingLimitsTransaction.md)
  - [Status](synctera/docs/Status.md)
  - [TemplateFields](synctera/docs/TemplateFields.md)
  - [TemplateList](synctera/docs/TemplateList.md)

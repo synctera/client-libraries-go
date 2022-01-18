@@ -21,6 +21,8 @@ type VirtualCardIssuanceRequest struct {
 	Form string `json:"form"`
 	// The ID of the account to which the card will be linked
 	AccountId string `json:"account_id"`
+	// The bin number
+	Bin *string `json:"bin,omitempty"`
 	CardBrand *CardBrand `json:"card_brand,omitempty"`
 	// The card product to which the card is attached
 	CardProductId string `json:"card_product_id"`
@@ -120,6 +122,38 @@ func (o *VirtualCardIssuanceRequest) GetAccountIdOk() (*string, bool) {
 // SetAccountId sets field value
 func (o *VirtualCardIssuanceRequest) SetAccountId(v string) {
 	o.AccountId = v
+}
+
+// GetBin returns the Bin field value if set, zero value otherwise.
+func (o *VirtualCardIssuanceRequest) GetBin() string {
+	if o == nil || o.Bin == nil {
+		var ret string
+		return ret
+	}
+	return *o.Bin
+}
+
+// GetBinOk returns a tuple with the Bin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VirtualCardIssuanceRequest) GetBinOk() (*string, bool) {
+	if o == nil || o.Bin == nil {
+		return nil, false
+	}
+	return o.Bin, true
+}
+
+// HasBin returns a boolean if a field has been set.
+func (o *VirtualCardIssuanceRequest) HasBin() bool {
+	if o != nil && o.Bin != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBin gets a reference to the given string and assigns it to the Bin field.
+func (o *VirtualCardIssuanceRequest) SetBin(v string) {
+	o.Bin = &v
 }
 
 // GetCardBrand returns the CardBrand field value if set, zero value otherwise.
@@ -649,6 +683,9 @@ func (o VirtualCardIssuanceRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["account_id"] = o.AccountId
+	}
+	if o.Bin != nil {
+		toSerialize["bin"] = o.Bin
 	}
 	if o.CardBrand != nil {
 		toSerialize["card_brand"] = o.CardBrand

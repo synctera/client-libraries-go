@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnvironmentName** | **string** | Environment the event belongs to | 
-**Event** | [**SocureEvent**](SocureEvent.md) |  | 
+**Event** | [**SocureWatchlistResult**](SocureWatchlistResult.md) |  | 
 **Id** | **string** | Unique identifier for the monitoring event | 
 
 ## Methods
 
 ### NewSocureEventBody
 
-`func NewSocureEventBody(environmentName string, event SocureEvent, id string, ) *SocureEventBody`
+`func NewSocureEventBody(environmentName string, event SocureWatchlistResult, id string, ) *SocureEventBody`
 
 NewSocureEventBody instantiates a new SocureEventBody object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetEnvironmentName sets EnvironmentName field to given value.
 
 ### GetEvent
 
-`func (o *SocureEventBody) GetEvent() SocureEvent`
+`func (o *SocureEventBody) GetEvent() SocureWatchlistResult`
 
 GetEvent returns the Event field if non-nil, zero value otherwise.
 
 ### GetEventOk
 
-`func (o *SocureEventBody) GetEventOk() (*SocureEvent, bool)`
+`func (o *SocureEventBody) GetEventOk() (*SocureWatchlistResult, bool)`
 
 GetEventOk returns a tuple with the Event field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEvent
 
-`func (o *SocureEventBody) SetEvent(v SocureEvent)`
+`func (o *SocureEventBody) SetEvent(v SocureWatchlistResult)`
 
 SetEvent sets Event field to given value.
 

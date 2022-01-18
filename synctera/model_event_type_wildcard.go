@@ -24,6 +24,7 @@ const (
 	EVENTTYPEWILDCARD_CARD EventTypeWildcard = "CARD.*"
 	EVENTTYPEWILDCARD_CUSTOMER EventTypeWildcard = "CUSTOMER.*"
 	EVENTTYPEWILDCARD_INTEREST EventTypeWildcard = "INTEREST.*"
+	EVENTTYPEWILDCARD_INTERNAL_TRANSFER EventTypeWildcard = "INTERNAL_TRANSFER.*"
 )
 
 var allowedEventTypeWildcardEnumValues = []EventTypeWildcard{
@@ -31,6 +32,7 @@ var allowedEventTypeWildcardEnumValues = []EventTypeWildcard{
 	"CARD.*",
 	"CUSTOMER.*",
 	"INTEREST.*",
+	"INTERNAL_TRANSFER.*",
 }
 
 func (v *EventTypeWildcard) UnmarshalJSON(src []byte) error {

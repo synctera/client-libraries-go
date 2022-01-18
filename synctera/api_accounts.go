@@ -1615,6 +1615,7 @@ type ApiListAccountsRequest struct {
 	lastName *string
 	limit *int32
 	pageToken *string
+	sortBy *[]string
 }
 
 // Account ID(s). Multiple IDs can be provided as a comma-separated list. 
@@ -1655,6 +1656,11 @@ func (r ApiListAccountsRequest) Limit(limit int32) ApiListAccountsRequest {
 }
 func (r ApiListAccountsRequest) PageToken(pageToken string) ApiListAccountsRequest {
 	r.pageToken = &pageToken
+	return r
+}
+// Specifies the sort order for the returned accounts. 
+func (r ApiListAccountsRequest) SortBy(sortBy []string) ApiListAccountsRequest {
+	r.sortBy = &sortBy
 	return r
 }
 
@@ -1726,6 +1732,9 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) (Acco
 	}
 	if r.pageToken != nil {
 		localVarQueryParams.Add("page_token", parameterToString(*r.pageToken, ""))
+	}
+	if r.sortBy != nil {
+		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

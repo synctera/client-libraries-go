@@ -19,7 +19,7 @@ type VendorXml struct {
 	// Describes the content-type encoding received from the vendor.
 	ContentType string `json:"content_type"`
 	// Array of vendor specific information.
-	Details []Detail `json:"details"`
+	Details *[]Detail `json:"details,omitempty"`
 	// Name of the vendor used.
 	Vendor string `json:"vendor"`
 	// Data representaion in XML.
@@ -30,10 +30,9 @@ type VendorXml struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVendorXml(contentType string, details []Detail, vendor string, xml string) *VendorXml {
+func NewVendorXml(contentType string, vendor string, xml string) *VendorXml {
 	this := VendorXml{}
 	this.ContentType = contentType
-	this.Details = details
 	this.Vendor = vendor
 	this.Xml = xml
 	return &this
@@ -71,28 +70,36 @@ func (o *VendorXml) SetContentType(v string) {
 	o.ContentType = v
 }
 
-// GetDetails returns the Details field value
+// GetDetails returns the Details field value if set, zero value otherwise.
 func (o *VendorXml) GetDetails() []Detail {
-	if o == nil {
+	if o == nil || o.Details == nil {
 		var ret []Detail
 		return ret
 	}
-
-	return o.Details
+	return *o.Details
 }
 
-// GetDetailsOk returns a tuple with the Details field value
+// GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VendorXml) GetDetailsOk() (*[]Detail, bool) {
-	if o == nil  {
+	if o == nil || o.Details == nil {
 		return nil, false
 	}
-	return &o.Details, true
+	return o.Details, true
 }
 
-// SetDetails sets field value
+// HasDetails returns a boolean if a field has been set.
+func (o *VendorXml) HasDetails() bool {
+	if o != nil && o.Details != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDetails gets a reference to the given []Detail and assigns it to the Details field.
 func (o *VendorXml) SetDetails(v []Detail) {
-	o.Details = v
+	o.Details = &v
 }
 
 // GetVendor returns the Vendor field value
@@ -148,7 +155,7 @@ func (o VendorXml) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["content_type"] = o.ContentType
 	}
-	if true {
+	if o.Details != nil {
 		toSerialize["details"] = o.Details
 	}
 	if true {

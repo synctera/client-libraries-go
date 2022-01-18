@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CardStatus** | [**CardStatus**](CardStatus.md) |  | 
+**CardStatus** | [**CardStatusRequest**](CardStatusRequest.md) |  | 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
 **Metadata** | Pointer to **map[string]string** | Additional data to include in the request structured as key-value pairs | [optional] 
 **Reason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewCardEditRequest
 
-`func NewCardEditRequest(cardStatus CardStatus, reason CardStatusReasonCode, ) *CardEditRequest`
+`func NewCardEditRequest(cardStatus CardStatusRequest, reason CardStatusReasonCode, ) *CardEditRequest`
 
 NewCardEditRequest instantiates a new CardEditRequest object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCardStatus
 
-`func (o *CardEditRequest) GetCardStatus() CardStatus`
+`func (o *CardEditRequest) GetCardStatus() CardStatusRequest`
 
 GetCardStatus returns the CardStatus field if non-nil, zero value otherwise.
 
 ### GetCardStatusOk
 
-`func (o *CardEditRequest) GetCardStatusOk() (*CardStatus, bool)`
+`func (o *CardEditRequest) GetCardStatusOk() (*CardStatusRequest, bool)`
 
 GetCardStatusOk returns a tuple with the CardStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCardStatus
 
-`func (o *CardEditRequest) SetCardStatus(v CardStatus)`
+`func (o *CardEditRequest) SetCardStatus(v CardStatusRequest)`
 
 SetCardStatus sets CardStatus field to given value.
 

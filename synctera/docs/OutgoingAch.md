@@ -8,18 +8,22 @@ Name | Type | Description | Notes
 **Currency** | **string** | ISO 4217 alphabetic currency code of the transfer amount | 
 **CustomerId** | **string** | The customer&#39;s unique identifier | 
 **DcSign** | **string** | The type of transaction (debit or credit). A debit is a transfer in and a credit is a transfer out of the originating account | 
-**EffectiveDate** | **string** | Effective date transaction proccesses | 
+**EffectiveDate** | Pointer to **string** | Effective date transaction proccesses (is_same_day needs to be false or not present at all) | [optional] 
+**ExternalData** | Pointer to **map[string]interface{}** | Additional transfer metadata structured as key-value pairs | [optional] 
+**FinalCustomerId** | Pointer to **string** | ID of the international customer that receives the final remittance transfer | [optional] 
 **Id** | Pointer to **string** |  | [optional] [readonly] 
+**IsSameDay** | Pointer to **bool** | Send as same day ACH transaction (use only is_same_day without specific effective_date) | [optional] 
+**Memo** | Pointer to **string** | Memo for the payment | [optional] 
 **OriginatingAccountId** | **string** | The unique identifier for an originating account | 
 **ReceivingAccountId** | **string** | The unique identifier for an receiving account | 
-**ReferenceInfo** | Pointer to **string** | Reference information for the payment | [optional] 
+**ReferenceInfo** | Pointer to **string** | Will be sent to the ACH network and maps to Addenda record 05 - the recipient bank will receive this info | [optional] 
 **Risk** | [**RiskData**](RiskData.md) |  | 
 
 ## Methods
 
 ### NewOutgoingAch
 
-`func NewOutgoingAch(amount int32, currency string, customerId string, dcSign string, effectiveDate string, originatingAccountId string, receivingAccountId string, risk RiskData, ) *OutgoingAch`
+`func NewOutgoingAch(amount int32, currency string, customerId string, dcSign string, originatingAccountId string, receivingAccountId string, risk RiskData, ) *OutgoingAch`
 
 NewOutgoingAch instantiates a new OutgoingAch object
 This constructor will assign default values to properties that have it defined,
@@ -133,6 +137,61 @@ and a boolean to check if the value has been set.
 
 SetEffectiveDate sets EffectiveDate field to given value.
 
+### HasEffectiveDate
+
+`func (o *OutgoingAch) HasEffectiveDate() bool`
+
+HasEffectiveDate returns a boolean if a field has been set.
+
+### GetExternalData
+
+`func (o *OutgoingAch) GetExternalData() map[string]interface{}`
+
+GetExternalData returns the ExternalData field if non-nil, zero value otherwise.
+
+### GetExternalDataOk
+
+`func (o *OutgoingAch) GetExternalDataOk() (*map[string]interface{}, bool)`
+
+GetExternalDataOk returns a tuple with the ExternalData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalData
+
+`func (o *OutgoingAch) SetExternalData(v map[string]interface{})`
+
+SetExternalData sets ExternalData field to given value.
+
+### HasExternalData
+
+`func (o *OutgoingAch) HasExternalData() bool`
+
+HasExternalData returns a boolean if a field has been set.
+
+### GetFinalCustomerId
+
+`func (o *OutgoingAch) GetFinalCustomerId() string`
+
+GetFinalCustomerId returns the FinalCustomerId field if non-nil, zero value otherwise.
+
+### GetFinalCustomerIdOk
+
+`func (o *OutgoingAch) GetFinalCustomerIdOk() (*string, bool)`
+
+GetFinalCustomerIdOk returns a tuple with the FinalCustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFinalCustomerId
+
+`func (o *OutgoingAch) SetFinalCustomerId(v string)`
+
+SetFinalCustomerId sets FinalCustomerId field to given value.
+
+### HasFinalCustomerId
+
+`func (o *OutgoingAch) HasFinalCustomerId() bool`
+
+HasFinalCustomerId returns a boolean if a field has been set.
 
 ### GetId
 
@@ -158,6 +217,56 @@ SetId sets Id field to given value.
 `func (o *OutgoingAch) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetIsSameDay
+
+`func (o *OutgoingAch) GetIsSameDay() bool`
+
+GetIsSameDay returns the IsSameDay field if non-nil, zero value otherwise.
+
+### GetIsSameDayOk
+
+`func (o *OutgoingAch) GetIsSameDayOk() (*bool, bool)`
+
+GetIsSameDayOk returns a tuple with the IsSameDay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSameDay
+
+`func (o *OutgoingAch) SetIsSameDay(v bool)`
+
+SetIsSameDay sets IsSameDay field to given value.
+
+### HasIsSameDay
+
+`func (o *OutgoingAch) HasIsSameDay() bool`
+
+HasIsSameDay returns a boolean if a field has been set.
+
+### GetMemo
+
+`func (o *OutgoingAch) GetMemo() string`
+
+GetMemo returns the Memo field if non-nil, zero value otherwise.
+
+### GetMemoOk
+
+`func (o *OutgoingAch) GetMemoOk() (*string, bool)`
+
+GetMemoOk returns a tuple with the Memo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMemo
+
+`func (o *OutgoingAch) SetMemo(v string)`
+
+SetMemo sets Memo field to given value.
+
+### HasMemo
+
+`func (o *OutgoingAch) HasMemo() bool`
+
+HasMemo returns a boolean if a field has been set.
 
 ### GetOriginatingAccountId
 

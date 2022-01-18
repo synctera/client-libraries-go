@@ -18,7 +18,7 @@ import (
 type SocureEventBody struct {
 	// Environment the event belongs to
 	EnvironmentName string `json:"environmentName"`
-	Event SocureEvent `json:"event"`
+	Event SocureWatchlistResult `json:"event"`
 	// Unique identifier for the monitoring event
 	Id string `json:"id"`
 }
@@ -27,7 +27,7 @@ type SocureEventBody struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSocureEventBody(environmentName string, event SocureEvent, id string) *SocureEventBody {
+func NewSocureEventBody(environmentName string, event SocureWatchlistResult, id string) *SocureEventBody {
 	this := SocureEventBody{}
 	this.EnvironmentName = environmentName
 	this.Event = event
@@ -68,9 +68,9 @@ func (o *SocureEventBody) SetEnvironmentName(v string) {
 }
 
 // GetEvent returns the Event field value
-func (o *SocureEventBody) GetEvent() SocureEvent {
+func (o *SocureEventBody) GetEvent() SocureWatchlistResult {
 	if o == nil {
-		var ret SocureEvent
+		var ret SocureWatchlistResult
 		return ret
 	}
 
@@ -79,7 +79,7 @@ func (o *SocureEventBody) GetEvent() SocureEvent {
 
 // GetEventOk returns a tuple with the Event field value
 // and a boolean to check if the value has been set.
-func (o *SocureEventBody) GetEventOk() (*SocureEvent, bool) {
+func (o *SocureEventBody) GetEventOk() (*SocureWatchlistResult, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *SocureEventBody) GetEventOk() (*SocureEvent, bool) {
 }
 
 // SetEvent sets field value
-func (o *SocureEventBody) SetEvent(v SocureEvent) {
+func (o *SocureEventBody) SetEvent(v SocureWatchlistResult) {
 	o.Event = v
 }
 

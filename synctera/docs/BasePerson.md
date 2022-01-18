@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Email** | Pointer to **string** | Customer&#39;s email | [optional] 
 **Id** | Pointer to **string** | Customer unique identifier | [optional] [readonly] 
 **KycExempt** | Pointer to **bool** | Customer&#39;s KYC exemption | [optional] [readonly] 
+**KycLastRun** | Pointer to **time.Time** | Date and time KYC was last run on the customer | [optional] [readonly] 
 **KycStatus** | Pointer to [**CustomerKycStatus**](CustomerKycStatus.md) |  | [optional] 
 **LastUpdatedTime** | Pointer to **time.Time** |  | [optional] [readonly] 
 **LegalAddress** | Pointer to [**Address1**](Address1.md) |  | [optional] 
@@ -136,6 +137,31 @@ SetKycExempt sets KycExempt field to given value.
 `func (o *BasePerson) HasKycExempt() bool`
 
 HasKycExempt returns a boolean if a field has been set.
+
+### GetKycLastRun
+
+`func (o *BasePerson) GetKycLastRun() time.Time`
+
+GetKycLastRun returns the KycLastRun field if non-nil, zero value otherwise.
+
+### GetKycLastRunOk
+
+`func (o *BasePerson) GetKycLastRunOk() (*time.Time, bool)`
+
+GetKycLastRunOk returns a tuple with the KycLastRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKycLastRun
+
+`func (o *BasePerson) SetKycLastRun(v time.Time)`
+
+SetKycLastRun sets KycLastRun field to given value.
+
+### HasKycLastRun
+
+`func (o *BasePerson) HasKycLastRun() bool`
+
+HasKycLastRun returns a boolean if a field has been set.
 
 ### GetKycStatus
 

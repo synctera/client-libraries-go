@@ -17,7 +17,7 @@ import (
 
 // Event Webhook event object
 type Event struct {
-	// Json string of object associated with the event. For example, if your event is ACCOUNT.STATUS_CHANGE, You can refer to Acccount to parse the account event to obtain the ID, status etc.  
+	// Json string of object associated with the event. For example, if your event is ACCOUNT.CREATED, You can refer to Acccount to parse the account event to obtain the ID, status etc. 
 	EventResource *map[string]interface{} `json:"event_resource,omitempty"`
 	// Timestamp of the current event raised
 	EventTime *time.Time `json:"event_time,omitempty"`

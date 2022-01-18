@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ExternalData** | **map[string]interface{}** | an unstructured json blob representing additional transaction information supplied by the integrator. | 
 **Lines** | [**[]TransactionLine**](TransactionLine.md) | The set of accounting entries associated with this transaction. For example, a debit to a customer account will have a corresponding credit in a general ledger account. | 
 **Memo** | **string** |  | 
 **Metadata** | **map[string]interface{}** |  | 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewPostedTransactionData
 
-`func NewPostedTransactionData(lines []TransactionLine, memo string, metadata map[string]interface{}, riskInfo map[string]interface{}, userData map[string]interface{}, ) *PostedTransactionData`
+`func NewPostedTransactionData(externalData map[string]interface{}, lines []TransactionLine, memo string, metadata map[string]interface{}, riskInfo map[string]interface{}, userData map[string]interface{}, ) *PostedTransactionData`
 
 NewPostedTransactionData instantiates a new PostedTransactionData object
 This constructor will assign default values to properties that have it defined,
@@ -30,6 +31,36 @@ NewPostedTransactionDataWithDefaults instantiates a new PostedTransactionData ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetExternalData
+
+`func (o *PostedTransactionData) GetExternalData() map[string]interface{}`
+
+GetExternalData returns the ExternalData field if non-nil, zero value otherwise.
+
+### GetExternalDataOk
+
+`func (o *PostedTransactionData) GetExternalDataOk() (*map[string]interface{}, bool)`
+
+GetExternalDataOk returns a tuple with the ExternalData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalData
+
+`func (o *PostedTransactionData) SetExternalData(v map[string]interface{})`
+
+SetExternalData sets ExternalData field to given value.
+
+
+### SetExternalDataNil
+
+`func (o *PostedTransactionData) SetExternalDataNil(b bool)`
+
+ SetExternalDataNil sets the value for ExternalData to be an explicit nil
+
+### UnsetExternalData
+`func (o *PostedTransactionData) UnsetExternalData()`
+
+UnsetExternalData ensures that no value is present for ExternalData, not even an explicit nil
 ### GetLines
 
 `func (o *PostedTransactionData) GetLines() []TransactionLine`

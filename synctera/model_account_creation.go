@@ -49,6 +49,7 @@ type AccountCreation struct {
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
 	// Account's overdraft limit
 	OverdraftLimit *int64 `json:"overdraft_limit,omitempty"`
+	SpendingLimits *SpendingLimits `json:"spending_limits,omitempty"`
 	Status *Status `json:"status,omitempty"`
 	// SWIFT code
 	SwiftCode *string `json:"swift_code,omitempty"`
@@ -619,6 +620,38 @@ func (o *AccountCreation) SetOverdraftLimit(v int64) {
 	o.OverdraftLimit = &v
 }
 
+// GetSpendingLimits returns the SpendingLimits field value if set, zero value otherwise.
+func (o *AccountCreation) GetSpendingLimits() SpendingLimits {
+	if o == nil || o.SpendingLimits == nil {
+		var ret SpendingLimits
+		return ret
+	}
+	return *o.SpendingLimits
+}
+
+// GetSpendingLimitsOk returns a tuple with the SpendingLimits field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCreation) GetSpendingLimitsOk() (*SpendingLimits, bool) {
+	if o == nil || o.SpendingLimits == nil {
+		return nil, false
+	}
+	return o.SpendingLimits, true
+}
+
+// HasSpendingLimits returns a boolean if a field has been set.
+func (o *AccountCreation) HasSpendingLimits() bool {
+	if o != nil && o.SpendingLimits != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSpendingLimits gets a reference to the given SpendingLimits and assigns it to the SpendingLimits field.
+func (o *AccountCreation) SetSpendingLimits(v SpendingLimits) {
+	o.SpendingLimits = &v
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *AccountCreation) GetStatus() Status {
 	if o == nil || o.Status == nil {
@@ -799,6 +832,9 @@ func (o AccountCreation) MarshalJSON() ([]byte, error) {
 	}
 	if o.OverdraftLimit != nil {
 		toSerialize["overdraft_limit"] = o.OverdraftLimit
+	}
+	if o.SpendingLimits != nil {
+		toSerialize["spending_limits"] = o.SpendingLimits
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status

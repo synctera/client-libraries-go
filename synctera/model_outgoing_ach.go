@@ -24,14 +24,22 @@ type OutgoingAch struct {
 	CustomerId string `json:"customer_id"`
 	// The type of transaction (debit or credit). A debit is a transfer in and a credit is a transfer out of the originating account
 	DcSign string `json:"dc_sign"`
-	// Effective date transaction proccesses
-	EffectiveDate string `json:"effective_date"`
+	// Effective date transaction proccesses (is_same_day needs to be false or not present at all)
+	EffectiveDate *string `json:"effective_date,omitempty"`
+	// Additional transfer metadata structured as key-value pairs
+	ExternalData *map[string]interface{} `json:"external_data,omitempty"`
+	// ID of the international customer that receives the final remittance transfer
+	FinalCustomerId *string `json:"final_customer_id,omitempty"`
 	Id *string `json:"id,omitempty"`
+	// Send as same day ACH transaction (use only is_same_day without specific effective_date)
+	IsSameDay *bool `json:"is_same_day,omitempty"`
+	// Memo for the payment
+	Memo *string `json:"memo,omitempty"`
 	// The unique identifier for an originating account
 	OriginatingAccountId string `json:"originating_account_id"`
 	// The unique identifier for an receiving account
 	ReceivingAccountId string `json:"receiving_account_id"`
-	// Reference information for the payment
+	// Will be sent to the ACH network and maps to Addenda record 05 - the recipient bank will receive this info
 	ReferenceInfo *string `json:"reference_info,omitempty"`
 	Risk RiskData `json:"risk"`
 }
@@ -40,13 +48,12 @@ type OutgoingAch struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOutgoingAch(amount int32, currency string, customerId string, dcSign string, effectiveDate string, originatingAccountId string, receivingAccountId string, risk RiskData) *OutgoingAch {
+func NewOutgoingAch(amount int32, currency string, customerId string, dcSign string, originatingAccountId string, receivingAccountId string, risk RiskData) *OutgoingAch {
 	this := OutgoingAch{}
 	this.Amount = amount
 	this.Currency = currency
 	this.CustomerId = customerId
 	this.DcSign = dcSign
-	this.EffectiveDate = effectiveDate
 	this.OriginatingAccountId = originatingAccountId
 	this.ReceivingAccountId = receivingAccountId
 	this.Risk = risk
@@ -157,28 +164,100 @@ func (o *OutgoingAch) SetDcSign(v string) {
 	o.DcSign = v
 }
 
-// GetEffectiveDate returns the EffectiveDate field value
+// GetEffectiveDate returns the EffectiveDate field value if set, zero value otherwise.
 func (o *OutgoingAch) GetEffectiveDate() string {
-	if o == nil {
+	if o == nil || o.EffectiveDate == nil {
 		var ret string
 		return ret
 	}
-
-	return o.EffectiveDate
+	return *o.EffectiveDate
 }
 
-// GetEffectiveDateOk returns a tuple with the EffectiveDate field value
+// GetEffectiveDateOk returns a tuple with the EffectiveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OutgoingAch) GetEffectiveDateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.EffectiveDate == nil {
 		return nil, false
 	}
-	return &o.EffectiveDate, true
+	return o.EffectiveDate, true
 }
 
-// SetEffectiveDate sets field value
+// HasEffectiveDate returns a boolean if a field has been set.
+func (o *OutgoingAch) HasEffectiveDate() bool {
+	if o != nil && o.EffectiveDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveDate gets a reference to the given string and assigns it to the EffectiveDate field.
 func (o *OutgoingAch) SetEffectiveDate(v string) {
-	o.EffectiveDate = v
+	o.EffectiveDate = &v
+}
+
+// GetExternalData returns the ExternalData field value if set, zero value otherwise.
+func (o *OutgoingAch) GetExternalData() map[string]interface{} {
+	if o == nil || o.ExternalData == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.ExternalData
+}
+
+// GetExternalDataOk returns a tuple with the ExternalData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutgoingAch) GetExternalDataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.ExternalData == nil {
+		return nil, false
+	}
+	return o.ExternalData, true
+}
+
+// HasExternalData returns a boolean if a field has been set.
+func (o *OutgoingAch) HasExternalData() bool {
+	if o != nil && o.ExternalData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalData gets a reference to the given map[string]interface{} and assigns it to the ExternalData field.
+func (o *OutgoingAch) SetExternalData(v map[string]interface{}) {
+	o.ExternalData = &v
+}
+
+// GetFinalCustomerId returns the FinalCustomerId field value if set, zero value otherwise.
+func (o *OutgoingAch) GetFinalCustomerId() string {
+	if o == nil || o.FinalCustomerId == nil {
+		var ret string
+		return ret
+	}
+	return *o.FinalCustomerId
+}
+
+// GetFinalCustomerIdOk returns a tuple with the FinalCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutgoingAch) GetFinalCustomerIdOk() (*string, bool) {
+	if o == nil || o.FinalCustomerId == nil {
+		return nil, false
+	}
+	return o.FinalCustomerId, true
+}
+
+// HasFinalCustomerId returns a boolean if a field has been set.
+func (o *OutgoingAch) HasFinalCustomerId() bool {
+	if o != nil && o.FinalCustomerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFinalCustomerId gets a reference to the given string and assigns it to the FinalCustomerId field.
+func (o *OutgoingAch) SetFinalCustomerId(v string) {
+	o.FinalCustomerId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -211,6 +290,70 @@ func (o *OutgoingAch) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *OutgoingAch) SetId(v string) {
 	o.Id = &v
+}
+
+// GetIsSameDay returns the IsSameDay field value if set, zero value otherwise.
+func (o *OutgoingAch) GetIsSameDay() bool {
+	if o == nil || o.IsSameDay == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsSameDay
+}
+
+// GetIsSameDayOk returns a tuple with the IsSameDay field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutgoingAch) GetIsSameDayOk() (*bool, bool) {
+	if o == nil || o.IsSameDay == nil {
+		return nil, false
+	}
+	return o.IsSameDay, true
+}
+
+// HasIsSameDay returns a boolean if a field has been set.
+func (o *OutgoingAch) HasIsSameDay() bool {
+	if o != nil && o.IsSameDay != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSameDay gets a reference to the given bool and assigns it to the IsSameDay field.
+func (o *OutgoingAch) SetIsSameDay(v bool) {
+	o.IsSameDay = &v
+}
+
+// GetMemo returns the Memo field value if set, zero value otherwise.
+func (o *OutgoingAch) GetMemo() string {
+	if o == nil || o.Memo == nil {
+		var ret string
+		return ret
+	}
+	return *o.Memo
+}
+
+// GetMemoOk returns a tuple with the Memo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutgoingAch) GetMemoOk() (*string, bool) {
+	if o == nil || o.Memo == nil {
+		return nil, false
+	}
+	return o.Memo, true
+}
+
+// HasMemo returns a boolean if a field has been set.
+func (o *OutgoingAch) HasMemo() bool {
+	if o != nil && o.Memo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMemo gets a reference to the given string and assigns it to the Memo field.
+func (o *OutgoingAch) SetMemo(v string) {
+	o.Memo = &v
 }
 
 // GetOriginatingAccountId returns the OriginatingAccountId field value
@@ -331,11 +474,23 @@ func (o OutgoingAch) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["dc_sign"] = o.DcSign
 	}
-	if true {
+	if o.EffectiveDate != nil {
 		toSerialize["effective_date"] = o.EffectiveDate
+	}
+	if o.ExternalData != nil {
+		toSerialize["external_data"] = o.ExternalData
+	}
+	if o.FinalCustomerId != nil {
+		toSerialize["final_customer_id"] = o.FinalCustomerId
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.IsSameDay != nil {
+		toSerialize["is_same_day"] = o.IsSameDay
+	}
+	if o.Memo != nil {
+		toSerialize["memo"] = o.Memo
 	}
 	if true {
 		toSerialize["originating_account_id"] = o.OriginatingAccountId

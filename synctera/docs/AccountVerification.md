@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreationTime** | **time.Time** |  | 
-**LastUpdatedTime** | **time.Time** |  | 
+**CreationTime** | Pointer to **time.Time** | The time at which verification was first completed. | [optional] 
+**LastUpdatedTime** | Pointer to **time.Time** | The time at which verification was last updated. | [optional] 
 **Status** | **string** | The status of verification | 
 **Vendor** | **string** | The vendor used for verifying the account | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewAccountVerification
 
-`func NewAccountVerification(creationTime time.Time, lastUpdatedTime time.Time, status string, vendor string, ) *AccountVerification`
+`func NewAccountVerification(status string, vendor string, ) *AccountVerification`
 
 NewAccountVerification instantiates a new AccountVerification object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +47,11 @@ and a boolean to check if the value has been set.
 
 SetCreationTime sets CreationTime field to given value.
 
+### HasCreationTime
+
+`func (o *AccountVerification) HasCreationTime() bool`
+
+HasCreationTime returns a boolean if a field has been set.
 
 ### GetLastUpdatedTime
 
@@ -67,6 +72,11 @@ and a boolean to check if the value has been set.
 
 SetLastUpdatedTime sets LastUpdatedTime field to given value.
 
+### HasLastUpdatedTime
+
+`func (o *AccountVerification) HasLastUpdatedTime() bool`
+
+HasLastUpdatedTime returns a boolean if a field has been set.
 
 ### GetStatus
 

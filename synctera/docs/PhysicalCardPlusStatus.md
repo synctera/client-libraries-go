@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Form** | **string** | PHYSICAL or VIRTUAL. | 
 **AccountId** | Pointer to **string** | The ID of the account to which the card will be linked | [optional] 
+**Bin** | Pointer to **string** | The bin number | [optional] 
 **CardBrand** | Pointer to [**CardBrand**](CardBrand.md) |  | [optional] 
 **CardProductId** | Pointer to **string** | The card product to which the card is attached | [optional] 
 **CreationTime** | Pointer to **time.Time** | The timestamp representing when the card issuance request was made | [optional] [readonly] 
@@ -93,6 +94,31 @@ SetAccountId sets AccountId field to given value.
 `func (o *PhysicalCardPlusStatus) HasAccountId() bool`
 
 HasAccountId returns a boolean if a field has been set.
+
+### GetBin
+
+`func (o *PhysicalCardPlusStatus) GetBin() string`
+
+GetBin returns the Bin field if non-nil, zero value otherwise.
+
+### GetBinOk
+
+`func (o *PhysicalCardPlusStatus) GetBinOk() (*string, bool)`
+
+GetBinOk returns a tuple with the Bin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBin
+
+`func (o *PhysicalCardPlusStatus) SetBin(v string)`
+
+SetBin sets Bin field to given value.
+
+### HasBin
+
+`func (o *PhysicalCardPlusStatus) HasBin() bool`
+
+HasBin returns a boolean if a field has been set.
 
 ### GetCardBrand
 

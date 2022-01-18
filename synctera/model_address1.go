@@ -21,26 +21,23 @@ type Address1 struct {
 	// String address line 2
 	AddressLine2 *string `json:"address_line_2,omitempty"`
 	// City
-	City string `json:"city"`
+	City *string `json:"city,omitempty"`
 	// ISO-3166-1 Alpha-2 country code
 	CountryCode string `json:"country_code"`
 	// Postal code
-	PostalCode string `json:"postal_code"`
+	PostalCode *string `json:"postal_code,omitempty"`
 	// State, region, province, or prefecture
-	State string `json:"state"`
+	State *string `json:"state,omitempty"`
 }
 
 // NewAddress1 instantiates a new Address1 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddress1(addressLine1 string, city string, countryCode string, postalCode string, state string) *Address1 {
+func NewAddress1(addressLine1 string, countryCode string) *Address1 {
 	this := Address1{}
 	this.AddressLine1 = addressLine1
-	this.City = city
 	this.CountryCode = countryCode
-	this.PostalCode = postalCode
-	this.State = state
 	return &this
 }
 
@@ -108,28 +105,36 @@ func (o *Address1) SetAddressLine2(v string) {
 	o.AddressLine2 = &v
 }
 
-// GetCity returns the City field value
+// GetCity returns the City field value if set, zero value otherwise.
 func (o *Address1) GetCity() string {
-	if o == nil {
+	if o == nil || o.City == nil {
 		var ret string
 		return ret
 	}
-
-	return o.City
+	return *o.City
 }
 
-// GetCityOk returns a tuple with the City field value
+// GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Address1) GetCityOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.City == nil {
 		return nil, false
 	}
-	return &o.City, true
+	return o.City, true
 }
 
-// SetCity sets field value
+// HasCity returns a boolean if a field has been set.
+func (o *Address1) HasCity() bool {
+	if o != nil && o.City != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCity gets a reference to the given string and assigns it to the City field.
 func (o *Address1) SetCity(v string) {
-	o.City = v
+	o.City = &v
 }
 
 // GetCountryCode returns the CountryCode field value
@@ -156,52 +161,68 @@ func (o *Address1) SetCountryCode(v string) {
 	o.CountryCode = v
 }
 
-// GetPostalCode returns the PostalCode field value
+// GetPostalCode returns the PostalCode field value if set, zero value otherwise.
 func (o *Address1) GetPostalCode() string {
-	if o == nil {
+	if o == nil || o.PostalCode == nil {
 		var ret string
 		return ret
 	}
-
-	return o.PostalCode
+	return *o.PostalCode
 }
 
-// GetPostalCodeOk returns a tuple with the PostalCode field value
+// GetPostalCodeOk returns a tuple with the PostalCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Address1) GetPostalCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.PostalCode == nil {
 		return nil, false
 	}
-	return &o.PostalCode, true
+	return o.PostalCode, true
 }
 
-// SetPostalCode sets field value
+// HasPostalCode returns a boolean if a field has been set.
+func (o *Address1) HasPostalCode() bool {
+	if o != nil && o.PostalCode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPostalCode gets a reference to the given string and assigns it to the PostalCode field.
 func (o *Address1) SetPostalCode(v string) {
-	o.PostalCode = v
+	o.PostalCode = &v
 }
 
-// GetState returns the State field value
+// GetState returns the State field value if set, zero value otherwise.
 func (o *Address1) GetState() string {
-	if o == nil {
+	if o == nil || o.State == nil {
 		var ret string
 		return ret
 	}
-
-	return o.State
+	return *o.State
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Address1) GetStateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.State == nil {
 		return nil, false
 	}
-	return &o.State, true
+	return o.State, true
 }
 
-// SetState sets field value
+// HasState returns a boolean if a field has been set.
+func (o *Address1) HasState() bool {
+	if o != nil && o.State != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
 func (o *Address1) SetState(v string) {
-	o.State = v
+	o.State = &v
 }
 
 func (o Address1) MarshalJSON() ([]byte, error) {
@@ -212,16 +233,16 @@ func (o Address1) MarshalJSON() ([]byte, error) {
 	if o.AddressLine2 != nil {
 		toSerialize["address_line_2"] = o.AddressLine2
 	}
-	if true {
+	if o.City != nil {
 		toSerialize["city"] = o.City
 	}
 	if true {
 		toSerialize["country_code"] = o.CountryCode
 	}
-	if true {
+	if o.PostalCode != nil {
 		toSerialize["postal_code"] = o.PostalCode
 	}
-	if true {
+	if o.State != nil {
 		toSerialize["state"] = o.State
 	}
 	return json.Marshal(toSerialize)

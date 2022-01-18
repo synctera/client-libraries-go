@@ -30,6 +30,8 @@ type PendingTransactionData struct {
 	EffectiveDate time.Time `json:"effective_date"`
 	// The date that at which this hold is no longer valid.
 	ExpiresAt time.Time `json:"expires_at"`
+	// an unstructured json blob representing additional transaction information supplied by the integrator.
+	ExternalData map[string]interface{} `json:"external_data"`
 	// Whether or not the hold was forced (spending controls ignored)
 	ForcePost bool `json:"force_post"`
 	// An array representing any previous states of the hold, if it has been modified (For example, increasing or decreasing the hold amount).
@@ -61,7 +63,7 @@ type PendingTransactionData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPendingTransactionData(amount int32, availBalance int32, balance int32, currency string, dcSign DcSign, effectiveDate time.Time, expiresAt time.Time, forcePost bool, history []PendingTransactionHistory, network string, operation string, reason string, reqAmount int32, riskInfo map[string]interface{}, status string, subtype string, totalAmount int32, type_ string, userData map[string]interface{}, wasPartial bool) *PendingTransactionData {
+func NewPendingTransactionData(amount int32, availBalance int32, balance int32, currency string, dcSign DcSign, effectiveDate time.Time, expiresAt time.Time, externalData map[string]interface{}, forcePost bool, history []PendingTransactionHistory, network string, operation string, reason string, reqAmount int32, riskInfo map[string]interface{}, status string, subtype string, totalAmount int32, type_ string, userData map[string]interface{}, wasPartial bool) *PendingTransactionData {
 	this := PendingTransactionData{}
 	this.Amount = amount
 	this.AvailBalance = availBalance
@@ -70,6 +72,7 @@ func NewPendingTransactionData(amount int32, availBalance int32, balance int32, 
 	this.DcSign = dcSign
 	this.EffectiveDate = effectiveDate
 	this.ExpiresAt = expiresAt
+	this.ExternalData = externalData
 	this.ForcePost = forcePost
 	this.History = history
 	this.Network = network
@@ -260,6 +263,32 @@ func (o *PendingTransactionData) GetExpiresAtOk() (*time.Time, bool) {
 // SetExpiresAt sets field value
 func (o *PendingTransactionData) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = v
+}
+
+// GetExternalData returns the ExternalData field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PendingTransactionData) GetExternalData() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.ExternalData
+}
+
+// GetExternalDataOk returns a tuple with the ExternalData field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PendingTransactionData) GetExternalDataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.ExternalData == nil {
+		return nil, false
+	}
+	return &o.ExternalData, true
+}
+
+// SetExternalData sets field value
+func (o *PendingTransactionData) SetExternalData(v map[string]interface{}) {
+	o.ExternalData = v
 }
 
 // GetForcePost returns the ForcePost field value
@@ -600,6 +629,9 @@ func (o PendingTransactionData) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["expires_at"] = o.ExpiresAt
+	}
+	if o.ExternalData != nil {
+		toSerialize["external_data"] = o.ExternalData
 	}
 	if true {
 		toSerialize["force_post"] = o.ForcePost

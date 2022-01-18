@@ -16,6 +16,8 @@ import (
 
 // PostedTransactionData struct for PostedTransactionData
 type PostedTransactionData struct {
+	// an unstructured json blob representing additional transaction information supplied by the integrator.
+	ExternalData map[string]interface{} `json:"external_data"`
 	// The set of accounting entries associated with this transaction. For example, a debit to a customer account will have a corresponding credit in a general ledger account.
 	Lines []TransactionLine `json:"lines"`
 	Memo string `json:"memo"`
@@ -32,8 +34,9 @@ type PostedTransactionData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPostedTransactionData(lines []TransactionLine, memo string, metadata map[string]interface{}, riskInfo map[string]interface{}, userData map[string]interface{}) *PostedTransactionData {
+func NewPostedTransactionData(externalData map[string]interface{}, lines []TransactionLine, memo string, metadata map[string]interface{}, riskInfo map[string]interface{}, userData map[string]interface{}) *PostedTransactionData {
 	this := PostedTransactionData{}
+	this.ExternalData = externalData
 	this.Lines = lines
 	this.Memo = memo
 	this.Metadata = metadata
@@ -48,6 +51,32 @@ func NewPostedTransactionData(lines []TransactionLine, memo string, metadata map
 func NewPostedTransactionDataWithDefaults() *PostedTransactionData {
 	this := PostedTransactionData{}
 	return &this
+}
+
+// GetExternalData returns the ExternalData field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *PostedTransactionData) GetExternalData() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.ExternalData
+}
+
+// GetExternalDataOk returns a tuple with the ExternalData field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PostedTransactionData) GetExternalDataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.ExternalData == nil {
+		return nil, false
+	}
+	return &o.ExternalData, true
+}
+
+// SetExternalData sets field value
+func (o *PostedTransactionData) SetExternalData(v map[string]interface{}) {
+	o.ExternalData = v
 }
 
 // GetLines returns the Lines field value
@@ -210,6 +239,9 @@ func (o *PostedTransactionData) SetUserData(v map[string]interface{}) {
 
 func (o PostedTransactionData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ExternalData != nil {
+		toSerialize["external_data"] = o.ExternalData
+	}
 	if true {
 		toSerialize["lines"] = o.Lines
 	}

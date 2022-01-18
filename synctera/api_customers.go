@@ -47,6 +47,7 @@ func (r ApiCreateCustomerRequest) Execute() (CustomerInPath, *_nethttp.Response,
 CreateCustomer Create a Customer
 
 The customer object represents your customer's identity. You can then verify the identity of this customer and associate them with other people and accounts.
+Note that if no shipping_address attribute is provided in the request, the shipping_address will be set to a copy of the legal_address.
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1263,6 +1264,7 @@ type ApiListCustomersRequest struct {
 	status *string
 	limit *int32
 	pageToken *string
+	sortBy *[]string
 }
 
 // Only return resources with the specified customer ID(s). Multiple IDs can be provided as a comma-separated list. 
@@ -1300,6 +1302,11 @@ func (r ApiListCustomersRequest) Limit(limit int32) ApiListCustomersRequest {
 }
 func (r ApiListCustomersRequest) PageToken(pageToken string) ApiListCustomersRequest {
 	r.pageToken = &pageToken
+	return r
+}
+// Specifies the sort order for the returned customers. 
+func (r ApiListCustomersRequest) SortBy(sortBy []string) ApiListCustomersRequest {
+	r.sortBy = &sortBy
 	return r
 }
 
@@ -1371,6 +1378,9 @@ func (a *CustomersApiService) ListCustomersExecute(r ApiListCustomersRequest) (C
 	}
 	if r.pageToken != nil {
 		localVarQueryParams.Add("page_token", parameterToString(*r.pageToken, ""))
+	}
+	if r.sortBy != nil {
+		localVarQueryParams.Add("sort_by", parameterToString(*r.sortBy, "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1474,6 +1484,14 @@ func (r ApiPatchCustomerRequest) Execute() (CustomerInPath, *_nethttp.Response, 
 
 /*
 PatchCustomer Patch Customer
+
+Patch fields of customer based on ID
+Note that if:
+  * legal address is provided in the request, AND
+  * shipping_address is not provided in the request, AND
+  * the customer resource does not have shipping_address
+  then shipping_address will be set to a copy of the legal_address.
+
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param customerId The customer's unique identifier
@@ -1640,8 +1658,7 @@ func (r ApiUpdateCustomerRequest) Execute() (CustomerInPath, *_nethttp.Response,
 UpdateCustomer Update Customer
 
 Update customer based on ID
-Required fields:
-  - status
+Note that if no shipping_address attribute is provided in the request, the shipping_address will be set to a copy of the legal_address.
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

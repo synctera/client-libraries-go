@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ContentType** | **string** | Describes the content-type encoding received from the vendor. | 
-**Details** | [**[]Detail**](Detail.md) | Array of vendor specific information. | 
+**Details** | Pointer to [**[]Detail**](Detail.md) | Array of vendor specific information. | [optional] [readonly] 
 **Vendor** | **string** | Name of the vendor used. | 
 **Xml** | **string** | Data representaion in XML. | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewVendorXml
 
-`func NewVendorXml(contentType string, details []Detail, vendor string, xml string, ) *VendorXml`
+`func NewVendorXml(contentType string, vendor string, xml string, ) *VendorXml`
 
 NewVendorXml instantiates a new VendorXml object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +67,11 @@ and a boolean to check if the value has been set.
 
 SetDetails sets Details field to given value.
 
+### HasDetails
+
+`func (o *VendorXml) HasDetails() bool`
+
+HasDetails returns a boolean if a field has been set.
 
 ### GetVendor
 

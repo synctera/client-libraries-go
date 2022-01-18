@@ -16,7 +16,7 @@ import (
 
 // CardEditRequest struct for CardEditRequest
 type CardEditRequest struct {
-	CardStatus CardStatus `json:"card_status"`
+	CardStatus CardStatusRequest `json:"card_status"`
 	// Additional details about the reason for the status change
 	Memo *string `json:"memo,omitempty"`
 	// Additional data to include in the request structured as key-value pairs
@@ -28,7 +28,7 @@ type CardEditRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCardEditRequest(cardStatus CardStatus, reason CardStatusReasonCode) *CardEditRequest {
+func NewCardEditRequest(cardStatus CardStatusRequest, reason CardStatusReasonCode) *CardEditRequest {
 	this := CardEditRequest{}
 	this.CardStatus = cardStatus
 	this.Reason = reason
@@ -44,9 +44,9 @@ func NewCardEditRequestWithDefaults() *CardEditRequest {
 }
 
 // GetCardStatus returns the CardStatus field value
-func (o *CardEditRequest) GetCardStatus() CardStatus {
+func (o *CardEditRequest) GetCardStatus() CardStatusRequest {
 	if o == nil {
-		var ret CardStatus
+		var ret CardStatusRequest
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *CardEditRequest) GetCardStatus() CardStatus {
 
 // GetCardStatusOk returns a tuple with the CardStatus field value
 // and a boolean to check if the value has been set.
-func (o *CardEditRequest) GetCardStatusOk() (*CardStatus, bool) {
+func (o *CardEditRequest) GetCardStatusOk() (*CardStatusRequest, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *CardEditRequest) GetCardStatusOk() (*CardStatus, bool) {
 }
 
 // SetCardStatus sets field value
-func (o *CardEditRequest) SetCardStatus(v CardStatus) {
+func (o *CardEditRequest) SetCardStatus(v CardStatusRequest) {
 	o.CardStatus = v
 }
 

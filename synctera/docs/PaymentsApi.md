@@ -25,12 +25,11 @@ import (
     "context"
     "fmt"
     "os"
-    "time"
     openapiclient "./openapi"
 )
 
 func main() {
-    outgoingAch := *openapiclient.NewOutgoingAch(int32(607), "USD", "43f9209e-a1d2-417d-8ef6-de388ab27069", "debit", time.Now(), "993350b8-7b62-40bf-b6cc-6009f837ba84", "324dc450-3564-4a7b-87b0-8a824a02b5f3", *openapiclient.NewRiskData("ClientIp_example")) // OutgoingAch | Outgoing ACH
+    outgoingAch := *openapiclient.NewOutgoingAch(int32(607), "USD", "2710879c-96fa-4663-96bc-0b4f3fb1eafb", "debit", "3497087c-e3cc-4d4d-9edf-7061653e9d08", "d06494f7-0450-4b1d-b46d-ad72926e474d", *openapiclient.NewRiskData("ClientIp_example")) // OutgoingAch | Outgoing ACH
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

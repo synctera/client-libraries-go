@@ -5,11 +5,13 @@
 
 * `ACCOUNT_CREATED` (value: `"ACCOUNT.CREATED"`)
 
-* `CARD_STATUS_CHANGE` (value: `"CARD.STATUS_CHANGE"`)
+* `CARD_UPDATED` (value: `"CARD.UPDATED"`)
 
 * `CUSTOMER_KYC_OUTCOME_UPDATED` (value: `"CUSTOMER.KYC_OUTCOME.UPDATED"`)
 
 * `INTEREST_MONTHLY_PAYOUT` (value: `"INTEREST.MONTHLY_PAYOUT"`)
+
+* `INTERNAL_TRANSFER_SUCCEEDED` (value: `"INTERNAL_TRANSFER.SUCCEEDED"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
