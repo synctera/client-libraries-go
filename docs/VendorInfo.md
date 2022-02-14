@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Vendor** | **string** |  | 
 **ContentType** | **string** | Describes the content-type encoding received from the vendor | 
 **Json** | **map[string]interface{}** | Data representation in JSON | 
+**Vendor** | **string** |  | 
 **Xml** | **string** | Data representaion in XML | 
 
 ## Methods
 
 ### NewVendorInfo
 
-`func NewVendorInfo(vendor string, contentType string, json map[string]interface{}, xml string, ) *VendorInfo`
+`func NewVendorInfo(contentType string, json map[string]interface{}, vendor string, xml string, ) *VendorInfo`
 
 NewVendorInfo instantiates a new VendorInfo object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +27,6 @@ will change when the set of required properties is changed
 NewVendorInfoWithDefaults instantiates a new VendorInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetVendor
-
-`func (o *VendorInfo) GetVendor() string`
-
-GetVendor returns the Vendor field if non-nil, zero value otherwise.
-
-### GetVendorOk
-
-`func (o *VendorInfo) GetVendorOk() (*string, bool)`
-
-GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVendor
-
-`func (o *VendorInfo) SetVendor(v string)`
-
-SetVendor sets Vendor field to given value.
-
 
 ### GetContentType
 
@@ -86,6 +66,26 @@ and a boolean to check if the value has been set.
 `func (o *VendorInfo) SetJson(v map[string]interface{})`
 
 SetJson sets Json field to given value.
+
+
+### GetVendor
+
+`func (o *VendorInfo) GetVendor() string`
+
+GetVendor returns the Vendor field if non-nil, zero value otherwise.
+
+### GetVendorOk
+
+`func (o *VendorInfo) GetVendorOk() (*string, bool)`
+
+GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendor
+
+`func (o *VendorInfo) SetVendor(v string)`
+
+SetVendor sets Vendor field to given value.
 
 
 ### GetXml

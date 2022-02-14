@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | a URI that identifies this general category of error | [optional] 
+**Detail** | Pointer to **string** | a human-readable string explaining this particular error | [optional] 
 **Status** | Pointer to **int32** | the HTTP status code for this response | [optional] 
 **Title** | Pointer to **string** | a human-readable string for this general category of error | [optional] 
-**Detail** | Pointer to **string** | a human-readable string explaining this particular error | [optional] 
+**Type** | Pointer to **string** | a URI that identifies this general category of error | [optional] 
 
 ## Methods
 
@@ -28,30 +28,30 @@ NewModelErrorWithDefaults instantiates a new ModelError object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetType
+### GetDetail
 
-`func (o *ModelError) GetType() string`
+`func (o *ModelError) GetDetail() string`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetDetail returns the Detail field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetDetailOk
 
-`func (o *ModelError) GetTypeOk() (*string, bool)`
+`func (o *ModelError) GetDetailOk() (*string, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetDetailOk returns a tuple with the Detail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetDetail
 
-`func (o *ModelError) SetType(v string)`
+`func (o *ModelError) SetDetail(v string)`
 
-SetType sets Type field to given value.
+SetDetail sets Detail field to given value.
 
-### HasType
+### HasDetail
 
-`func (o *ModelError) HasType() bool`
+`func (o *ModelError) HasDetail() bool`
 
-HasType returns a boolean if a field has been set.
+HasDetail returns a boolean if a field has been set.
 
 ### GetStatus
 
@@ -103,30 +103,30 @@ SetTitle sets Title field to given value.
 
 HasTitle returns a boolean if a field has been set.
 
-### GetDetail
+### GetType
 
-`func (o *ModelError) GetDetail() string`
+`func (o *ModelError) GetType() string`
 
-GetDetail returns the Detail field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetDetailOk
+### GetTypeOk
 
-`func (o *ModelError) GetDetailOk() (*string, bool)`
+`func (o *ModelError) GetTypeOk() (*string, bool)`
 
-GetDetailOk returns a tuple with the Detail field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDetail
+### SetType
 
-`func (o *ModelError) SetDetail(v string)`
+`func (o *ModelError) SetType(v string)`
 
-SetDetail sets Detail field to given value.
+SetType sets Type field to given value.
 
-### HasDetail
+### HasType
 
-`func (o *ModelError) HasDetail() bool`
+`func (o *ModelError) HasType() bool`
 
-HasDetail returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

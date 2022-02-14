@@ -16,24 +16,24 @@ import (
 
 // CustomerVerification struct for CustomerVerification
 type CustomerVerification struct {
-	// List of possible checks to run on a customer.
-	VerificationType []VerificationType `json:"verification_type"`
+	// Whether this customer has consented to a KYC check.
+	CustomerConsent bool `json:"customer_consent"`
 	// IP address of the customer being verified.
 	CustomerIpAddress *string `json:"customer_ip_address,omitempty"`
 	// The ID of the uploaded government-issued identification document provided by the DV API endpoint.
 	DocumentId *string `json:"document_id,omitempty"`
-	// Whether this customer has consented to a KYC check.
-	CustomerConsent bool `json:"customer_consent"`
+	// List of possible checks to run on a customer.
+	VerificationType []VerificationType `json:"verification_type"`
 }
 
 // NewCustomerVerification instantiates a new CustomerVerification object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerVerification(verificationType []VerificationType, customerConsent bool) *CustomerVerification {
+func NewCustomerVerification(customerConsent bool, verificationType []VerificationType) *CustomerVerification {
 	this := CustomerVerification{}
-	this.VerificationType = verificationType
 	this.CustomerConsent = customerConsent
+	this.VerificationType = verificationType
 	return &this
 }
 
@@ -45,28 +45,28 @@ func NewCustomerVerificationWithDefaults() *CustomerVerification {
 	return &this
 }
 
-// GetVerificationType returns the VerificationType field value
-func (o *CustomerVerification) GetVerificationType() []VerificationType {
+// GetCustomerConsent returns the CustomerConsent field value
+func (o *CustomerVerification) GetCustomerConsent() bool {
 	if o == nil {
-		var ret []VerificationType
+		var ret bool
 		return ret
 	}
 
-	return o.VerificationType
+	return o.CustomerConsent
 }
 
-// GetVerificationTypeOk returns a tuple with the VerificationType field value
+// GetCustomerConsentOk returns a tuple with the CustomerConsent field value
 // and a boolean to check if the value has been set.
-func (o *CustomerVerification) GetVerificationTypeOk() (*[]VerificationType, bool) {
+func (o *CustomerVerification) GetCustomerConsentOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.VerificationType, true
+	return &o.CustomerConsent, true
 }
 
-// SetVerificationType sets field value
-func (o *CustomerVerification) SetVerificationType(v []VerificationType) {
-	o.VerificationType = v
+// SetCustomerConsent sets field value
+func (o *CustomerVerification) SetCustomerConsent(v bool) {
+	o.CustomerConsent = v
 }
 
 // GetCustomerIpAddress returns the CustomerIpAddress field value if set, zero value otherwise.
@@ -133,34 +133,34 @@ func (o *CustomerVerification) SetDocumentId(v string) {
 	o.DocumentId = &v
 }
 
-// GetCustomerConsent returns the CustomerConsent field value
-func (o *CustomerVerification) GetCustomerConsent() bool {
+// GetVerificationType returns the VerificationType field value
+func (o *CustomerVerification) GetVerificationType() []VerificationType {
 	if o == nil {
-		var ret bool
+		var ret []VerificationType
 		return ret
 	}
 
-	return o.CustomerConsent
+	return o.VerificationType
 }
 
-// GetCustomerConsentOk returns a tuple with the CustomerConsent field value
+// GetVerificationTypeOk returns a tuple with the VerificationType field value
 // and a boolean to check if the value has been set.
-func (o *CustomerVerification) GetCustomerConsentOk() (*bool, bool) {
+func (o *CustomerVerification) GetVerificationTypeOk() (*[]VerificationType, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CustomerConsent, true
+	return &o.VerificationType, true
 }
 
-// SetCustomerConsent sets field value
-func (o *CustomerVerification) SetCustomerConsent(v bool) {
-	o.CustomerConsent = v
+// SetVerificationType sets field value
+func (o *CustomerVerification) SetVerificationType(v []VerificationType) {
+	o.VerificationType = v
 }
 
 func (o CustomerVerification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["verification_type"] = o.VerificationType
+		toSerialize["customer_consent"] = o.CustomerConsent
 	}
 	if o.CustomerIpAddress != nil {
 		toSerialize["customer_ip_address"] = o.CustomerIpAddress
@@ -169,7 +169,7 @@ func (o CustomerVerification) MarshalJSON() ([]byte, error) {
 		toSerialize["document_id"] = o.DocumentId
 	}
 	if true {
-		toSerialize["customer_consent"] = o.CustomerConsent
+		toSerialize["verification_type"] = o.VerificationType
 	}
 	return json.Marshal(toSerialize)
 }

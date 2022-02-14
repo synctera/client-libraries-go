@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Vendor** | **string** | Name of the vendor used. | 
 **ContentType** | **string** | Describes the content-type encoding received from the vendor. | 
-**Json** | **map[string]interface{}** | Data representation in JSON. | 
 **Details** | Pointer to [**[]VerificationVendorInfoDetail**](VerificationVendorInfoDetail.md) | Array of vendor specific information. | [optional] [readonly] 
+**Json** | **map[string]interface{}** | Data representation in JSON. | 
+**Vendor** | **string** | Name of the vendor used. | 
 
 ## Methods
 
 ### NewVerificationVendorJson
 
-`func NewVerificationVendorJson(vendor string, contentType string, json map[string]interface{}, ) *VerificationVendorJson`
+`func NewVerificationVendorJson(contentType string, json map[string]interface{}, vendor string, ) *VerificationVendorJson`
 
 NewVerificationVendorJson instantiates a new VerificationVendorJson object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +27,6 @@ will change when the set of required properties is changed
 NewVerificationVendorJsonWithDefaults instantiates a new VerificationVendorJson object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetVendor
-
-`func (o *VerificationVendorJson) GetVendor() string`
-
-GetVendor returns the Vendor field if non-nil, zero value otherwise.
-
-### GetVendorOk
-
-`func (o *VerificationVendorJson) GetVendorOk() (*string, bool)`
-
-GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVendor
-
-`func (o *VerificationVendorJson) SetVendor(v string)`
-
-SetVendor sets Vendor field to given value.
-
 
 ### GetContentType
 
@@ -66,26 +46,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationVendorJson) SetContentType(v string)`
 
 SetContentType sets ContentType field to given value.
-
-
-### GetJson
-
-`func (o *VerificationVendorJson) GetJson() map[string]interface{}`
-
-GetJson returns the Json field if non-nil, zero value otherwise.
-
-### GetJsonOk
-
-`func (o *VerificationVendorJson) GetJsonOk() (*map[string]interface{}, bool)`
-
-GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetJson
-
-`func (o *VerificationVendorJson) SetJson(v map[string]interface{})`
-
-SetJson sets Json field to given value.
 
 
 ### GetDetails
@@ -112,6 +72,46 @@ SetDetails sets Details field to given value.
 `func (o *VerificationVendorJson) HasDetails() bool`
 
 HasDetails returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *VerificationVendorJson) GetJson() map[string]interface{}`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *VerificationVendorJson) GetJsonOk() (*map[string]interface{}, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *VerificationVendorJson) SetJson(v map[string]interface{})`
+
+SetJson sets Json field to given value.
+
+
+### GetVendor
+
+`func (o *VerificationVendorJson) GetVendor() string`
+
+GetVendor returns the Vendor field if non-nil, zero value otherwise.
+
+### GetVendorOk
+
+`func (o *VerificationVendorJson) GetVendorOk() (*string, bool)`
+
+GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendor
+
+`func (o *VerificationVendorJson) SetVendor(v string)`
+
+SetVendor sets Vendor field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

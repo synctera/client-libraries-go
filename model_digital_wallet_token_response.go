@@ -17,21 +17,21 @@ import (
 
 // DigitalWalletTokenResponse struct for DigitalWalletTokenResponse
 type DigitalWalletTokenResponse struct {
-	// Digital Wallet Token ID
-	Id *string `json:"id,omitempty"`
+	ApprovedTime *time.Time `json:"approved_time,omitempty"`
 	// Card ID of the Digital wallet Token
 	CardId *string `json:"card_id,omitempty"`
+	// The user’s Android device ID; the device’s unique identifier.
+	DeviceId *string `json:"device_id,omitempty"`
+	// Type of the device where the Digital Wallet Token is used in
+	DeviceType *string `json:"device_type,omitempty"`
+	// Digital Wallet Token ID
+	Id               *string    `json:"id,omitempty"`
+	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
+	RequestedTime    *time.Time `json:"requested_time,omitempty"`
 	// Current status of the Digital Wallet Token
 	State *string `json:"state,omitempty"`
 	// Type of the Digital Wallet
 	Type *string `json:"type,omitempty"`
-	// Type of the device where the Digital Wallet Token is used in
-	DeviceType *string `json:"device_type,omitempty"`
-	// The user’s Android device ID; the device’s unique identifier.
-	DeviceId         *string    `json:"device_id,omitempty"`
-	RequestedTime    *time.Time `json:"requested_time,omitempty"`
-	ApprovedTime     *time.Time `json:"approved_time,omitempty"`
-	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
 }
 
 // NewDigitalWalletTokenResponse instantiates a new DigitalWalletTokenResponse object
@@ -49,6 +49,134 @@ func NewDigitalWalletTokenResponse() *DigitalWalletTokenResponse {
 func NewDigitalWalletTokenResponseWithDefaults() *DigitalWalletTokenResponse {
 	this := DigitalWalletTokenResponse{}
 	return &this
+}
+
+// GetApprovedTime returns the ApprovedTime field value if set, zero value otherwise.
+func (o *DigitalWalletTokenResponse) GetApprovedTime() time.Time {
+	if o == nil || o.ApprovedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.ApprovedTime
+}
+
+// GetApprovedTimeOk returns a tuple with the ApprovedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigitalWalletTokenResponse) GetApprovedTimeOk() (*time.Time, bool) {
+	if o == nil || o.ApprovedTime == nil {
+		return nil, false
+	}
+	return o.ApprovedTime, true
+}
+
+// HasApprovedTime returns a boolean if a field has been set.
+func (o *DigitalWalletTokenResponse) HasApprovedTime() bool {
+	if o != nil && o.ApprovedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApprovedTime gets a reference to the given time.Time and assigns it to the ApprovedTime field.
+func (o *DigitalWalletTokenResponse) SetApprovedTime(v time.Time) {
+	o.ApprovedTime = &v
+}
+
+// GetCardId returns the CardId field value if set, zero value otherwise.
+func (o *DigitalWalletTokenResponse) GetCardId() string {
+	if o == nil || o.CardId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CardId
+}
+
+// GetCardIdOk returns a tuple with the CardId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigitalWalletTokenResponse) GetCardIdOk() (*string, bool) {
+	if o == nil || o.CardId == nil {
+		return nil, false
+	}
+	return o.CardId, true
+}
+
+// HasCardId returns a boolean if a field has been set.
+func (o *DigitalWalletTokenResponse) HasCardId() bool {
+	if o != nil && o.CardId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCardId gets a reference to the given string and assigns it to the CardId field.
+func (o *DigitalWalletTokenResponse) SetCardId(v string) {
+	o.CardId = &v
+}
+
+// GetDeviceId returns the DeviceId field value if set, zero value otherwise.
+func (o *DigitalWalletTokenResponse) GetDeviceId() string {
+	if o == nil || o.DeviceId == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeviceId
+}
+
+// GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigitalWalletTokenResponse) GetDeviceIdOk() (*string, bool) {
+	if o == nil || o.DeviceId == nil {
+		return nil, false
+	}
+	return o.DeviceId, true
+}
+
+// HasDeviceId returns a boolean if a field has been set.
+func (o *DigitalWalletTokenResponse) HasDeviceId() bool {
+	if o != nil && o.DeviceId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceId gets a reference to the given string and assigns it to the DeviceId field.
+func (o *DigitalWalletTokenResponse) SetDeviceId(v string) {
+	o.DeviceId = &v
+}
+
+// GetDeviceType returns the DeviceType field value if set, zero value otherwise.
+func (o *DigitalWalletTokenResponse) GetDeviceType() string {
+	if o == nil || o.DeviceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeviceType
+}
+
+// GetDeviceTypeOk returns a tuple with the DeviceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigitalWalletTokenResponse) GetDeviceTypeOk() (*string, bool) {
+	if o == nil || o.DeviceType == nil {
+		return nil, false
+	}
+	return o.DeviceType, true
+}
+
+// HasDeviceType returns a boolean if a field has been set.
+func (o *DigitalWalletTokenResponse) HasDeviceType() bool {
+	if o != nil && o.DeviceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceType gets a reference to the given string and assigns it to the DeviceType field.
+func (o *DigitalWalletTokenResponse) SetDeviceType(v string) {
+	o.DeviceType = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -83,36 +211,68 @@ func (o *DigitalWalletTokenResponse) SetId(v string) {
 	o.Id = &v
 }
 
-// GetCardId returns the CardId field value if set, zero value otherwise.
-func (o *DigitalWalletTokenResponse) GetCardId() string {
-	if o == nil || o.CardId == nil {
-		var ret string
+// GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
+func (o *DigitalWalletTokenResponse) GetLastModifiedTime() time.Time {
+	if o == nil || o.LastModifiedTime == nil {
+		var ret time.Time
 		return ret
 	}
-	return *o.CardId
+	return *o.LastModifiedTime
 }
 
-// GetCardIdOk returns a tuple with the CardId field value if set, nil otherwise
+// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DigitalWalletTokenResponse) GetCardIdOk() (*string, bool) {
-	if o == nil || o.CardId == nil {
+func (o *DigitalWalletTokenResponse) GetLastModifiedTimeOk() (*time.Time, bool) {
+	if o == nil || o.LastModifiedTime == nil {
 		return nil, false
 	}
-	return o.CardId, true
+	return o.LastModifiedTime, true
 }
 
-// HasCardId returns a boolean if a field has been set.
-func (o *DigitalWalletTokenResponse) HasCardId() bool {
-	if o != nil && o.CardId != nil {
+// HasLastModifiedTime returns a boolean if a field has been set.
+func (o *DigitalWalletTokenResponse) HasLastModifiedTime() bool {
+	if o != nil && o.LastModifiedTime != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCardId gets a reference to the given string and assigns it to the CardId field.
-func (o *DigitalWalletTokenResponse) SetCardId(v string) {
-	o.CardId = &v
+// SetLastModifiedTime gets a reference to the given time.Time and assigns it to the LastModifiedTime field.
+func (o *DigitalWalletTokenResponse) SetLastModifiedTime(v time.Time) {
+	o.LastModifiedTime = &v
+}
+
+// GetRequestedTime returns the RequestedTime field value if set, zero value otherwise.
+func (o *DigitalWalletTokenResponse) GetRequestedTime() time.Time {
+	if o == nil || o.RequestedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.RequestedTime
+}
+
+// GetRequestedTimeOk returns a tuple with the RequestedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigitalWalletTokenResponse) GetRequestedTimeOk() (*time.Time, bool) {
+	if o == nil || o.RequestedTime == nil {
+		return nil, false
+	}
+	return o.RequestedTime, true
+}
+
+// HasRequestedTime returns a boolean if a field has been set.
+func (o *DigitalWalletTokenResponse) HasRequestedTime() bool {
+	if o != nil && o.RequestedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedTime gets a reference to the given time.Time and assigns it to the RequestedTime field.
+func (o *DigitalWalletTokenResponse) SetRequestedTime(v time.Time) {
+	o.RequestedTime = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise.
@@ -179,194 +339,34 @@ func (o *DigitalWalletTokenResponse) SetType(v string) {
 	o.Type = &v
 }
 
-// GetDeviceType returns the DeviceType field value if set, zero value otherwise.
-func (o *DigitalWalletTokenResponse) GetDeviceType() string {
-	if o == nil || o.DeviceType == nil {
-		var ret string
-		return ret
-	}
-	return *o.DeviceType
-}
-
-// GetDeviceTypeOk returns a tuple with the DeviceType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DigitalWalletTokenResponse) GetDeviceTypeOk() (*string, bool) {
-	if o == nil || o.DeviceType == nil {
-		return nil, false
-	}
-	return o.DeviceType, true
-}
-
-// HasDeviceType returns a boolean if a field has been set.
-func (o *DigitalWalletTokenResponse) HasDeviceType() bool {
-	if o != nil && o.DeviceType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDeviceType gets a reference to the given string and assigns it to the DeviceType field.
-func (o *DigitalWalletTokenResponse) SetDeviceType(v string) {
-	o.DeviceType = &v
-}
-
-// GetDeviceId returns the DeviceId field value if set, zero value otherwise.
-func (o *DigitalWalletTokenResponse) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
-		var ret string
-		return ret
-	}
-	return *o.DeviceId
-}
-
-// GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DigitalWalletTokenResponse) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
-		return nil, false
-	}
-	return o.DeviceId, true
-}
-
-// HasDeviceId returns a boolean if a field has been set.
-func (o *DigitalWalletTokenResponse) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDeviceId gets a reference to the given string and assigns it to the DeviceId field.
-func (o *DigitalWalletTokenResponse) SetDeviceId(v string) {
-	o.DeviceId = &v
-}
-
-// GetRequestedTime returns the RequestedTime field value if set, zero value otherwise.
-func (o *DigitalWalletTokenResponse) GetRequestedTime() time.Time {
-	if o == nil || o.RequestedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.RequestedTime
-}
-
-// GetRequestedTimeOk returns a tuple with the RequestedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DigitalWalletTokenResponse) GetRequestedTimeOk() (*time.Time, bool) {
-	if o == nil || o.RequestedTime == nil {
-		return nil, false
-	}
-	return o.RequestedTime, true
-}
-
-// HasRequestedTime returns a boolean if a field has been set.
-func (o *DigitalWalletTokenResponse) HasRequestedTime() bool {
-	if o != nil && o.RequestedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRequestedTime gets a reference to the given time.Time and assigns it to the RequestedTime field.
-func (o *DigitalWalletTokenResponse) SetRequestedTime(v time.Time) {
-	o.RequestedTime = &v
-}
-
-// GetApprovedTime returns the ApprovedTime field value if set, zero value otherwise.
-func (o *DigitalWalletTokenResponse) GetApprovedTime() time.Time {
-	if o == nil || o.ApprovedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.ApprovedTime
-}
-
-// GetApprovedTimeOk returns a tuple with the ApprovedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DigitalWalletTokenResponse) GetApprovedTimeOk() (*time.Time, bool) {
-	if o == nil || o.ApprovedTime == nil {
-		return nil, false
-	}
-	return o.ApprovedTime, true
-}
-
-// HasApprovedTime returns a boolean if a field has been set.
-func (o *DigitalWalletTokenResponse) HasApprovedTime() bool {
-	if o != nil && o.ApprovedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetApprovedTime gets a reference to the given time.Time and assigns it to the ApprovedTime field.
-func (o *DigitalWalletTokenResponse) SetApprovedTime(v time.Time) {
-	o.ApprovedTime = &v
-}
-
-// GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
-func (o *DigitalWalletTokenResponse) GetLastModifiedTime() time.Time {
-	if o == nil || o.LastModifiedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.LastModifiedTime
-}
-
-// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DigitalWalletTokenResponse) GetLastModifiedTimeOk() (*time.Time, bool) {
-	if o == nil || o.LastModifiedTime == nil {
-		return nil, false
-	}
-	return o.LastModifiedTime, true
-}
-
-// HasLastModifiedTime returns a boolean if a field has been set.
-func (o *DigitalWalletTokenResponse) HasLastModifiedTime() bool {
-	if o != nil && o.LastModifiedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedTime gets a reference to the given time.Time and assigns it to the LastModifiedTime field.
-func (o *DigitalWalletTokenResponse) SetLastModifiedTime(v time.Time) {
-	o.LastModifiedTime = &v
-}
-
 func (o DigitalWalletTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	if o.ApprovedTime != nil {
+		toSerialize["approved_time"] = o.ApprovedTime
 	}
 	if o.CardId != nil {
 		toSerialize["card_id"] = o.CardId
+	}
+	if o.DeviceId != nil {
+		toSerialize["device_id"] = o.DeviceId
+	}
+	if o.DeviceType != nil {
+		toSerialize["device_type"] = o.DeviceType
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if o.LastModifiedTime != nil {
+		toSerialize["last_modified_time"] = o.LastModifiedTime
+	}
+	if o.RequestedTime != nil {
+		toSerialize["requested_time"] = o.RequestedTime
 	}
 	if o.State != nil {
 		toSerialize["state"] = o.State
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
-	}
-	if o.DeviceType != nil {
-		toSerialize["device_type"] = o.DeviceType
-	}
-	if o.DeviceId != nil {
-		toSerialize["device_id"] = o.DeviceId
-	}
-	if o.RequestedTime != nil {
-		toSerialize["requested_time"] = o.RequestedTime
-	}
-	if o.ApprovedTime != nil {
-		toSerialize["approved_time"] = o.ApprovedTime
-	}
-	if o.LastModifiedTime != nil {
-		toSerialize["last_modified_time"] = o.LastModifiedTime
 	}
 	return json.Marshal(toSerialize)
 }

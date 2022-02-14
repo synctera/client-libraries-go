@@ -18,26 +18,26 @@ import (
 
 // PatchCustomer Customer object for patch purpose. All fields are optional
 type PatchCustomer struct {
-	// Customer's status
-	Status *string `json:"status,omitempty"`
+	// Customer's date of birth in RFC 3339 full-date format (YYYY-MM-DD)
+	Dob *oapi.Date `json:"dob,omitempty"`
+	// Customer's email
+	Email *string `json:"email,omitempty"`
 	// Customer's first name
 	FirstName *string `json:"first_name,omitempty"`
 	// Customer's last name
-	LastName *string `json:"last_name,omitempty"`
-	// Customer's date of birth in RFC 3339 full-date format (YYYY-MM-DD)
-	Dob *oapi.Date `json:"dob,omitempty"`
+	LastName     *string   `json:"last_name,omitempty"`
+	LegalAddress *Address1 `json:"legal_address,omitempty"`
+	// User-supplied JSON format metadata. Do not use to store PII.
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// Customer's middle name
-	MiddleName      *string   `json:"middle_name,omitempty"`
-	LegalAddress    *Address1 `json:"legal_address,omitempty"`
+	MiddleName *string `json:"middle_name,omitempty"`
+	// Customer's mobile phone number with country code in E.164 format
+	PhoneNumber     *string   `json:"phone_number,omitempty"`
 	ShippingAddress *Address1 `json:"shipping_address,omitempty"`
 	// Customer's full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Must be compiled with ^\\d{3}-\\d{2}-\\d{4}$. Response contains the last 4 digits only (e.g. 6789).
 	Ssn *string `json:"ssn,omitempty"`
-	// Customer's email
-	Email *string `json:"email,omitempty"`
-	// Customer's mobile phone number with country code in E.164 format
-	PhoneNumber *string `json:"phone_number,omitempty"`
-	// User-supplied JSON format metadata. Do not use to store PII.
-	Metadata *map[string]interface{} `json:"metadata,omitempty"`
+	// Customer's status
+	Status *string `json:"status,omitempty"`
 }
 
 // NewPatchCustomer instantiates a new PatchCustomer object
@@ -57,36 +57,68 @@ func NewPatchCustomerWithDefaults() *PatchCustomer {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *PatchCustomer) GetStatus() string {
-	if o == nil || o.Status == nil {
-		var ret string
+// GetDob returns the Dob field value if set, zero value otherwise.
+func (o *PatchCustomer) GetDob() oapi.Date {
+	if o == nil || o.Dob == nil {
+		var ret oapi.Date
 		return ret
 	}
-	return *o.Status
+	return *o.Dob
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetDobOk returns a tuple with the Dob field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchCustomer) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+func (o *PatchCustomer) GetDobOk() (*oapi.Date, bool) {
+	if o == nil || o.Dob == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Dob, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *PatchCustomer) HasStatus() bool {
-	if o != nil && o.Status != nil {
+// HasDob returns a boolean if a field has been set.
+func (o *PatchCustomer) HasDob() bool {
+	if o != nil && o.Dob != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *PatchCustomer) SetStatus(v string) {
-	o.Status = &v
+// SetDob gets a reference to the given oapi.Date and assigns it to the Dob field.
+func (o *PatchCustomer) SetDob(v oapi.Date) {
+	o.Dob = &v
+}
+
+// GetEmail returns the Email field value if set, zero value otherwise.
+func (o *PatchCustomer) GetEmail() string {
+	if o == nil || o.Email == nil {
+		var ret string
+		return ret
+	}
+	return *o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchCustomer) GetEmailOk() (*string, bool) {
+	if o == nil || o.Email == nil {
+		return nil, false
+	}
+	return o.Email, true
+}
+
+// HasEmail returns a boolean if a field has been set.
+func (o *PatchCustomer) HasEmail() bool {
+	if o != nil && o.Email != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
+func (o *PatchCustomer) SetEmail(v string) {
+	o.Email = &v
 }
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise.
@@ -153,36 +185,68 @@ func (o *PatchCustomer) SetLastName(v string) {
 	o.LastName = &v
 }
 
-// GetDob returns the Dob field value if set, zero value otherwise.
-func (o *PatchCustomer) GetDob() oapi.Date {
-	if o == nil || o.Dob == nil {
-		var ret oapi.Date
+// GetLegalAddress returns the LegalAddress field value if set, zero value otherwise.
+func (o *PatchCustomer) GetLegalAddress() Address1 {
+	if o == nil || o.LegalAddress == nil {
+		var ret Address1
 		return ret
 	}
-	return *o.Dob
+	return *o.LegalAddress
 }
 
-// GetDobOk returns a tuple with the Dob field value if set, nil otherwise
+// GetLegalAddressOk returns a tuple with the LegalAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchCustomer) GetDobOk() (*oapi.Date, bool) {
-	if o == nil || o.Dob == nil {
+func (o *PatchCustomer) GetLegalAddressOk() (*Address1, bool) {
+	if o == nil || o.LegalAddress == nil {
 		return nil, false
 	}
-	return o.Dob, true
+	return o.LegalAddress, true
 }
 
-// HasDob returns a boolean if a field has been set.
-func (o *PatchCustomer) HasDob() bool {
-	if o != nil && o.Dob != nil {
+// HasLegalAddress returns a boolean if a field has been set.
+func (o *PatchCustomer) HasLegalAddress() bool {
+	if o != nil && o.LegalAddress != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDob gets a reference to the given oapi.Date and assigns it to the Dob field.
-func (o *PatchCustomer) SetDob(v oapi.Date) {
-	o.Dob = &v
+// SetLegalAddress gets a reference to the given Address1 and assigns it to the LegalAddress field.
+func (o *PatchCustomer) SetLegalAddress(v Address1) {
+	o.LegalAddress = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *PatchCustomer) GetMetadata() map[string]interface{} {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchCustomer) GetMetadataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *PatchCustomer) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *PatchCustomer) SetMetadata(v map[string]interface{}) {
+	o.Metadata = &v
 }
 
 // GetMiddleName returns the MiddleName field value if set, zero value otherwise.
@@ -217,36 +281,36 @@ func (o *PatchCustomer) SetMiddleName(v string) {
 	o.MiddleName = &v
 }
 
-// GetLegalAddress returns the LegalAddress field value if set, zero value otherwise.
-func (o *PatchCustomer) GetLegalAddress() Address1 {
-	if o == nil || o.LegalAddress == nil {
-		var ret Address1
+// GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
+func (o *PatchCustomer) GetPhoneNumber() string {
+	if o == nil || o.PhoneNumber == nil {
+		var ret string
 		return ret
 	}
-	return *o.LegalAddress
+	return *o.PhoneNumber
 }
 
-// GetLegalAddressOk returns a tuple with the LegalAddress field value if set, nil otherwise
+// GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchCustomer) GetLegalAddressOk() (*Address1, bool) {
-	if o == nil || o.LegalAddress == nil {
+func (o *PatchCustomer) GetPhoneNumberOk() (*string, bool) {
+	if o == nil || o.PhoneNumber == nil {
 		return nil, false
 	}
-	return o.LegalAddress, true
+	return o.PhoneNumber, true
 }
 
-// HasLegalAddress returns a boolean if a field has been set.
-func (o *PatchCustomer) HasLegalAddress() bool {
-	if o != nil && o.LegalAddress != nil {
+// HasPhoneNumber returns a boolean if a field has been set.
+func (o *PatchCustomer) HasPhoneNumber() bool {
+	if o != nil && o.PhoneNumber != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetLegalAddress gets a reference to the given Address1 and assigns it to the LegalAddress field.
-func (o *PatchCustomer) SetLegalAddress(v Address1) {
-	o.LegalAddress = &v
+// SetPhoneNumber gets a reference to the given string and assigns it to the PhoneNumber field.
+func (o *PatchCustomer) SetPhoneNumber(v string) {
+	o.PhoneNumber = &v
 }
 
 // GetShippingAddress returns the ShippingAddress field value if set, zero value otherwise.
@@ -313,106 +377,45 @@ func (o *PatchCustomer) SetSsn(v string) {
 	o.Ssn = &v
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
-func (o *PatchCustomer) GetEmail() string {
-	if o == nil || o.Email == nil {
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *PatchCustomer) GetStatus() string {
+	if o == nil || o.Status == nil {
 		var ret string
 		return ret
 	}
-	return *o.Email
+	return *o.Status
 }
 
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchCustomer) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+func (o *PatchCustomer) GetStatusOk() (*string, bool) {
+	if o == nil || o.Status == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return o.Status, true
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *PatchCustomer) HasEmail() bool {
-	if o != nil && o.Email != nil {
+// HasStatus returns a boolean if a field has been set.
+func (o *PatchCustomer) HasStatus() bool {
+	if o != nil && o.Status != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given string and assigns it to the Email field.
-func (o *PatchCustomer) SetEmail(v string) {
-	o.Email = &v
-}
-
-// GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
-func (o *PatchCustomer) GetPhoneNumber() string {
-	if o == nil || o.PhoneNumber == nil {
-		var ret string
-		return ret
-	}
-	return *o.PhoneNumber
-}
-
-// GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchCustomer) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || o.PhoneNumber == nil {
-		return nil, false
-	}
-	return o.PhoneNumber, true
-}
-
-// HasPhoneNumber returns a boolean if a field has been set.
-func (o *PatchCustomer) HasPhoneNumber() bool {
-	if o != nil && o.PhoneNumber != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPhoneNumber gets a reference to the given string and assigns it to the PhoneNumber field.
-func (o *PatchCustomer) SetPhoneNumber(v string) {
-	o.PhoneNumber = &v
-}
-
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *PatchCustomer) GetMetadata() map[string]interface{} {
-	if o == nil || o.Metadata == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchCustomer) GetMetadataOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Metadata == nil {
-		return nil, false
-	}
-	return o.Metadata, true
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *PatchCustomer) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
-func (o *PatchCustomer) SetMetadata(v map[string]interface{}) {
-	o.Metadata = &v
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *PatchCustomer) SetStatus(v string) {
+	o.Status = &v
 }
 
 func (o PatchCustomer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	if o.Dob != nil {
+		toSerialize["dob"] = o.Dob
+	}
+	if o.Email != nil {
+		toSerialize["email"] = o.Email
 	}
 	if o.FirstName != nil {
 		toSerialize["first_name"] = o.FirstName
@@ -420,14 +423,17 @@ func (o PatchCustomer) MarshalJSON() ([]byte, error) {
 	if o.LastName != nil {
 		toSerialize["last_name"] = o.LastName
 	}
-	if o.Dob != nil {
-		toSerialize["dob"] = o.Dob
+	if o.LegalAddress != nil {
+		toSerialize["legal_address"] = o.LegalAddress
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if o.MiddleName != nil {
 		toSerialize["middle_name"] = o.MiddleName
 	}
-	if o.LegalAddress != nil {
-		toSerialize["legal_address"] = o.LegalAddress
+	if o.PhoneNumber != nil {
+		toSerialize["phone_number"] = o.PhoneNumber
 	}
 	if o.ShippingAddress != nil {
 		toSerialize["shipping_address"] = o.ShippingAddress
@@ -435,14 +441,8 @@ func (o PatchCustomer) MarshalJSON() ([]byte, error) {
 	if o.Ssn != nil {
 		toSerialize["ssn"] = o.Ssn
 	}
-	if o.Email != nil {
-		toSerialize["email"] = o.Email
-	}
-	if o.PhoneNumber != nil {
-		toSerialize["phone_number"] = o.PhoneNumber
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

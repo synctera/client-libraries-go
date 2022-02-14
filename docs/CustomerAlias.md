@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerAliasId** | Pointer to **string** |  | [optional] 
-**CustomerId** | Pointer to **string** |  | [optional] 
-**AliasType** | Pointer to **string** |  | [optional] 
+**AliasInfo** | Pointer to **map[string]interface{}** |  | [optional] 
 **AliasName** | Pointer to **string** |  | [optional] 
 **AliasSource** | Pointer to **string** |  | [optional] 
-**AliasInfo** | Pointer to **map[string]interface{}** |  | [optional] 
+**AliasType** | Pointer to **string** |  | [optional] 
+**CustomerAliasId** | Pointer to **string** |  | [optional] 
+**CustomerId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -30,80 +30,30 @@ NewCustomerAliasWithDefaults instantiates a new CustomerAlias object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCustomerAliasId
+### GetAliasInfo
 
-`func (o *CustomerAlias) GetCustomerAliasId() string`
+`func (o *CustomerAlias) GetAliasInfo() map[string]interface{}`
 
-GetCustomerAliasId returns the CustomerAliasId field if non-nil, zero value otherwise.
+GetAliasInfo returns the AliasInfo field if non-nil, zero value otherwise.
 
-### GetCustomerAliasIdOk
+### GetAliasInfoOk
 
-`func (o *CustomerAlias) GetCustomerAliasIdOk() (*string, bool)`
+`func (o *CustomerAlias) GetAliasInfoOk() (*map[string]interface{}, bool)`
 
-GetCustomerAliasIdOk returns a tuple with the CustomerAliasId field if it's non-nil, zero value otherwise
+GetAliasInfoOk returns a tuple with the AliasInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCustomerAliasId
+### SetAliasInfo
 
-`func (o *CustomerAlias) SetCustomerAliasId(v string)`
+`func (o *CustomerAlias) SetAliasInfo(v map[string]interface{})`
 
-SetCustomerAliasId sets CustomerAliasId field to given value.
+SetAliasInfo sets AliasInfo field to given value.
 
-### HasCustomerAliasId
+### HasAliasInfo
 
-`func (o *CustomerAlias) HasCustomerAliasId() bool`
+`func (o *CustomerAlias) HasAliasInfo() bool`
 
-HasCustomerAliasId returns a boolean if a field has been set.
-
-### GetCustomerId
-
-`func (o *CustomerAlias) GetCustomerId() string`
-
-GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
-
-### GetCustomerIdOk
-
-`func (o *CustomerAlias) GetCustomerIdOk() (*string, bool)`
-
-GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCustomerId
-
-`func (o *CustomerAlias) SetCustomerId(v string)`
-
-SetCustomerId sets CustomerId field to given value.
-
-### HasCustomerId
-
-`func (o *CustomerAlias) HasCustomerId() bool`
-
-HasCustomerId returns a boolean if a field has been set.
-
-### GetAliasType
-
-`func (o *CustomerAlias) GetAliasType() string`
-
-GetAliasType returns the AliasType field if non-nil, zero value otherwise.
-
-### GetAliasTypeOk
-
-`func (o *CustomerAlias) GetAliasTypeOk() (*string, bool)`
-
-GetAliasTypeOk returns a tuple with the AliasType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAliasType
-
-`func (o *CustomerAlias) SetAliasType(v string)`
-
-SetAliasType sets AliasType field to given value.
-
-### HasAliasType
-
-`func (o *CustomerAlias) HasAliasType() bool`
-
-HasAliasType returns a boolean if a field has been set.
+HasAliasInfo returns a boolean if a field has been set.
 
 ### GetAliasName
 
@@ -155,30 +105,80 @@ SetAliasSource sets AliasSource field to given value.
 
 HasAliasSource returns a boolean if a field has been set.
 
-### GetAliasInfo
+### GetAliasType
 
-`func (o *CustomerAlias) GetAliasInfo() map[string]interface{}`
+`func (o *CustomerAlias) GetAliasType() string`
 
-GetAliasInfo returns the AliasInfo field if non-nil, zero value otherwise.
+GetAliasType returns the AliasType field if non-nil, zero value otherwise.
 
-### GetAliasInfoOk
+### GetAliasTypeOk
 
-`func (o *CustomerAlias) GetAliasInfoOk() (*map[string]interface{}, bool)`
+`func (o *CustomerAlias) GetAliasTypeOk() (*string, bool)`
 
-GetAliasInfoOk returns a tuple with the AliasInfo field if it's non-nil, zero value otherwise
+GetAliasTypeOk returns a tuple with the AliasType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAliasInfo
+### SetAliasType
 
-`func (o *CustomerAlias) SetAliasInfo(v map[string]interface{})`
+`func (o *CustomerAlias) SetAliasType(v string)`
 
-SetAliasInfo sets AliasInfo field to given value.
+SetAliasType sets AliasType field to given value.
 
-### HasAliasInfo
+### HasAliasType
 
-`func (o *CustomerAlias) HasAliasInfo() bool`
+`func (o *CustomerAlias) HasAliasType() bool`
 
-HasAliasInfo returns a boolean if a field has been set.
+HasAliasType returns a boolean if a field has been set.
+
+### GetCustomerAliasId
+
+`func (o *CustomerAlias) GetCustomerAliasId() string`
+
+GetCustomerAliasId returns the CustomerAliasId field if non-nil, zero value otherwise.
+
+### GetCustomerAliasIdOk
+
+`func (o *CustomerAlias) GetCustomerAliasIdOk() (*string, bool)`
+
+GetCustomerAliasIdOk returns a tuple with the CustomerAliasId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerAliasId
+
+`func (o *CustomerAlias) SetCustomerAliasId(v string)`
+
+SetCustomerAliasId sets CustomerAliasId field to given value.
+
+### HasCustomerAliasId
+
+`func (o *CustomerAlias) HasCustomerAliasId() bool`
+
+HasCustomerAliasId returns a boolean if a field has been set.
+
+### GetCustomerId
+
+`func (o *CustomerAlias) GetCustomerId() string`
+
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+
+### GetCustomerIdOk
+
+`func (o *CustomerAlias) GetCustomerIdOk() (*string, bool)`
+
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerId
+
+`func (o *CustomerAlias) SetCustomerId(v string)`
+
+SetCustomerId sets CustomerId field to given value.
+
+### HasCustomerId
+
+`func (o *CustomerAlias) HasCustomerId() bool`
+
+HasCustomerId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

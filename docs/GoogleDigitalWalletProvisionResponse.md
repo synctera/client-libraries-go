@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CardId** | Pointer to **string** | The unique identifier of a card | [optional] 
 **CreatedTime** | Pointer to **time.Time** |  | [optional] 
 **LastModifiedTime** | Pointer to **time.Time** |  | [optional] 
-**CardId** | Pointer to **string** | The unique identifier of a card | [optional] 
 **PushTokenizeRequestData** | Pointer to [**PushTokenizeRequestData**](PushTokenizeRequestData.md) |  | [optional] 
 
 ## Methods
@@ -27,6 +27,31 @@ will change when the set of required properties is changed
 NewGoogleDigitalWalletProvisionResponseWithDefaults instantiates a new GoogleDigitalWalletProvisionResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCardId
+
+`func (o *GoogleDigitalWalletProvisionResponse) GetCardId() string`
+
+GetCardId returns the CardId field if non-nil, zero value otherwise.
+
+### GetCardIdOk
+
+`func (o *GoogleDigitalWalletProvisionResponse) GetCardIdOk() (*string, bool)`
+
+GetCardIdOk returns a tuple with the CardId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardId
+
+`func (o *GoogleDigitalWalletProvisionResponse) SetCardId(v string)`
+
+SetCardId sets CardId field to given value.
+
+### HasCardId
+
+`func (o *GoogleDigitalWalletProvisionResponse) HasCardId() bool`
+
+HasCardId returns a boolean if a field has been set.
 
 ### GetCreatedTime
 
@@ -77,31 +102,6 @@ SetLastModifiedTime sets LastModifiedTime field to given value.
 `func (o *GoogleDigitalWalletProvisionResponse) HasLastModifiedTime() bool`
 
 HasLastModifiedTime returns a boolean if a field has been set.
-
-### GetCardId
-
-`func (o *GoogleDigitalWalletProvisionResponse) GetCardId() string`
-
-GetCardId returns the CardId field if non-nil, zero value otherwise.
-
-### GetCardIdOk
-
-`func (o *GoogleDigitalWalletProvisionResponse) GetCardIdOk() (*string, bool)`
-
-GetCardIdOk returns a tuple with the CardId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCardId
-
-`func (o *GoogleDigitalWalletProvisionResponse) SetCardId(v string)`
-
-SetCardId sets CardId field to given value.
-
-### HasCardId
-
-`func (o *GoogleDigitalWalletProvisionResponse) HasCardId() bool`
-
-HasCardId returns a boolean if a field has been set.
 
 ### GetPushTokenizeRequestData
 

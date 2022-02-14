@@ -17,15 +17,15 @@ import (
 
 // WebhookResponse struct for WebhookResponse
 type WebhookResponse struct {
+	// indicates whether webhook is active
+	Active *bool          `json:"active,omitempty"`
+	Config *WebhookConfig `json:"config,omitempty"`
+	// list of webhook events, use * to receive all notifications
+	Events *[]string `json:"events,omitempty"`
 	// id of the webhook
 	Id *string `json:"id,omitempty"`
 	// name of the webhook
 	Name *string `json:"name,omitempty"`
-	// indicates whether webhook is active
-	Active *bool `json:"active,omitempty"`
-	// list of webhook events, use * to receive all notifications
-	Events *[]string      `json:"events,omitempty"`
-	Config *WebhookConfig `json:"config,omitempty"`
 	// The timestamp representing when the webhook request was made
 	CreationTime *time.Time `json:"creation_time,omitempty"`
 	// The timestamp representing when the webhook was last modified
@@ -47,6 +47,102 @@ func NewWebhookResponse() *WebhookResponse {
 func NewWebhookResponseWithDefaults() *WebhookResponse {
 	this := WebhookResponse{}
 	return &this
+}
+
+// GetActive returns the Active field value if set, zero value otherwise.
+func (o *WebhookResponse) GetActive() bool {
+	if o == nil || o.Active == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Active
+}
+
+// GetActiveOk returns a tuple with the Active field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebhookResponse) GetActiveOk() (*bool, bool) {
+	if o == nil || o.Active == nil {
+		return nil, false
+	}
+	return o.Active, true
+}
+
+// HasActive returns a boolean if a field has been set.
+func (o *WebhookResponse) HasActive() bool {
+	if o != nil && o.Active != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActive gets a reference to the given bool and assigns it to the Active field.
+func (o *WebhookResponse) SetActive(v bool) {
+	o.Active = &v
+}
+
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *WebhookResponse) GetConfig() WebhookConfig {
+	if o == nil || o.Config == nil {
+		var ret WebhookConfig
+		return ret
+	}
+	return *o.Config
+}
+
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebhookResponse) GetConfigOk() (*WebhookConfig, bool) {
+	if o == nil || o.Config == nil {
+		return nil, false
+	}
+	return o.Config, true
+}
+
+// HasConfig returns a boolean if a field has been set.
+func (o *WebhookResponse) HasConfig() bool {
+	if o != nil && o.Config != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConfig gets a reference to the given WebhookConfig and assigns it to the Config field.
+func (o *WebhookResponse) SetConfig(v WebhookConfig) {
+	o.Config = &v
+}
+
+// GetEvents returns the Events field value if set, zero value otherwise.
+func (o *WebhookResponse) GetEvents() []string {
+	if o == nil || o.Events == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Events
+}
+
+// GetEventsOk returns a tuple with the Events field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebhookResponse) GetEventsOk() (*[]string, bool) {
+	if o == nil || o.Events == nil {
+		return nil, false
+	}
+	return o.Events, true
+}
+
+// HasEvents returns a boolean if a field has been set.
+func (o *WebhookResponse) HasEvents() bool {
+	if o != nil && o.Events != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEvents gets a reference to the given []string and assigns it to the Events field.
+func (o *WebhookResponse) SetEvents(v []string) {
+	o.Events = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -111,102 +207,6 @@ func (o *WebhookResponse) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *WebhookResponse) SetName(v string) {
 	o.Name = &v
-}
-
-// GetActive returns the Active field value if set, zero value otherwise.
-func (o *WebhookResponse) GetActive() bool {
-	if o == nil || o.Active == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Active
-}
-
-// GetActiveOk returns a tuple with the Active field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WebhookResponse) GetActiveOk() (*bool, bool) {
-	if o == nil || o.Active == nil {
-		return nil, false
-	}
-	return o.Active, true
-}
-
-// HasActive returns a boolean if a field has been set.
-func (o *WebhookResponse) HasActive() bool {
-	if o != nil && o.Active != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetActive gets a reference to the given bool and assigns it to the Active field.
-func (o *WebhookResponse) SetActive(v bool) {
-	o.Active = &v
-}
-
-// GetEvents returns the Events field value if set, zero value otherwise.
-func (o *WebhookResponse) GetEvents() []string {
-	if o == nil || o.Events == nil {
-		var ret []string
-		return ret
-	}
-	return *o.Events
-}
-
-// GetEventsOk returns a tuple with the Events field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WebhookResponse) GetEventsOk() (*[]string, bool) {
-	if o == nil || o.Events == nil {
-		return nil, false
-	}
-	return o.Events, true
-}
-
-// HasEvents returns a boolean if a field has been set.
-func (o *WebhookResponse) HasEvents() bool {
-	if o != nil && o.Events != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEvents gets a reference to the given []string and assigns it to the Events field.
-func (o *WebhookResponse) SetEvents(v []string) {
-	o.Events = &v
-}
-
-// GetConfig returns the Config field value if set, zero value otherwise.
-func (o *WebhookResponse) GetConfig() WebhookConfig {
-	if o == nil || o.Config == nil {
-		var ret WebhookConfig
-		return ret
-	}
-	return *o.Config
-}
-
-// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WebhookResponse) GetConfigOk() (*WebhookConfig, bool) {
-	if o == nil || o.Config == nil {
-		return nil, false
-	}
-	return o.Config, true
-}
-
-// HasConfig returns a boolean if a field has been set.
-func (o *WebhookResponse) HasConfig() bool {
-	if o != nil && o.Config != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConfig gets a reference to the given WebhookConfig and assigns it to the Config field.
-func (o *WebhookResponse) SetConfig(v WebhookConfig) {
-	o.Config = &v
 }
 
 // GetCreationTime returns the CreationTime field value if set, zero value otherwise.
@@ -275,20 +275,20 @@ func (o *WebhookResponse) SetLastModifiedTime(v time.Time) {
 
 func (o WebhookResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Active != nil {
+		toSerialize["active"] = o.Active
+	}
+	if o.Config != nil {
+		toSerialize["config"] = o.Config
+	}
+	if o.Events != nil {
+		toSerialize["events"] = o.Events
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if o.Active != nil {
-		toSerialize["active"] = o.Active
-	}
-	if o.Events != nil {
-		toSerialize["events"] = o.Events
-	}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
 	}
 	if o.CreationTime != nil {
 		toSerialize["creation_time"] = o.CreationTime

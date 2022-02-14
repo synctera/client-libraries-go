@@ -17,33 +17,33 @@ import (
 
 // DebitNetworkResponse struct for DebitNetworkResponse
 type DebitNetworkResponse struct {
-	// Debit Network ID
-	Id string `json:"id"`
-	// The name describing the debit network
-	Name string `json:"name"`
 	// indicates whether debit network is active
 	Active bool `json:"active"`
-	// The time when debit network goes live
-	StartDate *time.Time `json:"start_date,omitempty"`
-	// The time when debit network became inactive
-	EndDate *time.Time `json:"end_date,omitempty"`
 	// The timestamp representing when the debit network was created
 	CreationTime time.Time `json:"creation_time"`
+	// The time when debit network became inactive
+	EndDate *time.Time `json:"end_date,omitempty"`
+	// Debit Network ID
+	Id string `json:"id"`
 	// The timestamp representing when the debit network was last modified
 	LastModifiedTime time.Time `json:"last_modified_time"`
+	// The name describing the debit network
+	Name string `json:"name"`
+	// The time when debit network goes live
+	StartDate *time.Time `json:"start_date,omitempty"`
 }
 
 // NewDebitNetworkResponse instantiates a new DebitNetworkResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDebitNetworkResponse(id string, name string, active bool, creationTime time.Time, lastModifiedTime time.Time) *DebitNetworkResponse {
+func NewDebitNetworkResponse(active bool, creationTime time.Time, id string, lastModifiedTime time.Time, name string) *DebitNetworkResponse {
 	this := DebitNetworkResponse{}
-	this.Id = id
-	this.Name = name
 	this.Active = active
 	this.CreationTime = creationTime
+	this.Id = id
 	this.LastModifiedTime = lastModifiedTime
+	this.Name = name
 	return &this
 }
 
@@ -53,54 +53,6 @@ func NewDebitNetworkResponse(id string, name string, active bool, creationTime t
 func NewDebitNetworkResponseWithDefaults() *DebitNetworkResponse {
 	this := DebitNetworkResponse{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *DebitNetworkResponse) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *DebitNetworkResponse) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *DebitNetworkResponse) SetId(v string) {
-	o.Id = v
-}
-
-// GetName returns the Name field value
-func (o *DebitNetworkResponse) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *DebitNetworkResponse) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *DebitNetworkResponse) SetName(v string) {
-	o.Name = v
 }
 
 // GetActive returns the Active field value
@@ -127,36 +79,28 @@ func (o *DebitNetworkResponse) SetActive(v bool) {
 	o.Active = v
 }
 
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *DebitNetworkResponse) GetStartDate() time.Time {
-	if o == nil || o.StartDate == nil {
+// GetCreationTime returns the CreationTime field value
+func (o *DebitNetworkResponse) GetCreationTime() time.Time {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.StartDate
+
+	return o.CreationTime
 }
 
-// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// GetCreationTimeOk returns a tuple with the CreationTime field value
 // and a boolean to check if the value has been set.
-func (o *DebitNetworkResponse) GetStartDateOk() (*time.Time, bool) {
-	if o == nil || o.StartDate == nil {
+func (o *DebitNetworkResponse) GetCreationTimeOk() (*time.Time, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StartDate, true
+	return &o.CreationTime, true
 }
 
-// HasStartDate returns a boolean if a field has been set.
-func (o *DebitNetworkResponse) HasStartDate() bool {
-	if o != nil && o.StartDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
-func (o *DebitNetworkResponse) SetStartDate(v time.Time) {
-	o.StartDate = &v
+// SetCreationTime sets field value
+func (o *DebitNetworkResponse) SetCreationTime(v time.Time) {
+	o.CreationTime = v
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
@@ -191,28 +135,28 @@ func (o *DebitNetworkResponse) SetEndDate(v time.Time) {
 	o.EndDate = &v
 }
 
-// GetCreationTime returns the CreationTime field value
-func (o *DebitNetworkResponse) GetCreationTime() time.Time {
+// GetId returns the Id field value
+func (o *DebitNetworkResponse) GetId() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
-	return o.CreationTime
+	return o.Id
 }
 
-// GetCreationTimeOk returns a tuple with the CreationTime field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *DebitNetworkResponse) GetCreationTimeOk() (*time.Time, bool) {
+func (o *DebitNetworkResponse) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreationTime, true
+	return &o.Id, true
 }
 
-// SetCreationTime sets field value
-func (o *DebitNetworkResponse) SetCreationTime(v time.Time) {
-	o.CreationTime = v
+// SetId sets field value
+func (o *DebitNetworkResponse) SetId(v string) {
+	o.Id = v
 }
 
 // GetLastModifiedTime returns the LastModifiedTime field value
@@ -239,28 +183,84 @@ func (o *DebitNetworkResponse) SetLastModifiedTime(v time.Time) {
 	o.LastModifiedTime = v
 }
 
+// GetName returns the Name field value
+func (o *DebitNetworkResponse) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *DebitNetworkResponse) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *DebitNetworkResponse) SetName(v string) {
+	o.Name = v
+}
+
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
+func (o *DebitNetworkResponse) GetStartDate() time.Time {
+	if o == nil || o.StartDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DebitNetworkResponse) GetStartDateOk() (*time.Time, bool) {
+	if o == nil || o.StartDate == nil {
+		return nil, false
+	}
+	return o.StartDate, true
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *DebitNetworkResponse) HasStartDate() bool {
+	if o != nil && o.StartDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
+func (o *DebitNetworkResponse) SetStartDate(v time.Time) {
+	o.StartDate = &v
+}
+
 func (o DebitNetworkResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
 		toSerialize["active"] = o.Active
 	}
-	if o.StartDate != nil {
-		toSerialize["start_date"] = o.StartDate
+	if true {
+		toSerialize["creation_time"] = o.CreationTime
 	}
 	if o.EndDate != nil {
 		toSerialize["end_date"] = o.EndDate
 	}
 	if true {
-		toSerialize["creation_time"] = o.CreationTime
+		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["last_modified_time"] = o.LastModifiedTime
+	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if o.StartDate != nil {
+		toSerialize["start_date"] = o.StartDate
 	}
 	return json.Marshal(toSerialize)
 }

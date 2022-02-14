@@ -16,37 +16,37 @@ import (
 
 // TemplateFields struct for TemplateFields
 type TemplateFields struct {
-	AccountType AccountType `json:"account_type"`
-	// Account currency. ISO 4217 alphabetic currency code
-	Currency string `json:"currency"`
+	AccountType    AccountType     `json:"account_type"`
+	BalanceCeiling *BalanceCeiling `json:"balance_ceiling,omitempty"`
+	BalanceFloor   *BalanceFloor   `json:"balance_floor,omitempty"`
 	// Bank country of the account
 	BankCountry string `json:"bank_country"`
-	// Enable P2P transaction on ledger. Default is false
-	IsP2pEnabled *bool `json:"is_p2p_enabled,omitempty"`
+	// Account currency. ISO 4217 alphabetic currency code
+	Currency string `json:"currency"`
+	// A list of fee resources from account product that new accounts will associate with
+	FeeProductIds *[]string `json:"fee_product_ids,omitempty"`
+	// Interest from account product that new accounts will associate with
+	InterestProductId *string `json:"interest_product_id,omitempty"`
 	// Enable ACH transaction on ledger. Default is false
 	IsAchEnabled *bool `json:"is_ach_enabled,omitempty"`
 	// Enable card transaction on ledger. Default is false
 	IsCardEnabled *bool `json:"is_card_enabled,omitempty"`
+	// Enable P2P transaction on ledger. Default is false
+	IsP2pEnabled *bool `json:"is_p2p_enabled,omitempty"`
 	// Account's overdraft limit. Default is 0
 	OverdraftLimit *int64          `json:"overdraft_limit,omitempty"`
 	SpendingLimits *SpendingLimits `json:"spending_limits,omitempty"`
-	// Interest from account product that new accounts will associate with
-	InterestProductId *string `json:"interest_product_id,omitempty"`
-	// A list of fee resources from account product that new accounts will associate with
-	FeeProductIds  *[]string       `json:"fee_product_ids,omitempty"`
-	BalanceFloor   *BalanceFloor   `json:"balance_floor,omitempty"`
-	BalanceCeiling *BalanceCeiling `json:"balance_ceiling,omitempty"`
 }
 
 // NewTemplateFields instantiates a new TemplateFields object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemplateFields(accountType AccountType, currency string, bankCountry string) *TemplateFields {
+func NewTemplateFields(accountType AccountType, bankCountry string, currency string) *TemplateFields {
 	this := TemplateFields{}
 	this.AccountType = accountType
-	this.Currency = currency
 	this.BankCountry = bankCountry
+	this.Currency = currency
 	return &this
 }
 
@@ -82,28 +82,68 @@ func (o *TemplateFields) SetAccountType(v AccountType) {
 	o.AccountType = v
 }
 
-// GetCurrency returns the Currency field value
-func (o *TemplateFields) GetCurrency() string {
-	if o == nil {
-		var ret string
+// GetBalanceCeiling returns the BalanceCeiling field value if set, zero value otherwise.
+func (o *TemplateFields) GetBalanceCeiling() BalanceCeiling {
+	if o == nil || o.BalanceCeiling == nil {
+		var ret BalanceCeiling
 		return ret
 	}
-
-	return o.Currency
+	return *o.BalanceCeiling
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value
+// GetBalanceCeilingOk returns a tuple with the BalanceCeiling field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateFields) GetCurrencyOk() (*string, bool) {
-	if o == nil {
+func (o *TemplateFields) GetBalanceCeilingOk() (*BalanceCeiling, bool) {
+	if o == nil || o.BalanceCeiling == nil {
 		return nil, false
 	}
-	return &o.Currency, true
+	return o.BalanceCeiling, true
 }
 
-// SetCurrency sets field value
-func (o *TemplateFields) SetCurrency(v string) {
-	o.Currency = v
+// HasBalanceCeiling returns a boolean if a field has been set.
+func (o *TemplateFields) HasBalanceCeiling() bool {
+	if o != nil && o.BalanceCeiling != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBalanceCeiling gets a reference to the given BalanceCeiling and assigns it to the BalanceCeiling field.
+func (o *TemplateFields) SetBalanceCeiling(v BalanceCeiling) {
+	o.BalanceCeiling = &v
+}
+
+// GetBalanceFloor returns the BalanceFloor field value if set, zero value otherwise.
+func (o *TemplateFields) GetBalanceFloor() BalanceFloor {
+	if o == nil || o.BalanceFloor == nil {
+		var ret BalanceFloor
+		return ret
+	}
+	return *o.BalanceFloor
+}
+
+// GetBalanceFloorOk returns a tuple with the BalanceFloor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateFields) GetBalanceFloorOk() (*BalanceFloor, bool) {
+	if o == nil || o.BalanceFloor == nil {
+		return nil, false
+	}
+	return o.BalanceFloor, true
+}
+
+// HasBalanceFloor returns a boolean if a field has been set.
+func (o *TemplateFields) HasBalanceFloor() bool {
+	if o != nil && o.BalanceFloor != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBalanceFloor gets a reference to the given BalanceFloor and assigns it to the BalanceFloor field.
+func (o *TemplateFields) SetBalanceFloor(v BalanceFloor) {
+	o.BalanceFloor = &v
 }
 
 // GetBankCountry returns the BankCountry field value
@@ -130,36 +170,92 @@ func (o *TemplateFields) SetBankCountry(v string) {
 	o.BankCountry = v
 }
 
-// GetIsP2pEnabled returns the IsP2pEnabled field value if set, zero value otherwise.
-func (o *TemplateFields) GetIsP2pEnabled() bool {
-	if o == nil || o.IsP2pEnabled == nil {
-		var ret bool
+// GetCurrency returns the Currency field value
+func (o *TemplateFields) GetCurrency() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.IsP2pEnabled
+
+	return o.Currency
 }
 
-// GetIsP2pEnabledOk returns a tuple with the IsP2pEnabled field value if set, nil otherwise
+// GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
-func (o *TemplateFields) GetIsP2pEnabledOk() (*bool, bool) {
-	if o == nil || o.IsP2pEnabled == nil {
+func (o *TemplateFields) GetCurrencyOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsP2pEnabled, true
+	return &o.Currency, true
 }
 
-// HasIsP2pEnabled returns a boolean if a field has been set.
-func (o *TemplateFields) HasIsP2pEnabled() bool {
-	if o != nil && o.IsP2pEnabled != nil {
+// SetCurrency sets field value
+func (o *TemplateFields) SetCurrency(v string) {
+	o.Currency = v
+}
+
+// GetFeeProductIds returns the FeeProductIds field value if set, zero value otherwise.
+func (o *TemplateFields) GetFeeProductIds() []string {
+	if o == nil || o.FeeProductIds == nil {
+		var ret []string
+		return ret
+	}
+	return *o.FeeProductIds
+}
+
+// GetFeeProductIdsOk returns a tuple with the FeeProductIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateFields) GetFeeProductIdsOk() (*[]string, bool) {
+	if o == nil || o.FeeProductIds == nil {
+		return nil, false
+	}
+	return o.FeeProductIds, true
+}
+
+// HasFeeProductIds returns a boolean if a field has been set.
+func (o *TemplateFields) HasFeeProductIds() bool {
+	if o != nil && o.FeeProductIds != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIsP2pEnabled gets a reference to the given bool and assigns it to the IsP2pEnabled field.
-func (o *TemplateFields) SetIsP2pEnabled(v bool) {
-	o.IsP2pEnabled = &v
+// SetFeeProductIds gets a reference to the given []string and assigns it to the FeeProductIds field.
+func (o *TemplateFields) SetFeeProductIds(v []string) {
+	o.FeeProductIds = &v
+}
+
+// GetInterestProductId returns the InterestProductId field value if set, zero value otherwise.
+func (o *TemplateFields) GetInterestProductId() string {
+	if o == nil || o.InterestProductId == nil {
+		var ret string
+		return ret
+	}
+	return *o.InterestProductId
+}
+
+// GetInterestProductIdOk returns a tuple with the InterestProductId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateFields) GetInterestProductIdOk() (*string, bool) {
+	if o == nil || o.InterestProductId == nil {
+		return nil, false
+	}
+	return o.InterestProductId, true
+}
+
+// HasInterestProductId returns a boolean if a field has been set.
+func (o *TemplateFields) HasInterestProductId() bool {
+	if o != nil && o.InterestProductId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInterestProductId gets a reference to the given string and assigns it to the InterestProductId field.
+func (o *TemplateFields) SetInterestProductId(v string) {
+	o.InterestProductId = &v
 }
 
 // GetIsAchEnabled returns the IsAchEnabled field value if set, zero value otherwise.
@@ -226,6 +322,38 @@ func (o *TemplateFields) SetIsCardEnabled(v bool) {
 	o.IsCardEnabled = &v
 }
 
+// GetIsP2pEnabled returns the IsP2pEnabled field value if set, zero value otherwise.
+func (o *TemplateFields) GetIsP2pEnabled() bool {
+	if o == nil || o.IsP2pEnabled == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsP2pEnabled
+}
+
+// GetIsP2pEnabledOk returns a tuple with the IsP2pEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateFields) GetIsP2pEnabledOk() (*bool, bool) {
+	if o == nil || o.IsP2pEnabled == nil {
+		return nil, false
+	}
+	return o.IsP2pEnabled, true
+}
+
+// HasIsP2pEnabled returns a boolean if a field has been set.
+func (o *TemplateFields) HasIsP2pEnabled() bool {
+	if o != nil && o.IsP2pEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsP2pEnabled gets a reference to the given bool and assigns it to the IsP2pEnabled field.
+func (o *TemplateFields) SetIsP2pEnabled(v bool) {
+	o.IsP2pEnabled = &v
+}
+
 // GetOverdraftLimit returns the OverdraftLimit field value if set, zero value otherwise.
 func (o *TemplateFields) GetOverdraftLimit() int64 {
 	if o == nil || o.OverdraftLimit == nil {
@@ -290,147 +418,28 @@ func (o *TemplateFields) SetSpendingLimits(v SpendingLimits) {
 	o.SpendingLimits = &v
 }
 
-// GetInterestProductId returns the InterestProductId field value if set, zero value otherwise.
-func (o *TemplateFields) GetInterestProductId() string {
-	if o == nil || o.InterestProductId == nil {
-		var ret string
-		return ret
-	}
-	return *o.InterestProductId
-}
-
-// GetInterestProductIdOk returns a tuple with the InterestProductId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateFields) GetInterestProductIdOk() (*string, bool) {
-	if o == nil || o.InterestProductId == nil {
-		return nil, false
-	}
-	return o.InterestProductId, true
-}
-
-// HasInterestProductId returns a boolean if a field has been set.
-func (o *TemplateFields) HasInterestProductId() bool {
-	if o != nil && o.InterestProductId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetInterestProductId gets a reference to the given string and assigns it to the InterestProductId field.
-func (o *TemplateFields) SetInterestProductId(v string) {
-	o.InterestProductId = &v
-}
-
-// GetFeeProductIds returns the FeeProductIds field value if set, zero value otherwise.
-func (o *TemplateFields) GetFeeProductIds() []string {
-	if o == nil || o.FeeProductIds == nil {
-		var ret []string
-		return ret
-	}
-	return *o.FeeProductIds
-}
-
-// GetFeeProductIdsOk returns a tuple with the FeeProductIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateFields) GetFeeProductIdsOk() (*[]string, bool) {
-	if o == nil || o.FeeProductIds == nil {
-		return nil, false
-	}
-	return o.FeeProductIds, true
-}
-
-// HasFeeProductIds returns a boolean if a field has been set.
-func (o *TemplateFields) HasFeeProductIds() bool {
-	if o != nil && o.FeeProductIds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFeeProductIds gets a reference to the given []string and assigns it to the FeeProductIds field.
-func (o *TemplateFields) SetFeeProductIds(v []string) {
-	o.FeeProductIds = &v
-}
-
-// GetBalanceFloor returns the BalanceFloor field value if set, zero value otherwise.
-func (o *TemplateFields) GetBalanceFloor() BalanceFloor {
-	if o == nil || o.BalanceFloor == nil {
-		var ret BalanceFloor
-		return ret
-	}
-	return *o.BalanceFloor
-}
-
-// GetBalanceFloorOk returns a tuple with the BalanceFloor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateFields) GetBalanceFloorOk() (*BalanceFloor, bool) {
-	if o == nil || o.BalanceFloor == nil {
-		return nil, false
-	}
-	return o.BalanceFloor, true
-}
-
-// HasBalanceFloor returns a boolean if a field has been set.
-func (o *TemplateFields) HasBalanceFloor() bool {
-	if o != nil && o.BalanceFloor != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBalanceFloor gets a reference to the given BalanceFloor and assigns it to the BalanceFloor field.
-func (o *TemplateFields) SetBalanceFloor(v BalanceFloor) {
-	o.BalanceFloor = &v
-}
-
-// GetBalanceCeiling returns the BalanceCeiling field value if set, zero value otherwise.
-func (o *TemplateFields) GetBalanceCeiling() BalanceCeiling {
-	if o == nil || o.BalanceCeiling == nil {
-		var ret BalanceCeiling
-		return ret
-	}
-	return *o.BalanceCeiling
-}
-
-// GetBalanceCeilingOk returns a tuple with the BalanceCeiling field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateFields) GetBalanceCeilingOk() (*BalanceCeiling, bool) {
-	if o == nil || o.BalanceCeiling == nil {
-		return nil, false
-	}
-	return o.BalanceCeiling, true
-}
-
-// HasBalanceCeiling returns a boolean if a field has been set.
-func (o *TemplateFields) HasBalanceCeiling() bool {
-	if o != nil && o.BalanceCeiling != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBalanceCeiling gets a reference to the given BalanceCeiling and assigns it to the BalanceCeiling field.
-func (o *TemplateFields) SetBalanceCeiling(v BalanceCeiling) {
-	o.BalanceCeiling = &v
-}
-
 func (o TemplateFields) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["account_type"] = o.AccountType
 	}
-	if true {
-		toSerialize["currency"] = o.Currency
+	if o.BalanceCeiling != nil {
+		toSerialize["balance_ceiling"] = o.BalanceCeiling
+	}
+	if o.BalanceFloor != nil {
+		toSerialize["balance_floor"] = o.BalanceFloor
 	}
 	if true {
 		toSerialize["bank_country"] = o.BankCountry
 	}
-	if o.IsP2pEnabled != nil {
-		toSerialize["is_p2p_enabled"] = o.IsP2pEnabled
+	if true {
+		toSerialize["currency"] = o.Currency
+	}
+	if o.FeeProductIds != nil {
+		toSerialize["fee_product_ids"] = o.FeeProductIds
+	}
+	if o.InterestProductId != nil {
+		toSerialize["interest_product_id"] = o.InterestProductId
 	}
 	if o.IsAchEnabled != nil {
 		toSerialize["is_ach_enabled"] = o.IsAchEnabled
@@ -438,23 +447,14 @@ func (o TemplateFields) MarshalJSON() ([]byte, error) {
 	if o.IsCardEnabled != nil {
 		toSerialize["is_card_enabled"] = o.IsCardEnabled
 	}
+	if o.IsP2pEnabled != nil {
+		toSerialize["is_p2p_enabled"] = o.IsP2pEnabled
+	}
 	if o.OverdraftLimit != nil {
 		toSerialize["overdraft_limit"] = o.OverdraftLimit
 	}
 	if o.SpendingLimits != nil {
 		toSerialize["spending_limits"] = o.SpendingLimits
-	}
-	if o.InterestProductId != nil {
-		toSerialize["interest_product_id"] = o.InterestProductId
-	}
-	if o.FeeProductIds != nil {
-		toSerialize["fee_product_ids"] = o.FeeProductIds
-	}
-	if o.BalanceFloor != nil {
-		toSerialize["balance_floor"] = o.BalanceFloor
-	}
-	if o.BalanceCeiling != nil {
-		toSerialize["balance_ceiling"] = o.BalanceCeiling
 	}
 	return json.Marshal(toSerialize)
 }

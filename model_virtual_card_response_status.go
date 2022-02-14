@@ -16,10 +16,10 @@ import (
 
 // VirtualCardResponseStatus struct for VirtualCardResponseStatus
 type VirtualCardResponseStatus struct {
-	CardStatus   CardStatus           `json:"card_status"`
-	StatusReason CardStatusReasonCode `json:"status_reason"`
+	CardStatus CardStatus `json:"card_status"`
 	// Additional details about the reason for the status change
-	Memo *string `json:"memo,omitempty"`
+	Memo         *string              `json:"memo,omitempty"`
+	StatusReason CardStatusReasonCode `json:"status_reason"`
 }
 
 // NewVirtualCardResponseStatus instantiates a new VirtualCardResponseStatus object
@@ -65,30 +65,6 @@ func (o *VirtualCardResponseStatus) SetCardStatus(v CardStatus) {
 	o.CardStatus = v
 }
 
-// GetStatusReason returns the StatusReason field value
-func (o *VirtualCardResponseStatus) GetStatusReason() CardStatusReasonCode {
-	if o == nil {
-		var ret CardStatusReasonCode
-		return ret
-	}
-
-	return o.StatusReason
-}
-
-// GetStatusReasonOk returns a tuple with the StatusReason field value
-// and a boolean to check if the value has been set.
-func (o *VirtualCardResponseStatus) GetStatusReasonOk() (*CardStatusReasonCode, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.StatusReason, true
-}
-
-// SetStatusReason sets field value
-func (o *VirtualCardResponseStatus) SetStatusReason(v CardStatusReasonCode) {
-	o.StatusReason = v
-}
-
 // GetMemo returns the Memo field value if set, zero value otherwise.
 func (o *VirtualCardResponseStatus) GetMemo() string {
 	if o == nil || o.Memo == nil {
@@ -121,16 +97,40 @@ func (o *VirtualCardResponseStatus) SetMemo(v string) {
 	o.Memo = &v
 }
 
+// GetStatusReason returns the StatusReason field value
+func (o *VirtualCardResponseStatus) GetStatusReason() CardStatusReasonCode {
+	if o == nil {
+		var ret CardStatusReasonCode
+		return ret
+	}
+
+	return o.StatusReason
+}
+
+// GetStatusReasonOk returns a tuple with the StatusReason field value
+// and a boolean to check if the value has been set.
+func (o *VirtualCardResponseStatus) GetStatusReasonOk() (*CardStatusReasonCode, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.StatusReason, true
+}
+
+// SetStatusReason sets field value
+func (o *VirtualCardResponseStatus) SetStatusReason(v CardStatusReasonCode) {
+	o.StatusReason = v
+}
+
 func (o VirtualCardResponseStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["card_status"] = o.CardStatus
 	}
-	if true {
-		toSerialize["status_reason"] = o.StatusReason
-	}
 	if o.Memo != nil {
 		toSerialize["memo"] = o.Memo
+	}
+	if true {
+		toSerialize["status_reason"] = o.StatusReason
 	}
 	return json.Marshal(toSerialize)
 }

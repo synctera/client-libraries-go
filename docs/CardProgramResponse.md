@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Program ID | [readonly] 
-**Name** | **string** | Program name | 
+**Active** | **bool** | indicates whether program is active | 
 **BankId** | **int32** | The ID of the bank partner works with within this program | 
-**PartnerId** | **int32** | The ID of the partner program belongs to | 
 **CardBrand** | [**CardBrand**](CardBrand.md) |  | 
 **CardCategory** | [**CardCategory**](CardCategory.md) |  | 
 **CardProductType** | [**CardProductType**](CardProductType.md) |  | 
-**Active** | **bool** | indicates whether program is active | 
-**StartDate** | **time.Time** | The time when program becomes active | 
-**EndDate** | **time.Time** | The time when program became inactive | 
 **CreationTime** | **time.Time** | The timestamp representing when the program was created | [readonly] 
+**EndDate** | **time.Time** | The time when program became inactive | 
+**Id** | **string** | Program ID | [readonly] 
 **LastModifiedTime** | **time.Time** | The timestamp representing when the program was last modified | [readonly] 
+**Name** | **string** | Program name | 
+**PartnerId** | **int32** | The ID of the partner program belongs to | 
+**StartDate** | **time.Time** | The time when program becomes active | 
 
 ## Methods
 
 ### NewCardProgramResponse
 
-`func NewCardProgramResponse(id string, name string, bankId int32, partnerId int32, cardBrand CardBrand, cardCategory CardCategory, cardProductType CardProductType, active bool, startDate time.Time, endDate time.Time, creationTime time.Time, lastModifiedTime time.Time, ) *CardProgramResponse`
+`func NewCardProgramResponse(active bool, bankId int32, cardBrand CardBrand, cardCategory CardCategory, cardProductType CardProductType, creationTime time.Time, endDate time.Time, id string, lastModifiedTime time.Time, name string, partnerId int32, startDate time.Time, ) *CardProgramResponse`
 
 NewCardProgramResponse instantiates a new CardProgramResponse object
 This constructor will assign default values to properties that have it defined,
@@ -36,44 +36,24 @@ NewCardProgramResponseWithDefaults instantiates a new CardProgramResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetActive
 
-`func (o *CardProgramResponse) GetId() string`
+`func (o *CardProgramResponse) GetActive() bool`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetActive returns the Active field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetActiveOk
 
-`func (o *CardProgramResponse) GetIdOk() (*string, bool)`
+`func (o *CardProgramResponse) GetActiveOk() (*bool, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetActive
 
-`func (o *CardProgramResponse) SetId(v string)`
+`func (o *CardProgramResponse) SetActive(v bool)`
 
-SetId sets Id field to given value.
-
-
-### GetName
-
-`func (o *CardProgramResponse) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CardProgramResponse) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CardProgramResponse) SetName(v string)`
-
-SetName sets Name field to given value.
+SetActive sets Active field to given value.
 
 
 ### GetBankId
@@ -94,26 +74,6 @@ and a boolean to check if the value has been set.
 `func (o *CardProgramResponse) SetBankId(v int32)`
 
 SetBankId sets BankId field to given value.
-
-
-### GetPartnerId
-
-`func (o *CardProgramResponse) GetPartnerId() int32`
-
-GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
-
-### GetPartnerIdOk
-
-`func (o *CardProgramResponse) GetPartnerIdOk() (*int32, bool)`
-
-GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerId
-
-`func (o *CardProgramResponse) SetPartnerId(v int32)`
-
-SetPartnerId sets PartnerId field to given value.
 
 
 ### GetCardBrand
@@ -176,44 +136,24 @@ and a boolean to check if the value has been set.
 SetCardProductType sets CardProductType field to given value.
 
 
-### GetActive
+### GetCreationTime
 
-`func (o *CardProgramResponse) GetActive() bool`
+`func (o *CardProgramResponse) GetCreationTime() time.Time`
 
-GetActive returns the Active field if non-nil, zero value otherwise.
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
 
-### GetActiveOk
+### GetCreationTimeOk
 
-`func (o *CardProgramResponse) GetActiveOk() (*bool, bool)`
+`func (o *CardProgramResponse) GetCreationTimeOk() (*time.Time, bool)`
 
-GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetActive
+### SetCreationTime
 
-`func (o *CardProgramResponse) SetActive(v bool)`
+`func (o *CardProgramResponse) SetCreationTime(v time.Time)`
 
-SetActive sets Active field to given value.
-
-
-### GetStartDate
-
-`func (o *CardProgramResponse) GetStartDate() time.Time`
-
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
-
-### GetStartDateOk
-
-`func (o *CardProgramResponse) GetStartDateOk() (*time.Time, bool)`
-
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartDate
-
-`func (o *CardProgramResponse) SetStartDate(v time.Time)`
-
-SetStartDate sets StartDate field to given value.
+SetCreationTime sets CreationTime field to given value.
 
 
 ### GetEndDate
@@ -236,24 +176,24 @@ and a boolean to check if the value has been set.
 SetEndDate sets EndDate field to given value.
 
 
-### GetCreationTime
+### GetId
 
-`func (o *CardProgramResponse) GetCreationTime() time.Time`
+`func (o *CardProgramResponse) GetId() string`
 
-GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetCreationTimeOk
+### GetIdOk
 
-`func (o *CardProgramResponse) GetCreationTimeOk() (*time.Time, bool)`
+`func (o *CardProgramResponse) GetIdOk() (*string, bool)`
 
-GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreationTime
+### SetId
 
-`func (o *CardProgramResponse) SetCreationTime(v time.Time)`
+`func (o *CardProgramResponse) SetId(v string)`
 
-SetCreationTime sets CreationTime field to given value.
+SetId sets Id field to given value.
 
 
 ### GetLastModifiedTime
@@ -274,6 +214,66 @@ and a boolean to check if the value has been set.
 `func (o *CardProgramResponse) SetLastModifiedTime(v time.Time)`
 
 SetLastModifiedTime sets LastModifiedTime field to given value.
+
+
+### GetName
+
+`func (o *CardProgramResponse) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CardProgramResponse) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CardProgramResponse) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetPartnerId
+
+`func (o *CardProgramResponse) GetPartnerId() int32`
+
+GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
+
+### GetPartnerIdOk
+
+`func (o *CardProgramResponse) GetPartnerIdOk() (*int32, bool)`
+
+GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerId
+
+`func (o *CardProgramResponse) SetPartnerId(v int32)`
+
+SetPartnerId sets PartnerId field to given value.
+
+
+### GetStartDate
+
+`func (o *CardProgramResponse) GetStartDate() time.Time`
+
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+
+### GetStartDateOk
+
+`func (o *CardProgramResponse) GetStartDateOk() (*time.Time, bool)`
+
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartDate
+
+`func (o *CardProgramResponse) SetStartDate(v time.Time)`
+
+SetStartDate sets StartDate field to given value.
 
 
 

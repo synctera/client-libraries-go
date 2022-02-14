@@ -18,26 +18,26 @@ import (
 
 // CustomerAllOf struct for CustomerAllOf
 type CustomerAllOf struct {
-	// Customer's status
-	Status string `json:"status"`
+	// Customer's date of birth in RFC 3339 full-date format (YYYY-MM-DD)
+	Dob oapi.Date `json:"dob"`
 	// Customer's first name
 	FirstName string `json:"first_name"`
 	// Customer's last name
 	LastName string `json:"last_name"`
-	// Customer's date of birth in RFC 3339 full-date format (YYYY-MM-DD)
-	Dob oapi.Date `json:"dob"`
+	// Customer's status
+	Status string `json:"status"`
 }
 
 // NewCustomerAllOf instantiates a new CustomerAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerAllOf(status string, firstName string, lastName string, dob oapi.Date) *CustomerAllOf {
+func NewCustomerAllOf(dob oapi.Date, firstName string, lastName string, status string) *CustomerAllOf {
 	this := CustomerAllOf{}
-	this.Status = status
+	this.Dob = dob
 	this.FirstName = firstName
 	this.LastName = lastName
-	this.Dob = dob
+	this.Status = status
 	return &this
 }
 
@@ -49,28 +49,28 @@ func NewCustomerAllOfWithDefaults() *CustomerAllOf {
 	return &this
 }
 
-// GetStatus returns the Status field value
-func (o *CustomerAllOf) GetStatus() string {
+// GetDob returns the Dob field value
+func (o *CustomerAllOf) GetDob() oapi.Date {
 	if o == nil {
-		var ret string
+		var ret oapi.Date
 		return ret
 	}
 
-	return o.Status
+	return o.Dob
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetDobOk returns a tuple with the Dob field value
 // and a boolean to check if the value has been set.
-func (o *CustomerAllOf) GetStatusOk() (*string, bool) {
+func (o *CustomerAllOf) GetDobOk() (*oapi.Date, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Status, true
+	return &o.Dob, true
 }
 
-// SetStatus sets field value
-func (o *CustomerAllOf) SetStatus(v string) {
-	o.Status = v
+// SetDob sets field value
+func (o *CustomerAllOf) SetDob(v oapi.Date) {
+	o.Dob = v
 }
 
 // GetFirstName returns the FirstName field value
@@ -121,34 +121,34 @@ func (o *CustomerAllOf) SetLastName(v string) {
 	o.LastName = v
 }
 
-// GetDob returns the Dob field value
-func (o *CustomerAllOf) GetDob() oapi.Date {
+// GetStatus returns the Status field value
+func (o *CustomerAllOf) GetStatus() string {
 	if o == nil {
-		var ret oapi.Date
+		var ret string
 		return ret
 	}
 
-	return o.Dob
+	return o.Status
 }
 
-// GetDobOk returns a tuple with the Dob field value
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *CustomerAllOf) GetDobOk() (*oapi.Date, bool) {
+func (o *CustomerAllOf) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Dob, true
+	return &o.Status, true
 }
 
-// SetDob sets field value
-func (o *CustomerAllOf) SetDob(v oapi.Date) {
-	o.Dob = v
+// SetStatus sets field value
+func (o *CustomerAllOf) SetStatus(v string) {
+	o.Status = v
 }
 
 func (o CustomerAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["status"] = o.Status
+		toSerialize["dob"] = o.Dob
 	}
 	if true {
 		toSerialize["first_name"] = o.FirstName
@@ -157,7 +157,7 @@ func (o CustomerAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize["last_name"] = o.LastName
 	}
 	if true {
-		toSerialize["dob"] = o.Dob
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

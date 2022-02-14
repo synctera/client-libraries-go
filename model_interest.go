@@ -16,27 +16,27 @@ import (
 
 // Interest struct for Interest
 type Interest struct {
+	AccrualPayoutSchedule AccrualPayoutSchedule `json:"accrual_payout_schedule"`
+	CalculationMethod     CalculationMethod     `json:"calculation_method"`
+	// User provided description for the current interest.
+	Description *string `json:"description,omitempty"`
 	// Interest ID
 	Id          *string `json:"id,omitempty"`
 	ProductType string  `json:"product_type"`
-	// User provided description for the current interest.
-	Description       *string           `json:"description,omitempty"`
-	CalculationMethod CalculationMethod `json:"calculation_method"`
 	// A list of interest rate. Date intervals between valid_from and valid_to expect to have no overlap.
-	Rates                 []RateDetails         `json:"rates"`
-	AccrualPayoutSchedule AccrualPayoutSchedule `json:"accrual_payout_schedule"`
+	Rates []RateDetails `json:"rates"`
 }
 
 // NewInterest instantiates a new Interest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInterest(productType string, calculationMethod CalculationMethod, rates []RateDetails, accrualPayoutSchedule AccrualPayoutSchedule) *Interest {
+func NewInterest(accrualPayoutSchedule AccrualPayoutSchedule, calculationMethod CalculationMethod, productType string, rates []RateDetails) *Interest {
 	this := Interest{}
-	this.ProductType = productType
-	this.CalculationMethod = calculationMethod
-	this.Rates = rates
 	this.AccrualPayoutSchedule = accrualPayoutSchedule
+	this.CalculationMethod = calculationMethod
+	this.ProductType = productType
+	this.Rates = rates
 	return &this
 }
 
@@ -46,6 +46,86 @@ func NewInterest(productType string, calculationMethod CalculationMethod, rates 
 func NewInterestWithDefaults() *Interest {
 	this := Interest{}
 	return &this
+}
+
+// GetAccrualPayoutSchedule returns the AccrualPayoutSchedule field value
+func (o *Interest) GetAccrualPayoutSchedule() AccrualPayoutSchedule {
+	if o == nil {
+		var ret AccrualPayoutSchedule
+		return ret
+	}
+
+	return o.AccrualPayoutSchedule
+}
+
+// GetAccrualPayoutScheduleOk returns a tuple with the AccrualPayoutSchedule field value
+// and a boolean to check if the value has been set.
+func (o *Interest) GetAccrualPayoutScheduleOk() (*AccrualPayoutSchedule, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccrualPayoutSchedule, true
+}
+
+// SetAccrualPayoutSchedule sets field value
+func (o *Interest) SetAccrualPayoutSchedule(v AccrualPayoutSchedule) {
+	o.AccrualPayoutSchedule = v
+}
+
+// GetCalculationMethod returns the CalculationMethod field value
+func (o *Interest) GetCalculationMethod() CalculationMethod {
+	if o == nil {
+		var ret CalculationMethod
+		return ret
+	}
+
+	return o.CalculationMethod
+}
+
+// GetCalculationMethodOk returns a tuple with the CalculationMethod field value
+// and a boolean to check if the value has been set.
+func (o *Interest) GetCalculationMethodOk() (*CalculationMethod, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CalculationMethod, true
+}
+
+// SetCalculationMethod sets field value
+func (o *Interest) SetCalculationMethod(v CalculationMethod) {
+	o.CalculationMethod = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *Interest) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Interest) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *Interest) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *Interest) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -104,62 +184,6 @@ func (o *Interest) SetProductType(v string) {
 	o.ProductType = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Interest) GetDescription() string {
-	if o == nil || o.Description == nil {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Interest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *Interest) HasDescription() bool {
-	if o != nil && o.Description != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Interest) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetCalculationMethod returns the CalculationMethod field value
-func (o *Interest) GetCalculationMethod() CalculationMethod {
-	if o == nil {
-		var ret CalculationMethod
-		return ret
-	}
-
-	return o.CalculationMethod
-}
-
-// GetCalculationMethodOk returns a tuple with the CalculationMethod field value
-// and a boolean to check if the value has been set.
-func (o *Interest) GetCalculationMethodOk() (*CalculationMethod, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CalculationMethod, true
-}
-
-// SetCalculationMethod sets field value
-func (o *Interest) SetCalculationMethod(v CalculationMethod) {
-	o.CalculationMethod = v
-}
-
 // GetRates returns the Rates field value
 func (o *Interest) GetRates() []RateDetails {
 	if o == nil {
@@ -184,49 +208,25 @@ func (o *Interest) SetRates(v []RateDetails) {
 	o.Rates = v
 }
 
-// GetAccrualPayoutSchedule returns the AccrualPayoutSchedule field value
-func (o *Interest) GetAccrualPayoutSchedule() AccrualPayoutSchedule {
-	if o == nil {
-		var ret AccrualPayoutSchedule
-		return ret
-	}
-
-	return o.AccrualPayoutSchedule
-}
-
-// GetAccrualPayoutScheduleOk returns a tuple with the AccrualPayoutSchedule field value
-// and a boolean to check if the value has been set.
-func (o *Interest) GetAccrualPayoutScheduleOk() (*AccrualPayoutSchedule, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccrualPayoutSchedule, true
-}
-
-// SetAccrualPayoutSchedule sets field value
-func (o *Interest) SetAccrualPayoutSchedule(v AccrualPayoutSchedule) {
-	o.AccrualPayoutSchedule = v
-}
-
 func (o Interest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["accrual_payout_schedule"] = o.AccrualPayoutSchedule
+	}
+	if true {
+		toSerialize["calculation_method"] = o.CalculationMethod
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["product_type"] = o.ProductType
 	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["calculation_method"] = o.CalculationMethod
-	}
 	if true {
 		toSerialize["rates"] = o.Rates
-	}
-	if true {
-		toSerialize["accrual_payout_schedule"] = o.AccrualPayoutSchedule
 	}
 	return json.Marshal(toSerialize)
 }

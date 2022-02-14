@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Funding Source ID | [readonly] 
-**Url** | **string** | Funding Source URL | [readonly] 
 **Name** | **string** | Funding Source Name | [readonly] 
+**Url** | **string** | Funding Source URL | [readonly] 
 
 ## Methods
 
 ### NewFundingSourceResponse
 
-`func NewFundingSourceResponse(id string, url string, name string, ) *FundingSourceResponse`
+`func NewFundingSourceResponse(id string, name string, url string, ) *FundingSourceResponse`
 
 NewFundingSourceResponse instantiates a new FundingSourceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -47,26 +47,6 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
-### GetUrl
-
-`func (o *FundingSourceResponse) GetUrl() string`
-
-GetUrl returns the Url field if non-nil, zero value otherwise.
-
-### GetUrlOk
-
-`func (o *FundingSourceResponse) GetUrlOk() (*string, bool)`
-
-GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUrl
-
-`func (o *FundingSourceResponse) SetUrl(v string)`
-
-SetUrl sets Url field to given value.
-
-
 ### GetName
 
 `func (o *FundingSourceResponse) GetName() string`
@@ -85,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *FundingSourceResponse) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetUrl
+
+`func (o *FundingSourceResponse) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *FundingSourceResponse) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *FundingSourceResponse) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
 
 
 

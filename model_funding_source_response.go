@@ -18,21 +18,21 @@ import (
 type FundingSourceResponse struct {
 	// Funding Source ID
 	Id string `json:"id"`
-	// Funding Source URL
-	Url string `json:"url"`
 	// Funding Source Name
 	Name string `json:"name"`
+	// Funding Source URL
+	Url string `json:"url"`
 }
 
 // NewFundingSourceResponse instantiates a new FundingSourceResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFundingSourceResponse(id string, url string, name string) *FundingSourceResponse {
+func NewFundingSourceResponse(id string, name string, url string) *FundingSourceResponse {
 	this := FundingSourceResponse{}
 	this.Id = id
-	this.Url = url
 	this.Name = name
+	this.Url = url
 	return &this
 }
 
@@ -68,30 +68,6 @@ func (o *FundingSourceResponse) SetId(v string) {
 	o.Id = v
 }
 
-// GetUrl returns the Url field value
-func (o *FundingSourceResponse) GetUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Url
-}
-
-// GetUrlOk returns a tuple with the Url field value
-// and a boolean to check if the value has been set.
-func (o *FundingSourceResponse) GetUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Url, true
-}
-
-// SetUrl sets field value
-func (o *FundingSourceResponse) SetUrl(v string) {
-	o.Url = v
-}
-
 // GetName returns the Name field value
 func (o *FundingSourceResponse) GetName() string {
 	if o == nil {
@@ -116,16 +92,40 @@ func (o *FundingSourceResponse) SetName(v string) {
 	o.Name = v
 }
 
+// GetUrl returns the Url field value
+func (o *FundingSourceResponse) GetUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value
+// and a boolean to check if the value has been set.
+func (o *FundingSourceResponse) GetUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Url, true
+}
+
+// SetUrl sets field value
+func (o *FundingSourceResponse) SetUrl(v string) {
+	o.Url = v
+}
+
 func (o FundingSourceResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
 	}
 	if true {
-		toSerialize["url"] = o.Url
+		toSerialize["name"] = o.Name
 	}
 	if true {
-		toSerialize["name"] = o.Name
+		toSerialize["url"] = o.Url
 	}
 	return json.Marshal(toSerialize)
 }

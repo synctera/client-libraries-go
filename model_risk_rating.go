@@ -17,18 +17,18 @@ import (
 
 // RiskRating Represents a customer's risk profile
 type RiskRating struct {
-	// Risk rating ID
-	Id *string `json:"id,omitempty"`
 	// The risk configuration id used in risk score calculation
 	ConfigurationId *string `json:"configuration_id,omitempty"`
-	// The date the customer risk rating was calculated
-	RiskReview *time.Time `json:"risk_review,omitempty"`
+	// Risk rating ID
+	Id *string `json:"id,omitempty"`
 	// The next review date where customer risk will be calculated
 	NextReview *time.Time `json:"next_review,omitempty"`
-	// The cumulative score of all risk rating fields
-	RiskScore *float32 `json:"risk_score,omitempty"`
 	// A textual representation of the customer risk score
 	RiskLevel *string `json:"risk_level,omitempty"`
+	// The date the customer risk rating was calculated
+	RiskReview *time.Time `json:"risk_review,omitempty"`
+	// The cumulative score of all risk rating fields
+	RiskScore *float32 `json:"risk_score,omitempty"`
 }
 
 // NewRiskRating instantiates a new RiskRating object
@@ -46,38 +46,6 @@ func NewRiskRating() *RiskRating {
 func NewRiskRatingWithDefaults() *RiskRating {
 	this := RiskRating{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *RiskRating) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskRating) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *RiskRating) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *RiskRating) SetId(v string) {
-	o.Id = &v
 }
 
 // GetConfigurationId returns the ConfigurationId field value if set, zero value otherwise.
@@ -112,36 +80,36 @@ func (o *RiskRating) SetConfigurationId(v string) {
 	o.ConfigurationId = &v
 }
 
-// GetRiskReview returns the RiskReview field value if set, zero value otherwise.
-func (o *RiskRating) GetRiskReview() time.Time {
-	if o == nil || o.RiskReview == nil {
-		var ret time.Time
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *RiskRating) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
 		return ret
 	}
-	return *o.RiskReview
+	return *o.Id
 }
 
-// GetRiskReviewOk returns a tuple with the RiskReview field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskRating) GetRiskReviewOk() (*time.Time, bool) {
-	if o == nil || o.RiskReview == nil {
+func (o *RiskRating) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
-	return o.RiskReview, true
+	return o.Id, true
 }
 
-// HasRiskReview returns a boolean if a field has been set.
-func (o *RiskRating) HasRiskReview() bool {
-	if o != nil && o.RiskReview != nil {
+// HasId returns a boolean if a field has been set.
+func (o *RiskRating) HasId() bool {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetRiskReview gets a reference to the given time.Time and assigns it to the RiskReview field.
-func (o *RiskRating) SetRiskReview(v time.Time) {
-	o.RiskReview = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *RiskRating) SetId(v string) {
+	o.Id = &v
 }
 
 // GetNextReview returns the NextReview field value if set, zero value otherwise.
@@ -176,38 +144,6 @@ func (o *RiskRating) SetNextReview(v time.Time) {
 	o.NextReview = &v
 }
 
-// GetRiskScore returns the RiskScore field value if set, zero value otherwise.
-func (o *RiskRating) GetRiskScore() float32 {
-	if o == nil || o.RiskScore == nil {
-		var ret float32
-		return ret
-	}
-	return *o.RiskScore
-}
-
-// GetRiskScoreOk returns a tuple with the RiskScore field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskRating) GetRiskScoreOk() (*float32, bool) {
-	if o == nil || o.RiskScore == nil {
-		return nil, false
-	}
-	return o.RiskScore, true
-}
-
-// HasRiskScore returns a boolean if a field has been set.
-func (o *RiskRating) HasRiskScore() bool {
-	if o != nil && o.RiskScore != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRiskScore gets a reference to the given float32 and assigns it to the RiskScore field.
-func (o *RiskRating) SetRiskScore(v float32) {
-	o.RiskScore = &v
-}
-
 // GetRiskLevel returns the RiskLevel field value if set, zero value otherwise.
 func (o *RiskRating) GetRiskLevel() string {
 	if o == nil || o.RiskLevel == nil {
@@ -240,25 +176,89 @@ func (o *RiskRating) SetRiskLevel(v string) {
 	o.RiskLevel = &v
 }
 
+// GetRiskReview returns the RiskReview field value if set, zero value otherwise.
+func (o *RiskRating) GetRiskReview() time.Time {
+	if o == nil || o.RiskReview == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.RiskReview
+}
+
+// GetRiskReviewOk returns a tuple with the RiskReview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskRating) GetRiskReviewOk() (*time.Time, bool) {
+	if o == nil || o.RiskReview == nil {
+		return nil, false
+	}
+	return o.RiskReview, true
+}
+
+// HasRiskReview returns a boolean if a field has been set.
+func (o *RiskRating) HasRiskReview() bool {
+	if o != nil && o.RiskReview != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRiskReview gets a reference to the given time.Time and assigns it to the RiskReview field.
+func (o *RiskRating) SetRiskReview(v time.Time) {
+	o.RiskReview = &v
+}
+
+// GetRiskScore returns the RiskScore field value if set, zero value otherwise.
+func (o *RiskRating) GetRiskScore() float32 {
+	if o == nil || o.RiskScore == nil {
+		var ret float32
+		return ret
+	}
+	return *o.RiskScore
+}
+
+// GetRiskScoreOk returns a tuple with the RiskScore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskRating) GetRiskScoreOk() (*float32, bool) {
+	if o == nil || o.RiskScore == nil {
+		return nil, false
+	}
+	return o.RiskScore, true
+}
+
+// HasRiskScore returns a boolean if a field has been set.
+func (o *RiskRating) HasRiskScore() bool {
+	if o != nil && o.RiskScore != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRiskScore gets a reference to the given float32 and assigns it to the RiskScore field.
+func (o *RiskRating) SetRiskScore(v float32) {
+	o.RiskScore = &v
+}
+
 func (o RiskRating) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
 	if o.ConfigurationId != nil {
 		toSerialize["configuration_id"] = o.ConfigurationId
 	}
-	if o.RiskReview != nil {
-		toSerialize["risk_review"] = o.RiskReview
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if o.NextReview != nil {
 		toSerialize["next_review"] = o.NextReview
 	}
-	if o.RiskScore != nil {
-		toSerialize["risk_score"] = o.RiskScore
-	}
 	if o.RiskLevel != nil {
 		toSerialize["risk_level"] = o.RiskLevel
+	}
+	if o.RiskReview != nil {
+		toSerialize["risk_review"] = o.RiskReview
+	}
+	if o.RiskScore != nil {
+		toSerialize["risk_score"] = o.RiskScore
 	}
 	return json.Marshal(toSerialize)
 }

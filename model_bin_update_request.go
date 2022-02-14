@@ -17,15 +17,15 @@ import (
 
 // BinUpdateRequest struct for BinUpdateRequest
 type BinUpdateRequest struct {
+	BinStatus       *BinStatus       `json:"bin_status,omitempty"`
 	CardBrand       *CardBrand       `json:"card_brand,omitempty"`
 	CardCategory    *CardCategory    `json:"card_category,omitempty"`
 	CardProductType *CardProductType `json:"card_product_type,omitempty"`
-	BinStatus       *BinStatus       `json:"bin_status,omitempty"`
-	// The time when bin goes live
-	StartDate *time.Time `json:"start_date,omitempty"`
 	// The time when bin is decommissioned
 	EndDate            *time.Time          `json:"end_date,omitempty"`
 	PhysicalCardFormat *PhysicalCardFormat `json:"physical_card_format,omitempty"`
+	// The time when bin goes live
+	StartDate *time.Time `json:"start_date,omitempty"`
 }
 
 // NewBinUpdateRequest instantiates a new BinUpdateRequest object
@@ -43,6 +43,38 @@ func NewBinUpdateRequest() *BinUpdateRequest {
 func NewBinUpdateRequestWithDefaults() *BinUpdateRequest {
 	this := BinUpdateRequest{}
 	return &this
+}
+
+// GetBinStatus returns the BinStatus field value if set, zero value otherwise.
+func (o *BinUpdateRequest) GetBinStatus() BinStatus {
+	if o == nil || o.BinStatus == nil {
+		var ret BinStatus
+		return ret
+	}
+	return *o.BinStatus
+}
+
+// GetBinStatusOk returns a tuple with the BinStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BinUpdateRequest) GetBinStatusOk() (*BinStatus, bool) {
+	if o == nil || o.BinStatus == nil {
+		return nil, false
+	}
+	return o.BinStatus, true
+}
+
+// HasBinStatus returns a boolean if a field has been set.
+func (o *BinUpdateRequest) HasBinStatus() bool {
+	if o != nil && o.BinStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBinStatus gets a reference to the given BinStatus and assigns it to the BinStatus field.
+func (o *BinUpdateRequest) SetBinStatus(v BinStatus) {
+	o.BinStatus = &v
 }
 
 // GetCardBrand returns the CardBrand field value if set, zero value otherwise.
@@ -141,70 +173,6 @@ func (o *BinUpdateRequest) SetCardProductType(v CardProductType) {
 	o.CardProductType = &v
 }
 
-// GetBinStatus returns the BinStatus field value if set, zero value otherwise.
-func (o *BinUpdateRequest) GetBinStatus() BinStatus {
-	if o == nil || o.BinStatus == nil {
-		var ret BinStatus
-		return ret
-	}
-	return *o.BinStatus
-}
-
-// GetBinStatusOk returns a tuple with the BinStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BinUpdateRequest) GetBinStatusOk() (*BinStatus, bool) {
-	if o == nil || o.BinStatus == nil {
-		return nil, false
-	}
-	return o.BinStatus, true
-}
-
-// HasBinStatus returns a boolean if a field has been set.
-func (o *BinUpdateRequest) HasBinStatus() bool {
-	if o != nil && o.BinStatus != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBinStatus gets a reference to the given BinStatus and assigns it to the BinStatus field.
-func (o *BinUpdateRequest) SetBinStatus(v BinStatus) {
-	o.BinStatus = &v
-}
-
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *BinUpdateRequest) GetStartDate() time.Time {
-	if o == nil || o.StartDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.StartDate
-}
-
-// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BinUpdateRequest) GetStartDateOk() (*time.Time, bool) {
-	if o == nil || o.StartDate == nil {
-		return nil, false
-	}
-	return o.StartDate, true
-}
-
-// HasStartDate returns a boolean if a field has been set.
-func (o *BinUpdateRequest) HasStartDate() bool {
-	if o != nil && o.StartDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
-func (o *BinUpdateRequest) SetStartDate(v time.Time) {
-	o.StartDate = &v
-}
-
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
 func (o *BinUpdateRequest) GetEndDate() time.Time {
 	if o == nil || o.EndDate == nil {
@@ -269,8 +237,43 @@ func (o *BinUpdateRequest) SetPhysicalCardFormat(v PhysicalCardFormat) {
 	o.PhysicalCardFormat = &v
 }
 
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
+func (o *BinUpdateRequest) GetStartDate() time.Time {
+	if o == nil || o.StartDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BinUpdateRequest) GetStartDateOk() (*time.Time, bool) {
+	if o == nil || o.StartDate == nil {
+		return nil, false
+	}
+	return o.StartDate, true
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *BinUpdateRequest) HasStartDate() bool {
+	if o != nil && o.StartDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
+func (o *BinUpdateRequest) SetStartDate(v time.Time) {
+	o.StartDate = &v
+}
+
 func (o BinUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.BinStatus != nil {
+		toSerialize["bin_status"] = o.BinStatus
+	}
 	if o.CardBrand != nil {
 		toSerialize["card_brand"] = o.CardBrand
 	}
@@ -280,17 +283,14 @@ func (o BinUpdateRequest) MarshalJSON() ([]byte, error) {
 	if o.CardProductType != nil {
 		toSerialize["card_product_type"] = o.CardProductType
 	}
-	if o.BinStatus != nil {
-		toSerialize["bin_status"] = o.BinStatus
-	}
-	if o.StartDate != nil {
-		toSerialize["start_date"] = o.StartDate
-	}
 	if o.EndDate != nil {
 		toSerialize["end_date"] = o.EndDate
 	}
 	if o.PhysicalCardFormat != nil {
 		toSerialize["physical_card_format"] = o.PhysicalCardFormat
+	}
+	if o.StartDate != nil {
+		toSerialize["start_date"] = o.StartDate
 	}
 	return json.Marshal(toSerialize)
 }

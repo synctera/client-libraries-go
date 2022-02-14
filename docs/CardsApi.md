@@ -5,38 +5,20 @@ All URIs are relative to *https://api.synctera.com/v0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ActivateCard**](CardsApi.md#ActivateCard) | **Post** /cards/activate | Activate a card
-[**CreateAccountRange**](CardsApi.md#CreateAccountRange) | **Post** /cards/account_ranges | Create Account Range
-[**CreateBin**](CardsApi.md#CreateBin) | **Post** /cards/bins | Create BIN
-[**CreateBinNetworkMapping**](CardsApi.md#CreateBinNetworkMapping) | **Post** /cards/bin_network_mappings | Create bin network mapping
-[**CreateCardProduct**](CardsApi.md#CreateCardProduct) | **Post** /cards/products | Create Card Product
-[**CreateCardProgram**](CardsApi.md#CreateCardProgram) | **Post** /cards/programs | Create Card Program
-[**CreateDebitNetwork**](CardsApi.md#CreateDebitNetwork) | **Post** /cards/debit_networks | Create Debit Network
-[**CreateDigitalWalletApple**](CardsApi.md#CreateDigitalWalletApple) | **Post** /cards/digitalwallets/applepay | Create digital wallet token provision request for Apple Pay
-[**CreateDigitalWalletGoogle**](CardsApi.md#CreateDigitalWalletGoogle) | **Post** /cards/digitalwallets/googlepay | Create digital wallet token provision request for Google Pay
-[**GetAccountRange**](CardsApi.md#GetAccountRange) | **Get** /cards/account_ranges/{account_range_id} | Get a Account Range
-[**GetBin**](CardsApi.md#GetBin) | **Get** /cards/bins/{bin_id} | Get BIN
+[**CreateCardImage**](CardsApi.md#CreateCardImage) | **Post** /cards/images | Create Card Image
 [**GetCard**](CardsApi.md#GetCard) | **Get** /cards/{card_id} | Get Card
 [**GetCardBarcode**](CardsApi.md#GetCardBarcode) | **Get** /cards/{card_id}/barcodes | Get Card Barcode
-[**GetCardProduct**](CardsApi.md#GetCardProduct) | **Get** /cards/products/{card_product_id} | Get details about a card product
-[**GetCardProgram**](CardsApi.md#GetCardProgram) | **Get** /cards/programs/{card_program_id} | Get a Card Program
-[**GetCardWidgetURL**](CardsApi.md#GetCardWidgetURL) | **Get** /cards/card_widget_url | Get Card Widget URL
+[**GetCardImageDetails**](CardsApi.md#GetCardImageDetails) | **Get** /cards/images/{card_image_id} | Get Card Image Details
+[**GetCardWidgetURL**](CardsApi.md#GetCardWidgetURL) | **Get** /cards/card_widget_url | Get card widget URL
 [**GetClientAccessToken**](CardsApi.md#GetClientAccessToken) | **Post** /cards/{card_id}/client_token | Get a client token
 [**GetClientSingleUseToken**](CardsApi.md#GetClientSingleUseToken) | **Post** /cards/single_use_token | Get single-use token
-[**GetDebitNetwork**](CardsApi.md#GetDebitNetwork) | **Get** /cards/debit_networks/{debit_network_id} | Get details about a debit/atm network
 [**IssueCard**](CardsApi.md#IssueCard) | **Post** /cards | Issue a Card
-[**ListBins**](CardsApi.md#ListBins) | **Get** /cards/bins | List BINs
-[**ListBinsAndDebitNetworks**](CardsApi.md#ListBinsAndDebitNetworks) | **Get** /cards/bins/debit_networks | List BINs and Debit Networks
-[**ListCardProducts**](CardsApi.md#ListCardProducts) | **Get** /cards/products | List Cards Products
-[**ListCardPrograms**](CardsApi.md#ListCardPrograms) | **Get** /cards/programs | List Card Programs
+[**ListCardImageDetails**](CardsApi.md#ListCardImageDetails) | **Get** /cards/images | List Card Image Details
 [**ListCards**](CardsApi.md#ListCards) | **Get** /cards | List Cards
 [**ListChanges**](CardsApi.md#ListChanges) | **Get** /cards/{card_id}/changes | List Card Changes
-[**ListDebitNetworks**](CardsApi.md#ListDebitNetworks) | **Get** /cards/debit_networks | List debit networks
-[**ListFundingSource**](CardsApi.md#ListFundingSource) | **Get** /cards/funding_sources | List Funding Sources
-[**SetPIN**](CardsApi.md#SetPIN) | **Put** /cards/{card_id}/pin | Set a new PIN for a card
 [**UpdateAccountRange**](CardsApi.md#UpdateAccountRange) | **Patch** /cards/account_ranges/{account_range_id} | Update Account Range
 [**UpdateBin**](CardsApi.md#UpdateBin) | **Patch** /cards/bins/{bin_id} | Update BIN
 [**UpdateCard**](CardsApi.md#UpdateCard) | **Patch** /cards/{card_id} | Update Card
-[**UpdateCardProgram**](CardsApi.md#UpdateCardProgram) | **Patch** /cards/programs/{card_program_id} | Update Card Program
 
 
 
@@ -106,11 +88,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateAccountRange
+## CreateCardImage
 
-> AccountRangeResponse CreateAccountRange(ctx).AccountRange(accountRange).Execute()
+> CardImageDetails CreateCardImage(ctx).CreateCardImageRequest(createCardImageRequest).Execute()
 
-Create Account Range
+Create Card Image
 
 
 
@@ -127,17 +109,17 @@ import (
 )
 
 func main() {
-    accountRange := *openapiclient.NewAccountRange(int32(123), int32(123), "BinId_example", []int32{int32(123)}) // AccountRange | Details of the account range to create
+    createCardImageRequest := *openapiclient.NewCreateCardImageRequest("CustomerId_example") // CreateCardImageRequest | Details of the image to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.CreateAccountRange(context.Background()).AccountRange(accountRange).Execute()
+    resp, r, err := api_client.CardsApi.CreateCardImage(context.Background()).CreateCardImageRequest(createCardImageRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateAccountRange``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateCardImage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAccountRange`: AccountRangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateAccountRange`: %v\n", resp)
+    // response from `CreateCardImage`: CardImageDetails
+    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateCardImage`: %v\n", resp)
 }
 ```
 
@@ -147,16 +129,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateAccountRangeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateCardImageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountRange** | [**AccountRange**](AccountRange.md) | Details of the account range to create | 
+ **createCardImageRequest** | [**CreateCardImageRequest**](CreateCardImageRequest.md) | Details of the image to create | 
 
 ### Return type
 
-[**AccountRangeResponse**](AccountRangeResponse.md)
+[**CardImageDetails**](CardImageDetails.md)
 
 ### Authorization
 
@@ -165,595 +147,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateBin
-
-> BinResponse CreateBin(ctx).Bin(bin).Execute()
-
-Create BIN
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    bin := *openapiclient.NewBin(int32(123), int32(123), "Bin_example", "Processor_example", openapiclient.card_brand("MASTERCARD"), openapiclient.card_category("CONSUMER"), openapiclient.card_product_type("DEBIT"), "IcaBid_example", "faker.address.countryCode", "Currency_example", int32(123), "BillingIca_example", "BrandProductCode_example") // Bin | Details of the BIN to create
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.CreateBin(context.Background()).Bin(bin).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateBin``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateBin`: BinResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateBin`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateBinRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bin** | [**Bin**](Bin.md) | Details of the BIN to create | 
-
-### Return type
-
-[**BinResponse**](BinResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateBinNetworkMapping
-
-> BinNetworkMappingResponse CreateBinNetworkMapping(ctx).BinNetworkMapping(binNetworkMapping).Execute()
-
-Create bin network mapping
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    binNetworkMapping := *openapiclient.NewBinNetworkMapping("BinId_example", "NetworkId_example", false, "BankNetworkId_example") // BinNetworkMapping | Details of the bin network mapping to create
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.CreateBinNetworkMapping(context.Background()).BinNetworkMapping(binNetworkMapping).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateBinNetworkMapping``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateBinNetworkMapping`: BinNetworkMappingResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateBinNetworkMapping`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateBinNetworkMappingRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **binNetworkMapping** | [**BinNetworkMapping**](BinNetworkMapping.md) | Details of the bin network mapping to create | 
-
-### Return type
-
-[**BinNetworkMappingResponse**](BinNetworkMappingResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateCardProduct
-
-> CardProductResponse CreateCardProduct(ctx).CardProduct(cardProduct).Execute()
-
-Create Card Product
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    "time"
-    openapiclient "./openapi"
-)
-
-func main() {
-    cardProduct := *openapiclient.NewCardProduct("Form_example", "Name_example", int32(123), int32(123), "CardProgramId_example", "FundingSourceId_example", "BinId_example", "AccountRangeId_example", false, false, time.Now()) // CardProduct | Details of the card product to create
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.CreateCardProduct(context.Background()).CardProduct(cardProduct).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateCardProduct``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCardProduct`: CardProductResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateCardProduct`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateCardProductRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cardProduct** | [**CardProduct**](CardProduct.md) | Details of the card product to create | 
-
-### Return type
-
-[**CardProductResponse**](CardProductResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateCardProgram
-
-> CardProgramResponse CreateCardProgram(ctx).CardProgram(cardProgram).Execute()
-
-Create Card Program
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    cardProgram := *openapiclient.NewCardProgram("Name_example", int32(123), int32(123), openapiclient.card_brand("MASTERCARD"), openapiclient.card_category("CONSUMER"), openapiclient.card_product_type("DEBIT")) // CardProgram | Details of the program to create
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.CreateCardProgram(context.Background()).CardProgram(cardProgram).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateCardProgram``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCardProgram`: CardProgramResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateCardProgram`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateCardProgramRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cardProgram** | [**CardProgram**](CardProgram.md) | Details of the program to create | 
-
-### Return type
-
-[**CardProgramResponse**](CardProgramResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateDebitNetwork
-
-> DebitNetworkResponse CreateDebitNetwork(ctx).DebitNetworkCreateRequest(debitNetworkCreateRequest).Execute()
-
-Create Debit Network
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    debitNetworkCreateRequest := *openapiclient.NewDebitNetworkCreateRequest("Name_example") // DebitNetworkCreateRequest | Details of the debit network to create
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.CreateDebitNetwork(context.Background()).DebitNetworkCreateRequest(debitNetworkCreateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateDebitNetwork``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateDebitNetwork`: DebitNetworkResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateDebitNetwork`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateDebitNetworkRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **debitNetworkCreateRequest** | [**DebitNetworkCreateRequest**](DebitNetworkCreateRequest.md) | Details of the debit network to create | 
-
-### Return type
-
-[**DebitNetworkResponse**](DebitNetworkResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateDigitalWalletApple
-
-> AppleDigitalWalletProvisionResponse CreateDigitalWalletApple(ctx).Execute()
-
-Create digital wallet token provision request for Apple Pay
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.CreateDigitalWalletApple(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateDigitalWalletApple``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateDigitalWalletApple`: AppleDigitalWalletProvisionResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateDigitalWalletApple`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateDigitalWalletAppleRequest struct via the builder pattern
-
-
-### Return type
-
-[**AppleDigitalWalletProvisionResponse**](AppleDigitalWalletProvisionResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateDigitalWalletGoogle
-
-> GoogleDigitalWalletProvisionResponse CreateDigitalWalletGoogle(ctx).Execute()
-
-Create digital wallet token provision request for Google Pay
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.CreateDigitalWalletGoogle(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.CreateDigitalWalletGoogle``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateDigitalWalletGoogle`: GoogleDigitalWalletProvisionResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.CreateDigitalWalletGoogle`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateDigitalWalletGoogleRequest struct via the builder pattern
-
-
-### Return type
-
-[**GoogleDigitalWalletProvisionResponse**](GoogleDigitalWalletProvisionResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetAccountRange
-
-> AccountRangeResponse GetAccountRange(ctx, accountRangeId).Execute()
-
-Get a Account Range
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    accountRangeId := TODO // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.GetAccountRange(context.Background(), accountRangeId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.GetAccountRange``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccountRange`: AccountRangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.GetAccountRange`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountRangeId** | [**string**](.md) |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAccountRangeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**AccountRangeResponse**](AccountRangeResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetBin
-
-> BinResponse GetBin(ctx, binId).Execute()
-
-Get BIN
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    binId := TODO // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.GetBin(context.Background(), binId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.GetBin``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetBin`: BinResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.GetBin`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**binId** | [**string**](.md) |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetBinRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**BinResponse**](BinResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -901,79 +294,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCardProduct
+## GetCardImageDetails
 
-> CardProductResponse GetCardProduct(ctx, cardProductId).Execute()
+> CardImageDetails GetCardImageDetails(ctx, cardImageId).Execute()
 
-Get details about a card product
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    cardProductId := TODO // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.GetCardProduct(context.Background(), cardProductId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.GetCardProduct``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCardProduct`: CardProductResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.GetCardProduct`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardProductId** | [**string**](.md) |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCardProductRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**CardProductResponse**](CardProductResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetCardProgram
-
-> CardProgramResponse GetCardProgram(ctx, cardProgramId).Execute()
-
-Get a Card Program
+Get Card Image Details
 
 
 
@@ -990,17 +315,17 @@ import (
 )
 
 func main() {
-    cardProgramId := TODO // string | 
+    cardImageId := TODO // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.GetCardProgram(context.Background(), cardProgramId).Execute()
+    resp, r, err := api_client.CardsApi.GetCardImageDetails(context.Background(), cardImageId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.GetCardProgram``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.GetCardImageDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCardProgram`: CardProgramResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.GetCardProgram`: %v\n", resp)
+    // response from `GetCardImageDetails`: CardImageDetails
+    fmt.Fprintf(os.Stdout, "Response from `CardsApi.GetCardImageDetails`: %v\n", resp)
 }
 ```
 
@@ -1010,11 +335,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardProgramId** | [**string**](.md) |  | 
+**cardImageId** | [**string**](.md) |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetCardProgramRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCardImageDetailsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1023,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CardProgramResponse**](CardProgramResponse.md)
+[**CardImageDetails**](CardImageDetails.md)
 
 ### Authorization
 
@@ -1043,7 +368,7 @@ Name | Type | Description  | Notes
 
 > CardWidgetUrlResponse GetCardWidgetURL(ctx).WidgetType(widgetType).CustomerId(customerId).AccountId(accountId).CardId(cardId).Execute()
 
-Get Card Widget URL
+Get card widget URL
 
 
 
@@ -1202,7 +527,7 @@ import (
 )
 
 func main() {
-    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("CustomerId_example", "AccountId_example") // SingleUseTokenRequest | User token details
+    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("AccountId_example", "CustomerId_example") // SingleUseTokenRequest | User token details
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1247,76 +572,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetDebitNetwork
-
-> BankDebitNetworkResponse GetDebitNetwork(ctx, debitNetworkId).Execute()
-
-Get details about a debit/atm network
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    debitNetworkId := TODO // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.GetDebitNetwork(context.Background(), debitNetworkId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.GetDebitNetwork``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetDebitNetwork`: BankDebitNetworkResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.GetDebitNetwork`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**debitNetworkId** | [**string**](.md) |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetDebitNetworkRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**BankDebitNetworkResponse**](BankDebitNetworkResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## IssueCard
 
 > CardResponse IssueCard(ctx).CardIssuanceRequest(cardIssuanceRequest).Execute()
@@ -1338,7 +593,7 @@ import (
 )
 
 func main() {
-    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "CustomerId_example", "AccountId_example", "Type_example", "CardProductId_example")} // CardIssuanceRequest | Card to issue
+    cardIssuanceRequest := openapiclient.card_issuance_request{PhysicalCardIssuanceRequest: openapiclient.NewPhysicalCardIssuanceRequest("Form_example", "AccountId_example", "CardProductId_example", "CustomerId_example", "Type_example")} // CardIssuanceRequest | Card to issue
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1383,83 +638,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListBins
+## ListCardImageDetails
 
-> BinResponseList ListBins(ctx).Limit(limit).PageToken(pageToken).Tenant(tenant).CardId(cardId).Execute()
+> CardImageDetailsList ListCardImageDetails(ctx).CustomerId(customerId).Execute()
 
-List BINs
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
-    tenant := "2_3" // string |  (optional)
-    cardId := TODO // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.ListBins(context.Background()).Limit(limit).PageToken(pageToken).Tenant(tenant).CardId(cardId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ListBins``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListBins`: BinResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.ListBins`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListBinsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | [default to 100]
- **pageToken** | **string** |  | 
- **tenant** | **string** |  | 
- **cardId** | [**string**](string.md) |  | 
-
-### Return type
-
-[**BinResponseList**](BinResponseList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListBinsAndDebitNetworks
-
-> BinAndDebitNetworkList ListBinsAndDebitNetworks(ctx).Limit(limit).PageToken(pageToken).Tenant(tenant).Execute()
-
-List BINs and Debit Networks
+List Card Image Details
 
 
 
@@ -1476,19 +659,17 @@ import (
 )
 
 func main() {
-    limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
-    tenant := "2_3" // string |  (optional)
+    customerId := TODO // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.ListBinsAndDebitNetworks(context.Background()).Limit(limit).PageToken(pageToken).Tenant(tenant).Execute()
+    resp, r, err := api_client.CardsApi.ListCardImageDetails(context.Background()).CustomerId(customerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ListBinsAndDebitNetworks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ListCardImageDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListBinsAndDebitNetworks`: BinAndDebitNetworkList
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.ListBinsAndDebitNetworks`: %v\n", resp)
+    // response from `ListCardImageDetails`: CardImageDetailsList
+    fmt.Fprintf(os.Stdout, "Response from `CardsApi.ListCardImageDetails`: %v\n", resp)
 }
 ```
 
@@ -1498,156 +679,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListBinsAndDebitNetworksRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListCardImageDetailsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | [default to 100]
- **pageToken** | **string** |  | 
- **tenant** | **string** |  | 
+ **customerId** | [**string**](string.md) |  | 
 
 ### Return type
 
-[**BinAndDebitNetworkList**](BinAndDebitNetworkList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListCardProducts
-
-> CardProductListResponse ListCardProducts(ctx).Limit(limit).PageToken(pageToken).Tenant(tenant).Execute()
-
-List Cards Products
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
-    tenant := "2_3" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.ListCardProducts(context.Background()).Limit(limit).PageToken(pageToken).Tenant(tenant).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ListCardProducts``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListCardProducts`: CardProductListResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.ListCardProducts`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListCardProductsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | [default to 100]
- **pageToken** | **string** |  | 
- **tenant** | **string** |  | 
-
-### Return type
-
-[**CardProductListResponse**](CardProductListResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListCardPrograms
-
-> CardProgramResponseList ListCardPrograms(ctx).Limit(limit).PageToken(pageToken).Tenant(tenant).Execute()
-
-List Card Programs
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
-    tenant := "2_3" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.ListCardPrograms(context.Background()).Limit(limit).PageToken(pageToken).Tenant(tenant).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ListCardPrograms``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListCardPrograms`: CardProgramResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.ListCardPrograms`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListCardProgramsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | [default to 100]
- **pageToken** | **string** |  | 
- **tenant** | **string** |  | 
-
-### Return type
-
-[**CardProgramResponseList**](CardProgramResponseList.md)
+[**CardImageDetailsList**](CardImageDetailsList.md)
 
 ### Authorization
 
@@ -1821,200 +862,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListDebitNetworks
-
-> DebitNetworkResponseList ListDebitNetworks(ctx).Execute()
-
-List debit networks
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.ListDebitNetworks(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ListDebitNetworks``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListDebitNetworks`: DebitNetworkResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.ListDebitNetworks`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListDebitNetworksRequest struct via the builder pattern
-
-
-### Return type
-
-[**DebitNetworkResponseList**](DebitNetworkResponseList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListFundingSource
-
-> FundingSourceResponseList ListFundingSource(ctx).Execute()
-
-List Funding Sources
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.ListFundingSource(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.ListFundingSource``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListFundingSource`: FundingSourceResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.ListFundingSource`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListFundingSourceRequest struct via the builder pattern
-
-
-### Return type
-
-[**FundingSourceResponseList**](FundingSourceResponseList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetPIN
-
-> CardResponse SetPIN(ctx, cardId).CardPin(cardPin).Execute()
-
-Set a new PIN for a card
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    cardId := TODO // string | 
-    cardPin := *openapiclient.NewCardPin() // CardPin | New PIN
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.SetPIN(context.Background(), cardId).CardPin(cardPin).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.SetPIN``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SetPIN`: CardResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.SetPIN`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardId** | [**string**](.md) |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetPINRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **cardPin** | [**CardPin**](CardPin.md) | New PIN | 
-
-### Return type
-
-[**CardResponse**](CardResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2223,78 +1070,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CardResponse**](CardResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateCardProgram
-
-> CardProgramResponse UpdateCardProgram(ctx, cardProgramId).CardProgramUpdateRequest(cardProgramUpdateRequest).Execute()
-
-Update Card Program
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    cardProgramId := TODO // string | 
-    cardProgramUpdateRequest := *openapiclient.NewCardProgramUpdateRequest() // CardProgramUpdateRequest | Fields to update
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CardsApi.UpdateCardProgram(context.Background(), cardProgramId).CardProgramUpdateRequest(cardProgramUpdateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CardsApi.UpdateCardProgram``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCardProgram`: CardProgramResponse
-    fmt.Fprintf(os.Stdout, "Response from `CardsApi.UpdateCardProgram`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**cardProgramId** | [**string**](.md) |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateCardProgramRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **cardProgramUpdateRequest** | [**CardProgramUpdateRequest**](CardProgramUpdateRequest.md) | Fields to update | 
-
-### Return type
-
-[**CardProgramResponse**](CardProgramResponse.md)
 
 ### Authorization
 

@@ -19,21 +19,21 @@ import (
 
 // WatchlistSubscription struct for WatchlistSubscription
 type WatchlistSubscription struct {
-	// Unique identifier for this subscription
-	Id *string `json:"id,omitempty"`
-	// External provider subscription id
-	ProviderSubscriptionId *string `json:"provider_subscription_id,omitempty"`
-	// The date when monitoring of this individual should begin (default: today).
-	PeriodStart *oapi.Date `json:"period_start,omitempty"`
-	// The date when monitoring of this individual should end.
-	PeriodEnd *oapi.Date `json:"period_end,omitempty"`
 	// Whether this subscription should automatically renew when the subscription period is over (default: vendor-dependent).
 	AutoRenew *bool `json:"auto_renew,omitempty"`
-	// Whether this customer has consented to being enrolled for watchlist monitoring
-	CustomerConsent bool    `json:"customer_consent"`
-	Status          *string `json:"status,omitempty"`
 	// When this subscription was created
 	Created *time.Time `json:"created,omitempty"`
+	// Whether this customer has consented to being enrolled for watchlist monitoring
+	CustomerConsent bool `json:"customer_consent"`
+	// Unique identifier for this subscription
+	Id *string `json:"id,omitempty"`
+	// The date when monitoring of this individual should end.
+	PeriodEnd *oapi.Date `json:"period_end,omitempty"`
+	// The date when monitoring of this individual should begin (default: today).
+	PeriodStart *oapi.Date `json:"period_start,omitempty"`
+	// External provider subscription id
+	ProviderSubscriptionId *string `json:"provider_subscription_id,omitempty"`
+	Status                 *string `json:"status,omitempty"`
 }
 
 // NewWatchlistSubscription instantiates a new WatchlistSubscription object
@@ -52,134 +52,6 @@ func NewWatchlistSubscription(customerConsent bool) *WatchlistSubscription {
 func NewWatchlistSubscriptionWithDefaults() *WatchlistSubscription {
 	this := WatchlistSubscription{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *WatchlistSubscription) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WatchlistSubscription) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *WatchlistSubscription) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *WatchlistSubscription) SetId(v string) {
-	o.Id = &v
-}
-
-// GetProviderSubscriptionId returns the ProviderSubscriptionId field value if set, zero value otherwise.
-func (o *WatchlistSubscription) GetProviderSubscriptionId() string {
-	if o == nil || o.ProviderSubscriptionId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProviderSubscriptionId
-}
-
-// GetProviderSubscriptionIdOk returns a tuple with the ProviderSubscriptionId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WatchlistSubscription) GetProviderSubscriptionIdOk() (*string, bool) {
-	if o == nil || o.ProviderSubscriptionId == nil {
-		return nil, false
-	}
-	return o.ProviderSubscriptionId, true
-}
-
-// HasProviderSubscriptionId returns a boolean if a field has been set.
-func (o *WatchlistSubscription) HasProviderSubscriptionId() bool {
-	if o != nil && o.ProviderSubscriptionId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProviderSubscriptionId gets a reference to the given string and assigns it to the ProviderSubscriptionId field.
-func (o *WatchlistSubscription) SetProviderSubscriptionId(v string) {
-	o.ProviderSubscriptionId = &v
-}
-
-// GetPeriodStart returns the PeriodStart field value if set, zero value otherwise.
-func (o *WatchlistSubscription) GetPeriodStart() oapi.Date {
-	if o == nil || o.PeriodStart == nil {
-		var ret oapi.Date
-		return ret
-	}
-	return *o.PeriodStart
-}
-
-// GetPeriodStartOk returns a tuple with the PeriodStart field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WatchlistSubscription) GetPeriodStartOk() (*oapi.Date, bool) {
-	if o == nil || o.PeriodStart == nil {
-		return nil, false
-	}
-	return o.PeriodStart, true
-}
-
-// HasPeriodStart returns a boolean if a field has been set.
-func (o *WatchlistSubscription) HasPeriodStart() bool {
-	if o != nil && o.PeriodStart != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPeriodStart gets a reference to the given oapi.Date and assigns it to the PeriodStart field.
-func (o *WatchlistSubscription) SetPeriodStart(v oapi.Date) {
-	o.PeriodStart = &v
-}
-
-// GetPeriodEnd returns the PeriodEnd field value if set, zero value otherwise.
-func (o *WatchlistSubscription) GetPeriodEnd() oapi.Date {
-	if o == nil || o.PeriodEnd == nil {
-		var ret oapi.Date
-		return ret
-	}
-	return *o.PeriodEnd
-}
-
-// GetPeriodEndOk returns a tuple with the PeriodEnd field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WatchlistSubscription) GetPeriodEndOk() (*oapi.Date, bool) {
-	if o == nil || o.PeriodEnd == nil {
-		return nil, false
-	}
-	return o.PeriodEnd, true
-}
-
-// HasPeriodEnd returns a boolean if a field has been set.
-func (o *WatchlistSubscription) HasPeriodEnd() bool {
-	if o != nil && o.PeriodEnd != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPeriodEnd gets a reference to the given oapi.Date and assigns it to the PeriodEnd field.
-func (o *WatchlistSubscription) SetPeriodEnd(v oapi.Date) {
-	o.PeriodEnd = &v
 }
 
 // GetAutoRenew returns the AutoRenew field value if set, zero value otherwise.
@@ -214,6 +86,38 @@ func (o *WatchlistSubscription) SetAutoRenew(v bool) {
 	o.AutoRenew = &v
 }
 
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *WatchlistSubscription) GetCreated() time.Time {
+	if o == nil || o.Created == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WatchlistSubscription) GetCreatedOk() (*time.Time, bool) {
+	if o == nil || o.Created == nil {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *WatchlistSubscription) HasCreated() bool {
+	if o != nil && o.Created != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *WatchlistSubscription) SetCreated(v time.Time) {
+	o.Created = &v
+}
+
 // GetCustomerConsent returns the CustomerConsent field value
 func (o *WatchlistSubscription) GetCustomerConsent() bool {
 	if o == nil {
@@ -236,6 +140,134 @@ func (o *WatchlistSubscription) GetCustomerConsentOk() (*bool, bool) {
 // SetCustomerConsent sets field value
 func (o *WatchlistSubscription) SetCustomerConsent(v bool) {
 	o.CustomerConsent = v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *WatchlistSubscription) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WatchlistSubscription) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *WatchlistSubscription) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *WatchlistSubscription) SetId(v string) {
+	o.Id = &v
+}
+
+// GetPeriodEnd returns the PeriodEnd field value if set, zero value otherwise.
+func (o *WatchlistSubscription) GetPeriodEnd() oapi.Date {
+	if o == nil || o.PeriodEnd == nil {
+		var ret oapi.Date
+		return ret
+	}
+	return *o.PeriodEnd
+}
+
+// GetPeriodEndOk returns a tuple with the PeriodEnd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WatchlistSubscription) GetPeriodEndOk() (*oapi.Date, bool) {
+	if o == nil || o.PeriodEnd == nil {
+		return nil, false
+	}
+	return o.PeriodEnd, true
+}
+
+// HasPeriodEnd returns a boolean if a field has been set.
+func (o *WatchlistSubscription) HasPeriodEnd() bool {
+	if o != nil && o.PeriodEnd != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPeriodEnd gets a reference to the given oapi.Date and assigns it to the PeriodEnd field.
+func (o *WatchlistSubscription) SetPeriodEnd(v oapi.Date) {
+	o.PeriodEnd = &v
+}
+
+// GetPeriodStart returns the PeriodStart field value if set, zero value otherwise.
+func (o *WatchlistSubscription) GetPeriodStart() oapi.Date {
+	if o == nil || o.PeriodStart == nil {
+		var ret oapi.Date
+		return ret
+	}
+	return *o.PeriodStart
+}
+
+// GetPeriodStartOk returns a tuple with the PeriodStart field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WatchlistSubscription) GetPeriodStartOk() (*oapi.Date, bool) {
+	if o == nil || o.PeriodStart == nil {
+		return nil, false
+	}
+	return o.PeriodStart, true
+}
+
+// HasPeriodStart returns a boolean if a field has been set.
+func (o *WatchlistSubscription) HasPeriodStart() bool {
+	if o != nil && o.PeriodStart != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPeriodStart gets a reference to the given oapi.Date and assigns it to the PeriodStart field.
+func (o *WatchlistSubscription) SetPeriodStart(v oapi.Date) {
+	o.PeriodStart = &v
+}
+
+// GetProviderSubscriptionId returns the ProviderSubscriptionId field value if set, zero value otherwise.
+func (o *WatchlistSubscription) GetProviderSubscriptionId() string {
+	if o == nil || o.ProviderSubscriptionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProviderSubscriptionId
+}
+
+// GetProviderSubscriptionIdOk returns a tuple with the ProviderSubscriptionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WatchlistSubscription) GetProviderSubscriptionIdOk() (*string, bool) {
+	if o == nil || o.ProviderSubscriptionId == nil {
+		return nil, false
+	}
+	return o.ProviderSubscriptionId, true
+}
+
+// HasProviderSubscriptionId returns a boolean if a field has been set.
+func (o *WatchlistSubscription) HasProviderSubscriptionId() bool {
+	if o != nil && o.ProviderSubscriptionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderSubscriptionId gets a reference to the given string and assigns it to the ProviderSubscriptionId field.
+func (o *WatchlistSubscription) SetProviderSubscriptionId(v string) {
+	o.ProviderSubscriptionId = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -270,63 +302,31 @@ func (o *WatchlistSubscription) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
-func (o *WatchlistSubscription) GetCreated() time.Time {
-	if o == nil || o.Created == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.Created
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WatchlistSubscription) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || o.Created == nil {
-		return nil, false
-	}
-	return o.Created, true
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *WatchlistSubscription) HasCreated() bool {
-	if o != nil && o.Created != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *WatchlistSubscription) SetCreated(v time.Time) {
-	o.Created = &v
-}
-
 func (o WatchlistSubscription) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ProviderSubscriptionId != nil {
-		toSerialize["provider_subscription_id"] = o.ProviderSubscriptionId
-	}
-	if o.PeriodStart != nil {
-		toSerialize["period_start"] = o.PeriodStart
-	}
-	if o.PeriodEnd != nil {
-		toSerialize["period_end"] = o.PeriodEnd
-	}
 	if o.AutoRenew != nil {
 		toSerialize["auto_renew"] = o.AutoRenew
+	}
+	if o.Created != nil {
+		toSerialize["created"] = o.Created
 	}
 	if true {
 		toSerialize["customer_consent"] = o.CustomerConsent
 	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if o.PeriodEnd != nil {
+		toSerialize["period_end"] = o.PeriodEnd
+	}
+	if o.PeriodStart != nil {
+		toSerialize["period_start"] = o.PeriodStart
+	}
+	if o.ProviderSubscriptionId != nil {
+		toSerialize["provider_subscription_id"] = o.ProviderSubscriptionId
+	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
-	}
-	if o.Created != nil {
-		toSerialize["created"] = o.Created
 	}
 	return json.Marshal(toSerialize)
 }

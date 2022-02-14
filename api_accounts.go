@@ -170,112 +170,6 @@ func (a *AccountsApiService) CreateAccountExecute(r ApiCreateAccountRequest) (Ac
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateAccountAliasesRequest struct {
-	ctx        _context.Context
-	ApiService *AccountsApiService
-	accountId  string
-	alias      *Alias
-}
-
-// Account alias to create
-func (r ApiCreateAccountAliasesRequest) Alias(alias Alias) ApiCreateAccountAliasesRequest {
-	r.alias = &alias
-	return r
-}
-
-func (r ApiCreateAccountAliasesRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.CreateAccountAliasesExecute(r)
-}
-
-/*
-CreateAccountAliases Create account aliases
-
-Add an alias to an account
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accountId Unique identifier for the account.
- @return ApiCreateAccountAliasesRequest
-*/
-func (a *AccountsApiService) CreateAccountAliases(ctx _context.Context, accountId string) ApiCreateAccountAliasesRequest {
-	return ApiCreateAccountAliasesRequest{
-		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
-	}
-}
-
-// Execute executes the request
-func (a *AccountsApiService) CreateAccountAliasesExecute(r ApiCreateAccountAliasesRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.CreateAccountAliases")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/accounts/{account_id}/aliases"
-	localVarPath = strings.Replace(localVarPath, "{"+"account_id"+"}", _neturl.PathEscape(parameterToString(r.accountId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.alias == nil {
-		return nil, reportError("alias is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.alias
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
 type ApiCreateAccountRelationshipRequest struct {
 	ctx          _context.Context
 	ApiService   *AccountsApiService
@@ -1413,132 +1307,6 @@ func (a *AccountsApiService) GetAccountTemplateExecute(r ApiGetAccountTemplateRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListAccountAliasesRequest struct {
-	ctx         _context.Context
-	ApiService  *AccountsApiService
-	aliasType   *string
-	aliasSource *[]string
-	aliasName   *string
-}
-
-func (r ApiListAccountAliasesRequest) AliasType(aliasType string) ApiListAccountAliasesRequest {
-	r.aliasType = &aliasType
-	return r
-}
-func (r ApiListAccountAliasesRequest) AliasSource(aliasSource []string) ApiListAccountAliasesRequest {
-	r.aliasSource = &aliasSource
-	return r
-}
-func (r ApiListAccountAliasesRequest) AliasName(aliasName string) ApiListAccountAliasesRequest {
-	r.aliasName = &aliasName
-	return r
-}
-
-func (r ApiListAccountAliasesRequest) Execute() (AliasList, *_nethttp.Response, error) {
-	return r.ApiService.ListAccountAliasesExecute(r)
-}
-
-/*
-ListAccountAliases List account aliases
-
-Get a list of account aliases (no pagination)
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListAccountAliasesRequest
-*/
-func (a *AccountsApiService) ListAccountAliases(ctx _context.Context) ApiListAccountAliasesRequest {
-	return ApiListAccountAliasesRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//  @return AliasList
-func (a *AccountsApiService) ListAccountAliasesExecute(r ApiListAccountAliasesRequest) (AliasList, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AliasList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ListAccountAliases")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/accounts/aliases"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if r.aliasType != nil {
-		localVarQueryParams.Add("alias_type", parameterToString(*r.aliasType, ""))
-	}
-	if r.aliasSource != nil {
-		localVarQueryParams.Add("alias_source", parameterToString(*r.aliasSource, "csv"))
-	}
-	if r.aliasName != nil {
-		localVarQueryParams.Add("alias_name", parameterToString(*r.aliasName, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiListAccountRelationshipRequest struct {
 	ctx        _context.Context
 	ApiService *AccountsApiService
@@ -1698,7 +1466,6 @@ type ApiListAccountResourceProductsRequest struct {
 	pageToken   *string
 	startDate   *oapi.Date
 	endDate     *oapi.Date
-	id          *string
 }
 
 // Type of account product
@@ -1724,12 +1491,6 @@ func (r ApiListAccountResourceProductsRequest) StartDate(startDate oapi.Date) Ap
 // Date range filtering for type INTEREST. All rates in interest resource have to have valid_to earlier or equal to end_date.
 func (r ApiListAccountResourceProductsRequest) EndDate(endDate oapi.Date) ApiListAccountResourceProductsRequest {
 	r.endDate = &endDate
-	return r
-}
-
-// ID of account product. Multiple IDs can be provided as a comma-separated list.
-func (r ApiListAccountResourceProductsRequest) Id(id string) ApiListAccountResourceProductsRequest {
-	r.id = &id
 	return r
 }
 
@@ -1790,9 +1551,6 @@ func (a *AccountsApiService) ListAccountResourceProductsExecute(r ApiListAccount
 	}
 	if r.endDate != nil {
 		localVarQueryParams.Add("end_date", parameterToString(*r.endDate, ""))
-	}
-	if r.id != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id, ""))
 	}
 	localVarQueryParams.Add("product_type", parameterToString(*r.productType, ""))
 	// to determine the Content-Type header
@@ -1978,7 +1736,6 @@ type ApiListAccountsRequest struct {
 	customerId        *string
 	firstName         *string
 	lastName          *string
-	tenant            *string
 	limit             *int32
 	pageToken         *string
 	sortBy            *[]string
@@ -2017,10 +1774,6 @@ func (r ApiListAccountsRequest) FirstName(firstName string) ApiListAccountsReque
 }
 func (r ApiListAccountsRequest) LastName(lastName string) ApiListAccountsRequest {
 	r.lastName = &lastName
-	return r
-}
-func (r ApiListAccountsRequest) Tenant(tenant string) ApiListAccountsRequest {
-	r.tenant = &tenant
 	return r
 }
 func (r ApiListAccountsRequest) Limit(limit int32) ApiListAccountsRequest {
@@ -2100,9 +1853,6 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) (Acco
 	}
 	if r.lastName != nil {
 		localVarQueryParams.Add("last_name", parameterToString(*r.lastName, ""))
-	}
-	if r.tenant != nil {
-		localVarQueryParams.Add("tenant", parameterToString(*r.tenant, ""))
 	}
 	if r.limit != nil {
 		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))

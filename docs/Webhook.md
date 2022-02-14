@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The unique ID of the webhook | [optional] 
-**Url** | **string** | URL that the webhook will send request to | 
 **Description** | Pointer to **string** | A description of what the webhook is used for | [optional] 
 **EnabledEvents** | [**[]EventType1**](EventType1.md) | A list of the events that will trigger the webhook | 
-**Metadata** | Pointer to **string** | Additional information stored to the webhook | [optional] 
-**LastUpdated** | Pointer to **time.Time** | Timestamp that this webhook was created or the last time any field was changed | [optional] [readonly] 
+**Id** | Pointer to **string** | The unique ID of the webhook | [optional] 
 **IsEnabled** | **bool** | Set the webhook to be enabled or disabled | 
+**LastUpdated** | Pointer to **time.Time** | Timestamp that this webhook was created or the last time any field was changed | [optional] [readonly] 
+**Metadata** | Pointer to **string** | Additional information stored to the webhook | [optional] 
+**Url** | **string** | URL that the webhook will send request to | 
 
 ## Methods
 
 ### NewWebhook
 
-`func NewWebhook(url string, enabledEvents []EventType1, isEnabled bool, ) *Webhook`
+`func NewWebhook(enabledEvents []EventType1, isEnabled bool, url string, ) *Webhook`
 
 NewWebhook instantiates a new Webhook object
 This constructor will assign default values to properties that have it defined,
@@ -30,51 +30,6 @@ will change when the set of required properties is changed
 NewWebhookWithDefaults instantiates a new Webhook object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Webhook) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Webhook) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Webhook) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Webhook) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetUrl
-
-`func (o *Webhook) GetUrl() string`
-
-GetUrl returns the Url field if non-nil, zero value otherwise.
-
-### GetUrlOk
-
-`func (o *Webhook) GetUrlOk() (*string, bool)`
-
-GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUrl
-
-`func (o *Webhook) SetUrl(v string)`
-
-SetUrl sets Url field to given value.
-
 
 ### GetDescription
 
@@ -121,30 +76,50 @@ and a boolean to check if the value has been set.
 SetEnabledEvents sets EnabledEvents field to given value.
 
 
-### GetMetadata
+### GetId
 
-`func (o *Webhook) GetMetadata() string`
+`func (o *Webhook) GetId() string`
 
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetMetadataOk
+### GetIdOk
 
-`func (o *Webhook) GetMetadataOk() (*string, bool)`
+`func (o *Webhook) GetIdOk() (*string, bool)`
 
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetadata
+### SetId
 
-`func (o *Webhook) SetMetadata(v string)`
+`func (o *Webhook) SetId(v string)`
 
-SetMetadata sets Metadata field to given value.
+SetId sets Id field to given value.
 
-### HasMetadata
+### HasId
 
-`func (o *Webhook) HasMetadata() bool`
+`func (o *Webhook) HasId() bool`
 
-HasMetadata returns a boolean if a field has been set.
+HasId returns a boolean if a field has been set.
+
+### GetIsEnabled
+
+`func (o *Webhook) GetIsEnabled() bool`
+
+GetIsEnabled returns the IsEnabled field if non-nil, zero value otherwise.
+
+### GetIsEnabledOk
+
+`func (o *Webhook) GetIsEnabledOk() (*bool, bool)`
+
+GetIsEnabledOk returns a tuple with the IsEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsEnabled
+
+`func (o *Webhook) SetIsEnabled(v bool)`
+
+SetIsEnabled sets IsEnabled field to given value.
+
 
 ### GetLastUpdated
 
@@ -171,24 +146,49 @@ SetLastUpdated sets LastUpdated field to given value.
 
 HasLastUpdated returns a boolean if a field has been set.
 
-### GetIsEnabled
+### GetMetadata
 
-`func (o *Webhook) GetIsEnabled() bool`
+`func (o *Webhook) GetMetadata() string`
 
-GetIsEnabled returns the IsEnabled field if non-nil, zero value otherwise.
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
-### GetIsEnabledOk
+### GetMetadataOk
 
-`func (o *Webhook) GetIsEnabledOk() (*bool, bool)`
+`func (o *Webhook) GetMetadataOk() (*string, bool)`
 
-GetIsEnabledOk returns a tuple with the IsEnabled field if it's non-nil, zero value otherwise
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsEnabled
+### SetMetadata
 
-`func (o *Webhook) SetIsEnabled(v bool)`
+`func (o *Webhook) SetMetadata(v string)`
 
-SetIsEnabled sets IsEnabled field to given value.
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *Webhook) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
+
+### GetUrl
+
+`func (o *Webhook) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *Webhook) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *Webhook) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
 
 
 

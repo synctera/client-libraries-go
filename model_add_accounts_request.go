@@ -16,37 +16,37 @@ import (
 
 // AddAccountsRequest struct for AddAccountsRequest
 type AddAccountsRequest struct {
-	// The type of the account
-	Type string `json:"type"`
+	AccountIdentifiers AddAccountsRequestAccountIdentifiers `json:"account_identifiers"`
+	// The names of the account owners.
+	AccountOwnerNames []string `json:"account_owner_names"`
 	// The identifier for the customer associated with the account.
 	CustomerId string `json:"customer_id"`
 	// The type of customer.
 	CustomerType string `json:"customer_type"`
-	// The ID of the vendor account, will be empty for MANUAL vendor
-	VendorAccountId *string `json:"vendor_account_id,omitempty"`
-	// The names of the account owners.
-	AccountOwnerNames []string `json:"account_owner_names"`
+	// User-supplied metadata
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// A user-meaningful name for the account
 	Nickname           *string                              `json:"nickname,omitempty"`
 	RoutingIdentifiers AddAccountsRequestRoutingIdentifiers `json:"routing_identifiers"`
-	AccountIdentifiers AddAccountsRequestAccountIdentifiers `json:"account_identifiers"`
-	Verification       NullableAccountVerification          `json:"verification,omitempty"`
-	// User-supplied metadata
-	Metadata *map[string]interface{} `json:"metadata,omitempty"`
+	// The type of the account
+	Type string `json:"type"`
+	// The ID of the vendor account, will be empty for MANUAL vendor
+	VendorAccountId *string                     `json:"vendor_account_id,omitempty"`
+	Verification    NullableAccountVerification `json:"verification,omitempty"`
 }
 
 // NewAddAccountsRequest instantiates a new AddAccountsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddAccountsRequest(type_ string, customerId string, customerType string, accountOwnerNames []string, routingIdentifiers AddAccountsRequestRoutingIdentifiers, accountIdentifiers AddAccountsRequestAccountIdentifiers) *AddAccountsRequest {
+func NewAddAccountsRequest(accountIdentifiers AddAccountsRequestAccountIdentifiers, accountOwnerNames []string, customerId string, customerType string, routingIdentifiers AddAccountsRequestRoutingIdentifiers, type_ string) *AddAccountsRequest {
 	this := AddAccountsRequest{}
-	this.Type = type_
+	this.AccountIdentifiers = accountIdentifiers
+	this.AccountOwnerNames = accountOwnerNames
 	this.CustomerId = customerId
 	this.CustomerType = customerType
-	this.AccountOwnerNames = accountOwnerNames
 	this.RoutingIdentifiers = routingIdentifiers
-	this.AccountIdentifiers = accountIdentifiers
+	this.Type = type_
 	return &this
 }
 
@@ -58,28 +58,52 @@ func NewAddAccountsRequestWithDefaults() *AddAccountsRequest {
 	return &this
 }
 
-// GetType returns the Type field value
-func (o *AddAccountsRequest) GetType() string {
+// GetAccountIdentifiers returns the AccountIdentifiers field value
+func (o *AddAccountsRequest) GetAccountIdentifiers() AddAccountsRequestAccountIdentifiers {
 	if o == nil {
-		var ret string
+		var ret AddAccountsRequestAccountIdentifiers
 		return ret
 	}
 
-	return o.Type
+	return o.AccountIdentifiers
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field value
 // and a boolean to check if the value has been set.
-func (o *AddAccountsRequest) GetTypeOk() (*string, bool) {
+func (o *AddAccountsRequest) GetAccountIdentifiersOk() (*AddAccountsRequestAccountIdentifiers, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return &o.AccountIdentifiers, true
 }
 
-// SetType sets field value
-func (o *AddAccountsRequest) SetType(v string) {
-	o.Type = v
+// SetAccountIdentifiers sets field value
+func (o *AddAccountsRequest) SetAccountIdentifiers(v AddAccountsRequestAccountIdentifiers) {
+	o.AccountIdentifiers = v
+}
+
+// GetAccountOwnerNames returns the AccountOwnerNames field value
+func (o *AddAccountsRequest) GetAccountOwnerNames() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.AccountOwnerNames
+}
+
+// GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field value
+// and a boolean to check if the value has been set.
+func (o *AddAccountsRequest) GetAccountOwnerNamesOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccountOwnerNames, true
+}
+
+// SetAccountOwnerNames sets field value
+func (o *AddAccountsRequest) SetAccountOwnerNames(v []string) {
+	o.AccountOwnerNames = v
 }
 
 // GetCustomerId returns the CustomerId field value
@@ -130,60 +154,36 @@ func (o *AddAccountsRequest) SetCustomerType(v string) {
 	o.CustomerType = v
 }
 
-// GetVendorAccountId returns the VendorAccountId field value if set, zero value otherwise.
-func (o *AddAccountsRequest) GetVendorAccountId() string {
-	if o == nil || o.VendorAccountId == nil {
-		var ret string
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *AddAccountsRequest) GetMetadata() map[string]interface{} {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.VendorAccountId
+	return *o.Metadata
 }
 
-// GetVendorAccountIdOk returns a tuple with the VendorAccountId field value if set, nil otherwise
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddAccountsRequest) GetVendorAccountIdOk() (*string, bool) {
-	if o == nil || o.VendorAccountId == nil {
+func (o *AddAccountsRequest) GetMetadataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
-	return o.VendorAccountId, true
+	return o.Metadata, true
 }
 
-// HasVendorAccountId returns a boolean if a field has been set.
-func (o *AddAccountsRequest) HasVendorAccountId() bool {
-	if o != nil && o.VendorAccountId != nil {
+// HasMetadata returns a boolean if a field has been set.
+func (o *AddAccountsRequest) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetVendorAccountId gets a reference to the given string and assigns it to the VendorAccountId field.
-func (o *AddAccountsRequest) SetVendorAccountId(v string) {
-	o.VendorAccountId = &v
-}
-
-// GetAccountOwnerNames returns the AccountOwnerNames field value
-func (o *AddAccountsRequest) GetAccountOwnerNames() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.AccountOwnerNames
-}
-
-// GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field value
-// and a boolean to check if the value has been set.
-func (o *AddAccountsRequest) GetAccountOwnerNamesOk() (*[]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccountOwnerNames, true
-}
-
-// SetAccountOwnerNames sets field value
-func (o *AddAccountsRequest) SetAccountOwnerNames(v []string) {
-	o.AccountOwnerNames = v
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *AddAccountsRequest) SetMetadata(v map[string]interface{}) {
+	o.Metadata = &v
 }
 
 // GetNickname returns the Nickname field value if set, zero value otherwise.
@@ -242,28 +242,60 @@ func (o *AddAccountsRequest) SetRoutingIdentifiers(v AddAccountsRequestRoutingId
 	o.RoutingIdentifiers = v
 }
 
-// GetAccountIdentifiers returns the AccountIdentifiers field value
-func (o *AddAccountsRequest) GetAccountIdentifiers() AddAccountsRequestAccountIdentifiers {
+// GetType returns the Type field value
+func (o *AddAccountsRequest) GetType() string {
 	if o == nil {
-		var ret AddAccountsRequestAccountIdentifiers
+		var ret string
 		return ret
 	}
 
-	return o.AccountIdentifiers
+	return o.Type
 }
 
-// GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field value
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AddAccountsRequest) GetAccountIdentifiersOk() (*AddAccountsRequestAccountIdentifiers, bool) {
+func (o *AddAccountsRequest) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountIdentifiers, true
+	return &o.Type, true
 }
 
-// SetAccountIdentifiers sets field value
-func (o *AddAccountsRequest) SetAccountIdentifiers(v AddAccountsRequestAccountIdentifiers) {
-	o.AccountIdentifiers = v
+// SetType sets field value
+func (o *AddAccountsRequest) SetType(v string) {
+	o.Type = v
+}
+
+// GetVendorAccountId returns the VendorAccountId field value if set, zero value otherwise.
+func (o *AddAccountsRequest) GetVendorAccountId() string {
+	if o == nil || o.VendorAccountId == nil {
+		var ret string
+		return ret
+	}
+	return *o.VendorAccountId
+}
+
+// GetVendorAccountIdOk returns a tuple with the VendorAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddAccountsRequest) GetVendorAccountIdOk() (*string, bool) {
+	if o == nil || o.VendorAccountId == nil {
+		return nil, false
+	}
+	return o.VendorAccountId, true
+}
+
+// HasVendorAccountId returns a boolean if a field has been set.
+func (o *AddAccountsRequest) HasVendorAccountId() bool {
+	if o != nil && o.VendorAccountId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVendorAccountId gets a reference to the given string and assigns it to the VendorAccountId field.
+func (o *AddAccountsRequest) SetVendorAccountId(v string) {
+	o.VendorAccountId = &v
 }
 
 // GetVerification returns the Verification field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -309,42 +341,13 @@ func (o *AddAccountsRequest) UnsetVerification() {
 	o.Verification.Unset()
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *AddAccountsRequest) GetMetadata() map[string]interface{} {
-	if o == nil || o.Metadata == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddAccountsRequest) GetMetadataOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Metadata == nil {
-		return nil, false
-	}
-	return o.Metadata, true
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *AddAccountsRequest) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
-func (o *AddAccountsRequest) SetMetadata(v map[string]interface{}) {
-	o.Metadata = &v
-}
-
 func (o AddAccountsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["type"] = o.Type
+		toSerialize["account_identifiers"] = o.AccountIdentifiers
+	}
+	if true {
+		toSerialize["account_owner_names"] = o.AccountOwnerNames
 	}
 	if true {
 		toSerialize["customer_id"] = o.CustomerId
@@ -352,11 +355,8 @@ func (o AddAccountsRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["customer_type"] = o.CustomerType
 	}
-	if o.VendorAccountId != nil {
-		toSerialize["vendor_account_id"] = o.VendorAccountId
-	}
-	if true {
-		toSerialize["account_owner_names"] = o.AccountOwnerNames
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if o.Nickname != nil {
 		toSerialize["nickname"] = o.Nickname
@@ -365,13 +365,13 @@ func (o AddAccountsRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["routing_identifiers"] = o.RoutingIdentifiers
 	}
 	if true {
-		toSerialize["account_identifiers"] = o.AccountIdentifiers
+		toSerialize["type"] = o.Type
+	}
+	if o.VendorAccountId != nil {
+		toSerialize["vendor_account_id"] = o.VendorAccountId
 	}
 	if o.Verification.IsSet() {
 		toSerialize["verification"] = o.Verification.Get()
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
 	}
 	return json.Marshal(toSerialize)
 }

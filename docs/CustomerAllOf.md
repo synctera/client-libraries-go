@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | **string** | Customer&#39;s status | 
+**Dob** | [**oapi.Date**](oapi.Date.md) | Customer&#39;s date of birth in RFC 3339 full-date format (YYYY-MM-DD) | 
 **FirstName** | **string** | Customer&#39;s first name | 
 **LastName** | **string** | Customer&#39;s last name | 
-**Dob** | [**oapi.Date**](oapi.Date.md) | Customer&#39;s date of birth in RFC 3339 full-date format (YYYY-MM-DD) | 
+**Status** | **string** | Customer&#39;s status | 
 
 ## Methods
 
 ### NewCustomerAllOf
 
-`func NewCustomerAllOf(status string, firstName string, lastName string, dob oapi.Date, ) *CustomerAllOf`
+`func NewCustomerAllOf(dob oapi.Date, firstName string, lastName string, status string, ) *CustomerAllOf`
 
 NewCustomerAllOf instantiates a new CustomerAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -28,24 +28,24 @@ NewCustomerAllOfWithDefaults instantiates a new CustomerAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStatus
+### GetDob
 
-`func (o *CustomerAllOf) GetStatus() string`
+`func (o *CustomerAllOf) GetDob() oapi.Date`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetDob returns the Dob field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetDobOk
 
-`func (o *CustomerAllOf) GetStatusOk() (*string, bool)`
+`func (o *CustomerAllOf) GetDobOk() (*oapi.Date, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetDobOk returns a tuple with the Dob field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetDob
 
-`func (o *CustomerAllOf) SetStatus(v string)`
+`func (o *CustomerAllOf) SetDob(v oapi.Date)`
 
-SetStatus sets Status field to given value.
+SetDob sets Dob field to given value.
 
 
 ### GetFirstName
@@ -88,24 +88,24 @@ and a boolean to check if the value has been set.
 SetLastName sets LastName field to given value.
 
 
-### GetDob
+### GetStatus
 
-`func (o *CustomerAllOf) GetDob() oapi.Date`
+`func (o *CustomerAllOf) GetStatus() string`
 
-GetDob returns the Dob field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetDobOk
+### GetStatusOk
 
-`func (o *CustomerAllOf) GetDobOk() (*oapi.Date, bool)`
+`func (o *CustomerAllOf) GetStatusOk() (*string, bool)`
 
-GetDobOk returns a tuple with the Dob field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDob
+### SetStatus
 
-`func (o *CustomerAllOf) SetDob(v oapi.Date)`
+`func (o *CustomerAllOf) SetStatus(v string)`
 
-SetDob sets Dob field to given value.
+SetStatus sets Status field to given value.
 
 
 

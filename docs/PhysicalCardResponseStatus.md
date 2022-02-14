@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CardStatus** | [**CardStatus**](CardStatus.md) |  | 
-**StatusReason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
+**StatusReason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
 **CardFulfillmentStatus** | [**CardFulfillmentStatus**](CardFulfillmentStatus.md) |  | 
 **TrackingNumber** | Pointer to **string** | The tracking number | [optional] [readonly] 
 
@@ -49,26 +49,6 @@ and a boolean to check if the value has been set.
 SetCardStatus sets CardStatus field to given value.
 
 
-### GetStatusReason
-
-`func (o *PhysicalCardResponseStatus) GetStatusReason() CardStatusReasonCode`
-
-GetStatusReason returns the StatusReason field if non-nil, zero value otherwise.
-
-### GetStatusReasonOk
-
-`func (o *PhysicalCardResponseStatus) GetStatusReasonOk() (*CardStatusReasonCode, bool)`
-
-GetStatusReasonOk returns a tuple with the StatusReason field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatusReason
-
-`func (o *PhysicalCardResponseStatus) SetStatusReason(v CardStatusReasonCode)`
-
-SetStatusReason sets StatusReason field to given value.
-
-
 ### GetMemo
 
 `func (o *PhysicalCardResponseStatus) GetMemo() string`
@@ -93,6 +73,26 @@ SetMemo sets Memo field to given value.
 `func (o *PhysicalCardResponseStatus) HasMemo() bool`
 
 HasMemo returns a boolean if a field has been set.
+
+### GetStatusReason
+
+`func (o *PhysicalCardResponseStatus) GetStatusReason() CardStatusReasonCode`
+
+GetStatusReason returns the StatusReason field if non-nil, zero value otherwise.
+
+### GetStatusReasonOk
+
+`func (o *PhysicalCardResponseStatus) GetStatusReasonOk() (*CardStatusReasonCode, bool)`
+
+GetStatusReasonOk returns a tuple with the StatusReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatusReason
+
+`func (o *PhysicalCardResponseStatus) SetStatusReason(v CardStatusReasonCode)`
+
+SetStatusReason sets StatusReason field to given value.
+
 
 ### GetCardFulfillmentStatus
 

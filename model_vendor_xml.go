@@ -16,9 +16,9 @@ import (
 
 // VendorXml struct for VendorXml
 type VendorXml struct {
-	Vendor string `json:"vendor"`
 	// Describes the content-type encoding received from the vendor
 	ContentType string `json:"content_type"`
+	Vendor      string `json:"vendor"`
 	// Data representaion in XML
 	Xml string `json:"xml"`
 }
@@ -27,10 +27,10 @@ type VendorXml struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVendorXml(vendor string, contentType string, xml string) *VendorXml {
+func NewVendorXml(contentType string, vendor string, xml string) *VendorXml {
 	this := VendorXml{}
-	this.Vendor = vendor
 	this.ContentType = contentType
+	this.Vendor = vendor
 	this.Xml = xml
 	return &this
 }
@@ -41,30 +41,6 @@ func NewVendorXml(vendor string, contentType string, xml string) *VendorXml {
 func NewVendorXmlWithDefaults() *VendorXml {
 	this := VendorXml{}
 	return &this
-}
-
-// GetVendor returns the Vendor field value
-func (o *VendorXml) GetVendor() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Vendor
-}
-
-// GetVendorOk returns a tuple with the Vendor field value
-// and a boolean to check if the value has been set.
-func (o *VendorXml) GetVendorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Vendor, true
-}
-
-// SetVendor sets field value
-func (o *VendorXml) SetVendor(v string) {
-	o.Vendor = v
 }
 
 // GetContentType returns the ContentType field value
@@ -89,6 +65,30 @@ func (o *VendorXml) GetContentTypeOk() (*string, bool) {
 // SetContentType sets field value
 func (o *VendorXml) SetContentType(v string) {
 	o.ContentType = v
+}
+
+// GetVendor returns the Vendor field value
+func (o *VendorXml) GetVendor() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Vendor
+}
+
+// GetVendorOk returns a tuple with the Vendor field value
+// and a boolean to check if the value has been set.
+func (o *VendorXml) GetVendorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Vendor, true
+}
+
+// SetVendor sets field value
+func (o *VendorXml) SetVendor(v string) {
+	o.Vendor = v
 }
 
 // GetXml returns the Xml field value
@@ -118,10 +118,10 @@ func (o *VendorXml) SetXml(v string) {
 func (o VendorXml) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["vendor"] = o.Vendor
+		toSerialize["content_type"] = o.ContentType
 	}
 	if true {
-		toSerialize["content_type"] = o.ContentType
+		toSerialize["vendor"] = o.Vendor
 	}
 	if true {
 		toSerialize["xml"] = o.Xml

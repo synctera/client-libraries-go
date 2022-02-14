@@ -16,18 +16,18 @@ import (
 
 // ExternalAccountAccessToken struct for ExternalAccountAccessToken
 type ExternalAccountAccessToken struct {
-	// The ID of the institution the access token is requested for
-	VendorInstitutionId string `json:"vendor_institution_id"`
-	// The user's public token obtained from successful link login.
-	VendorPublicToken string `json:"vendor_public_token"`
-	// The access token associated with the Item data is being requested for.
-	VendorAccessToken *string `json:"vendor_access_token,omitempty"`
-	// The identifier for the customer associated with this account(deprecated)
-	VendorCustomerId *string `json:"vendor_customer_id,omitempty"`
 	// The identifier for the customer associated with this account
 	CustomerId *string `json:"customer_id,omitempty"`
 	// A unique identifier for the request, which can be used for troubleshooting
 	RequestId *string `json:"request_id,omitempty"`
+	// The access token associated with the Item data is being requested for.
+	VendorAccessToken *string `json:"vendor_access_token,omitempty"`
+	// The identifier for the customer associated with this account(deprecated)
+	VendorCustomerId *string `json:"vendor_customer_id,omitempty"`
+	// The ID of the institution the access token is requested for
+	VendorInstitutionId string `json:"vendor_institution_id"`
+	// The user's public token obtained from successful link login.
+	VendorPublicToken string `json:"vendor_public_token"`
 }
 
 // NewExternalAccountAccessToken instantiates a new ExternalAccountAccessToken object
@@ -47,118 +47,6 @@ func NewExternalAccountAccessToken(vendorInstitutionId string, vendorPublicToken
 func NewExternalAccountAccessTokenWithDefaults() *ExternalAccountAccessToken {
 	this := ExternalAccountAccessToken{}
 	return &this
-}
-
-// GetVendorInstitutionId returns the VendorInstitutionId field value
-func (o *ExternalAccountAccessToken) GetVendorInstitutionId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.VendorInstitutionId
-}
-
-// GetVendorInstitutionIdOk returns a tuple with the VendorInstitutionId field value
-// and a boolean to check if the value has been set.
-func (o *ExternalAccountAccessToken) GetVendorInstitutionIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.VendorInstitutionId, true
-}
-
-// SetVendorInstitutionId sets field value
-func (o *ExternalAccountAccessToken) SetVendorInstitutionId(v string) {
-	o.VendorInstitutionId = v
-}
-
-// GetVendorPublicToken returns the VendorPublicToken field value
-func (o *ExternalAccountAccessToken) GetVendorPublicToken() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.VendorPublicToken
-}
-
-// GetVendorPublicTokenOk returns a tuple with the VendorPublicToken field value
-// and a boolean to check if the value has been set.
-func (o *ExternalAccountAccessToken) GetVendorPublicTokenOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.VendorPublicToken, true
-}
-
-// SetVendorPublicToken sets field value
-func (o *ExternalAccountAccessToken) SetVendorPublicToken(v string) {
-	o.VendorPublicToken = v
-}
-
-// GetVendorAccessToken returns the VendorAccessToken field value if set, zero value otherwise.
-func (o *ExternalAccountAccessToken) GetVendorAccessToken() string {
-	if o == nil || o.VendorAccessToken == nil {
-		var ret string
-		return ret
-	}
-	return *o.VendorAccessToken
-}
-
-// GetVendorAccessTokenOk returns a tuple with the VendorAccessToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ExternalAccountAccessToken) GetVendorAccessTokenOk() (*string, bool) {
-	if o == nil || o.VendorAccessToken == nil {
-		return nil, false
-	}
-	return o.VendorAccessToken, true
-}
-
-// HasVendorAccessToken returns a boolean if a field has been set.
-func (o *ExternalAccountAccessToken) HasVendorAccessToken() bool {
-	if o != nil && o.VendorAccessToken != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVendorAccessToken gets a reference to the given string and assigns it to the VendorAccessToken field.
-func (o *ExternalAccountAccessToken) SetVendorAccessToken(v string) {
-	o.VendorAccessToken = &v
-}
-
-// GetVendorCustomerId returns the VendorCustomerId field value if set, zero value otherwise.
-func (o *ExternalAccountAccessToken) GetVendorCustomerId() string {
-	if o == nil || o.VendorCustomerId == nil {
-		var ret string
-		return ret
-	}
-	return *o.VendorCustomerId
-}
-
-// GetVendorCustomerIdOk returns a tuple with the VendorCustomerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ExternalAccountAccessToken) GetVendorCustomerIdOk() (*string, bool) {
-	if o == nil || o.VendorCustomerId == nil {
-		return nil, false
-	}
-	return o.VendorCustomerId, true
-}
-
-// HasVendorCustomerId returns a boolean if a field has been set.
-func (o *ExternalAccountAccessToken) HasVendorCustomerId() bool {
-	if o != nil && o.VendorCustomerId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVendorCustomerId gets a reference to the given string and assigns it to the VendorCustomerId field.
-func (o *ExternalAccountAccessToken) SetVendorCustomerId(v string) {
-	o.VendorCustomerId = &v
 }
 
 // GetCustomerId returns the CustomerId field value if set, zero value otherwise.
@@ -225,13 +113,125 @@ func (o *ExternalAccountAccessToken) SetRequestId(v string) {
 	o.RequestId = &v
 }
 
+// GetVendorAccessToken returns the VendorAccessToken field value if set, zero value otherwise.
+func (o *ExternalAccountAccessToken) GetVendorAccessToken() string {
+	if o == nil || o.VendorAccessToken == nil {
+		var ret string
+		return ret
+	}
+	return *o.VendorAccessToken
+}
+
+// GetVendorAccessTokenOk returns a tuple with the VendorAccessToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExternalAccountAccessToken) GetVendorAccessTokenOk() (*string, bool) {
+	if o == nil || o.VendorAccessToken == nil {
+		return nil, false
+	}
+	return o.VendorAccessToken, true
+}
+
+// HasVendorAccessToken returns a boolean if a field has been set.
+func (o *ExternalAccountAccessToken) HasVendorAccessToken() bool {
+	if o != nil && o.VendorAccessToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVendorAccessToken gets a reference to the given string and assigns it to the VendorAccessToken field.
+func (o *ExternalAccountAccessToken) SetVendorAccessToken(v string) {
+	o.VendorAccessToken = &v
+}
+
+// GetVendorCustomerId returns the VendorCustomerId field value if set, zero value otherwise.
+func (o *ExternalAccountAccessToken) GetVendorCustomerId() string {
+	if o == nil || o.VendorCustomerId == nil {
+		var ret string
+		return ret
+	}
+	return *o.VendorCustomerId
+}
+
+// GetVendorCustomerIdOk returns a tuple with the VendorCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExternalAccountAccessToken) GetVendorCustomerIdOk() (*string, bool) {
+	if o == nil || o.VendorCustomerId == nil {
+		return nil, false
+	}
+	return o.VendorCustomerId, true
+}
+
+// HasVendorCustomerId returns a boolean if a field has been set.
+func (o *ExternalAccountAccessToken) HasVendorCustomerId() bool {
+	if o != nil && o.VendorCustomerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVendorCustomerId gets a reference to the given string and assigns it to the VendorCustomerId field.
+func (o *ExternalAccountAccessToken) SetVendorCustomerId(v string) {
+	o.VendorCustomerId = &v
+}
+
+// GetVendorInstitutionId returns the VendorInstitutionId field value
+func (o *ExternalAccountAccessToken) GetVendorInstitutionId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.VendorInstitutionId
+}
+
+// GetVendorInstitutionIdOk returns a tuple with the VendorInstitutionId field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccountAccessToken) GetVendorInstitutionIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VendorInstitutionId, true
+}
+
+// SetVendorInstitutionId sets field value
+func (o *ExternalAccountAccessToken) SetVendorInstitutionId(v string) {
+	o.VendorInstitutionId = v
+}
+
+// GetVendorPublicToken returns the VendorPublicToken field value
+func (o *ExternalAccountAccessToken) GetVendorPublicToken() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.VendorPublicToken
+}
+
+// GetVendorPublicTokenOk returns a tuple with the VendorPublicToken field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccountAccessToken) GetVendorPublicTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VendorPublicToken, true
+}
+
+// SetVendorPublicToken sets field value
+func (o *ExternalAccountAccessToken) SetVendorPublicToken(v string) {
+	o.VendorPublicToken = v
+}
+
 func (o ExternalAccountAccessToken) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["vendor_institution_id"] = o.VendorInstitutionId
+	if o.CustomerId != nil {
+		toSerialize["customer_id"] = o.CustomerId
 	}
-	if true {
-		toSerialize["vendor_public_token"] = o.VendorPublicToken
+	if o.RequestId != nil {
+		toSerialize["request_id"] = o.RequestId
 	}
 	if o.VendorAccessToken != nil {
 		toSerialize["vendor_access_token"] = o.VendorAccessToken
@@ -239,11 +239,11 @@ func (o ExternalAccountAccessToken) MarshalJSON() ([]byte, error) {
 	if o.VendorCustomerId != nil {
 		toSerialize["vendor_customer_id"] = o.VendorCustomerId
 	}
-	if o.CustomerId != nil {
-		toSerialize["customer_id"] = o.CustomerId
+	if true {
+		toSerialize["vendor_institution_id"] = o.VendorInstitutionId
 	}
-	if o.RequestId != nil {
-		toSerialize["request_id"] = o.RequestId
+	if true {
+		toSerialize["vendor_public_token"] = o.VendorPublicToken
 	}
 	return json.Marshal(toSerialize)
 }

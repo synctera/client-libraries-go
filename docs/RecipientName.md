@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FirstName** | **string** |  | 
-**MiddleName** | Pointer to **string** |  | [optional] 
 **LastName** | **string** |  | 
+**MiddleName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -47,6 +47,26 @@ and a boolean to check if the value has been set.
 SetFirstName sets FirstName field to given value.
 
 
+### GetLastName
+
+`func (o *RecipientName) GetLastName() string`
+
+GetLastName returns the LastName field if non-nil, zero value otherwise.
+
+### GetLastNameOk
+
+`func (o *RecipientName) GetLastNameOk() (*string, bool)`
+
+GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastName
+
+`func (o *RecipientName) SetLastName(v string)`
+
+SetLastName sets LastName field to given value.
+
+
 ### GetMiddleName
 
 `func (o *RecipientName) GetMiddleName() string`
@@ -71,26 +91,6 @@ SetMiddleName sets MiddleName field to given value.
 `func (o *RecipientName) HasMiddleName() bool`
 
 HasMiddleName returns a boolean if a field has been set.
-
-### GetLastName
-
-`func (o *RecipientName) GetLastName() string`
-
-GetLastName returns the LastName field if non-nil, zero value otherwise.
-
-### GetLastNameOk
-
-`func (o *RecipientName) GetLastNameOk() (*string, bool)`
-
-GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastName
-
-`func (o *RecipientName) SetLastName(v string)`
-
-SetLastName sets LastName field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

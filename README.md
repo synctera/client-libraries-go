@@ -78,7 +78,6 @@ All URIs are relative to *https://api.synctera.com/v0*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /accounts | Create an account
-*AccountsApi* | [**CreateAccountAliases**](docs/AccountsApi.md#createaccountaliases) | **Post** /accounts/{account_id}/aliases | Create account aliases
 *AccountsApi* | [**CreateAccountRelationship**](docs/AccountsApi.md#createaccountrelationship) | **Post** /accounts/{account_id}/relationships | Create account relationship
 *AccountsApi* | [**CreateAccountResourceProduct**](docs/AccountsApi.md#createaccountresourceproduct) | **Post** /accounts/products | Create an account product
 *AccountsApi* | [**CreateAccountTemplate**](docs/AccountsApi.md#createaccounttemplate) | **Post** /accounts/templates | Create an account template
@@ -88,7 +87,6 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**GetAccount**](docs/AccountsApi.md#getaccount) | **Get** /accounts/{account_id} | Get account
 *AccountsApi* | [**GetAccountRelationship**](docs/AccountsApi.md#getaccountrelationship) | **Get** /accounts/{account_id}/relationships/{relationship_id} | Get account relationship
 *AccountsApi* | [**GetAccountTemplate**](docs/AccountsApi.md#getaccounttemplate) | **Get** /accounts/templates/{template_id} | Get account template
-*AccountsApi* | [**ListAccountAliases**](docs/AccountsApi.md#listaccountaliases) | **Get** /accounts/aliases | List account aliases
 *AccountsApi* | [**ListAccountRelationship**](docs/AccountsApi.md#listaccountrelationship) | **Get** /accounts/{account_id}/relationships | List account relationships
 *AccountsApi* | [**ListAccountResourceProducts**](docs/AccountsApi.md#listaccountresourceproducts) | **Get** /accounts/products | List account products
 *AccountsApi* | [**ListAccountTemplates**](docs/AccountsApi.md#listaccounttemplates) | **Get** /accounts/templates | List account templates
@@ -98,51 +96,24 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **Put** /accounts/{account_id} | Update account
 *AccountsApi* | [**UpdateAccountRelationship**](docs/AccountsApi.md#updateaccountrelationship) | **Put** /accounts/{account_id}/relationships/{relationship_id} | Update account relationship
 *AccountsApi* | [**UpdateAccountTemplate**](docs/AccountsApi.md#updateaccounttemplate) | **Put** /accounts/templates/{template_id} | Update account template
-*CardWebhooksApi* | [**CreateWebhook**](docs/CardWebhooksApi.md#createwebhook) | **Post** /cards/webhooks | Create a Webhook
-*CardWebhooksApi* | [**EditWebhook**](docs/CardWebhooksApi.md#editwebhook) | **Put** /cards/webhooks/{webhook_id} | Webhook updates
-*CardWebhooksApi* | [**EditWebhookCustomHeaders**](docs/CardWebhooksApi.md#editwebhookcustomheaders) | **Put** /cards/webhooks/{webhook_id}/custom_headers | Webhook custom headers updates
-*CardWebhooksApi* | [**GetWebhook**](docs/CardWebhooksApi.md#getwebhook) | **Get** /cards/webhooks/{webhook_id} | Get A Webhook
-*CardWebhooksApi* | [**ListWebhooks**](docs/CardWebhooksApi.md#listwebhooks) | **Get** /cards/webhooks | List Webhooks
-*CardWebhooksApi* | [**PingWebhook**](docs/CardWebhooksApi.md#pingwebhook) | **Post** /cards/webhooks/{webhook_id} | Ping Webhook
-*CardWebhooksApi* | [**ResendEventNotification**](docs/CardWebhooksApi.md#resendeventnotification) | **Post** /cards/webhooks/{webhook_id}/resend_event | Resend a Webhook Event Notification
 *CardsApi* | [**ActivateCard**](docs/CardsApi.md#activatecard) | **Post** /cards/activate | Activate a card
-*CardsApi* | [**CreateAccountRange**](docs/CardsApi.md#createaccountrange) | **Post** /cards/account_ranges | Create Account Range
-*CardsApi* | [**CreateBin**](docs/CardsApi.md#createbin) | **Post** /cards/bins | Create BIN
-*CardsApi* | [**CreateBinNetworkMapping**](docs/CardsApi.md#createbinnetworkmapping) | **Post** /cards/bin_network_mappings | Create bin network mapping
-*CardsApi* | [**CreateCardProduct**](docs/CardsApi.md#createcardproduct) | **Post** /cards/products | Create Card Product
-*CardsApi* | [**CreateCardProgram**](docs/CardsApi.md#createcardprogram) | **Post** /cards/programs | Create Card Program
-*CardsApi* | [**CreateDebitNetwork**](docs/CardsApi.md#createdebitnetwork) | **Post** /cards/debit_networks | Create Debit Network
-*CardsApi* | [**CreateDigitalWalletApple**](docs/CardsApi.md#createdigitalwalletapple) | **Post** /cards/digitalwallets/applepay | Create digital wallet token provision request for Apple Pay
-*CardsApi* | [**CreateDigitalWalletGoogle**](docs/CardsApi.md#createdigitalwalletgoogle) | **Post** /cards/digitalwallets/googlepay | Create digital wallet token provision request for Google Pay
-*CardsApi* | [**GetAccountRange**](docs/CardsApi.md#getaccountrange) | **Get** /cards/account_ranges/{account_range_id} | Get a Account Range
-*CardsApi* | [**GetBin**](docs/CardsApi.md#getbin) | **Get** /cards/bins/{bin_id} | Get BIN
+*CardsApi* | [**CreateCardImage**](docs/CardsApi.md#createcardimage) | **Post** /cards/images | Create Card Image
 *CardsApi* | [**GetCard**](docs/CardsApi.md#getcard) | **Get** /cards/{card_id} | Get Card
 *CardsApi* | [**GetCardBarcode**](docs/CardsApi.md#getcardbarcode) | **Get** /cards/{card_id}/barcodes | Get Card Barcode
-*CardsApi* | [**GetCardProduct**](docs/CardsApi.md#getcardproduct) | **Get** /cards/products/{card_product_id} | Get details about a card product
-*CardsApi* | [**GetCardProgram**](docs/CardsApi.md#getcardprogram) | **Get** /cards/programs/{card_program_id} | Get a Card Program
-*CardsApi* | [**GetCardWidgetURL**](docs/CardsApi.md#getcardwidgeturl) | **Get** /cards/card_widget_url | Get Card Widget URL
+*CardsApi* | [**GetCardImageDetails**](docs/CardsApi.md#getcardimagedetails) | **Get** /cards/images/{card_image_id} | Get Card Image Details
+*CardsApi* | [**GetCardWidgetURL**](docs/CardsApi.md#getcardwidgeturl) | **Get** /cards/card_widget_url | Get card widget URL
 *CardsApi* | [**GetClientAccessToken**](docs/CardsApi.md#getclientaccesstoken) | **Post** /cards/{card_id}/client_token | Get a client token
 *CardsApi* | [**GetClientSingleUseToken**](docs/CardsApi.md#getclientsingleusetoken) | **Post** /cards/single_use_token | Get single-use token
-*CardsApi* | [**GetDebitNetwork**](docs/CardsApi.md#getdebitnetwork) | **Get** /cards/debit_networks/{debit_network_id} | Get details about a debit/atm network
 *CardsApi* | [**IssueCard**](docs/CardsApi.md#issuecard) | **Post** /cards | Issue a Card
-*CardsApi* | [**ListBins**](docs/CardsApi.md#listbins) | **Get** /cards/bins | List BINs
-*CardsApi* | [**ListBinsAndDebitNetworks**](docs/CardsApi.md#listbinsanddebitnetworks) | **Get** /cards/bins/debit_networks | List BINs and Debit Networks
-*CardsApi* | [**ListCardProducts**](docs/CardsApi.md#listcardproducts) | **Get** /cards/products | List Cards Products
-*CardsApi* | [**ListCardPrograms**](docs/CardsApi.md#listcardprograms) | **Get** /cards/programs | List Card Programs
+*CardsApi* | [**ListCardImageDetails**](docs/CardsApi.md#listcardimagedetails) | **Get** /cards/images | List Card Image Details
 *CardsApi* | [**ListCards**](docs/CardsApi.md#listcards) | **Get** /cards | List Cards
 *CardsApi* | [**ListChanges**](docs/CardsApi.md#listchanges) | **Get** /cards/{card_id}/changes | List Card Changes
-*CardsApi* | [**ListDebitNetworks**](docs/CardsApi.md#listdebitnetworks) | **Get** /cards/debit_networks | List debit networks
-*CardsApi* | [**ListFundingSource**](docs/CardsApi.md#listfundingsource) | **Get** /cards/funding_sources | List Funding Sources
-*CardsApi* | [**SetPIN**](docs/CardsApi.md#setpin) | **Put** /cards/{card_id}/pin | Set a new PIN for a card
 *CardsApi* | [**UpdateAccountRange**](docs/CardsApi.md#updateaccountrange) | **Patch** /cards/account_ranges/{account_range_id} | Update Account Range
 *CardsApi* | [**UpdateBin**](docs/CardsApi.md#updatebin) | **Patch** /cards/bins/{bin_id} | Update BIN
 *CardsApi* | [**UpdateCard**](docs/CardsApi.md#updatecard) | **Patch** /cards/{card_id} | Update Card
-*CardsApi* | [**UpdateCardProgram**](docs/CardsApi.md#updatecardprogram) | **Patch** /cards/programs/{card_program_id} | Update Card Program
 *CustomersApi* | [**CreateCustomer**](docs/CustomersApi.md#createcustomer) | **Post** /customers | Create a Customer
-*CustomersApi* | [**CreateCustomerAlias**](docs/CustomersApi.md#createcustomeralias) | **Post** /customers/{customer_id}/alias | Create customer alias
 *CustomersApi* | [**CreateCustomerEmployment**](docs/CustomersApi.md#createcustomeremployment) | **Post** /customers/{customer_id}/employment | Create employment record
 *CustomersApi* | [**CreateCustomerRiskRating**](docs/CustomersApi.md#createcustomerriskrating) | **Post** /customers/{customer_id}/risk_ratings | Create customer risk rating
-*CustomersApi* | [**GetAliasForCustomer**](docs/CustomersApi.md#getaliasforcustomer) | **Get** /customers/{customer_id}/alias | List customer alias
 *CustomersApi* | [**GetAllCustomerEmployment**](docs/CustomersApi.md#getallcustomeremployment) | **Get** /customers/{customer_id}/employment | List customer employment records
 *CustomersApi* | [**GetAllCustomerRiskRatings**](docs/CustomersApi.md#getallcustomerriskratings) | **Get** /customers/{customer_id}/risk_ratings | List customer risk ratings
 *CustomersApi* | [**GetCustomer**](docs/CustomersApi.md#getcustomer) | **Get** /customers/{customer_id} | Get Customer
@@ -152,14 +123,9 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**PatchCustomer**](docs/CustomersApi.md#patchcustomer) | **Patch** /customers/{customer_id} | Patch Customer
 *CustomersApi* | [**UpdateCustomer**](docs/CustomersApi.md#updatecustomer) | **Put** /customers/{customer_id} | Update Customer
 *CustomersApi* | [**UpdatePartyEmployment**](docs/CustomersApi.md#updatepartyemployment) | **Put** /customers/{customer_id}/employment/{employment_id} | Update customer employment record
-*DigitalWalletTokenApi* | [**GetDigitalWalletToken**](docs/DigitalWalletTokenApi.md#getdigitalwallettoken) | **Get** /cards/digitalwallets/{digital_wallet_token_id} | Get Digital Wallet Token
-*DigitalWalletTokenApi* | [**ListDigitalWalletTokens**](docs/DigitalWalletTokenApi.md#listdigitalwallettokens) | **Get** /cards/{card_id}/digitalwallets | List Digital Wallet Tokens of a card
-*DigitalWalletTokenApi* | [**UpdateDigitalWalletTokenStatus**](docs/DigitalWalletTokenApi.md#updatedigitalwallettokenstatus) | **Patch** /cards/digitalwallets/{digital_wallet_token_id} | Update Digital wallet token id&#39;s life cycle status
 *DisclosuresApi* | [**CreateDisclosure**](docs/DisclosuresApi.md#createdisclosure) | **Post** /disclosures | Create disclosure
-*DisclosuresApi* | [**CreateMasterDisclosure**](docs/DisclosuresApi.md#createmasterdisclosure) | **Post** /disclosures/masters | Create master disclosure
 *DisclosuresApi* | [**GetDisclosure**](docs/DisclosuresApi.md#getdisclosure) | **Get** /disclosures/{disclosure_id} | Get disclosure
 *DisclosuresApi* | [**ListDisclosures**](docs/DisclosuresApi.md#listdisclosures) | **Get** /disclosures | List disclosures
-*DisclosuresApi* | [**ListDisclosuresMaster**](docs/DisclosuresApi.md#listdisclosuresmaster) | **Get** /disclosures/masters | List master disclosures
 *ExternalAccountsApi* | [**AddExternalAccounts**](docs/ExternalAccountsApi.md#addexternalaccounts) | **Post** /external_accounts | Add external accounts
 *ExternalAccountsApi* | [**AddVendorExternalAccounts**](docs/ExternalAccountsApi.md#addvendorexternalaccounts) | **Post** /external_accounts/add_vendor_accounts | Add external accounts through a vendor, such as Plaid.
 *ExternalAccountsApi* | [**CreateAccessToken**](docs/ExternalAccountsApi.md#createaccesstoken) | **Post** /external_accounts/access_tokens | Create a permanent access token for an external account
@@ -176,11 +142,15 @@ Class | Method | HTTP request | Description
 *ReconciliationsApi* | [**CreateReconciliation**](docs/ReconciliationsApi.md#createreconciliation) | **Post** /reconciliations | Create a reconciliation
 *ReconciliationsApi* | [**GetReconciliation**](docs/ReconciliationsApi.md#getreconciliation) | **Get** /reconciliations/{reconciliation_id} | Get reconciliation
 *ReconciliationsApi* | [**ListReconciliations**](docs/ReconciliationsApi.md#listreconciliations) | **Get** /reconciliations | List reconciliations
+*TransactionsApi* | [**CreateInternalTransfer**](docs/TransactionsApi.md#createinternaltransfer) | **Post** /transactions/internal_transfer | Create an internal transfer
+*TransactionsApi* | [**GetPendingTransactionByID**](docs/TransactionsApi.md#getpendingtransactionbyid) | **Get** /transactions/pending/{id} | Get a pending transaction
+*TransactionsApi* | [**GetPostedTransactionByID**](docs/TransactionsApi.md#getpostedtransactionbyid) | **Get** /transactions/posted/{id} | Get a posted transaction
+*TransactionsApi* | [**ListPendingTransactions**](docs/TransactionsApi.md#listpendingtransactions) | **Get** /transactions/pending | List pending transactions
+*TransactionsApi* | [**ListPostedTransactions**](docs/TransactionsApi.md#listpostedtransactions) | **Get** /transactions/posted | List posted transactions
 *WatchlistApi* | [**GetWatchlistAlert**](docs/WatchlistApi.md#getwatchlistalert) | **Get** /customers/{customer_id}/watchlists/alerts/{alert_id} | Retrieve watchlist monitoring alert
 *WatchlistApi* | [**GetWatchlistSubscription**](docs/WatchlistApi.md#getwatchlistsubscription) | **Get** /customers/{customer_id}/watchlists/subscriptions/{subscription_id} | Retrieve watchlist monitoring subscription
 *WatchlistApi* | [**ListWatchlistAlerts**](docs/WatchlistApi.md#listwatchlistalerts) | **Get** /customers/{customer_id}/watchlists/alerts | List watchlist monitoring alerts for a customer
 *WatchlistApi* | [**ListWatchlistSubscriptions**](docs/WatchlistApi.md#listwatchlistsubscriptions) | **Get** /customers/{customer_id}/watchlists/subscriptions | List watchlist monitoring subscriptions for a customer
-*WatchlistApi* | [**ProcessWatchlistEvent**](docs/WatchlistApi.md#processwatchlistevent) | **Post** /kyc/watchlists/{vendor_id} | Process incoming webhooks coming from external vendors
 *WatchlistApi* | [**SuppressWatchlistEntityAlert**](docs/WatchlistApi.md#suppresswatchlistentityalert) | **Post** /customers/{customer_id}/watchlists/suppressions | Suppress entity alert
 *WatchlistApi* | [**UpdateWatchlistAlert**](docs/WatchlistApi.md#updatewatchlistalert) | **Put** /customers/{customer_id}/watchlists/alerts/{alert_id} | Update watchlist alert
 *WatchlistApi* | [**UpdateWatchlistSubscription**](docs/WatchlistApi.md#updatewatchlistsubscription) | **Put** /customers/{customer_id}/watchlists/subscriptions/{subscription_id} | Update watchlist monitoring subscription
@@ -266,6 +236,11 @@ Class | Method | HTTP request | Description
  - [CardEditRequest](docs/CardEditRequest.md)
  - [CardFormat](docs/CardFormat.md)
  - [CardFulfillmentStatus](docs/CardFulfillmentStatus.md)
+ - [CardImageDetails](docs/CardImageDetails.md)
+ - [CardImageDetailsList](docs/CardImageDetailsList.md)
+ - [CardImageDetailsListAllOf](docs/CardImageDetailsListAllOf.md)
+ - [CardImageMode](docs/CardImageMode.md)
+ - [CardImageStatus](docs/CardImageStatus.md)
  - [CardIssuanceRequest](docs/CardIssuanceRequest.md)
  - [CardListResponse](docs/CardListResponse.md)
  - [CardListResponseAllOf](docs/CardListResponseAllOf.md)
@@ -291,6 +266,7 @@ Class | Method | HTTP request | Description
  - [ChangeChannel](docs/ChangeChannel.md)
  - [ChangeType](docs/ChangeType.md)
  - [ClientToken](docs/ClientToken.md)
+ - [CreateCardImageRequest](docs/CreateCardImageRequest.md)
  - [CreateWebhookRequest](docs/CreateWebhookRequest.md)
  - [CustomHeaders](docs/CustomHeaders.md)
  - [Customer](docs/Customer.md)
@@ -308,6 +284,7 @@ Class | Method | HTTP request | Description
  - [CustomerVerificationResultListAllOf](docs/CustomerVerificationResultListAllOf.md)
  - [CustomerVerifyResponse](docs/CustomerVerifyResponse.md)
  - [CustomerVerifyResponseAllOf](docs/CustomerVerifyResponseAllOf.md)
+ - [DcSign](docs/DcSign.md)
  - [DebitNetwork](docs/DebitNetwork.md)
  - [DebitNetworkCreateRequest](docs/DebitNetworkCreateRequest.md)
  - [DebitNetworkResponse](docs/DebitNetworkResponse.md)
@@ -356,6 +333,9 @@ Class | Method | HTTP request | Description
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse201](docs/InlineResponse201.md)
  - [Interest](docs/Interest.md)
+ - [InternalTransfer](docs/InternalTransfer.md)
+ - [InternalTransferResponse](docs/InternalTransferResponse.md)
+ - [InternalTransferResponseAllOf](docs/InternalTransferResponseAllOf.md)
  - [ManualAccountVerification](docs/ManualAccountVerification.md)
  - [MasterDisclosure](docs/MasterDisclosure.md)
  - [MasterDisclosureList](docs/MasterDisclosureList.md)
@@ -368,6 +348,11 @@ Class | Method | HTTP request | Description
  - [PatchCustomer](docs/PatchCustomer.md)
  - [PatchExternalAccount](docs/PatchExternalAccount.md)
  - [PatchInterest](docs/PatchInterest.md)
+ - [PendingTransaction](docs/PendingTransaction.md)
+ - [PendingTransactionData](docs/PendingTransactionData.md)
+ - [PendingTransactionHistory](docs/PendingTransactionHistory.md)
+ - [PendingTransactionHistoryData](docs/PendingTransactionHistoryData.md)
+ - [PendingTransactions](docs/PendingTransactions.md)
  - [PhysicalCard](docs/PhysicalCard.md)
  - [PhysicalCardAllOf](docs/PhysicalCardAllOf.md)
  - [PhysicalCardFormat](docs/PhysicalCardFormat.md)
@@ -379,6 +364,9 @@ Class | Method | HTTP request | Description
  - [PhysicalCardResponseStatusAllOf](docs/PhysicalCardResponseStatusAllOf.md)
  - [PingResponse](docs/PingResponse.md)
  - [PlaidAccountVerification](docs/PlaidAccountVerification.md)
+ - [PostedTransaction](docs/PostedTransaction.md)
+ - [PostedTransactionData](docs/PostedTransactionData.md)
+ - [PostedTransactions](docs/PostedTransactions.md)
  - [Prospect](docs/Prospect.md)
  - [ProspectAllOf](docs/ProspectAllOf.md)
  - [ProviderType](docs/ProviderType.md)
@@ -416,6 +404,7 @@ Class | Method | HTTP request | Description
  - [TemplateListAllOf](docs/TemplateListAllOf.md)
  - [TokenListResponse](docs/TokenListResponse.md)
  - [TokenListResponseAllOf](docs/TokenListResponseAllOf.md)
+ - [TransactionLine](docs/TransactionLine.md)
  - [VendorInfo](docs/VendorInfo.md)
  - [VendorJson](docs/VendorJson.md)
  - [VendorXml](docs/VendorXml.md)

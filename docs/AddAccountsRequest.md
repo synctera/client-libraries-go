@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | The type of the account | 
+**AccountIdentifiers** | [**AddAccountsRequestAccountIdentifiers**](AddAccountsRequestAccountIdentifiers.md) |  | 
+**AccountOwnerNames** | **[]string** | The names of the account owners. | 
 **CustomerId** | **string** | The identifier for the customer associated with the account. | 
 **CustomerType** | **string** | The type of customer. | 
-**VendorAccountId** | Pointer to **string** | The ID of the vendor account, will be empty for MANUAL vendor | [optional] 
-**AccountOwnerNames** | **[]string** | The names of the account owners. | 
+**Metadata** | Pointer to **map[string]interface{}** | User-supplied metadata | [optional] 
 **Nickname** | Pointer to **string** | A user-meaningful name for the account | [optional] 
 **RoutingIdentifiers** | [**AddAccountsRequestRoutingIdentifiers**](AddAccountsRequestRoutingIdentifiers.md) |  | 
-**AccountIdentifiers** | [**AddAccountsRequestAccountIdentifiers**](AddAccountsRequestAccountIdentifiers.md) |  | 
+**Type** | **string** | The type of the account | 
+**VendorAccountId** | Pointer to **string** | The ID of the vendor account, will be empty for MANUAL vendor | [optional] 
 **Verification** | Pointer to [**NullableAccountVerification**](AccountVerification.md) |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | User-supplied metadata | [optional] 
 
 ## Methods
 
 ### NewAddAccountsRequest
 
-`func NewAddAccountsRequest(type_ string, customerId string, customerType string, accountOwnerNames []string, routingIdentifiers AddAccountsRequestRoutingIdentifiers, accountIdentifiers AddAccountsRequestAccountIdentifiers, ) *AddAccountsRequest`
+`func NewAddAccountsRequest(accountIdentifiers AddAccountsRequestAccountIdentifiers, accountOwnerNames []string, customerId string, customerType string, routingIdentifiers AddAccountsRequestRoutingIdentifiers, type_ string, ) *AddAccountsRequest`
 
 NewAddAccountsRequest instantiates a new AddAccountsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -34,24 +34,44 @@ NewAddAccountsRequestWithDefaults instantiates a new AddAccountsRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetType
+### GetAccountIdentifiers
 
-`func (o *AddAccountsRequest) GetType() string`
+`func (o *AddAccountsRequest) GetAccountIdentifiers() AddAccountsRequestAccountIdentifiers`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetAccountIdentifiers returns the AccountIdentifiers field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetAccountIdentifiersOk
 
-`func (o *AddAccountsRequest) GetTypeOk() (*string, bool)`
+`func (o *AddAccountsRequest) GetAccountIdentifiersOk() (*AddAccountsRequestAccountIdentifiers, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetAccountIdentifiers
 
-`func (o *AddAccountsRequest) SetType(v string)`
+`func (o *AddAccountsRequest) SetAccountIdentifiers(v AddAccountsRequestAccountIdentifiers)`
 
-SetType sets Type field to given value.
+SetAccountIdentifiers sets AccountIdentifiers field to given value.
+
+
+### GetAccountOwnerNames
+
+`func (o *AddAccountsRequest) GetAccountOwnerNames() []string`
+
+GetAccountOwnerNames returns the AccountOwnerNames field if non-nil, zero value otherwise.
+
+### GetAccountOwnerNamesOk
+
+`func (o *AddAccountsRequest) GetAccountOwnerNamesOk() (*[]string, bool)`
+
+GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountOwnerNames
+
+`func (o *AddAccountsRequest) SetAccountOwnerNames(v []string)`
+
+SetAccountOwnerNames sets AccountOwnerNames field to given value.
 
 
 ### GetCustomerId
@@ -94,50 +114,30 @@ and a boolean to check if the value has been set.
 SetCustomerType sets CustomerType field to given value.
 
 
-### GetVendorAccountId
+### GetMetadata
 
-`func (o *AddAccountsRequest) GetVendorAccountId() string`
+`func (o *AddAccountsRequest) GetMetadata() map[string]interface{}`
 
-GetVendorAccountId returns the VendorAccountId field if non-nil, zero value otherwise.
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
-### GetVendorAccountIdOk
+### GetMetadataOk
 
-`func (o *AddAccountsRequest) GetVendorAccountIdOk() (*string, bool)`
+`func (o *AddAccountsRequest) GetMetadataOk() (*map[string]interface{}, bool)`
 
-GetVendorAccountIdOk returns a tuple with the VendorAccountId field if it's non-nil, zero value otherwise
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVendorAccountId
+### SetMetadata
 
-`func (o *AddAccountsRequest) SetVendorAccountId(v string)`
+`func (o *AddAccountsRequest) SetMetadata(v map[string]interface{})`
 
-SetVendorAccountId sets VendorAccountId field to given value.
+SetMetadata sets Metadata field to given value.
 
-### HasVendorAccountId
+### HasMetadata
 
-`func (o *AddAccountsRequest) HasVendorAccountId() bool`
+`func (o *AddAccountsRequest) HasMetadata() bool`
 
-HasVendorAccountId returns a boolean if a field has been set.
-
-### GetAccountOwnerNames
-
-`func (o *AddAccountsRequest) GetAccountOwnerNames() []string`
-
-GetAccountOwnerNames returns the AccountOwnerNames field if non-nil, zero value otherwise.
-
-### GetAccountOwnerNamesOk
-
-`func (o *AddAccountsRequest) GetAccountOwnerNamesOk() (*[]string, bool)`
-
-GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountOwnerNames
-
-`func (o *AddAccountsRequest) SetAccountOwnerNames(v []string)`
-
-SetAccountOwnerNames sets AccountOwnerNames field to given value.
-
+HasMetadata returns a boolean if a field has been set.
 
 ### GetNickname
 
@@ -184,25 +184,50 @@ and a boolean to check if the value has been set.
 SetRoutingIdentifiers sets RoutingIdentifiers field to given value.
 
 
-### GetAccountIdentifiers
+### GetType
 
-`func (o *AddAccountsRequest) GetAccountIdentifiers() AddAccountsRequestAccountIdentifiers`
+`func (o *AddAccountsRequest) GetType() string`
 
-GetAccountIdentifiers returns the AccountIdentifiers field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetAccountIdentifiersOk
+### GetTypeOk
 
-`func (o *AddAccountsRequest) GetAccountIdentifiersOk() (*AddAccountsRequestAccountIdentifiers, bool)`
+`func (o *AddAccountsRequest) GetTypeOk() (*string, bool)`
 
-GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountIdentifiers
+### SetType
 
-`func (o *AddAccountsRequest) SetAccountIdentifiers(v AddAccountsRequestAccountIdentifiers)`
+`func (o *AddAccountsRequest) SetType(v string)`
 
-SetAccountIdentifiers sets AccountIdentifiers field to given value.
+SetType sets Type field to given value.
 
+
+### GetVendorAccountId
+
+`func (o *AddAccountsRequest) GetVendorAccountId() string`
+
+GetVendorAccountId returns the VendorAccountId field if non-nil, zero value otherwise.
+
+### GetVendorAccountIdOk
+
+`func (o *AddAccountsRequest) GetVendorAccountIdOk() (*string, bool)`
+
+GetVendorAccountIdOk returns a tuple with the VendorAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendorAccountId
+
+`func (o *AddAccountsRequest) SetVendorAccountId(v string)`
+
+SetVendorAccountId sets VendorAccountId field to given value.
+
+### HasVendorAccountId
+
+`func (o *AddAccountsRequest) HasVendorAccountId() bool`
+
+HasVendorAccountId returns a boolean if a field has been set.
 
 ### GetVerification
 
@@ -239,31 +264,6 @@ HasVerification returns a boolean if a field has been set.
 `func (o *AddAccountsRequest) UnsetVerification()`
 
 UnsetVerification ensures that no value is present for Verification, not even an explicit nil
-### GetMetadata
-
-`func (o *AddAccountsRequest) GetMetadata() map[string]interface{}`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *AddAccountsRequest) GetMetadataOk() (*map[string]interface{}, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *AddAccountsRequest) SetMetadata(v map[string]interface{})`
-
-SetMetadata sets Metadata field to given value.
-
-### HasMetadata
-
-`func (o *AddAccountsRequest) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

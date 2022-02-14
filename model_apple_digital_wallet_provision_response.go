@@ -17,13 +17,13 @@ import (
 
 // AppleDigitalWalletProvisionResponse struct for AppleDigitalWalletProvisionResponse
 type AppleDigitalWalletProvisionResponse struct {
-	CreatedTime      *time.Time `json:"created_time,omitempty"`
-	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
+	ActivationData *string `json:"activation_data,omitempty"`
 	// The unique identifier of a card
-	CardId             *string `json:"card_id,omitempty"`
-	EncryptedPassData  *string `json:"encrypted_pass_data,omitempty"`
-	ActivationData     *string `json:"activation_data,omitempty"`
-	EphemeralPublicKey *string `json:"ephemeral_public_key,omitempty"`
+	CardId             *string    `json:"card_id,omitempty"`
+	CreatedTime        *time.Time `json:"created_time,omitempty"`
+	EncryptedPassData  *string    `json:"encrypted_pass_data,omitempty"`
+	EphemeralPublicKey *string    `json:"ephemeral_public_key,omitempty"`
+	LastModifiedTime   *time.Time `json:"last_modified_time,omitempty"`
 }
 
 // NewAppleDigitalWalletProvisionResponse instantiates a new AppleDigitalWalletProvisionResponse object
@@ -41,134 +41,6 @@ func NewAppleDigitalWalletProvisionResponse() *AppleDigitalWalletProvisionRespon
 func NewAppleDigitalWalletProvisionResponseWithDefaults() *AppleDigitalWalletProvisionResponse {
 	this := AppleDigitalWalletProvisionResponse{}
 	return &this
-}
-
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
-func (o *AppleDigitalWalletProvisionResponse) GetCreatedTime() time.Time {
-	if o == nil || o.CreatedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreatedTime
-}
-
-// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AppleDigitalWalletProvisionResponse) GetCreatedTimeOk() (*time.Time, bool) {
-	if o == nil || o.CreatedTime == nil {
-		return nil, false
-	}
-	return o.CreatedTime, true
-}
-
-// HasCreatedTime returns a boolean if a field has been set.
-func (o *AppleDigitalWalletProvisionResponse) HasCreatedTime() bool {
-	if o != nil && o.CreatedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedTime gets a reference to the given time.Time and assigns it to the CreatedTime field.
-func (o *AppleDigitalWalletProvisionResponse) SetCreatedTime(v time.Time) {
-	o.CreatedTime = &v
-}
-
-// GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
-func (o *AppleDigitalWalletProvisionResponse) GetLastModifiedTime() time.Time {
-	if o == nil || o.LastModifiedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.LastModifiedTime
-}
-
-// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AppleDigitalWalletProvisionResponse) GetLastModifiedTimeOk() (*time.Time, bool) {
-	if o == nil || o.LastModifiedTime == nil {
-		return nil, false
-	}
-	return o.LastModifiedTime, true
-}
-
-// HasLastModifiedTime returns a boolean if a field has been set.
-func (o *AppleDigitalWalletProvisionResponse) HasLastModifiedTime() bool {
-	if o != nil && o.LastModifiedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedTime gets a reference to the given time.Time and assigns it to the LastModifiedTime field.
-func (o *AppleDigitalWalletProvisionResponse) SetLastModifiedTime(v time.Time) {
-	o.LastModifiedTime = &v
-}
-
-// GetCardId returns the CardId field value if set, zero value otherwise.
-func (o *AppleDigitalWalletProvisionResponse) GetCardId() string {
-	if o == nil || o.CardId == nil {
-		var ret string
-		return ret
-	}
-	return *o.CardId
-}
-
-// GetCardIdOk returns a tuple with the CardId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AppleDigitalWalletProvisionResponse) GetCardIdOk() (*string, bool) {
-	if o == nil || o.CardId == nil {
-		return nil, false
-	}
-	return o.CardId, true
-}
-
-// HasCardId returns a boolean if a field has been set.
-func (o *AppleDigitalWalletProvisionResponse) HasCardId() bool {
-	if o != nil && o.CardId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCardId gets a reference to the given string and assigns it to the CardId field.
-func (o *AppleDigitalWalletProvisionResponse) SetCardId(v string) {
-	o.CardId = &v
-}
-
-// GetEncryptedPassData returns the EncryptedPassData field value if set, zero value otherwise.
-func (o *AppleDigitalWalletProvisionResponse) GetEncryptedPassData() string {
-	if o == nil || o.EncryptedPassData == nil {
-		var ret string
-		return ret
-	}
-	return *o.EncryptedPassData
-}
-
-// GetEncryptedPassDataOk returns a tuple with the EncryptedPassData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AppleDigitalWalletProvisionResponse) GetEncryptedPassDataOk() (*string, bool) {
-	if o == nil || o.EncryptedPassData == nil {
-		return nil, false
-	}
-	return o.EncryptedPassData, true
-}
-
-// HasEncryptedPassData returns a boolean if a field has been set.
-func (o *AppleDigitalWalletProvisionResponse) HasEncryptedPassData() bool {
-	if o != nil && o.EncryptedPassData != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEncryptedPassData gets a reference to the given string and assigns it to the EncryptedPassData field.
-func (o *AppleDigitalWalletProvisionResponse) SetEncryptedPassData(v string) {
-	o.EncryptedPassData = &v
 }
 
 // GetActivationData returns the ActivationData field value if set, zero value otherwise.
@@ -203,6 +75,102 @@ func (o *AppleDigitalWalletProvisionResponse) SetActivationData(v string) {
 	o.ActivationData = &v
 }
 
+// GetCardId returns the CardId field value if set, zero value otherwise.
+func (o *AppleDigitalWalletProvisionResponse) GetCardId() string {
+	if o == nil || o.CardId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CardId
+}
+
+// GetCardIdOk returns a tuple with the CardId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AppleDigitalWalletProvisionResponse) GetCardIdOk() (*string, bool) {
+	if o == nil || o.CardId == nil {
+		return nil, false
+	}
+	return o.CardId, true
+}
+
+// HasCardId returns a boolean if a field has been set.
+func (o *AppleDigitalWalletProvisionResponse) HasCardId() bool {
+	if o != nil && o.CardId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCardId gets a reference to the given string and assigns it to the CardId field.
+func (o *AppleDigitalWalletProvisionResponse) SetCardId(v string) {
+	o.CardId = &v
+}
+
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+func (o *AppleDigitalWalletProvisionResponse) GetCreatedTime() time.Time {
+	if o == nil || o.CreatedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreatedTime
+}
+
+// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AppleDigitalWalletProvisionResponse) GetCreatedTimeOk() (*time.Time, bool) {
+	if o == nil || o.CreatedTime == nil {
+		return nil, false
+	}
+	return o.CreatedTime, true
+}
+
+// HasCreatedTime returns a boolean if a field has been set.
+func (o *AppleDigitalWalletProvisionResponse) HasCreatedTime() bool {
+	if o != nil && o.CreatedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedTime gets a reference to the given time.Time and assigns it to the CreatedTime field.
+func (o *AppleDigitalWalletProvisionResponse) SetCreatedTime(v time.Time) {
+	o.CreatedTime = &v
+}
+
+// GetEncryptedPassData returns the EncryptedPassData field value if set, zero value otherwise.
+func (o *AppleDigitalWalletProvisionResponse) GetEncryptedPassData() string {
+	if o == nil || o.EncryptedPassData == nil {
+		var ret string
+		return ret
+	}
+	return *o.EncryptedPassData
+}
+
+// GetEncryptedPassDataOk returns a tuple with the EncryptedPassData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AppleDigitalWalletProvisionResponse) GetEncryptedPassDataOk() (*string, bool) {
+	if o == nil || o.EncryptedPassData == nil {
+		return nil, false
+	}
+	return o.EncryptedPassData, true
+}
+
+// HasEncryptedPassData returns a boolean if a field has been set.
+func (o *AppleDigitalWalletProvisionResponse) HasEncryptedPassData() bool {
+	if o != nil && o.EncryptedPassData != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptedPassData gets a reference to the given string and assigns it to the EncryptedPassData field.
+func (o *AppleDigitalWalletProvisionResponse) SetEncryptedPassData(v string) {
+	o.EncryptedPassData = &v
+}
+
 // GetEphemeralPublicKey returns the EphemeralPublicKey field value if set, zero value otherwise.
 func (o *AppleDigitalWalletProvisionResponse) GetEphemeralPublicKey() string {
 	if o == nil || o.EphemeralPublicKey == nil {
@@ -235,25 +203,57 @@ func (o *AppleDigitalWalletProvisionResponse) SetEphemeralPublicKey(v string) {
 	o.EphemeralPublicKey = &v
 }
 
+// GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
+func (o *AppleDigitalWalletProvisionResponse) GetLastModifiedTime() time.Time {
+	if o == nil || o.LastModifiedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastModifiedTime
+}
+
+// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AppleDigitalWalletProvisionResponse) GetLastModifiedTimeOk() (*time.Time, bool) {
+	if o == nil || o.LastModifiedTime == nil {
+		return nil, false
+	}
+	return o.LastModifiedTime, true
+}
+
+// HasLastModifiedTime returns a boolean if a field has been set.
+func (o *AppleDigitalWalletProvisionResponse) HasLastModifiedTime() bool {
+	if o != nil && o.LastModifiedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedTime gets a reference to the given time.Time and assigns it to the LastModifiedTime field.
+func (o *AppleDigitalWalletProvisionResponse) SetLastModifiedTime(v time.Time) {
+	o.LastModifiedTime = &v
+}
+
 func (o AppleDigitalWalletProvisionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CreatedTime != nil {
-		toSerialize["created_time"] = o.CreatedTime
-	}
-	if o.LastModifiedTime != nil {
-		toSerialize["last_modified_time"] = o.LastModifiedTime
+	if o.ActivationData != nil {
+		toSerialize["activation_data"] = o.ActivationData
 	}
 	if o.CardId != nil {
 		toSerialize["card_id"] = o.CardId
 	}
+	if o.CreatedTime != nil {
+		toSerialize["created_time"] = o.CreatedTime
+	}
 	if o.EncryptedPassData != nil {
 		toSerialize["encrypted_pass_data"] = o.EncryptedPassData
 	}
-	if o.ActivationData != nil {
-		toSerialize["activation_data"] = o.ActivationData
-	}
 	if o.EphemeralPublicKey != nil {
 		toSerialize["ephemeral_public_key"] = o.EphemeralPublicKey
+	}
+	if o.LastModifiedTime != nil {
+		toSerialize["last_modified_time"] = o.LastModifiedTime
 	}
 	return json.Marshal(toSerialize)
 }

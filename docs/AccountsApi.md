@@ -5,7 +5,6 @@ All URIs are relative to *https://api.synctera.com/v0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAccount**](AccountsApi.md#CreateAccount) | **Post** /accounts | Create an account
-[**CreateAccountAliases**](AccountsApi.md#CreateAccountAliases) | **Post** /accounts/{account_id}/aliases | Create account aliases
 [**CreateAccountRelationship**](AccountsApi.md#CreateAccountRelationship) | **Post** /accounts/{account_id}/relationships | Create account relationship
 [**CreateAccountResourceProduct**](AccountsApi.md#CreateAccountResourceProduct) | **Post** /accounts/products | Create an account product
 [**CreateAccountTemplate**](AccountsApi.md#CreateAccountTemplate) | **Post** /accounts/templates | Create an account template
@@ -15,7 +14,6 @@ Method | HTTP request | Description
 [**GetAccount**](AccountsApi.md#GetAccount) | **Get** /accounts/{account_id} | Get account
 [**GetAccountRelationship**](AccountsApi.md#GetAccountRelationship) | **Get** /accounts/{account_id}/relationships/{relationship_id} | Get account relationship
 [**GetAccountTemplate**](AccountsApi.md#GetAccountTemplate) | **Get** /accounts/templates/{template_id} | Get account template
-[**ListAccountAliases**](AccountsApi.md#ListAccountAliases) | **Get** /accounts/aliases | List account aliases
 [**ListAccountRelationship**](AccountsApi.md#ListAccountRelationship) | **Get** /accounts/{account_id}/relationships | List account relationships
 [**ListAccountResourceProducts**](AccountsApi.md#ListAccountResourceProducts) | **Get** /accounts/products | List account products
 [**ListAccountTemplates**](AccountsApi.md#ListAccountTemplates) | **Get** /accounts/templates | List account templates
@@ -94,76 +92,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateAccountAliases
-
-> CreateAccountAliases(ctx, accountId).Alias(alias).Execute()
-
-Create account aliases
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    accountId := TODO // string | Unique identifier for the account.
-    alias := *openapiclient.NewAlias() // Alias | Account alias to create
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.CreateAccountAliases(context.Background(), accountId).Alias(alias).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.CreateAccountAliases``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Unique identifier for the account. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateAccountAliasesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **alias** | [**Alias**](Alias.md) | Account alias to create | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CreateAccountRelationship
 
 > Relationship CreateAccountRelationship(ctx, accountId).Relationship(relationship).Execute()
@@ -186,7 +114,7 @@ import (
 
 func main() {
     accountId := TODO // string | Unique identifier for the account.
-    relationship := *openapiclient.NewRelationship(openapiclient.account_relationship_type("ACCOUNT_HOLDER"), "CustomerId_example") // Relationship | Account relationship object
+    relationship := *openapiclient.NewRelationship("CustomerId_example", openapiclient.account_relationship_type("ACCOUNT_HOLDER")) // Relationship | Account relationship object
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -257,7 +185,7 @@ import (
 )
 
 func main() {
-    accountProduct := openapiclient.account_product{Fee: openapiclient.NewFee("ProductType_example", "FeeType_example", int64(123), "Currency_example")} // AccountProduct | Account product to create
+    accountProduct := openapiclient.account_product{Fee: openapiclient.NewFee(int64(123), "Currency_example", "FeeType_example", "ProductType_example")} // AccountProduct | Account product to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -323,7 +251,7 @@ import (
 )
 
 func main() {
-    accountTemplate := *openapiclient.NewAccountTemplate("Name_example", false, *openapiclient.NewTemplateFields(openapiclient.account_type("SAVING"), "USD", "US")) // AccountTemplate | Account template to create
+    accountTemplate := *openapiclient.NewAccountTemplate(false, "Name_example", *openapiclient.NewTemplateFields(openapiclient.account_type("SAVING"), "US", "USD")) // AccountTemplate | Account template to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -794,76 +722,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListAccountAliases
-
-> AliasList ListAccountAliases(ctx).AliasType(aliasType).AliasSource(aliasSource).AliasName(aliasName).Execute()
-
-List account aliases
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    aliasType := "aliasType_example" // string |  (optional)
-    aliasSource := []string{"Inner_example"} // []string |  (optional)
-    aliasName := "aliasName_example" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ListAccountAliases(context.Background()).AliasType(aliasType).AliasSource(aliasSource).AliasName(aliasName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccountAliases``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListAccountAliases`: AliasList
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ListAccountAliases`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListAccountAliasesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **aliasType** | **string** |  | 
- **aliasSource** | **[]string** |  | 
- **aliasName** | **string** |  | 
-
-### Return type
-
-[**AliasList**](AliasList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListAccountRelationship
 
 > RelationshipList ListAccountRelationship(ctx, accountId).Limit(limit).PageToken(pageToken).Execute()
@@ -940,7 +798,7 @@ Name | Type | Description  | Notes
 
 ## ListAccountResourceProducts
 
-> AccountProductList ListAccountResourceProducts(ctx).ProductType(productType).Limit(limit).PageToken(pageToken).StartDate(startDate).EndDate(endDate).Id(id).Execute()
+> AccountProductList ListAccountResourceProducts(ctx).ProductType(productType).Limit(limit).PageToken(pageToken).StartDate(startDate).EndDate(endDate).Execute()
 
 List account products
 
@@ -965,11 +823,10 @@ func main() {
     pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
     startDate := time.Now() // oapi.Date | Date range filtering for type INTEREST. All rates in interest resource have to have valid_from later or equal to start_date. (optional)
     endDate := time.Now() // oapi.Date | Date range filtering for type INTEREST. All rates in interest resource have to have valid_to earlier or equal to end_date. (optional)
-    id := "id_example" // string | ID of account product. Multiple IDs can be provided as a comma-separated list. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ListAccountResourceProducts(context.Background()).ProductType(productType).Limit(limit).PageToken(pageToken).StartDate(startDate).EndDate(endDate).Id(id).Execute()
+    resp, r, err := api_client.AccountsApi.ListAccountResourceProducts(context.Background()).ProductType(productType).Limit(limit).PageToken(pageToken).StartDate(startDate).EndDate(endDate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccountResourceProducts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -995,7 +852,6 @@ Name | Type | Description  | Notes
  **pageToken** | **string** |  | 
  **startDate** | **oapi.Date** | Date range filtering for type INTEREST. All rates in interest resource have to have valid_from later or equal to start_date. | 
  **endDate** | **oapi.Date** | Date range filtering for type INTEREST. All rates in interest resource have to have valid_to earlier or equal to end_date. | 
- **id** | **string** | ID of account product. Multiple IDs can be provided as a comma-separated list. | 
 
 ### Return type
 
@@ -1085,7 +941,7 @@ Name | Type | Description  | Notes
 
 ## ListAccounts
 
-> AccountList ListAccounts(ctx).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Tenant(tenant).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
+> AccountList ListAccounts(ctx).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
 
 List accounts
 
@@ -1111,14 +967,13 @@ func main() {
     customerId := TODO // string | The customer's unique identifier (optional)
     firstName := "Alice" // string |  (optional)
     lastName := "Smith" // string |  (optional)
-    tenant := "2_3" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
     pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
     sortBy := []string{"SortBy_example"} // []string | Specifies the sort order for the returned accounts.  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Tenant(tenant).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
+    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1146,7 +1001,6 @@ Name | Type | Description  | Notes
  **customerId** | [**string**](string.md) | The customer&#39;s unique identifier | 
  **firstName** | **string** |  | 
  **lastName** | **string** |  | 
- **tenant** | **string** |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
  **sortBy** | **[]string** | Specifies the sort order for the returned accounts.  | 
@@ -1263,7 +1117,7 @@ import (
 
 func main() {
     productId := TODO // string | Account Product ID
-    patchAccountProduct := openapiclient.patch_account_product{Fee: openapiclient.NewFee("ProductType_example", "FeeType_example", int64(123), "Currency_example")} // PatchAccountProduct | Account product fields to be patched
+    patchAccountProduct := openapiclient.patch_account_product{Fee: openapiclient.NewFee(int64(123), "Currency_example", "FeeType_example", "ProductType_example")} // PatchAccountProduct | Account product fields to be patched
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1408,7 +1262,7 @@ import (
 func main() {
     accountId := TODO // string | Unique identifier for the account.
     relationshipId := TODO // string | Relationship ID of the account associate with the account entity
-    relationship := *openapiclient.NewRelationship(openapiclient.account_relationship_type("ACCOUNT_HOLDER"), "CustomerId_example") // Relationship | Account relationship to be updated
+    relationship := *openapiclient.NewRelationship("CustomerId_example", openapiclient.account_relationship_type("ACCOUNT_HOLDER")) // Relationship | Account relationship to be updated
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1482,7 +1336,7 @@ import (
 
 func main() {
     templateId := TODO // string | Account Template ID
-    accountTemplate := *openapiclient.NewAccountTemplate("Name_example", false, *openapiclient.NewTemplateFields(openapiclient.account_type("SAVING"), "USD", "US")) // AccountTemplate | Account template to update
+    accountTemplate := *openapiclient.NewAccountTemplate(false, "Name_example", *openapiclient.NewTemplateFields(openapiclient.account_type("SAVING"), "US", "USD")) // AccountTemplate | Account template to update
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

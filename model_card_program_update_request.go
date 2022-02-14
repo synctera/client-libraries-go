@@ -17,15 +17,15 @@ import (
 
 // CardProgramUpdateRequest struct for CardProgramUpdateRequest
 type CardProgramUpdateRequest struct {
-	// Program name
-	Name            *string          `json:"name,omitempty"`
 	CardBrand       *CardBrand       `json:"card_brand,omitempty"`
 	CardCategory    *CardCategory    `json:"card_category,omitempty"`
 	CardProductType *CardProductType `json:"card_product_type,omitempty"`
-	// The time when program becomes active
-	StartDate *time.Time `json:"start_date,omitempty"`
 	// The time when program became inactive
 	EndDate *time.Time `json:"end_date,omitempty"`
+	// Program name
+	Name *string `json:"name,omitempty"`
+	// The time when program becomes active
+	StartDate *time.Time `json:"start_date,omitempty"`
 }
 
 // NewCardProgramUpdateRequest instantiates a new CardProgramUpdateRequest object
@@ -43,38 +43,6 @@ func NewCardProgramUpdateRequest() *CardProgramUpdateRequest {
 func NewCardProgramUpdateRequestWithDefaults() *CardProgramUpdateRequest {
 	this := CardProgramUpdateRequest{}
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CardProgramUpdateRequest) GetName() string {
-	if o == nil || o.Name == nil {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CardProgramUpdateRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CardProgramUpdateRequest) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CardProgramUpdateRequest) SetName(v string) {
-	o.Name = &v
 }
 
 // GetCardBrand returns the CardBrand field value if set, zero value otherwise.
@@ -173,38 +141,6 @@ func (o *CardProgramUpdateRequest) SetCardProductType(v CardProductType) {
 	o.CardProductType = &v
 }
 
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *CardProgramUpdateRequest) GetStartDate() time.Time {
-	if o == nil || o.StartDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.StartDate
-}
-
-// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CardProgramUpdateRequest) GetStartDateOk() (*time.Time, bool) {
-	if o == nil || o.StartDate == nil {
-		return nil, false
-	}
-	return o.StartDate, true
-}
-
-// HasStartDate returns a boolean if a field has been set.
-func (o *CardProgramUpdateRequest) HasStartDate() bool {
-	if o != nil && o.StartDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
-func (o *CardProgramUpdateRequest) SetStartDate(v time.Time) {
-	o.StartDate = &v
-}
-
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
 func (o *CardProgramUpdateRequest) GetEndDate() time.Time {
 	if o == nil || o.EndDate == nil {
@@ -237,11 +173,72 @@ func (o *CardProgramUpdateRequest) SetEndDate(v time.Time) {
 	o.EndDate = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CardProgramUpdateRequest) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProgramUpdateRequest) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CardProgramUpdateRequest) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CardProgramUpdateRequest) SetName(v string) {
+	o.Name = &v
+}
+
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
+func (o *CardProgramUpdateRequest) GetStartDate() time.Time {
+	if o == nil || o.StartDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardProgramUpdateRequest) GetStartDateOk() (*time.Time, bool) {
+	if o == nil || o.StartDate == nil {
+		return nil, false
+	}
+	return o.StartDate, true
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *CardProgramUpdateRequest) HasStartDate() bool {
+	if o != nil && o.StartDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
+func (o *CardProgramUpdateRequest) SetStartDate(v time.Time) {
+	o.StartDate = &v
+}
+
 func (o CardProgramUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
 	if o.CardBrand != nil {
 		toSerialize["card_brand"] = o.CardBrand
 	}
@@ -251,11 +248,14 @@ func (o CardProgramUpdateRequest) MarshalJSON() ([]byte, error) {
 	if o.CardProductType != nil {
 		toSerialize["card_product_type"] = o.CardProductType
 	}
-	if o.StartDate != nil {
-		toSerialize["start_date"] = o.StartDate
-	}
 	if o.EndDate != nil {
 		toSerialize["end_date"] = o.EndDate
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if o.StartDate != nil {
+		toSerialize["start_date"] = o.StartDate
 	}
 	return json.Marshal(toSerialize)
 }

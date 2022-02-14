@@ -20,18 +20,18 @@ import (
 type ExternalAccountTransaction struct {
 	// Transaction amount. Number in cents. E.g. 1000 represents $10.00
 	Amount *int64 `json:"amount,omitempty"`
-	// ISO 4217 alphabetic currency code
-	Currency *string `json:"currency,omitempty"`
+	// Date that the transaction is authorized. ISO 8601 format ( YYYY-MM-DD ).
+	AuthorizedDate *oapi.Date `json:"authorized_date,omitempty"`
 	// Category of the transaction
 	Category *[]string `json:"category,omitempty"`
 	// Check number of the transaction. This field will be null if not a check transaction.
 	CheckNumber *string `json:"check_number,omitempty"`
-	// Indicates the transaction is pending or unsettled if true.
-	IsPending *bool `json:"is_pending,omitempty"`
+	// ISO 4217 alphabetic currency code
+	Currency *string `json:"currency,omitempty"`
 	// For pending transactions, this represents the date of the transaction occurred; for posted transactions, this represents the date of the transaction posted. ISO 8601 format ( YYYY-MM-DD ).
 	Date *oapi.Date `json:"date,omitempty"`
-	// Date that the transaction is authorized. ISO 8601 format ( YYYY-MM-DD ).
-	AuthorizedDate *oapi.Date `json:"authorized_date,omitempty"`
+	// Indicates the transaction is pending or unsettled if true.
+	IsPending *bool `json:"is_pending,omitempty"`
 	// Merchant name of the transaction
 	MerchantName *string `json:"merchant_name,omitempty"`
 	// channel used to make a payment
@@ -91,36 +91,36 @@ func (o *ExternalAccountTransaction) SetAmount(v int64) {
 	o.Amount = &v
 }
 
-// GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *ExternalAccountTransaction) GetCurrency() string {
-	if o == nil || o.Currency == nil {
-		var ret string
+// GetAuthorizedDate returns the AuthorizedDate field value if set, zero value otherwise.
+func (o *ExternalAccountTransaction) GetAuthorizedDate() oapi.Date {
+	if o == nil || o.AuthorizedDate == nil {
+		var ret oapi.Date
 		return ret
 	}
-	return *o.Currency
+	return *o.AuthorizedDate
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// GetAuthorizedDateOk returns a tuple with the AuthorizedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExternalAccountTransaction) GetCurrencyOk() (*string, bool) {
-	if o == nil || o.Currency == nil {
+func (o *ExternalAccountTransaction) GetAuthorizedDateOk() (*oapi.Date, bool) {
+	if o == nil || o.AuthorizedDate == nil {
 		return nil, false
 	}
-	return o.Currency, true
+	return o.AuthorizedDate, true
 }
 
-// HasCurrency returns a boolean if a field has been set.
-func (o *ExternalAccountTransaction) HasCurrency() bool {
-	if o != nil && o.Currency != nil {
+// HasAuthorizedDate returns a boolean if a field has been set.
+func (o *ExternalAccountTransaction) HasAuthorizedDate() bool {
+	if o != nil && o.AuthorizedDate != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *ExternalAccountTransaction) SetCurrency(v string) {
-	o.Currency = &v
+// SetAuthorizedDate gets a reference to the given oapi.Date and assigns it to the AuthorizedDate field.
+func (o *ExternalAccountTransaction) SetAuthorizedDate(v oapi.Date) {
+	o.AuthorizedDate = &v
 }
 
 // GetCategory returns the Category field value if set, zero value otherwise.
@@ -187,36 +187,36 @@ func (o *ExternalAccountTransaction) SetCheckNumber(v string) {
 	o.CheckNumber = &v
 }
 
-// GetIsPending returns the IsPending field value if set, zero value otherwise.
-func (o *ExternalAccountTransaction) GetIsPending() bool {
-	if o == nil || o.IsPending == nil {
-		var ret bool
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *ExternalAccountTransaction) GetCurrency() string {
+	if o == nil || o.Currency == nil {
+		var ret string
 		return ret
 	}
-	return *o.IsPending
+	return *o.Currency
 }
 
-// GetIsPendingOk returns a tuple with the IsPending field value if set, nil otherwise
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExternalAccountTransaction) GetIsPendingOk() (*bool, bool) {
-	if o == nil || o.IsPending == nil {
+func (o *ExternalAccountTransaction) GetCurrencyOk() (*string, bool) {
+	if o == nil || o.Currency == nil {
 		return nil, false
 	}
-	return o.IsPending, true
+	return o.Currency, true
 }
 
-// HasIsPending returns a boolean if a field has been set.
-func (o *ExternalAccountTransaction) HasIsPending() bool {
-	if o != nil && o.IsPending != nil {
+// HasCurrency returns a boolean if a field has been set.
+func (o *ExternalAccountTransaction) HasCurrency() bool {
+	if o != nil && o.Currency != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIsPending gets a reference to the given bool and assigns it to the IsPending field.
-func (o *ExternalAccountTransaction) SetIsPending(v bool) {
-	o.IsPending = &v
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *ExternalAccountTransaction) SetCurrency(v string) {
+	o.Currency = &v
 }
 
 // GetDate returns the Date field value if set, zero value otherwise.
@@ -251,36 +251,36 @@ func (o *ExternalAccountTransaction) SetDate(v oapi.Date) {
 	o.Date = &v
 }
 
-// GetAuthorizedDate returns the AuthorizedDate field value if set, zero value otherwise.
-func (o *ExternalAccountTransaction) GetAuthorizedDate() oapi.Date {
-	if o == nil || o.AuthorizedDate == nil {
-		var ret oapi.Date
+// GetIsPending returns the IsPending field value if set, zero value otherwise.
+func (o *ExternalAccountTransaction) GetIsPending() bool {
+	if o == nil || o.IsPending == nil {
+		var ret bool
 		return ret
 	}
-	return *o.AuthorizedDate
+	return *o.IsPending
 }
 
-// GetAuthorizedDateOk returns a tuple with the AuthorizedDate field value if set, nil otherwise
+// GetIsPendingOk returns a tuple with the IsPending field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExternalAccountTransaction) GetAuthorizedDateOk() (*oapi.Date, bool) {
-	if o == nil || o.AuthorizedDate == nil {
+func (o *ExternalAccountTransaction) GetIsPendingOk() (*bool, bool) {
+	if o == nil || o.IsPending == nil {
 		return nil, false
 	}
-	return o.AuthorizedDate, true
+	return o.IsPending, true
 }
 
-// HasAuthorizedDate returns a boolean if a field has been set.
-func (o *ExternalAccountTransaction) HasAuthorizedDate() bool {
-	if o != nil && o.AuthorizedDate != nil {
+// HasIsPending returns a boolean if a field has been set.
+func (o *ExternalAccountTransaction) HasIsPending() bool {
+	if o != nil && o.IsPending != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthorizedDate gets a reference to the given oapi.Date and assigns it to the AuthorizedDate field.
-func (o *ExternalAccountTransaction) SetAuthorizedDate(v oapi.Date) {
-	o.AuthorizedDate = &v
+// SetIsPending gets a reference to the given bool and assigns it to the IsPending field.
+func (o *ExternalAccountTransaction) SetIsPending(v bool) {
+	o.IsPending = &v
 }
 
 // GetMerchantName returns the MerchantName field value if set, zero value otherwise.
@@ -416,8 +416,8 @@ func (o ExternalAccountTransaction) MarshalJSON() ([]byte, error) {
 	if o.Amount != nil {
 		toSerialize["amount"] = o.Amount
 	}
-	if o.Currency != nil {
-		toSerialize["currency"] = o.Currency
+	if o.AuthorizedDate != nil {
+		toSerialize["authorized_date"] = o.AuthorizedDate
 	}
 	if o.Category != nil {
 		toSerialize["category"] = o.Category
@@ -425,14 +425,14 @@ func (o ExternalAccountTransaction) MarshalJSON() ([]byte, error) {
 	if o.CheckNumber != nil {
 		toSerialize["check_number"] = o.CheckNumber
 	}
-	if o.IsPending != nil {
-		toSerialize["is_pending"] = o.IsPending
+	if o.Currency != nil {
+		toSerialize["currency"] = o.Currency
 	}
 	if o.Date != nil {
 		toSerialize["date"] = o.Date
 	}
-	if o.AuthorizedDate != nil {
-		toSerialize["authorized_date"] = o.AuthorizedDate
+	if o.IsPending != nil {
+		toSerialize["is_pending"] = o.IsPending
 	}
 	if o.MerchantName != nil {
 		toSerialize["merchant_name"] = o.MerchantName

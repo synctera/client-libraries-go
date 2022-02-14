@@ -16,10 +16,10 @@ import (
 
 // AccountIdentifiers struct for AccountIdentifiers
 type AccountIdentifiers struct {
-	// The account number. Value may be masked, in which case only the last four digits are returned.
-	Number string `json:"number"`
 	// The IBAN of the account. Value may be masked, in which case only the last four digits are returned.
 	Iban *string `json:"iban,omitempty"`
+	// The account number. Value may be masked, in which case only the last four digits are returned.
+	Number string `json:"number"`
 }
 
 // NewAccountIdentifiers instantiates a new AccountIdentifiers object
@@ -38,30 +38,6 @@ func NewAccountIdentifiers(number string) *AccountIdentifiers {
 func NewAccountIdentifiersWithDefaults() *AccountIdentifiers {
 	this := AccountIdentifiers{}
 	return &this
-}
-
-// GetNumber returns the Number field value
-func (o *AccountIdentifiers) GetNumber() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Number
-}
-
-// GetNumberOk returns a tuple with the Number field value
-// and a boolean to check if the value has been set.
-func (o *AccountIdentifiers) GetNumberOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Number, true
-}
-
-// SetNumber sets field value
-func (o *AccountIdentifiers) SetNumber(v string) {
-	o.Number = v
 }
 
 // GetIban returns the Iban field value if set, zero value otherwise.
@@ -96,13 +72,37 @@ func (o *AccountIdentifiers) SetIban(v string) {
 	o.Iban = &v
 }
 
+// GetNumber returns the Number field value
+func (o *AccountIdentifiers) GetNumber() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Number
+}
+
+// GetNumberOk returns a tuple with the Number field value
+// and a boolean to check if the value has been set.
+func (o *AccountIdentifiers) GetNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Number, true
+}
+
+// SetNumber sets field value
+func (o *AccountIdentifiers) SetNumber(v string) {
+	o.Number = v
+}
+
 func (o AccountIdentifiers) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["number"] = o.Number
-	}
 	if o.Iban != nil {
 		toSerialize["iban"] = o.Iban
+	}
+	if true {
+		toSerialize["number"] = o.Number
 	}
 	return json.Marshal(toSerialize)
 }

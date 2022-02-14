@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | External account unique identifier | [readonly] 
-**CustomerId** | **string** | The identifier for the customer associated with this account | 
+**AccountIdentifiers** | [**AccountIdentifiers**](AccountIdentifiers.md) |  | 
 **AccountOwnerNames** | **[]string** | The names of the account owners. Values may be masked, in which case the array will be empty.  | 
+**CreationTime** | **time.Time** |  | 
+**CustomerId** | **string** | The identifier for the customer associated with this account | 
+**Id** | **string** | External account unique identifier | [readonly] 
+**LastUpdatedTime** | **time.Time** |  | 
+**Metadata** | Pointer to **map[string]interface{}** | User-supplied JSON format metadata. | [optional] 
+**Nickname** | Pointer to **string** | A user-meaningful name for the account | [optional] 
+**RoutingIdentifiers** | [**AccountRouting**](AccountRouting.md) |  | 
 **Status** | **string** | The current state of the account | 
 **Type** | **string** | The type of the account | 
 **VendorData** | Pointer to [**ExternalAccountVendorData**](ExternalAccountVendorData.md) |  | [optional] 
-**RoutingIdentifiers** | [**AccountRouting**](AccountRouting.md) |  | 
-**AccountIdentifiers** | [**AccountIdentifiers**](AccountIdentifiers.md) |  | 
-**Nickname** | Pointer to **string** | A user-meaningful name for the account | [optional] 
 **Verification** | [**NullableAccountVerification**](AccountVerification.md) |  | 
-**Metadata** | Pointer to **map[string]interface{}** | User-supplied JSON format metadata. | [optional] 
-**CreationTime** | **time.Time** |  | 
-**LastUpdatedTime** | **time.Time** |  | 
 
 ## Methods
 
 ### NewExternalAccount
 
-`func NewExternalAccount(id string, customerId string, accountOwnerNames []string, status string, type_ string, routingIdentifiers AccountRouting, accountIdentifiers AccountIdentifiers, verification NullableAccountVerification, creationTime time.Time, lastUpdatedTime time.Time, ) *ExternalAccount`
+`func NewExternalAccount(accountIdentifiers AccountIdentifiers, accountOwnerNames []string, creationTime time.Time, customerId string, id string, lastUpdatedTime time.Time, routingIdentifiers AccountRouting, status string, type_ string, verification NullableAccountVerification, ) *ExternalAccount`
 
 NewExternalAccount instantiates a new ExternalAccount object
 This constructor will assign default values to properties that have it defined,
@@ -37,24 +37,64 @@ NewExternalAccountWithDefaults instantiates a new ExternalAccount object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetAccountIdentifiers
 
-`func (o *ExternalAccount) GetId() string`
+`func (o *ExternalAccount) GetAccountIdentifiers() AccountIdentifiers`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetAccountIdentifiers returns the AccountIdentifiers field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetAccountIdentifiersOk
 
-`func (o *ExternalAccount) GetIdOk() (*string, bool)`
+`func (o *ExternalAccount) GetAccountIdentifiersOk() (*AccountIdentifiers, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetAccountIdentifiers
 
-`func (o *ExternalAccount) SetId(v string)`
+`func (o *ExternalAccount) SetAccountIdentifiers(v AccountIdentifiers)`
 
-SetId sets Id field to given value.
+SetAccountIdentifiers sets AccountIdentifiers field to given value.
+
+
+### GetAccountOwnerNames
+
+`func (o *ExternalAccount) GetAccountOwnerNames() []string`
+
+GetAccountOwnerNames returns the AccountOwnerNames field if non-nil, zero value otherwise.
+
+### GetAccountOwnerNamesOk
+
+`func (o *ExternalAccount) GetAccountOwnerNamesOk() (*[]string, bool)`
+
+GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountOwnerNames
+
+`func (o *ExternalAccount) SetAccountOwnerNames(v []string)`
+
+SetAccountOwnerNames sets AccountOwnerNames field to given value.
+
+
+### GetCreationTime
+
+`func (o *ExternalAccount) GetCreationTime() time.Time`
+
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+
+### GetCreationTimeOk
+
+`func (o *ExternalAccount) GetCreationTimeOk() (*time.Time, bool)`
+
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationTime
+
+`func (o *ExternalAccount) SetCreationTime(v time.Time)`
+
+SetCreationTime sets CreationTime field to given value.
 
 
 ### GetCustomerId
@@ -77,24 +117,114 @@ and a boolean to check if the value has been set.
 SetCustomerId sets CustomerId field to given value.
 
 
-### GetAccountOwnerNames
+### GetId
 
-`func (o *ExternalAccount) GetAccountOwnerNames() []string`
+`func (o *ExternalAccount) GetId() string`
 
-GetAccountOwnerNames returns the AccountOwnerNames field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetAccountOwnerNamesOk
+### GetIdOk
 
-`func (o *ExternalAccount) GetAccountOwnerNamesOk() (*[]string, bool)`
+`func (o *ExternalAccount) GetIdOk() (*string, bool)`
 
-GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountOwnerNames
+### SetId
 
-`func (o *ExternalAccount) SetAccountOwnerNames(v []string)`
+`func (o *ExternalAccount) SetId(v string)`
 
-SetAccountOwnerNames sets AccountOwnerNames field to given value.
+SetId sets Id field to given value.
+
+
+### GetLastUpdatedTime
+
+`func (o *ExternalAccount) GetLastUpdatedTime() time.Time`
+
+GetLastUpdatedTime returns the LastUpdatedTime field if non-nil, zero value otherwise.
+
+### GetLastUpdatedTimeOk
+
+`func (o *ExternalAccount) GetLastUpdatedTimeOk() (*time.Time, bool)`
+
+GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdatedTime
+
+`func (o *ExternalAccount) SetLastUpdatedTime(v time.Time)`
+
+SetLastUpdatedTime sets LastUpdatedTime field to given value.
+
+
+### GetMetadata
+
+`func (o *ExternalAccount) GetMetadata() map[string]interface{}`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *ExternalAccount) GetMetadataOk() (*map[string]interface{}, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *ExternalAccount) SetMetadata(v map[string]interface{})`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *ExternalAccount) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
+
+### GetNickname
+
+`func (o *ExternalAccount) GetNickname() string`
+
+GetNickname returns the Nickname field if non-nil, zero value otherwise.
+
+### GetNicknameOk
+
+`func (o *ExternalAccount) GetNicknameOk() (*string, bool)`
+
+GetNicknameOk returns a tuple with the Nickname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNickname
+
+`func (o *ExternalAccount) SetNickname(v string)`
+
+SetNickname sets Nickname field to given value.
+
+### HasNickname
+
+`func (o *ExternalAccount) HasNickname() bool`
+
+HasNickname returns a boolean if a field has been set.
+
+### GetRoutingIdentifiers
+
+`func (o *ExternalAccount) GetRoutingIdentifiers() AccountRouting`
+
+GetRoutingIdentifiers returns the RoutingIdentifiers field if non-nil, zero value otherwise.
+
+### GetRoutingIdentifiersOk
+
+`func (o *ExternalAccount) GetRoutingIdentifiersOk() (*AccountRouting, bool)`
+
+GetRoutingIdentifiersOk returns a tuple with the RoutingIdentifiers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoutingIdentifiers
+
+`func (o *ExternalAccount) SetRoutingIdentifiers(v AccountRouting)`
+
+SetRoutingIdentifiers sets RoutingIdentifiers field to given value.
 
 
 ### GetStatus
@@ -162,71 +292,6 @@ SetVendorData sets VendorData field to given value.
 
 HasVendorData returns a boolean if a field has been set.
 
-### GetRoutingIdentifiers
-
-`func (o *ExternalAccount) GetRoutingIdentifiers() AccountRouting`
-
-GetRoutingIdentifiers returns the RoutingIdentifiers field if non-nil, zero value otherwise.
-
-### GetRoutingIdentifiersOk
-
-`func (o *ExternalAccount) GetRoutingIdentifiersOk() (*AccountRouting, bool)`
-
-GetRoutingIdentifiersOk returns a tuple with the RoutingIdentifiers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRoutingIdentifiers
-
-`func (o *ExternalAccount) SetRoutingIdentifiers(v AccountRouting)`
-
-SetRoutingIdentifiers sets RoutingIdentifiers field to given value.
-
-
-### GetAccountIdentifiers
-
-`func (o *ExternalAccount) GetAccountIdentifiers() AccountIdentifiers`
-
-GetAccountIdentifiers returns the AccountIdentifiers field if non-nil, zero value otherwise.
-
-### GetAccountIdentifiersOk
-
-`func (o *ExternalAccount) GetAccountIdentifiersOk() (*AccountIdentifiers, bool)`
-
-GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountIdentifiers
-
-`func (o *ExternalAccount) SetAccountIdentifiers(v AccountIdentifiers)`
-
-SetAccountIdentifiers sets AccountIdentifiers field to given value.
-
-
-### GetNickname
-
-`func (o *ExternalAccount) GetNickname() string`
-
-GetNickname returns the Nickname field if non-nil, zero value otherwise.
-
-### GetNicknameOk
-
-`func (o *ExternalAccount) GetNicknameOk() (*string, bool)`
-
-GetNicknameOk returns a tuple with the Nickname field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNickname
-
-`func (o *ExternalAccount) SetNickname(v string)`
-
-SetNickname sets Nickname field to given value.
-
-### HasNickname
-
-`func (o *ExternalAccount) HasNickname() bool`
-
-HasNickname returns a boolean if a field has been set.
-
 ### GetVerification
 
 `func (o *ExternalAccount) GetVerification() AccountVerification`
@@ -257,71 +322,6 @@ SetVerification sets Verification field to given value.
 `func (o *ExternalAccount) UnsetVerification()`
 
 UnsetVerification ensures that no value is present for Verification, not even an explicit nil
-### GetMetadata
-
-`func (o *ExternalAccount) GetMetadata() map[string]interface{}`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *ExternalAccount) GetMetadataOk() (*map[string]interface{}, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *ExternalAccount) SetMetadata(v map[string]interface{})`
-
-SetMetadata sets Metadata field to given value.
-
-### HasMetadata
-
-`func (o *ExternalAccount) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
-
-### GetCreationTime
-
-`func (o *ExternalAccount) GetCreationTime() time.Time`
-
-GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
-
-### GetCreationTimeOk
-
-`func (o *ExternalAccount) GetCreationTimeOk() (*time.Time, bool)`
-
-GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreationTime
-
-`func (o *ExternalAccount) SetCreationTime(v time.Time)`
-
-SetCreationTime sets CreationTime field to given value.
-
-
-### GetLastUpdatedTime
-
-`func (o *ExternalAccount) GetLastUpdatedTime() time.Time`
-
-GetLastUpdatedTime returns the LastUpdatedTime field if non-nil, zero value otherwise.
-
-### GetLastUpdatedTimeOk
-
-`func (o *ExternalAccount) GetLastUpdatedTimeOk() (*time.Time, bool)`
-
-GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastUpdatedTime
-
-`func (o *ExternalAccount) SetLastUpdatedTime(v time.Time)`
-
-SetLastUpdatedTime sets LastUpdatedTime field to given value.
-
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

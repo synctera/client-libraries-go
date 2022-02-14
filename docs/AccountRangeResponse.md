@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Account Range Id | [readonly] 
-**BankId** | **int32** | The bank ID | 
-**PartnerId** | **int32** | The partner ID | 
-**BinId** | **string** | The ID of the BIN this account range belogns to | 
 **AccountRange** | **[]int32** |  | 
+**BankId** | **int32** | The bank ID | 
+**BinId** | **string** | The ID of the BIN this account range belogns to | 
+**CreationTime** | **time.Time** | The timestamp representing when the account range was created | [readonly] 
+**EndDate** | Pointer to **time.Time** | The time when account range becomes inactive | [optional] 
+**Id** | **string** | Account Range Id | [readonly] 
+**LastModifiedTime** | **time.Time** | The timestamp representing when the account range was last modified | [readonly] 
+**PartnerId** | **int32** | The partner ID | 
 **PhysicalCardFormat** | Pointer to [**PhysicalCardFormat**](PhysicalCardFormat.md) |  | [optional] 
 **StartDate** | Pointer to **time.Time** | The time when account range becomes active | [optional] 
-**EndDate** | Pointer to **time.Time** | The time when account range becomes inactive | [optional] 
-**CreationTime** | **time.Time** | The timestamp representing when the account range was created | [readonly] 
-**LastModifiedTime** | **time.Time** | The timestamp representing when the account range was last modified | [readonly] 
 
 ## Methods
 
 ### NewAccountRangeResponse
 
-`func NewAccountRangeResponse(id string, bankId int32, partnerId int32, binId string, accountRange []int32, creationTime time.Time, lastModifiedTime time.Time, ) *AccountRangeResponse`
+`func NewAccountRangeResponse(accountRange []int32, bankId int32, binId string, creationTime time.Time, id string, lastModifiedTime time.Time, partnerId int32, ) *AccountRangeResponse`
 
 NewAccountRangeResponse instantiates a new AccountRangeResponse object
 This constructor will assign default values to properties that have it defined,
@@ -34,24 +34,24 @@ NewAccountRangeResponseWithDefaults instantiates a new AccountRangeResponse obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetAccountRange
 
-`func (o *AccountRangeResponse) GetId() string`
+`func (o *AccountRangeResponse) GetAccountRange() []int32`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetAccountRange returns the AccountRange field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetAccountRangeOk
 
-`func (o *AccountRangeResponse) GetIdOk() (*string, bool)`
+`func (o *AccountRangeResponse) GetAccountRangeOk() (*[]int32, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetAccountRangeOk returns a tuple with the AccountRange field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetAccountRange
 
-`func (o *AccountRangeResponse) SetId(v string)`
+`func (o *AccountRangeResponse) SetAccountRange(v []int32)`
 
-SetId sets Id field to given value.
+SetAccountRange sets AccountRange field to given value.
 
 
 ### GetBankId
@@ -74,26 +74,6 @@ and a boolean to check if the value has been set.
 SetBankId sets BankId field to given value.
 
 
-### GetPartnerId
-
-`func (o *AccountRangeResponse) GetPartnerId() int32`
-
-GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
-
-### GetPartnerIdOk
-
-`func (o *AccountRangeResponse) GetPartnerIdOk() (*int32, bool)`
-
-GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerId
-
-`func (o *AccountRangeResponse) SetPartnerId(v int32)`
-
-SetPartnerId sets PartnerId field to given value.
-
-
 ### GetBinId
 
 `func (o *AccountRangeResponse) GetBinId() string`
@@ -114,24 +94,109 @@ and a boolean to check if the value has been set.
 SetBinId sets BinId field to given value.
 
 
-### GetAccountRange
+### GetCreationTime
 
-`func (o *AccountRangeResponse) GetAccountRange() []int32`
+`func (o *AccountRangeResponse) GetCreationTime() time.Time`
 
-GetAccountRange returns the AccountRange field if non-nil, zero value otherwise.
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
 
-### GetAccountRangeOk
+### GetCreationTimeOk
 
-`func (o *AccountRangeResponse) GetAccountRangeOk() (*[]int32, bool)`
+`func (o *AccountRangeResponse) GetCreationTimeOk() (*time.Time, bool)`
 
-GetAccountRangeOk returns a tuple with the AccountRange field if it's non-nil, zero value otherwise
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountRange
+### SetCreationTime
 
-`func (o *AccountRangeResponse) SetAccountRange(v []int32)`
+`func (o *AccountRangeResponse) SetCreationTime(v time.Time)`
 
-SetAccountRange sets AccountRange field to given value.
+SetCreationTime sets CreationTime field to given value.
+
+
+### GetEndDate
+
+`func (o *AccountRangeResponse) GetEndDate() time.Time`
+
+GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+
+### GetEndDateOk
+
+`func (o *AccountRangeResponse) GetEndDateOk() (*time.Time, bool)`
+
+GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndDate
+
+`func (o *AccountRangeResponse) SetEndDate(v time.Time)`
+
+SetEndDate sets EndDate field to given value.
+
+### HasEndDate
+
+`func (o *AccountRangeResponse) HasEndDate() bool`
+
+HasEndDate returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *AccountRangeResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *AccountRangeResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *AccountRangeResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetLastModifiedTime
+
+`func (o *AccountRangeResponse) GetLastModifiedTime() time.Time`
+
+GetLastModifiedTime returns the LastModifiedTime field if non-nil, zero value otherwise.
+
+### GetLastModifiedTimeOk
+
+`func (o *AccountRangeResponse) GetLastModifiedTimeOk() (*time.Time, bool)`
+
+GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModifiedTime
+
+`func (o *AccountRangeResponse) SetLastModifiedTime(v time.Time)`
+
+SetLastModifiedTime sets LastModifiedTime field to given value.
+
+
+### GetPartnerId
+
+`func (o *AccountRangeResponse) GetPartnerId() int32`
+
+GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
+
+### GetPartnerIdOk
+
+`func (o *AccountRangeResponse) GetPartnerIdOk() (*int32, bool)`
+
+GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerId
+
+`func (o *AccountRangeResponse) SetPartnerId(v int32)`
+
+SetPartnerId sets PartnerId field to given value.
 
 
 ### GetPhysicalCardFormat
@@ -183,71 +248,6 @@ SetStartDate sets StartDate field to given value.
 `func (o *AccountRangeResponse) HasStartDate() bool`
 
 HasStartDate returns a boolean if a field has been set.
-
-### GetEndDate
-
-`func (o *AccountRangeResponse) GetEndDate() time.Time`
-
-GetEndDate returns the EndDate field if non-nil, zero value otherwise.
-
-### GetEndDateOk
-
-`func (o *AccountRangeResponse) GetEndDateOk() (*time.Time, bool)`
-
-GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEndDate
-
-`func (o *AccountRangeResponse) SetEndDate(v time.Time)`
-
-SetEndDate sets EndDate field to given value.
-
-### HasEndDate
-
-`func (o *AccountRangeResponse) HasEndDate() bool`
-
-HasEndDate returns a boolean if a field has been set.
-
-### GetCreationTime
-
-`func (o *AccountRangeResponse) GetCreationTime() time.Time`
-
-GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
-
-### GetCreationTimeOk
-
-`func (o *AccountRangeResponse) GetCreationTimeOk() (*time.Time, bool)`
-
-GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreationTime
-
-`func (o *AccountRangeResponse) SetCreationTime(v time.Time)`
-
-SetCreationTime sets CreationTime field to given value.
-
-
-### GetLastModifiedTime
-
-`func (o *AccountRangeResponse) GetLastModifiedTime() time.Time`
-
-GetLastModifiedTime returns the LastModifiedTime field if non-nil, zero value otherwise.
-
-### GetLastModifiedTimeOk
-
-`func (o *AccountRangeResponse) GetLastModifiedTimeOk() (*time.Time, bool)`
-
-GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastModifiedTime
-
-`func (o *AccountRangeResponse) SetLastModifiedTime(v time.Time)`
-
-SetLastModifiedTime sets LastModifiedTime field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Created** | Pointer to **time.Time** | When this alert was created | [optional] 
 **Id** | Pointer to **string** | Unique identifier for this alert | [optional] 
-**ProviderWatchlistName** | Pointer to **string** | The name of the provider for this alert | [optional] 
-**ProviderSubscriptionId** | Pointer to **string** | The id of the provider subscription for this alert | [optional] 
+**ProviderInfo** | Pointer to **map[string]interface{}** | The information provided to Synctera that triggered this alert, as an arbitrary JSON object. Interpretation of this object is up to the client.  | [optional] 
 **ProviderSubjectId** | Pointer to **string** | The id of the provider subject for this alert | [optional] 
+**ProviderSubscriptionId** | Pointer to **string** | The id of the provider subscription for this alert | [optional] 
+**ProviderWatchlistName** | Pointer to **string** | The name of the provider for this alert | [optional] 
+**Status** | **string** | The status of this alert | 
 **Urls** | Pointer to **[]string** | Where to get more information about this alert (according to our third-party data provider).  | [optional] 
 **VendorInfo** | Pointer to [**VendorInfo**](VendorInfo.md) |  | [optional] 
-**ProviderInfo** | Pointer to **map[string]interface{}** | The information provided to Synctera that triggered this alert, as an arbitrary JSON object. Interpretation of this object is up to the client.  | [optional] 
-**Status** | **string** | The status of this alert | 
-**Created** | Pointer to **time.Time** | When this alert was created | [optional] 
 
 ## Methods
 
@@ -32,6 +32,31 @@ will change when the set of required properties is changed
 NewWatchlistAlertWithDefaults instantiates a new WatchlistAlert object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCreated
+
+`func (o *WatchlistAlert) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *WatchlistAlert) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *WatchlistAlert) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *WatchlistAlert) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
 
 ### GetId
 
@@ -58,30 +83,55 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetProviderWatchlistName
+### GetProviderInfo
 
-`func (o *WatchlistAlert) GetProviderWatchlistName() string`
+`func (o *WatchlistAlert) GetProviderInfo() map[string]interface{}`
 
-GetProviderWatchlistName returns the ProviderWatchlistName field if non-nil, zero value otherwise.
+GetProviderInfo returns the ProviderInfo field if non-nil, zero value otherwise.
 
-### GetProviderWatchlistNameOk
+### GetProviderInfoOk
 
-`func (o *WatchlistAlert) GetProviderWatchlistNameOk() (*string, bool)`
+`func (o *WatchlistAlert) GetProviderInfoOk() (*map[string]interface{}, bool)`
 
-GetProviderWatchlistNameOk returns a tuple with the ProviderWatchlistName field if it's non-nil, zero value otherwise
+GetProviderInfoOk returns a tuple with the ProviderInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProviderWatchlistName
+### SetProviderInfo
 
-`func (o *WatchlistAlert) SetProviderWatchlistName(v string)`
+`func (o *WatchlistAlert) SetProviderInfo(v map[string]interface{})`
 
-SetProviderWatchlistName sets ProviderWatchlistName field to given value.
+SetProviderInfo sets ProviderInfo field to given value.
 
-### HasProviderWatchlistName
+### HasProviderInfo
 
-`func (o *WatchlistAlert) HasProviderWatchlistName() bool`
+`func (o *WatchlistAlert) HasProviderInfo() bool`
 
-HasProviderWatchlistName returns a boolean if a field has been set.
+HasProviderInfo returns a boolean if a field has been set.
+
+### GetProviderSubjectId
+
+`func (o *WatchlistAlert) GetProviderSubjectId() string`
+
+GetProviderSubjectId returns the ProviderSubjectId field if non-nil, zero value otherwise.
+
+### GetProviderSubjectIdOk
+
+`func (o *WatchlistAlert) GetProviderSubjectIdOk() (*string, bool)`
+
+GetProviderSubjectIdOk returns a tuple with the ProviderSubjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderSubjectId
+
+`func (o *WatchlistAlert) SetProviderSubjectId(v string)`
+
+SetProviderSubjectId sets ProviderSubjectId field to given value.
+
+### HasProviderSubjectId
+
+`func (o *WatchlistAlert) HasProviderSubjectId() bool`
+
+HasProviderSubjectId returns a boolean if a field has been set.
 
 ### GetProviderSubscriptionId
 
@@ -108,30 +158,50 @@ SetProviderSubscriptionId sets ProviderSubscriptionId field to given value.
 
 HasProviderSubscriptionId returns a boolean if a field has been set.
 
-### GetProviderSubjectId
+### GetProviderWatchlistName
 
-`func (o *WatchlistAlert) GetProviderSubjectId() string`
+`func (o *WatchlistAlert) GetProviderWatchlistName() string`
 
-GetProviderSubjectId returns the ProviderSubjectId field if non-nil, zero value otherwise.
+GetProviderWatchlistName returns the ProviderWatchlistName field if non-nil, zero value otherwise.
 
-### GetProviderSubjectIdOk
+### GetProviderWatchlistNameOk
 
-`func (o *WatchlistAlert) GetProviderSubjectIdOk() (*string, bool)`
+`func (o *WatchlistAlert) GetProviderWatchlistNameOk() (*string, bool)`
 
-GetProviderSubjectIdOk returns a tuple with the ProviderSubjectId field if it's non-nil, zero value otherwise
+GetProviderWatchlistNameOk returns a tuple with the ProviderWatchlistName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProviderSubjectId
+### SetProviderWatchlistName
 
-`func (o *WatchlistAlert) SetProviderSubjectId(v string)`
+`func (o *WatchlistAlert) SetProviderWatchlistName(v string)`
 
-SetProviderSubjectId sets ProviderSubjectId field to given value.
+SetProviderWatchlistName sets ProviderWatchlistName field to given value.
 
-### HasProviderSubjectId
+### HasProviderWatchlistName
 
-`func (o *WatchlistAlert) HasProviderSubjectId() bool`
+`func (o *WatchlistAlert) HasProviderWatchlistName() bool`
 
-HasProviderSubjectId returns a boolean if a field has been set.
+HasProviderWatchlistName returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *WatchlistAlert) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *WatchlistAlert) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *WatchlistAlert) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
 
 ### GetUrls
 
@@ -182,76 +252,6 @@ SetVendorInfo sets VendorInfo field to given value.
 `func (o *WatchlistAlert) HasVendorInfo() bool`
 
 HasVendorInfo returns a boolean if a field has been set.
-
-### GetProviderInfo
-
-`func (o *WatchlistAlert) GetProviderInfo() map[string]interface{}`
-
-GetProviderInfo returns the ProviderInfo field if non-nil, zero value otherwise.
-
-### GetProviderInfoOk
-
-`func (o *WatchlistAlert) GetProviderInfoOk() (*map[string]interface{}, bool)`
-
-GetProviderInfoOk returns a tuple with the ProviderInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProviderInfo
-
-`func (o *WatchlistAlert) SetProviderInfo(v map[string]interface{})`
-
-SetProviderInfo sets ProviderInfo field to given value.
-
-### HasProviderInfo
-
-`func (o *WatchlistAlert) HasProviderInfo() bool`
-
-HasProviderInfo returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *WatchlistAlert) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *WatchlistAlert) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *WatchlistAlert) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-
-### GetCreated
-
-`func (o *WatchlistAlert) GetCreated() time.Time`
-
-GetCreated returns the Created field if non-nil, zero value otherwise.
-
-### GetCreatedOk
-
-`func (o *WatchlistAlert) GetCreatedOk() (*time.Time, bool)`
-
-GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreated
-
-`func (o *WatchlistAlert) SetCreated(v time.Time)`
-
-SetCreated sets Created field to given value.
-
-### HasCreated
-
-`func (o *WatchlistAlert) HasCreated() bool`
-
-HasCreated returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

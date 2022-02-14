@@ -4,34 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Bin ID | [optional] [readonly] 
+**AccountRangeLength** | **int32** | Account range length | 
 **BankId** | **int32** | The bank ID | 
-**PartnerId** | **int32** | The partner ID | 
+**BillingIca** | **string** | The ICA to which fees will be billed | 
 **Bin** | **string** | The bin number | 
-**Processor** | **string** | The name of the card processor | 
+**BinStatus** | Pointer to [**BinStatus**](BinStatus.md) |  | [optional] 
+**BrandProductCode** | **string** | The Mastercard or Visa Product Code - 3 alpha-numeric characters | 
 **CardBrand** | [**CardBrand**](CardBrand.md) |  | 
 **CardCategory** | [**CardCategory**](CardCategory.md) |  | 
 **CardProductType** | [**CardProductType**](CardProductType.md) |  | 
-**IcaBid** | **string** | ICA/BID | 
 **Country** | **string** | ISO-3166-1 Alpha-2 country code | 
-**Currency** | **string** | ISO 4217  Alpha-3 currency code | 
-**BinStatus** | Pointer to [**BinStatus**](BinStatus.md) |  | [optional] 
-**StartDate** | Pointer to **time.Time** | The time when bin goes live | [optional] 
-**EndDate** | Pointer to **time.Time** | The time when bin is decommissioned | [optional] 
-**AccountRangeLength** | **int32** | Account range length | 
-**PanUtilization** | Pointer to **int32** | Pan utilization | [optional] 
-**BillingIca** | **string** | The ICA to which fees will be billed | 
-**BrandProductCode** | **string** | The Mastercard or Visa Product Code - 3 alpha-numeric characters | 
-**PhysicalCardFormat** | Pointer to [**PhysicalCardFormat**](PhysicalCardFormat.md) |  | [optional] 
 **CreationTime** | Pointer to **time.Time** | The timestamp representing when the bin was created | [optional] [readonly] 
-**LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the bin was last modified | [optional] [readonly] 
+**Currency** | **string** | ISO 4217  Alpha-3 currency code | 
 **DigitalWalletActive** | Pointer to **bool** | Determines if bin supports digital wallet tokenization | [optional] [default to false]
+**EndDate** | Pointer to **time.Time** | The time when bin is decommissioned | [optional] 
+**IcaBid** | **string** | ICA/BID | 
+**Id** | Pointer to **string** | Bin ID | [optional] [readonly] 
+**LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the bin was last modified | [optional] [readonly] 
+**PanUtilization** | Pointer to **int32** | Pan utilization | [optional] 
+**PartnerId** | **int32** | The partner ID | 
+**PhysicalCardFormat** | Pointer to [**PhysicalCardFormat**](PhysicalCardFormat.md) |  | [optional] 
+**Processor** | **string** | The name of the card processor | 
+**StartDate** | Pointer to **time.Time** | The time when bin goes live | [optional] 
 
 ## Methods
 
 ### NewBin
 
-`func NewBin(bankId int32, partnerId int32, bin string, processor string, cardBrand CardBrand, cardCategory CardCategory, cardProductType CardProductType, icaBid string, country string, currency string, accountRangeLength int32, billingIca string, brandProductCode string, ) *Bin`
+`func NewBin(accountRangeLength int32, bankId int32, billingIca string, bin string, brandProductCode string, cardBrand CardBrand, cardCategory CardCategory, cardProductType CardProductType, country string, currency string, icaBid string, partnerId int32, processor string, ) *Bin`
 
 NewBin instantiates a new Bin object
 This constructor will assign default values to properties that have it defined,
@@ -46,30 +46,25 @@ NewBinWithDefaults instantiates a new Bin object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetAccountRangeLength
 
-`func (o *Bin) GetId() string`
+`func (o *Bin) GetAccountRangeLength() int32`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetAccountRangeLength returns the AccountRangeLength field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetAccountRangeLengthOk
 
-`func (o *Bin) GetIdOk() (*string, bool)`
+`func (o *Bin) GetAccountRangeLengthOk() (*int32, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetAccountRangeLengthOk returns a tuple with the AccountRangeLength field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetAccountRangeLength
 
-`func (o *Bin) SetId(v string)`
+`func (o *Bin) SetAccountRangeLength(v int32)`
 
-SetId sets Id field to given value.
+SetAccountRangeLength sets AccountRangeLength field to given value.
 
-### HasId
-
-`func (o *Bin) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetBankId
 
@@ -91,24 +86,24 @@ and a boolean to check if the value has been set.
 SetBankId sets BankId field to given value.
 
 
-### GetPartnerId
+### GetBillingIca
 
-`func (o *Bin) GetPartnerId() int32`
+`func (o *Bin) GetBillingIca() string`
 
-GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
+GetBillingIca returns the BillingIca field if non-nil, zero value otherwise.
 
-### GetPartnerIdOk
+### GetBillingIcaOk
 
-`func (o *Bin) GetPartnerIdOk() (*int32, bool)`
+`func (o *Bin) GetBillingIcaOk() (*string, bool)`
 
-GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
+GetBillingIcaOk returns a tuple with the BillingIca field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPartnerId
+### SetBillingIca
 
-`func (o *Bin) SetPartnerId(v int32)`
+`func (o *Bin) SetBillingIca(v string)`
 
-SetPartnerId sets PartnerId field to given value.
+SetBillingIca sets BillingIca field to given value.
 
 
 ### GetBin
@@ -131,24 +126,49 @@ and a boolean to check if the value has been set.
 SetBin sets Bin field to given value.
 
 
-### GetProcessor
+### GetBinStatus
 
-`func (o *Bin) GetProcessor() string`
+`func (o *Bin) GetBinStatus() BinStatus`
 
-GetProcessor returns the Processor field if non-nil, zero value otherwise.
+GetBinStatus returns the BinStatus field if non-nil, zero value otherwise.
 
-### GetProcessorOk
+### GetBinStatusOk
 
-`func (o *Bin) GetProcessorOk() (*string, bool)`
+`func (o *Bin) GetBinStatusOk() (*BinStatus, bool)`
 
-GetProcessorOk returns a tuple with the Processor field if it's non-nil, zero value otherwise
+GetBinStatusOk returns a tuple with the BinStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProcessor
+### SetBinStatus
 
-`func (o *Bin) SetProcessor(v string)`
+`func (o *Bin) SetBinStatus(v BinStatus)`
 
-SetProcessor sets Processor field to given value.
+SetBinStatus sets BinStatus field to given value.
+
+### HasBinStatus
+
+`func (o *Bin) HasBinStatus() bool`
+
+HasBinStatus returns a boolean if a field has been set.
+
+### GetBrandProductCode
+
+`func (o *Bin) GetBrandProductCode() string`
+
+GetBrandProductCode returns the BrandProductCode field if non-nil, zero value otherwise.
+
+### GetBrandProductCodeOk
+
+`func (o *Bin) GetBrandProductCodeOk() (*string, bool)`
+
+GetBrandProductCodeOk returns a tuple with the BrandProductCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandProductCode
+
+`func (o *Bin) SetBrandProductCode(v string)`
+
+SetBrandProductCode sets BrandProductCode field to given value.
 
 
 ### GetCardBrand
@@ -211,26 +231,6 @@ and a boolean to check if the value has been set.
 SetCardProductType sets CardProductType field to given value.
 
 
-### GetIcaBid
-
-`func (o *Bin) GetIcaBid() string`
-
-GetIcaBid returns the IcaBid field if non-nil, zero value otherwise.
-
-### GetIcaBidOk
-
-`func (o *Bin) GetIcaBidOk() (*string, bool)`
-
-GetIcaBidOk returns a tuple with the IcaBid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIcaBid
-
-`func (o *Bin) SetIcaBid(v string)`
-
-SetIcaBid sets IcaBid field to given value.
-
-
 ### GetCountry
 
 `func (o *Bin) GetCountry() string`
@@ -250,6 +250,31 @@ and a boolean to check if the value has been set.
 
 SetCountry sets Country field to given value.
 
+
+### GetCreationTime
+
+`func (o *Bin) GetCreationTime() time.Time`
+
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+
+### GetCreationTimeOk
+
+`func (o *Bin) GetCreationTimeOk() (*time.Time, bool)`
+
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationTime
+
+`func (o *Bin) SetCreationTime(v time.Time)`
+
+SetCreationTime sets CreationTime field to given value.
+
+### HasCreationTime
+
+`func (o *Bin) HasCreationTime() bool`
+
+HasCreationTime returns a boolean if a field has been set.
 
 ### GetCurrency
 
@@ -271,55 +296,30 @@ and a boolean to check if the value has been set.
 SetCurrency sets Currency field to given value.
 
 
-### GetBinStatus
+### GetDigitalWalletActive
 
-`func (o *Bin) GetBinStatus() BinStatus`
+`func (o *Bin) GetDigitalWalletActive() bool`
 
-GetBinStatus returns the BinStatus field if non-nil, zero value otherwise.
+GetDigitalWalletActive returns the DigitalWalletActive field if non-nil, zero value otherwise.
 
-### GetBinStatusOk
+### GetDigitalWalletActiveOk
 
-`func (o *Bin) GetBinStatusOk() (*BinStatus, bool)`
+`func (o *Bin) GetDigitalWalletActiveOk() (*bool, bool)`
 
-GetBinStatusOk returns a tuple with the BinStatus field if it's non-nil, zero value otherwise
+GetDigitalWalletActiveOk returns a tuple with the DigitalWalletActive field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBinStatus
+### SetDigitalWalletActive
 
-`func (o *Bin) SetBinStatus(v BinStatus)`
+`func (o *Bin) SetDigitalWalletActive(v bool)`
 
-SetBinStatus sets BinStatus field to given value.
+SetDigitalWalletActive sets DigitalWalletActive field to given value.
 
-### HasBinStatus
+### HasDigitalWalletActive
 
-`func (o *Bin) HasBinStatus() bool`
+`func (o *Bin) HasDigitalWalletActive() bool`
 
-HasBinStatus returns a boolean if a field has been set.
-
-### GetStartDate
-
-`func (o *Bin) GetStartDate() time.Time`
-
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
-
-### GetStartDateOk
-
-`func (o *Bin) GetStartDateOk() (*time.Time, bool)`
-
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartDate
-
-`func (o *Bin) SetStartDate(v time.Time)`
-
-SetStartDate sets StartDate field to given value.
-
-### HasStartDate
-
-`func (o *Bin) HasStartDate() bool`
-
-HasStartDate returns a boolean if a field has been set.
+HasDigitalWalletActive returns a boolean if a field has been set.
 
 ### GetEndDate
 
@@ -346,25 +346,75 @@ SetEndDate sets EndDate field to given value.
 
 HasEndDate returns a boolean if a field has been set.
 
-### GetAccountRangeLength
+### GetIcaBid
 
-`func (o *Bin) GetAccountRangeLength() int32`
+`func (o *Bin) GetIcaBid() string`
 
-GetAccountRangeLength returns the AccountRangeLength field if non-nil, zero value otherwise.
+GetIcaBid returns the IcaBid field if non-nil, zero value otherwise.
 
-### GetAccountRangeLengthOk
+### GetIcaBidOk
 
-`func (o *Bin) GetAccountRangeLengthOk() (*int32, bool)`
+`func (o *Bin) GetIcaBidOk() (*string, bool)`
 
-GetAccountRangeLengthOk returns a tuple with the AccountRangeLength field if it's non-nil, zero value otherwise
+GetIcaBidOk returns a tuple with the IcaBid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountRangeLength
+### SetIcaBid
 
-`func (o *Bin) SetAccountRangeLength(v int32)`
+`func (o *Bin) SetIcaBid(v string)`
 
-SetAccountRangeLength sets AccountRangeLength field to given value.
+SetIcaBid sets IcaBid field to given value.
 
+
+### GetId
+
+`func (o *Bin) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Bin) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Bin) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *Bin) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetLastModifiedTime
+
+`func (o *Bin) GetLastModifiedTime() time.Time`
+
+GetLastModifiedTime returns the LastModifiedTime field if non-nil, zero value otherwise.
+
+### GetLastModifiedTimeOk
+
+`func (o *Bin) GetLastModifiedTimeOk() (*time.Time, bool)`
+
+GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModifiedTime
+
+`func (o *Bin) SetLastModifiedTime(v time.Time)`
+
+SetLastModifiedTime sets LastModifiedTime field to given value.
+
+### HasLastModifiedTime
+
+`func (o *Bin) HasLastModifiedTime() bool`
+
+HasLastModifiedTime returns a boolean if a field has been set.
 
 ### GetPanUtilization
 
@@ -391,44 +441,24 @@ SetPanUtilization sets PanUtilization field to given value.
 
 HasPanUtilization returns a boolean if a field has been set.
 
-### GetBillingIca
+### GetPartnerId
 
-`func (o *Bin) GetBillingIca() string`
+`func (o *Bin) GetPartnerId() int32`
 
-GetBillingIca returns the BillingIca field if non-nil, zero value otherwise.
+GetPartnerId returns the PartnerId field if non-nil, zero value otherwise.
 
-### GetBillingIcaOk
+### GetPartnerIdOk
 
-`func (o *Bin) GetBillingIcaOk() (*string, bool)`
+`func (o *Bin) GetPartnerIdOk() (*int32, bool)`
 
-GetBillingIcaOk returns a tuple with the BillingIca field if it's non-nil, zero value otherwise
+GetPartnerIdOk returns a tuple with the PartnerId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBillingIca
+### SetPartnerId
 
-`func (o *Bin) SetBillingIca(v string)`
+`func (o *Bin) SetPartnerId(v int32)`
 
-SetBillingIca sets BillingIca field to given value.
-
-
-### GetBrandProductCode
-
-`func (o *Bin) GetBrandProductCode() string`
-
-GetBrandProductCode returns the BrandProductCode field if non-nil, zero value otherwise.
-
-### GetBrandProductCodeOk
-
-`func (o *Bin) GetBrandProductCodeOk() (*string, bool)`
-
-GetBrandProductCodeOk returns a tuple with the BrandProductCode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBrandProductCode
-
-`func (o *Bin) SetBrandProductCode(v string)`
-
-SetBrandProductCode sets BrandProductCode field to given value.
+SetPartnerId sets PartnerId field to given value.
 
 
 ### GetPhysicalCardFormat
@@ -456,80 +486,50 @@ SetPhysicalCardFormat sets PhysicalCardFormat field to given value.
 
 HasPhysicalCardFormat returns a boolean if a field has been set.
 
-### GetCreationTime
+### GetProcessor
 
-`func (o *Bin) GetCreationTime() time.Time`
+`func (o *Bin) GetProcessor() string`
 
-GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+GetProcessor returns the Processor field if non-nil, zero value otherwise.
 
-### GetCreationTimeOk
+### GetProcessorOk
 
-`func (o *Bin) GetCreationTimeOk() (*time.Time, bool)`
+`func (o *Bin) GetProcessorOk() (*string, bool)`
 
-GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+GetProcessorOk returns a tuple with the Processor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreationTime
+### SetProcessor
 
-`func (o *Bin) SetCreationTime(v time.Time)`
+`func (o *Bin) SetProcessor(v string)`
 
-SetCreationTime sets CreationTime field to given value.
+SetProcessor sets Processor field to given value.
 
-### HasCreationTime
 
-`func (o *Bin) HasCreationTime() bool`
+### GetStartDate
 
-HasCreationTime returns a boolean if a field has been set.
+`func (o *Bin) GetStartDate() time.Time`
 
-### GetLastModifiedTime
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
 
-`func (o *Bin) GetLastModifiedTime() time.Time`
+### GetStartDateOk
 
-GetLastModifiedTime returns the LastModifiedTime field if non-nil, zero value otherwise.
+`func (o *Bin) GetStartDateOk() (*time.Time, bool)`
 
-### GetLastModifiedTimeOk
-
-`func (o *Bin) GetLastModifiedTimeOk() (*time.Time, bool)`
-
-GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field if it's non-nil, zero value otherwise
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLastModifiedTime
+### SetStartDate
 
-`func (o *Bin) SetLastModifiedTime(v time.Time)`
+`func (o *Bin) SetStartDate(v time.Time)`
 
-SetLastModifiedTime sets LastModifiedTime field to given value.
+SetStartDate sets StartDate field to given value.
 
-### HasLastModifiedTime
+### HasStartDate
 
-`func (o *Bin) HasLastModifiedTime() bool`
+`func (o *Bin) HasStartDate() bool`
 
-HasLastModifiedTime returns a boolean if a field has been set.
-
-### GetDigitalWalletActive
-
-`func (o *Bin) GetDigitalWalletActive() bool`
-
-GetDigitalWalletActive returns the DigitalWalletActive field if non-nil, zero value otherwise.
-
-### GetDigitalWalletActiveOk
-
-`func (o *Bin) GetDigitalWalletActiveOk() (*bool, bool)`
-
-GetDigitalWalletActiveOk returns a tuple with the DigitalWalletActive field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDigitalWalletActive
-
-`func (o *Bin) SetDigitalWalletActive(v bool)`
-
-SetDigitalWalletActive sets DigitalWalletActive field to given value.
-
-### HasDigitalWalletActive
-
-`func (o *Bin) HasDigitalWalletActive() bool`
-
-HasDigitalWalletActive returns a boolean if a field has been set.
+HasStartDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

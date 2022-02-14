@@ -16,10 +16,10 @@ import (
 
 // BankDebitNetworkResponseAllOf struct for BankDebitNetworkResponseAllOf
 type BankDebitNetworkResponseAllOf struct {
-	// The ID of the bank's bin that uses this debit network
-	BinId *string `json:"bin_id,omitempty"`
 	// The ID of the bank network
 	BankNetworkId *string `json:"bank_network_id,omitempty"`
+	// The ID of the bank's bin that uses this debit network
+	BinId *string `json:"bin_id,omitempty"`
 }
 
 // NewBankDebitNetworkResponseAllOf instantiates a new BankDebitNetworkResponseAllOf object
@@ -37,38 +37,6 @@ func NewBankDebitNetworkResponseAllOf() *BankDebitNetworkResponseAllOf {
 func NewBankDebitNetworkResponseAllOfWithDefaults() *BankDebitNetworkResponseAllOf {
 	this := BankDebitNetworkResponseAllOf{}
 	return &this
-}
-
-// GetBinId returns the BinId field value if set, zero value otherwise.
-func (o *BankDebitNetworkResponseAllOf) GetBinId() string {
-	if o == nil || o.BinId == nil {
-		var ret string
-		return ret
-	}
-	return *o.BinId
-}
-
-// GetBinIdOk returns a tuple with the BinId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BankDebitNetworkResponseAllOf) GetBinIdOk() (*string, bool) {
-	if o == nil || o.BinId == nil {
-		return nil, false
-	}
-	return o.BinId, true
-}
-
-// HasBinId returns a boolean if a field has been set.
-func (o *BankDebitNetworkResponseAllOf) HasBinId() bool {
-	if o != nil && o.BinId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBinId gets a reference to the given string and assigns it to the BinId field.
-func (o *BankDebitNetworkResponseAllOf) SetBinId(v string) {
-	o.BinId = &v
 }
 
 // GetBankNetworkId returns the BankNetworkId field value if set, zero value otherwise.
@@ -103,13 +71,45 @@ func (o *BankDebitNetworkResponseAllOf) SetBankNetworkId(v string) {
 	o.BankNetworkId = &v
 }
 
+// GetBinId returns the BinId field value if set, zero value otherwise.
+func (o *BankDebitNetworkResponseAllOf) GetBinId() string {
+	if o == nil || o.BinId == nil {
+		var ret string
+		return ret
+	}
+	return *o.BinId
+}
+
+// GetBinIdOk returns a tuple with the BinId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BankDebitNetworkResponseAllOf) GetBinIdOk() (*string, bool) {
+	if o == nil || o.BinId == nil {
+		return nil, false
+	}
+	return o.BinId, true
+}
+
+// HasBinId returns a boolean if a field has been set.
+func (o *BankDebitNetworkResponseAllOf) HasBinId() bool {
+	if o != nil && o.BinId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBinId gets a reference to the given string and assigns it to the BinId field.
+func (o *BankDebitNetworkResponseAllOf) SetBinId(v string) {
+	o.BinId = &v
+}
+
 func (o BankDebitNetworkResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BinId != nil {
-		toSerialize["bin_id"] = o.BinId
-	}
 	if o.BankNetworkId != nil {
 		toSerialize["bank_network_id"] = o.BankNetworkId
+	}
+	if o.BinId != nil {
+		toSerialize["bin_id"] = o.BinId
 	}
 	return json.Marshal(toSerialize)
 }

@@ -18,24 +18,24 @@ import (
 
 // RateDetails struct for RateDetails
 type RateDetails struct {
+	AccrualPeriod string `json:"accrual_period"`
+	// Rate in basis points. E.g. 5 represents 0.05%
+	Rate int32 `json:"rate"`
 	// Rate effective start date. Inclusive.
 	ValidFrom oapi.Date `json:"valid_from"`
 	// Rate effective end date. Exclusive.
 	ValidTo *oapi.Date `json:"valid_to,omitempty"`
-	// Rate in basis points. E.g. 5 represents 0.05%
-	Rate          int32  `json:"rate"`
-	AccrualPeriod string `json:"accrual_period"`
 }
 
 // NewRateDetails instantiates a new RateDetails object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRateDetails(validFrom oapi.Date, rate int32, accrualPeriod string) *RateDetails {
+func NewRateDetails(accrualPeriod string, rate int32, validFrom oapi.Date) *RateDetails {
 	this := RateDetails{}
-	this.ValidFrom = validFrom
-	this.Rate = rate
 	this.AccrualPeriod = accrualPeriod
+	this.Rate = rate
+	this.ValidFrom = validFrom
 	return &this
 }
 
@@ -45,6 +45,54 @@ func NewRateDetails(validFrom oapi.Date, rate int32, accrualPeriod string) *Rate
 func NewRateDetailsWithDefaults() *RateDetails {
 	this := RateDetails{}
 	return &this
+}
+
+// GetAccrualPeriod returns the AccrualPeriod field value
+func (o *RateDetails) GetAccrualPeriod() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AccrualPeriod
+}
+
+// GetAccrualPeriodOk returns a tuple with the AccrualPeriod field value
+// and a boolean to check if the value has been set.
+func (o *RateDetails) GetAccrualPeriodOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccrualPeriod, true
+}
+
+// SetAccrualPeriod sets field value
+func (o *RateDetails) SetAccrualPeriod(v string) {
+	o.AccrualPeriod = v
+}
+
+// GetRate returns the Rate field value
+func (o *RateDetails) GetRate() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Rate
+}
+
+// GetRateOk returns a tuple with the Rate field value
+// and a boolean to check if the value has been set.
+func (o *RateDetails) GetRateOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Rate, true
+}
+
+// SetRate sets field value
+func (o *RateDetails) SetRate(v int32) {
+	o.Rate = v
 }
 
 // GetValidFrom returns the ValidFrom field value
@@ -103,67 +151,19 @@ func (o *RateDetails) SetValidTo(v oapi.Date) {
 	o.ValidTo = &v
 }
 
-// GetRate returns the Rate field value
-func (o *RateDetails) GetRate() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Rate
-}
-
-// GetRateOk returns a tuple with the Rate field value
-// and a boolean to check if the value has been set.
-func (o *RateDetails) GetRateOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Rate, true
-}
-
-// SetRate sets field value
-func (o *RateDetails) SetRate(v int32) {
-	o.Rate = v
-}
-
-// GetAccrualPeriod returns the AccrualPeriod field value
-func (o *RateDetails) GetAccrualPeriod() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AccrualPeriod
-}
-
-// GetAccrualPeriodOk returns a tuple with the AccrualPeriod field value
-// and a boolean to check if the value has been set.
-func (o *RateDetails) GetAccrualPeriodOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccrualPeriod, true
-}
-
-// SetAccrualPeriod sets field value
-func (o *RateDetails) SetAccrualPeriod(v string) {
-	o.AccrualPeriod = v
-}
-
 func (o RateDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["valid_from"] = o.ValidFrom
-	}
-	if o.ValidTo != nil {
-		toSerialize["valid_to"] = o.ValidTo
+		toSerialize["accrual_period"] = o.AccrualPeriod
 	}
 	if true {
 		toSerialize["rate"] = o.Rate
 	}
 	if true {
-		toSerialize["accrual_period"] = o.AccrualPeriod
+		toSerialize["valid_from"] = o.ValidFrom
+	}
+	if o.ValidTo != nil {
+		toSerialize["valid_to"] = o.ValidTo
 	}
 	return json.Marshal(toSerialize)
 }

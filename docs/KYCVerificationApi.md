@@ -34,7 +34,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    customerVerificationResult := *openapiclient.NewCustomerVerificationResult(openapiclient.verification_type("fraud"), "ACCEPTED", time.Now()) // CustomerVerificationResult | Customer verification result to create.
+    customerVerificationResult := *openapiclient.NewCustomerVerificationResult("ACCEPTED", time.Now(), openapiclient.verification_type("fraud")) // CustomerVerificationResult | Customer verification result to create.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -255,7 +255,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    customerVerification := *openapiclient.NewCustomerVerification([]openapiclient.VerificationType{openapiclient.verification_type("fraud")}, false) // CustomerVerification | Customer verification request.
+    customerVerification := *openapiclient.NewCustomerVerification(false, []openapiclient.VerificationType{openapiclient.verification_type("fraud")}) // CustomerVerification | Customer verification request.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

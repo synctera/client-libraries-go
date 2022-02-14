@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**BalanceType**](BalanceType.md) |  | 
 **Balance** | **int64** | balance in ISO 4217 minor currency units | [readonly] 
+**Type** | [**BalanceType**](BalanceType.md) |  | 
 
 ## Methods
 
 ### NewBalance
 
-`func NewBalance(type_ BalanceType, balance int64, ) *Balance`
+`func NewBalance(balance int64, type_ BalanceType, ) *Balance`
 
 NewBalance instantiates a new Balance object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewBalanceWithDefaults instantiates a new Balance object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetType
-
-`func (o *Balance) GetType() BalanceType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *Balance) GetTypeOk() (*BalanceType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *Balance) SetType(v BalanceType)`
-
-SetType sets Type field to given value.
-
 
 ### GetBalance
 
@@ -64,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *Balance) SetBalance(v int64)`
 
 SetBalance sets Balance field to given value.
+
+
+### GetType
+
+`func (o *Balance) GetType() BalanceType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *Balance) GetTypeOk() (*BalanceType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *Balance) SetType(v BalanceType)`
+
+SetType sets Type field to given value.
 
 
 

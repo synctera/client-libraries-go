@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BankName** | **string** | The name of the bank managing the account | 
-**BankCountries** | **[]string** | The countries that this bank operates the account in | 
 **AchRoutingNumber** | **string** | The routing number used for US ACH payments.  | 
+**BankCountries** | **[]string** | The countries that this bank operates the account in | 
+**BankName** | **string** | The name of the bank managing the account | 
 
 ## Methods
 
 ### NewAddAccountsRequestRoutingIdentifiers
 
-`func NewAddAccountsRequestRoutingIdentifiers(bankName string, bankCountries []string, achRoutingNumber string, ) *AddAccountsRequestRoutingIdentifiers`
+`func NewAddAccountsRequestRoutingIdentifiers(achRoutingNumber string, bankCountries []string, bankName string, ) *AddAccountsRequestRoutingIdentifiers`
 
 NewAddAccountsRequestRoutingIdentifiers instantiates a new AddAccountsRequestRoutingIdentifiers object
 This constructor will assign default values to properties that have it defined,
@@ -27,24 +27,24 @@ NewAddAccountsRequestRoutingIdentifiersWithDefaults instantiates a new AddAccoun
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetBankName
+### GetAchRoutingNumber
 
-`func (o *AddAccountsRequestRoutingIdentifiers) GetBankName() string`
+`func (o *AddAccountsRequestRoutingIdentifiers) GetAchRoutingNumber() string`
 
-GetBankName returns the BankName field if non-nil, zero value otherwise.
+GetAchRoutingNumber returns the AchRoutingNumber field if non-nil, zero value otherwise.
 
-### GetBankNameOk
+### GetAchRoutingNumberOk
 
-`func (o *AddAccountsRequestRoutingIdentifiers) GetBankNameOk() (*string, bool)`
+`func (o *AddAccountsRequestRoutingIdentifiers) GetAchRoutingNumberOk() (*string, bool)`
 
-GetBankNameOk returns a tuple with the BankName field if it's non-nil, zero value otherwise
+GetAchRoutingNumberOk returns a tuple with the AchRoutingNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBankName
+### SetAchRoutingNumber
 
-`func (o *AddAccountsRequestRoutingIdentifiers) SetBankName(v string)`
+`func (o *AddAccountsRequestRoutingIdentifiers) SetAchRoutingNumber(v string)`
 
-SetBankName sets BankName field to given value.
+SetAchRoutingNumber sets AchRoutingNumber field to given value.
 
 
 ### GetBankCountries
@@ -67,24 +67,24 @@ and a boolean to check if the value has been set.
 SetBankCountries sets BankCountries field to given value.
 
 
-### GetAchRoutingNumber
+### GetBankName
 
-`func (o *AddAccountsRequestRoutingIdentifiers) GetAchRoutingNumber() string`
+`func (o *AddAccountsRequestRoutingIdentifiers) GetBankName() string`
 
-GetAchRoutingNumber returns the AchRoutingNumber field if non-nil, zero value otherwise.
+GetBankName returns the BankName field if non-nil, zero value otherwise.
 
-### GetAchRoutingNumberOk
+### GetBankNameOk
 
-`func (o *AddAccountsRequestRoutingIdentifiers) GetAchRoutingNumberOk() (*string, bool)`
+`func (o *AddAccountsRequestRoutingIdentifiers) GetBankNameOk() (*string, bool)`
 
-GetAchRoutingNumberOk returns a tuple with the AchRoutingNumber field if it's non-nil, zero value otherwise
+GetBankNameOk returns a tuple with the BankName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAchRoutingNumber
+### SetBankName
 
-`func (o *AddAccountsRequestRoutingIdentifiers) SetAchRoutingNumber(v string)`
+`func (o *AddAccountsRequestRoutingIdentifiers) SetBankName(v string)`
 
-SetAchRoutingNumber sets AchRoutingNumber field to given value.
+SetBankName sets BankName field to given value.
 
 
 

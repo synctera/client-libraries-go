@@ -19,8 +19,8 @@ type PushTokenizeRequestData struct {
 	DisplayName          *string  `json:"display_name,omitempty"`
 	LastDigits           *string  `json:"last_digits,omitempty"`
 	Network              *string  `json:"network,omitempty"`
-	TokenServiceProvider *string  `json:"token_service_provider,omitempty"`
 	OpaquePaymentCard    *string  `json:"opaque_payment_card,omitempty"`
+	TokenServiceProvider *string  `json:"token_service_provider,omitempty"`
 	UserAddress          *Address `json:"user_address,omitempty"`
 }
 
@@ -137,38 +137,6 @@ func (o *PushTokenizeRequestData) SetNetwork(v string) {
 	o.Network = &v
 }
 
-// GetTokenServiceProvider returns the TokenServiceProvider field value if set, zero value otherwise.
-func (o *PushTokenizeRequestData) GetTokenServiceProvider() string {
-	if o == nil || o.TokenServiceProvider == nil {
-		var ret string
-		return ret
-	}
-	return *o.TokenServiceProvider
-}
-
-// GetTokenServiceProviderOk returns a tuple with the TokenServiceProvider field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PushTokenizeRequestData) GetTokenServiceProviderOk() (*string, bool) {
-	if o == nil || o.TokenServiceProvider == nil {
-		return nil, false
-	}
-	return o.TokenServiceProvider, true
-}
-
-// HasTokenServiceProvider returns a boolean if a field has been set.
-func (o *PushTokenizeRequestData) HasTokenServiceProvider() bool {
-	if o != nil && o.TokenServiceProvider != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTokenServiceProvider gets a reference to the given string and assigns it to the TokenServiceProvider field.
-func (o *PushTokenizeRequestData) SetTokenServiceProvider(v string) {
-	o.TokenServiceProvider = &v
-}
-
 // GetOpaquePaymentCard returns the OpaquePaymentCard field value if set, zero value otherwise.
 func (o *PushTokenizeRequestData) GetOpaquePaymentCard() string {
 	if o == nil || o.OpaquePaymentCard == nil {
@@ -199,6 +167,38 @@ func (o *PushTokenizeRequestData) HasOpaquePaymentCard() bool {
 // SetOpaquePaymentCard gets a reference to the given string and assigns it to the OpaquePaymentCard field.
 func (o *PushTokenizeRequestData) SetOpaquePaymentCard(v string) {
 	o.OpaquePaymentCard = &v
+}
+
+// GetTokenServiceProvider returns the TokenServiceProvider field value if set, zero value otherwise.
+func (o *PushTokenizeRequestData) GetTokenServiceProvider() string {
+	if o == nil || o.TokenServiceProvider == nil {
+		var ret string
+		return ret
+	}
+	return *o.TokenServiceProvider
+}
+
+// GetTokenServiceProviderOk returns a tuple with the TokenServiceProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PushTokenizeRequestData) GetTokenServiceProviderOk() (*string, bool) {
+	if o == nil || o.TokenServiceProvider == nil {
+		return nil, false
+	}
+	return o.TokenServiceProvider, true
+}
+
+// HasTokenServiceProvider returns a boolean if a field has been set.
+func (o *PushTokenizeRequestData) HasTokenServiceProvider() bool {
+	if o != nil && o.TokenServiceProvider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenServiceProvider gets a reference to the given string and assigns it to the TokenServiceProvider field.
+func (o *PushTokenizeRequestData) SetTokenServiceProvider(v string) {
+	o.TokenServiceProvider = &v
 }
 
 // GetUserAddress returns the UserAddress field value if set, zero value otherwise.
@@ -244,11 +244,11 @@ func (o PushTokenizeRequestData) MarshalJSON() ([]byte, error) {
 	if o.Network != nil {
 		toSerialize["network"] = o.Network
 	}
-	if o.TokenServiceProvider != nil {
-		toSerialize["token_service_provider"] = o.TokenServiceProvider
-	}
 	if o.OpaquePaymentCard != nil {
 		toSerialize["opaque_payment_card"] = o.OpaquePaymentCard
+	}
+	if o.TokenServiceProvider != nil {
+		toSerialize["token_service_provider"] = o.TokenServiceProvider
 	}
 	if o.UserAddress != nil {
 		toSerialize["user_address"] = o.UserAddress

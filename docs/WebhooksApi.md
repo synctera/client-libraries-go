@@ -101,7 +101,7 @@ import (
 )
 
 func main() {
-    webhook := *openapiclient.NewWebhook("Url_example", []openapiclient.EventType1{openapiclient.event_type1{EventTypeExplicit: penapiclient.event_type_explicit("ACCOUNT.CREATED")}}, false) // Webhook | Webhook to create
+    webhook := *openapiclient.NewWebhook([]openapiclient.EventType1{openapiclient.event_type1{EventTypeExplicit: penapiclient.event_type_explicit("ACCOUNT.CREATED")}}, false, "Url_example") // Webhook | Webhook to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -796,7 +796,7 @@ import (
 
 func main() {
     webhookId := TODO // string | Webhook ID
-    webhook := *openapiclient.NewWebhook("Url_example", []openapiclient.EventType1{openapiclient.event_type1{EventTypeExplicit: penapiclient.event_type_explicit("ACCOUNT.CREATED")}}, false) // Webhook | Webhook to update
+    webhook := *openapiclient.NewWebhook([]openapiclient.EventType1{openapiclient.event_type1{EventTypeExplicit: penapiclient.event_type_explicit("ACCOUNT.CREATED")}}, false, "Url_example") // Webhook | Webhook to update
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

@@ -16,28 +16,28 @@ import (
 
 // AccountRouting struct for AccountRouting
 type AccountRouting struct {
-	// The name of the bank managing the account
-	BankName string `json:"bank_name"`
-	// The countries that this bank operates the account in
-	BankCountries []string `json:"bank_countries"`
-	// The SWIFT code for the bank. Value may be masked, in which case only the last four characters are returned.
-	SwiftCode *string `json:"swift_code,omitempty"`
 	// The routing number used for US ACH payments. Only appears if `bank_countries` contains `US`. Value may be masked, in which case only the last four digits are returned.
 	AchRoutingNumber *string `json:"ach_routing_number,omitempty"`
-	// The routing number used for domestic wire payments. Only appears if `bank_countries` contains `US`. Value may be masked, in which case only the last four digits are returned.
-	WireRoutingNumber *string `json:"wire_routing_number,omitempty"`
+	// The countries that this bank operates the account in
+	BankCountries []string `json:"bank_countries"`
+	// The name of the bank managing the account
+	BankName string `json:"bank_name"`
 	// The routing number used for EFT payments, identifying a Canadian bank, consisting of the institution number and the branch number. Only appears if `bank_countries` contains `CA`. Value may be masked, in which case only the last four digits are returned.
 	EftRoutingNumber *string `json:"eft_routing_number,omitempty"`
+	// The SWIFT code for the bank. Value may be masked, in which case only the last four characters are returned.
+	SwiftCode *string `json:"swift_code,omitempty"`
+	// The routing number used for domestic wire payments. Only appears if `bank_countries` contains `US`. Value may be masked, in which case only the last four digits are returned.
+	WireRoutingNumber *string `json:"wire_routing_number,omitempty"`
 }
 
 // NewAccountRouting instantiates a new AccountRouting object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountRouting(bankName string, bankCountries []string) *AccountRouting {
+func NewAccountRouting(bankCountries []string, bankName string) *AccountRouting {
 	this := AccountRouting{}
-	this.BankName = bankName
 	this.BankCountries = bankCountries
+	this.BankName = bankName
 	return &this
 }
 
@@ -47,86 +47,6 @@ func NewAccountRouting(bankName string, bankCountries []string) *AccountRouting 
 func NewAccountRoutingWithDefaults() *AccountRouting {
 	this := AccountRouting{}
 	return &this
-}
-
-// GetBankName returns the BankName field value
-func (o *AccountRouting) GetBankName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BankName
-}
-
-// GetBankNameOk returns a tuple with the BankName field value
-// and a boolean to check if the value has been set.
-func (o *AccountRouting) GetBankNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BankName, true
-}
-
-// SetBankName sets field value
-func (o *AccountRouting) SetBankName(v string) {
-	o.BankName = v
-}
-
-// GetBankCountries returns the BankCountries field value
-func (o *AccountRouting) GetBankCountries() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.BankCountries
-}
-
-// GetBankCountriesOk returns a tuple with the BankCountries field value
-// and a boolean to check if the value has been set.
-func (o *AccountRouting) GetBankCountriesOk() (*[]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BankCountries, true
-}
-
-// SetBankCountries sets field value
-func (o *AccountRouting) SetBankCountries(v []string) {
-	o.BankCountries = v
-}
-
-// GetSwiftCode returns the SwiftCode field value if set, zero value otherwise.
-func (o *AccountRouting) GetSwiftCode() string {
-	if o == nil || o.SwiftCode == nil {
-		var ret string
-		return ret
-	}
-	return *o.SwiftCode
-}
-
-// GetSwiftCodeOk returns a tuple with the SwiftCode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountRouting) GetSwiftCodeOk() (*string, bool) {
-	if o == nil || o.SwiftCode == nil {
-		return nil, false
-	}
-	return o.SwiftCode, true
-}
-
-// HasSwiftCode returns a boolean if a field has been set.
-func (o *AccountRouting) HasSwiftCode() bool {
-	if o != nil && o.SwiftCode != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSwiftCode gets a reference to the given string and assigns it to the SwiftCode field.
-func (o *AccountRouting) SetSwiftCode(v string) {
-	o.SwiftCode = &v
 }
 
 // GetAchRoutingNumber returns the AchRoutingNumber field value if set, zero value otherwise.
@@ -161,36 +81,52 @@ func (o *AccountRouting) SetAchRoutingNumber(v string) {
 	o.AchRoutingNumber = &v
 }
 
-// GetWireRoutingNumber returns the WireRoutingNumber field value if set, zero value otherwise.
-func (o *AccountRouting) GetWireRoutingNumber() string {
-	if o == nil || o.WireRoutingNumber == nil {
+// GetBankCountries returns the BankCountries field value
+func (o *AccountRouting) GetBankCountries() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.BankCountries
+}
+
+// GetBankCountriesOk returns a tuple with the BankCountries field value
+// and a boolean to check if the value has been set.
+func (o *AccountRouting) GetBankCountriesOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BankCountries, true
+}
+
+// SetBankCountries sets field value
+func (o *AccountRouting) SetBankCountries(v []string) {
+	o.BankCountries = v
+}
+
+// GetBankName returns the BankName field value
+func (o *AccountRouting) GetBankName() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.WireRoutingNumber
+
+	return o.BankName
 }
 
-// GetWireRoutingNumberOk returns a tuple with the WireRoutingNumber field value if set, nil otherwise
+// GetBankNameOk returns a tuple with the BankName field value
 // and a boolean to check if the value has been set.
-func (o *AccountRouting) GetWireRoutingNumberOk() (*string, bool) {
-	if o == nil || o.WireRoutingNumber == nil {
+func (o *AccountRouting) GetBankNameOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WireRoutingNumber, true
+	return &o.BankName, true
 }
 
-// HasWireRoutingNumber returns a boolean if a field has been set.
-func (o *AccountRouting) HasWireRoutingNumber() bool {
-	if o != nil && o.WireRoutingNumber != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWireRoutingNumber gets a reference to the given string and assigns it to the WireRoutingNumber field.
-func (o *AccountRouting) SetWireRoutingNumber(v string) {
-	o.WireRoutingNumber = &v
+// SetBankName sets field value
+func (o *AccountRouting) SetBankName(v string) {
+	o.BankName = v
 }
 
 // GetEftRoutingNumber returns the EftRoutingNumber field value if set, zero value otherwise.
@@ -225,25 +161,89 @@ func (o *AccountRouting) SetEftRoutingNumber(v string) {
 	o.EftRoutingNumber = &v
 }
 
+// GetSwiftCode returns the SwiftCode field value if set, zero value otherwise.
+func (o *AccountRouting) GetSwiftCode() string {
+	if o == nil || o.SwiftCode == nil {
+		var ret string
+		return ret
+	}
+	return *o.SwiftCode
+}
+
+// GetSwiftCodeOk returns a tuple with the SwiftCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountRouting) GetSwiftCodeOk() (*string, bool) {
+	if o == nil || o.SwiftCode == nil {
+		return nil, false
+	}
+	return o.SwiftCode, true
+}
+
+// HasSwiftCode returns a boolean if a field has been set.
+func (o *AccountRouting) HasSwiftCode() bool {
+	if o != nil && o.SwiftCode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSwiftCode gets a reference to the given string and assigns it to the SwiftCode field.
+func (o *AccountRouting) SetSwiftCode(v string) {
+	o.SwiftCode = &v
+}
+
+// GetWireRoutingNumber returns the WireRoutingNumber field value if set, zero value otherwise.
+func (o *AccountRouting) GetWireRoutingNumber() string {
+	if o == nil || o.WireRoutingNumber == nil {
+		var ret string
+		return ret
+	}
+	return *o.WireRoutingNumber
+}
+
+// GetWireRoutingNumberOk returns a tuple with the WireRoutingNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountRouting) GetWireRoutingNumberOk() (*string, bool) {
+	if o == nil || o.WireRoutingNumber == nil {
+		return nil, false
+	}
+	return o.WireRoutingNumber, true
+}
+
+// HasWireRoutingNumber returns a boolean if a field has been set.
+func (o *AccountRouting) HasWireRoutingNumber() bool {
+	if o != nil && o.WireRoutingNumber != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWireRoutingNumber gets a reference to the given string and assigns it to the WireRoutingNumber field.
+func (o *AccountRouting) SetWireRoutingNumber(v string) {
+	o.WireRoutingNumber = &v
+}
+
 func (o AccountRouting) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["bank_name"] = o.BankName
+	if o.AchRoutingNumber != nil {
+		toSerialize["ach_routing_number"] = o.AchRoutingNumber
 	}
 	if true {
 		toSerialize["bank_countries"] = o.BankCountries
 	}
-	if o.SwiftCode != nil {
-		toSerialize["swift_code"] = o.SwiftCode
-	}
-	if o.AchRoutingNumber != nil {
-		toSerialize["ach_routing_number"] = o.AchRoutingNumber
-	}
-	if o.WireRoutingNumber != nil {
-		toSerialize["wire_routing_number"] = o.WireRoutingNumber
+	if true {
+		toSerialize["bank_name"] = o.BankName
 	}
 	if o.EftRoutingNumber != nil {
 		toSerialize["eft_routing_number"] = o.EftRoutingNumber
+	}
+	if o.SwiftCode != nil {
+		toSerialize["swift_code"] = o.SwiftCode
+	}
+	if o.WireRoutingNumber != nil {
+		toSerialize["wire_routing_number"] = o.WireRoutingNumber
 	}
 	return json.Marshal(toSerialize)
 }

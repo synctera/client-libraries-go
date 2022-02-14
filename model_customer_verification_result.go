@@ -20,25 +20,25 @@ type CustomerVerificationResult struct {
 	// Unique ID for this verification result.
 	Id *string `json:"id,omitempty"`
 	// List of potential problems found. These are subject to change.
-	Issues           *[]string               `json:"issues,omitempty"`
-	VerificationType VerificationType        `json:"verification_type"`
-	VendorInfo       *VerificationVendorInfo `json:"vendor_info,omitempty"`
-	RawResponse      *RawResponse            `json:"raw_response,omitempty"`
+	Issues      *[]string    `json:"issues,omitempty"`
+	RawResponse *RawResponse `json:"raw_response,omitempty"`
 	// The determination of this verification.
-	Result string `json:"result"`
+	Result     string                  `json:"result"`
+	VendorInfo *VerificationVendorInfo `json:"vendor_info,omitempty"`
 	// The date and time the verification was completed.
-	VerificationTime time.Time `json:"verification_time"`
+	VerificationTime time.Time        `json:"verification_time"`
+	VerificationType VerificationType `json:"verification_type"`
 }
 
 // NewCustomerVerificationResult instantiates a new CustomerVerificationResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerVerificationResult(verificationType VerificationType, result string, verificationTime time.Time) *CustomerVerificationResult {
+func NewCustomerVerificationResult(result string, verificationTime time.Time, verificationType VerificationType) *CustomerVerificationResult {
 	this := CustomerVerificationResult{}
-	this.VerificationType = verificationType
 	this.Result = result
 	this.VerificationTime = verificationTime
+	this.VerificationType = verificationType
 	return &this
 }
 
@@ -114,62 +114,6 @@ func (o *CustomerVerificationResult) SetIssues(v []string) {
 	o.Issues = &v
 }
 
-// GetVerificationType returns the VerificationType field value
-func (o *CustomerVerificationResult) GetVerificationType() VerificationType {
-	if o == nil {
-		var ret VerificationType
-		return ret
-	}
-
-	return o.VerificationType
-}
-
-// GetVerificationTypeOk returns a tuple with the VerificationType field value
-// and a boolean to check if the value has been set.
-func (o *CustomerVerificationResult) GetVerificationTypeOk() (*VerificationType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.VerificationType, true
-}
-
-// SetVerificationType sets field value
-func (o *CustomerVerificationResult) SetVerificationType(v VerificationType) {
-	o.VerificationType = v
-}
-
-// GetVendorInfo returns the VendorInfo field value if set, zero value otherwise.
-func (o *CustomerVerificationResult) GetVendorInfo() VerificationVendorInfo {
-	if o == nil || o.VendorInfo == nil {
-		var ret VerificationVendorInfo
-		return ret
-	}
-	return *o.VendorInfo
-}
-
-// GetVendorInfoOk returns a tuple with the VendorInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomerVerificationResult) GetVendorInfoOk() (*VerificationVendorInfo, bool) {
-	if o == nil || o.VendorInfo == nil {
-		return nil, false
-	}
-	return o.VendorInfo, true
-}
-
-// HasVendorInfo returns a boolean if a field has been set.
-func (o *CustomerVerificationResult) HasVendorInfo() bool {
-	if o != nil && o.VendorInfo != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVendorInfo gets a reference to the given VerificationVendorInfo and assigns it to the VendorInfo field.
-func (o *CustomerVerificationResult) SetVendorInfo(v VerificationVendorInfo) {
-	o.VendorInfo = &v
-}
-
 // GetRawResponse returns the RawResponse field value if set, zero value otherwise.
 func (o *CustomerVerificationResult) GetRawResponse() RawResponse {
 	if o == nil || o.RawResponse == nil {
@@ -226,6 +170,38 @@ func (o *CustomerVerificationResult) SetResult(v string) {
 	o.Result = v
 }
 
+// GetVendorInfo returns the VendorInfo field value if set, zero value otherwise.
+func (o *CustomerVerificationResult) GetVendorInfo() VerificationVendorInfo {
+	if o == nil || o.VendorInfo == nil {
+		var ret VerificationVendorInfo
+		return ret
+	}
+	return *o.VendorInfo
+}
+
+// GetVendorInfoOk returns a tuple with the VendorInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerVerificationResult) GetVendorInfoOk() (*VerificationVendorInfo, bool) {
+	if o == nil || o.VendorInfo == nil {
+		return nil, false
+	}
+	return o.VendorInfo, true
+}
+
+// HasVendorInfo returns a boolean if a field has been set.
+func (o *CustomerVerificationResult) HasVendorInfo() bool {
+	if o != nil && o.VendorInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVendorInfo gets a reference to the given VerificationVendorInfo and assigns it to the VendorInfo field.
+func (o *CustomerVerificationResult) SetVendorInfo(v VerificationVendorInfo) {
+	o.VendorInfo = &v
+}
+
 // GetVerificationTime returns the VerificationTime field value
 func (o *CustomerVerificationResult) GetVerificationTime() time.Time {
 	if o == nil {
@@ -250,6 +226,30 @@ func (o *CustomerVerificationResult) SetVerificationTime(v time.Time) {
 	o.VerificationTime = v
 }
 
+// GetVerificationType returns the VerificationType field value
+func (o *CustomerVerificationResult) GetVerificationType() VerificationType {
+	if o == nil {
+		var ret VerificationType
+		return ret
+	}
+
+	return o.VerificationType
+}
+
+// GetVerificationTypeOk returns a tuple with the VerificationType field value
+// and a boolean to check if the value has been set.
+func (o *CustomerVerificationResult) GetVerificationTypeOk() (*VerificationType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VerificationType, true
+}
+
+// SetVerificationType sets field value
+func (o *CustomerVerificationResult) SetVerificationType(v VerificationType) {
+	o.VerificationType = v
+}
+
 func (o CustomerVerificationResult) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -258,20 +258,20 @@ func (o CustomerVerificationResult) MarshalJSON() ([]byte, error) {
 	if o.Issues != nil {
 		toSerialize["issues"] = o.Issues
 	}
-	if true {
-		toSerialize["verification_type"] = o.VerificationType
-	}
-	if o.VendorInfo != nil {
-		toSerialize["vendor_info"] = o.VendorInfo
-	}
 	if o.RawResponse != nil {
 		toSerialize["raw_response"] = o.RawResponse
 	}
 	if true {
 		toSerialize["result"] = o.Result
 	}
+	if o.VendorInfo != nil {
+		toSerialize["vendor_info"] = o.VendorInfo
+	}
 	if true {
 		toSerialize["verification_time"] = o.VerificationTime
+	}
+	if true {
+		toSerialize["verification_type"] = o.VerificationType
 	}
 	return json.Marshal(toSerialize)
 }

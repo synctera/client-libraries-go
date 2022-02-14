@@ -37,7 +37,7 @@ import (
 )
 
 func main() {
-    addAccountsRequest := *openapiclient.NewAddAccountsRequest("Type_example", "CustomerId_example", "CustomerType_example", []string{"faker.name.findName"}, *openapiclient.NewAddAccountsRequestRoutingIdentifiers("Chase", []string{"BankCountries_example"}, "756392185"), *openapiclient.NewAddAccountsRequestAccountIdentifiers("78277121")) // AddAccountsRequest | 
+    addAccountsRequest := *openapiclient.NewAddAccountsRequest(*openapiclient.NewAddAccountsRequestAccountIdentifiers("78277121"), []string{"faker.name.findName"}, "CustomerId_example", "CustomerType_example", *openapiclient.NewAddAccountsRequestRoutingIdentifiers("756392185", []string{"BankCountries_example"}, "Chase"), "Type_example") // AddAccountsRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-    addVendorAccountsRequest := *openapiclient.NewAddVendorAccountsRequest("CustomerId_example", "CustomerType_example", openapiclient.external_account_vendor_values("PLAID"), []string{"blgvvBlXw3cq5GMPwqB6s6q4dLKB9WcVqGDGo"}, "access-sandbox-de3ce8ef-33f8-452c-a685-8671031fc0f6") // AddVendorAccountsRequest | 
+    addVendorAccountsRequest := *openapiclient.NewAddVendorAccountsRequest("CustomerId_example", "CustomerType_example", openapiclient.external_account_vendor_values("PLAID"), "access-sandbox-de3ce8ef-33f8-452c-a685-8671031fc0f6", []string{"blgvvBlXw3cq5GMPwqB6s6q4dLKB9WcVqGDGo"}) // AddVendorAccountsRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -231,7 +231,7 @@ import (
 )
 
 func main() {
-    externalAccountLinkToken := *openapiclient.NewExternalAccountLinkToken("CustomerId_example", "Type_example", "ClientName_example", "Language_example", []string{"CountryCodes_example"}) // ExternalAccountLinkToken | 
+    externalAccountLinkToken := *openapiclient.NewExternalAccountLinkToken("ClientName_example", []string{"CountryCodes_example"}, "CustomerId_example", "Language_example", "Type_example") // ExternalAccountLinkToken | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

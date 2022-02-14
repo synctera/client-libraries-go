@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CustomerId** | **string** | Customer that the current account is associated with | 
 **Id** | Pointer to **string** | ID of account relationship | [optional] [readonly] 
 **RelationshipType** | [**AccountRelationshipType**](AccountRelationshipType.md) |  | 
-**CustomerId** | **string** | Customer that the current account is associated with | 
 
 ## Methods
 
 ### NewRelationship
 
-`func NewRelationship(relationshipType AccountRelationshipType, customerId string, ) *Relationship`
+`func NewRelationship(customerId string, relationshipType AccountRelationshipType, ) *Relationship`
 
 NewRelationship instantiates a new Relationship object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +26,26 @@ will change when the set of required properties is changed
 NewRelationshipWithDefaults instantiates a new Relationship object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCustomerId
+
+`func (o *Relationship) GetCustomerId() string`
+
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+
+### GetCustomerIdOk
+
+`func (o *Relationship) GetCustomerIdOk() (*string, bool)`
+
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerId
+
+`func (o *Relationship) SetCustomerId(v string)`
+
+SetCustomerId sets CustomerId field to given value.
+
 
 ### GetId
 
@@ -70,26 +90,6 @@ and a boolean to check if the value has been set.
 `func (o *Relationship) SetRelationshipType(v AccountRelationshipType)`
 
 SetRelationshipType sets RelationshipType field to given value.
-
-
-### GetCustomerId
-
-`func (o *Relationship) GetCustomerId() string`
-
-GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
-
-### GetCustomerIdOk
-
-`func (o *Relationship) GetCustomerIdOk() (*string, bool)`
-
-GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCustomerId
-
-`func (o *Relationship) SetCustomerId(v string)`
-
-SetCustomerId sets CustomerId field to given value.
 
 
 

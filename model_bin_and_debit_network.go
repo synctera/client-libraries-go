@@ -16,21 +16,21 @@ import (
 
 // BinAndDebitNetwork struct for BinAndDebitNetwork
 type BinAndDebitNetwork struct {
-	Bin          Bin          `json:"bin"`
-	DebitNetwork DebitNetwork `json:"debit_network"`
 	// The ID of the bank network
-	BankNetworkId string `json:"bank_network_id"`
+	BankNetworkId string       `json:"bank_network_id"`
+	Bin           Bin          `json:"bin"`
+	DebitNetwork  DebitNetwork `json:"debit_network"`
 }
 
 // NewBinAndDebitNetwork instantiates a new BinAndDebitNetwork object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBinAndDebitNetwork(bin Bin, debitNetwork DebitNetwork, bankNetworkId string) *BinAndDebitNetwork {
+func NewBinAndDebitNetwork(bankNetworkId string, bin Bin, debitNetwork DebitNetwork) *BinAndDebitNetwork {
 	this := BinAndDebitNetwork{}
+	this.BankNetworkId = bankNetworkId
 	this.Bin = bin
 	this.DebitNetwork = debitNetwork
-	this.BankNetworkId = bankNetworkId
 	return &this
 }
 
@@ -40,6 +40,30 @@ func NewBinAndDebitNetwork(bin Bin, debitNetwork DebitNetwork, bankNetworkId str
 func NewBinAndDebitNetworkWithDefaults() *BinAndDebitNetwork {
 	this := BinAndDebitNetwork{}
 	return &this
+}
+
+// GetBankNetworkId returns the BankNetworkId field value
+func (o *BinAndDebitNetwork) GetBankNetworkId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BankNetworkId
+}
+
+// GetBankNetworkIdOk returns a tuple with the BankNetworkId field value
+// and a boolean to check if the value has been set.
+func (o *BinAndDebitNetwork) GetBankNetworkIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BankNetworkId, true
+}
+
+// SetBankNetworkId sets field value
+func (o *BinAndDebitNetwork) SetBankNetworkId(v string) {
+	o.BankNetworkId = v
 }
 
 // GetBin returns the Bin field value
@@ -90,40 +114,16 @@ func (o *BinAndDebitNetwork) SetDebitNetwork(v DebitNetwork) {
 	o.DebitNetwork = v
 }
 
-// GetBankNetworkId returns the BankNetworkId field value
-func (o *BinAndDebitNetwork) GetBankNetworkId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BankNetworkId
-}
-
-// GetBankNetworkIdOk returns a tuple with the BankNetworkId field value
-// and a boolean to check if the value has been set.
-func (o *BinAndDebitNetwork) GetBankNetworkIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BankNetworkId, true
-}
-
-// SetBankNetworkId sets field value
-func (o *BinAndDebitNetwork) SetBankNetworkId(v string) {
-	o.BankNetworkId = v
-}
-
 func (o BinAndDebitNetwork) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["bank_network_id"] = o.BankNetworkId
+	}
 	if true {
 		toSerialize["bin"] = o.Bin
 	}
 	if true {
 		toSerialize["debit_network"] = o.DebitNetwork
-	}
-	if true {
-		toSerialize["bank_network_id"] = o.BankNetworkId
 	}
 	return json.Marshal(toSerialize)
 }

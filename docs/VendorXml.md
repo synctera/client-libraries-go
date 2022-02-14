@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Vendor** | **string** |  | 
 **ContentType** | **string** | Describes the content-type encoding received from the vendor | 
+**Vendor** | **string** |  | 
 **Xml** | **string** | Data representaion in XML | 
 
 ## Methods
 
 ### NewVendorXml
 
-`func NewVendorXml(vendor string, contentType string, xml string, ) *VendorXml`
+`func NewVendorXml(contentType string, vendor string, xml string, ) *VendorXml`
 
 NewVendorXml instantiates a new VendorXml object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewVendorXmlWithDefaults instantiates a new VendorXml object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetVendor
-
-`func (o *VendorXml) GetVendor() string`
-
-GetVendor returns the Vendor field if non-nil, zero value otherwise.
-
-### GetVendorOk
-
-`func (o *VendorXml) GetVendorOk() (*string, bool)`
-
-GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVendor
-
-`func (o *VendorXml) SetVendor(v string)`
-
-SetVendor sets Vendor field to given value.
-
 
 ### GetContentType
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *VendorXml) SetContentType(v string)`
 
 SetContentType sets ContentType field to given value.
+
+
+### GetVendor
+
+`func (o *VendorXml) GetVendor() string`
+
+GetVendor returns the Vendor field if non-nil, zero value otherwise.
+
+### GetVendorOk
+
+`func (o *VendorXml) GetVendorOk() (*string, bool)`
+
+GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendor
+
+`func (o *VendorXml) SetVendor(v string)`
+
+SetVendor sets Vendor field to given value.
 
 
 ### GetXml

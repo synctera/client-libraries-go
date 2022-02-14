@@ -21,10 +21,10 @@ type AddVendorAccountsRequest struct {
 	// The type of customer.
 	CustomerType string                      `json:"customer_type"`
 	Vendor       ExternalAccountVendorValues `json:"vendor"`
-	// The list of vendor account IDs that the customer chose to link. For Plaid, these are `account_id`s.
-	VendorAccountIds []string `json:"vendor_account_ids"`
 	// The token provided to link external accounts. For Plaid, this is their `access_token`.
 	VendorAccessToken string `json:"vendor_access_token"`
+	// The list of vendor account IDs that the customer chose to link. For Plaid, these are `account_id`s.
+	VendorAccountIds []string `json:"vendor_account_ids"`
 	// Synctera will attempt to verify that the external account owner is the same as the customer by comparing external account data to customer data. At least 2 of the following fields must match: name, phone number, email, address. Verification will be suppressed by default
 	VerifyOwner *bool `json:"verify_owner,omitempty"`
 }
@@ -33,13 +33,13 @@ type AddVendorAccountsRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddVendorAccountsRequest(customerId string, customerType string, vendor ExternalAccountVendorValues, vendorAccountIds []string, vendorAccessToken string) *AddVendorAccountsRequest {
+func NewAddVendorAccountsRequest(customerId string, customerType string, vendor ExternalAccountVendorValues, vendorAccessToken string, vendorAccountIds []string) *AddVendorAccountsRequest {
 	this := AddVendorAccountsRequest{}
 	this.CustomerId = customerId
 	this.CustomerType = customerType
 	this.Vendor = vendor
-	this.VendorAccountIds = vendorAccountIds
 	this.VendorAccessToken = vendorAccessToken
+	this.VendorAccountIds = vendorAccountIds
 	var verifyOwner bool = false
 	this.VerifyOwner = &verifyOwner
 	return &this
@@ -127,30 +127,6 @@ func (o *AddVendorAccountsRequest) SetVendor(v ExternalAccountVendorValues) {
 	o.Vendor = v
 }
 
-// GetVendorAccountIds returns the VendorAccountIds field value
-func (o *AddVendorAccountsRequest) GetVendorAccountIds() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.VendorAccountIds
-}
-
-// GetVendorAccountIdsOk returns a tuple with the VendorAccountIds field value
-// and a boolean to check if the value has been set.
-func (o *AddVendorAccountsRequest) GetVendorAccountIdsOk() (*[]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.VendorAccountIds, true
-}
-
-// SetVendorAccountIds sets field value
-func (o *AddVendorAccountsRequest) SetVendorAccountIds(v []string) {
-	o.VendorAccountIds = v
-}
-
 // GetVendorAccessToken returns the VendorAccessToken field value
 func (o *AddVendorAccountsRequest) GetVendorAccessToken() string {
 	if o == nil {
@@ -173,6 +149,30 @@ func (o *AddVendorAccountsRequest) GetVendorAccessTokenOk() (*string, bool) {
 // SetVendorAccessToken sets field value
 func (o *AddVendorAccountsRequest) SetVendorAccessToken(v string) {
 	o.VendorAccessToken = v
+}
+
+// GetVendorAccountIds returns the VendorAccountIds field value
+func (o *AddVendorAccountsRequest) GetVendorAccountIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.VendorAccountIds
+}
+
+// GetVendorAccountIdsOk returns a tuple with the VendorAccountIds field value
+// and a boolean to check if the value has been set.
+func (o *AddVendorAccountsRequest) GetVendorAccountIdsOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VendorAccountIds, true
+}
+
+// SetVendorAccountIds sets field value
+func (o *AddVendorAccountsRequest) SetVendorAccountIds(v []string) {
+	o.VendorAccountIds = v
 }
 
 // GetVerifyOwner returns the VerifyOwner field value if set, zero value otherwise.
@@ -219,10 +219,10 @@ func (o AddVendorAccountsRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["vendor"] = o.Vendor
 	}
 	if true {
-		toSerialize["vendor_account_ids"] = o.VendorAccountIds
+		toSerialize["vendor_access_token"] = o.VendorAccessToken
 	}
 	if true {
-		toSerialize["vendor_access_token"] = o.VendorAccessToken
+		toSerialize["vendor_account_ids"] = o.VendorAccountIds
 	}
 	if o.VerifyOwner != nil {
 		toSerialize["verify_owner"] = o.VerifyOwner

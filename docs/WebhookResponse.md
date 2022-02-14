@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Active** | Pointer to **bool** | indicates whether webhook is active | [optional] 
+**Config** | Pointer to [**WebhookConfig**](WebhookConfig.md) |  | [optional] 
+**Events** | Pointer to **[]string** | list of webhook events, use * to receive all notifications | [optional] 
 **Id** | Pointer to **string** | id of the webhook | [optional] 
 **Name** | Pointer to **string** | name of the webhook | [optional] 
-**Active** | Pointer to **bool** | indicates whether webhook is active | [optional] 
-**Events** | Pointer to **[]string** | list of webhook events, use * to receive all notifications | [optional] 
-**Config** | Pointer to [**WebhookConfig**](WebhookConfig.md) |  | [optional] 
 **CreationTime** | Pointer to **time.Time** | The timestamp representing when the webhook request was made | [optional] [readonly] 
 **LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the webhook was last modified | [optional] [readonly] 
 
@@ -30,6 +30,81 @@ will change when the set of required properties is changed
 NewWebhookResponseWithDefaults instantiates a new WebhookResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActive
+
+`func (o *WebhookResponse) GetActive() bool`
+
+GetActive returns the Active field if non-nil, zero value otherwise.
+
+### GetActiveOk
+
+`func (o *WebhookResponse) GetActiveOk() (*bool, bool)`
+
+GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActive
+
+`func (o *WebhookResponse) SetActive(v bool)`
+
+SetActive sets Active field to given value.
+
+### HasActive
+
+`func (o *WebhookResponse) HasActive() bool`
+
+HasActive returns a boolean if a field has been set.
+
+### GetConfig
+
+`func (o *WebhookResponse) GetConfig() WebhookConfig`
+
+GetConfig returns the Config field if non-nil, zero value otherwise.
+
+### GetConfigOk
+
+`func (o *WebhookResponse) GetConfigOk() (*WebhookConfig, bool)`
+
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfig
+
+`func (o *WebhookResponse) SetConfig(v WebhookConfig)`
+
+SetConfig sets Config field to given value.
+
+### HasConfig
+
+`func (o *WebhookResponse) HasConfig() bool`
+
+HasConfig returns a boolean if a field has been set.
+
+### GetEvents
+
+`func (o *WebhookResponse) GetEvents() []string`
+
+GetEvents returns the Events field if non-nil, zero value otherwise.
+
+### GetEventsOk
+
+`func (o *WebhookResponse) GetEventsOk() (*[]string, bool)`
+
+GetEventsOk returns a tuple with the Events field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEvents
+
+`func (o *WebhookResponse) SetEvents(v []string)`
+
+SetEvents sets Events field to given value.
+
+### HasEvents
+
+`func (o *WebhookResponse) HasEvents() bool`
+
+HasEvents returns a boolean if a field has been set.
 
 ### GetId
 
@@ -80,81 +155,6 @@ SetName sets Name field to given value.
 `func (o *WebhookResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetActive
-
-`func (o *WebhookResponse) GetActive() bool`
-
-GetActive returns the Active field if non-nil, zero value otherwise.
-
-### GetActiveOk
-
-`func (o *WebhookResponse) GetActiveOk() (*bool, bool)`
-
-GetActiveOk returns a tuple with the Active field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetActive
-
-`func (o *WebhookResponse) SetActive(v bool)`
-
-SetActive sets Active field to given value.
-
-### HasActive
-
-`func (o *WebhookResponse) HasActive() bool`
-
-HasActive returns a boolean if a field has been set.
-
-### GetEvents
-
-`func (o *WebhookResponse) GetEvents() []string`
-
-GetEvents returns the Events field if non-nil, zero value otherwise.
-
-### GetEventsOk
-
-`func (o *WebhookResponse) GetEventsOk() (*[]string, bool)`
-
-GetEventsOk returns a tuple with the Events field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEvents
-
-`func (o *WebhookResponse) SetEvents(v []string)`
-
-SetEvents sets Events field to given value.
-
-### HasEvents
-
-`func (o *WebhookResponse) HasEvents() bool`
-
-HasEvents returns a boolean if a field has been set.
-
-### GetConfig
-
-`func (o *WebhookResponse) GetConfig() WebhookConfig`
-
-GetConfig returns the Config field if non-nil, zero value otherwise.
-
-### GetConfigOk
-
-`func (o *WebhookResponse) GetConfigOk() (*WebhookConfig, bool)`
-
-GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfig
-
-`func (o *WebhookResponse) SetConfig(v WebhookConfig)`
-
-SetConfig sets Config field to given value.
-
-### HasConfig
-
-`func (o *WebhookResponse) HasConfig() bool`
-
-HasConfig returns a boolean if a field has been set.
 
 ### GetCreationTime
 

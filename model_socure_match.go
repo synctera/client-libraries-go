@@ -16,11 +16,11 @@ import (
 
 // SocureMatch struct for SocureMatch
 type SocureMatch struct {
+	Comments    *SocureMatchComments `json:"comments,omitempty"`
 	EntityId    string               `json:"entityId"`
-	Status      string               `json:"status"`
 	MatchFields *[]string            `json:"matchFields,omitempty"`
 	SourceUrls  *[]string            `json:"sourceUrls,omitempty"`
-	Comments    *SocureMatchComments `json:"comments,omitempty"`
+	Status      string               `json:"status"`
 }
 
 // NewSocureMatch instantiates a new SocureMatch object
@@ -40,6 +40,38 @@ func NewSocureMatch(entityId string, status string) *SocureMatch {
 func NewSocureMatchWithDefaults() *SocureMatch {
 	this := SocureMatch{}
 	return &this
+}
+
+// GetComments returns the Comments field value if set, zero value otherwise.
+func (o *SocureMatch) GetComments() SocureMatchComments {
+	if o == nil || o.Comments == nil {
+		var ret SocureMatchComments
+		return ret
+	}
+	return *o.Comments
+}
+
+// GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SocureMatch) GetCommentsOk() (*SocureMatchComments, bool) {
+	if o == nil || o.Comments == nil {
+		return nil, false
+	}
+	return o.Comments, true
+}
+
+// HasComments returns a boolean if a field has been set.
+func (o *SocureMatch) HasComments() bool {
+	if o != nil && o.Comments != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComments gets a reference to the given SocureMatchComments and assigns it to the Comments field.
+func (o *SocureMatch) SetComments(v SocureMatchComments) {
+	o.Comments = &v
 }
 
 // GetEntityId returns the EntityId field value
@@ -64,30 +96,6 @@ func (o *SocureMatch) GetEntityIdOk() (*string, bool) {
 // SetEntityId sets field value
 func (o *SocureMatch) SetEntityId(v string) {
 	o.EntityId = v
-}
-
-// GetStatus returns the Status field value
-func (o *SocureMatch) GetStatus() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *SocureMatch) GetStatusOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *SocureMatch) SetStatus(v string) {
-	o.Status = v
 }
 
 // GetMatchFields returns the MatchFields field value if set, zero value otherwise.
@@ -154,45 +162,37 @@ func (o *SocureMatch) SetSourceUrls(v []string) {
 	o.SourceUrls = &v
 }
 
-// GetComments returns the Comments field value if set, zero value otherwise.
-func (o *SocureMatch) GetComments() SocureMatchComments {
-	if o == nil || o.Comments == nil {
-		var ret SocureMatchComments
+// GetStatus returns the Status field value
+func (o *SocureMatch) GetStatus() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.Comments
+
+	return o.Status
 }
 
-// GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *SocureMatch) GetCommentsOk() (*SocureMatchComments, bool) {
-	if o == nil || o.Comments == nil {
+func (o *SocureMatch) GetStatusOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Comments, true
+	return &o.Status, true
 }
 
-// HasComments returns a boolean if a field has been set.
-func (o *SocureMatch) HasComments() bool {
-	if o != nil && o.Comments != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetComments gets a reference to the given SocureMatchComments and assigns it to the Comments field.
-func (o *SocureMatch) SetComments(v SocureMatchComments) {
-	o.Comments = &v
+// SetStatus sets field value
+func (o *SocureMatch) SetStatus(v string) {
+	o.Status = v
 }
 
 func (o SocureMatch) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["entityId"] = o.EntityId
+	if o.Comments != nil {
+		toSerialize["comments"] = o.Comments
 	}
 	if true {
-		toSerialize["status"] = o.Status
+		toSerialize["entityId"] = o.EntityId
 	}
 	if o.MatchFields != nil {
 		toSerialize["matchFields"] = o.MatchFields
@@ -200,8 +200,8 @@ func (o SocureMatch) MarshalJSON() ([]byte, error) {
 	if o.SourceUrls != nil {
 		toSerialize["sourceUrls"] = o.SourceUrls
 	}
-	if o.Comments != nil {
-		toSerialize["comments"] = o.Comments
+	if true {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

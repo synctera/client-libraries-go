@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **int64** | Transaction amount. Number in cents. E.g. 1000 represents $10.00 | [optional] 
-**Currency** | Pointer to **string** | ISO 4217 alphabetic currency code | [optional] 
+**AuthorizedDate** | Pointer to [**oapi.Date**](oapi.Date.md) | Date that the transaction is authorized. ISO 8601 format ( YYYY-MM-DD ). | [optional] 
 **Category** | Pointer to **[]string** | Category of the transaction | [optional] 
 **CheckNumber** | Pointer to **string** | Check number of the transaction. This field will be null if not a check transaction. | [optional] 
-**IsPending** | Pointer to **bool** | Indicates the transaction is pending or unsettled if true. | [optional] 
+**Currency** | Pointer to **string** | ISO 4217 alphabetic currency code | [optional] 
 **Date** | Pointer to [**oapi.Date**](oapi.Date.md) | For pending transactions, this represents the date of the transaction occurred; for posted transactions, this represents the date of the transaction posted. ISO 8601 format ( YYYY-MM-DD ).  | [optional] 
-**AuthorizedDate** | Pointer to [**oapi.Date**](oapi.Date.md) | Date that the transaction is authorized. ISO 8601 format ( YYYY-MM-DD ). | [optional] 
+**IsPending** | Pointer to **bool** | Indicates the transaction is pending or unsettled if true. | [optional] 
 **MerchantName** | Pointer to **string** | Merchant name of the transaction | [optional] 
 **PaymentChannel** | Pointer to **string** | channel used to make a payment | [optional] 
 **PaymentMethod** | Pointer to **string** | Transfer type of the transaction, e.g. ACH | [optional] 
@@ -60,30 +60,30 @@ SetAmount sets Amount field to given value.
 
 HasAmount returns a boolean if a field has been set.
 
-### GetCurrency
+### GetAuthorizedDate
 
-`func (o *ExternalAccountTransaction) GetCurrency() string`
+`func (o *ExternalAccountTransaction) GetAuthorizedDate() oapi.Date`
 
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
+GetAuthorizedDate returns the AuthorizedDate field if non-nil, zero value otherwise.
 
-### GetCurrencyOk
+### GetAuthorizedDateOk
 
-`func (o *ExternalAccountTransaction) GetCurrencyOk() (*string, bool)`
+`func (o *ExternalAccountTransaction) GetAuthorizedDateOk() (*oapi.Date, bool)`
 
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+GetAuthorizedDateOk returns a tuple with the AuthorizedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCurrency
+### SetAuthorizedDate
 
-`func (o *ExternalAccountTransaction) SetCurrency(v string)`
+`func (o *ExternalAccountTransaction) SetAuthorizedDate(v oapi.Date)`
 
-SetCurrency sets Currency field to given value.
+SetAuthorizedDate sets AuthorizedDate field to given value.
 
-### HasCurrency
+### HasAuthorizedDate
 
-`func (o *ExternalAccountTransaction) HasCurrency() bool`
+`func (o *ExternalAccountTransaction) HasAuthorizedDate() bool`
 
-HasCurrency returns a boolean if a field has been set.
+HasAuthorizedDate returns a boolean if a field has been set.
 
 ### GetCategory
 
@@ -135,30 +135,30 @@ SetCheckNumber sets CheckNumber field to given value.
 
 HasCheckNumber returns a boolean if a field has been set.
 
-### GetIsPending
+### GetCurrency
 
-`func (o *ExternalAccountTransaction) GetIsPending() bool`
+`func (o *ExternalAccountTransaction) GetCurrency() string`
 
-GetIsPending returns the IsPending field if non-nil, zero value otherwise.
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
 
-### GetIsPendingOk
+### GetCurrencyOk
 
-`func (o *ExternalAccountTransaction) GetIsPendingOk() (*bool, bool)`
+`func (o *ExternalAccountTransaction) GetCurrencyOk() (*string, bool)`
 
-GetIsPendingOk returns a tuple with the IsPending field if it's non-nil, zero value otherwise
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsPending
+### SetCurrency
 
-`func (o *ExternalAccountTransaction) SetIsPending(v bool)`
+`func (o *ExternalAccountTransaction) SetCurrency(v string)`
 
-SetIsPending sets IsPending field to given value.
+SetCurrency sets Currency field to given value.
 
-### HasIsPending
+### HasCurrency
 
-`func (o *ExternalAccountTransaction) HasIsPending() bool`
+`func (o *ExternalAccountTransaction) HasCurrency() bool`
 
-HasIsPending returns a boolean if a field has been set.
+HasCurrency returns a boolean if a field has been set.
 
 ### GetDate
 
@@ -185,30 +185,30 @@ SetDate sets Date field to given value.
 
 HasDate returns a boolean if a field has been set.
 
-### GetAuthorizedDate
+### GetIsPending
 
-`func (o *ExternalAccountTransaction) GetAuthorizedDate() oapi.Date`
+`func (o *ExternalAccountTransaction) GetIsPending() bool`
 
-GetAuthorizedDate returns the AuthorizedDate field if non-nil, zero value otherwise.
+GetIsPending returns the IsPending field if non-nil, zero value otherwise.
 
-### GetAuthorizedDateOk
+### GetIsPendingOk
 
-`func (o *ExternalAccountTransaction) GetAuthorizedDateOk() (*oapi.Date, bool)`
+`func (o *ExternalAccountTransaction) GetIsPendingOk() (*bool, bool)`
 
-GetAuthorizedDateOk returns a tuple with the AuthorizedDate field if it's non-nil, zero value otherwise
+GetIsPendingOk returns a tuple with the IsPending field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAuthorizedDate
+### SetIsPending
 
-`func (o *ExternalAccountTransaction) SetAuthorizedDate(v oapi.Date)`
+`func (o *ExternalAccountTransaction) SetIsPending(v bool)`
 
-SetAuthorizedDate sets AuthorizedDate field to given value.
+SetIsPending sets IsPending field to given value.
 
-### HasAuthorizedDate
+### HasIsPending
 
-`func (o *ExternalAccountTransaction) HasAuthorizedDate() bool`
+`func (o *ExternalAccountTransaction) HasIsPending() bool`
 
-HasAuthorizedDate returns a boolean if a field has been set.
+HasIsPending returns a boolean if a field has been set.
 
 ### GetMerchantName
 

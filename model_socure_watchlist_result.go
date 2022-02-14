@@ -16,9 +16,9 @@ import (
 
 // SocureWatchlistResult Encapsulates the relationship between a person and any number of watchlists. That is, this tells you which watchlists a person is believed to be on (there might be false positives for similar names).
 type SocureWatchlistResult struct {
-	// A 36 character reference ID included with every ID+ response.
-	ReferenceId     string                 `json:"referenceId"`
 	GlobalWatchlist *SocureGlobalWatchlist `json:"globalWatchlist,omitempty"`
+	// A 36 character reference ID included with every ID+ response.
+	ReferenceId string `json:"referenceId"`
 }
 
 // NewSocureWatchlistResult instantiates a new SocureWatchlistResult object
@@ -37,30 +37,6 @@ func NewSocureWatchlistResult(referenceId string) *SocureWatchlistResult {
 func NewSocureWatchlistResultWithDefaults() *SocureWatchlistResult {
 	this := SocureWatchlistResult{}
 	return &this
-}
-
-// GetReferenceId returns the ReferenceId field value
-func (o *SocureWatchlistResult) GetReferenceId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ReferenceId
-}
-
-// GetReferenceIdOk returns a tuple with the ReferenceId field value
-// and a boolean to check if the value has been set.
-func (o *SocureWatchlistResult) GetReferenceIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ReferenceId, true
-}
-
-// SetReferenceId sets field value
-func (o *SocureWatchlistResult) SetReferenceId(v string) {
-	o.ReferenceId = v
 }
 
 // GetGlobalWatchlist returns the GlobalWatchlist field value if set, zero value otherwise.
@@ -95,13 +71,37 @@ func (o *SocureWatchlistResult) SetGlobalWatchlist(v SocureGlobalWatchlist) {
 	o.GlobalWatchlist = &v
 }
 
+// GetReferenceId returns the ReferenceId field value
+func (o *SocureWatchlistResult) GetReferenceId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ReferenceId
+}
+
+// GetReferenceIdOk returns a tuple with the ReferenceId field value
+// and a boolean to check if the value has been set.
+func (o *SocureWatchlistResult) GetReferenceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ReferenceId, true
+}
+
+// SetReferenceId sets field value
+func (o *SocureWatchlistResult) SetReferenceId(v string) {
+	o.ReferenceId = v
+}
+
 func (o SocureWatchlistResult) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["referenceId"] = o.ReferenceId
-	}
 	if o.GlobalWatchlist != nil {
 		toSerialize["globalWatchlist"] = o.GlobalWatchlist
+	}
+	if true {
+		toSerialize["referenceId"] = o.ReferenceId
 	}
 	return json.Marshal(toSerialize)
 }

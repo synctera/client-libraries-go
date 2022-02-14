@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **AddressLine1** | **string** | Street address line 1 | 
 **AddressLine2** | Pointer to **string** | String address line 2 | [optional] 
 **City** | Pointer to **string** | City | [optional] 
-**State** | Pointer to **string** | State, region, province, or prefecture | [optional] 
-**PostalCode** | Pointer to **string** | Postal code | [optional] 
 **CountryCode** | **string** | ISO-3166-1 Alpha-2 country code | 
+**PostalCode** | Pointer to **string** | Postal code | [optional] 
+**State** | Pointer to **string** | State, region, province, or prefecture | [optional] 
 
 ## Methods
 
@@ -100,30 +100,25 @@ SetCity sets City field to given value.
 
 HasCity returns a boolean if a field has been set.
 
-### GetState
+### GetCountryCode
 
-`func (o *Address1) GetState() string`
+`func (o *Address1) GetCountryCode() string`
 
-GetState returns the State field if non-nil, zero value otherwise.
+GetCountryCode returns the CountryCode field if non-nil, zero value otherwise.
 
-### GetStateOk
+### GetCountryCodeOk
 
-`func (o *Address1) GetStateOk() (*string, bool)`
+`func (o *Address1) GetCountryCodeOk() (*string, bool)`
 
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+GetCountryCodeOk returns a tuple with the CountryCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetState
+### SetCountryCode
 
-`func (o *Address1) SetState(v string)`
+`func (o *Address1) SetCountryCode(v string)`
 
-SetState sets State field to given value.
+SetCountryCode sets CountryCode field to given value.
 
-### HasState
-
-`func (o *Address1) HasState() bool`
-
-HasState returns a boolean if a field has been set.
 
 ### GetPostalCode
 
@@ -150,25 +145,30 @@ SetPostalCode sets PostalCode field to given value.
 
 HasPostalCode returns a boolean if a field has been set.
 
-### GetCountryCode
+### GetState
 
-`func (o *Address1) GetCountryCode() string`
+`func (o *Address1) GetState() string`
 
-GetCountryCode returns the CountryCode field if non-nil, zero value otherwise.
+GetState returns the State field if non-nil, zero value otherwise.
 
-### GetCountryCodeOk
+### GetStateOk
 
-`func (o *Address1) GetCountryCodeOk() (*string, bool)`
+`func (o *Address1) GetStateOk() (*string, bool)`
 
-GetCountryCodeOk returns a tuple with the CountryCode field if it's non-nil, zero value otherwise
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCountryCode
+### SetState
 
-`func (o *Address1) SetCountryCode(v string)`
+`func (o *Address1) SetState(v string)`
 
-SetCountryCode sets CountryCode field to given value.
+SetState sets State field to given value.
 
+### HasState
+
+`func (o *Address1) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

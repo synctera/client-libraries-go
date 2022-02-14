@@ -16,24 +16,24 @@ import (
 
 // VerificationVendorXml struct for VerificationVendorXml
 type VerificationVendorXml struct {
-	// Name of the vendor used.
-	Vendor string `json:"vendor"`
 	// Describes the content-type encoding received from the vendor.
 	ContentType string `json:"content_type"`
-	// Data representaion in XML.
-	Xml string `json:"xml"`
 	// Array of vendor specific information.
 	Details *[]VerificationVendorInfoDetail `json:"details,omitempty"`
+	// Name of the vendor used.
+	Vendor string `json:"vendor"`
+	// Data representaion in XML.
+	Xml string `json:"xml"`
 }
 
 // NewVerificationVendorXml instantiates a new VerificationVendorXml object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerificationVendorXml(vendor string, contentType string, xml string) *VerificationVendorXml {
+func NewVerificationVendorXml(contentType string, vendor string, xml string) *VerificationVendorXml {
 	this := VerificationVendorXml{}
-	this.Vendor = vendor
 	this.ContentType = contentType
+	this.Vendor = vendor
 	this.Xml = xml
 	return &this
 }
@@ -44,30 +44,6 @@ func NewVerificationVendorXml(vendor string, contentType string, xml string) *Ve
 func NewVerificationVendorXmlWithDefaults() *VerificationVendorXml {
 	this := VerificationVendorXml{}
 	return &this
-}
-
-// GetVendor returns the Vendor field value
-func (o *VerificationVendorXml) GetVendor() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Vendor
-}
-
-// GetVendorOk returns a tuple with the Vendor field value
-// and a boolean to check if the value has been set.
-func (o *VerificationVendorXml) GetVendorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Vendor, true
-}
-
-// SetVendor sets field value
-func (o *VerificationVendorXml) SetVendor(v string) {
-	o.Vendor = v
 }
 
 // GetContentType returns the ContentType field value
@@ -92,30 +68,6 @@ func (o *VerificationVendorXml) GetContentTypeOk() (*string, bool) {
 // SetContentType sets field value
 func (o *VerificationVendorXml) SetContentType(v string) {
 	o.ContentType = v
-}
-
-// GetXml returns the Xml field value
-func (o *VerificationVendorXml) GetXml() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Xml
-}
-
-// GetXmlOk returns a tuple with the Xml field value
-// and a boolean to check if the value has been set.
-func (o *VerificationVendorXml) GetXmlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Xml, true
-}
-
-// SetXml sets field value
-func (o *VerificationVendorXml) SetXml(v string) {
-	o.Xml = v
 }
 
 // GetDetails returns the Details field value if set, zero value otherwise.
@@ -150,19 +102,67 @@ func (o *VerificationVendorXml) SetDetails(v []VerificationVendorInfoDetail) {
 	o.Details = &v
 }
 
+// GetVendor returns the Vendor field value
+func (o *VerificationVendorXml) GetVendor() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Vendor
+}
+
+// GetVendorOk returns a tuple with the Vendor field value
+// and a boolean to check if the value has been set.
+func (o *VerificationVendorXml) GetVendorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Vendor, true
+}
+
+// SetVendor sets field value
+func (o *VerificationVendorXml) SetVendor(v string) {
+	o.Vendor = v
+}
+
+// GetXml returns the Xml field value
+func (o *VerificationVendorXml) GetXml() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Xml
+}
+
+// GetXmlOk returns a tuple with the Xml field value
+// and a boolean to check if the value has been set.
+func (o *VerificationVendorXml) GetXmlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Xml, true
+}
+
+// SetXml sets field value
+func (o *VerificationVendorXml) SetXml(v string) {
+	o.Xml = v
+}
+
 func (o VerificationVendorXml) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["content_type"] = o.ContentType
+	}
+	if o.Details != nil {
+		toSerialize["details"] = o.Details
+	}
 	if true {
 		toSerialize["vendor"] = o.Vendor
 	}
 	if true {
-		toSerialize["content_type"] = o.ContentType
-	}
-	if true {
 		toSerialize["xml"] = o.Xml
-	}
-	if o.Details != nil {
-		toSerialize["details"] = o.Details
 	}
 	return json.Marshal(toSerialize)
 }

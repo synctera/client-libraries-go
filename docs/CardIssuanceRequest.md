@@ -5,32 +5,32 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Form** | **string** | PHYSICAL or VIRTUAL. | 
-**Id** | Pointer to **string** | Card ID | [optional] [readonly] 
-**Bin** | Pointer to **string** | The bin number | [optional] 
-**CustomerId** | **string** | The ID of the customer to whom the card will be issued | 
 **AccountId** | **string** | The ID of the account to which the card will be linked | 
-**Type** | **string** | Indicates the type of card to be issued | 
-**EmbossName** | Pointer to [**EmbossName**](EmbossName.md) |  | [optional] 
-**LastFour** | Pointer to **string** | The last 4 digits of the card PAN | [optional] [readonly] 
-**CardProductId** | **string** | The card product to which the card is attached | 
+**Bin** | Pointer to **string** | The bin number | [optional] 
 **CardBrand** | Pointer to [**CardBrand**](CardBrand.md) |  | [optional] 
-**ExpirationYear** | Pointer to **string** |  | [optional] [readonly] 
+**CardProductId** | **string** | The card product to which the card is attached | 
+**CreationTime** | Pointer to **time.Time** | The timestamp representing when the card issuance request was made | [optional] [readonly] 
+**CustomerId** | **string** | The ID of the customer to whom the card will be issued | 
+**EmbossName** | Pointer to [**EmbossName**](EmbossName.md) |  | [optional] 
 **ExpirationMonth** | Pointer to **string** |  | [optional] [readonly] 
 **ExpirationTime** | Pointer to **time.Time** | The timestamp representing when the card would expire at | [optional] [readonly] 
-**CreationTime** | Pointer to **time.Time** | The timestamp representing when the card issuance request was made | [optional] [readonly] 
+**ExpirationYear** | Pointer to **string** |  | [optional] [readonly] 
+**Id** | Pointer to **string** | Card ID | [optional] [readonly] 
+**LastFour** | Pointer to **string** | The last 4 digits of the card PAN | [optional] [readonly] 
 **LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the card was last modified at | [optional] [readonly] 
-**ReissuedToId** | Pointer to **string** | If this card was reissued, this ID refers to the card that replaced it. | [optional] [readonly] 
-**ReissuedFromId** | Pointer to **string** | When reissuing a card, specify the card to be replaced here. When getting a card&#39;s details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced.  | [optional] 
-**ReissueReason** | Pointer to **string** | The reason the card needs to be reissued | [optional] 
-**Shipping** | Pointer to [**Shipping**](Shipping.md) |  | [optional] 
 **Metadata** | Pointer to **map[string]string** | Additional data to include in the request structured as key-value pairs | [optional] 
+**ReissueReason** | Pointer to **string** | The reason the card needs to be reissued | [optional] 
+**ReissuedFromId** | Pointer to **string** | When reissuing a card, specify the card to be replaced here. When getting a card&#39;s details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced.  | [optional] 
+**ReissuedToId** | Pointer to **string** | If this card was reissued, this ID refers to the card that replaced it. | [optional] [readonly] 
+**Shipping** | Pointer to [**Shipping**](Shipping.md) |  | [optional] 
+**Type** | **string** | Indicates the type of card to be issued | 
 **IsPinSet** | Pointer to **bool** | indicates whether a pin has been set on the card | [optional] [readonly] [default to false]
 
 ## Methods
 
 ### NewCardIssuanceRequest
 
-`func NewCardIssuanceRequest(form string, customerId string, accountId string, type_ string, cardProductId string, ) *CardIssuanceRequest`
+`func NewCardIssuanceRequest(form string, accountId string, cardProductId string, customerId string, type_ string, ) *CardIssuanceRequest`
 
 NewCardIssuanceRequest instantiates a new CardIssuanceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -65,30 +65,25 @@ and a boolean to check if the value has been set.
 SetForm sets Form field to given value.
 
 
-### GetId
+### GetAccountId
 
-`func (o *CardIssuanceRequest) GetId() string`
+`func (o *CardIssuanceRequest) GetAccountId() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetAccountIdOk
 
-`func (o *CardIssuanceRequest) GetIdOk() (*string, bool)`
+`func (o *CardIssuanceRequest) GetAccountIdOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetAccountId
 
-`func (o *CardIssuanceRequest) SetId(v string)`
+`func (o *CardIssuanceRequest) SetAccountId(v string)`
 
-SetId sets Id field to given value.
+SetAccountId sets AccountId field to given value.
 
-### HasId
-
-`func (o *CardIssuanceRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetBin
 
@@ -115,6 +110,76 @@ SetBin sets Bin field to given value.
 
 HasBin returns a boolean if a field has been set.
 
+### GetCardBrand
+
+`func (o *CardIssuanceRequest) GetCardBrand() CardBrand`
+
+GetCardBrand returns the CardBrand field if non-nil, zero value otherwise.
+
+### GetCardBrandOk
+
+`func (o *CardIssuanceRequest) GetCardBrandOk() (*CardBrand, bool)`
+
+GetCardBrandOk returns a tuple with the CardBrand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardBrand
+
+`func (o *CardIssuanceRequest) SetCardBrand(v CardBrand)`
+
+SetCardBrand sets CardBrand field to given value.
+
+### HasCardBrand
+
+`func (o *CardIssuanceRequest) HasCardBrand() bool`
+
+HasCardBrand returns a boolean if a field has been set.
+
+### GetCardProductId
+
+`func (o *CardIssuanceRequest) GetCardProductId() string`
+
+GetCardProductId returns the CardProductId field if non-nil, zero value otherwise.
+
+### GetCardProductIdOk
+
+`func (o *CardIssuanceRequest) GetCardProductIdOk() (*string, bool)`
+
+GetCardProductIdOk returns a tuple with the CardProductId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardProductId
+
+`func (o *CardIssuanceRequest) SetCardProductId(v string)`
+
+SetCardProductId sets CardProductId field to given value.
+
+
+### GetCreationTime
+
+`func (o *CardIssuanceRequest) GetCreationTime() time.Time`
+
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+
+### GetCreationTimeOk
+
+`func (o *CardIssuanceRequest) GetCreationTimeOk() (*time.Time, bool)`
+
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationTime
+
+`func (o *CardIssuanceRequest) SetCreationTime(v time.Time)`
+
+SetCreationTime sets CreationTime field to given value.
+
+### HasCreationTime
+
+`func (o *CardIssuanceRequest) HasCreationTime() bool`
+
+HasCreationTime returns a boolean if a field has been set.
+
 ### GetCustomerId
 
 `func (o *CardIssuanceRequest) GetCustomerId() string`
@@ -133,46 +198,6 @@ and a boolean to check if the value has been set.
 `func (o *CardIssuanceRequest) SetCustomerId(v string)`
 
 SetCustomerId sets CustomerId field to given value.
-
-
-### GetAccountId
-
-`func (o *CardIssuanceRequest) GetAccountId() string`
-
-GetAccountId returns the AccountId field if non-nil, zero value otherwise.
-
-### GetAccountIdOk
-
-`func (o *CardIssuanceRequest) GetAccountIdOk() (*string, bool)`
-
-GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountId
-
-`func (o *CardIssuanceRequest) SetAccountId(v string)`
-
-SetAccountId sets AccountId field to given value.
-
-
-### GetType
-
-`func (o *CardIssuanceRequest) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *CardIssuanceRequest) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *CardIssuanceRequest) SetType(v string)`
-
-SetType sets Type field to given value.
 
 
 ### GetEmbossName
@@ -199,101 +224,6 @@ SetEmbossName sets EmbossName field to given value.
 `func (o *CardIssuanceRequest) HasEmbossName() bool`
 
 HasEmbossName returns a boolean if a field has been set.
-
-### GetLastFour
-
-`func (o *CardIssuanceRequest) GetLastFour() string`
-
-GetLastFour returns the LastFour field if non-nil, zero value otherwise.
-
-### GetLastFourOk
-
-`func (o *CardIssuanceRequest) GetLastFourOk() (*string, bool)`
-
-GetLastFourOk returns a tuple with the LastFour field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastFour
-
-`func (o *CardIssuanceRequest) SetLastFour(v string)`
-
-SetLastFour sets LastFour field to given value.
-
-### HasLastFour
-
-`func (o *CardIssuanceRequest) HasLastFour() bool`
-
-HasLastFour returns a boolean if a field has been set.
-
-### GetCardProductId
-
-`func (o *CardIssuanceRequest) GetCardProductId() string`
-
-GetCardProductId returns the CardProductId field if non-nil, zero value otherwise.
-
-### GetCardProductIdOk
-
-`func (o *CardIssuanceRequest) GetCardProductIdOk() (*string, bool)`
-
-GetCardProductIdOk returns a tuple with the CardProductId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCardProductId
-
-`func (o *CardIssuanceRequest) SetCardProductId(v string)`
-
-SetCardProductId sets CardProductId field to given value.
-
-
-### GetCardBrand
-
-`func (o *CardIssuanceRequest) GetCardBrand() CardBrand`
-
-GetCardBrand returns the CardBrand field if non-nil, zero value otherwise.
-
-### GetCardBrandOk
-
-`func (o *CardIssuanceRequest) GetCardBrandOk() (*CardBrand, bool)`
-
-GetCardBrandOk returns a tuple with the CardBrand field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCardBrand
-
-`func (o *CardIssuanceRequest) SetCardBrand(v CardBrand)`
-
-SetCardBrand sets CardBrand field to given value.
-
-### HasCardBrand
-
-`func (o *CardIssuanceRequest) HasCardBrand() bool`
-
-HasCardBrand returns a boolean if a field has been set.
-
-### GetExpirationYear
-
-`func (o *CardIssuanceRequest) GetExpirationYear() string`
-
-GetExpirationYear returns the ExpirationYear field if non-nil, zero value otherwise.
-
-### GetExpirationYearOk
-
-`func (o *CardIssuanceRequest) GetExpirationYearOk() (*string, bool)`
-
-GetExpirationYearOk returns a tuple with the ExpirationYear field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExpirationYear
-
-`func (o *CardIssuanceRequest) SetExpirationYear(v string)`
-
-SetExpirationYear sets ExpirationYear field to given value.
-
-### HasExpirationYear
-
-`func (o *CardIssuanceRequest) HasExpirationYear() bool`
-
-HasExpirationYear returns a boolean if a field has been set.
 
 ### GetExpirationMonth
 
@@ -345,30 +275,80 @@ SetExpirationTime sets ExpirationTime field to given value.
 
 HasExpirationTime returns a boolean if a field has been set.
 
-### GetCreationTime
+### GetExpirationYear
 
-`func (o *CardIssuanceRequest) GetCreationTime() time.Time`
+`func (o *CardIssuanceRequest) GetExpirationYear() string`
 
-GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+GetExpirationYear returns the ExpirationYear field if non-nil, zero value otherwise.
 
-### GetCreationTimeOk
+### GetExpirationYearOk
 
-`func (o *CardIssuanceRequest) GetCreationTimeOk() (*time.Time, bool)`
+`func (o *CardIssuanceRequest) GetExpirationYearOk() (*string, bool)`
 
-GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+GetExpirationYearOk returns a tuple with the ExpirationYear field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreationTime
+### SetExpirationYear
 
-`func (o *CardIssuanceRequest) SetCreationTime(v time.Time)`
+`func (o *CardIssuanceRequest) SetExpirationYear(v string)`
 
-SetCreationTime sets CreationTime field to given value.
+SetExpirationYear sets ExpirationYear field to given value.
 
-### HasCreationTime
+### HasExpirationYear
 
-`func (o *CardIssuanceRequest) HasCreationTime() bool`
+`func (o *CardIssuanceRequest) HasExpirationYear() bool`
 
-HasCreationTime returns a boolean if a field has been set.
+HasExpirationYear returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *CardIssuanceRequest) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CardIssuanceRequest) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CardIssuanceRequest) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *CardIssuanceRequest) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetLastFour
+
+`func (o *CardIssuanceRequest) GetLastFour() string`
+
+GetLastFour returns the LastFour field if non-nil, zero value otherwise.
+
+### GetLastFourOk
+
+`func (o *CardIssuanceRequest) GetLastFourOk() (*string, bool)`
+
+GetLastFourOk returns a tuple with the LastFour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastFour
+
+`func (o *CardIssuanceRequest) SetLastFour(v string)`
+
+SetLastFour sets LastFour field to given value.
+
+### HasLastFour
+
+`func (o *CardIssuanceRequest) HasLastFour() bool`
+
+HasLastFour returns a boolean if a field has been set.
 
 ### GetLastModifiedTime
 
@@ -395,55 +375,30 @@ SetLastModifiedTime sets LastModifiedTime field to given value.
 
 HasLastModifiedTime returns a boolean if a field has been set.
 
-### GetReissuedToId
+### GetMetadata
 
-`func (o *CardIssuanceRequest) GetReissuedToId() string`
+`func (o *CardIssuanceRequest) GetMetadata() map[string]string`
 
-GetReissuedToId returns the ReissuedToId field if non-nil, zero value otherwise.
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
-### GetReissuedToIdOk
+### GetMetadataOk
 
-`func (o *CardIssuanceRequest) GetReissuedToIdOk() (*string, bool)`
+`func (o *CardIssuanceRequest) GetMetadataOk() (*map[string]string, bool)`
 
-GetReissuedToIdOk returns a tuple with the ReissuedToId field if it's non-nil, zero value otherwise
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetReissuedToId
+### SetMetadata
 
-`func (o *CardIssuanceRequest) SetReissuedToId(v string)`
+`func (o *CardIssuanceRequest) SetMetadata(v map[string]string)`
 
-SetReissuedToId sets ReissuedToId field to given value.
+SetMetadata sets Metadata field to given value.
 
-### HasReissuedToId
+### HasMetadata
 
-`func (o *CardIssuanceRequest) HasReissuedToId() bool`
+`func (o *CardIssuanceRequest) HasMetadata() bool`
 
-HasReissuedToId returns a boolean if a field has been set.
-
-### GetReissuedFromId
-
-`func (o *CardIssuanceRequest) GetReissuedFromId() string`
-
-GetReissuedFromId returns the ReissuedFromId field if non-nil, zero value otherwise.
-
-### GetReissuedFromIdOk
-
-`func (o *CardIssuanceRequest) GetReissuedFromIdOk() (*string, bool)`
-
-GetReissuedFromIdOk returns a tuple with the ReissuedFromId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReissuedFromId
-
-`func (o *CardIssuanceRequest) SetReissuedFromId(v string)`
-
-SetReissuedFromId sets ReissuedFromId field to given value.
-
-### HasReissuedFromId
-
-`func (o *CardIssuanceRequest) HasReissuedFromId() bool`
-
-HasReissuedFromId returns a boolean if a field has been set.
+HasMetadata returns a boolean if a field has been set.
 
 ### GetReissueReason
 
@@ -470,6 +425,56 @@ SetReissueReason sets ReissueReason field to given value.
 
 HasReissueReason returns a boolean if a field has been set.
 
+### GetReissuedFromId
+
+`func (o *CardIssuanceRequest) GetReissuedFromId() string`
+
+GetReissuedFromId returns the ReissuedFromId field if non-nil, zero value otherwise.
+
+### GetReissuedFromIdOk
+
+`func (o *CardIssuanceRequest) GetReissuedFromIdOk() (*string, bool)`
+
+GetReissuedFromIdOk returns a tuple with the ReissuedFromId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReissuedFromId
+
+`func (o *CardIssuanceRequest) SetReissuedFromId(v string)`
+
+SetReissuedFromId sets ReissuedFromId field to given value.
+
+### HasReissuedFromId
+
+`func (o *CardIssuanceRequest) HasReissuedFromId() bool`
+
+HasReissuedFromId returns a boolean if a field has been set.
+
+### GetReissuedToId
+
+`func (o *CardIssuanceRequest) GetReissuedToId() string`
+
+GetReissuedToId returns the ReissuedToId field if non-nil, zero value otherwise.
+
+### GetReissuedToIdOk
+
+`func (o *CardIssuanceRequest) GetReissuedToIdOk() (*string, bool)`
+
+GetReissuedToIdOk returns a tuple with the ReissuedToId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReissuedToId
+
+`func (o *CardIssuanceRequest) SetReissuedToId(v string)`
+
+SetReissuedToId sets ReissuedToId field to given value.
+
+### HasReissuedToId
+
+`func (o *CardIssuanceRequest) HasReissuedToId() bool`
+
+HasReissuedToId returns a boolean if a field has been set.
+
 ### GetShipping
 
 `func (o *CardIssuanceRequest) GetShipping() Shipping`
@@ -495,30 +500,25 @@ SetShipping sets Shipping field to given value.
 
 HasShipping returns a boolean if a field has been set.
 
-### GetMetadata
+### GetType
 
-`func (o *CardIssuanceRequest) GetMetadata() map[string]string`
+`func (o *CardIssuanceRequest) GetType() string`
 
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetMetadataOk
+### GetTypeOk
 
-`func (o *CardIssuanceRequest) GetMetadataOk() (*map[string]string, bool)`
+`func (o *CardIssuanceRequest) GetTypeOk() (*string, bool)`
 
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetadata
+### SetType
 
-`func (o *CardIssuanceRequest) SetMetadata(v map[string]string)`
+`func (o *CardIssuanceRequest) SetType(v string)`
 
-SetMetadata sets Metadata field to given value.
+SetType sets Type field to given value.
 
-### HasMetadata
-
-`func (o *CardIssuanceRequest) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
 
 ### GetIsPinSet
 

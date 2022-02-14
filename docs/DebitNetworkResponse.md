@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Debit Network ID | [readonly] 
-**Name** | **string** | The name describing the debit network | 
 **Active** | **bool** | indicates whether debit network is active | 
-**StartDate** | Pointer to **time.Time** | The time when debit network goes live | [optional] 
-**EndDate** | Pointer to **time.Time** | The time when debit network became inactive | [optional] 
 **CreationTime** | **time.Time** | The timestamp representing when the debit network was created | [readonly] 
+**EndDate** | Pointer to **time.Time** | The time when debit network became inactive | [optional] 
+**Id** | **string** | Debit Network ID | [readonly] 
 **LastModifiedTime** | **time.Time** | The timestamp representing when the debit network was last modified | [readonly] 
+**Name** | **string** | The name describing the debit network | 
+**StartDate** | Pointer to **time.Time** | The time when debit network goes live | [optional] 
 
 ## Methods
 
 ### NewDebitNetworkResponse
 
-`func NewDebitNetworkResponse(id string, name string, active bool, creationTime time.Time, lastModifiedTime time.Time, ) *DebitNetworkResponse`
+`func NewDebitNetworkResponse(active bool, creationTime time.Time, id string, lastModifiedTime time.Time, name string, ) *DebitNetworkResponse`
 
 NewDebitNetworkResponse instantiates a new DebitNetworkResponse object
 This constructor will assign default values to properties that have it defined,
@@ -30,46 +30,6 @@ will change when the set of required properties is changed
 NewDebitNetworkResponseWithDefaults instantiates a new DebitNetworkResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *DebitNetworkResponse) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *DebitNetworkResponse) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *DebitNetworkResponse) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetName
-
-`func (o *DebitNetworkResponse) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *DebitNetworkResponse) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *DebitNetworkResponse) SetName(v string)`
-
-SetName sets Name field to given value.
-
 
 ### GetActive
 
@@ -91,30 +51,25 @@ and a boolean to check if the value has been set.
 SetActive sets Active field to given value.
 
 
-### GetStartDate
+### GetCreationTime
 
-`func (o *DebitNetworkResponse) GetStartDate() time.Time`
+`func (o *DebitNetworkResponse) GetCreationTime() time.Time`
 
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
 
-### GetStartDateOk
+### GetCreationTimeOk
 
-`func (o *DebitNetworkResponse) GetStartDateOk() (*time.Time, bool)`
+`func (o *DebitNetworkResponse) GetCreationTimeOk() (*time.Time, bool)`
 
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStartDate
+### SetCreationTime
 
-`func (o *DebitNetworkResponse) SetStartDate(v time.Time)`
+`func (o *DebitNetworkResponse) SetCreationTime(v time.Time)`
 
-SetStartDate sets StartDate field to given value.
+SetCreationTime sets CreationTime field to given value.
 
-### HasStartDate
-
-`func (o *DebitNetworkResponse) HasStartDate() bool`
-
-HasStartDate returns a boolean if a field has been set.
 
 ### GetEndDate
 
@@ -141,24 +96,24 @@ SetEndDate sets EndDate field to given value.
 
 HasEndDate returns a boolean if a field has been set.
 
-### GetCreationTime
+### GetId
 
-`func (o *DebitNetworkResponse) GetCreationTime() time.Time`
+`func (o *DebitNetworkResponse) GetId() string`
 
-GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetCreationTimeOk
+### GetIdOk
 
-`func (o *DebitNetworkResponse) GetCreationTimeOk() (*time.Time, bool)`
+`func (o *DebitNetworkResponse) GetIdOk() (*string, bool)`
 
-GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreationTime
+### SetId
 
-`func (o *DebitNetworkResponse) SetCreationTime(v time.Time)`
+`func (o *DebitNetworkResponse) SetId(v string)`
 
-SetCreationTime sets CreationTime field to given value.
+SetId sets Id field to given value.
 
 
 ### GetLastModifiedTime
@@ -180,6 +135,51 @@ and a boolean to check if the value has been set.
 
 SetLastModifiedTime sets LastModifiedTime field to given value.
 
+
+### GetName
+
+`func (o *DebitNetworkResponse) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *DebitNetworkResponse) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *DebitNetworkResponse) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetStartDate
+
+`func (o *DebitNetworkResponse) GetStartDate() time.Time`
+
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+
+### GetStartDateOk
+
+`func (o *DebitNetworkResponse) GetStartDateOk() (*time.Time, bool)`
+
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartDate
+
+`func (o *DebitNetworkResponse) SetStartDate(v time.Time)`
+
+SetStartDate sets StartDate field to given value.
+
+### HasStartDate
+
+`func (o *DebitNetworkResponse) HasStartDate() bool`
+
+HasStartDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

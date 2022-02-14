@@ -17,68 +17,68 @@ import (
 
 // Bin struct for Bin
 type Bin struct {
-	// Bin ID
-	Id *string `json:"id,omitempty"`
-	// The bank ID
-	BankId int32 `json:"bank_id"`
-	// The partner ID
-	PartnerId int32 `json:"partner_id"`
-	// The bin number
-	Bin string `json:"bin"`
-	// The name of the card processor
-	Processor       string          `json:"processor"`
-	CardBrand       CardBrand       `json:"card_brand"`
-	CardCategory    CardCategory    `json:"card_category"`
-	CardProductType CardProductType `json:"card_product_type"`
-	// ICA/BID
-	IcaBid string `json:"ica_bid"`
-	// ISO-3166-1 Alpha-2 country code
-	Country string `json:"country"`
-	// ISO 4217  Alpha-3 currency code
-	Currency  string     `json:"currency"`
-	BinStatus *BinStatus `json:"bin_status,omitempty"`
-	// The time when bin goes live
-	StartDate *time.Time `json:"start_date,omitempty"`
-	// The time when bin is decommissioned
-	EndDate *time.Time `json:"end_date,omitempty"`
 	// Account range length
 	AccountRangeLength int32 `json:"account_range_length"`
-	// Pan utilization
-	PanUtilization *int32 `json:"pan_utilization,omitempty"`
+	// The bank ID
+	BankId int32 `json:"bank_id"`
 	// The ICA to which fees will be billed
 	BillingIca string `json:"billing_ica"`
+	// The bin number
+	Bin       string     `json:"bin"`
+	BinStatus *BinStatus `json:"bin_status,omitempty"`
 	// The Mastercard or Visa Product Code - 3 alpha-numeric characters
-	BrandProductCode   string              `json:"brand_product_code"`
-	PhysicalCardFormat *PhysicalCardFormat `json:"physical_card_format,omitempty"`
+	BrandProductCode string          `json:"brand_product_code"`
+	CardBrand        CardBrand       `json:"card_brand"`
+	CardCategory     CardCategory    `json:"card_category"`
+	CardProductType  CardProductType `json:"card_product_type"`
+	// ISO-3166-1 Alpha-2 country code
+	Country string `json:"country"`
 	// The timestamp representing when the bin was created
 	CreationTime *time.Time `json:"creation_time,omitempty"`
-	// The timestamp representing when the bin was last modified
-	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
+	// ISO 4217  Alpha-3 currency code
+	Currency string `json:"currency"`
 	// Determines if bin supports digital wallet tokenization
 	DigitalWalletActive *bool `json:"digital_wallet_active,omitempty"`
+	// The time when bin is decommissioned
+	EndDate *time.Time `json:"end_date,omitempty"`
+	// ICA/BID
+	IcaBid string `json:"ica_bid"`
+	// Bin ID
+	Id *string `json:"id,omitempty"`
+	// The timestamp representing when the bin was last modified
+	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
+	// Pan utilization
+	PanUtilization *int32 `json:"pan_utilization,omitempty"`
+	// The partner ID
+	PartnerId          int32               `json:"partner_id"`
+	PhysicalCardFormat *PhysicalCardFormat `json:"physical_card_format,omitempty"`
+	// The name of the card processor
+	Processor string `json:"processor"`
+	// The time when bin goes live
+	StartDate *time.Time `json:"start_date,omitempty"`
 }
 
 // NewBin instantiates a new Bin object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBin(bankId int32, partnerId int32, bin string, processor string, cardBrand CardBrand, cardCategory CardCategory, cardProductType CardProductType, icaBid string, country string, currency string, accountRangeLength int32, billingIca string, brandProductCode string) *Bin {
+func NewBin(accountRangeLength int32, bankId int32, billingIca string, bin string, brandProductCode string, cardBrand CardBrand, cardCategory CardCategory, cardProductType CardProductType, country string, currency string, icaBid string, partnerId int32, processor string) *Bin {
 	this := Bin{}
+	this.AccountRangeLength = accountRangeLength
 	this.BankId = bankId
-	this.PartnerId = partnerId
+	this.BillingIca = billingIca
 	this.Bin = bin
-	this.Processor = processor
+	this.BrandProductCode = brandProductCode
 	this.CardBrand = cardBrand
 	this.CardCategory = cardCategory
 	this.CardProductType = cardProductType
-	this.IcaBid = icaBid
 	this.Country = country
 	this.Currency = currency
-	this.AccountRangeLength = accountRangeLength
-	this.BillingIca = billingIca
-	this.BrandProductCode = brandProductCode
 	var digitalWalletActive bool = false
 	this.DigitalWalletActive = &digitalWalletActive
+	this.IcaBid = icaBid
+	this.PartnerId = partnerId
+	this.Processor = processor
 	return &this
 }
 
@@ -92,36 +92,28 @@ func NewBinWithDefaults() *Bin {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Bin) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
+// GetAccountRangeLength returns the AccountRangeLength field value
+func (o *Bin) GetAccountRangeLength() int32 {
+	if o == nil {
+		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.AccountRangeLength
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetAccountRangeLengthOk returns a tuple with the AccountRangeLength field value
 // and a boolean to check if the value has been set.
-func (o *Bin) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+func (o *Bin) GetAccountRangeLengthOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.AccountRangeLength, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *Bin) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Bin) SetId(v string) {
-	o.Id = &v
+// SetAccountRangeLength sets field value
+func (o *Bin) SetAccountRangeLength(v int32) {
+	o.AccountRangeLength = v
 }
 
 // GetBankId returns the BankId field value
@@ -148,28 +140,28 @@ func (o *Bin) SetBankId(v int32) {
 	o.BankId = v
 }
 
-// GetPartnerId returns the PartnerId field value
-func (o *Bin) GetPartnerId() int32 {
+// GetBillingIca returns the BillingIca field value
+func (o *Bin) GetBillingIca() string {
 	if o == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 
-	return o.PartnerId
+	return o.BillingIca
 }
 
-// GetPartnerIdOk returns a tuple with the PartnerId field value
+// GetBillingIcaOk returns a tuple with the BillingIca field value
 // and a boolean to check if the value has been set.
-func (o *Bin) GetPartnerIdOk() (*int32, bool) {
+func (o *Bin) GetBillingIcaOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PartnerId, true
+	return &o.BillingIca, true
 }
 
-// SetPartnerId sets field value
-func (o *Bin) SetPartnerId(v int32) {
-	o.PartnerId = v
+// SetBillingIca sets field value
+func (o *Bin) SetBillingIca(v string) {
+	o.BillingIca = v
 }
 
 // GetBin returns the Bin field value
@@ -196,28 +188,60 @@ func (o *Bin) SetBin(v string) {
 	o.Bin = v
 }
 
-// GetProcessor returns the Processor field value
-func (o *Bin) GetProcessor() string {
+// GetBinStatus returns the BinStatus field value if set, zero value otherwise.
+func (o *Bin) GetBinStatus() BinStatus {
+	if o == nil || o.BinStatus == nil {
+		var ret BinStatus
+		return ret
+	}
+	return *o.BinStatus
+}
+
+// GetBinStatusOk returns a tuple with the BinStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Bin) GetBinStatusOk() (*BinStatus, bool) {
+	if o == nil || o.BinStatus == nil {
+		return nil, false
+	}
+	return o.BinStatus, true
+}
+
+// HasBinStatus returns a boolean if a field has been set.
+func (o *Bin) HasBinStatus() bool {
+	if o != nil && o.BinStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBinStatus gets a reference to the given BinStatus and assigns it to the BinStatus field.
+func (o *Bin) SetBinStatus(v BinStatus) {
+	o.BinStatus = &v
+}
+
+// GetBrandProductCode returns the BrandProductCode field value
+func (o *Bin) GetBrandProductCode() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Processor
+	return o.BrandProductCode
 }
 
-// GetProcessorOk returns a tuple with the Processor field value
+// GetBrandProductCodeOk returns a tuple with the BrandProductCode field value
 // and a boolean to check if the value has been set.
-func (o *Bin) GetProcessorOk() (*string, bool) {
+func (o *Bin) GetBrandProductCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Processor, true
+	return &o.BrandProductCode, true
 }
 
-// SetProcessor sets field value
-func (o *Bin) SetProcessor(v string) {
-	o.Processor = v
+// SetBrandProductCode sets field value
+func (o *Bin) SetBrandProductCode(v string) {
+	o.BrandProductCode = v
 }
 
 // GetCardBrand returns the CardBrand field value
@@ -292,30 +316,6 @@ func (o *Bin) SetCardProductType(v CardProductType) {
 	o.CardProductType = v
 }
 
-// GetIcaBid returns the IcaBid field value
-func (o *Bin) GetIcaBid() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.IcaBid
-}
-
-// GetIcaBidOk returns a tuple with the IcaBid field value
-// and a boolean to check if the value has been set.
-func (o *Bin) GetIcaBidOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IcaBid, true
-}
-
-// SetIcaBid sets field value
-func (o *Bin) SetIcaBid(v string) {
-	o.IcaBid = v
-}
-
 // GetCountry returns the Country field value
 func (o *Bin) GetCountry() string {
 	if o == nil {
@@ -338,262 +338,6 @@ func (o *Bin) GetCountryOk() (*string, bool) {
 // SetCountry sets field value
 func (o *Bin) SetCountry(v string) {
 	o.Country = v
-}
-
-// GetCurrency returns the Currency field value
-func (o *Bin) GetCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *Bin) GetCurrencyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *Bin) SetCurrency(v string) {
-	o.Currency = v
-}
-
-// GetBinStatus returns the BinStatus field value if set, zero value otherwise.
-func (o *Bin) GetBinStatus() BinStatus {
-	if o == nil || o.BinStatus == nil {
-		var ret BinStatus
-		return ret
-	}
-	return *o.BinStatus
-}
-
-// GetBinStatusOk returns a tuple with the BinStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Bin) GetBinStatusOk() (*BinStatus, bool) {
-	if o == nil || o.BinStatus == nil {
-		return nil, false
-	}
-	return o.BinStatus, true
-}
-
-// HasBinStatus returns a boolean if a field has been set.
-func (o *Bin) HasBinStatus() bool {
-	if o != nil && o.BinStatus != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBinStatus gets a reference to the given BinStatus and assigns it to the BinStatus field.
-func (o *Bin) SetBinStatus(v BinStatus) {
-	o.BinStatus = &v
-}
-
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *Bin) GetStartDate() time.Time {
-	if o == nil || o.StartDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.StartDate
-}
-
-// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Bin) GetStartDateOk() (*time.Time, bool) {
-	if o == nil || o.StartDate == nil {
-		return nil, false
-	}
-	return o.StartDate, true
-}
-
-// HasStartDate returns a boolean if a field has been set.
-func (o *Bin) HasStartDate() bool {
-	if o != nil && o.StartDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
-func (o *Bin) SetStartDate(v time.Time) {
-	o.StartDate = &v
-}
-
-// GetEndDate returns the EndDate field value if set, zero value otherwise.
-func (o *Bin) GetEndDate() time.Time {
-	if o == nil || o.EndDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.EndDate
-}
-
-// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Bin) GetEndDateOk() (*time.Time, bool) {
-	if o == nil || o.EndDate == nil {
-		return nil, false
-	}
-	return o.EndDate, true
-}
-
-// HasEndDate returns a boolean if a field has been set.
-func (o *Bin) HasEndDate() bool {
-	if o != nil && o.EndDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
-func (o *Bin) SetEndDate(v time.Time) {
-	o.EndDate = &v
-}
-
-// GetAccountRangeLength returns the AccountRangeLength field value
-func (o *Bin) GetAccountRangeLength() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.AccountRangeLength
-}
-
-// GetAccountRangeLengthOk returns a tuple with the AccountRangeLength field value
-// and a boolean to check if the value has been set.
-func (o *Bin) GetAccountRangeLengthOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccountRangeLength, true
-}
-
-// SetAccountRangeLength sets field value
-func (o *Bin) SetAccountRangeLength(v int32) {
-	o.AccountRangeLength = v
-}
-
-// GetPanUtilization returns the PanUtilization field value if set, zero value otherwise.
-func (o *Bin) GetPanUtilization() int32 {
-	if o == nil || o.PanUtilization == nil {
-		var ret int32
-		return ret
-	}
-	return *o.PanUtilization
-}
-
-// GetPanUtilizationOk returns a tuple with the PanUtilization field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Bin) GetPanUtilizationOk() (*int32, bool) {
-	if o == nil || o.PanUtilization == nil {
-		return nil, false
-	}
-	return o.PanUtilization, true
-}
-
-// HasPanUtilization returns a boolean if a field has been set.
-func (o *Bin) HasPanUtilization() bool {
-	if o != nil && o.PanUtilization != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPanUtilization gets a reference to the given int32 and assigns it to the PanUtilization field.
-func (o *Bin) SetPanUtilization(v int32) {
-	o.PanUtilization = &v
-}
-
-// GetBillingIca returns the BillingIca field value
-func (o *Bin) GetBillingIca() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BillingIca
-}
-
-// GetBillingIcaOk returns a tuple with the BillingIca field value
-// and a boolean to check if the value has been set.
-func (o *Bin) GetBillingIcaOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillingIca, true
-}
-
-// SetBillingIca sets field value
-func (o *Bin) SetBillingIca(v string) {
-	o.BillingIca = v
-}
-
-// GetBrandProductCode returns the BrandProductCode field value
-func (o *Bin) GetBrandProductCode() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BrandProductCode
-}
-
-// GetBrandProductCodeOk returns a tuple with the BrandProductCode field value
-// and a boolean to check if the value has been set.
-func (o *Bin) GetBrandProductCodeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BrandProductCode, true
-}
-
-// SetBrandProductCode sets field value
-func (o *Bin) SetBrandProductCode(v string) {
-	o.BrandProductCode = v
-}
-
-// GetPhysicalCardFormat returns the PhysicalCardFormat field value if set, zero value otherwise.
-func (o *Bin) GetPhysicalCardFormat() PhysicalCardFormat {
-	if o == nil || o.PhysicalCardFormat == nil {
-		var ret PhysicalCardFormat
-		return ret
-	}
-	return *o.PhysicalCardFormat
-}
-
-// GetPhysicalCardFormatOk returns a tuple with the PhysicalCardFormat field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Bin) GetPhysicalCardFormatOk() (*PhysicalCardFormat, bool) {
-	if o == nil || o.PhysicalCardFormat == nil {
-		return nil, false
-	}
-	return o.PhysicalCardFormat, true
-}
-
-// HasPhysicalCardFormat returns a boolean if a field has been set.
-func (o *Bin) HasPhysicalCardFormat() bool {
-	if o != nil && o.PhysicalCardFormat != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPhysicalCardFormat gets a reference to the given PhysicalCardFormat and assigns it to the PhysicalCardFormat field.
-func (o *Bin) SetPhysicalCardFormat(v PhysicalCardFormat) {
-	o.PhysicalCardFormat = &v
 }
 
 // GetCreationTime returns the CreationTime field value if set, zero value otherwise.
@@ -628,36 +372,28 @@ func (o *Bin) SetCreationTime(v time.Time) {
 	o.CreationTime = &v
 }
 
-// GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
-func (o *Bin) GetLastModifiedTime() time.Time {
-	if o == nil || o.LastModifiedTime == nil {
-		var ret time.Time
+// GetCurrency returns the Currency field value
+func (o *Bin) GetCurrency() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.LastModifiedTime
+
+	return o.Currency
 }
 
-// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
+// GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
-func (o *Bin) GetLastModifiedTimeOk() (*time.Time, bool) {
-	if o == nil || o.LastModifiedTime == nil {
+func (o *Bin) GetCurrencyOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedTime, true
+	return &o.Currency, true
 }
 
-// HasLastModifiedTime returns a boolean if a field has been set.
-func (o *Bin) HasLastModifiedTime() bool {
-	if o != nil && o.LastModifiedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedTime gets a reference to the given time.Time and assigns it to the LastModifiedTime field.
-func (o *Bin) SetLastModifiedTime(v time.Time) {
-	o.LastModifiedTime = &v
+// SetCurrency sets field value
+func (o *Bin) SetCurrency(v string) {
+	o.Currency = v
 }
 
 // GetDigitalWalletActive returns the DigitalWalletActive field value if set, zero value otherwise.
@@ -692,22 +428,289 @@ func (o *Bin) SetDigitalWalletActive(v bool) {
 	o.DigitalWalletActive = &v
 }
 
+// GetEndDate returns the EndDate field value if set, zero value otherwise.
+func (o *Bin) GetEndDate() time.Time {
+	if o == nil || o.EndDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.EndDate
+}
+
+// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Bin) GetEndDateOk() (*time.Time, bool) {
+	if o == nil || o.EndDate == nil {
+		return nil, false
+	}
+	return o.EndDate, true
+}
+
+// HasEndDate returns a boolean if a field has been set.
+func (o *Bin) HasEndDate() bool {
+	if o != nil && o.EndDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
+func (o *Bin) SetEndDate(v time.Time) {
+	o.EndDate = &v
+}
+
+// GetIcaBid returns the IcaBid field value
+func (o *Bin) GetIcaBid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IcaBid
+}
+
+// GetIcaBidOk returns a tuple with the IcaBid field value
+// and a boolean to check if the value has been set.
+func (o *Bin) GetIcaBidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IcaBid, true
+}
+
+// SetIcaBid sets field value
+func (o *Bin) SetIcaBid(v string) {
+	o.IcaBid = v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Bin) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Bin) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Bin) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Bin) SetId(v string) {
+	o.Id = &v
+}
+
+// GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
+func (o *Bin) GetLastModifiedTime() time.Time {
+	if o == nil || o.LastModifiedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastModifiedTime
+}
+
+// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Bin) GetLastModifiedTimeOk() (*time.Time, bool) {
+	if o == nil || o.LastModifiedTime == nil {
+		return nil, false
+	}
+	return o.LastModifiedTime, true
+}
+
+// HasLastModifiedTime returns a boolean if a field has been set.
+func (o *Bin) HasLastModifiedTime() bool {
+	if o != nil && o.LastModifiedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedTime gets a reference to the given time.Time and assigns it to the LastModifiedTime field.
+func (o *Bin) SetLastModifiedTime(v time.Time) {
+	o.LastModifiedTime = &v
+}
+
+// GetPanUtilization returns the PanUtilization field value if set, zero value otherwise.
+func (o *Bin) GetPanUtilization() int32 {
+	if o == nil || o.PanUtilization == nil {
+		var ret int32
+		return ret
+	}
+	return *o.PanUtilization
+}
+
+// GetPanUtilizationOk returns a tuple with the PanUtilization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Bin) GetPanUtilizationOk() (*int32, bool) {
+	if o == nil || o.PanUtilization == nil {
+		return nil, false
+	}
+	return o.PanUtilization, true
+}
+
+// HasPanUtilization returns a boolean if a field has been set.
+func (o *Bin) HasPanUtilization() bool {
+	if o != nil && o.PanUtilization != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPanUtilization gets a reference to the given int32 and assigns it to the PanUtilization field.
+func (o *Bin) SetPanUtilization(v int32) {
+	o.PanUtilization = &v
+}
+
+// GetPartnerId returns the PartnerId field value
+func (o *Bin) GetPartnerId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.PartnerId
+}
+
+// GetPartnerIdOk returns a tuple with the PartnerId field value
+// and a boolean to check if the value has been set.
+func (o *Bin) GetPartnerIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PartnerId, true
+}
+
+// SetPartnerId sets field value
+func (o *Bin) SetPartnerId(v int32) {
+	o.PartnerId = v
+}
+
+// GetPhysicalCardFormat returns the PhysicalCardFormat field value if set, zero value otherwise.
+func (o *Bin) GetPhysicalCardFormat() PhysicalCardFormat {
+	if o == nil || o.PhysicalCardFormat == nil {
+		var ret PhysicalCardFormat
+		return ret
+	}
+	return *o.PhysicalCardFormat
+}
+
+// GetPhysicalCardFormatOk returns a tuple with the PhysicalCardFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Bin) GetPhysicalCardFormatOk() (*PhysicalCardFormat, bool) {
+	if o == nil || o.PhysicalCardFormat == nil {
+		return nil, false
+	}
+	return o.PhysicalCardFormat, true
+}
+
+// HasPhysicalCardFormat returns a boolean if a field has been set.
+func (o *Bin) HasPhysicalCardFormat() bool {
+	if o != nil && o.PhysicalCardFormat != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPhysicalCardFormat gets a reference to the given PhysicalCardFormat and assigns it to the PhysicalCardFormat field.
+func (o *Bin) SetPhysicalCardFormat(v PhysicalCardFormat) {
+	o.PhysicalCardFormat = &v
+}
+
+// GetProcessor returns the Processor field value
+func (o *Bin) GetProcessor() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Processor
+}
+
+// GetProcessorOk returns a tuple with the Processor field value
+// and a boolean to check if the value has been set.
+func (o *Bin) GetProcessorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Processor, true
+}
+
+// SetProcessor sets field value
+func (o *Bin) SetProcessor(v string) {
+	o.Processor = v
+}
+
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
+func (o *Bin) GetStartDate() time.Time {
+	if o == nil || o.StartDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Bin) GetStartDateOk() (*time.Time, bool) {
+	if o == nil || o.StartDate == nil {
+		return nil, false
+	}
+	return o.StartDate, true
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *Bin) HasStartDate() bool {
+	if o != nil && o.StartDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
+func (o *Bin) SetStartDate(v time.Time) {
+	o.StartDate = &v
+}
+
 func (o Bin) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	if true {
+		toSerialize["account_range_length"] = o.AccountRangeLength
 	}
 	if true {
 		toSerialize["bank_id"] = o.BankId
 	}
 	if true {
-		toSerialize["partner_id"] = o.PartnerId
+		toSerialize["billing_ica"] = o.BillingIca
 	}
 	if true {
 		toSerialize["bin"] = o.Bin
 	}
+	if o.BinStatus != nil {
+		toSerialize["bin_status"] = o.BinStatus
+	}
 	if true {
-		toSerialize["processor"] = o.Processor
+		toSerialize["brand_product_code"] = o.BrandProductCode
 	}
 	if true {
 		toSerialize["card_brand"] = o.CardBrand
@@ -719,46 +722,43 @@ func (o Bin) MarshalJSON() ([]byte, error) {
 		toSerialize["card_product_type"] = o.CardProductType
 	}
 	if true {
-		toSerialize["ica_bid"] = o.IcaBid
-	}
-	if true {
 		toSerialize["country"] = o.Country
+	}
+	if o.CreationTime != nil {
+		toSerialize["creation_time"] = o.CreationTime
 	}
 	if true {
 		toSerialize["currency"] = o.Currency
 	}
-	if o.BinStatus != nil {
-		toSerialize["bin_status"] = o.BinStatus
-	}
-	if o.StartDate != nil {
-		toSerialize["start_date"] = o.StartDate
+	if o.DigitalWalletActive != nil {
+		toSerialize["digital_wallet_active"] = o.DigitalWalletActive
 	}
 	if o.EndDate != nil {
 		toSerialize["end_date"] = o.EndDate
 	}
 	if true {
-		toSerialize["account_range_length"] = o.AccountRangeLength
+		toSerialize["ica_bid"] = o.IcaBid
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if o.LastModifiedTime != nil {
+		toSerialize["last_modified_time"] = o.LastModifiedTime
 	}
 	if o.PanUtilization != nil {
 		toSerialize["pan_utilization"] = o.PanUtilization
 	}
 	if true {
-		toSerialize["billing_ica"] = o.BillingIca
-	}
-	if true {
-		toSerialize["brand_product_code"] = o.BrandProductCode
+		toSerialize["partner_id"] = o.PartnerId
 	}
 	if o.PhysicalCardFormat != nil {
 		toSerialize["physical_card_format"] = o.PhysicalCardFormat
 	}
-	if o.CreationTime != nil {
-		toSerialize["creation_time"] = o.CreationTime
+	if true {
+		toSerialize["processor"] = o.Processor
 	}
-	if o.LastModifiedTime != nil {
-		toSerialize["last_modified_time"] = o.LastModifiedTime
-	}
-	if o.DigitalWalletActive != nil {
-		toSerialize["digital_wallet_active"] = o.DigitalWalletActive
+	if o.StartDate != nil {
+		toSerialize["start_date"] = o.StartDate
 	}
 	return json.Marshal(toSerialize)
 }

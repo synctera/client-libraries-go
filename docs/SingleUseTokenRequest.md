@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerId** | **string** | The ID of the customer to whom the token will be issued | 
 **AccountId** | **string** | The ID of the account to which the token will be linked | 
+**CustomerId** | **string** | The ID of the customer to whom the token will be issued | 
 
 ## Methods
 
 ### NewSingleUseTokenRequest
 
-`func NewSingleUseTokenRequest(customerId string, accountId string, ) *SingleUseTokenRequest`
+`func NewSingleUseTokenRequest(accountId string, customerId string, ) *SingleUseTokenRequest`
 
 NewSingleUseTokenRequest instantiates a new SingleUseTokenRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewSingleUseTokenRequestWithDefaults instantiates a new SingleUseTokenRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCustomerId
-
-`func (o *SingleUseTokenRequest) GetCustomerId() string`
-
-GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
-
-### GetCustomerIdOk
-
-`func (o *SingleUseTokenRequest) GetCustomerIdOk() (*string, bool)`
-
-GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCustomerId
-
-`func (o *SingleUseTokenRequest) SetCustomerId(v string)`
-
-SetCustomerId sets CustomerId field to given value.
-
 
 ### GetAccountId
 
@@ -64,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *SingleUseTokenRequest) SetAccountId(v string)`
 
 SetAccountId sets AccountId field to given value.
+
+
+### GetCustomerId
+
+`func (o *SingleUseTokenRequest) GetCustomerId() string`
+
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+
+### GetCustomerIdOk
+
+`func (o *SingleUseTokenRequest) GetCustomerIdOk() (*string, bool)`
+
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerId
+
+`func (o *SingleUseTokenRequest) SetCustomerId(v string)`
+
+SetCustomerId sets CustomerId field to given value.
 
 
 

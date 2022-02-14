@@ -16,10 +16,10 @@ import (
 
 // WatchlistSuppress struct for WatchlistSuppress
 type WatchlistSuppress struct {
-	// The provider's id for the subscription that caused the alert(s) that are being suppressed.
-	ProviderSubscriptionId string `json:"provider_subscription_id"`
 	// The id of the subject (person) for whom future alerts should be suppressed.
 	ProviderSubjectId string `json:"provider_subject_id"`
+	// The provider's id for the subscription that caused the alert(s) that are being suppressed.
+	ProviderSubscriptionId string `json:"provider_subscription_id"`
 	// The status of this suppression
 	Status string `json:"status"`
 }
@@ -28,10 +28,10 @@ type WatchlistSuppress struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWatchlistSuppress(providerSubscriptionId string, providerSubjectId string, status string) *WatchlistSuppress {
+func NewWatchlistSuppress(providerSubjectId string, providerSubscriptionId string, status string) *WatchlistSuppress {
 	this := WatchlistSuppress{}
-	this.ProviderSubscriptionId = providerSubscriptionId
 	this.ProviderSubjectId = providerSubjectId
+	this.ProviderSubscriptionId = providerSubscriptionId
 	this.Status = status
 	return &this
 }
@@ -42,30 +42,6 @@ func NewWatchlistSuppress(providerSubscriptionId string, providerSubjectId strin
 func NewWatchlistSuppressWithDefaults() *WatchlistSuppress {
 	this := WatchlistSuppress{}
 	return &this
-}
-
-// GetProviderSubscriptionId returns the ProviderSubscriptionId field value
-func (o *WatchlistSuppress) GetProviderSubscriptionId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ProviderSubscriptionId
-}
-
-// GetProviderSubscriptionIdOk returns a tuple with the ProviderSubscriptionId field value
-// and a boolean to check if the value has been set.
-func (o *WatchlistSuppress) GetProviderSubscriptionIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ProviderSubscriptionId, true
-}
-
-// SetProviderSubscriptionId sets field value
-func (o *WatchlistSuppress) SetProviderSubscriptionId(v string) {
-	o.ProviderSubscriptionId = v
 }
 
 // GetProviderSubjectId returns the ProviderSubjectId field value
@@ -90,6 +66,30 @@ func (o *WatchlistSuppress) GetProviderSubjectIdOk() (*string, bool) {
 // SetProviderSubjectId sets field value
 func (o *WatchlistSuppress) SetProviderSubjectId(v string) {
 	o.ProviderSubjectId = v
+}
+
+// GetProviderSubscriptionId returns the ProviderSubscriptionId field value
+func (o *WatchlistSuppress) GetProviderSubscriptionId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ProviderSubscriptionId
+}
+
+// GetProviderSubscriptionIdOk returns a tuple with the ProviderSubscriptionId field value
+// and a boolean to check if the value has been set.
+func (o *WatchlistSuppress) GetProviderSubscriptionIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProviderSubscriptionId, true
+}
+
+// SetProviderSubscriptionId sets field value
+func (o *WatchlistSuppress) SetProviderSubscriptionId(v string) {
+	o.ProviderSubscriptionId = v
 }
 
 // GetStatus returns the Status field value
@@ -119,10 +119,10 @@ func (o *WatchlistSuppress) SetStatus(v string) {
 func (o WatchlistSuppress) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["provider_subscription_id"] = o.ProviderSubscriptionId
+		toSerialize["provider_subject_id"] = o.ProviderSubjectId
 	}
 	if true {
-		toSerialize["provider_subject_id"] = o.ProviderSubjectId
+		toSerialize["provider_subscription_id"] = o.ProviderSubscriptionId
 	}
 	if true {
 		toSerialize["status"] = o.Status

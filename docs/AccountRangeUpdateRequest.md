@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**EndDate** | Pointer to **time.Time** | The time when account range becomes inactive | [optional] 
 **PhysicalCardFormat** | Pointer to [**PhysicalCardFormat**](PhysicalCardFormat.md) |  | [optional] 
 **StartDate** | Pointer to **time.Time** | The time when account range becomes active | [optional] 
-**EndDate** | Pointer to **time.Time** | The time when account range becomes inactive | [optional] 
 
 ## Methods
 
@@ -26,6 +26,31 @@ will change when the set of required properties is changed
 NewAccountRangeUpdateRequestWithDefaults instantiates a new AccountRangeUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEndDate
+
+`func (o *AccountRangeUpdateRequest) GetEndDate() time.Time`
+
+GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+
+### GetEndDateOk
+
+`func (o *AccountRangeUpdateRequest) GetEndDateOk() (*time.Time, bool)`
+
+GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndDate
+
+`func (o *AccountRangeUpdateRequest) SetEndDate(v time.Time)`
+
+SetEndDate sets EndDate field to given value.
+
+### HasEndDate
+
+`func (o *AccountRangeUpdateRequest) HasEndDate() bool`
+
+HasEndDate returns a boolean if a field has been set.
 
 ### GetPhysicalCardFormat
 
@@ -76,31 +101,6 @@ SetStartDate sets StartDate field to given value.
 `func (o *AccountRangeUpdateRequest) HasStartDate() bool`
 
 HasStartDate returns a boolean if a field has been set.
-
-### GetEndDate
-
-`func (o *AccountRangeUpdateRequest) GetEndDate() time.Time`
-
-GetEndDate returns the EndDate field if non-nil, zero value otherwise.
-
-### GetEndDateOk
-
-`func (o *AccountRangeUpdateRequest) GetEndDateOk() (*time.Time, bool)`
-
-GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEndDate
-
-`func (o *AccountRangeUpdateRequest) SetEndDate(v time.Time)`
-
-SetEndDate sets EndDate field to given value.
-
-### HasEndDate
-
-`func (o *AccountRangeUpdateRequest) HasEndDate() bool`
-
-HasEndDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

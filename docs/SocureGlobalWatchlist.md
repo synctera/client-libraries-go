@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReasonCodes** | Pointer to **[]string** | Array of reason codes | [optional] 
 **Matches** | [**map[string][]SocureMatch**](array.md) | Contains key-value pair of the Source list name and an array of details about that match. | 
+**ReasonCodes** | Pointer to **[]string** | Array of reason codes | [optional] 
 
 ## Methods
 
@@ -25,6 +25,26 @@ will change when the set of required properties is changed
 NewSocureGlobalWatchlistWithDefaults instantiates a new SocureGlobalWatchlist object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMatches
+
+`func (o *SocureGlobalWatchlist) GetMatches() map[string][]SocureMatch`
+
+GetMatches returns the Matches field if non-nil, zero value otherwise.
+
+### GetMatchesOk
+
+`func (o *SocureGlobalWatchlist) GetMatchesOk() (*map[string][]SocureMatch, bool)`
+
+GetMatchesOk returns a tuple with the Matches field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatches
+
+`func (o *SocureGlobalWatchlist) SetMatches(v map[string][]SocureMatch)`
+
+SetMatches sets Matches field to given value.
+
 
 ### GetReasonCodes
 
@@ -50,26 +70,6 @@ SetReasonCodes sets ReasonCodes field to given value.
 `func (o *SocureGlobalWatchlist) HasReasonCodes() bool`
 
 HasReasonCodes returns a boolean if a field has been set.
-
-### GetMatches
-
-`func (o *SocureGlobalWatchlist) GetMatches() map[string][]SocureMatch`
-
-GetMatches returns the Matches field if non-nil, zero value otherwise.
-
-### GetMatchesOk
-
-`func (o *SocureGlobalWatchlist) GetMatchesOk() (*map[string][]SocureMatch, bool)`
-
-GetMatchesOk returns a tuple with the Matches field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMatches
-
-`func (o *SocureGlobalWatchlist) SetMatches(v map[string][]SocureMatch)`
-
-SetMatches sets Matches field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

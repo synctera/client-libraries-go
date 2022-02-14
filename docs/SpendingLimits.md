@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** | User provided description on the spending limits | [optional] 
 **Day** | Pointer to [**SpendingLimitWithTime**](SpendingLimitWithTime.md) |  | [optional] 
-**Week** | Pointer to [**SpendingLimitWithTime**](SpendingLimitWithTime.md) |  | [optional] 
-**Month** | Pointer to [**SpendingLimitWithTime**](SpendingLimitWithTime.md) |  | [optional] 
+**Description** | Pointer to **string** | User provided description on the spending limits | [optional] 
 **Lifetime** | Pointer to [**SpendingLimitWithTime**](SpendingLimitWithTime.md) |  | [optional] 
+**Month** | Pointer to [**SpendingLimitWithTime**](SpendingLimitWithTime.md) |  | [optional] 
 **Transaction** | Pointer to [**SpendingLimitsTransaction**](SpendingLimitsTransaction.md) |  | [optional] 
+**Week** | Pointer to [**SpendingLimitWithTime**](SpendingLimitWithTime.md) |  | [optional] 
 
 ## Methods
 
@@ -29,31 +29,6 @@ will change when the set of required properties is changed
 NewSpendingLimitsWithDefaults instantiates a new SpendingLimits object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDescription
-
-`func (o *SpendingLimits) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *SpendingLimits) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *SpendingLimits) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *SpendingLimits) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetDay
 
@@ -80,55 +55,30 @@ SetDay sets Day field to given value.
 
 HasDay returns a boolean if a field has been set.
 
-### GetWeek
+### GetDescription
 
-`func (o *SpendingLimits) GetWeek() SpendingLimitWithTime`
+`func (o *SpendingLimits) GetDescription() string`
 
-GetWeek returns the Week field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetWeekOk
+### GetDescriptionOk
 
-`func (o *SpendingLimits) GetWeekOk() (*SpendingLimitWithTime, bool)`
+`func (o *SpendingLimits) GetDescriptionOk() (*string, bool)`
 
-GetWeekOk returns a tuple with the Week field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWeek
+### SetDescription
 
-`func (o *SpendingLimits) SetWeek(v SpendingLimitWithTime)`
+`func (o *SpendingLimits) SetDescription(v string)`
 
-SetWeek sets Week field to given value.
+SetDescription sets Description field to given value.
 
-### HasWeek
+### HasDescription
 
-`func (o *SpendingLimits) HasWeek() bool`
+`func (o *SpendingLimits) HasDescription() bool`
 
-HasWeek returns a boolean if a field has been set.
-
-### GetMonth
-
-`func (o *SpendingLimits) GetMonth() SpendingLimitWithTime`
-
-GetMonth returns the Month field if non-nil, zero value otherwise.
-
-### GetMonthOk
-
-`func (o *SpendingLimits) GetMonthOk() (*SpendingLimitWithTime, bool)`
-
-GetMonthOk returns a tuple with the Month field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMonth
-
-`func (o *SpendingLimits) SetMonth(v SpendingLimitWithTime)`
-
-SetMonth sets Month field to given value.
-
-### HasMonth
-
-`func (o *SpendingLimits) HasMonth() bool`
-
-HasMonth returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
 ### GetLifetime
 
@@ -155,6 +105,31 @@ SetLifetime sets Lifetime field to given value.
 
 HasLifetime returns a boolean if a field has been set.
 
+### GetMonth
+
+`func (o *SpendingLimits) GetMonth() SpendingLimitWithTime`
+
+GetMonth returns the Month field if non-nil, zero value otherwise.
+
+### GetMonthOk
+
+`func (o *SpendingLimits) GetMonthOk() (*SpendingLimitWithTime, bool)`
+
+GetMonthOk returns a tuple with the Month field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMonth
+
+`func (o *SpendingLimits) SetMonth(v SpendingLimitWithTime)`
+
+SetMonth sets Month field to given value.
+
+### HasMonth
+
+`func (o *SpendingLimits) HasMonth() bool`
+
+HasMonth returns a boolean if a field has been set.
+
 ### GetTransaction
 
 `func (o *SpendingLimits) GetTransaction() SpendingLimitsTransaction`
@@ -179,6 +154,31 @@ SetTransaction sets Transaction field to given value.
 `func (o *SpendingLimits) HasTransaction() bool`
 
 HasTransaction returns a boolean if a field has been set.
+
+### GetWeek
+
+`func (o *SpendingLimits) GetWeek() SpendingLimitWithTime`
+
+GetWeek returns the Week field if non-nil, zero value otherwise.
+
+### GetWeekOk
+
+`func (o *SpendingLimits) GetWeekOk() (*SpendingLimitWithTime, bool)`
+
+GetWeekOk returns a tuple with the Week field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWeek
+
+`func (o *SpendingLimits) SetWeek(v SpendingLimitWithTime)`
+
+SetWeek sets Week field to given value.
+
+### HasWeek
+
+`func (o *SpendingLimits) HasWeek() bool`
+
+HasWeek returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
