@@ -17,44 +17,44 @@ import (
 
 // ExternalAccount struct for ExternalAccount
 type ExternalAccount struct {
-	// External account unique identifier
-	Id string `json:"id"`
+	AccountIdentifiers AccountIdentifiers `json:"account_identifiers"`
+	// The names of the account owners. Values may be masked, in which case the array will be empty.
+	AccountOwnerNames []string  `json:"account_owner_names"`
+	CreationTime      time.Time `json:"creation_time"`
 	// The identifier for the customer associated with this account
 	CustomerId string `json:"customer_id"`
-	// The names of the account owners. Values may be masked, in which case the array will be empty.
-	AccountOwnerNames []string `json:"account_owner_names"`
+	// External account unique identifier
+	Id              string    `json:"id"`
+	LastUpdatedTime time.Time `json:"last_updated_time"`
+	// User-supplied JSON format metadata.
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
+	// A user-meaningful name for the account
+	Nickname           *string        `json:"nickname,omitempty"`
+	RoutingIdentifiers AccountRouting `json:"routing_identifiers"`
 	// The current state of the account
 	Status string `json:"status"`
 	// The type of the account
-	Type               string                     `json:"type"`
-	VendorData         *ExternalAccountVendorData `json:"vendor_data,omitempty"`
-	RoutingIdentifiers AccountRouting             `json:"routing_identifiers"`
-	AccountIdentifiers AccountIdentifiers         `json:"account_identifiers"`
-	// A user-meaningful name for the account
-	Nickname     *string                     `json:"nickname,omitempty"`
+	Type         string                      `json:"type"`
+	VendorData   *ExternalAccountVendorData  `json:"vendor_data,omitempty"`
 	Verification NullableAccountVerification `json:"verification"`
-	// User-supplied JSON format metadata.
-	Metadata        *map[string]interface{} `json:"metadata,omitempty"`
-	CreationTime    time.Time               `json:"creation_time"`
-	LastUpdatedTime time.Time               `json:"last_updated_time"`
 }
 
 // NewExternalAccount instantiates a new ExternalAccount object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExternalAccount(id string, customerId string, accountOwnerNames []string, status string, type_ string, routingIdentifiers AccountRouting, accountIdentifiers AccountIdentifiers, verification NullableAccountVerification, creationTime time.Time, lastUpdatedTime time.Time) *ExternalAccount {
+func NewExternalAccount(accountIdentifiers AccountIdentifiers, accountOwnerNames []string, creationTime time.Time, customerId string, id string, lastUpdatedTime time.Time, routingIdentifiers AccountRouting, status string, type_ string, verification NullableAccountVerification) *ExternalAccount {
 	this := ExternalAccount{}
-	this.Id = id
-	this.CustomerId = customerId
+	this.AccountIdentifiers = accountIdentifiers
 	this.AccountOwnerNames = accountOwnerNames
+	this.CreationTime = creationTime
+	this.CustomerId = customerId
+	this.Id = id
+	this.LastUpdatedTime = lastUpdatedTime
+	this.RoutingIdentifiers = routingIdentifiers
 	this.Status = status
 	this.Type = type_
-	this.RoutingIdentifiers = routingIdentifiers
-	this.AccountIdentifiers = accountIdentifiers
 	this.Verification = verification
-	this.CreationTime = creationTime
-	this.LastUpdatedTime = lastUpdatedTime
 	return &this
 }
 
@@ -66,28 +66,76 @@ func NewExternalAccountWithDefaults() *ExternalAccount {
 	return &this
 }
 
-// GetId returns the Id field value
-func (o *ExternalAccount) GetId() string {
+// GetAccountIdentifiers returns the AccountIdentifiers field value
+func (o *ExternalAccount) GetAccountIdentifiers() AccountIdentifiers {
 	if o == nil {
-		var ret string
+		var ret AccountIdentifiers
 		return ret
 	}
 
-	return o.Id
+	return o.AccountIdentifiers
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field value
 // and a boolean to check if the value has been set.
-func (o *ExternalAccount) GetIdOk() (*string, bool) {
+func (o *ExternalAccount) GetAccountIdentifiersOk() (*AccountIdentifiers, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Id, true
+	return &o.AccountIdentifiers, true
 }
 
-// SetId sets field value
-func (o *ExternalAccount) SetId(v string) {
-	o.Id = v
+// SetAccountIdentifiers sets field value
+func (o *ExternalAccount) SetAccountIdentifiers(v AccountIdentifiers) {
+	o.AccountIdentifiers = v
+}
+
+// GetAccountOwnerNames returns the AccountOwnerNames field value
+func (o *ExternalAccount) GetAccountOwnerNames() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.AccountOwnerNames
+}
+
+// GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccount) GetAccountOwnerNamesOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccountOwnerNames, true
+}
+
+// SetAccountOwnerNames sets field value
+func (o *ExternalAccount) SetAccountOwnerNames(v []string) {
+	o.AccountOwnerNames = v
+}
+
+// GetCreationTime returns the CreationTime field value
+func (o *ExternalAccount) GetCreationTime() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.CreationTime
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccount) GetCreationTimeOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreationTime, true
+}
+
+// SetCreationTime sets field value
+func (o *ExternalAccount) SetCreationTime(v time.Time) {
+	o.CreationTime = v
 }
 
 // GetCustomerId returns the CustomerId field value
@@ -114,28 +162,140 @@ func (o *ExternalAccount) SetCustomerId(v string) {
 	o.CustomerId = v
 }
 
-// GetAccountOwnerNames returns the AccountOwnerNames field value
-func (o *ExternalAccount) GetAccountOwnerNames() []string {
+// GetId returns the Id field value
+func (o *ExternalAccount) GetId() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
-	return o.AccountOwnerNames
+	return o.Id
 }
 
-// GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ExternalAccount) GetAccountOwnerNamesOk() (*[]string, bool) {
+func (o *ExternalAccount) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountOwnerNames, true
+	return &o.Id, true
 }
 
-// SetAccountOwnerNames sets field value
-func (o *ExternalAccount) SetAccountOwnerNames(v []string) {
-	o.AccountOwnerNames = v
+// SetId sets field value
+func (o *ExternalAccount) SetId(v string) {
+	o.Id = v
+}
+
+// GetLastUpdatedTime returns the LastUpdatedTime field value
+func (o *ExternalAccount) GetLastUpdatedTime() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.LastUpdatedTime
+}
+
+// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccount) GetLastUpdatedTimeOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastUpdatedTime, true
+}
+
+// SetLastUpdatedTime sets field value
+func (o *ExternalAccount) SetLastUpdatedTime(v time.Time) {
+	o.LastUpdatedTime = v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *ExternalAccount) GetMetadata() map[string]interface{} {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExternalAccount) GetMetadataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *ExternalAccount) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *ExternalAccount) SetMetadata(v map[string]interface{}) {
+	o.Metadata = &v
+}
+
+// GetNickname returns the Nickname field value if set, zero value otherwise.
+func (o *ExternalAccount) GetNickname() string {
+	if o == nil || o.Nickname == nil {
+		var ret string
+		return ret
+	}
+	return *o.Nickname
+}
+
+// GetNicknameOk returns a tuple with the Nickname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExternalAccount) GetNicknameOk() (*string, bool) {
+	if o == nil || o.Nickname == nil {
+		return nil, false
+	}
+	return o.Nickname, true
+}
+
+// HasNickname returns a boolean if a field has been set.
+func (o *ExternalAccount) HasNickname() bool {
+	if o != nil && o.Nickname != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNickname gets a reference to the given string and assigns it to the Nickname field.
+func (o *ExternalAccount) SetNickname(v string) {
+	o.Nickname = &v
+}
+
+// GetRoutingIdentifiers returns the RoutingIdentifiers field value
+func (o *ExternalAccount) GetRoutingIdentifiers() AccountRouting {
+	if o == nil {
+		var ret AccountRouting
+		return ret
+	}
+
+	return o.RoutingIdentifiers
+}
+
+// GetRoutingIdentifiersOk returns a tuple with the RoutingIdentifiers field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccount) GetRoutingIdentifiersOk() (*AccountRouting, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RoutingIdentifiers, true
+}
+
+// SetRoutingIdentifiers sets field value
+func (o *ExternalAccount) SetRoutingIdentifiers(v AccountRouting) {
+	o.RoutingIdentifiers = v
 }
 
 // GetStatus returns the Status field value
@@ -218,86 +378,6 @@ func (o *ExternalAccount) SetVendorData(v ExternalAccountVendorData) {
 	o.VendorData = &v
 }
 
-// GetRoutingIdentifiers returns the RoutingIdentifiers field value
-func (o *ExternalAccount) GetRoutingIdentifiers() AccountRouting {
-	if o == nil {
-		var ret AccountRouting
-		return ret
-	}
-
-	return o.RoutingIdentifiers
-}
-
-// GetRoutingIdentifiersOk returns a tuple with the RoutingIdentifiers field value
-// and a boolean to check if the value has been set.
-func (o *ExternalAccount) GetRoutingIdentifiersOk() (*AccountRouting, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RoutingIdentifiers, true
-}
-
-// SetRoutingIdentifiers sets field value
-func (o *ExternalAccount) SetRoutingIdentifiers(v AccountRouting) {
-	o.RoutingIdentifiers = v
-}
-
-// GetAccountIdentifiers returns the AccountIdentifiers field value
-func (o *ExternalAccount) GetAccountIdentifiers() AccountIdentifiers {
-	if o == nil {
-		var ret AccountIdentifiers
-		return ret
-	}
-
-	return o.AccountIdentifiers
-}
-
-// GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field value
-// and a boolean to check if the value has been set.
-func (o *ExternalAccount) GetAccountIdentifiersOk() (*AccountIdentifiers, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccountIdentifiers, true
-}
-
-// SetAccountIdentifiers sets field value
-func (o *ExternalAccount) SetAccountIdentifiers(v AccountIdentifiers) {
-	o.AccountIdentifiers = v
-}
-
-// GetNickname returns the Nickname field value if set, zero value otherwise.
-func (o *ExternalAccount) GetNickname() string {
-	if o == nil || o.Nickname == nil {
-		var ret string
-		return ret
-	}
-	return *o.Nickname
-}
-
-// GetNicknameOk returns a tuple with the Nickname field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ExternalAccount) GetNicknameOk() (*string, bool) {
-	if o == nil || o.Nickname == nil {
-		return nil, false
-	}
-	return o.Nickname, true
-}
-
-// HasNickname returns a boolean if a field has been set.
-func (o *ExternalAccount) HasNickname() bool {
-	if o != nil && o.Nickname != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNickname gets a reference to the given string and assigns it to the Nickname field.
-func (o *ExternalAccount) SetNickname(v string) {
-	o.Nickname = &v
-}
-
 // GetVerification returns the Verification field value
 // If the value is explicit nil, the zero value for AccountVerification will be returned
 func (o *ExternalAccount) GetVerification() AccountVerification {
@@ -324,96 +404,34 @@ func (o *ExternalAccount) SetVerification(v AccountVerification) {
 	o.Verification.Set(&v)
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *ExternalAccount) GetMetadata() map[string]interface{} {
-	if o == nil || o.Metadata == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ExternalAccount) GetMetadataOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Metadata == nil {
-		return nil, false
-	}
-	return o.Metadata, true
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *ExternalAccount) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
-func (o *ExternalAccount) SetMetadata(v map[string]interface{}) {
-	o.Metadata = &v
-}
-
-// GetCreationTime returns the CreationTime field value
-func (o *ExternalAccount) GetCreationTime() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreationTime
-}
-
-// GetCreationTimeOk returns a tuple with the CreationTime field value
-// and a boolean to check if the value has been set.
-func (o *ExternalAccount) GetCreationTimeOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreationTime, true
-}
-
-// SetCreationTime sets field value
-func (o *ExternalAccount) SetCreationTime(v time.Time) {
-	o.CreationTime = v
-}
-
-// GetLastUpdatedTime returns the LastUpdatedTime field value
-func (o *ExternalAccount) GetLastUpdatedTime() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.LastUpdatedTime
-}
-
-// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value
-// and a boolean to check if the value has been set.
-func (o *ExternalAccount) GetLastUpdatedTimeOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LastUpdatedTime, true
-}
-
-// SetLastUpdatedTime sets field value
-func (o *ExternalAccount) SetLastUpdatedTime(v time.Time) {
-	o.LastUpdatedTime = v
-}
-
 func (o ExternalAccount) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["id"] = o.Id
+		toSerialize["account_identifiers"] = o.AccountIdentifiers
+	}
+	if true {
+		toSerialize["account_owner_names"] = o.AccountOwnerNames
+	}
+	if true {
+		toSerialize["creation_time"] = o.CreationTime
 	}
 	if true {
 		toSerialize["customer_id"] = o.CustomerId
 	}
 	if true {
-		toSerialize["account_owner_names"] = o.AccountOwnerNames
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["last_updated_time"] = o.LastUpdatedTime
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if o.Nickname != nil {
+		toSerialize["nickname"] = o.Nickname
+	}
+	if true {
+		toSerialize["routing_identifiers"] = o.RoutingIdentifiers
 	}
 	if true {
 		toSerialize["status"] = o.Status
@@ -425,25 +443,7 @@ func (o ExternalAccount) MarshalJSON() ([]byte, error) {
 		toSerialize["vendor_data"] = o.VendorData
 	}
 	if true {
-		toSerialize["routing_identifiers"] = o.RoutingIdentifiers
-	}
-	if true {
-		toSerialize["account_identifiers"] = o.AccountIdentifiers
-	}
-	if o.Nickname != nil {
-		toSerialize["nickname"] = o.Nickname
-	}
-	if true {
 		toSerialize["verification"] = o.Verification.Get()
-	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if true {
-		toSerialize["creation_time"] = o.CreationTime
-	}
-	if true {
-		toSerialize["last_updated_time"] = o.LastUpdatedTime
 	}
 	return json.Marshal(toSerialize)
 }

@@ -22,25 +22,25 @@ type Address struct {
 	AddressLine2 *string `json:"address_line_2,omitempty"`
 	// City
 	City string `json:"city"`
-	// State, region, province, or prefecture
-	State string `json:"state"`
-	// Postal code
-	PostalCode string `json:"postal_code"`
 	// ISO-3166-1 Alpha-2 country code
 	CountryCode string `json:"country_code"`
+	// Postal code
+	PostalCode string `json:"postal_code"`
+	// State, region, province, or prefecture
+	State string `json:"state"`
 }
 
 // NewAddress instantiates a new Address object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddress(addressLine1 string, city string, state string, postalCode string, countryCode string) *Address {
+func NewAddress(addressLine1 string, city string, countryCode string, postalCode string, state string) *Address {
 	this := Address{}
 	this.AddressLine1 = addressLine1
 	this.City = city
-	this.State = state
-	this.PostalCode = postalCode
 	this.CountryCode = countryCode
+	this.PostalCode = postalCode
+	this.State = state
 	return &this
 }
 
@@ -132,28 +132,28 @@ func (o *Address) SetCity(v string) {
 	o.City = v
 }
 
-// GetState returns the State field value
-func (o *Address) GetState() string {
+// GetCountryCode returns the CountryCode field value
+func (o *Address) GetCountryCode() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.State
+	return o.CountryCode
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetCountryCodeOk returns a tuple with the CountryCode field value
 // and a boolean to check if the value has been set.
-func (o *Address) GetStateOk() (*string, bool) {
+func (o *Address) GetCountryCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.State, true
+	return &o.CountryCode, true
 }
 
-// SetState sets field value
-func (o *Address) SetState(v string) {
-	o.State = v
+// SetCountryCode sets field value
+func (o *Address) SetCountryCode(v string) {
+	o.CountryCode = v
 }
 
 // GetPostalCode returns the PostalCode field value
@@ -180,28 +180,28 @@ func (o *Address) SetPostalCode(v string) {
 	o.PostalCode = v
 }
 
-// GetCountryCode returns the CountryCode field value
-func (o *Address) GetCountryCode() string {
+// GetState returns the State field value
+func (o *Address) GetState() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CountryCode
+	return o.State
 }
 
-// GetCountryCodeOk returns a tuple with the CountryCode field value
+// GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *Address) GetCountryCodeOk() (*string, bool) {
+func (o *Address) GetStateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CountryCode, true
+	return &o.State, true
 }
 
-// SetCountryCode sets field value
-func (o *Address) SetCountryCode(v string) {
-	o.CountryCode = v
+// SetState sets field value
+func (o *Address) SetState(v string) {
+	o.State = v
 }
 
 func (o Address) MarshalJSON() ([]byte, error) {
@@ -216,13 +216,13 @@ func (o Address) MarshalJSON() ([]byte, error) {
 		toSerialize["city"] = o.City
 	}
 	if true {
-		toSerialize["state"] = o.State
+		toSerialize["country_code"] = o.CountryCode
 	}
 	if true {
 		toSerialize["postal_code"] = o.PostalCode
 	}
 	if true {
-		toSerialize["country_code"] = o.CountryCode
+		toSerialize["state"] = o.State
 	}
 	return json.Marshal(toSerialize)
 }

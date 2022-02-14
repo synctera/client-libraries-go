@@ -17,16 +17,10 @@ import (
 
 // Employment A period of time in which a customer is (was) employed by a particular employer.
 type Employment struct {
-	// Unique ID for this employment relationship.
-	Id *string `json:"id,omitempty"`
 	// Name of customer's employer.
 	EmployerName string `json:"employer_name"`
-	// Customer's work title, profession, or field.
-	EmploymentOccupation *string `json:"employment_occupation,omitempty"`
 	// First day of employment.
 	EmploymentFrom *time.Time `json:"employment_from,omitempty"`
-	// Last day of employment.
-	EmploymentTo *time.Time `json:"employment_to,omitempty"`
 	// Number of hours spent per week working for specified employment.
 	EmploymentHours *float32 `json:"employment_hours,omitempty"`
 	// Annual income in cents.
@@ -35,6 +29,12 @@ type Employment struct {
 	EmploymentIncomeCurrency *string `json:"employment_income_currency,omitempty"`
 	// A collection of arbitrary key-value pairs providing additional information about this employment relationship.
 	EmploymentInfo *map[string]interface{} `json:"employment_info,omitempty"`
+	// Customer's work title, profession, or field.
+	EmploymentOccupation *string `json:"employment_occupation,omitempty"`
+	// Last day of employment.
+	EmploymentTo *time.Time `json:"employment_to,omitempty"`
+	// Unique ID for this employment relationship.
+	Id *string `json:"id,omitempty"`
 }
 
 // NewEmployment instantiates a new Employment object
@@ -53,38 +53,6 @@ func NewEmployment(employerName string) *Employment {
 func NewEmploymentWithDefaults() *Employment {
 	this := Employment{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Employment) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Employment) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Employment) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Employment) SetId(v string) {
-	o.Id = &v
 }
 
 // GetEmployerName returns the EmployerName field value
@@ -109,38 +77,6 @@ func (o *Employment) GetEmployerNameOk() (*string, bool) {
 // SetEmployerName sets field value
 func (o *Employment) SetEmployerName(v string) {
 	o.EmployerName = v
-}
-
-// GetEmploymentOccupation returns the EmploymentOccupation field value if set, zero value otherwise.
-func (o *Employment) GetEmploymentOccupation() string {
-	if o == nil || o.EmploymentOccupation == nil {
-		var ret string
-		return ret
-	}
-	return *o.EmploymentOccupation
-}
-
-// GetEmploymentOccupationOk returns a tuple with the EmploymentOccupation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Employment) GetEmploymentOccupationOk() (*string, bool) {
-	if o == nil || o.EmploymentOccupation == nil {
-		return nil, false
-	}
-	return o.EmploymentOccupation, true
-}
-
-// HasEmploymentOccupation returns a boolean if a field has been set.
-func (o *Employment) HasEmploymentOccupation() bool {
-	if o != nil && o.EmploymentOccupation != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEmploymentOccupation gets a reference to the given string and assigns it to the EmploymentOccupation field.
-func (o *Employment) SetEmploymentOccupation(v string) {
-	o.EmploymentOccupation = &v
 }
 
 // GetEmploymentFrom returns the EmploymentFrom field value if set, zero value otherwise.
@@ -173,38 +109,6 @@ func (o *Employment) HasEmploymentFrom() bool {
 // SetEmploymentFrom gets a reference to the given time.Time and assigns it to the EmploymentFrom field.
 func (o *Employment) SetEmploymentFrom(v time.Time) {
 	o.EmploymentFrom = &v
-}
-
-// GetEmploymentTo returns the EmploymentTo field value if set, zero value otherwise.
-func (o *Employment) GetEmploymentTo() time.Time {
-	if o == nil || o.EmploymentTo == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.EmploymentTo
-}
-
-// GetEmploymentToOk returns a tuple with the EmploymentTo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Employment) GetEmploymentToOk() (*time.Time, bool) {
-	if o == nil || o.EmploymentTo == nil {
-		return nil, false
-	}
-	return o.EmploymentTo, true
-}
-
-// HasEmploymentTo returns a boolean if a field has been set.
-func (o *Employment) HasEmploymentTo() bool {
-	if o != nil && o.EmploymentTo != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEmploymentTo gets a reference to the given time.Time and assigns it to the EmploymentTo field.
-func (o *Employment) SetEmploymentTo(v time.Time) {
-	o.EmploymentTo = &v
 }
 
 // GetEmploymentHours returns the EmploymentHours field value if set, zero value otherwise.
@@ -335,22 +239,109 @@ func (o *Employment) SetEmploymentInfo(v map[string]interface{}) {
 	o.EmploymentInfo = &v
 }
 
+// GetEmploymentOccupation returns the EmploymentOccupation field value if set, zero value otherwise.
+func (o *Employment) GetEmploymentOccupation() string {
+	if o == nil || o.EmploymentOccupation == nil {
+		var ret string
+		return ret
+	}
+	return *o.EmploymentOccupation
+}
+
+// GetEmploymentOccupationOk returns a tuple with the EmploymentOccupation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Employment) GetEmploymentOccupationOk() (*string, bool) {
+	if o == nil || o.EmploymentOccupation == nil {
+		return nil, false
+	}
+	return o.EmploymentOccupation, true
+}
+
+// HasEmploymentOccupation returns a boolean if a field has been set.
+func (o *Employment) HasEmploymentOccupation() bool {
+	if o != nil && o.EmploymentOccupation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEmploymentOccupation gets a reference to the given string and assigns it to the EmploymentOccupation field.
+func (o *Employment) SetEmploymentOccupation(v string) {
+	o.EmploymentOccupation = &v
+}
+
+// GetEmploymentTo returns the EmploymentTo field value if set, zero value otherwise.
+func (o *Employment) GetEmploymentTo() time.Time {
+	if o == nil || o.EmploymentTo == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.EmploymentTo
+}
+
+// GetEmploymentToOk returns a tuple with the EmploymentTo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Employment) GetEmploymentToOk() (*time.Time, bool) {
+	if o == nil || o.EmploymentTo == nil {
+		return nil, false
+	}
+	return o.EmploymentTo, true
+}
+
+// HasEmploymentTo returns a boolean if a field has been set.
+func (o *Employment) HasEmploymentTo() bool {
+	if o != nil && o.EmploymentTo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEmploymentTo gets a reference to the given time.Time and assigns it to the EmploymentTo field.
+func (o *Employment) SetEmploymentTo(v time.Time) {
+	o.EmploymentTo = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Employment) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Employment) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Employment) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Employment) SetId(v string) {
+	o.Id = &v
+}
+
 func (o Employment) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
 	if true {
 		toSerialize["employer_name"] = o.EmployerName
 	}
-	if o.EmploymentOccupation != nil {
-		toSerialize["employment_occupation"] = o.EmploymentOccupation
-	}
 	if o.EmploymentFrom != nil {
 		toSerialize["employment_from"] = o.EmploymentFrom
-	}
-	if o.EmploymentTo != nil {
-		toSerialize["employment_to"] = o.EmploymentTo
 	}
 	if o.EmploymentHours != nil {
 		toSerialize["employment_hours"] = o.EmploymentHours
@@ -363,6 +354,15 @@ func (o Employment) MarshalJSON() ([]byte, error) {
 	}
 	if o.EmploymentInfo != nil {
 		toSerialize["employment_info"] = o.EmploymentInfo
+	}
+	if o.EmploymentOccupation != nil {
+		toSerialize["employment_occupation"] = o.EmploymentOccupation
+	}
+	if o.EmploymentTo != nil {
+		toSerialize["employment_to"] = o.EmploymentTo
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	return json.Marshal(toSerialize)
 }

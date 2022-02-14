@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Fee ID | [optional] [readonly] 
-**ProductType** | **string** |  | 
-**FeeType** | **string** | Fee type | 
 **Amount** | **int64** | Fee amount | 
 **Currency** | **string** | Fee currency code in ISO 4217 | 
+**FeeType** | **string** | Fee type | 
+**Id** | Pointer to **string** | Fee ID | [optional] [readonly] 
+**ProductType** | **string** |  | 
 
 ## Methods
 
 ### NewFee
 
-`func NewFee(productType string, feeType string, amount int64, currency string, ) *Fee`
+`func NewFee(amount int64, currency string, feeType string, productType string, ) *Fee`
 
 NewFee instantiates a new Fee object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +28,66 @@ will change when the set of required properties is changed
 NewFeeWithDefaults instantiates a new Fee object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAmount
+
+`func (o *Fee) GetAmount() int64`
+
+GetAmount returns the Amount field if non-nil, zero value otherwise.
+
+### GetAmountOk
+
+`func (o *Fee) GetAmountOk() (*int64, bool)`
+
+GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmount
+
+`func (o *Fee) SetAmount(v int64)`
+
+SetAmount sets Amount field to given value.
+
+
+### GetCurrency
+
+`func (o *Fee) GetCurrency() string`
+
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
+
+### GetCurrencyOk
+
+`func (o *Fee) GetCurrencyOk() (*string, bool)`
+
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrency
+
+`func (o *Fee) SetCurrency(v string)`
+
+SetCurrency sets Currency field to given value.
+
+
+### GetFeeType
+
+`func (o *Fee) GetFeeType() string`
+
+GetFeeType returns the FeeType field if non-nil, zero value otherwise.
+
+### GetFeeTypeOk
+
+`func (o *Fee) GetFeeTypeOk() (*string, bool)`
+
+GetFeeTypeOk returns a tuple with the FeeType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeeType
+
+`func (o *Fee) SetFeeType(v string)`
+
+SetFeeType sets FeeType field to given value.
+
 
 ### GetId
 
@@ -72,66 +132,6 @@ and a boolean to check if the value has been set.
 `func (o *Fee) SetProductType(v string)`
 
 SetProductType sets ProductType field to given value.
-
-
-### GetFeeType
-
-`func (o *Fee) GetFeeType() string`
-
-GetFeeType returns the FeeType field if non-nil, zero value otherwise.
-
-### GetFeeTypeOk
-
-`func (o *Fee) GetFeeTypeOk() (*string, bool)`
-
-GetFeeTypeOk returns a tuple with the FeeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFeeType
-
-`func (o *Fee) SetFeeType(v string)`
-
-SetFeeType sets FeeType field to given value.
-
-
-### GetAmount
-
-`func (o *Fee) GetAmount() int64`
-
-GetAmount returns the Amount field if non-nil, zero value otherwise.
-
-### GetAmountOk
-
-`func (o *Fee) GetAmountOk() (*int64, bool)`
-
-GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAmount
-
-`func (o *Fee) SetAmount(v int64)`
-
-SetAmount sets Amount field to given value.
-
-
-### GetCurrency
-
-`func (o *Fee) GetCurrency() string`
-
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
-
-### GetCurrencyOk
-
-`func (o *Fee) GetCurrencyOk() (*string, bool)`
-
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrency
-
-`func (o *Fee) SetCurrency(v string)`
-
-SetCurrency sets Currency field to given value.
 
 
 

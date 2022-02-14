@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BinStatus** | Pointer to [**BinStatus**](BinStatus.md) |  | [optional] 
 **CardBrand** | Pointer to [**CardBrand**](CardBrand.md) |  | [optional] 
 **CardCategory** | Pointer to [**CardCategory**](CardCategory.md) |  | [optional] 
 **CardProductType** | Pointer to [**CardProductType**](CardProductType.md) |  | [optional] 
-**BinStatus** | Pointer to [**BinStatus**](BinStatus.md) |  | [optional] 
-**StartDate** | Pointer to **time.Time** | The time when bin goes live | [optional] 
 **EndDate** | Pointer to **time.Time** | The time when bin is decommissioned | [optional] 
 **PhysicalCardFormat** | Pointer to [**PhysicalCardFormat**](PhysicalCardFormat.md) |  | [optional] 
+**StartDate** | Pointer to **time.Time** | The time when bin goes live | [optional] 
 
 ## Methods
 
@@ -30,6 +30,31 @@ will change when the set of required properties is changed
 NewBinUpdateRequestWithDefaults instantiates a new BinUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBinStatus
+
+`func (o *BinUpdateRequest) GetBinStatus() BinStatus`
+
+GetBinStatus returns the BinStatus field if non-nil, zero value otherwise.
+
+### GetBinStatusOk
+
+`func (o *BinUpdateRequest) GetBinStatusOk() (*BinStatus, bool)`
+
+GetBinStatusOk returns a tuple with the BinStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBinStatus
+
+`func (o *BinUpdateRequest) SetBinStatus(v BinStatus)`
+
+SetBinStatus sets BinStatus field to given value.
+
+### HasBinStatus
+
+`func (o *BinUpdateRequest) HasBinStatus() bool`
+
+HasBinStatus returns a boolean if a field has been set.
 
 ### GetCardBrand
 
@@ -106,56 +131,6 @@ SetCardProductType sets CardProductType field to given value.
 
 HasCardProductType returns a boolean if a field has been set.
 
-### GetBinStatus
-
-`func (o *BinUpdateRequest) GetBinStatus() BinStatus`
-
-GetBinStatus returns the BinStatus field if non-nil, zero value otherwise.
-
-### GetBinStatusOk
-
-`func (o *BinUpdateRequest) GetBinStatusOk() (*BinStatus, bool)`
-
-GetBinStatusOk returns a tuple with the BinStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBinStatus
-
-`func (o *BinUpdateRequest) SetBinStatus(v BinStatus)`
-
-SetBinStatus sets BinStatus field to given value.
-
-### HasBinStatus
-
-`func (o *BinUpdateRequest) HasBinStatus() bool`
-
-HasBinStatus returns a boolean if a field has been set.
-
-### GetStartDate
-
-`func (o *BinUpdateRequest) GetStartDate() time.Time`
-
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
-
-### GetStartDateOk
-
-`func (o *BinUpdateRequest) GetStartDateOk() (*time.Time, bool)`
-
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartDate
-
-`func (o *BinUpdateRequest) SetStartDate(v time.Time)`
-
-SetStartDate sets StartDate field to given value.
-
-### HasStartDate
-
-`func (o *BinUpdateRequest) HasStartDate() bool`
-
-HasStartDate returns a boolean if a field has been set.
-
 ### GetEndDate
 
 `func (o *BinUpdateRequest) GetEndDate() time.Time`
@@ -205,6 +180,31 @@ SetPhysicalCardFormat sets PhysicalCardFormat field to given value.
 `func (o *BinUpdateRequest) HasPhysicalCardFormat() bool`
 
 HasPhysicalCardFormat returns a boolean if a field has been set.
+
+### GetStartDate
+
+`func (o *BinUpdateRequest) GetStartDate() time.Time`
+
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+
+### GetStartDateOk
+
+`func (o *BinUpdateRequest) GetStartDateOk() (*time.Time, bool)`
+
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartDate
+
+`func (o *BinUpdateRequest) SetStartDate(v time.Time)`
+
+SetStartDate sets StartDate field to given value.
+
+### HasStartDate
+
+`func (o *BinUpdateRequest) HasStartDate() bool`
+
+HasStartDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

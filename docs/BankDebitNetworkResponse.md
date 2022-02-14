@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Debit Network ID | [optional] [readonly] 
-**Name** | Pointer to **string** | The name describing the debit network | [optional] 
 **Active** | Pointer to **bool** | indicates whether debit network is active | [optional] 
-**StartDate** | Pointer to **time.Time** | The time when debit network goes live | [optional] 
-**EndDate** | Pointer to **time.Time** | The time when debit network became inactive | [optional] 
 **CreationTime** | Pointer to **time.Time** | The timestamp representing when the debit network was created | [optional] [readonly] 
+**EndDate** | Pointer to **time.Time** | The time when debit network became inactive | [optional] 
+**Id** | Pointer to **string** | Debit Network ID | [optional] [readonly] 
 **LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the debit network was last modified | [optional] [readonly] 
-**BinId** | Pointer to **string** | The ID of the bank&#39;s bin that uses this debit network | [optional] 
+**Name** | Pointer to **string** | The name describing the debit network | [optional] 
+**StartDate** | Pointer to **time.Time** | The time when debit network goes live | [optional] 
 **BankNetworkId** | Pointer to **string** | The ID of the bank network | [optional] 
+**BinId** | Pointer to **string** | The ID of the bank&#39;s bin that uses this debit network | [optional] 
 
 ## Methods
 
@@ -32,56 +32,6 @@ will change when the set of required properties is changed
 NewBankDebitNetworkResponseWithDefaults instantiates a new BankDebitNetworkResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *BankDebitNetworkResponse) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *BankDebitNetworkResponse) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *BankDebitNetworkResponse) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *BankDebitNetworkResponse) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetName
-
-`func (o *BankDebitNetworkResponse) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *BankDebitNetworkResponse) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *BankDebitNetworkResponse) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *BankDebitNetworkResponse) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetActive
 
@@ -108,30 +58,30 @@ SetActive sets Active field to given value.
 
 HasActive returns a boolean if a field has been set.
 
-### GetStartDate
+### GetCreationTime
 
-`func (o *BankDebitNetworkResponse) GetStartDate() time.Time`
+`func (o *BankDebitNetworkResponse) GetCreationTime() time.Time`
 
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
 
-### GetStartDateOk
+### GetCreationTimeOk
 
-`func (o *BankDebitNetworkResponse) GetStartDateOk() (*time.Time, bool)`
+`func (o *BankDebitNetworkResponse) GetCreationTimeOk() (*time.Time, bool)`
 
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStartDate
+### SetCreationTime
 
-`func (o *BankDebitNetworkResponse) SetStartDate(v time.Time)`
+`func (o *BankDebitNetworkResponse) SetCreationTime(v time.Time)`
 
-SetStartDate sets StartDate field to given value.
+SetCreationTime sets CreationTime field to given value.
 
-### HasStartDate
+### HasCreationTime
 
-`func (o *BankDebitNetworkResponse) HasStartDate() bool`
+`func (o *BankDebitNetworkResponse) HasCreationTime() bool`
 
-HasStartDate returns a boolean if a field has been set.
+HasCreationTime returns a boolean if a field has been set.
 
 ### GetEndDate
 
@@ -158,30 +108,30 @@ SetEndDate sets EndDate field to given value.
 
 HasEndDate returns a boolean if a field has been set.
 
-### GetCreationTime
+### GetId
 
-`func (o *BankDebitNetworkResponse) GetCreationTime() time.Time`
+`func (o *BankDebitNetworkResponse) GetId() string`
 
-GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetCreationTimeOk
+### GetIdOk
 
-`func (o *BankDebitNetworkResponse) GetCreationTimeOk() (*time.Time, bool)`
+`func (o *BankDebitNetworkResponse) GetIdOk() (*string, bool)`
 
-GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreationTime
+### SetId
 
-`func (o *BankDebitNetworkResponse) SetCreationTime(v time.Time)`
+`func (o *BankDebitNetworkResponse) SetId(v string)`
 
-SetCreationTime sets CreationTime field to given value.
+SetId sets Id field to given value.
 
-### HasCreationTime
+### HasId
 
-`func (o *BankDebitNetworkResponse) HasCreationTime() bool`
+`func (o *BankDebitNetworkResponse) HasId() bool`
 
-HasCreationTime returns a boolean if a field has been set.
+HasId returns a boolean if a field has been set.
 
 ### GetLastModifiedTime
 
@@ -208,30 +158,55 @@ SetLastModifiedTime sets LastModifiedTime field to given value.
 
 HasLastModifiedTime returns a boolean if a field has been set.
 
-### GetBinId
+### GetName
 
-`func (o *BankDebitNetworkResponse) GetBinId() string`
+`func (o *BankDebitNetworkResponse) GetName() string`
 
-GetBinId returns the BinId field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetBinIdOk
+### GetNameOk
 
-`func (o *BankDebitNetworkResponse) GetBinIdOk() (*string, bool)`
+`func (o *BankDebitNetworkResponse) GetNameOk() (*string, bool)`
 
-GetBinIdOk returns a tuple with the BinId field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBinId
+### SetName
 
-`func (o *BankDebitNetworkResponse) SetBinId(v string)`
+`func (o *BankDebitNetworkResponse) SetName(v string)`
 
-SetBinId sets BinId field to given value.
+SetName sets Name field to given value.
 
-### HasBinId
+### HasName
 
-`func (o *BankDebitNetworkResponse) HasBinId() bool`
+`func (o *BankDebitNetworkResponse) HasName() bool`
 
-HasBinId returns a boolean if a field has been set.
+HasName returns a boolean if a field has been set.
+
+### GetStartDate
+
+`func (o *BankDebitNetworkResponse) GetStartDate() time.Time`
+
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+
+### GetStartDateOk
+
+`func (o *BankDebitNetworkResponse) GetStartDateOk() (*time.Time, bool)`
+
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartDate
+
+`func (o *BankDebitNetworkResponse) SetStartDate(v time.Time)`
+
+SetStartDate sets StartDate field to given value.
+
+### HasStartDate
+
+`func (o *BankDebitNetworkResponse) HasStartDate() bool`
+
+HasStartDate returns a boolean if a field has been set.
 
 ### GetBankNetworkId
 
@@ -257,6 +232,31 @@ SetBankNetworkId sets BankNetworkId field to given value.
 `func (o *BankDebitNetworkResponse) HasBankNetworkId() bool`
 
 HasBankNetworkId returns a boolean if a field has been set.
+
+### GetBinId
+
+`func (o *BankDebitNetworkResponse) GetBinId() string`
+
+GetBinId returns the BinId field if non-nil, zero value otherwise.
+
+### GetBinIdOk
+
+`func (o *BankDebitNetworkResponse) GetBinIdOk() (*string, bool)`
+
+GetBinIdOk returns a tuple with the BinId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBinId
+
+`func (o *BankDebitNetworkResponse) SetBinId(v string)`
+
+SetBinId sets BinId field to given value.
+
+### HasBinId
+
+`func (o *BankDebitNetworkResponse) HasBinId() bool`
+
+HasBinId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

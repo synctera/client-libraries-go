@@ -18,10 +18,10 @@ import (
 type ExternalAccountBalance struct {
 	// The available balance of the account
 	Available int64 `json:"available"`
-	// The current balance of the account
-	Current int64 `json:"current"`
 	// ISO 4217 alphabetic currency code
 	Currency string `json:"currency"`
+	// The current balance of the account
+	Current int64 `json:"current"`
 	// The limit on the balance amount
 	Limit int64 `json:"limit"`
 }
@@ -30,11 +30,11 @@ type ExternalAccountBalance struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExternalAccountBalance(available int64, current int64, currency string, limit int64) *ExternalAccountBalance {
+func NewExternalAccountBalance(available int64, currency string, current int64, limit int64) *ExternalAccountBalance {
 	this := ExternalAccountBalance{}
 	this.Available = available
-	this.Current = current
 	this.Currency = currency
+	this.Current = current
 	this.Limit = limit
 	return &this
 }
@@ -71,30 +71,6 @@ func (o *ExternalAccountBalance) SetAvailable(v int64) {
 	o.Available = v
 }
 
-// GetCurrent returns the Current field value
-func (o *ExternalAccountBalance) GetCurrent() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.Current
-}
-
-// GetCurrentOk returns a tuple with the Current field value
-// and a boolean to check if the value has been set.
-func (o *ExternalAccountBalance) GetCurrentOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Current, true
-}
-
-// SetCurrent sets field value
-func (o *ExternalAccountBalance) SetCurrent(v int64) {
-	o.Current = v
-}
-
 // GetCurrency returns the Currency field value
 func (o *ExternalAccountBalance) GetCurrency() string {
 	if o == nil {
@@ -117,6 +93,30 @@ func (o *ExternalAccountBalance) GetCurrencyOk() (*string, bool) {
 // SetCurrency sets field value
 func (o *ExternalAccountBalance) SetCurrency(v string) {
 	o.Currency = v
+}
+
+// GetCurrent returns the Current field value
+func (o *ExternalAccountBalance) GetCurrent() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.Current
+}
+
+// GetCurrentOk returns a tuple with the Current field value
+// and a boolean to check if the value has been set.
+func (o *ExternalAccountBalance) GetCurrentOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Current, true
+}
+
+// SetCurrent sets field value
+func (o *ExternalAccountBalance) SetCurrent(v int64) {
+	o.Current = v
 }
 
 // GetLimit returns the Limit field value
@@ -149,10 +149,10 @@ func (o ExternalAccountBalance) MarshalJSON() ([]byte, error) {
 		toSerialize["available"] = o.Available
 	}
 	if true {
-		toSerialize["current"] = o.Current
+		toSerialize["currency"] = o.Currency
 	}
 	if true {
-		toSerialize["currency"] = o.Currency
+		toSerialize["current"] = o.Current
 	}
 	if true {
 		toSerialize["limit"] = o.Limit

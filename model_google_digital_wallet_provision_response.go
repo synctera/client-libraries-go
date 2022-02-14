@@ -17,10 +17,10 @@ import (
 
 // GoogleDigitalWalletProvisionResponse struct for GoogleDigitalWalletProvisionResponse
 type GoogleDigitalWalletProvisionResponse struct {
-	CreatedTime      *time.Time `json:"created_time,omitempty"`
-	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
 	// The unique identifier of a card
 	CardId                  *string                  `json:"card_id,omitempty"`
+	CreatedTime             *time.Time               `json:"created_time,omitempty"`
+	LastModifiedTime        *time.Time               `json:"last_modified_time,omitempty"`
 	PushTokenizeRequestData *PushTokenizeRequestData `json:"push_tokenize_request_data,omitempty"`
 }
 
@@ -39,6 +39,38 @@ func NewGoogleDigitalWalletProvisionResponse() *GoogleDigitalWalletProvisionResp
 func NewGoogleDigitalWalletProvisionResponseWithDefaults() *GoogleDigitalWalletProvisionResponse {
 	this := GoogleDigitalWalletProvisionResponse{}
 	return &this
+}
+
+// GetCardId returns the CardId field value if set, zero value otherwise.
+func (o *GoogleDigitalWalletProvisionResponse) GetCardId() string {
+	if o == nil || o.CardId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CardId
+}
+
+// GetCardIdOk returns a tuple with the CardId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleDigitalWalletProvisionResponse) GetCardIdOk() (*string, bool) {
+	if o == nil || o.CardId == nil {
+		return nil, false
+	}
+	return o.CardId, true
+}
+
+// HasCardId returns a boolean if a field has been set.
+func (o *GoogleDigitalWalletProvisionResponse) HasCardId() bool {
+	if o != nil && o.CardId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCardId gets a reference to the given string and assigns it to the CardId field.
+func (o *GoogleDigitalWalletProvisionResponse) SetCardId(v string) {
+	o.CardId = &v
 }
 
 // GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
@@ -105,38 +137,6 @@ func (o *GoogleDigitalWalletProvisionResponse) SetLastModifiedTime(v time.Time) 
 	o.LastModifiedTime = &v
 }
 
-// GetCardId returns the CardId field value if set, zero value otherwise.
-func (o *GoogleDigitalWalletProvisionResponse) GetCardId() string {
-	if o == nil || o.CardId == nil {
-		var ret string
-		return ret
-	}
-	return *o.CardId
-}
-
-// GetCardIdOk returns a tuple with the CardId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GoogleDigitalWalletProvisionResponse) GetCardIdOk() (*string, bool) {
-	if o == nil || o.CardId == nil {
-		return nil, false
-	}
-	return o.CardId, true
-}
-
-// HasCardId returns a boolean if a field has been set.
-func (o *GoogleDigitalWalletProvisionResponse) HasCardId() bool {
-	if o != nil && o.CardId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCardId gets a reference to the given string and assigns it to the CardId field.
-func (o *GoogleDigitalWalletProvisionResponse) SetCardId(v string) {
-	o.CardId = &v
-}
-
 // GetPushTokenizeRequestData returns the PushTokenizeRequestData field value if set, zero value otherwise.
 func (o *GoogleDigitalWalletProvisionResponse) GetPushTokenizeRequestData() PushTokenizeRequestData {
 	if o == nil || o.PushTokenizeRequestData == nil {
@@ -171,14 +171,14 @@ func (o *GoogleDigitalWalletProvisionResponse) SetPushTokenizeRequestData(v Push
 
 func (o GoogleDigitalWalletProvisionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CardId != nil {
+		toSerialize["card_id"] = o.CardId
+	}
 	if o.CreatedTime != nil {
 		toSerialize["created_time"] = o.CreatedTime
 	}
 	if o.LastModifiedTime != nil {
 		toSerialize["last_modified_time"] = o.LastModifiedTime
-	}
-	if o.CardId != nil {
-		toSerialize["card_id"] = o.CardId
 	}
 	if o.PushTokenizeRequestData != nil {
 		toSerialize["push_tokenize_request_data"] = o.PushTokenizeRequestData

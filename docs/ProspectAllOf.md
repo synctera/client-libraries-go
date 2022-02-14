@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | **string** | Customer&#39;s status | 
+**Dob** | Pointer to [**oapi.Date**](oapi.Date.md) | Customer&#39;s date of birth in RFC 3339 full-date format (YYYY-MM-DD) | [optional] 
 **FirstName** | Pointer to **string** | Customer&#39;s first name | [optional] 
 **LastName** | Pointer to **string** | Customer&#39;s last name | [optional] 
-**Dob** | Pointer to [**oapi.Date**](oapi.Date.md) | Customer&#39;s date of birth in RFC 3339 full-date format (YYYY-MM-DD) | [optional] 
+**Status** | **string** | Customer&#39;s status | 
 
 ## Methods
 
@@ -28,25 +28,30 @@ NewProspectAllOfWithDefaults instantiates a new ProspectAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStatus
+### GetDob
 
-`func (o *ProspectAllOf) GetStatus() string`
+`func (o *ProspectAllOf) GetDob() oapi.Date`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetDob returns the Dob field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetDobOk
 
-`func (o *ProspectAllOf) GetStatusOk() (*string, bool)`
+`func (o *ProspectAllOf) GetDobOk() (*oapi.Date, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetDobOk returns a tuple with the Dob field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetDob
 
-`func (o *ProspectAllOf) SetStatus(v string)`
+`func (o *ProspectAllOf) SetDob(v oapi.Date)`
 
-SetStatus sets Status field to given value.
+SetDob sets Dob field to given value.
 
+### HasDob
+
+`func (o *ProspectAllOf) HasDob() bool`
+
+HasDob returns a boolean if a field has been set.
 
 ### GetFirstName
 
@@ -98,30 +103,25 @@ SetLastName sets LastName field to given value.
 
 HasLastName returns a boolean if a field has been set.
 
-### GetDob
+### GetStatus
 
-`func (o *ProspectAllOf) GetDob() oapi.Date`
+`func (o *ProspectAllOf) GetStatus() string`
 
-GetDob returns the Dob field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetDobOk
+### GetStatusOk
 
-`func (o *ProspectAllOf) GetDobOk() (*oapi.Date, bool)`
+`func (o *ProspectAllOf) GetStatusOk() (*string, bool)`
 
-GetDobOk returns a tuple with the Dob field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDob
+### SetStatus
 
-`func (o *ProspectAllOf) SetDob(v oapi.Date)`
+`func (o *ProspectAllOf) SetStatus(v string)`
 
-SetDob sets Dob field to given value.
+SetStatus sets Status field to given value.
 
-### HasDob
-
-`func (o *ProspectAllOf) HasDob() bool`
-
-HasDob returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VendorInstitutionId** | **string** | The ID of the institution the access token is requested for  | 
-**VendorPublicToken** | **string** | The user&#39;s public token obtained from successful link login.  | 
-**VendorAccessToken** | Pointer to **string** | The access token associated with the Item data is being requested for. | [optional] [readonly] 
-**VendorCustomerId** | Pointer to **string** | The identifier for the customer associated with this account(deprecated) | [optional] 
 **CustomerId** | Pointer to **string** | The identifier for the customer associated with this account | [optional] 
 **RequestId** | Pointer to **string** | A unique identifier for the request, which can be used for troubleshooting | [optional] [readonly] 
+**VendorAccessToken** | Pointer to **string** | The access token associated with the Item data is being requested for. | [optional] [readonly] 
+**VendorCustomerId** | Pointer to **string** | The identifier for the customer associated with this account(deprecated) | [optional] 
+**VendorInstitutionId** | **string** | The ID of the institution the access token is requested for  | 
+**VendorPublicToken** | **string** | The user&#39;s public token obtained from successful link login.  | 
 
 ## Methods
 
@@ -30,45 +30,55 @@ NewExternalAccountAccessTokenWithDefaults instantiates a new ExternalAccountAcce
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetVendorInstitutionId
+### GetCustomerId
 
-`func (o *ExternalAccountAccessToken) GetVendorInstitutionId() string`
+`func (o *ExternalAccountAccessToken) GetCustomerId() string`
 
-GetVendorInstitutionId returns the VendorInstitutionId field if non-nil, zero value otherwise.
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
 
-### GetVendorInstitutionIdOk
+### GetCustomerIdOk
 
-`func (o *ExternalAccountAccessToken) GetVendorInstitutionIdOk() (*string, bool)`
+`func (o *ExternalAccountAccessToken) GetCustomerIdOk() (*string, bool)`
 
-GetVendorInstitutionIdOk returns a tuple with the VendorInstitutionId field if it's non-nil, zero value otherwise
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVendorInstitutionId
+### SetCustomerId
 
-`func (o *ExternalAccountAccessToken) SetVendorInstitutionId(v string)`
+`func (o *ExternalAccountAccessToken) SetCustomerId(v string)`
 
-SetVendorInstitutionId sets VendorInstitutionId field to given value.
+SetCustomerId sets CustomerId field to given value.
 
+### HasCustomerId
 
-### GetVendorPublicToken
+`func (o *ExternalAccountAccessToken) HasCustomerId() bool`
 
-`func (o *ExternalAccountAccessToken) GetVendorPublicToken() string`
+HasCustomerId returns a boolean if a field has been set.
 
-GetVendorPublicToken returns the VendorPublicToken field if non-nil, zero value otherwise.
+### GetRequestId
 
-### GetVendorPublicTokenOk
+`func (o *ExternalAccountAccessToken) GetRequestId() string`
 
-`func (o *ExternalAccountAccessToken) GetVendorPublicTokenOk() (*string, bool)`
+GetRequestId returns the RequestId field if non-nil, zero value otherwise.
 
-GetVendorPublicTokenOk returns a tuple with the VendorPublicToken field if it's non-nil, zero value otherwise
+### GetRequestIdOk
+
+`func (o *ExternalAccountAccessToken) GetRequestIdOk() (*string, bool)`
+
+GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVendorPublicToken
+### SetRequestId
 
-`func (o *ExternalAccountAccessToken) SetVendorPublicToken(v string)`
+`func (o *ExternalAccountAccessToken) SetRequestId(v string)`
 
-SetVendorPublicToken sets VendorPublicToken field to given value.
+SetRequestId sets RequestId field to given value.
 
+### HasRequestId
+
+`func (o *ExternalAccountAccessToken) HasRequestId() bool`
+
+HasRequestId returns a boolean if a field has been set.
 
 ### GetVendorAccessToken
 
@@ -120,55 +130,45 @@ SetVendorCustomerId sets VendorCustomerId field to given value.
 
 HasVendorCustomerId returns a boolean if a field has been set.
 
-### GetCustomerId
+### GetVendorInstitutionId
 
-`func (o *ExternalAccountAccessToken) GetCustomerId() string`
+`func (o *ExternalAccountAccessToken) GetVendorInstitutionId() string`
 
-GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+GetVendorInstitutionId returns the VendorInstitutionId field if non-nil, zero value otherwise.
 
-### GetCustomerIdOk
+### GetVendorInstitutionIdOk
 
-`func (o *ExternalAccountAccessToken) GetCustomerIdOk() (*string, bool)`
+`func (o *ExternalAccountAccessToken) GetVendorInstitutionIdOk() (*string, bool)`
 
-GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+GetVendorInstitutionIdOk returns a tuple with the VendorInstitutionId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCustomerId
+### SetVendorInstitutionId
 
-`func (o *ExternalAccountAccessToken) SetCustomerId(v string)`
+`func (o *ExternalAccountAccessToken) SetVendorInstitutionId(v string)`
 
-SetCustomerId sets CustomerId field to given value.
+SetVendorInstitutionId sets VendorInstitutionId field to given value.
 
-### HasCustomerId
 
-`func (o *ExternalAccountAccessToken) HasCustomerId() bool`
+### GetVendorPublicToken
 
-HasCustomerId returns a boolean if a field has been set.
+`func (o *ExternalAccountAccessToken) GetVendorPublicToken() string`
 
-### GetRequestId
+GetVendorPublicToken returns the VendorPublicToken field if non-nil, zero value otherwise.
 
-`func (o *ExternalAccountAccessToken) GetRequestId() string`
+### GetVendorPublicTokenOk
 
-GetRequestId returns the RequestId field if non-nil, zero value otherwise.
+`func (o *ExternalAccountAccessToken) GetVendorPublicTokenOk() (*string, bool)`
 
-### GetRequestIdOk
-
-`func (o *ExternalAccountAccessToken) GetRequestIdOk() (*string, bool)`
-
-GetRequestIdOk returns a tuple with the RequestId field if it's non-nil, zero value otherwise
+GetVendorPublicTokenOk returns a tuple with the VendorPublicToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRequestId
+### SetVendorPublicToken
 
-`func (o *ExternalAccountAccessToken) SetRequestId(v string)`
+`func (o *ExternalAccountAccessToken) SetVendorPublicToken(v string)`
 
-SetRequestId sets RequestId field to given value.
+SetVendorPublicToken sets VendorPublicToken field to given value.
 
-### HasRequestId
-
-`func (o *ExternalAccountAccessToken) HasRequestId() bool`
-
-HasRequestId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

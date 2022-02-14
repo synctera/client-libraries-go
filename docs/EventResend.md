@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EventType** | [**EventType**](EventType.md) |  | 
 **EventId** | **string** | id of the event notification you want to resend | 
+**EventType** | [**EventType**](EventType.md) |  | 
 
 ## Methods
 
 ### NewEventResend
 
-`func NewEventResend(eventType EventType, eventId string, ) *EventResend`
+`func NewEventResend(eventId string, eventType EventType, ) *EventResend`
 
 NewEventResend instantiates a new EventResend object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewEventResendWithDefaults instantiates a new EventResend object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEventType
-
-`func (o *EventResend) GetEventType() EventType`
-
-GetEventType returns the EventType field if non-nil, zero value otherwise.
-
-### GetEventTypeOk
-
-`func (o *EventResend) GetEventTypeOk() (*EventType, bool)`
-
-GetEventTypeOk returns a tuple with the EventType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEventType
-
-`func (o *EventResend) SetEventType(v EventType)`
-
-SetEventType sets EventType field to given value.
-
 
 ### GetEventId
 
@@ -64,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *EventResend) SetEventId(v string)`
 
 SetEventId sets EventId field to given value.
+
+
+### GetEventType
+
+`func (o *EventResend) GetEventType() EventType`
+
+GetEventType returns the EventType field if non-nil, zero value otherwise.
+
+### GetEventTypeOk
+
+`func (o *EventResend) GetEventTypeOk() (*EventType, bool)`
+
+GetEventTypeOk returns a tuple with the EventType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventType
+
+`func (o *EventResend) SetEventType(v EventType)`
+
+SetEventType sets EventType field to given value.
 
 
 

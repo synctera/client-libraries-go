@@ -16,14 +16,14 @@ import (
 
 // ModelError struct for ModelError
 type ModelError struct {
-	// a URI that identifies this general category of error
-	Type *string `json:"type,omitempty"`
+	// a human-readable string explaining this particular error
+	Detail *string `json:"detail,omitempty"`
 	// the HTTP status code for this response
 	Status *int32 `json:"status,omitempty"`
 	// a human-readable string for this general category of error
 	Title *string `json:"title,omitempty"`
-	// a human-readable string explaining this particular error
-	Detail *string `json:"detail,omitempty"`
+	// a URI that identifies this general category of error
+	Type *string `json:"type,omitempty"`
 }
 
 // NewModelError instantiates a new ModelError object
@@ -43,36 +43,36 @@ func NewModelErrorWithDefaults() *ModelError {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ModelError) GetType() string {
-	if o == nil || o.Type == nil {
+// GetDetail returns the Detail field value if set, zero value otherwise.
+func (o *ModelError) GetDetail() string {
+	if o == nil || o.Detail == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Detail
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetDetailOk returns a tuple with the Detail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelError) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+func (o *ModelError) GetDetailOk() (*string, bool) {
+	if o == nil || o.Detail == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Detail, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ModelError) HasType() bool {
-	if o != nil && o.Type != nil {
+// HasDetail returns a boolean if a field has been set.
+func (o *ModelError) HasDetail() bool {
+	if o != nil && o.Detail != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ModelError) SetType(v string) {
-	o.Type = &v
+// SetDetail gets a reference to the given string and assigns it to the Detail field.
+func (o *ModelError) SetDetail(v string) {
+	o.Detail = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -139,42 +139,42 @@ func (o *ModelError) SetTitle(v string) {
 	o.Title = &v
 }
 
-// GetDetail returns the Detail field value if set, zero value otherwise.
-func (o *ModelError) GetDetail() string {
-	if o == nil || o.Detail == nil {
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ModelError) GetType() string {
+	if o == nil || o.Type == nil {
 		var ret string
 		return ret
 	}
-	return *o.Detail
+	return *o.Type
 }
 
-// GetDetailOk returns a tuple with the Detail field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ModelError) GetDetailOk() (*string, bool) {
-	if o == nil || o.Detail == nil {
+func (o *ModelError) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
 		return nil, false
 	}
-	return o.Detail, true
+	return o.Type, true
 }
 
-// HasDetail returns a boolean if a field has been set.
-func (o *ModelError) HasDetail() bool {
-	if o != nil && o.Detail != nil {
+// HasType returns a boolean if a field has been set.
+func (o *ModelError) HasType() bool {
+	if o != nil && o.Type != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDetail gets a reference to the given string and assigns it to the Detail field.
-func (o *ModelError) SetDetail(v string) {
-	o.Detail = &v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *ModelError) SetType(v string) {
+	o.Type = &v
 }
 
 func (o ModelError) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	if o.Detail != nil {
+		toSerialize["detail"] = o.Detail
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
@@ -182,8 +182,8 @@ func (o ModelError) MarshalJSON() ([]byte, error) {
 	if o.Title != nil {
 		toSerialize["title"] = o.Title
 	}
-	if o.Detail != nil {
-		toSerialize["detail"] = o.Detail
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

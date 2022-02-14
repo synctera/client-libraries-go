@@ -16,10 +16,10 @@ import (
 
 // PatchAccountsRequestRoutingIdentifiers struct for PatchAccountsRequestRoutingIdentifiers
 type PatchAccountsRequestRoutingIdentifiers struct {
-	// The name of the bank managing the account
-	BankName *string `json:"bank_name,omitempty"`
 	// The routing number used for US ACH payments.
 	AchRoutingNumber *string `json:"ach_routing_number,omitempty"`
+	// The name of the bank managing the account
+	BankName *string `json:"bank_name,omitempty"`
 }
 
 // NewPatchAccountsRequestRoutingIdentifiers instantiates a new PatchAccountsRequestRoutingIdentifiers object
@@ -37,38 +37,6 @@ func NewPatchAccountsRequestRoutingIdentifiers() *PatchAccountsRequestRoutingIde
 func NewPatchAccountsRequestRoutingIdentifiersWithDefaults() *PatchAccountsRequestRoutingIdentifiers {
 	this := PatchAccountsRequestRoutingIdentifiers{}
 	return &this
-}
-
-// GetBankName returns the BankName field value if set, zero value otherwise.
-func (o *PatchAccountsRequestRoutingIdentifiers) GetBankName() string {
-	if o == nil || o.BankName == nil {
-		var ret string
-		return ret
-	}
-	return *o.BankName
-}
-
-// GetBankNameOk returns a tuple with the BankName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchAccountsRequestRoutingIdentifiers) GetBankNameOk() (*string, bool) {
-	if o == nil || o.BankName == nil {
-		return nil, false
-	}
-	return o.BankName, true
-}
-
-// HasBankName returns a boolean if a field has been set.
-func (o *PatchAccountsRequestRoutingIdentifiers) HasBankName() bool {
-	if o != nil && o.BankName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBankName gets a reference to the given string and assigns it to the BankName field.
-func (o *PatchAccountsRequestRoutingIdentifiers) SetBankName(v string) {
-	o.BankName = &v
 }
 
 // GetAchRoutingNumber returns the AchRoutingNumber field value if set, zero value otherwise.
@@ -103,13 +71,45 @@ func (o *PatchAccountsRequestRoutingIdentifiers) SetAchRoutingNumber(v string) {
 	o.AchRoutingNumber = &v
 }
 
+// GetBankName returns the BankName field value if set, zero value otherwise.
+func (o *PatchAccountsRequestRoutingIdentifiers) GetBankName() string {
+	if o == nil || o.BankName == nil {
+		var ret string
+		return ret
+	}
+	return *o.BankName
+}
+
+// GetBankNameOk returns a tuple with the BankName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchAccountsRequestRoutingIdentifiers) GetBankNameOk() (*string, bool) {
+	if o == nil || o.BankName == nil {
+		return nil, false
+	}
+	return o.BankName, true
+}
+
+// HasBankName returns a boolean if a field has been set.
+func (o *PatchAccountsRequestRoutingIdentifiers) HasBankName() bool {
+	if o != nil && o.BankName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBankName gets a reference to the given string and assigns it to the BankName field.
+func (o *PatchAccountsRequestRoutingIdentifiers) SetBankName(v string) {
+	o.BankName = &v
+}
+
 func (o PatchAccountsRequestRoutingIdentifiers) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BankName != nil {
-		toSerialize["bank_name"] = o.BankName
-	}
 	if o.AchRoutingNumber != nil {
 		toSerialize["ach_routing_number"] = o.AchRoutingNumber
+	}
+	if o.BankName != nil {
+		toSerialize["bank_name"] = o.BankName
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,22 +16,22 @@ import (
 
 // SocureEventBody struct for SocureEventBody
 type SocureEventBody struct {
-	// Unique identifier for the monitoring event
-	Id string `json:"id"`
 	// Environment the event belongs to
 	EnvironmentName string                `json:"environmentName"`
 	Event           SocureWatchlistResult `json:"event"`
+	// Unique identifier for the monitoring event
+	Id string `json:"id"`
 }
 
 // NewSocureEventBody instantiates a new SocureEventBody object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSocureEventBody(id string, environmentName string, event SocureWatchlistResult) *SocureEventBody {
+func NewSocureEventBody(environmentName string, event SocureWatchlistResult, id string) *SocureEventBody {
 	this := SocureEventBody{}
-	this.Id = id
 	this.EnvironmentName = environmentName
 	this.Event = event
+	this.Id = id
 	return &this
 }
 
@@ -41,30 +41,6 @@ func NewSocureEventBody(id string, environmentName string, event SocureWatchlist
 func NewSocureEventBodyWithDefaults() *SocureEventBody {
 	this := SocureEventBody{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *SocureEventBody) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *SocureEventBody) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *SocureEventBody) SetId(v string) {
-	o.Id = v
 }
 
 // GetEnvironmentName returns the EnvironmentName field value
@@ -115,16 +91,40 @@ func (o *SocureEventBody) SetEvent(v SocureWatchlistResult) {
 	o.Event = v
 }
 
+// GetId returns the Id field value
+func (o *SocureEventBody) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *SocureEventBody) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *SocureEventBody) SetId(v string) {
+	o.Id = v
+}
+
 func (o SocureEventBody) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
 	if true {
 		toSerialize["environmentName"] = o.EnvironmentName
 	}
 	if true {
 		toSerialize["event"] = o.Event
+	}
+	if true {
+		toSerialize["id"] = o.Id
 	}
 	return json.Marshal(toSerialize)
 }

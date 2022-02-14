@@ -17,14 +17,14 @@ import (
 
 // BaseAccountVerification struct for BaseAccountVerification
 type BaseAccountVerification struct {
-	// The status of verification
-	Status string `json:"status"`
-	// The vendor used for verifying the account
-	Vendor string `json:"vendor"`
 	// The time at which verification was first completed.
 	CreationTime *time.Time `json:"creation_time,omitempty"`
 	// The time at which verification was last updated.
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
+	// The status of verification
+	Status string `json:"status"`
+	// The vendor used for verifying the account
+	Vendor string `json:"vendor"`
 }
 
 // NewBaseAccountVerification instantiates a new BaseAccountVerification object
@@ -44,54 +44,6 @@ func NewBaseAccountVerification(status string, vendor string) *BaseAccountVerifi
 func NewBaseAccountVerificationWithDefaults() *BaseAccountVerification {
 	this := BaseAccountVerification{}
 	return &this
-}
-
-// GetStatus returns the Status field value
-func (o *BaseAccountVerification) GetStatus() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *BaseAccountVerification) GetStatusOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *BaseAccountVerification) SetStatus(v string) {
-	o.Status = v
-}
-
-// GetVendor returns the Vendor field value
-func (o *BaseAccountVerification) GetVendor() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Vendor
-}
-
-// GetVendorOk returns a tuple with the Vendor field value
-// and a boolean to check if the value has been set.
-func (o *BaseAccountVerification) GetVendorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Vendor, true
-}
-
-// SetVendor sets field value
-func (o *BaseAccountVerification) SetVendor(v string) {
-	o.Vendor = v
 }
 
 // GetCreationTime returns the CreationTime field value if set, zero value otherwise.
@@ -158,19 +110,67 @@ func (o *BaseAccountVerification) SetLastUpdatedTime(v time.Time) {
 	o.LastUpdatedTime = &v
 }
 
+// GetStatus returns the Status field value
+func (o *BaseAccountVerification) GetStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value
+// and a boolean to check if the value has been set.
+func (o *BaseAccountVerification) GetStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Status, true
+}
+
+// SetStatus sets field value
+func (o *BaseAccountVerification) SetStatus(v string) {
+	o.Status = v
+}
+
+// GetVendor returns the Vendor field value
+func (o *BaseAccountVerification) GetVendor() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Vendor
+}
+
+// GetVendorOk returns a tuple with the Vendor field value
+// and a boolean to check if the value has been set.
+func (o *BaseAccountVerification) GetVendorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Vendor, true
+}
+
+// SetVendor sets field value
+func (o *BaseAccountVerification) SetVendor(v string) {
+	o.Vendor = v
+}
+
 func (o BaseAccountVerification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["status"] = o.Status
-	}
-	if true {
-		toSerialize["vendor"] = o.Vendor
-	}
 	if o.CreationTime != nil {
 		toSerialize["creation_time"] = o.CreationTime
 	}
 	if o.LastUpdatedTime != nil {
 		toSerialize["last_updated_time"] = o.LastUpdatedTime
+	}
+	if true {
+		toSerialize["status"] = o.Status
+	}
+	if true {
+		toSerialize["vendor"] = o.Vendor
 	}
 	return json.Marshal(toSerialize)
 }

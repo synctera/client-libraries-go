@@ -17,23 +17,23 @@ import (
 
 // WatchlistAlert struct for WatchlistAlert
 type WatchlistAlert struct {
+	// When this alert was created
+	Created *time.Time `json:"created,omitempty"`
 	// Unique identifier for this alert
 	Id *string `json:"id,omitempty"`
-	// The name of the provider for this alert
-	ProviderWatchlistName *string `json:"provider_watchlist_name,omitempty"`
-	// The id of the provider subscription for this alert
-	ProviderSubscriptionId *string `json:"provider_subscription_id,omitempty"`
+	// The information provided to Synctera that triggered this alert, as an arbitrary JSON object. Interpretation of this object is up to the client.
+	ProviderInfo *map[string]interface{} `json:"provider_info,omitempty"`
 	// The id of the provider subject for this alert
 	ProviderSubjectId *string `json:"provider_subject_id,omitempty"`
+	// The id of the provider subscription for this alert
+	ProviderSubscriptionId *string `json:"provider_subscription_id,omitempty"`
+	// The name of the provider for this alert
+	ProviderWatchlistName *string `json:"provider_watchlist_name,omitempty"`
+	// The status of this alert
+	Status string `json:"status"`
 	// Where to get more information about this alert (according to our third-party data provider).
 	Urls       *[]string   `json:"urls,omitempty"`
 	VendorInfo *VendorInfo `json:"vendor_info,omitempty"`
-	// The information provided to Synctera that triggered this alert, as an arbitrary JSON object. Interpretation of this object is up to the client.
-	ProviderInfo *map[string]interface{} `json:"provider_info,omitempty"`
-	// The status of this alert
-	Status string `json:"status"`
-	// When this alert was created
-	Created *time.Time `json:"created,omitempty"`
 }
 
 // NewWatchlistAlert instantiates a new WatchlistAlert object
@@ -52,6 +52,38 @@ func NewWatchlistAlert(status string) *WatchlistAlert {
 func NewWatchlistAlertWithDefaults() *WatchlistAlert {
 	this := WatchlistAlert{}
 	return &this
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *WatchlistAlert) GetCreated() time.Time {
+	if o == nil || o.Created == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WatchlistAlert) GetCreatedOk() (*time.Time, bool) {
+	if o == nil || o.Created == nil {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *WatchlistAlert) HasCreated() bool {
+	if o != nil && o.Created != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *WatchlistAlert) SetCreated(v time.Time) {
+	o.Created = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -86,36 +118,68 @@ func (o *WatchlistAlert) SetId(v string) {
 	o.Id = &v
 }
 
-// GetProviderWatchlistName returns the ProviderWatchlistName field value if set, zero value otherwise.
-func (o *WatchlistAlert) GetProviderWatchlistName() string {
-	if o == nil || o.ProviderWatchlistName == nil {
-		var ret string
+// GetProviderInfo returns the ProviderInfo field value if set, zero value otherwise.
+func (o *WatchlistAlert) GetProviderInfo() map[string]interface{} {
+	if o == nil || o.ProviderInfo == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.ProviderWatchlistName
+	return *o.ProviderInfo
 }
 
-// GetProviderWatchlistNameOk returns a tuple with the ProviderWatchlistName field value if set, nil otherwise
+// GetProviderInfoOk returns a tuple with the ProviderInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WatchlistAlert) GetProviderWatchlistNameOk() (*string, bool) {
-	if o == nil || o.ProviderWatchlistName == nil {
+func (o *WatchlistAlert) GetProviderInfoOk() (*map[string]interface{}, bool) {
+	if o == nil || o.ProviderInfo == nil {
 		return nil, false
 	}
-	return o.ProviderWatchlistName, true
+	return o.ProviderInfo, true
 }
 
-// HasProviderWatchlistName returns a boolean if a field has been set.
-func (o *WatchlistAlert) HasProviderWatchlistName() bool {
-	if o != nil && o.ProviderWatchlistName != nil {
+// HasProviderInfo returns a boolean if a field has been set.
+func (o *WatchlistAlert) HasProviderInfo() bool {
+	if o != nil && o.ProviderInfo != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProviderWatchlistName gets a reference to the given string and assigns it to the ProviderWatchlistName field.
-func (o *WatchlistAlert) SetProviderWatchlistName(v string) {
-	o.ProviderWatchlistName = &v
+// SetProviderInfo gets a reference to the given map[string]interface{} and assigns it to the ProviderInfo field.
+func (o *WatchlistAlert) SetProviderInfo(v map[string]interface{}) {
+	o.ProviderInfo = &v
+}
+
+// GetProviderSubjectId returns the ProviderSubjectId field value if set, zero value otherwise.
+func (o *WatchlistAlert) GetProviderSubjectId() string {
+	if o == nil || o.ProviderSubjectId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProviderSubjectId
+}
+
+// GetProviderSubjectIdOk returns a tuple with the ProviderSubjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WatchlistAlert) GetProviderSubjectIdOk() (*string, bool) {
+	if o == nil || o.ProviderSubjectId == nil {
+		return nil, false
+	}
+	return o.ProviderSubjectId, true
+}
+
+// HasProviderSubjectId returns a boolean if a field has been set.
+func (o *WatchlistAlert) HasProviderSubjectId() bool {
+	if o != nil && o.ProviderSubjectId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderSubjectId gets a reference to the given string and assigns it to the ProviderSubjectId field.
+func (o *WatchlistAlert) SetProviderSubjectId(v string) {
+	o.ProviderSubjectId = &v
 }
 
 // GetProviderSubscriptionId returns the ProviderSubscriptionId field value if set, zero value otherwise.
@@ -150,36 +214,60 @@ func (o *WatchlistAlert) SetProviderSubscriptionId(v string) {
 	o.ProviderSubscriptionId = &v
 }
 
-// GetProviderSubjectId returns the ProviderSubjectId field value if set, zero value otherwise.
-func (o *WatchlistAlert) GetProviderSubjectId() string {
-	if o == nil || o.ProviderSubjectId == nil {
+// GetProviderWatchlistName returns the ProviderWatchlistName field value if set, zero value otherwise.
+func (o *WatchlistAlert) GetProviderWatchlistName() string {
+	if o == nil || o.ProviderWatchlistName == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProviderSubjectId
+	return *o.ProviderWatchlistName
 }
 
-// GetProviderSubjectIdOk returns a tuple with the ProviderSubjectId field value if set, nil otherwise
+// GetProviderWatchlistNameOk returns a tuple with the ProviderWatchlistName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WatchlistAlert) GetProviderSubjectIdOk() (*string, bool) {
-	if o == nil || o.ProviderSubjectId == nil {
+func (o *WatchlistAlert) GetProviderWatchlistNameOk() (*string, bool) {
+	if o == nil || o.ProviderWatchlistName == nil {
 		return nil, false
 	}
-	return o.ProviderSubjectId, true
+	return o.ProviderWatchlistName, true
 }
 
-// HasProviderSubjectId returns a boolean if a field has been set.
-func (o *WatchlistAlert) HasProviderSubjectId() bool {
-	if o != nil && o.ProviderSubjectId != nil {
+// HasProviderWatchlistName returns a boolean if a field has been set.
+func (o *WatchlistAlert) HasProviderWatchlistName() bool {
+	if o != nil && o.ProviderWatchlistName != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProviderSubjectId gets a reference to the given string and assigns it to the ProviderSubjectId field.
-func (o *WatchlistAlert) SetProviderSubjectId(v string) {
-	o.ProviderSubjectId = &v
+// SetProviderWatchlistName gets a reference to the given string and assigns it to the ProviderWatchlistName field.
+func (o *WatchlistAlert) SetProviderWatchlistName(v string) {
+	o.ProviderWatchlistName = &v
+}
+
+// GetStatus returns the Status field value
+func (o *WatchlistAlert) GetStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value
+// and a boolean to check if the value has been set.
+func (o *WatchlistAlert) GetStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Status, true
+}
+
+// SetStatus sets field value
+func (o *WatchlistAlert) SetStatus(v string) {
+	o.Status = v
 }
 
 // GetUrls returns the Urls field value if set, zero value otherwise.
@@ -246,122 +334,34 @@ func (o *WatchlistAlert) SetVendorInfo(v VendorInfo) {
 	o.VendorInfo = &v
 }
 
-// GetProviderInfo returns the ProviderInfo field value if set, zero value otherwise.
-func (o *WatchlistAlert) GetProviderInfo() map[string]interface{} {
-	if o == nil || o.ProviderInfo == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.ProviderInfo
-}
-
-// GetProviderInfoOk returns a tuple with the ProviderInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WatchlistAlert) GetProviderInfoOk() (*map[string]interface{}, bool) {
-	if o == nil || o.ProviderInfo == nil {
-		return nil, false
-	}
-	return o.ProviderInfo, true
-}
-
-// HasProviderInfo returns a boolean if a field has been set.
-func (o *WatchlistAlert) HasProviderInfo() bool {
-	if o != nil && o.ProviderInfo != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProviderInfo gets a reference to the given map[string]interface{} and assigns it to the ProviderInfo field.
-func (o *WatchlistAlert) SetProviderInfo(v map[string]interface{}) {
-	o.ProviderInfo = &v
-}
-
-// GetStatus returns the Status field value
-func (o *WatchlistAlert) GetStatus() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *WatchlistAlert) GetStatusOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *WatchlistAlert) SetStatus(v string) {
-	o.Status = v
-}
-
-// GetCreated returns the Created field value if set, zero value otherwise.
-func (o *WatchlistAlert) GetCreated() time.Time {
-	if o == nil || o.Created == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.Created
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WatchlistAlert) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || o.Created == nil {
-		return nil, false
-	}
-	return o.Created, true
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *WatchlistAlert) HasCreated() bool {
-	if o != nil && o.Created != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *WatchlistAlert) SetCreated(v time.Time) {
-	o.Created = &v
-}
-
 func (o WatchlistAlert) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Created != nil {
+		toSerialize["created"] = o.Created
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.ProviderWatchlistName != nil {
-		toSerialize["provider_watchlist_name"] = o.ProviderWatchlistName
+	if o.ProviderInfo != nil {
+		toSerialize["provider_info"] = o.ProviderInfo
+	}
+	if o.ProviderSubjectId != nil {
+		toSerialize["provider_subject_id"] = o.ProviderSubjectId
 	}
 	if o.ProviderSubscriptionId != nil {
 		toSerialize["provider_subscription_id"] = o.ProviderSubscriptionId
 	}
-	if o.ProviderSubjectId != nil {
-		toSerialize["provider_subject_id"] = o.ProviderSubjectId
+	if o.ProviderWatchlistName != nil {
+		toSerialize["provider_watchlist_name"] = o.ProviderWatchlistName
+	}
+	if true {
+		toSerialize["status"] = o.Status
 	}
 	if o.Urls != nil {
 		toSerialize["urls"] = o.Urls
 	}
 	if o.VendorInfo != nil {
 		toSerialize["vendor_info"] = o.VendorInfo
-	}
-	if o.ProviderInfo != nil {
-		toSerialize["provider_info"] = o.ProviderInfo
-	}
-	if true {
-		toSerialize["status"] = o.Status
-	}
-	if o.Created != nil {
-		toSerialize["created"] = o.Created
 	}
 	return json.Marshal(toSerialize)
 }

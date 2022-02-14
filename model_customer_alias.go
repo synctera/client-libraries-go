@@ -16,12 +16,12 @@ import (
 
 // CustomerAlias Represents a customer's alias
 type CustomerAlias struct {
-	CustomerAliasId *string                 `json:"customer_alias_id,omitempty"`
-	CustomerId      *string                 `json:"customer_id,omitempty"`
-	AliasType       *string                 `json:"alias_type,omitempty"`
+	AliasInfo       *map[string]interface{} `json:"alias_info,omitempty"`
 	AliasName       *string                 `json:"alias_name,omitempty"`
 	AliasSource     *string                 `json:"alias_source,omitempty"`
-	AliasInfo       *map[string]interface{} `json:"alias_info,omitempty"`
+	AliasType       *string                 `json:"alias_type,omitempty"`
+	CustomerAliasId *string                 `json:"customer_alias_id,omitempty"`
+	CustomerId      *string                 `json:"customer_id,omitempty"`
 }
 
 // NewCustomerAlias instantiates a new CustomerAlias object
@@ -41,100 +41,36 @@ func NewCustomerAliasWithDefaults() *CustomerAlias {
 	return &this
 }
 
-// GetCustomerAliasId returns the CustomerAliasId field value if set, zero value otherwise.
-func (o *CustomerAlias) GetCustomerAliasId() string {
-	if o == nil || o.CustomerAliasId == nil {
-		var ret string
+// GetAliasInfo returns the AliasInfo field value if set, zero value otherwise.
+func (o *CustomerAlias) GetAliasInfo() map[string]interface{} {
+	if o == nil || o.AliasInfo == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.CustomerAliasId
+	return *o.AliasInfo
 }
 
-// GetCustomerAliasIdOk returns a tuple with the CustomerAliasId field value if set, nil otherwise
+// GetAliasInfoOk returns a tuple with the AliasInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomerAlias) GetCustomerAliasIdOk() (*string, bool) {
-	if o == nil || o.CustomerAliasId == nil {
+func (o *CustomerAlias) GetAliasInfoOk() (*map[string]interface{}, bool) {
+	if o == nil || o.AliasInfo == nil {
 		return nil, false
 	}
-	return o.CustomerAliasId, true
+	return o.AliasInfo, true
 }
 
-// HasCustomerAliasId returns a boolean if a field has been set.
-func (o *CustomerAlias) HasCustomerAliasId() bool {
-	if o != nil && o.CustomerAliasId != nil {
+// HasAliasInfo returns a boolean if a field has been set.
+func (o *CustomerAlias) HasAliasInfo() bool {
+	if o != nil && o.AliasInfo != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerAliasId gets a reference to the given string and assigns it to the CustomerAliasId field.
-func (o *CustomerAlias) SetCustomerAliasId(v string) {
-	o.CustomerAliasId = &v
-}
-
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
-func (o *CustomerAlias) GetCustomerId() string {
-	if o == nil || o.CustomerId == nil {
-		var ret string
-		return ret
-	}
-	return *o.CustomerId
-}
-
-// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomerAlias) GetCustomerIdOk() (*string, bool) {
-	if o == nil || o.CustomerId == nil {
-		return nil, false
-	}
-	return o.CustomerId, true
-}
-
-// HasCustomerId returns a boolean if a field has been set.
-func (o *CustomerAlias) HasCustomerId() bool {
-	if o != nil && o.CustomerId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
-func (o *CustomerAlias) SetCustomerId(v string) {
-	o.CustomerId = &v
-}
-
-// GetAliasType returns the AliasType field value if set, zero value otherwise.
-func (o *CustomerAlias) GetAliasType() string {
-	if o == nil || o.AliasType == nil {
-		var ret string
-		return ret
-	}
-	return *o.AliasType
-}
-
-// GetAliasTypeOk returns a tuple with the AliasType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomerAlias) GetAliasTypeOk() (*string, bool) {
-	if o == nil || o.AliasType == nil {
-		return nil, false
-	}
-	return o.AliasType, true
-}
-
-// HasAliasType returns a boolean if a field has been set.
-func (o *CustomerAlias) HasAliasType() bool {
-	if o != nil && o.AliasType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAliasType gets a reference to the given string and assigns it to the AliasType field.
-func (o *CustomerAlias) SetAliasType(v string) {
-	o.AliasType = &v
+// SetAliasInfo gets a reference to the given map[string]interface{} and assigns it to the AliasInfo field.
+func (o *CustomerAlias) SetAliasInfo(v map[string]interface{}) {
+	o.AliasInfo = &v
 }
 
 // GetAliasName returns the AliasName field value if set, zero value otherwise.
@@ -201,48 +137,106 @@ func (o *CustomerAlias) SetAliasSource(v string) {
 	o.AliasSource = &v
 }
 
-// GetAliasInfo returns the AliasInfo field value if set, zero value otherwise.
-func (o *CustomerAlias) GetAliasInfo() map[string]interface{} {
-	if o == nil || o.AliasInfo == nil {
-		var ret map[string]interface{}
+// GetAliasType returns the AliasType field value if set, zero value otherwise.
+func (o *CustomerAlias) GetAliasType() string {
+	if o == nil || o.AliasType == nil {
+		var ret string
 		return ret
 	}
-	return *o.AliasInfo
+	return *o.AliasType
 }
 
-// GetAliasInfoOk returns a tuple with the AliasInfo field value if set, nil otherwise
+// GetAliasTypeOk returns a tuple with the AliasType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomerAlias) GetAliasInfoOk() (*map[string]interface{}, bool) {
-	if o == nil || o.AliasInfo == nil {
+func (o *CustomerAlias) GetAliasTypeOk() (*string, bool) {
+	if o == nil || o.AliasType == nil {
 		return nil, false
 	}
-	return o.AliasInfo, true
+	return o.AliasType, true
 }
 
-// HasAliasInfo returns a boolean if a field has been set.
-func (o *CustomerAlias) HasAliasInfo() bool {
-	if o != nil && o.AliasInfo != nil {
+// HasAliasType returns a boolean if a field has been set.
+func (o *CustomerAlias) HasAliasType() bool {
+	if o != nil && o.AliasType != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAliasInfo gets a reference to the given map[string]interface{} and assigns it to the AliasInfo field.
-func (o *CustomerAlias) SetAliasInfo(v map[string]interface{}) {
-	o.AliasInfo = &v
+// SetAliasType gets a reference to the given string and assigns it to the AliasType field.
+func (o *CustomerAlias) SetAliasType(v string) {
+	o.AliasType = &v
+}
+
+// GetCustomerAliasId returns the CustomerAliasId field value if set, zero value otherwise.
+func (o *CustomerAlias) GetCustomerAliasId() string {
+	if o == nil || o.CustomerAliasId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CustomerAliasId
+}
+
+// GetCustomerAliasIdOk returns a tuple with the CustomerAliasId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAlias) GetCustomerAliasIdOk() (*string, bool) {
+	if o == nil || o.CustomerAliasId == nil {
+		return nil, false
+	}
+	return o.CustomerAliasId, true
+}
+
+// HasCustomerAliasId returns a boolean if a field has been set.
+func (o *CustomerAlias) HasCustomerAliasId() bool {
+	if o != nil && o.CustomerAliasId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerAliasId gets a reference to the given string and assigns it to the CustomerAliasId field.
+func (o *CustomerAlias) SetCustomerAliasId(v string) {
+	o.CustomerAliasId = &v
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+func (o *CustomerAlias) GetCustomerId() string {
+	if o == nil || o.CustomerId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAlias) GetCustomerIdOk() (*string, bool) {
+	if o == nil || o.CustomerId == nil {
+		return nil, false
+	}
+	return o.CustomerId, true
+}
+
+// HasCustomerId returns a boolean if a field has been set.
+func (o *CustomerAlias) HasCustomerId() bool {
+	if o != nil && o.CustomerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+func (o *CustomerAlias) SetCustomerId(v string) {
+	o.CustomerId = &v
 }
 
 func (o CustomerAlias) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CustomerAliasId != nil {
-		toSerialize["customer_alias_id"] = o.CustomerAliasId
-	}
-	if o.CustomerId != nil {
-		toSerialize["customer_id"] = o.CustomerId
-	}
-	if o.AliasType != nil {
-		toSerialize["alias_type"] = o.AliasType
+	if o.AliasInfo != nil {
+		toSerialize["alias_info"] = o.AliasInfo
 	}
 	if o.AliasName != nil {
 		toSerialize["alias_name"] = o.AliasName
@@ -250,8 +244,14 @@ func (o CustomerAlias) MarshalJSON() ([]byte, error) {
 	if o.AliasSource != nil {
 		toSerialize["alias_source"] = o.AliasSource
 	}
-	if o.AliasInfo != nil {
-		toSerialize["alias_info"] = o.AliasInfo
+	if o.AliasType != nil {
+		toSerialize["alias_type"] = o.AliasType
+	}
+	if o.CustomerAliasId != nil {
+		toSerialize["customer_alias_id"] = o.CustomerAliasId
+	}
+	if o.CustomerId != nil {
+		toSerialize["customer_id"] = o.CustomerId
 	}
 	return json.Marshal(toSerialize)
 }

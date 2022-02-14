@@ -16,10 +16,10 @@ import (
 
 // CardStatusObject The status of the card
 type CardStatusObject struct {
-	CardStatus   CardStatus            `json:"card_status"`
-	StatusReason *CardStatusReasonCode `json:"status_reason,omitempty"`
+	CardStatus CardStatus `json:"card_status"`
 	// Additional details about the reason for the status change
-	Memo *string `json:"memo,omitempty"`
+	Memo         *string               `json:"memo,omitempty"`
+	StatusReason *CardStatusReasonCode `json:"status_reason,omitempty"`
 }
 
 // NewCardStatusObject instantiates a new CardStatusObject object
@@ -64,38 +64,6 @@ func (o *CardStatusObject) SetCardStatus(v CardStatus) {
 	o.CardStatus = v
 }
 
-// GetStatusReason returns the StatusReason field value if set, zero value otherwise.
-func (o *CardStatusObject) GetStatusReason() CardStatusReasonCode {
-	if o == nil || o.StatusReason == nil {
-		var ret CardStatusReasonCode
-		return ret
-	}
-	return *o.StatusReason
-}
-
-// GetStatusReasonOk returns a tuple with the StatusReason field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CardStatusObject) GetStatusReasonOk() (*CardStatusReasonCode, bool) {
-	if o == nil || o.StatusReason == nil {
-		return nil, false
-	}
-	return o.StatusReason, true
-}
-
-// HasStatusReason returns a boolean if a field has been set.
-func (o *CardStatusObject) HasStatusReason() bool {
-	if o != nil && o.StatusReason != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStatusReason gets a reference to the given CardStatusReasonCode and assigns it to the StatusReason field.
-func (o *CardStatusObject) SetStatusReason(v CardStatusReasonCode) {
-	o.StatusReason = &v
-}
-
 // GetMemo returns the Memo field value if set, zero value otherwise.
 func (o *CardStatusObject) GetMemo() string {
 	if o == nil || o.Memo == nil {
@@ -128,16 +96,48 @@ func (o *CardStatusObject) SetMemo(v string) {
 	o.Memo = &v
 }
 
+// GetStatusReason returns the StatusReason field value if set, zero value otherwise.
+func (o *CardStatusObject) GetStatusReason() CardStatusReasonCode {
+	if o == nil || o.StatusReason == nil {
+		var ret CardStatusReasonCode
+		return ret
+	}
+	return *o.StatusReason
+}
+
+// GetStatusReasonOk returns a tuple with the StatusReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardStatusObject) GetStatusReasonOk() (*CardStatusReasonCode, bool) {
+	if o == nil || o.StatusReason == nil {
+		return nil, false
+	}
+	return o.StatusReason, true
+}
+
+// HasStatusReason returns a boolean if a field has been set.
+func (o *CardStatusObject) HasStatusReason() bool {
+	if o != nil && o.StatusReason != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatusReason gets a reference to the given CardStatusReasonCode and assigns it to the StatusReason field.
+func (o *CardStatusObject) SetStatusReason(v CardStatusReasonCode) {
+	o.StatusReason = &v
+}
+
 func (o CardStatusObject) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["card_status"] = o.CardStatus
 	}
-	if o.StatusReason != nil {
-		toSerialize["status_reason"] = o.StatusReason
-	}
 	if o.Memo != nil {
 		toSerialize["memo"] = o.Memo
+	}
+	if o.StatusReason != nil {
+		toSerialize["status_reason"] = o.StatusReason
 	}
 	return json.Marshal(toSerialize)
 }

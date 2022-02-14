@@ -16,12 +16,12 @@ import (
 
 // CardEditRequest struct for CardEditRequest
 type CardEditRequest struct {
-	CardStatus CardStatusRequest    `json:"card_status"`
-	Reason     CardStatusReasonCode `json:"reason"`
+	CardStatus CardStatusRequest `json:"card_status"`
 	// Additional details about the reason for the status change
 	Memo *string `json:"memo,omitempty"`
 	// Additional data to include in the request structured as key-value pairs
-	Metadata *map[string]string `json:"metadata,omitempty"`
+	Metadata *map[string]string   `json:"metadata,omitempty"`
+	Reason   CardStatusReasonCode `json:"reason"`
 }
 
 // NewCardEditRequest instantiates a new CardEditRequest object
@@ -65,30 +65,6 @@ func (o *CardEditRequest) GetCardStatusOk() (*CardStatusRequest, bool) {
 // SetCardStatus sets field value
 func (o *CardEditRequest) SetCardStatus(v CardStatusRequest) {
 	o.CardStatus = v
-}
-
-// GetReason returns the Reason field value
-func (o *CardEditRequest) GetReason() CardStatusReasonCode {
-	if o == nil {
-		var ret CardStatusReasonCode
-		return ret
-	}
-
-	return o.Reason
-}
-
-// GetReasonOk returns a tuple with the Reason field value
-// and a boolean to check if the value has been set.
-func (o *CardEditRequest) GetReasonOk() (*CardStatusReasonCode, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Reason, true
-}
-
-// SetReason sets field value
-func (o *CardEditRequest) SetReason(v CardStatusReasonCode) {
-	o.Reason = v
 }
 
 // GetMemo returns the Memo field value if set, zero value otherwise.
@@ -155,19 +131,43 @@ func (o *CardEditRequest) SetMetadata(v map[string]string) {
 	o.Metadata = &v
 }
 
+// GetReason returns the Reason field value
+func (o *CardEditRequest) GetReason() CardStatusReasonCode {
+	if o == nil {
+		var ret CardStatusReasonCode
+		return ret
+	}
+
+	return o.Reason
+}
+
+// GetReasonOk returns a tuple with the Reason field value
+// and a boolean to check if the value has been set.
+func (o *CardEditRequest) GetReasonOk() (*CardStatusReasonCode, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Reason, true
+}
+
+// SetReason sets field value
+func (o *CardEditRequest) SetReason(v CardStatusReasonCode) {
+	o.Reason = v
+}
+
 func (o CardEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["card_status"] = o.CardStatus
-	}
-	if true {
-		toSerialize["reason"] = o.Reason
 	}
 	if o.Memo != nil {
 		toSerialize["memo"] = o.Memo
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
+	}
+	if true {
+		toSerialize["reason"] = o.Reason
 	}
 	return json.Marshal(toSerialize)
 }

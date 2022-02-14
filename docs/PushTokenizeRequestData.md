@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** |  | [optional] 
 **LastDigits** | Pointer to **string** |  | [optional] 
 **Network** | Pointer to **string** |  | [optional] 
-**TokenServiceProvider** | Pointer to **string** |  | [optional] 
 **OpaquePaymentCard** | Pointer to **string** |  | [optional] 
+**TokenServiceProvider** | Pointer to **string** |  | [optional] 
 **UserAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
 
 ## Methods
@@ -105,31 +105,6 @@ SetNetwork sets Network field to given value.
 
 HasNetwork returns a boolean if a field has been set.
 
-### GetTokenServiceProvider
-
-`func (o *PushTokenizeRequestData) GetTokenServiceProvider() string`
-
-GetTokenServiceProvider returns the TokenServiceProvider field if non-nil, zero value otherwise.
-
-### GetTokenServiceProviderOk
-
-`func (o *PushTokenizeRequestData) GetTokenServiceProviderOk() (*string, bool)`
-
-GetTokenServiceProviderOk returns a tuple with the TokenServiceProvider field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTokenServiceProvider
-
-`func (o *PushTokenizeRequestData) SetTokenServiceProvider(v string)`
-
-SetTokenServiceProvider sets TokenServiceProvider field to given value.
-
-### HasTokenServiceProvider
-
-`func (o *PushTokenizeRequestData) HasTokenServiceProvider() bool`
-
-HasTokenServiceProvider returns a boolean if a field has been set.
-
 ### GetOpaquePaymentCard
 
 `func (o *PushTokenizeRequestData) GetOpaquePaymentCard() string`
@@ -154,6 +129,31 @@ SetOpaquePaymentCard sets OpaquePaymentCard field to given value.
 `func (o *PushTokenizeRequestData) HasOpaquePaymentCard() bool`
 
 HasOpaquePaymentCard returns a boolean if a field has been set.
+
+### GetTokenServiceProvider
+
+`func (o *PushTokenizeRequestData) GetTokenServiceProvider() string`
+
+GetTokenServiceProvider returns the TokenServiceProvider field if non-nil, zero value otherwise.
+
+### GetTokenServiceProviderOk
+
+`func (o *PushTokenizeRequestData) GetTokenServiceProviderOk() (*string, bool)`
+
+GetTokenServiceProviderOk returns a tuple with the TokenServiceProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenServiceProvider
+
+`func (o *PushTokenizeRequestData) SetTokenServiceProvider(v string)`
+
+SetTokenServiceProvider sets TokenServiceProvider field to given value.
+
+### HasTokenServiceProvider
+
+`func (o *PushTokenizeRequestData) HasTokenServiceProvider() bool`
+
+HasTokenServiceProvider returns a boolean if a field has been set.
 
 ### GetUserAddress
 

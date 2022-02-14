@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CardStatus** | [**CardStatus**](CardStatus.md) |  | 
-**StatusReason** | Pointer to [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | [optional] 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
+**StatusReason** | Pointer to [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | [optional] 
 
 ## Methods
 
@@ -47,31 +47,6 @@ and a boolean to check if the value has been set.
 SetCardStatus sets CardStatus field to given value.
 
 
-### GetStatusReason
-
-`func (o *CardStatusObject) GetStatusReason() CardStatusReasonCode`
-
-GetStatusReason returns the StatusReason field if non-nil, zero value otherwise.
-
-### GetStatusReasonOk
-
-`func (o *CardStatusObject) GetStatusReasonOk() (*CardStatusReasonCode, bool)`
-
-GetStatusReasonOk returns a tuple with the StatusReason field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatusReason
-
-`func (o *CardStatusObject) SetStatusReason(v CardStatusReasonCode)`
-
-SetStatusReason sets StatusReason field to given value.
-
-### HasStatusReason
-
-`func (o *CardStatusObject) HasStatusReason() bool`
-
-HasStatusReason returns a boolean if a field has been set.
-
 ### GetMemo
 
 `func (o *CardStatusObject) GetMemo() string`
@@ -96,6 +71,31 @@ SetMemo sets Memo field to given value.
 `func (o *CardStatusObject) HasMemo() bool`
 
 HasMemo returns a boolean if a field has been set.
+
+### GetStatusReason
+
+`func (o *CardStatusObject) GetStatusReason() CardStatusReasonCode`
+
+GetStatusReason returns the StatusReason field if non-nil, zero value otherwise.
+
+### GetStatusReasonOk
+
+`func (o *CardStatusObject) GetStatusReasonOk() (*CardStatusReasonCode, bool)`
+
+GetStatusReasonOk returns a tuple with the StatusReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatusReason
+
+`func (o *CardStatusObject) SetStatusReason(v CardStatusReasonCode)`
+
+SetStatusReason sets StatusReason field to given value.
+
+### HasStatusReason
+
+`func (o *CardStatusObject) HasStatusReason() bool`
+
+HasStatusReason returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

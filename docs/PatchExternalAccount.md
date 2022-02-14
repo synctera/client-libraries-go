@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | The type of the account | [optional] 
+**AccountIdentifiers** | Pointer to [**PatchAccountsRequestAccountIdentifiers**](PatchAccountsRequestAccountIdentifiers.md) |  | [optional] 
 **AccountOwnerNames** | Pointer to **[]string** | The names of the account owners. | [optional] 
 **Nickname** | Pointer to **string** | A user-meaningful name for the account | [optional] 
 **RoutingIdentifiers** | Pointer to [**PatchAccountsRequestRoutingIdentifiers**](PatchAccountsRequestRoutingIdentifiers.md) |  | [optional] 
-**AccountIdentifiers** | Pointer to [**PatchAccountsRequestAccountIdentifiers**](PatchAccountsRequestAccountIdentifiers.md) |  | [optional] 
+**Type** | Pointer to **string** | The type of the account | [optional] 
 **Verification** | Pointer to [**NullableAccountVerification**](AccountVerification.md) |  | [optional] 
 
 ## Methods
@@ -30,30 +30,30 @@ NewPatchExternalAccountWithDefaults instantiates a new PatchExternalAccount obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetType
+### GetAccountIdentifiers
 
-`func (o *PatchExternalAccount) GetType() string`
+`func (o *PatchExternalAccount) GetAccountIdentifiers() PatchAccountsRequestAccountIdentifiers`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetAccountIdentifiers returns the AccountIdentifiers field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetAccountIdentifiersOk
 
-`func (o *PatchExternalAccount) GetTypeOk() (*string, bool)`
+`func (o *PatchExternalAccount) GetAccountIdentifiersOk() (*PatchAccountsRequestAccountIdentifiers, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetAccountIdentifiers
 
-`func (o *PatchExternalAccount) SetType(v string)`
+`func (o *PatchExternalAccount) SetAccountIdentifiers(v PatchAccountsRequestAccountIdentifiers)`
 
-SetType sets Type field to given value.
+SetAccountIdentifiers sets AccountIdentifiers field to given value.
 
-### HasType
+### HasAccountIdentifiers
 
-`func (o *PatchExternalAccount) HasType() bool`
+`func (o *PatchExternalAccount) HasAccountIdentifiers() bool`
 
-HasType returns a boolean if a field has been set.
+HasAccountIdentifiers returns a boolean if a field has been set.
 
 ### GetAccountOwnerNames
 
@@ -130,30 +130,30 @@ SetRoutingIdentifiers sets RoutingIdentifiers field to given value.
 
 HasRoutingIdentifiers returns a boolean if a field has been set.
 
-### GetAccountIdentifiers
+### GetType
 
-`func (o *PatchExternalAccount) GetAccountIdentifiers() PatchAccountsRequestAccountIdentifiers`
+`func (o *PatchExternalAccount) GetType() string`
 
-GetAccountIdentifiers returns the AccountIdentifiers field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetAccountIdentifiersOk
+### GetTypeOk
 
-`func (o *PatchExternalAccount) GetAccountIdentifiersOk() (*PatchAccountsRequestAccountIdentifiers, bool)`
+`func (o *PatchExternalAccount) GetTypeOk() (*string, bool)`
 
-GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountIdentifiers
+### SetType
 
-`func (o *PatchExternalAccount) SetAccountIdentifiers(v PatchAccountsRequestAccountIdentifiers)`
+`func (o *PatchExternalAccount) SetType(v string)`
 
-SetAccountIdentifiers sets AccountIdentifiers field to given value.
+SetType sets Type field to given value.
 
-### HasAccountIdentifiers
+### HasType
 
-`func (o *PatchExternalAccount) HasAccountIdentifiers() bool`
+`func (o *PatchExternalAccount) HasType() bool`
 
-HasAccountIdentifiers returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
 ### GetVerification
 

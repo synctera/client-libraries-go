@@ -17,32 +17,32 @@ import (
 
 // CardChange Card change details
 type CardChange struct {
+	ChangeType ChangeType    `json:"change_type"`
+	Channel    ChangeChannel `json:"channel"`
 	// Unique token
-	Id         string                `json:"id"`
-	ChangeType ChangeType            `json:"change_type"`
-	State      CardChangeState       `json:"state"`
-	Channel    ChangeChannel         `json:"channel"`
-	Reason     *CardStatusReasonCode `json:"reason,omitempty"`
+	Id string `json:"id"`
 	// Additional details about the reason for the status change
-	Memo *string `json:"memo,omitempty"`
-	// ID of user who initiated the change, if done via Synctera Admin System
-	UpdatedBy string `json:"updated_by"`
+	Memo   *string               `json:"memo,omitempty"`
+	Reason *CardStatusReasonCode `json:"reason,omitempty"`
+	State  CardChangeState       `json:"state"`
 	// Date of change
 	UpdatedAt time.Time `json:"updated_at"`
+	// ID of user who initiated the change, if done via Synctera Admin System
+	UpdatedBy string `json:"updated_by"`
 }
 
 // NewCardChange instantiates a new CardChange object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCardChange(id string, changeType ChangeType, state CardChangeState, channel ChangeChannel, updatedBy string, updatedAt time.Time) *CardChange {
+func NewCardChange(changeType ChangeType, channel ChangeChannel, id string, state CardChangeState, updatedAt time.Time, updatedBy string) *CardChange {
 	this := CardChange{}
-	this.Id = id
 	this.ChangeType = changeType
-	this.State = state
 	this.Channel = channel
-	this.UpdatedBy = updatedBy
+	this.Id = id
+	this.State = state
 	this.UpdatedAt = updatedAt
+	this.UpdatedBy = updatedBy
 	return &this
 }
 
@@ -52,30 +52,6 @@ func NewCardChange(id string, changeType ChangeType, state CardChangeState, chan
 func NewCardChangeWithDefaults() *CardChange {
 	this := CardChange{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *CardChange) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *CardChange) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *CardChange) SetId(v string) {
-	o.Id = v
 }
 
 // GetChangeType returns the ChangeType field value
@@ -102,30 +78,6 @@ func (o *CardChange) SetChangeType(v ChangeType) {
 	o.ChangeType = v
 }
 
-// GetState returns the State field value
-func (o *CardChange) GetState() CardChangeState {
-	if o == nil {
-		var ret CardChangeState
-		return ret
-	}
-
-	return o.State
-}
-
-// GetStateOk returns a tuple with the State field value
-// and a boolean to check if the value has been set.
-func (o *CardChange) GetStateOk() (*CardChangeState, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.State, true
-}
-
-// SetState sets field value
-func (o *CardChange) SetState(v CardChangeState) {
-	o.State = v
-}
-
 // GetChannel returns the Channel field value
 func (o *CardChange) GetChannel() ChangeChannel {
 	if o == nil {
@@ -150,36 +102,28 @@ func (o *CardChange) SetChannel(v ChangeChannel) {
 	o.Channel = v
 }
 
-// GetReason returns the Reason field value if set, zero value otherwise.
-func (o *CardChange) GetReason() CardStatusReasonCode {
-	if o == nil || o.Reason == nil {
-		var ret CardStatusReasonCode
+// GetId returns the Id field value
+func (o *CardChange) GetId() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.Reason
+
+	return o.Id
 }
 
-// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *CardChange) GetReasonOk() (*CardStatusReasonCode, bool) {
-	if o == nil || o.Reason == nil {
+func (o *CardChange) GetIdOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Reason, true
+	return &o.Id, true
 }
 
-// HasReason returns a boolean if a field has been set.
-func (o *CardChange) HasReason() bool {
-	if o != nil && o.Reason != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReason gets a reference to the given CardStatusReasonCode and assigns it to the Reason field.
-func (o *CardChange) SetReason(v CardStatusReasonCode) {
-	o.Reason = &v
+// SetId sets field value
+func (o *CardChange) SetId(v string) {
+	o.Id = v
 }
 
 // GetMemo returns the Memo field value if set, zero value otherwise.
@@ -214,28 +158,60 @@ func (o *CardChange) SetMemo(v string) {
 	o.Memo = &v
 }
 
-// GetUpdatedBy returns the UpdatedBy field value
-func (o *CardChange) GetUpdatedBy() string {
+// GetReason returns the Reason field value if set, zero value otherwise.
+func (o *CardChange) GetReason() CardStatusReasonCode {
+	if o == nil || o.Reason == nil {
+		var ret CardStatusReasonCode
+		return ret
+	}
+	return *o.Reason
+}
+
+// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardChange) GetReasonOk() (*CardStatusReasonCode, bool) {
+	if o == nil || o.Reason == nil {
+		return nil, false
+	}
+	return o.Reason, true
+}
+
+// HasReason returns a boolean if a field has been set.
+func (o *CardChange) HasReason() bool {
+	if o != nil && o.Reason != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReason gets a reference to the given CardStatusReasonCode and assigns it to the Reason field.
+func (o *CardChange) SetReason(v CardStatusReasonCode) {
+	o.Reason = &v
+}
+
+// GetState returns the State field value
+func (o *CardChange) GetState() CardChangeState {
 	if o == nil {
-		var ret string
+		var ret CardChangeState
 		return ret
 	}
 
-	return o.UpdatedBy
+	return o.State
 }
 
-// GetUpdatedByOk returns a tuple with the UpdatedBy field value
+// GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *CardChange) GetUpdatedByOk() (*string, bool) {
+func (o *CardChange) GetStateOk() (*CardChangeState, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.UpdatedBy, true
+	return &o.State, true
 }
 
-// SetUpdatedBy sets field value
-func (o *CardChange) SetUpdatedBy(v string) {
-	o.UpdatedBy = v
+// SetState sets field value
+func (o *CardChange) SetState(v CardChangeState) {
+	o.State = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
@@ -262,31 +238,55 @@ func (o *CardChange) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
+// GetUpdatedBy returns the UpdatedBy field value
+func (o *CardChange) GetUpdatedBy() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UpdatedBy
+}
+
+// GetUpdatedByOk returns a tuple with the UpdatedBy field value
+// and a boolean to check if the value has been set.
+func (o *CardChange) GetUpdatedByOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedBy, true
+}
+
+// SetUpdatedBy sets field value
+func (o *CardChange) SetUpdatedBy(v string) {
+	o.UpdatedBy = v
+}
+
 func (o CardChange) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["id"] = o.Id
+		toSerialize["change_type"] = o.ChangeType
 	}
 	if true {
-		toSerialize["change_type"] = o.ChangeType
+		toSerialize["channel"] = o.Channel
+	}
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if o.Memo != nil {
+		toSerialize["memo"] = o.Memo
+	}
+	if o.Reason != nil {
+		toSerialize["reason"] = o.Reason
 	}
 	if true {
 		toSerialize["state"] = o.State
 	}
 	if true {
-		toSerialize["channel"] = o.Channel
-	}
-	if o.Reason != nil {
-		toSerialize["reason"] = o.Reason
-	}
-	if o.Memo != nil {
-		toSerialize["memo"] = o.Memo
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	if true {
 		toSerialize["updated_by"] = o.UpdatedBy
-	}
-	if true {
-		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return json.Marshal(toSerialize)
 }

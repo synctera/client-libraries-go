@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CardStatus** | [**CardStatusRequest**](CardStatusRequest.md) |  | 
-**Reason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
 **Metadata** | Pointer to **map[string]string** | Additional data to include in the request structured as key-value pairs | [optional] 
+**Reason** | [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | 
 
 ## Methods
 
@@ -46,26 +46,6 @@ and a boolean to check if the value has been set.
 `func (o *CardEditRequest) SetCardStatus(v CardStatusRequest)`
 
 SetCardStatus sets CardStatus field to given value.
-
-
-### GetReason
-
-`func (o *CardEditRequest) GetReason() CardStatusReasonCode`
-
-GetReason returns the Reason field if non-nil, zero value otherwise.
-
-### GetReasonOk
-
-`func (o *CardEditRequest) GetReasonOk() (*CardStatusReasonCode, bool)`
-
-GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReason
-
-`func (o *CardEditRequest) SetReason(v CardStatusReasonCode)`
-
-SetReason sets Reason field to given value.
 
 
 ### GetMemo
@@ -117,6 +97,26 @@ SetMetadata sets Metadata field to given value.
 `func (o *CardEditRequest) HasMetadata() bool`
 
 HasMetadata returns a boolean if a field has been set.
+
+### GetReason
+
+`func (o *CardEditRequest) GetReason() CardStatusReasonCode`
+
+GetReason returns the Reason field if non-nil, zero value otherwise.
+
+### GetReasonOk
+
+`func (o *CardEditRequest) GetReasonOk() (*CardStatusReasonCode, bool)`
+
+GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReason
+
+`func (o *CardEditRequest) SetReason(v CardStatusReasonCode)`
+
+SetReason sets Reason field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

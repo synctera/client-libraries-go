@@ -17,11 +17,11 @@ import (
 
 // AccountRangeUpdateRequest struct for AccountRangeUpdateRequest
 type AccountRangeUpdateRequest struct {
+	// The time when account range becomes inactive
+	EndDate            *time.Time          `json:"end_date,omitempty"`
 	PhysicalCardFormat *PhysicalCardFormat `json:"physical_card_format,omitempty"`
 	// The time when account range becomes active
 	StartDate *time.Time `json:"start_date,omitempty"`
-	// The time when account range becomes inactive
-	EndDate *time.Time `json:"end_date,omitempty"`
 }
 
 // NewAccountRangeUpdateRequest instantiates a new AccountRangeUpdateRequest object
@@ -39,6 +39,38 @@ func NewAccountRangeUpdateRequest() *AccountRangeUpdateRequest {
 func NewAccountRangeUpdateRequestWithDefaults() *AccountRangeUpdateRequest {
 	this := AccountRangeUpdateRequest{}
 	return &this
+}
+
+// GetEndDate returns the EndDate field value if set, zero value otherwise.
+func (o *AccountRangeUpdateRequest) GetEndDate() time.Time {
+	if o == nil || o.EndDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.EndDate
+}
+
+// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountRangeUpdateRequest) GetEndDateOk() (*time.Time, bool) {
+	if o == nil || o.EndDate == nil {
+		return nil, false
+	}
+	return o.EndDate, true
+}
+
+// HasEndDate returns a boolean if a field has been set.
+func (o *AccountRangeUpdateRequest) HasEndDate() bool {
+	if o != nil && o.EndDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
+func (o *AccountRangeUpdateRequest) SetEndDate(v time.Time) {
+	o.EndDate = &v
 }
 
 // GetPhysicalCardFormat returns the PhysicalCardFormat field value if set, zero value otherwise.
@@ -105,48 +137,16 @@ func (o *AccountRangeUpdateRequest) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
-// GetEndDate returns the EndDate field value if set, zero value otherwise.
-func (o *AccountRangeUpdateRequest) GetEndDate() time.Time {
-	if o == nil || o.EndDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.EndDate
-}
-
-// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountRangeUpdateRequest) GetEndDateOk() (*time.Time, bool) {
-	if o == nil || o.EndDate == nil {
-		return nil, false
-	}
-	return o.EndDate, true
-}
-
-// HasEndDate returns a boolean if a field has been set.
-func (o *AccountRangeUpdateRequest) HasEndDate() bool {
-	if o != nil && o.EndDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
-func (o *AccountRangeUpdateRequest) SetEndDate(v time.Time) {
-	o.EndDate = &v
-}
-
 func (o AccountRangeUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.EndDate != nil {
+		toSerialize["end_date"] = o.EndDate
+	}
 	if o.PhysicalCardFormat != nil {
 		toSerialize["physical_card_format"] = o.PhysicalCardFormat
 	}
 	if o.StartDate != nil {
 		toSerialize["start_date"] = o.StartDate
-	}
-	if o.EndDate != nil {
-		toSerialize["end_date"] = o.EndDate
 	}
 	return json.Marshal(toSerialize)
 }

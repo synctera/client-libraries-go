@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Comments** | Pointer to [**SocureMatchComments**](SocureMatchComments.md) |  | [optional] 
 **EntityId** | **string** |  | 
-**Status** | **string** |  | 
 **MatchFields** | Pointer to **[]string** |  | [optional] 
 **SourceUrls** | Pointer to **[]string** |  | [optional] 
-**Comments** | Pointer to [**SocureMatchComments**](SocureMatchComments.md) |  | [optional] 
+**Status** | **string** |  | 
 
 ## Methods
 
@@ -29,6 +29,31 @@ NewSocureMatchWithDefaults instantiates a new SocureMatch object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetComments
+
+`func (o *SocureMatch) GetComments() SocureMatchComments`
+
+GetComments returns the Comments field if non-nil, zero value otherwise.
+
+### GetCommentsOk
+
+`func (o *SocureMatch) GetCommentsOk() (*SocureMatchComments, bool)`
+
+GetCommentsOk returns a tuple with the Comments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComments
+
+`func (o *SocureMatch) SetComments(v SocureMatchComments)`
+
+SetComments sets Comments field to given value.
+
+### HasComments
+
+`func (o *SocureMatch) HasComments() bool`
+
+HasComments returns a boolean if a field has been set.
+
 ### GetEntityId
 
 `func (o *SocureMatch) GetEntityId() string`
@@ -47,26 +72,6 @@ and a boolean to check if the value has been set.
 `func (o *SocureMatch) SetEntityId(v string)`
 
 SetEntityId sets EntityId field to given value.
-
-
-### GetStatus
-
-`func (o *SocureMatch) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *SocureMatch) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *SocureMatch) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
 
 
 ### GetMatchFields
@@ -119,30 +124,25 @@ SetSourceUrls sets SourceUrls field to given value.
 
 HasSourceUrls returns a boolean if a field has been set.
 
-### GetComments
+### GetStatus
 
-`func (o *SocureMatch) GetComments() SocureMatchComments`
+`func (o *SocureMatch) GetStatus() string`
 
-GetComments returns the Comments field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetCommentsOk
+### GetStatusOk
 
-`func (o *SocureMatch) GetCommentsOk() (*SocureMatchComments, bool)`
+`func (o *SocureMatch) GetStatusOk() (*string, bool)`
 
-GetCommentsOk returns a tuple with the Comments field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetComments
+### SetStatus
 
-`func (o *SocureMatch) SetComments(v SocureMatchComments)`
+`func (o *SocureMatch) SetStatus(v string)`
 
-SetComments sets Comments field to given value.
+SetStatus sets Status field to given value.
 
-### HasComments
-
-`func (o *SocureMatch) HasComments() bool`
-
-HasComments returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

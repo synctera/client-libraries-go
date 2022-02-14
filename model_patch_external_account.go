@@ -16,15 +16,15 @@ import (
 
 // PatchExternalAccount struct for PatchExternalAccount
 type PatchExternalAccount struct {
-	// The type of the account
-	Type *string `json:"type,omitempty"`
+	AccountIdentifiers *PatchAccountsRequestAccountIdentifiers `json:"account_identifiers,omitempty"`
 	// The names of the account owners.
 	AccountOwnerNames *[]string `json:"account_owner_names,omitempty"`
 	// A user-meaningful name for the account
 	Nickname           *string                                 `json:"nickname,omitempty"`
 	RoutingIdentifiers *PatchAccountsRequestRoutingIdentifiers `json:"routing_identifiers,omitempty"`
-	AccountIdentifiers *PatchAccountsRequestAccountIdentifiers `json:"account_identifiers,omitempty"`
-	Verification       NullableAccountVerification             `json:"verification,omitempty"`
+	// The type of the account
+	Type         *string                     `json:"type,omitempty"`
+	Verification NullableAccountVerification `json:"verification,omitempty"`
 }
 
 // NewPatchExternalAccount instantiates a new PatchExternalAccount object
@@ -44,36 +44,36 @@ func NewPatchExternalAccountWithDefaults() *PatchExternalAccount {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *PatchExternalAccount) GetType() string {
-	if o == nil || o.Type == nil {
-		var ret string
+// GetAccountIdentifiers returns the AccountIdentifiers field value if set, zero value otherwise.
+func (o *PatchExternalAccount) GetAccountIdentifiers() PatchAccountsRequestAccountIdentifiers {
+	if o == nil || o.AccountIdentifiers == nil {
+		var ret PatchAccountsRequestAccountIdentifiers
 		return ret
 	}
-	return *o.Type
+	return *o.AccountIdentifiers
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchExternalAccount) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+func (o *PatchExternalAccount) GetAccountIdentifiersOk() (*PatchAccountsRequestAccountIdentifiers, bool) {
+	if o == nil || o.AccountIdentifiers == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.AccountIdentifiers, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *PatchExternalAccount) HasType() bool {
-	if o != nil && o.Type != nil {
+// HasAccountIdentifiers returns a boolean if a field has been set.
+func (o *PatchExternalAccount) HasAccountIdentifiers() bool {
+	if o != nil && o.AccountIdentifiers != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *PatchExternalAccount) SetType(v string) {
-	o.Type = &v
+// SetAccountIdentifiers gets a reference to the given PatchAccountsRequestAccountIdentifiers and assigns it to the AccountIdentifiers field.
+func (o *PatchExternalAccount) SetAccountIdentifiers(v PatchAccountsRequestAccountIdentifiers) {
+	o.AccountIdentifiers = &v
 }
 
 // GetAccountOwnerNames returns the AccountOwnerNames field value if set, zero value otherwise.
@@ -172,36 +172,36 @@ func (o *PatchExternalAccount) SetRoutingIdentifiers(v PatchAccountsRequestRouti
 	o.RoutingIdentifiers = &v
 }
 
-// GetAccountIdentifiers returns the AccountIdentifiers field value if set, zero value otherwise.
-func (o *PatchExternalAccount) GetAccountIdentifiers() PatchAccountsRequestAccountIdentifiers {
-	if o == nil || o.AccountIdentifiers == nil {
-		var ret PatchAccountsRequestAccountIdentifiers
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *PatchExternalAccount) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
 		return ret
 	}
-	return *o.AccountIdentifiers
+	return *o.Type
 }
 
-// GetAccountIdentifiersOk returns a tuple with the AccountIdentifiers field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchExternalAccount) GetAccountIdentifiersOk() (*PatchAccountsRequestAccountIdentifiers, bool) {
-	if o == nil || o.AccountIdentifiers == nil {
+func (o *PatchExternalAccount) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
 		return nil, false
 	}
-	return o.AccountIdentifiers, true
+	return o.Type, true
 }
 
-// HasAccountIdentifiers returns a boolean if a field has been set.
-func (o *PatchExternalAccount) HasAccountIdentifiers() bool {
-	if o != nil && o.AccountIdentifiers != nil {
+// HasType returns a boolean if a field has been set.
+func (o *PatchExternalAccount) HasType() bool {
+	if o != nil && o.Type != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountIdentifiers gets a reference to the given PatchAccountsRequestAccountIdentifiers and assigns it to the AccountIdentifiers field.
-func (o *PatchExternalAccount) SetAccountIdentifiers(v PatchAccountsRequestAccountIdentifiers) {
-	o.AccountIdentifiers = &v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *PatchExternalAccount) SetType(v string) {
+	o.Type = &v
 }
 
 // GetVerification returns the Verification field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -249,8 +249,8 @@ func (o *PatchExternalAccount) UnsetVerification() {
 
 func (o PatchExternalAccount) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	if o.AccountIdentifiers != nil {
+		toSerialize["account_identifiers"] = o.AccountIdentifiers
 	}
 	if o.AccountOwnerNames != nil {
 		toSerialize["account_owner_names"] = o.AccountOwnerNames
@@ -261,8 +261,8 @@ func (o PatchExternalAccount) MarshalJSON() ([]byte, error) {
 	if o.RoutingIdentifiers != nil {
 		toSerialize["routing_identifiers"] = o.RoutingIdentifiers
 	}
-	if o.AccountIdentifiers != nil {
-		toSerialize["account_identifiers"] = o.AccountIdentifiers
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	if o.Verification.IsSet() {
 		toSerialize["verification"] = o.Verification.Get()

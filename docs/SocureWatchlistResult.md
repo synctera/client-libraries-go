@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReferenceId** | **string** | A 36 character reference ID included with every ID+ response. | 
 **GlobalWatchlist** | Pointer to [**SocureGlobalWatchlist**](SocureGlobalWatchlist.md) |  | [optional] 
+**ReferenceId** | **string** | A 36 character reference ID included with every ID+ response. | 
 
 ## Methods
 
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewSocureWatchlistResultWithDefaults instantiates a new SocureWatchlistResult object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetReferenceId
-
-`func (o *SocureWatchlistResult) GetReferenceId() string`
-
-GetReferenceId returns the ReferenceId field if non-nil, zero value otherwise.
-
-### GetReferenceIdOk
-
-`func (o *SocureWatchlistResult) GetReferenceIdOk() (*string, bool)`
-
-GetReferenceIdOk returns a tuple with the ReferenceId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReferenceId
-
-`func (o *SocureWatchlistResult) SetReferenceId(v string)`
-
-SetReferenceId sets ReferenceId field to given value.
-
 
 ### GetGlobalWatchlist
 
@@ -70,6 +50,26 @@ SetGlobalWatchlist sets GlobalWatchlist field to given value.
 `func (o *SocureWatchlistResult) HasGlobalWatchlist() bool`
 
 HasGlobalWatchlist returns a boolean if a field has been set.
+
+### GetReferenceId
+
+`func (o *SocureWatchlistResult) GetReferenceId() string`
+
+GetReferenceId returns the ReferenceId field if non-nil, zero value otherwise.
+
+### GetReferenceIdOk
+
+`func (o *SocureWatchlistResult) GetReferenceIdOk() (*string, bool)`
+
+GetReferenceIdOk returns a tuple with the ReferenceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReferenceId
+
+`func (o *SocureWatchlistResult) SetReferenceId(v string)`
+
+SetReferenceId sets ReferenceId field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

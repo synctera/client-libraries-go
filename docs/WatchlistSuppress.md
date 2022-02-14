@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProviderSubscriptionId** | **string** | The provider&#39;s id for the subscription that caused the alert(s) that are being suppressed.  | 
 **ProviderSubjectId** | **string** | The id of the subject (person) for whom future alerts should be suppressed.  | 
+**ProviderSubscriptionId** | **string** | The provider&#39;s id for the subscription that caused the alert(s) that are being suppressed.  | 
 **Status** | **string** | The status of this suppression | 
 
 ## Methods
 
 ### NewWatchlistSuppress
 
-`func NewWatchlistSuppress(providerSubscriptionId string, providerSubjectId string, status string, ) *WatchlistSuppress`
+`func NewWatchlistSuppress(providerSubjectId string, providerSubscriptionId string, status string, ) *WatchlistSuppress`
 
 NewWatchlistSuppress instantiates a new WatchlistSuppress object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewWatchlistSuppressWithDefaults instantiates a new WatchlistSuppress object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetProviderSubscriptionId
-
-`func (o *WatchlistSuppress) GetProviderSubscriptionId() string`
-
-GetProviderSubscriptionId returns the ProviderSubscriptionId field if non-nil, zero value otherwise.
-
-### GetProviderSubscriptionIdOk
-
-`func (o *WatchlistSuppress) GetProviderSubscriptionIdOk() (*string, bool)`
-
-GetProviderSubscriptionIdOk returns a tuple with the ProviderSubscriptionId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProviderSubscriptionId
-
-`func (o *WatchlistSuppress) SetProviderSubscriptionId(v string)`
-
-SetProviderSubscriptionId sets ProviderSubscriptionId field to given value.
-
 
 ### GetProviderSubjectId
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *WatchlistSuppress) SetProviderSubjectId(v string)`
 
 SetProviderSubjectId sets ProviderSubjectId field to given value.
+
+
+### GetProviderSubscriptionId
+
+`func (o *WatchlistSuppress) GetProviderSubscriptionId() string`
+
+GetProviderSubscriptionId returns the ProviderSubscriptionId field if non-nil, zero value otherwise.
+
+### GetProviderSubscriptionIdOk
+
+`func (o *WatchlistSuppress) GetProviderSubscriptionIdOk() (*string, bool)`
+
+GetProviderSubscriptionIdOk returns a tuple with the ProviderSubscriptionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderSubscriptionId
+
+`func (o *WatchlistSuppress) SetProviderSubscriptionId(v string)`
+
+SetProviderSubscriptionId sets ProviderSubscriptionId field to given value.
 
 
 ### GetStatus

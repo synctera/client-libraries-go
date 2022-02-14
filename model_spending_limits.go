@@ -16,13 +16,13 @@ import (
 
 // SpendingLimits Account spending limits
 type SpendingLimits struct {
+	Day *SpendingLimitWithTime `json:"day,omitempty"`
 	// User provided description on the spending limits
 	Description *string                    `json:"description,omitempty"`
-	Day         *SpendingLimitWithTime     `json:"day,omitempty"`
-	Week        *SpendingLimitWithTime     `json:"week,omitempty"`
-	Month       *SpendingLimitWithTime     `json:"month,omitempty"`
 	Lifetime    *SpendingLimitWithTime     `json:"lifetime,omitempty"`
+	Month       *SpendingLimitWithTime     `json:"month,omitempty"`
 	Transaction *SpendingLimitsTransaction `json:"transaction,omitempty"`
+	Week        *SpendingLimitWithTime     `json:"week,omitempty"`
 }
 
 // NewSpendingLimits instantiates a new SpendingLimits object
@@ -40,38 +40,6 @@ func NewSpendingLimits() *SpendingLimits {
 func NewSpendingLimitsWithDefaults() *SpendingLimits {
 	this := SpendingLimits{}
 	return &this
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *SpendingLimits) GetDescription() string {
-	if o == nil || o.Description == nil {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SpendingLimits) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *SpendingLimits) HasDescription() bool {
-	if o != nil && o.Description != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *SpendingLimits) SetDescription(v string) {
-	o.Description = &v
 }
 
 // GetDay returns the Day field value if set, zero value otherwise.
@@ -106,68 +74,36 @@ func (o *SpendingLimits) SetDay(v SpendingLimitWithTime) {
 	o.Day = &v
 }
 
-// GetWeek returns the Week field value if set, zero value otherwise.
-func (o *SpendingLimits) GetWeek() SpendingLimitWithTime {
-	if o == nil || o.Week == nil {
-		var ret SpendingLimitWithTime
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *SpendingLimits) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
 		return ret
 	}
-	return *o.Week
+	return *o.Description
 }
 
-// GetWeekOk returns a tuple with the Week field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpendingLimits) GetWeekOk() (*SpendingLimitWithTime, bool) {
-	if o == nil || o.Week == nil {
+func (o *SpendingLimits) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
-	return o.Week, true
+	return o.Description, true
 }
 
-// HasWeek returns a boolean if a field has been set.
-func (o *SpendingLimits) HasWeek() bool {
-	if o != nil && o.Week != nil {
+// HasDescription returns a boolean if a field has been set.
+func (o *SpendingLimits) HasDescription() bool {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetWeek gets a reference to the given SpendingLimitWithTime and assigns it to the Week field.
-func (o *SpendingLimits) SetWeek(v SpendingLimitWithTime) {
-	o.Week = &v
-}
-
-// GetMonth returns the Month field value if set, zero value otherwise.
-func (o *SpendingLimits) GetMonth() SpendingLimitWithTime {
-	if o == nil || o.Month == nil {
-		var ret SpendingLimitWithTime
-		return ret
-	}
-	return *o.Month
-}
-
-// GetMonthOk returns a tuple with the Month field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SpendingLimits) GetMonthOk() (*SpendingLimitWithTime, bool) {
-	if o == nil || o.Month == nil {
-		return nil, false
-	}
-	return o.Month, true
-}
-
-// HasMonth returns a boolean if a field has been set.
-func (o *SpendingLimits) HasMonth() bool {
-	if o != nil && o.Month != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMonth gets a reference to the given SpendingLimitWithTime and assigns it to the Month field.
-func (o *SpendingLimits) SetMonth(v SpendingLimitWithTime) {
-	o.Month = &v
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *SpendingLimits) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetLifetime returns the Lifetime field value if set, zero value otherwise.
@@ -202,6 +138,38 @@ func (o *SpendingLimits) SetLifetime(v SpendingLimitWithTime) {
 	o.Lifetime = &v
 }
 
+// GetMonth returns the Month field value if set, zero value otherwise.
+func (o *SpendingLimits) GetMonth() SpendingLimitWithTime {
+	if o == nil || o.Month == nil {
+		var ret SpendingLimitWithTime
+		return ret
+	}
+	return *o.Month
+}
+
+// GetMonthOk returns a tuple with the Month field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpendingLimits) GetMonthOk() (*SpendingLimitWithTime, bool) {
+	if o == nil || o.Month == nil {
+		return nil, false
+	}
+	return o.Month, true
+}
+
+// HasMonth returns a boolean if a field has been set.
+func (o *SpendingLimits) HasMonth() bool {
+	if o != nil && o.Month != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMonth gets a reference to the given SpendingLimitWithTime and assigns it to the Month field.
+func (o *SpendingLimits) SetMonth(v SpendingLimitWithTime) {
+	o.Month = &v
+}
+
 // GetTransaction returns the Transaction field value if set, zero value otherwise.
 func (o *SpendingLimits) GetTransaction() SpendingLimitsTransaction {
 	if o == nil || o.Transaction == nil {
@@ -234,25 +202,57 @@ func (o *SpendingLimits) SetTransaction(v SpendingLimitsTransaction) {
 	o.Transaction = &v
 }
 
+// GetWeek returns the Week field value if set, zero value otherwise.
+func (o *SpendingLimits) GetWeek() SpendingLimitWithTime {
+	if o == nil || o.Week == nil {
+		var ret SpendingLimitWithTime
+		return ret
+	}
+	return *o.Week
+}
+
+// GetWeekOk returns a tuple with the Week field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpendingLimits) GetWeekOk() (*SpendingLimitWithTime, bool) {
+	if o == nil || o.Week == nil {
+		return nil, false
+	}
+	return o.Week, true
+}
+
+// HasWeek returns a boolean if a field has been set.
+func (o *SpendingLimits) HasWeek() bool {
+	if o != nil && o.Week != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWeek gets a reference to the given SpendingLimitWithTime and assigns it to the Week field.
+func (o *SpendingLimits) SetWeek(v SpendingLimitWithTime) {
+	o.Week = &v
+}
+
 func (o SpendingLimits) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
 	if o.Day != nil {
 		toSerialize["day"] = o.Day
 	}
-	if o.Week != nil {
-		toSerialize["week"] = o.Week
-	}
-	if o.Month != nil {
-		toSerialize["month"] = o.Month
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Lifetime != nil {
 		toSerialize["lifetime"] = o.Lifetime
 	}
+	if o.Month != nil {
+		toSerialize["month"] = o.Month
+	}
 	if o.Transaction != nil {
 		toSerialize["transaction"] = o.Transaction
+	}
+	if o.Week != nil {
+		toSerialize["week"] = o.Week
 	}
 	return json.Marshal(toSerialize)
 }

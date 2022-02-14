@@ -17,10 +17,10 @@ import (
 
 // InlineResponse2001 struct for InlineResponse2001
 type InlineResponse2001 struct {
-	// Generated secret. Do not share. This secret will be used to verify that webhook requests were sent from Synctera.
-	Secret *string `json:"secret,omitempty"`
 	// Timestamp that the old secret is delete
 	DeleteAt *time.Time `json:"delete_at,omitempty"`
+	// Generated secret. Do not share. This secret will be used to verify that webhook requests were sent from Synctera.
+	Secret *string `json:"secret,omitempty"`
 }
 
 // NewInlineResponse2001 instantiates a new InlineResponse2001 object
@@ -38,38 +38,6 @@ func NewInlineResponse2001() *InlineResponse2001 {
 func NewInlineResponse2001WithDefaults() *InlineResponse2001 {
 	this := InlineResponse2001{}
 	return &this
-}
-
-// GetSecret returns the Secret field value if set, zero value otherwise.
-func (o *InlineResponse2001) GetSecret() string {
-	if o == nil || o.Secret == nil {
-		var ret string
-		return ret
-	}
-	return *o.Secret
-}
-
-// GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InlineResponse2001) GetSecretOk() (*string, bool) {
-	if o == nil || o.Secret == nil {
-		return nil, false
-	}
-	return o.Secret, true
-}
-
-// HasSecret returns a boolean if a field has been set.
-func (o *InlineResponse2001) HasSecret() bool {
-	if o != nil && o.Secret != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSecret gets a reference to the given string and assigns it to the Secret field.
-func (o *InlineResponse2001) SetSecret(v string) {
-	o.Secret = &v
 }
 
 // GetDeleteAt returns the DeleteAt field value if set, zero value otherwise.
@@ -104,13 +72,45 @@ func (o *InlineResponse2001) SetDeleteAt(v time.Time) {
 	o.DeleteAt = &v
 }
 
+// GetSecret returns the Secret field value if set, zero value otherwise.
+func (o *InlineResponse2001) GetSecret() string {
+	if o == nil || o.Secret == nil {
+		var ret string
+		return ret
+	}
+	return *o.Secret
+}
+
+// GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2001) GetSecretOk() (*string, bool) {
+	if o == nil || o.Secret == nil {
+		return nil, false
+	}
+	return o.Secret, true
+}
+
+// HasSecret returns a boolean if a field has been set.
+func (o *InlineResponse2001) HasSecret() bool {
+	if o != nil && o.Secret != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecret gets a reference to the given string and assigns it to the Secret field.
+func (o *InlineResponse2001) SetSecret(v string) {
+	o.Secret = &v
+}
+
 func (o InlineResponse2001) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Secret != nil {
-		toSerialize["secret"] = o.Secret
-	}
 	if o.DeleteAt != nil {
 		toSerialize["delete_at"] = o.DeleteAt
+	}
+	if o.Secret != nil {
+		toSerialize["secret"] = o.Secret
 	}
 	return json.Marshal(toSerialize)
 }

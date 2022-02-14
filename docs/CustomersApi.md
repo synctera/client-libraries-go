@@ -5,10 +5,8 @@ All URIs are relative to *https://api.synctera.com/v0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCustomer**](CustomersApi.md#CreateCustomer) | **Post** /customers | Create a Customer
-[**CreateCustomerAlias**](CustomersApi.md#CreateCustomerAlias) | **Post** /customers/{customer_id}/alias | Create customer alias
 [**CreateCustomerEmployment**](CustomersApi.md#CreateCustomerEmployment) | **Post** /customers/{customer_id}/employment | Create employment record
 [**CreateCustomerRiskRating**](CustomersApi.md#CreateCustomerRiskRating) | **Post** /customers/{customer_id}/risk_ratings | Create customer risk rating
-[**GetAliasForCustomer**](CustomersApi.md#GetAliasForCustomer) | **Get** /customers/{customer_id}/alias | List customer alias
 [**GetAllCustomerEmployment**](CustomersApi.md#GetAllCustomerEmployment) | **Get** /customers/{customer_id}/employment | List customer employment records
 [**GetAllCustomerRiskRatings**](CustomersApi.md#GetAllCustomerRiskRatings) | **Get** /customers/{customer_id}/risk_ratings | List customer risk ratings
 [**GetCustomer**](CustomersApi.md#GetCustomer) | **Get** /customers/{customer_id} | Get Customer
@@ -43,7 +41,7 @@ import (
 )
 
 func main() {
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer("Status_example", "faker.name.firstName", "faker.name.lastName", time.Now())} // CustomerInPath | Customer to create
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "faker.name.firstName", "faker.name.lastName", "Status_example")} // CustomerInPath | Customer to create
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -73,78 +71,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomerInPath**](CustomerInPath.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateCustomerAlias
-
-> CustomerAlias CreateCustomerAlias(ctx, customerId).CustomerAlias(customerAlias).Execute()
-
-Create customer alias
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    customerId := TODO // string | The customer's unique identifier
-    customerAlias := *openapiclient.NewCustomerAlias() // CustomerAlias | Create a customer alias
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.CreateCustomerAlias(context.Background(), customerId).CustomerAlias(customerAlias).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.CreateCustomerAlias``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCustomerAlias`: CustomerAlias
-    fmt.Fprintf(os.Stdout, "Response from `CustomersApi.CreateCustomerAlias`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateCustomerAliasRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **customerAlias** | [**CustomerAlias**](CustomerAlias.md) | Create a customer alias | 
-
-### Return type
-
-[**CustomerAlias**](CustomerAlias.md)
 
 ### Authorization
 
@@ -297,76 +223,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetAliasForCustomer
-
-> CustomerAliasList GetAliasForCustomer(ctx, customerId).Execute()
-
-List customer alias
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    customerId := TODO // string | The customer's unique identifier
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.GetAliasForCustomer(context.Background(), customerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.GetAliasForCustomer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAliasForCustomer`: CustomerAliasList
-    fmt.Fprintf(os.Stdout, "Response from `CustomersApi.GetAliasForCustomer`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAliasForCustomerRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**CustomerAliasList**](CustomerAliasList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -736,7 +592,7 @@ Name | Type | Description  | Notes
 
 ## ListCustomers
 
-> CustomerList ListCustomers(ctx).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Tenant(tenant).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
+> CustomerList ListCustomers(ctx).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
 
 List Customers
 
@@ -762,14 +618,13 @@ func main() {
     email := "john.doe@example.com" // string |  (optional)
     ssnLast4 := "6789" // string |  (optional)
     status := "ACTIVE" // string |  (optional)
-    tenant := "2_3" // string |  (optional)
     limit := int32(100) // int32 |  (optional) (default to 100)
     pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
     sortBy := []string{"SortBy_example"} // []string | Specifies the sort order for the returned customers.  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CustomersApi.ListCustomers(context.Background()).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Tenant(tenant).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
+    resp, r, err := api_client.CustomersApi.ListCustomers(context.Background()).Id(id).FirstName(firstName).LastName(lastName).PhoneNumber(phoneNumber).Email(email).SsnLast4(ssnLast4).Status(status).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomersApi.ListCustomers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -797,7 +652,6 @@ Name | Type | Description  | Notes
  **email** | **string** |  | 
  **ssnLast4** | **string** |  | 
  **status** | **string** |  | 
- **tenant** | **string** |  | 
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
  **sortBy** | **[]string** | Specifies the sort order for the returned customers.  | 
@@ -915,7 +769,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer("Status_example", "faker.name.firstName", "faker.name.lastName", time.Now())} // CustomerInPath | Customer to be updated
+    customerInPath := openapiclient.customer_in_path{Customer: openapiclient.NewCustomer(time.Now(), "faker.name.firstName", "faker.name.lastName", "Status_example")} // CustomerInPath | Customer to be updated
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

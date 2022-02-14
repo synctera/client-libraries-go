@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Unique ID for this employment relationship. | [optional] [readonly] 
 **EmployerName** | **string** | Name of customer&#39;s employer. | 
-**EmploymentOccupation** | Pointer to **string** | Customer&#39;s work title, profession, or field. | [optional] 
 **EmploymentFrom** | Pointer to **time.Time** | First day of employment. | [optional] 
-**EmploymentTo** | Pointer to **time.Time** | Last day of employment. | [optional] 
 **EmploymentHours** | Pointer to **float32** | Number of hours spent per week working for specified employment. | [optional] 
 **EmploymentIncome** | Pointer to **int32** | Annual income in cents. | [optional] 
 **EmploymentIncomeCurrency** | Pointer to **string** | The 3-letter alphabetic ISO 4217 code for the currency in which the employee was paid.  | [optional] 
 **EmploymentInfo** | Pointer to **map[string]interface{}** | A collection of arbitrary key-value pairs providing additional information about this employment relationship.  | [optional] 
+**EmploymentOccupation** | Pointer to **string** | Customer&#39;s work title, profession, or field. | [optional] 
+**EmploymentTo** | Pointer to **time.Time** | Last day of employment. | [optional] 
+**Id** | Pointer to **string** | Unique ID for this employment relationship. | [optional] [readonly] 
 
 ## Methods
 
@@ -33,31 +33,6 @@ NewEmploymentWithDefaults instantiates a new Employment object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
-
-`func (o *Employment) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Employment) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Employment) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Employment) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
 ### GetEmployerName
 
 `func (o *Employment) GetEmployerName() string`
@@ -77,31 +52,6 @@ and a boolean to check if the value has been set.
 
 SetEmployerName sets EmployerName field to given value.
 
-
-### GetEmploymentOccupation
-
-`func (o *Employment) GetEmploymentOccupation() string`
-
-GetEmploymentOccupation returns the EmploymentOccupation field if non-nil, zero value otherwise.
-
-### GetEmploymentOccupationOk
-
-`func (o *Employment) GetEmploymentOccupationOk() (*string, bool)`
-
-GetEmploymentOccupationOk returns a tuple with the EmploymentOccupation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmploymentOccupation
-
-`func (o *Employment) SetEmploymentOccupation(v string)`
-
-SetEmploymentOccupation sets EmploymentOccupation field to given value.
-
-### HasEmploymentOccupation
-
-`func (o *Employment) HasEmploymentOccupation() bool`
-
-HasEmploymentOccupation returns a boolean if a field has been set.
 
 ### GetEmploymentFrom
 
@@ -127,31 +77,6 @@ SetEmploymentFrom sets EmploymentFrom field to given value.
 `func (o *Employment) HasEmploymentFrom() bool`
 
 HasEmploymentFrom returns a boolean if a field has been set.
-
-### GetEmploymentTo
-
-`func (o *Employment) GetEmploymentTo() time.Time`
-
-GetEmploymentTo returns the EmploymentTo field if non-nil, zero value otherwise.
-
-### GetEmploymentToOk
-
-`func (o *Employment) GetEmploymentToOk() (*time.Time, bool)`
-
-GetEmploymentToOk returns a tuple with the EmploymentTo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmploymentTo
-
-`func (o *Employment) SetEmploymentTo(v time.Time)`
-
-SetEmploymentTo sets EmploymentTo field to given value.
-
-### HasEmploymentTo
-
-`func (o *Employment) HasEmploymentTo() bool`
-
-HasEmploymentTo returns a boolean if a field has been set.
 
 ### GetEmploymentHours
 
@@ -252,6 +177,81 @@ SetEmploymentInfo sets EmploymentInfo field to given value.
 `func (o *Employment) HasEmploymentInfo() bool`
 
 HasEmploymentInfo returns a boolean if a field has been set.
+
+### GetEmploymentOccupation
+
+`func (o *Employment) GetEmploymentOccupation() string`
+
+GetEmploymentOccupation returns the EmploymentOccupation field if non-nil, zero value otherwise.
+
+### GetEmploymentOccupationOk
+
+`func (o *Employment) GetEmploymentOccupationOk() (*string, bool)`
+
+GetEmploymentOccupationOk returns a tuple with the EmploymentOccupation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmploymentOccupation
+
+`func (o *Employment) SetEmploymentOccupation(v string)`
+
+SetEmploymentOccupation sets EmploymentOccupation field to given value.
+
+### HasEmploymentOccupation
+
+`func (o *Employment) HasEmploymentOccupation() bool`
+
+HasEmploymentOccupation returns a boolean if a field has been set.
+
+### GetEmploymentTo
+
+`func (o *Employment) GetEmploymentTo() time.Time`
+
+GetEmploymentTo returns the EmploymentTo field if non-nil, zero value otherwise.
+
+### GetEmploymentToOk
+
+`func (o *Employment) GetEmploymentToOk() (*time.Time, bool)`
+
+GetEmploymentToOk returns a tuple with the EmploymentTo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmploymentTo
+
+`func (o *Employment) SetEmploymentTo(v time.Time)`
+
+SetEmploymentTo sets EmploymentTo field to given value.
+
+### HasEmploymentTo
+
+`func (o *Employment) HasEmploymentTo() bool`
+
+HasEmploymentTo returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Employment) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Employment) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Employment) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *Employment) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

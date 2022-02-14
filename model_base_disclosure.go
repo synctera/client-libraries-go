@@ -17,22 +17,24 @@ import (
 
 // BaseDisclosure struct for BaseDisclosure
 type BaseDisclosure struct {
-	// The unique identifier for this resource.
-	Id *string `json:"id,omitempty"`
-	// Unique ID for the person. Exactly one of `person_id` or `business_id` must be set.
-	PersonId *string `json:"person_id,omitempty"`
 	// Unique ID for the business. Exactly one of `business_id` or `person_id` must be set.
-	BusinessId *string         `json:"business_id,omitempty"`
-	Type       *DisclosureType `json:"type,omitempty"`
-	// Version of the disclosure document.
-	Version   *string `json:"version,omitempty"`
-	EventType *string `json:"event_type,omitempty"`
-	// Date and time the disclosure was made.
-	DisclosureDate *time.Time `json:"disclosure_date,omitempty"`
+	BusinessId *string `json:"business_id,omitempty"`
 	// The date and time the resource was created.
 	CreationTime *time.Time `json:"creation_time,omitempty"`
+	// Date and time the disclosure was made.
+	DisclosureDate *time.Time `json:"disclosure_date,omitempty"`
+	EventType      *string    `json:"event_type,omitempty"`
+	// The unique identifier for this resource.
+	Id *string `json:"id,omitempty"`
 	// The date and time the resource was last updated.
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
+	// Optional field to store additional informaton about the resource.  Intended to be used by the integrator to store non-sensitive data.
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
+	// Unique ID for the person. Exactly one of `person_id` or `business_id` must be set.
+	PersonId *string         `json:"person_id,omitempty"`
+	Type     *DisclosureType `json:"type,omitempty"`
+	// Version of the disclosure document.
+	Version *string `json:"version,omitempty"`
 }
 
 // NewBaseDisclosure instantiates a new BaseDisclosure object
@@ -50,6 +52,134 @@ func NewBaseDisclosure() *BaseDisclosure {
 func NewBaseDisclosureWithDefaults() *BaseDisclosure {
 	this := BaseDisclosure{}
 	return &this
+}
+
+// GetBusinessId returns the BusinessId field value if set, zero value otherwise.
+func (o *BaseDisclosure) GetBusinessId() string {
+	if o == nil || o.BusinessId == nil {
+		var ret string
+		return ret
+	}
+	return *o.BusinessId
+}
+
+// GetBusinessIdOk returns a tuple with the BusinessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseDisclosure) GetBusinessIdOk() (*string, bool) {
+	if o == nil || o.BusinessId == nil {
+		return nil, false
+	}
+	return o.BusinessId, true
+}
+
+// HasBusinessId returns a boolean if a field has been set.
+func (o *BaseDisclosure) HasBusinessId() bool {
+	if o != nil && o.BusinessId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBusinessId gets a reference to the given string and assigns it to the BusinessId field.
+func (o *BaseDisclosure) SetBusinessId(v string) {
+	o.BusinessId = &v
+}
+
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
+func (o *BaseDisclosure) GetCreationTime() time.Time {
+	if o == nil || o.CreationTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationTime
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseDisclosure) GetCreationTimeOk() (*time.Time, bool) {
+	if o == nil || o.CreationTime == nil {
+		return nil, false
+	}
+	return o.CreationTime, true
+}
+
+// HasCreationTime returns a boolean if a field has been set.
+func (o *BaseDisclosure) HasCreationTime() bool {
+	if o != nil && o.CreationTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
+func (o *BaseDisclosure) SetCreationTime(v time.Time) {
+	o.CreationTime = &v
+}
+
+// GetDisclosureDate returns the DisclosureDate field value if set, zero value otherwise.
+func (o *BaseDisclosure) GetDisclosureDate() time.Time {
+	if o == nil || o.DisclosureDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.DisclosureDate
+}
+
+// GetDisclosureDateOk returns a tuple with the DisclosureDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseDisclosure) GetDisclosureDateOk() (*time.Time, bool) {
+	if o == nil || o.DisclosureDate == nil {
+		return nil, false
+	}
+	return o.DisclosureDate, true
+}
+
+// HasDisclosureDate returns a boolean if a field has been set.
+func (o *BaseDisclosure) HasDisclosureDate() bool {
+	if o != nil && o.DisclosureDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisclosureDate gets a reference to the given time.Time and assigns it to the DisclosureDate field.
+func (o *BaseDisclosure) SetDisclosureDate(v time.Time) {
+	o.DisclosureDate = &v
+}
+
+// GetEventType returns the EventType field value if set, zero value otherwise.
+func (o *BaseDisclosure) GetEventType() string {
+	if o == nil || o.EventType == nil {
+		var ret string
+		return ret
+	}
+	return *o.EventType
+}
+
+// GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseDisclosure) GetEventTypeOk() (*string, bool) {
+	if o == nil || o.EventType == nil {
+		return nil, false
+	}
+	return o.EventType, true
+}
+
+// HasEventType returns a boolean if a field has been set.
+func (o *BaseDisclosure) HasEventType() bool {
+	if o != nil && o.EventType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEventType gets a reference to the given string and assigns it to the EventType field.
+func (o *BaseDisclosure) SetEventType(v string) {
+	o.EventType = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -84,6 +214,70 @@ func (o *BaseDisclosure) SetId(v string) {
 	o.Id = &v
 }
 
+// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
+func (o *BaseDisclosure) GetLastUpdatedTime() time.Time {
+	if o == nil || o.LastUpdatedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastUpdatedTime
+}
+
+// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseDisclosure) GetLastUpdatedTimeOk() (*time.Time, bool) {
+	if o == nil || o.LastUpdatedTime == nil {
+		return nil, false
+	}
+	return o.LastUpdatedTime, true
+}
+
+// HasLastUpdatedTime returns a boolean if a field has been set.
+func (o *BaseDisclosure) HasLastUpdatedTime() bool {
+	if o != nil && o.LastUpdatedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdatedTime gets a reference to the given time.Time and assigns it to the LastUpdatedTime field.
+func (o *BaseDisclosure) SetLastUpdatedTime(v time.Time) {
+	o.LastUpdatedTime = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *BaseDisclosure) GetMetadata() map[string]interface{} {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseDisclosure) GetMetadataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *BaseDisclosure) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *BaseDisclosure) SetMetadata(v map[string]interface{}) {
+	o.Metadata = &v
+}
+
 // GetPersonId returns the PersonId field value if set, zero value otherwise.
 func (o *BaseDisclosure) GetPersonId() string {
 	if o == nil || o.PersonId == nil {
@@ -114,38 +308,6 @@ func (o *BaseDisclosure) HasPersonId() bool {
 // SetPersonId gets a reference to the given string and assigns it to the PersonId field.
 func (o *BaseDisclosure) SetPersonId(v string) {
 	o.PersonId = &v
-}
-
-// GetBusinessId returns the BusinessId field value if set, zero value otherwise.
-func (o *BaseDisclosure) GetBusinessId() string {
-	if o == nil || o.BusinessId == nil {
-		var ret string
-		return ret
-	}
-	return *o.BusinessId
-}
-
-// GetBusinessIdOk returns a tuple with the BusinessId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseDisclosure) GetBusinessIdOk() (*string, bool) {
-	if o == nil || o.BusinessId == nil {
-		return nil, false
-	}
-	return o.BusinessId, true
-}
-
-// HasBusinessId returns a boolean if a field has been set.
-func (o *BaseDisclosure) HasBusinessId() bool {
-	if o != nil && o.BusinessId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBusinessId gets a reference to the given string and assigns it to the BusinessId field.
-func (o *BaseDisclosure) SetBusinessId(v string) {
-	o.BusinessId = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -212,162 +374,37 @@ func (o *BaseDisclosure) SetVersion(v string) {
 	o.Version = &v
 }
 
-// GetEventType returns the EventType field value if set, zero value otherwise.
-func (o *BaseDisclosure) GetEventType() string {
-	if o == nil || o.EventType == nil {
-		var ret string
-		return ret
-	}
-	return *o.EventType
-}
-
-// GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseDisclosure) GetEventTypeOk() (*string, bool) {
-	if o == nil || o.EventType == nil {
-		return nil, false
-	}
-	return o.EventType, true
-}
-
-// HasEventType returns a boolean if a field has been set.
-func (o *BaseDisclosure) HasEventType() bool {
-	if o != nil && o.EventType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEventType gets a reference to the given string and assigns it to the EventType field.
-func (o *BaseDisclosure) SetEventType(v string) {
-	o.EventType = &v
-}
-
-// GetDisclosureDate returns the DisclosureDate field value if set, zero value otherwise.
-func (o *BaseDisclosure) GetDisclosureDate() time.Time {
-	if o == nil || o.DisclosureDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.DisclosureDate
-}
-
-// GetDisclosureDateOk returns a tuple with the DisclosureDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseDisclosure) GetDisclosureDateOk() (*time.Time, bool) {
-	if o == nil || o.DisclosureDate == nil {
-		return nil, false
-	}
-	return o.DisclosureDate, true
-}
-
-// HasDisclosureDate returns a boolean if a field has been set.
-func (o *BaseDisclosure) HasDisclosureDate() bool {
-	if o != nil && o.DisclosureDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDisclosureDate gets a reference to the given time.Time and assigns it to the DisclosureDate field.
-func (o *BaseDisclosure) SetDisclosureDate(v time.Time) {
-	o.DisclosureDate = &v
-}
-
-// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
-func (o *BaseDisclosure) GetCreationTime() time.Time {
-	if o == nil || o.CreationTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreationTime
-}
-
-// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseDisclosure) GetCreationTimeOk() (*time.Time, bool) {
-	if o == nil || o.CreationTime == nil {
-		return nil, false
-	}
-	return o.CreationTime, true
-}
-
-// HasCreationTime returns a boolean if a field has been set.
-func (o *BaseDisclosure) HasCreationTime() bool {
-	if o != nil && o.CreationTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
-func (o *BaseDisclosure) SetCreationTime(v time.Time) {
-	o.CreationTime = &v
-}
-
-// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
-func (o *BaseDisclosure) GetLastUpdatedTime() time.Time {
-	if o == nil || o.LastUpdatedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.LastUpdatedTime
-}
-
-// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseDisclosure) GetLastUpdatedTimeOk() (*time.Time, bool) {
-	if o == nil || o.LastUpdatedTime == nil {
-		return nil, false
-	}
-	return o.LastUpdatedTime, true
-}
-
-// HasLastUpdatedTime returns a boolean if a field has been set.
-func (o *BaseDisclosure) HasLastUpdatedTime() bool {
-	if o != nil && o.LastUpdatedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastUpdatedTime gets a reference to the given time.Time and assigns it to the LastUpdatedTime field.
-func (o *BaseDisclosure) SetLastUpdatedTime(v time.Time) {
-	o.LastUpdatedTime = &v
-}
-
 func (o BaseDisclosure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.BusinessId != nil {
+		toSerialize["business_id"] = o.BusinessId
+	}
+	if o.CreationTime != nil {
+		toSerialize["creation_time"] = o.CreationTime
+	}
+	if o.DisclosureDate != nil {
+		toSerialize["disclosure_date"] = o.DisclosureDate
+	}
+	if o.EventType != nil {
+		toSerialize["event_type"] = o.EventType
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
+	if o.LastUpdatedTime != nil {
+		toSerialize["last_updated_time"] = o.LastUpdatedTime
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
 	if o.PersonId != nil {
 		toSerialize["person_id"] = o.PersonId
-	}
-	if o.BusinessId != nil {
-		toSerialize["business_id"] = o.BusinessId
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
 	if o.Version != nil {
 		toSerialize["version"] = o.Version
-	}
-	if o.EventType != nil {
-		toSerialize["event_type"] = o.EventType
-	}
-	if o.DisclosureDate != nil {
-		toSerialize["disclosure_date"] = o.DisclosureDate
-	}
-	if o.CreationTime != nil {
-		toSerialize["creation_time"] = o.CreationTime
-	}
-	if o.LastUpdatedTime != nil {
-		toSerialize["last_updated_time"] = o.LastUpdatedTime
 	}
 	return json.Marshal(toSerialize)
 }

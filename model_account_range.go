@@ -17,36 +17,36 @@ import (
 
 // AccountRange struct for AccountRange
 type AccountRange struct {
-	// Account Range Id
-	Id *string `json:"id,omitempty"`
+	AccountRange []int32 `json:"account_range"`
 	// The bank ID
 	BankId int32 `json:"bank_id"`
-	// The partner ID
-	PartnerId int32 `json:"partner_id"`
 	// The ID of the BIN this account range belogns to
-	BinId              string              `json:"bin_id"`
-	AccountRange       []int32             `json:"account_range"`
+	BinId string `json:"bin_id"`
+	// The timestamp representing when the account range was created
+	CreationTime *time.Time `json:"creation_time,omitempty"`
+	// The time when account range becomes inactive
+	EndDate *time.Time `json:"end_date,omitempty"`
+	// Account Range Id
+	Id *string `json:"id,omitempty"`
+	// The timestamp representing when the account range was last modified
+	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
+	// The partner ID
+	PartnerId          int32               `json:"partner_id"`
 	PhysicalCardFormat *PhysicalCardFormat `json:"physical_card_format,omitempty"`
 	// The time when account range becomes active
 	StartDate *time.Time `json:"start_date,omitempty"`
-	// The time when account range becomes inactive
-	EndDate *time.Time `json:"end_date,omitempty"`
-	// The timestamp representing when the account range was created
-	CreationTime *time.Time `json:"creation_time,omitempty"`
-	// The timestamp representing when the account range was last modified
-	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
 }
 
 // NewAccountRange instantiates a new AccountRange object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountRange(bankId int32, partnerId int32, binId string, accountRange []int32) *AccountRange {
+func NewAccountRange(accountRange []int32, bankId int32, binId string, partnerId int32) *AccountRange {
 	this := AccountRange{}
-	this.BankId = bankId
-	this.PartnerId = partnerId
-	this.BinId = binId
 	this.AccountRange = accountRange
+	this.BankId = bankId
+	this.BinId = binId
+	this.PartnerId = partnerId
 	return &this
 }
 
@@ -56,6 +56,142 @@ func NewAccountRange(bankId int32, partnerId int32, binId string, accountRange [
 func NewAccountRangeWithDefaults() *AccountRange {
 	this := AccountRange{}
 	return &this
+}
+
+// GetAccountRange returns the AccountRange field value
+func (o *AccountRange) GetAccountRange() []int32 {
+	if o == nil {
+		var ret []int32
+		return ret
+	}
+
+	return o.AccountRange
+}
+
+// GetAccountRangeOk returns a tuple with the AccountRange field value
+// and a boolean to check if the value has been set.
+func (o *AccountRange) GetAccountRangeOk() (*[]int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccountRange, true
+}
+
+// SetAccountRange sets field value
+func (o *AccountRange) SetAccountRange(v []int32) {
+	o.AccountRange = v
+}
+
+// GetBankId returns the BankId field value
+func (o *AccountRange) GetBankId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.BankId
+}
+
+// GetBankIdOk returns a tuple with the BankId field value
+// and a boolean to check if the value has been set.
+func (o *AccountRange) GetBankIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BankId, true
+}
+
+// SetBankId sets field value
+func (o *AccountRange) SetBankId(v int32) {
+	o.BankId = v
+}
+
+// GetBinId returns the BinId field value
+func (o *AccountRange) GetBinId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BinId
+}
+
+// GetBinIdOk returns a tuple with the BinId field value
+// and a boolean to check if the value has been set.
+func (o *AccountRange) GetBinIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BinId, true
+}
+
+// SetBinId sets field value
+func (o *AccountRange) SetBinId(v string) {
+	o.BinId = v
+}
+
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
+func (o *AccountRange) GetCreationTime() time.Time {
+	if o == nil || o.CreationTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationTime
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountRange) GetCreationTimeOk() (*time.Time, bool) {
+	if o == nil || o.CreationTime == nil {
+		return nil, false
+	}
+	return o.CreationTime, true
+}
+
+// HasCreationTime returns a boolean if a field has been set.
+func (o *AccountRange) HasCreationTime() bool {
+	if o != nil && o.CreationTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
+func (o *AccountRange) SetCreationTime(v time.Time) {
+	o.CreationTime = &v
+}
+
+// GetEndDate returns the EndDate field value if set, zero value otherwise.
+func (o *AccountRange) GetEndDate() time.Time {
+	if o == nil || o.EndDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.EndDate
+}
+
+// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountRange) GetEndDateOk() (*time.Time, bool) {
+	if o == nil || o.EndDate == nil {
+		return nil, false
+	}
+	return o.EndDate, true
+}
+
+// HasEndDate returns a boolean if a field has been set.
+func (o *AccountRange) HasEndDate() bool {
+	if o != nil && o.EndDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
+func (o *AccountRange) SetEndDate(v time.Time) {
+	o.EndDate = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -90,28 +226,36 @@ func (o *AccountRange) SetId(v string) {
 	o.Id = &v
 }
 
-// GetBankId returns the BankId field value
-func (o *AccountRange) GetBankId() int32 {
-	if o == nil {
-		var ret int32
+// GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
+func (o *AccountRange) GetLastModifiedTime() time.Time {
+	if o == nil || o.LastModifiedTime == nil {
+		var ret time.Time
 		return ret
 	}
-
-	return o.BankId
+	return *o.LastModifiedTime
 }
 
-// GetBankIdOk returns a tuple with the BankId field value
+// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountRange) GetBankIdOk() (*int32, bool) {
-	if o == nil {
+func (o *AccountRange) GetLastModifiedTimeOk() (*time.Time, bool) {
+	if o == nil || o.LastModifiedTime == nil {
 		return nil, false
 	}
-	return &o.BankId, true
+	return o.LastModifiedTime, true
 }
 
-// SetBankId sets field value
-func (o *AccountRange) SetBankId(v int32) {
-	o.BankId = v
+// HasLastModifiedTime returns a boolean if a field has been set.
+func (o *AccountRange) HasLastModifiedTime() bool {
+	if o != nil && o.LastModifiedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedTime gets a reference to the given time.Time and assigns it to the LastModifiedTime field.
+func (o *AccountRange) SetLastModifiedTime(v time.Time) {
+	o.LastModifiedTime = &v
 }
 
 // GetPartnerId returns the PartnerId field value
@@ -136,54 +280,6 @@ func (o *AccountRange) GetPartnerIdOk() (*int32, bool) {
 // SetPartnerId sets field value
 func (o *AccountRange) SetPartnerId(v int32) {
 	o.PartnerId = v
-}
-
-// GetBinId returns the BinId field value
-func (o *AccountRange) GetBinId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BinId
-}
-
-// GetBinIdOk returns a tuple with the BinId field value
-// and a boolean to check if the value has been set.
-func (o *AccountRange) GetBinIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BinId, true
-}
-
-// SetBinId sets field value
-func (o *AccountRange) SetBinId(v string) {
-	o.BinId = v
-}
-
-// GetAccountRange returns the AccountRange field value
-func (o *AccountRange) GetAccountRange() []int32 {
-	if o == nil {
-		var ret []int32
-		return ret
-	}
-
-	return o.AccountRange
-}
-
-// GetAccountRangeOk returns a tuple with the AccountRange field value
-// and a boolean to check if the value has been set.
-func (o *AccountRange) GetAccountRangeOk() (*[]int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccountRange, true
-}
-
-// SetAccountRange sets field value
-func (o *AccountRange) SetAccountRange(v []int32) {
-	o.AccountRange = v
 }
 
 // GetPhysicalCardFormat returns the PhysicalCardFormat field value if set, zero value otherwise.
@@ -250,133 +346,37 @@ func (o *AccountRange) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
-// GetEndDate returns the EndDate field value if set, zero value otherwise.
-func (o *AccountRange) GetEndDate() time.Time {
-	if o == nil || o.EndDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.EndDate
-}
-
-// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountRange) GetEndDateOk() (*time.Time, bool) {
-	if o == nil || o.EndDate == nil {
-		return nil, false
-	}
-	return o.EndDate, true
-}
-
-// HasEndDate returns a boolean if a field has been set.
-func (o *AccountRange) HasEndDate() bool {
-	if o != nil && o.EndDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
-func (o *AccountRange) SetEndDate(v time.Time) {
-	o.EndDate = &v
-}
-
-// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
-func (o *AccountRange) GetCreationTime() time.Time {
-	if o == nil || o.CreationTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreationTime
-}
-
-// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountRange) GetCreationTimeOk() (*time.Time, bool) {
-	if o == nil || o.CreationTime == nil {
-		return nil, false
-	}
-	return o.CreationTime, true
-}
-
-// HasCreationTime returns a boolean if a field has been set.
-func (o *AccountRange) HasCreationTime() bool {
-	if o != nil && o.CreationTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
-func (o *AccountRange) SetCreationTime(v time.Time) {
-	o.CreationTime = &v
-}
-
-// GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
-func (o *AccountRange) GetLastModifiedTime() time.Time {
-	if o == nil || o.LastModifiedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.LastModifiedTime
-}
-
-// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountRange) GetLastModifiedTimeOk() (*time.Time, bool) {
-	if o == nil || o.LastModifiedTime == nil {
-		return nil, false
-	}
-	return o.LastModifiedTime, true
-}
-
-// HasLastModifiedTime returns a boolean if a field has been set.
-func (o *AccountRange) HasLastModifiedTime() bool {
-	if o != nil && o.LastModifiedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedTime gets a reference to the given time.Time and assigns it to the LastModifiedTime field.
-func (o *AccountRange) SetLastModifiedTime(v time.Time) {
-	o.LastModifiedTime = &v
-}
-
 func (o AccountRange) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	if true {
+		toSerialize["account_range"] = o.AccountRange
 	}
 	if true {
 		toSerialize["bank_id"] = o.BankId
 	}
 	if true {
-		toSerialize["partner_id"] = o.PartnerId
-	}
-	if true {
 		toSerialize["bin_id"] = o.BinId
 	}
+	if o.CreationTime != nil {
+		toSerialize["creation_time"] = o.CreationTime
+	}
+	if o.EndDate != nil {
+		toSerialize["end_date"] = o.EndDate
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if o.LastModifiedTime != nil {
+		toSerialize["last_modified_time"] = o.LastModifiedTime
+	}
 	if true {
-		toSerialize["account_range"] = o.AccountRange
+		toSerialize["partner_id"] = o.PartnerId
 	}
 	if o.PhysicalCardFormat != nil {
 		toSerialize["physical_card_format"] = o.PhysicalCardFormat
 	}
 	if o.StartDate != nil {
 		toSerialize["start_date"] = o.StartDate
-	}
-	if o.EndDate != nil {
-		toSerialize["end_date"] = o.EndDate
-	}
-	if o.CreationTime != nil {
-		toSerialize["creation_time"] = o.CreationTime
-	}
-	if o.LastModifiedTime != nil {
-		toSerialize["last_modified_time"] = o.LastModifiedTime
 	}
 	return json.Marshal(toSerialize)
 }

@@ -17,10 +17,10 @@ import (
 
 // SingleUseTokenResponse struct for SingleUseTokenResponse
 type SingleUseTokenResponse struct {
-	Token *string `json:"token,omitempty"`
+	CustomerAccountMappingId *string `json:"customer_account_mapping_id,omitempty"`
 	// yyyy-MM-ddTHH:mm:ssZ
-	Expires                  time.Time `json:"expires"`
-	CustomerAccountMappingId *string   `json:"customer_account_mapping_id,omitempty"`
+	Expires time.Time `json:"expires"`
+	Token   *string   `json:"token,omitempty"`
 }
 
 // NewSingleUseTokenResponse instantiates a new SingleUseTokenResponse object
@@ -39,62 +39,6 @@ func NewSingleUseTokenResponse(expires time.Time) *SingleUseTokenResponse {
 func NewSingleUseTokenResponseWithDefaults() *SingleUseTokenResponse {
 	this := SingleUseTokenResponse{}
 	return &this
-}
-
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *SingleUseTokenResponse) GetToken() string {
-	if o == nil || o.Token == nil {
-		var ret string
-		return ret
-	}
-	return *o.Token
-}
-
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SingleUseTokenResponse) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
-		return nil, false
-	}
-	return o.Token, true
-}
-
-// HasToken returns a boolean if a field has been set.
-func (o *SingleUseTokenResponse) HasToken() bool {
-	if o != nil && o.Token != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *SingleUseTokenResponse) SetToken(v string) {
-	o.Token = &v
-}
-
-// GetExpires returns the Expires field value
-func (o *SingleUseTokenResponse) GetExpires() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.Expires
-}
-
-// GetExpiresOk returns a tuple with the Expires field value
-// and a boolean to check if the value has been set.
-func (o *SingleUseTokenResponse) GetExpiresOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Expires, true
-}
-
-// SetExpires sets field value
-func (o *SingleUseTokenResponse) SetExpires(v time.Time) {
-	o.Expires = v
 }
 
 // GetCustomerAccountMappingId returns the CustomerAccountMappingId field value if set, zero value otherwise.
@@ -129,16 +73,72 @@ func (o *SingleUseTokenResponse) SetCustomerAccountMappingId(v string) {
 	o.CustomerAccountMappingId = &v
 }
 
+// GetExpires returns the Expires field value
+func (o *SingleUseTokenResponse) GetExpires() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.Expires
+}
+
+// GetExpiresOk returns a tuple with the Expires field value
+// and a boolean to check if the value has been set.
+func (o *SingleUseTokenResponse) GetExpiresOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Expires, true
+}
+
+// SetExpires sets field value
+func (o *SingleUseTokenResponse) SetExpires(v time.Time) {
+	o.Expires = v
+}
+
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *SingleUseTokenResponse) GetToken() string {
+	if o == nil || o.Token == nil {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SingleUseTokenResponse) GetTokenOk() (*string, bool) {
+	if o == nil || o.Token == nil {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *SingleUseTokenResponse) HasToken() bool {
+	if o != nil && o.Token != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *SingleUseTokenResponse) SetToken(v string) {
+	o.Token = &v
+}
+
 func (o SingleUseTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Token != nil {
-		toSerialize["token"] = o.Token
+	if o.CustomerAccountMappingId != nil {
+		toSerialize["customer_account_mapping_id"] = o.CustomerAccountMappingId
 	}
 	if true {
 		toSerialize["expires"] = o.Expires
 	}
-	if o.CustomerAccountMappingId != nil {
-		toSerialize["customer_account_mapping_id"] = o.CustomerAccountMappingId
+	if o.Token != nil {
+		toSerialize["token"] = o.Token
 	}
 	return json.Marshal(toSerialize)
 }

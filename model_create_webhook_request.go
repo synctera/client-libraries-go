@@ -16,26 +16,26 @@ import (
 
 // CreateWebhookRequest struct for CreateWebhookRequest
 type CreateWebhookRequest struct {
+	// indicates whether webhook is active
+	Active *bool         `json:"active,omitempty"`
+	Config WebhookConfig `json:"config"`
+	// list of webhook events, use * to receive all notifications
+	Events []string `json:"events"`
 	// id of the webhook
 	Id *string `json:"id,omitempty"`
 	// name of the webhook
 	Name string `json:"name"`
-	// indicates whether webhook is active
-	Active *bool `json:"active,omitempty"`
-	// list of webhook events, use * to receive all notifications
-	Events []string      `json:"events"`
-	Config WebhookConfig `json:"config"`
 }
 
 // NewCreateWebhookRequest instantiates a new CreateWebhookRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateWebhookRequest(name string, events []string, config WebhookConfig) *CreateWebhookRequest {
+func NewCreateWebhookRequest(config WebhookConfig, events []string, name string) *CreateWebhookRequest {
 	this := CreateWebhookRequest{}
-	this.Name = name
-	this.Events = events
 	this.Config = config
+	this.Events = events
+	this.Name = name
 	return &this
 }
 
@@ -45,6 +45,86 @@ func NewCreateWebhookRequest(name string, events []string, config WebhookConfig)
 func NewCreateWebhookRequestWithDefaults() *CreateWebhookRequest {
 	this := CreateWebhookRequest{}
 	return &this
+}
+
+// GetActive returns the Active field value if set, zero value otherwise.
+func (o *CreateWebhookRequest) GetActive() bool {
+	if o == nil || o.Active == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Active
+}
+
+// GetActiveOk returns a tuple with the Active field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateWebhookRequest) GetActiveOk() (*bool, bool) {
+	if o == nil || o.Active == nil {
+		return nil, false
+	}
+	return o.Active, true
+}
+
+// HasActive returns a boolean if a field has been set.
+func (o *CreateWebhookRequest) HasActive() bool {
+	if o != nil && o.Active != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActive gets a reference to the given bool and assigns it to the Active field.
+func (o *CreateWebhookRequest) SetActive(v bool) {
+	o.Active = &v
+}
+
+// GetConfig returns the Config field value
+func (o *CreateWebhookRequest) GetConfig() WebhookConfig {
+	if o == nil {
+		var ret WebhookConfig
+		return ret
+	}
+
+	return o.Config
+}
+
+// GetConfigOk returns a tuple with the Config field value
+// and a boolean to check if the value has been set.
+func (o *CreateWebhookRequest) GetConfigOk() (*WebhookConfig, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Config, true
+}
+
+// SetConfig sets field value
+func (o *CreateWebhookRequest) SetConfig(v WebhookConfig) {
+	o.Config = v
+}
+
+// GetEvents returns the Events field value
+func (o *CreateWebhookRequest) GetEvents() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.Events
+}
+
+// GetEventsOk returns a tuple with the Events field value
+// and a boolean to check if the value has been set.
+func (o *CreateWebhookRequest) GetEventsOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Events, true
+}
+
+// SetEvents sets field value
+func (o *CreateWebhookRequest) SetEvents(v []string) {
+	o.Events = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -103,102 +183,22 @@ func (o *CreateWebhookRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetActive returns the Active field value if set, zero value otherwise.
-func (o *CreateWebhookRequest) GetActive() bool {
-	if o == nil || o.Active == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Active
-}
-
-// GetActiveOk returns a tuple with the Active field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateWebhookRequest) GetActiveOk() (*bool, bool) {
-	if o == nil || o.Active == nil {
-		return nil, false
-	}
-	return o.Active, true
-}
-
-// HasActive returns a boolean if a field has been set.
-func (o *CreateWebhookRequest) HasActive() bool {
-	if o != nil && o.Active != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetActive gets a reference to the given bool and assigns it to the Active field.
-func (o *CreateWebhookRequest) SetActive(v bool) {
-	o.Active = &v
-}
-
-// GetEvents returns the Events field value
-func (o *CreateWebhookRequest) GetEvents() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.Events
-}
-
-// GetEventsOk returns a tuple with the Events field value
-// and a boolean to check if the value has been set.
-func (o *CreateWebhookRequest) GetEventsOk() (*[]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Events, true
-}
-
-// SetEvents sets field value
-func (o *CreateWebhookRequest) SetEvents(v []string) {
-	o.Events = v
-}
-
-// GetConfig returns the Config field value
-func (o *CreateWebhookRequest) GetConfig() WebhookConfig {
-	if o == nil {
-		var ret WebhookConfig
-		return ret
-	}
-
-	return o.Config
-}
-
-// GetConfigOk returns a tuple with the Config field value
-// and a boolean to check if the value has been set.
-func (o *CreateWebhookRequest) GetConfigOk() (*WebhookConfig, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Config, true
-}
-
-// SetConfig sets field value
-func (o *CreateWebhookRequest) SetConfig(v WebhookConfig) {
-	o.Config = v
-}
-
 func (o CreateWebhookRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Active != nil {
+		toSerialize["active"] = o.Active
+	}
+	if true {
+		toSerialize["config"] = o.Config
+	}
+	if true {
+		toSerialize["events"] = o.Events
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if o.Active != nil {
-		toSerialize["active"] = o.Active
-	}
-	if true {
-		toSerialize["events"] = o.Events
-	}
-	if true {
-		toSerialize["config"] = o.Config
 	}
 	return json.Marshal(toSerialize)
 }

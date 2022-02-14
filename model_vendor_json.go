@@ -16,22 +16,22 @@ import (
 
 // VendorJson struct for VendorJson
 type VendorJson struct {
-	Vendor string `json:"vendor"`
 	// Describes the content-type encoding received from the vendor
 	ContentType string `json:"content_type"`
 	// Data representation in JSON
-	Json map[string]interface{} `json:"json"`
+	Json   map[string]interface{} `json:"json"`
+	Vendor string                 `json:"vendor"`
 }
 
 // NewVendorJson instantiates a new VendorJson object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVendorJson(vendor string, contentType string, json map[string]interface{}) *VendorJson {
+func NewVendorJson(contentType string, json map[string]interface{}, vendor string) *VendorJson {
 	this := VendorJson{}
-	this.Vendor = vendor
 	this.ContentType = contentType
 	this.Json = json
+	this.Vendor = vendor
 	return &this
 }
 
@@ -41,30 +41,6 @@ func NewVendorJson(vendor string, contentType string, json map[string]interface{
 func NewVendorJsonWithDefaults() *VendorJson {
 	this := VendorJson{}
 	return &this
-}
-
-// GetVendor returns the Vendor field value
-func (o *VendorJson) GetVendor() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Vendor
-}
-
-// GetVendorOk returns a tuple with the Vendor field value
-// and a boolean to check if the value has been set.
-func (o *VendorJson) GetVendorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Vendor, true
-}
-
-// SetVendor sets field value
-func (o *VendorJson) SetVendor(v string) {
-	o.Vendor = v
 }
 
 // GetContentType returns the ContentType field value
@@ -115,16 +91,40 @@ func (o *VendorJson) SetJson(v map[string]interface{}) {
 	o.Json = v
 }
 
+// GetVendor returns the Vendor field value
+func (o *VendorJson) GetVendor() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Vendor
+}
+
+// GetVendorOk returns a tuple with the Vendor field value
+// and a boolean to check if the value has been set.
+func (o *VendorJson) GetVendorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Vendor, true
+}
+
+// SetVendor sets field value
+func (o *VendorJson) SetVendor(v string) {
+	o.Vendor = v
+}
+
 func (o VendorJson) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["vendor"] = o.Vendor
-	}
 	if true {
 		toSerialize["content_type"] = o.ContentType
 	}
 	if true {
 		toSerialize["json"] = o.Json
+	}
+	if true {
+		toSerialize["vendor"] = o.Vendor
 	}
 	return json.Marshal(toSerialize)
 }

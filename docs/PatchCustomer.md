@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** | Customer&#39;s status | [optional] 
+**Dob** | Pointer to [**oapi.Date**](oapi.Date.md) | Customer&#39;s date of birth in RFC 3339 full-date format (YYYY-MM-DD) | [optional] 
+**Email** | Pointer to **string** | Customer&#39;s email | [optional] 
 **FirstName** | Pointer to **string** | Customer&#39;s first name | [optional] 
 **LastName** | Pointer to **string** | Customer&#39;s last name | [optional] 
-**Dob** | Pointer to [**oapi.Date**](oapi.Date.md) | Customer&#39;s date of birth in RFC 3339 full-date format (YYYY-MM-DD) | [optional] 
-**MiddleName** | Pointer to **string** | Customer&#39;s middle name | [optional] 
 **LegalAddress** | Pointer to [**Address1**](Address1.md) |  | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | User-supplied JSON format metadata. Do not use to store PII. | [optional] 
+**MiddleName** | Pointer to **string** | Customer&#39;s middle name | [optional] 
+**PhoneNumber** | Pointer to **string** | Customer&#39;s mobile phone number with country code in E.164 format | [optional] 
 **ShippingAddress** | Pointer to [**Address1**](Address1.md) |  | [optional] 
 **Ssn** | Pointer to **string** | Customer&#39;s full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Must be compiled with ^\\d{3}-\\d{2}-\\d{4}$. Response contains the last 4 digits only (e.g. 6789). | [optional] 
-**Email** | Pointer to **string** | Customer&#39;s email | [optional] 
-**PhoneNumber** | Pointer to **string** | Customer&#39;s mobile phone number with country code in E.164 format | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | User-supplied JSON format metadata. Do not use to store PII. | [optional] 
+**Status** | Pointer to **string** | Customer&#39;s status | [optional] 
 
 ## Methods
 
@@ -35,30 +35,55 @@ NewPatchCustomerWithDefaults instantiates a new PatchCustomer object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStatus
+### GetDob
 
-`func (o *PatchCustomer) GetStatus() string`
+`func (o *PatchCustomer) GetDob() oapi.Date`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetDob returns the Dob field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetDobOk
 
-`func (o *PatchCustomer) GetStatusOk() (*string, bool)`
+`func (o *PatchCustomer) GetDobOk() (*oapi.Date, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetDobOk returns a tuple with the Dob field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetDob
 
-`func (o *PatchCustomer) SetStatus(v string)`
+`func (o *PatchCustomer) SetDob(v oapi.Date)`
 
-SetStatus sets Status field to given value.
+SetDob sets Dob field to given value.
 
-### HasStatus
+### HasDob
 
-`func (o *PatchCustomer) HasStatus() bool`
+`func (o *PatchCustomer) HasDob() bool`
 
-HasStatus returns a boolean if a field has been set.
+HasDob returns a boolean if a field has been set.
+
+### GetEmail
+
+`func (o *PatchCustomer) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *PatchCustomer) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *PatchCustomer) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *PatchCustomer) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
 
 ### GetFirstName
 
@@ -110,30 +135,55 @@ SetLastName sets LastName field to given value.
 
 HasLastName returns a boolean if a field has been set.
 
-### GetDob
+### GetLegalAddress
 
-`func (o *PatchCustomer) GetDob() oapi.Date`
+`func (o *PatchCustomer) GetLegalAddress() Address1`
 
-GetDob returns the Dob field if non-nil, zero value otherwise.
+GetLegalAddress returns the LegalAddress field if non-nil, zero value otherwise.
 
-### GetDobOk
+### GetLegalAddressOk
 
-`func (o *PatchCustomer) GetDobOk() (*oapi.Date, bool)`
+`func (o *PatchCustomer) GetLegalAddressOk() (*Address1, bool)`
 
-GetDobOk returns a tuple with the Dob field if it's non-nil, zero value otherwise
+GetLegalAddressOk returns a tuple with the LegalAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDob
+### SetLegalAddress
 
-`func (o *PatchCustomer) SetDob(v oapi.Date)`
+`func (o *PatchCustomer) SetLegalAddress(v Address1)`
 
-SetDob sets Dob field to given value.
+SetLegalAddress sets LegalAddress field to given value.
 
-### HasDob
+### HasLegalAddress
 
-`func (o *PatchCustomer) HasDob() bool`
+`func (o *PatchCustomer) HasLegalAddress() bool`
 
-HasDob returns a boolean if a field has been set.
+HasLegalAddress returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *PatchCustomer) GetMetadata() map[string]interface{}`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *PatchCustomer) GetMetadataOk() (*map[string]interface{}, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *PatchCustomer) SetMetadata(v map[string]interface{})`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *PatchCustomer) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 ### GetMiddleName
 
@@ -160,30 +210,30 @@ SetMiddleName sets MiddleName field to given value.
 
 HasMiddleName returns a boolean if a field has been set.
 
-### GetLegalAddress
+### GetPhoneNumber
 
-`func (o *PatchCustomer) GetLegalAddress() Address1`
+`func (o *PatchCustomer) GetPhoneNumber() string`
 
-GetLegalAddress returns the LegalAddress field if non-nil, zero value otherwise.
+GetPhoneNumber returns the PhoneNumber field if non-nil, zero value otherwise.
 
-### GetLegalAddressOk
+### GetPhoneNumberOk
 
-`func (o *PatchCustomer) GetLegalAddressOk() (*Address1, bool)`
+`func (o *PatchCustomer) GetPhoneNumberOk() (*string, bool)`
 
-GetLegalAddressOk returns a tuple with the LegalAddress field if it's non-nil, zero value otherwise
+GetPhoneNumberOk returns a tuple with the PhoneNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLegalAddress
+### SetPhoneNumber
 
-`func (o *PatchCustomer) SetLegalAddress(v Address1)`
+`func (o *PatchCustomer) SetPhoneNumber(v string)`
 
-SetLegalAddress sets LegalAddress field to given value.
+SetPhoneNumber sets PhoneNumber field to given value.
 
-### HasLegalAddress
+### HasPhoneNumber
 
-`func (o *PatchCustomer) HasLegalAddress() bool`
+`func (o *PatchCustomer) HasPhoneNumber() bool`
 
-HasLegalAddress returns a boolean if a field has been set.
+HasPhoneNumber returns a boolean if a field has been set.
 
 ### GetShippingAddress
 
@@ -235,80 +285,30 @@ SetSsn sets Ssn field to given value.
 
 HasSsn returns a boolean if a field has been set.
 
-### GetEmail
+### GetStatus
 
-`func (o *PatchCustomer) GetEmail() string`
+`func (o *PatchCustomer) GetStatus() string`
 
-GetEmail returns the Email field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetEmailOk
+### GetStatusOk
 
-`func (o *PatchCustomer) GetEmailOk() (*string, bool)`
+`func (o *PatchCustomer) GetStatusOk() (*string, bool)`
 
-GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEmail
+### SetStatus
 
-`func (o *PatchCustomer) SetEmail(v string)`
+`func (o *PatchCustomer) SetStatus(v string)`
 
-SetEmail sets Email field to given value.
+SetStatus sets Status field to given value.
 
-### HasEmail
+### HasStatus
 
-`func (o *PatchCustomer) HasEmail() bool`
+`func (o *PatchCustomer) HasStatus() bool`
 
-HasEmail returns a boolean if a field has been set.
-
-### GetPhoneNumber
-
-`func (o *PatchCustomer) GetPhoneNumber() string`
-
-GetPhoneNumber returns the PhoneNumber field if non-nil, zero value otherwise.
-
-### GetPhoneNumberOk
-
-`func (o *PatchCustomer) GetPhoneNumberOk() (*string, bool)`
-
-GetPhoneNumberOk returns a tuple with the PhoneNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPhoneNumber
-
-`func (o *PatchCustomer) SetPhoneNumber(v string)`
-
-SetPhoneNumber sets PhoneNumber field to given value.
-
-### HasPhoneNumber
-
-`func (o *PatchCustomer) HasPhoneNumber() bool`
-
-HasPhoneNumber returns a boolean if a field has been set.
-
-### GetMetadata
-
-`func (o *PatchCustomer) GetMetadata() map[string]interface{}`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *PatchCustomer) GetMetadataOk() (*map[string]interface{}, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *PatchCustomer) SetMetadata(v map[string]interface{})`
-
-SetMetadata sets Metadata field to given value.
-
-### HasMetadata
-
-`func (o *PatchCustomer) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

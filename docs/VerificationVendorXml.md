@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Vendor** | **string** | Name of the vendor used. | 
 **ContentType** | **string** | Describes the content-type encoding received from the vendor. | 
-**Xml** | **string** | Data representaion in XML. | 
 **Details** | Pointer to [**[]VerificationVendorInfoDetail**](VerificationVendorInfoDetail.md) | Array of vendor specific information. | [optional] [readonly] 
+**Vendor** | **string** | Name of the vendor used. | 
+**Xml** | **string** | Data representaion in XML. | 
 
 ## Methods
 
 ### NewVerificationVendorXml
 
-`func NewVerificationVendorXml(vendor string, contentType string, xml string, ) *VerificationVendorXml`
+`func NewVerificationVendorXml(contentType string, vendor string, xml string, ) *VerificationVendorXml`
 
 NewVerificationVendorXml instantiates a new VerificationVendorXml object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +27,6 @@ will change when the set of required properties is changed
 NewVerificationVendorXmlWithDefaults instantiates a new VerificationVendorXml object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetVendor
-
-`func (o *VerificationVendorXml) GetVendor() string`
-
-GetVendor returns the Vendor field if non-nil, zero value otherwise.
-
-### GetVendorOk
-
-`func (o *VerificationVendorXml) GetVendorOk() (*string, bool)`
-
-GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVendor
-
-`func (o *VerificationVendorXml) SetVendor(v string)`
-
-SetVendor sets Vendor field to given value.
-
 
 ### GetContentType
 
@@ -66,26 +46,6 @@ and a boolean to check if the value has been set.
 `func (o *VerificationVendorXml) SetContentType(v string)`
 
 SetContentType sets ContentType field to given value.
-
-
-### GetXml
-
-`func (o *VerificationVendorXml) GetXml() string`
-
-GetXml returns the Xml field if non-nil, zero value otherwise.
-
-### GetXmlOk
-
-`func (o *VerificationVendorXml) GetXmlOk() (*string, bool)`
-
-GetXmlOk returns a tuple with the Xml field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetXml
-
-`func (o *VerificationVendorXml) SetXml(v string)`
-
-SetXml sets Xml field to given value.
 
 
 ### GetDetails
@@ -112,6 +72,46 @@ SetDetails sets Details field to given value.
 `func (o *VerificationVendorXml) HasDetails() bool`
 
 HasDetails returns a boolean if a field has been set.
+
+### GetVendor
+
+`func (o *VerificationVendorXml) GetVendor() string`
+
+GetVendor returns the Vendor field if non-nil, zero value otherwise.
+
+### GetVendorOk
+
+`func (o *VerificationVendorXml) GetVendorOk() (*string, bool)`
+
+GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendor
+
+`func (o *VerificationVendorXml) SetVendor(v string)`
+
+SetVendor sets Vendor field to given value.
+
+
+### GetXml
+
+`func (o *VerificationVendorXml) GetXml() string`
+
+GetXml returns the Xml field if non-nil, zero value otherwise.
+
+### GetXmlOk
+
+`func (o *VerificationVendorXml) GetXmlOk() (*string, bool)`
+
+GetXmlOk returns a tuple with the Xml field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetXml
+
+`func (o *VerificationVendorXml) SetXml(v string)`
+
+SetXml sets Xml field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

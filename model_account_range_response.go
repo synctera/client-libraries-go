@@ -17,39 +17,39 @@ import (
 
 // AccountRangeResponse struct for AccountRangeResponse
 type AccountRangeResponse struct {
-	// Account Range Id
-	Id string `json:"id"`
+	AccountRange []int32 `json:"account_range"`
 	// The bank ID
 	BankId int32 `json:"bank_id"`
-	// The partner ID
-	PartnerId int32 `json:"partner_id"`
 	// The ID of the BIN this account range belogns to
-	BinId              string              `json:"bin_id"`
-	AccountRange       []int32             `json:"account_range"`
+	BinId string `json:"bin_id"`
+	// The timestamp representing when the account range was created
+	CreationTime time.Time `json:"creation_time"`
+	// The time when account range becomes inactive
+	EndDate *time.Time `json:"end_date,omitempty"`
+	// Account Range Id
+	Id string `json:"id"`
+	// The timestamp representing when the account range was last modified
+	LastModifiedTime time.Time `json:"last_modified_time"`
+	// The partner ID
+	PartnerId          int32               `json:"partner_id"`
 	PhysicalCardFormat *PhysicalCardFormat `json:"physical_card_format,omitempty"`
 	// The time when account range becomes active
 	StartDate *time.Time `json:"start_date,omitempty"`
-	// The time when account range becomes inactive
-	EndDate *time.Time `json:"end_date,omitempty"`
-	// The timestamp representing when the account range was created
-	CreationTime time.Time `json:"creation_time"`
-	// The timestamp representing when the account range was last modified
-	LastModifiedTime time.Time `json:"last_modified_time"`
 }
 
 // NewAccountRangeResponse instantiates a new AccountRangeResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountRangeResponse(id string, bankId int32, partnerId int32, binId string, accountRange []int32, creationTime time.Time, lastModifiedTime time.Time) *AccountRangeResponse {
+func NewAccountRangeResponse(accountRange []int32, bankId int32, binId string, creationTime time.Time, id string, lastModifiedTime time.Time, partnerId int32) *AccountRangeResponse {
 	this := AccountRangeResponse{}
-	this.Id = id
-	this.BankId = bankId
-	this.PartnerId = partnerId
-	this.BinId = binId
 	this.AccountRange = accountRange
+	this.BankId = bankId
+	this.BinId = binId
 	this.CreationTime = creationTime
+	this.Id = id
 	this.LastModifiedTime = lastModifiedTime
+	this.PartnerId = partnerId
 	return &this
 }
 
@@ -61,28 +61,28 @@ func NewAccountRangeResponseWithDefaults() *AccountRangeResponse {
 	return &this
 }
 
-// GetId returns the Id field value
-func (o *AccountRangeResponse) GetId() string {
+// GetAccountRange returns the AccountRange field value
+func (o *AccountRangeResponse) GetAccountRange() []int32 {
 	if o == nil {
-		var ret string
+		var ret []int32
 		return ret
 	}
 
-	return o.Id
+	return o.AccountRange
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetAccountRangeOk returns a tuple with the AccountRange field value
 // and a boolean to check if the value has been set.
-func (o *AccountRangeResponse) GetIdOk() (*string, bool) {
+func (o *AccountRangeResponse) GetAccountRangeOk() (*[]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Id, true
+	return &o.AccountRange, true
 }
 
-// SetId sets field value
-func (o *AccountRangeResponse) SetId(v string) {
-	o.Id = v
+// SetAccountRange sets field value
+func (o *AccountRangeResponse) SetAccountRange(v []int32) {
+	o.AccountRange = v
 }
 
 // GetBankId returns the BankId field value
@@ -109,30 +109,6 @@ func (o *AccountRangeResponse) SetBankId(v int32) {
 	o.BankId = v
 }
 
-// GetPartnerId returns the PartnerId field value
-func (o *AccountRangeResponse) GetPartnerId() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.PartnerId
-}
-
-// GetPartnerIdOk returns a tuple with the PartnerId field value
-// and a boolean to check if the value has been set.
-func (o *AccountRangeResponse) GetPartnerIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PartnerId, true
-}
-
-// SetPartnerId sets field value
-func (o *AccountRangeResponse) SetPartnerId(v int32) {
-	o.PartnerId = v
-}
-
 // GetBinId returns the BinId field value
 func (o *AccountRangeResponse) GetBinId() string {
 	if o == nil {
@@ -157,28 +133,132 @@ func (o *AccountRangeResponse) SetBinId(v string) {
 	o.BinId = v
 }
 
-// GetAccountRange returns the AccountRange field value
-func (o *AccountRangeResponse) GetAccountRange() []int32 {
+// GetCreationTime returns the CreationTime field value
+func (o *AccountRangeResponse) GetCreationTime() time.Time {
 	if o == nil {
-		var ret []int32
+		var ret time.Time
 		return ret
 	}
 
-	return o.AccountRange
+	return o.CreationTime
 }
 
-// GetAccountRangeOk returns a tuple with the AccountRange field value
+// GetCreationTimeOk returns a tuple with the CreationTime field value
 // and a boolean to check if the value has been set.
-func (o *AccountRangeResponse) GetAccountRangeOk() (*[]int32, bool) {
+func (o *AccountRangeResponse) GetCreationTimeOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountRange, true
+	return &o.CreationTime, true
 }
 
-// SetAccountRange sets field value
-func (o *AccountRangeResponse) SetAccountRange(v []int32) {
-	o.AccountRange = v
+// SetCreationTime sets field value
+func (o *AccountRangeResponse) SetCreationTime(v time.Time) {
+	o.CreationTime = v
+}
+
+// GetEndDate returns the EndDate field value if set, zero value otherwise.
+func (o *AccountRangeResponse) GetEndDate() time.Time {
+	if o == nil || o.EndDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.EndDate
+}
+
+// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountRangeResponse) GetEndDateOk() (*time.Time, bool) {
+	if o == nil || o.EndDate == nil {
+		return nil, false
+	}
+	return o.EndDate, true
+}
+
+// HasEndDate returns a boolean if a field has been set.
+func (o *AccountRangeResponse) HasEndDate() bool {
+	if o != nil && o.EndDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
+func (o *AccountRangeResponse) SetEndDate(v time.Time) {
+	o.EndDate = &v
+}
+
+// GetId returns the Id field value
+func (o *AccountRangeResponse) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *AccountRangeResponse) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *AccountRangeResponse) SetId(v string) {
+	o.Id = v
+}
+
+// GetLastModifiedTime returns the LastModifiedTime field value
+func (o *AccountRangeResponse) GetLastModifiedTime() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.LastModifiedTime
+}
+
+// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value
+// and a boolean to check if the value has been set.
+func (o *AccountRangeResponse) GetLastModifiedTimeOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastModifiedTime, true
+}
+
+// SetLastModifiedTime sets field value
+func (o *AccountRangeResponse) SetLastModifiedTime(v time.Time) {
+	o.LastModifiedTime = v
+}
+
+// GetPartnerId returns the PartnerId field value
+func (o *AccountRangeResponse) GetPartnerId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.PartnerId
+}
+
+// GetPartnerIdOk returns a tuple with the PartnerId field value
+// and a boolean to check if the value has been set.
+func (o *AccountRangeResponse) GetPartnerIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PartnerId, true
+}
+
+// SetPartnerId sets field value
+func (o *AccountRangeResponse) SetPartnerId(v int32) {
+	o.PartnerId = v
 }
 
 // GetPhysicalCardFormat returns the PhysicalCardFormat field value if set, zero value otherwise.
@@ -245,117 +325,37 @@ func (o *AccountRangeResponse) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
-// GetEndDate returns the EndDate field value if set, zero value otherwise.
-func (o *AccountRangeResponse) GetEndDate() time.Time {
-	if o == nil || o.EndDate == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.EndDate
-}
-
-// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountRangeResponse) GetEndDateOk() (*time.Time, bool) {
-	if o == nil || o.EndDate == nil {
-		return nil, false
-	}
-	return o.EndDate, true
-}
-
-// HasEndDate returns a boolean if a field has been set.
-func (o *AccountRangeResponse) HasEndDate() bool {
-	if o != nil && o.EndDate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
-func (o *AccountRangeResponse) SetEndDate(v time.Time) {
-	o.EndDate = &v
-}
-
-// GetCreationTime returns the CreationTime field value
-func (o *AccountRangeResponse) GetCreationTime() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreationTime
-}
-
-// GetCreationTimeOk returns a tuple with the CreationTime field value
-// and a boolean to check if the value has been set.
-func (o *AccountRangeResponse) GetCreationTimeOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreationTime, true
-}
-
-// SetCreationTime sets field value
-func (o *AccountRangeResponse) SetCreationTime(v time.Time) {
-	o.CreationTime = v
-}
-
-// GetLastModifiedTime returns the LastModifiedTime field value
-func (o *AccountRangeResponse) GetLastModifiedTime() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.LastModifiedTime
-}
-
-// GetLastModifiedTimeOk returns a tuple with the LastModifiedTime field value
-// and a boolean to check if the value has been set.
-func (o *AccountRangeResponse) GetLastModifiedTimeOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LastModifiedTime, true
-}
-
-// SetLastModifiedTime sets field value
-func (o *AccountRangeResponse) SetLastModifiedTime(v time.Time) {
-	o.LastModifiedTime = v
-}
-
 func (o AccountRangeResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["id"] = o.Id
+		toSerialize["account_range"] = o.AccountRange
 	}
 	if true {
 		toSerialize["bank_id"] = o.BankId
 	}
 	if true {
-		toSerialize["partner_id"] = o.PartnerId
-	}
-	if true {
 		toSerialize["bin_id"] = o.BinId
 	}
 	if true {
-		toSerialize["account_range"] = o.AccountRange
+		toSerialize["creation_time"] = o.CreationTime
+	}
+	if o.EndDate != nil {
+		toSerialize["end_date"] = o.EndDate
+	}
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["last_modified_time"] = o.LastModifiedTime
+	}
+	if true {
+		toSerialize["partner_id"] = o.PartnerId
 	}
 	if o.PhysicalCardFormat != nil {
 		toSerialize["physical_card_format"] = o.PhysicalCardFormat
 	}
 	if o.StartDate != nil {
 		toSerialize["start_date"] = o.StartDate
-	}
-	if o.EndDate != nil {
-		toSerialize["end_date"] = o.EndDate
-	}
-	if true {
-		toSerialize["creation_time"] = o.CreationTime
-	}
-	if true {
-		toSerialize["last_modified_time"] = o.LastModifiedTime
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,10 +16,10 @@ import (
 
 // SpendingLimitWithTime struct for SpendingLimitWithTime
 type SpendingLimitWithTime struct {
-	// Maximum number of transactions allowed within the time range
-	Transactions *int64 `json:"transactions,omitempty"`
 	// Maximum amount allowed within the time range
 	Amount *int64 `json:"amount,omitempty"`
+	// Maximum number of transactions allowed within the time range
+	Transactions *int64 `json:"transactions,omitempty"`
 }
 
 // NewSpendingLimitWithTime instantiates a new SpendingLimitWithTime object
@@ -37,38 +37,6 @@ func NewSpendingLimitWithTime() *SpendingLimitWithTime {
 func NewSpendingLimitWithTimeWithDefaults() *SpendingLimitWithTime {
 	this := SpendingLimitWithTime{}
 	return &this
-}
-
-// GetTransactions returns the Transactions field value if set, zero value otherwise.
-func (o *SpendingLimitWithTime) GetTransactions() int64 {
-	if o == nil || o.Transactions == nil {
-		var ret int64
-		return ret
-	}
-	return *o.Transactions
-}
-
-// GetTransactionsOk returns a tuple with the Transactions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SpendingLimitWithTime) GetTransactionsOk() (*int64, bool) {
-	if o == nil || o.Transactions == nil {
-		return nil, false
-	}
-	return o.Transactions, true
-}
-
-// HasTransactions returns a boolean if a field has been set.
-func (o *SpendingLimitWithTime) HasTransactions() bool {
-	if o != nil && o.Transactions != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTransactions gets a reference to the given int64 and assigns it to the Transactions field.
-func (o *SpendingLimitWithTime) SetTransactions(v int64) {
-	o.Transactions = &v
 }
 
 // GetAmount returns the Amount field value if set, zero value otherwise.
@@ -103,13 +71,45 @@ func (o *SpendingLimitWithTime) SetAmount(v int64) {
 	o.Amount = &v
 }
 
+// GetTransactions returns the Transactions field value if set, zero value otherwise.
+func (o *SpendingLimitWithTime) GetTransactions() int64 {
+	if o == nil || o.Transactions == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Transactions
+}
+
+// GetTransactionsOk returns a tuple with the Transactions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpendingLimitWithTime) GetTransactionsOk() (*int64, bool) {
+	if o == nil || o.Transactions == nil {
+		return nil, false
+	}
+	return o.Transactions, true
+}
+
+// HasTransactions returns a boolean if a field has been set.
+func (o *SpendingLimitWithTime) HasTransactions() bool {
+	if o != nil && o.Transactions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTransactions gets a reference to the given int64 and assigns it to the Transactions field.
+func (o *SpendingLimitWithTime) SetTransactions(v int64) {
+	o.Transactions = &v
+}
+
 func (o SpendingLimitWithTime) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Transactions != nil {
-		toSerialize["transactions"] = o.Transactions
-	}
 	if o.Amount != nil {
 		toSerialize["amount"] = o.Amount
+	}
+	if o.Transactions != nil {
+		toSerialize["transactions"] = o.Transactions
 	}
 	return json.Marshal(toSerialize)
 }

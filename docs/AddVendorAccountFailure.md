@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VendorAccountId** | **string** | The vendor account ID for the account that failed. For Plaid, this is an &#x60;account_id&#x60;.  | 
 **Reason** | [**AddVendorAccountsErrorReason**](AddVendorAccountsErrorReason.md) |  | 
 **ReasonDescription** | **string** | A human-readable message describing the reason for the failure. | 
+**VendorAccountId** | **string** | The vendor account ID for the account that failed. For Plaid, this is an &#x60;account_id&#x60;.  | 
 **VendorErrorMessage** | Pointer to **string** | The display_message returned by the vendor. Only returned if reason is set to &#x60;PROVIDER_ERROR&#x60;. For Plaid, this is the &#x60;display_message&#x60;.  | [optional] 
 **VendorRequestId** | Pointer to **string** | A unique identifier for the request from the vendor, which can be used for troubleshooting. Only returned if reason is set to &#x60;PROVIDER_ERROR&#x60;.  | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewAddVendorAccountFailure
 
-`func NewAddVendorAccountFailure(vendorAccountId string, reason AddVendorAccountsErrorReason, reasonDescription string, ) *AddVendorAccountFailure`
+`func NewAddVendorAccountFailure(reason AddVendorAccountsErrorReason, reasonDescription string, vendorAccountId string, ) *AddVendorAccountFailure`
 
 NewAddVendorAccountFailure instantiates a new AddVendorAccountFailure object
 This constructor will assign default values to properties that have it defined,
@@ -28,26 +28,6 @@ will change when the set of required properties is changed
 NewAddVendorAccountFailureWithDefaults instantiates a new AddVendorAccountFailure object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetVendorAccountId
-
-`func (o *AddVendorAccountFailure) GetVendorAccountId() string`
-
-GetVendorAccountId returns the VendorAccountId field if non-nil, zero value otherwise.
-
-### GetVendorAccountIdOk
-
-`func (o *AddVendorAccountFailure) GetVendorAccountIdOk() (*string, bool)`
-
-GetVendorAccountIdOk returns a tuple with the VendorAccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVendorAccountId
-
-`func (o *AddVendorAccountFailure) SetVendorAccountId(v string)`
-
-SetVendorAccountId sets VendorAccountId field to given value.
-
 
 ### GetReason
 
@@ -87,6 +67,26 @@ and a boolean to check if the value has been set.
 `func (o *AddVendorAccountFailure) SetReasonDescription(v string)`
 
 SetReasonDescription sets ReasonDescription field to given value.
+
+
+### GetVendorAccountId
+
+`func (o *AddVendorAccountFailure) GetVendorAccountId() string`
+
+GetVendorAccountId returns the VendorAccountId field if non-nil, zero value otherwise.
+
+### GetVendorAccountIdOk
+
+`func (o *AddVendorAccountFailure) GetVendorAccountIdOk() (*string, bool)`
+
+GetVendorAccountIdOk returns a tuple with the VendorAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendorAccountId
+
+`func (o *AddVendorAccountFailure) SetVendorAccountId(v string)`
+
+SetVendorAccountId sets VendorAccountId field to given value.
 
 
 ### GetVendorErrorMessage

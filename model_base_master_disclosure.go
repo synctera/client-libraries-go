@@ -17,15 +17,17 @@ import (
 
 // BaseMasterDisclosure struct for BaseMasterDisclosure
 type BaseMasterDisclosure struct {
-	// The unique identifier for this resource.
-	Id   *string         `json:"id,omitempty"`
-	Type *DisclosureType `json:"type,omitempty"`
-	// Version of the disclosure document.
-	Version *string `json:"version,omitempty"`
 	// The date and time the resource was created.
 	CreationTime *time.Time `json:"creation_time,omitempty"`
+	// The unique identifier for this resource.
+	Id *string `json:"id,omitempty"`
 	// The date and time the resource was last updated.
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
+	// Optional field to store additional informaton about the resource.  Intended to be used by the integrator to store non-sensitive data.
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
+	Type     *DisclosureType         `json:"type,omitempty"`
+	// Version of the disclosure document.
+	Version *string `json:"version,omitempty"`
 }
 
 // NewBaseMasterDisclosure instantiates a new BaseMasterDisclosure object
@@ -43,6 +45,38 @@ func NewBaseMasterDisclosure() *BaseMasterDisclosure {
 func NewBaseMasterDisclosureWithDefaults() *BaseMasterDisclosure {
 	this := BaseMasterDisclosure{}
 	return &this
+}
+
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
+func (o *BaseMasterDisclosure) GetCreationTime() time.Time {
+	if o == nil || o.CreationTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationTime
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseMasterDisclosure) GetCreationTimeOk() (*time.Time, bool) {
+	if o == nil || o.CreationTime == nil {
+		return nil, false
+	}
+	return o.CreationTime, true
+}
+
+// HasCreationTime returns a boolean if a field has been set.
+func (o *BaseMasterDisclosure) HasCreationTime() bool {
+	if o != nil && o.CreationTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
+func (o *BaseMasterDisclosure) SetCreationTime(v time.Time) {
+	o.CreationTime = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -75,6 +109,70 @@ func (o *BaseMasterDisclosure) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BaseMasterDisclosure) SetId(v string) {
 	o.Id = &v
+}
+
+// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
+func (o *BaseMasterDisclosure) GetLastUpdatedTime() time.Time {
+	if o == nil || o.LastUpdatedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastUpdatedTime
+}
+
+// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseMasterDisclosure) GetLastUpdatedTimeOk() (*time.Time, bool) {
+	if o == nil || o.LastUpdatedTime == nil {
+		return nil, false
+	}
+	return o.LastUpdatedTime, true
+}
+
+// HasLastUpdatedTime returns a boolean if a field has been set.
+func (o *BaseMasterDisclosure) HasLastUpdatedTime() bool {
+	if o != nil && o.LastUpdatedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdatedTime gets a reference to the given time.Time and assigns it to the LastUpdatedTime field.
+func (o *BaseMasterDisclosure) SetLastUpdatedTime(v time.Time) {
+	o.LastUpdatedTime = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *BaseMasterDisclosure) GetMetadata() map[string]interface{} {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseMasterDisclosure) GetMetadataOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *BaseMasterDisclosure) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *BaseMasterDisclosure) SetMetadata(v map[string]interface{}) {
+	o.Metadata = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -141,86 +239,25 @@ func (o *BaseMasterDisclosure) SetVersion(v string) {
 	o.Version = &v
 }
 
-// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
-func (o *BaseMasterDisclosure) GetCreationTime() time.Time {
-	if o == nil || o.CreationTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreationTime
-}
-
-// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseMasterDisclosure) GetCreationTimeOk() (*time.Time, bool) {
-	if o == nil || o.CreationTime == nil {
-		return nil, false
-	}
-	return o.CreationTime, true
-}
-
-// HasCreationTime returns a boolean if a field has been set.
-func (o *BaseMasterDisclosure) HasCreationTime() bool {
-	if o != nil && o.CreationTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
-func (o *BaseMasterDisclosure) SetCreationTime(v time.Time) {
-	o.CreationTime = &v
-}
-
-// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
-func (o *BaseMasterDisclosure) GetLastUpdatedTime() time.Time {
-	if o == nil || o.LastUpdatedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.LastUpdatedTime
-}
-
-// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseMasterDisclosure) GetLastUpdatedTimeOk() (*time.Time, bool) {
-	if o == nil || o.LastUpdatedTime == nil {
-		return nil, false
-	}
-	return o.LastUpdatedTime, true
-}
-
-// HasLastUpdatedTime returns a boolean if a field has been set.
-func (o *BaseMasterDisclosure) HasLastUpdatedTime() bool {
-	if o != nil && o.LastUpdatedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastUpdatedTime gets a reference to the given time.Time and assigns it to the LastUpdatedTime field.
-func (o *BaseMasterDisclosure) SetLastUpdatedTime(v time.Time) {
-	o.LastUpdatedTime = &v
-}
-
 func (o BaseMasterDisclosure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CreationTime != nil {
+		toSerialize["creation_time"] = o.CreationTime
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.LastUpdatedTime != nil {
+		toSerialize["last_updated_time"] = o.LastUpdatedTime
+	}
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
 	if o.Version != nil {
 		toSerialize["version"] = o.Version
-	}
-	if o.CreationTime != nil {
-		toSerialize["creation_time"] = o.CreationTime
-	}
-	if o.LastUpdatedTime != nil {
-		toSerialize["last_updated_time"] = o.LastUpdatedTime
 	}
 	return json.Marshal(toSerialize)
 }

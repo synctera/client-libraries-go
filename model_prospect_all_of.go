@@ -18,14 +18,14 @@ import (
 
 // ProspectAllOf struct for ProspectAllOf
 type ProspectAllOf struct {
-	// Customer's status
-	Status string `json:"status"`
+	// Customer's date of birth in RFC 3339 full-date format (YYYY-MM-DD)
+	Dob *oapi.Date `json:"dob,omitempty"`
 	// Customer's first name
 	FirstName *string `json:"first_name,omitempty"`
 	// Customer's last name
 	LastName *string `json:"last_name,omitempty"`
-	// Customer's date of birth in RFC 3339 full-date format (YYYY-MM-DD)
-	Dob *oapi.Date `json:"dob,omitempty"`
+	// Customer's status
+	Status string `json:"status"`
 }
 
 // NewProspectAllOf instantiates a new ProspectAllOf object
@@ -46,28 +46,36 @@ func NewProspectAllOfWithDefaults() *ProspectAllOf {
 	return &this
 }
 
-// GetStatus returns the Status field value
-func (o *ProspectAllOf) GetStatus() string {
-	if o == nil {
-		var ret string
+// GetDob returns the Dob field value if set, zero value otherwise.
+func (o *ProspectAllOf) GetDob() oapi.Date {
+	if o == nil || o.Dob == nil {
+		var ret oapi.Date
 		return ret
 	}
-
-	return o.Status
+	return *o.Dob
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetDobOk returns a tuple with the Dob field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProspectAllOf) GetStatusOk() (*string, bool) {
-	if o == nil {
+func (o *ProspectAllOf) GetDobOk() (*oapi.Date, bool) {
+	if o == nil || o.Dob == nil {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Dob, true
 }
 
-// SetStatus sets field value
-func (o *ProspectAllOf) SetStatus(v string) {
-	o.Status = v
+// HasDob returns a boolean if a field has been set.
+func (o *ProspectAllOf) HasDob() bool {
+	if o != nil && o.Dob != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDob gets a reference to the given oapi.Date and assigns it to the Dob field.
+func (o *ProspectAllOf) SetDob(v oapi.Date) {
+	o.Dob = &v
 }
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise.
@@ -134,42 +142,34 @@ func (o *ProspectAllOf) SetLastName(v string) {
 	o.LastName = &v
 }
 
-// GetDob returns the Dob field value if set, zero value otherwise.
-func (o *ProspectAllOf) GetDob() oapi.Date {
-	if o == nil || o.Dob == nil {
-		var ret oapi.Date
+// GetStatus returns the Status field value
+func (o *ProspectAllOf) GetStatus() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.Dob
+
+	return o.Status
 }
 
-// GetDobOk returns a tuple with the Dob field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *ProspectAllOf) GetDobOk() (*oapi.Date, bool) {
-	if o == nil || o.Dob == nil {
+func (o *ProspectAllOf) GetStatusOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Dob, true
+	return &o.Status, true
 }
 
-// HasDob returns a boolean if a field has been set.
-func (o *ProspectAllOf) HasDob() bool {
-	if o != nil && o.Dob != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDob gets a reference to the given oapi.Date and assigns it to the Dob field.
-func (o *ProspectAllOf) SetDob(v oapi.Date) {
-	o.Dob = &v
+// SetStatus sets field value
+func (o *ProspectAllOf) SetStatus(v string) {
+	o.Status = v
 }
 
 func (o ProspectAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["status"] = o.Status
+	if o.Dob != nil {
+		toSerialize["dob"] = o.Dob
 	}
 	if o.FirstName != nil {
 		toSerialize["first_name"] = o.FirstName
@@ -177,8 +177,8 @@ func (o ProspectAllOf) MarshalJSON() ([]byte, error) {
 	if o.LastName != nil {
 		toSerialize["last_name"] = o.LastName
 	}
-	if o.Dob != nil {
-		toSerialize["dob"] = o.Dob
+	if true {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

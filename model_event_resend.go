@@ -16,19 +16,19 @@ import (
 
 // EventResend struct for EventResend
 type EventResend struct {
-	EventType EventType `json:"event_type"`
 	// id of the event notification you want to resend
-	EventId string `json:"event_id"`
+	EventId   string    `json:"event_id"`
+	EventType EventType `json:"event_type"`
 }
 
 // NewEventResend instantiates a new EventResend object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEventResend(eventType EventType, eventId string) *EventResend {
+func NewEventResend(eventId string, eventType EventType) *EventResend {
 	this := EventResend{}
-	this.EventType = eventType
 	this.EventId = eventId
+	this.EventType = eventType
 	return &this
 }
 
@@ -38,30 +38,6 @@ func NewEventResend(eventType EventType, eventId string) *EventResend {
 func NewEventResendWithDefaults() *EventResend {
 	this := EventResend{}
 	return &this
-}
-
-// GetEventType returns the EventType field value
-func (o *EventResend) GetEventType() EventType {
-	if o == nil {
-		var ret EventType
-		return ret
-	}
-
-	return o.EventType
-}
-
-// GetEventTypeOk returns a tuple with the EventType field value
-// and a boolean to check if the value has been set.
-func (o *EventResend) GetEventTypeOk() (*EventType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EventType, true
-}
-
-// SetEventType sets field value
-func (o *EventResend) SetEventType(v EventType) {
-	o.EventType = v
 }
 
 // GetEventId returns the EventId field value
@@ -88,13 +64,37 @@ func (o *EventResend) SetEventId(v string) {
 	o.EventId = v
 }
 
+// GetEventType returns the EventType field value
+func (o *EventResend) GetEventType() EventType {
+	if o == nil {
+		var ret EventType
+		return ret
+	}
+
+	return o.EventType
+}
+
+// GetEventTypeOk returns a tuple with the EventType field value
+// and a boolean to check if the value has been set.
+func (o *EventResend) GetEventTypeOk() (*EventType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EventType, true
+}
+
+// SetEventType sets field value
+func (o *EventResend) SetEventType(v EventType) {
+	o.EventType = v
+}
+
 func (o EventResend) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["event_type"] = o.EventType
+		toSerialize["event_id"] = o.EventId
 	}
 	if true {
-		toSerialize["event_id"] = o.EventId
+		toSerialize["event_type"] = o.EventType
 	}
 	return json.Marshal(toSerialize)
 }

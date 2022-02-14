@@ -4,32 +4,32 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Account ID | [optional] [readonly] 
+**AccessStatus** | Pointer to [**AccountAccessStatus**](AccountAccessStatus.md) |  | [optional] 
 **AccountNumber** | Pointer to **string** | Account number | [optional] [readonly] 
-**Nickname** | Pointer to **string** | User provided account nickname | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** | User provided account metadata | [optional] 
+**AccountPurpose** | Pointer to **string** | Purpose of the account | [optional] 
+**AccountType** | Pointer to [**AccountType**](AccountType.md) |  | [optional] 
+**BalanceCeiling** | Pointer to [**BalanceCeiling**](BalanceCeiling.md) |  | [optional] 
+**BalanceFloor** | Pointer to [**BalanceFloor**](BalanceFloor.md) |  | [optional] 
+**Balances** | Pointer to [**[]Balance**](Balance.md) | A list of balances for account based on different type | [optional] [readonly] 
 **BankRouting** | Pointer to **string** | Bank routing number | [optional] [readonly] 
+**CreationTime** | Pointer to **time.Time** | Account creation timestamp in RFC3337 format | [optional] [readonly] 
 **Currency** | Pointer to **string** | Account currency or account settlement currency. ISO 4217 alphabetic currency code. Default USD | [optional] 
 **CustomerIds** | Pointer to **[]string** | A list of the customer IDs of the account holders. | [optional] [readonly] 
-**Status** | Pointer to [**Status**](Status.md) |  | [optional] 
 **ExchangeRateType** | Pointer to **string** | Exchange rate type | [optional] 
-**Iban** | Pointer to **string** | International bank account number | [optional] 
-**SwiftCode** | Pointer to **string** | SWIFT code | [optional] 
-**IsAccountPool** | Pointer to **bool** | Account is investment (variable balance) account or a multi-balance account pool. Default false | [optional] 
-**AccountType** | Pointer to [**AccountType**](AccountType.md) |  | [optional] 
-**AccessStatus** | Pointer to [**AccountAccessStatus**](AccountAccessStatus.md) |  | [optional] 
-**Balances** | Pointer to [**[]Balance**](Balance.md) | A list of balances for account based on different type | [optional] [readonly] 
-**InterestProductId** | Pointer to **string** | An interest from account product that the current account associate with | [optional] 
 **FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that the current account associate with | [optional] 
+**Iban** | Pointer to **string** | International bank account number | [optional] 
+**Id** | Pointer to **string** | Account ID | [optional] [readonly] 
+**InterestProductId** | Pointer to **string** | An interest from account product that the current account associate with | [optional] 
+**IsAccountPool** | Pointer to **bool** | Account is investment (variable balance) account or a multi-balance account pool. Default false | [optional] 
+**LastUpdatedTime** | Pointer to **time.Time** | Timestamp of the last account modification in RFC3337 format | [optional] [readonly] 
+**Metadata** | Pointer to **map[string]interface{}** | User provided account metadata | [optional] 
+**Nickname** | Pointer to **string** | User provided account nickname | [optional] 
 **OverdraftLimit** | Pointer to **int64** | Account&#39;s overdraft limit | [optional] 
 **SpendingLimits** | Pointer to [**SpendingLimits**](SpendingLimits.md) |  | [optional] 
-**AccountPurpose** | Pointer to **string** | Purpose of the account | [optional] 
-**CreationTime** | Pointer to **time.Time** | Account creation timestamp in RFC3337 format | [optional] [readonly] 
-**LastUpdatedTime** | Pointer to **time.Time** | Timestamp of the last account modification in RFC3337 format | [optional] [readonly] 
-**BalanceFloor** | Pointer to [**BalanceFloor**](BalanceFloor.md) |  | [optional] 
-**BalanceCeiling** | Pointer to [**BalanceCeiling**](BalanceCeiling.md) |  | [optional] 
-**Relationships** | Pointer to [**[]Relationship**](Relationship.md) | List of the relationship for this account to the parties | [optional] 
+**Status** | Pointer to [**Status**](Status.md) |  | [optional] 
+**SwiftCode** | Pointer to **string** | SWIFT code | [optional] 
 **AccountTemplateId** | Pointer to **string** | Account template ID | [optional] 
+**Relationships** | Pointer to [**[]Relationship**](Relationship.md) | List of the relationship for this account to the parties | [optional] 
 
 ## Methods
 
@@ -50,30 +50,30 @@ NewAccountCreationWithDefaults instantiates a new AccountCreation object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetAccessStatus
 
-`func (o *AccountCreation) GetId() string`
+`func (o *AccountCreation) GetAccessStatus() AccountAccessStatus`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetAccessStatus returns the AccessStatus field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetAccessStatusOk
 
-`func (o *AccountCreation) GetIdOk() (*string, bool)`
+`func (o *AccountCreation) GetAccessStatusOk() (*AccountAccessStatus, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetAccessStatusOk returns a tuple with the AccessStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetAccessStatus
 
-`func (o *AccountCreation) SetId(v string)`
+`func (o *AccountCreation) SetAccessStatus(v AccountAccessStatus)`
 
-SetId sets Id field to given value.
+SetAccessStatus sets AccessStatus field to given value.
 
-### HasId
+### HasAccessStatus
 
-`func (o *AccountCreation) HasId() bool`
+`func (o *AccountCreation) HasAccessStatus() bool`
 
-HasId returns a boolean if a field has been set.
+HasAccessStatus returns a boolean if a field has been set.
 
 ### GetAccountNumber
 
@@ -100,55 +100,130 @@ SetAccountNumber sets AccountNumber field to given value.
 
 HasAccountNumber returns a boolean if a field has been set.
 
-### GetNickname
+### GetAccountPurpose
 
-`func (o *AccountCreation) GetNickname() string`
+`func (o *AccountCreation) GetAccountPurpose() string`
 
-GetNickname returns the Nickname field if non-nil, zero value otherwise.
+GetAccountPurpose returns the AccountPurpose field if non-nil, zero value otherwise.
 
-### GetNicknameOk
+### GetAccountPurposeOk
 
-`func (o *AccountCreation) GetNicknameOk() (*string, bool)`
+`func (o *AccountCreation) GetAccountPurposeOk() (*string, bool)`
 
-GetNicknameOk returns a tuple with the Nickname field if it's non-nil, zero value otherwise
+GetAccountPurposeOk returns a tuple with the AccountPurpose field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNickname
+### SetAccountPurpose
 
-`func (o *AccountCreation) SetNickname(v string)`
+`func (o *AccountCreation) SetAccountPurpose(v string)`
 
-SetNickname sets Nickname field to given value.
+SetAccountPurpose sets AccountPurpose field to given value.
 
-### HasNickname
+### HasAccountPurpose
 
-`func (o *AccountCreation) HasNickname() bool`
+`func (o *AccountCreation) HasAccountPurpose() bool`
 
-HasNickname returns a boolean if a field has been set.
+HasAccountPurpose returns a boolean if a field has been set.
 
-### GetMetadata
+### GetAccountType
 
-`func (o *AccountCreation) GetMetadata() map[string]interface{}`
+`func (o *AccountCreation) GetAccountType() AccountType`
 
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+GetAccountType returns the AccountType field if non-nil, zero value otherwise.
 
-### GetMetadataOk
+### GetAccountTypeOk
 
-`func (o *AccountCreation) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *AccountCreation) GetAccountTypeOk() (*AccountType, bool)`
 
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+GetAccountTypeOk returns a tuple with the AccountType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetadata
+### SetAccountType
 
-`func (o *AccountCreation) SetMetadata(v map[string]interface{})`
+`func (o *AccountCreation) SetAccountType(v AccountType)`
 
-SetMetadata sets Metadata field to given value.
+SetAccountType sets AccountType field to given value.
 
-### HasMetadata
+### HasAccountType
 
-`func (o *AccountCreation) HasMetadata() bool`
+`func (o *AccountCreation) HasAccountType() bool`
 
-HasMetadata returns a boolean if a field has been set.
+HasAccountType returns a boolean if a field has been set.
+
+### GetBalanceCeiling
+
+`func (o *AccountCreation) GetBalanceCeiling() BalanceCeiling`
+
+GetBalanceCeiling returns the BalanceCeiling field if non-nil, zero value otherwise.
+
+### GetBalanceCeilingOk
+
+`func (o *AccountCreation) GetBalanceCeilingOk() (*BalanceCeiling, bool)`
+
+GetBalanceCeilingOk returns a tuple with the BalanceCeiling field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBalanceCeiling
+
+`func (o *AccountCreation) SetBalanceCeiling(v BalanceCeiling)`
+
+SetBalanceCeiling sets BalanceCeiling field to given value.
+
+### HasBalanceCeiling
+
+`func (o *AccountCreation) HasBalanceCeiling() bool`
+
+HasBalanceCeiling returns a boolean if a field has been set.
+
+### GetBalanceFloor
+
+`func (o *AccountCreation) GetBalanceFloor() BalanceFloor`
+
+GetBalanceFloor returns the BalanceFloor field if non-nil, zero value otherwise.
+
+### GetBalanceFloorOk
+
+`func (o *AccountCreation) GetBalanceFloorOk() (*BalanceFloor, bool)`
+
+GetBalanceFloorOk returns a tuple with the BalanceFloor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBalanceFloor
+
+`func (o *AccountCreation) SetBalanceFloor(v BalanceFloor)`
+
+SetBalanceFloor sets BalanceFloor field to given value.
+
+### HasBalanceFloor
+
+`func (o *AccountCreation) HasBalanceFloor() bool`
+
+HasBalanceFloor returns a boolean if a field has been set.
+
+### GetBalances
+
+`func (o *AccountCreation) GetBalances() []Balance`
+
+GetBalances returns the Balances field if non-nil, zero value otherwise.
+
+### GetBalancesOk
+
+`func (o *AccountCreation) GetBalancesOk() (*[]Balance, bool)`
+
+GetBalancesOk returns a tuple with the Balances field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBalances
+
+`func (o *AccountCreation) SetBalances(v []Balance)`
+
+SetBalances sets Balances field to given value.
+
+### HasBalances
+
+`func (o *AccountCreation) HasBalances() bool`
+
+HasBalances returns a boolean if a field has been set.
 
 ### GetBankRouting
 
@@ -174,6 +249,31 @@ SetBankRouting sets BankRouting field to given value.
 `func (o *AccountCreation) HasBankRouting() bool`
 
 HasBankRouting returns a boolean if a field has been set.
+
+### GetCreationTime
+
+`func (o *AccountCreation) GetCreationTime() time.Time`
+
+GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+
+### GetCreationTimeOk
+
+`func (o *AccountCreation) GetCreationTimeOk() (*time.Time, bool)`
+
+GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreationTime
+
+`func (o *AccountCreation) SetCreationTime(v time.Time)`
+
+SetCreationTime sets CreationTime field to given value.
+
+### HasCreationTime
+
+`func (o *AccountCreation) HasCreationTime() bool`
+
+HasCreationTime returns a boolean if a field has been set.
 
 ### GetCurrency
 
@@ -225,31 +325,6 @@ SetCustomerIds sets CustomerIds field to given value.
 
 HasCustomerIds returns a boolean if a field has been set.
 
-### GetStatus
-
-`func (o *AccountCreation) GetStatus() Status`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *AccountCreation) GetStatusOk() (*Status, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *AccountCreation) SetStatus(v Status)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *AccountCreation) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
 ### GetExchangeRateType
 
 `func (o *AccountCreation) GetExchangeRateType() string`
@@ -274,6 +349,31 @@ SetExchangeRateType sets ExchangeRateType field to given value.
 `func (o *AccountCreation) HasExchangeRateType() bool`
 
 HasExchangeRateType returns a boolean if a field has been set.
+
+### GetFeeProductIds
+
+`func (o *AccountCreation) GetFeeProductIds() []string`
+
+GetFeeProductIds returns the FeeProductIds field if non-nil, zero value otherwise.
+
+### GetFeeProductIdsOk
+
+`func (o *AccountCreation) GetFeeProductIdsOk() (*[]string, bool)`
+
+GetFeeProductIdsOk returns a tuple with the FeeProductIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeeProductIds
+
+`func (o *AccountCreation) SetFeeProductIds(v []string)`
+
+SetFeeProductIds sets FeeProductIds field to given value.
+
+### HasFeeProductIds
+
+`func (o *AccountCreation) HasFeeProductIds() bool`
+
+HasFeeProductIds returns a boolean if a field has been set.
 
 ### GetIban
 
@@ -300,130 +400,30 @@ SetIban sets Iban field to given value.
 
 HasIban returns a boolean if a field has been set.
 
-### GetSwiftCode
+### GetId
 
-`func (o *AccountCreation) GetSwiftCode() string`
+`func (o *AccountCreation) GetId() string`
 
-GetSwiftCode returns the SwiftCode field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetSwiftCodeOk
+### GetIdOk
 
-`func (o *AccountCreation) GetSwiftCodeOk() (*string, bool)`
+`func (o *AccountCreation) GetIdOk() (*string, bool)`
 
-GetSwiftCodeOk returns a tuple with the SwiftCode field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSwiftCode
+### SetId
 
-`func (o *AccountCreation) SetSwiftCode(v string)`
+`func (o *AccountCreation) SetId(v string)`
 
-SetSwiftCode sets SwiftCode field to given value.
+SetId sets Id field to given value.
 
-### HasSwiftCode
+### HasId
 
-`func (o *AccountCreation) HasSwiftCode() bool`
+`func (o *AccountCreation) HasId() bool`
 
-HasSwiftCode returns a boolean if a field has been set.
-
-### GetIsAccountPool
-
-`func (o *AccountCreation) GetIsAccountPool() bool`
-
-GetIsAccountPool returns the IsAccountPool field if non-nil, zero value otherwise.
-
-### GetIsAccountPoolOk
-
-`func (o *AccountCreation) GetIsAccountPoolOk() (*bool, bool)`
-
-GetIsAccountPoolOk returns a tuple with the IsAccountPool field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsAccountPool
-
-`func (o *AccountCreation) SetIsAccountPool(v bool)`
-
-SetIsAccountPool sets IsAccountPool field to given value.
-
-### HasIsAccountPool
-
-`func (o *AccountCreation) HasIsAccountPool() bool`
-
-HasIsAccountPool returns a boolean if a field has been set.
-
-### GetAccountType
-
-`func (o *AccountCreation) GetAccountType() AccountType`
-
-GetAccountType returns the AccountType field if non-nil, zero value otherwise.
-
-### GetAccountTypeOk
-
-`func (o *AccountCreation) GetAccountTypeOk() (*AccountType, bool)`
-
-GetAccountTypeOk returns a tuple with the AccountType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountType
-
-`func (o *AccountCreation) SetAccountType(v AccountType)`
-
-SetAccountType sets AccountType field to given value.
-
-### HasAccountType
-
-`func (o *AccountCreation) HasAccountType() bool`
-
-HasAccountType returns a boolean if a field has been set.
-
-### GetAccessStatus
-
-`func (o *AccountCreation) GetAccessStatus() AccountAccessStatus`
-
-GetAccessStatus returns the AccessStatus field if non-nil, zero value otherwise.
-
-### GetAccessStatusOk
-
-`func (o *AccountCreation) GetAccessStatusOk() (*AccountAccessStatus, bool)`
-
-GetAccessStatusOk returns a tuple with the AccessStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessStatus
-
-`func (o *AccountCreation) SetAccessStatus(v AccountAccessStatus)`
-
-SetAccessStatus sets AccessStatus field to given value.
-
-### HasAccessStatus
-
-`func (o *AccountCreation) HasAccessStatus() bool`
-
-HasAccessStatus returns a boolean if a field has been set.
-
-### GetBalances
-
-`func (o *AccountCreation) GetBalances() []Balance`
-
-GetBalances returns the Balances field if non-nil, zero value otherwise.
-
-### GetBalancesOk
-
-`func (o *AccountCreation) GetBalancesOk() (*[]Balance, bool)`
-
-GetBalancesOk returns a tuple with the Balances field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBalances
-
-`func (o *AccountCreation) SetBalances(v []Balance)`
-
-SetBalances sets Balances field to given value.
-
-### HasBalances
-
-`func (o *AccountCreation) HasBalances() bool`
-
-HasBalances returns a boolean if a field has been set.
+HasId returns a boolean if a field has been set.
 
 ### GetInterestProductId
 
@@ -450,30 +450,105 @@ SetInterestProductId sets InterestProductId field to given value.
 
 HasInterestProductId returns a boolean if a field has been set.
 
-### GetFeeProductIds
+### GetIsAccountPool
 
-`func (o *AccountCreation) GetFeeProductIds() []string`
+`func (o *AccountCreation) GetIsAccountPool() bool`
 
-GetFeeProductIds returns the FeeProductIds field if non-nil, zero value otherwise.
+GetIsAccountPool returns the IsAccountPool field if non-nil, zero value otherwise.
 
-### GetFeeProductIdsOk
+### GetIsAccountPoolOk
 
-`func (o *AccountCreation) GetFeeProductIdsOk() (*[]string, bool)`
+`func (o *AccountCreation) GetIsAccountPoolOk() (*bool, bool)`
 
-GetFeeProductIdsOk returns a tuple with the FeeProductIds field if it's non-nil, zero value otherwise
+GetIsAccountPoolOk returns a tuple with the IsAccountPool field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFeeProductIds
+### SetIsAccountPool
 
-`func (o *AccountCreation) SetFeeProductIds(v []string)`
+`func (o *AccountCreation) SetIsAccountPool(v bool)`
 
-SetFeeProductIds sets FeeProductIds field to given value.
+SetIsAccountPool sets IsAccountPool field to given value.
 
-### HasFeeProductIds
+### HasIsAccountPool
 
-`func (o *AccountCreation) HasFeeProductIds() bool`
+`func (o *AccountCreation) HasIsAccountPool() bool`
 
-HasFeeProductIds returns a boolean if a field has been set.
+HasIsAccountPool returns a boolean if a field has been set.
+
+### GetLastUpdatedTime
+
+`func (o *AccountCreation) GetLastUpdatedTime() time.Time`
+
+GetLastUpdatedTime returns the LastUpdatedTime field if non-nil, zero value otherwise.
+
+### GetLastUpdatedTimeOk
+
+`func (o *AccountCreation) GetLastUpdatedTimeOk() (*time.Time, bool)`
+
+GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdatedTime
+
+`func (o *AccountCreation) SetLastUpdatedTime(v time.Time)`
+
+SetLastUpdatedTime sets LastUpdatedTime field to given value.
+
+### HasLastUpdatedTime
+
+`func (o *AccountCreation) HasLastUpdatedTime() bool`
+
+HasLastUpdatedTime returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *AccountCreation) GetMetadata() map[string]interface{}`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *AccountCreation) GetMetadataOk() (*map[string]interface{}, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *AccountCreation) SetMetadata(v map[string]interface{})`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *AccountCreation) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
+
+### GetNickname
+
+`func (o *AccountCreation) GetNickname() string`
+
+GetNickname returns the Nickname field if non-nil, zero value otherwise.
+
+### GetNicknameOk
+
+`func (o *AccountCreation) GetNicknameOk() (*string, bool)`
+
+GetNicknameOk returns a tuple with the Nickname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNickname
+
+`func (o *AccountCreation) SetNickname(v string)`
+
+SetNickname sets Nickname field to given value.
+
+### HasNickname
+
+`func (o *AccountCreation) HasNickname() bool`
+
+HasNickname returns a boolean if a field has been set.
 
 ### GetOverdraftLimit
 
@@ -525,155 +600,55 @@ SetSpendingLimits sets SpendingLimits field to given value.
 
 HasSpendingLimits returns a boolean if a field has been set.
 
-### GetAccountPurpose
+### GetStatus
 
-`func (o *AccountCreation) GetAccountPurpose() string`
+`func (o *AccountCreation) GetStatus() Status`
 
-GetAccountPurpose returns the AccountPurpose field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetAccountPurposeOk
+### GetStatusOk
 
-`func (o *AccountCreation) GetAccountPurposeOk() (*string, bool)`
+`func (o *AccountCreation) GetStatusOk() (*Status, bool)`
 
-GetAccountPurposeOk returns a tuple with the AccountPurpose field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountPurpose
+### SetStatus
 
-`func (o *AccountCreation) SetAccountPurpose(v string)`
+`func (o *AccountCreation) SetStatus(v Status)`
 
-SetAccountPurpose sets AccountPurpose field to given value.
+SetStatus sets Status field to given value.
 
-### HasAccountPurpose
+### HasStatus
 
-`func (o *AccountCreation) HasAccountPurpose() bool`
+`func (o *AccountCreation) HasStatus() bool`
 
-HasAccountPurpose returns a boolean if a field has been set.
+HasStatus returns a boolean if a field has been set.
 
-### GetCreationTime
+### GetSwiftCode
 
-`func (o *AccountCreation) GetCreationTime() time.Time`
+`func (o *AccountCreation) GetSwiftCode() string`
 
-GetCreationTime returns the CreationTime field if non-nil, zero value otherwise.
+GetSwiftCode returns the SwiftCode field if non-nil, zero value otherwise.
 
-### GetCreationTimeOk
+### GetSwiftCodeOk
 
-`func (o *AccountCreation) GetCreationTimeOk() (*time.Time, bool)`
+`func (o *AccountCreation) GetSwiftCodeOk() (*string, bool)`
 
-GetCreationTimeOk returns a tuple with the CreationTime field if it's non-nil, zero value otherwise
+GetSwiftCodeOk returns a tuple with the SwiftCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreationTime
+### SetSwiftCode
 
-`func (o *AccountCreation) SetCreationTime(v time.Time)`
+`func (o *AccountCreation) SetSwiftCode(v string)`
 
-SetCreationTime sets CreationTime field to given value.
+SetSwiftCode sets SwiftCode field to given value.
 
-### HasCreationTime
+### HasSwiftCode
 
-`func (o *AccountCreation) HasCreationTime() bool`
+`func (o *AccountCreation) HasSwiftCode() bool`
 
-HasCreationTime returns a boolean if a field has been set.
-
-### GetLastUpdatedTime
-
-`func (o *AccountCreation) GetLastUpdatedTime() time.Time`
-
-GetLastUpdatedTime returns the LastUpdatedTime field if non-nil, zero value otherwise.
-
-### GetLastUpdatedTimeOk
-
-`func (o *AccountCreation) GetLastUpdatedTimeOk() (*time.Time, bool)`
-
-GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastUpdatedTime
-
-`func (o *AccountCreation) SetLastUpdatedTime(v time.Time)`
-
-SetLastUpdatedTime sets LastUpdatedTime field to given value.
-
-### HasLastUpdatedTime
-
-`func (o *AccountCreation) HasLastUpdatedTime() bool`
-
-HasLastUpdatedTime returns a boolean if a field has been set.
-
-### GetBalanceFloor
-
-`func (o *AccountCreation) GetBalanceFloor() BalanceFloor`
-
-GetBalanceFloor returns the BalanceFloor field if non-nil, zero value otherwise.
-
-### GetBalanceFloorOk
-
-`func (o *AccountCreation) GetBalanceFloorOk() (*BalanceFloor, bool)`
-
-GetBalanceFloorOk returns a tuple with the BalanceFloor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBalanceFloor
-
-`func (o *AccountCreation) SetBalanceFloor(v BalanceFloor)`
-
-SetBalanceFloor sets BalanceFloor field to given value.
-
-### HasBalanceFloor
-
-`func (o *AccountCreation) HasBalanceFloor() bool`
-
-HasBalanceFloor returns a boolean if a field has been set.
-
-### GetBalanceCeiling
-
-`func (o *AccountCreation) GetBalanceCeiling() BalanceCeiling`
-
-GetBalanceCeiling returns the BalanceCeiling field if non-nil, zero value otherwise.
-
-### GetBalanceCeilingOk
-
-`func (o *AccountCreation) GetBalanceCeilingOk() (*BalanceCeiling, bool)`
-
-GetBalanceCeilingOk returns a tuple with the BalanceCeiling field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBalanceCeiling
-
-`func (o *AccountCreation) SetBalanceCeiling(v BalanceCeiling)`
-
-SetBalanceCeiling sets BalanceCeiling field to given value.
-
-### HasBalanceCeiling
-
-`func (o *AccountCreation) HasBalanceCeiling() bool`
-
-HasBalanceCeiling returns a boolean if a field has been set.
-
-### GetRelationships
-
-`func (o *AccountCreation) GetRelationships() []Relationship`
-
-GetRelationships returns the Relationships field if non-nil, zero value otherwise.
-
-### GetRelationshipsOk
-
-`func (o *AccountCreation) GetRelationshipsOk() (*[]Relationship, bool)`
-
-GetRelationshipsOk returns a tuple with the Relationships field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRelationships
-
-`func (o *AccountCreation) SetRelationships(v []Relationship)`
-
-SetRelationships sets Relationships field to given value.
-
-### HasRelationships
-
-`func (o *AccountCreation) HasRelationships() bool`
-
-HasRelationships returns a boolean if a field has been set.
+HasSwiftCode returns a boolean if a field has been set.
 
 ### GetAccountTemplateId
 
@@ -699,6 +674,31 @@ SetAccountTemplateId sets AccountTemplateId field to given value.
 `func (o *AccountCreation) HasAccountTemplateId() bool`
 
 HasAccountTemplateId returns a boolean if a field has been set.
+
+### GetRelationships
+
+`func (o *AccountCreation) GetRelationships() []Relationship`
+
+GetRelationships returns the Relationships field if non-nil, zero value otherwise.
+
+### GetRelationshipsOk
+
+`func (o *AccountCreation) GetRelationshipsOk() (*[]Relationship, bool)`
+
+GetRelationshipsOk returns a tuple with the Relationships field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRelationships
+
+`func (o *AccountCreation) SetRelationships(v []Relationship)`
+
+SetRelationships sets Relationships field to given value.
+
+### HasRelationships
+
+`func (o *AccountCreation) HasRelationships() bool`
+
+HasRelationships returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

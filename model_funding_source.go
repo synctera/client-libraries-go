@@ -18,10 +18,10 @@ import (
 type FundingSource struct {
 	// Funding Source ID
 	Id *string `json:"id,omitempty"`
-	// Funding Source URL
-	Url *string `json:"url,omitempty"`
 	// Funding Source Name
 	Name *string `json:"name,omitempty"`
+	// Funding Source URL
+	Url *string `json:"url,omitempty"`
 }
 
 // NewFundingSource instantiates a new FundingSource object
@@ -73,38 +73,6 @@ func (o *FundingSource) SetId(v string) {
 	o.Id = &v
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
-func (o *FundingSource) GetUrl() string {
-	if o == nil || o.Url == nil {
-		var ret string
-		return ret
-	}
-	return *o.Url
-}
-
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FundingSource) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
-		return nil, false
-	}
-	return o.Url, true
-}
-
-// HasUrl returns a boolean if a field has been set.
-func (o *FundingSource) HasUrl() bool {
-	if o != nil && o.Url != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given string and assigns it to the Url field.
-func (o *FundingSource) SetUrl(v string) {
-	o.Url = &v
-}
-
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *FundingSource) GetName() string {
 	if o == nil || o.Name == nil {
@@ -137,16 +105,48 @@ func (o *FundingSource) SetName(v string) {
 	o.Name = &v
 }
 
+// GetUrl returns the Url field value if set, zero value otherwise.
+func (o *FundingSource) GetUrl() string {
+	if o == nil || o.Url == nil {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FundingSource) GetUrlOk() (*string, bool) {
+	if o == nil || o.Url == nil {
+		return nil, false
+	}
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *FundingSource) HasUrl() bool {
+	if o != nil && o.Url != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *FundingSource) SetUrl(v string) {
+	o.Url = &v
+}
+
 func (o FundingSource) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
-	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.Url != nil {
+		toSerialize["url"] = o.Url
 	}
 	return json.Marshal(toSerialize)
 }

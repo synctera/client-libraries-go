@@ -17,8 +17,8 @@ import (
 // RecipientName The name of the recipient to whom the card will be shipped
 type RecipientName struct {
 	FirstName  string  `json:"first_name"`
-	MiddleName *string `json:"middle_name,omitempty"`
 	LastName   string  `json:"last_name"`
+	MiddleName *string `json:"middle_name,omitempty"`
 }
 
 // NewRecipientName instantiates a new RecipientName object
@@ -64,6 +64,30 @@ func (o *RecipientName) SetFirstName(v string) {
 	o.FirstName = v
 }
 
+// GetLastName returns the LastName field value
+func (o *RecipientName) GetLastName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LastName
+}
+
+// GetLastNameOk returns a tuple with the LastName field value
+// and a boolean to check if the value has been set.
+func (o *RecipientName) GetLastNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastName, true
+}
+
+// SetLastName sets field value
+func (o *RecipientName) SetLastName(v string) {
+	o.LastName = v
+}
+
 // GetMiddleName returns the MiddleName field value if set, zero value otherwise.
 func (o *RecipientName) GetMiddleName() string {
 	if o == nil || o.MiddleName == nil {
@@ -96,40 +120,16 @@ func (o *RecipientName) SetMiddleName(v string) {
 	o.MiddleName = &v
 }
 
-// GetLastName returns the LastName field value
-func (o *RecipientName) GetLastName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.LastName
-}
-
-// GetLastNameOk returns a tuple with the LastName field value
-// and a boolean to check if the value has been set.
-func (o *RecipientName) GetLastNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LastName, true
-}
-
-// SetLastName sets field value
-func (o *RecipientName) SetLastName(v string) {
-	o.LastName = v
-}
-
 func (o RecipientName) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["first_name"] = o.FirstName
 	}
-	if o.MiddleName != nil {
-		toSerialize["middle_name"] = o.MiddleName
-	}
 	if true {
 		toSerialize["last_name"] = o.LastName
+	}
+	if o.MiddleName != nil {
+		toSerialize["middle_name"] = o.MiddleName
 	}
 	return json.Marshal(toSerialize)
 }

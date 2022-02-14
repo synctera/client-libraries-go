@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique token | [readonly] 
 **ChangeType** | [**ChangeType**](ChangeType.md) |  | 
-**State** | [**CardChangeState**](CardChangeState.md) |  | 
 **Channel** | [**ChangeChannel**](ChangeChannel.md) |  | 
-**Reason** | Pointer to [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | [optional] 
+**Id** | **string** | Unique token | [readonly] 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
-**UpdatedBy** | **string** | ID of user who initiated the change, if done via Synctera Admin System | 
+**Reason** | Pointer to [**CardStatusReasonCode**](CardStatusReasonCode.md) |  | [optional] 
+**State** | [**CardChangeState**](CardChangeState.md) |  | 
 **UpdatedAt** | **time.Time** | Date of change | [readonly] 
+**UpdatedBy** | **string** | ID of user who initiated the change, if done via Synctera Admin System | 
 
 ## Methods
 
 ### NewCardChange
 
-`func NewCardChange(id string, changeType ChangeType, state CardChangeState, channel ChangeChannel, updatedBy string, updatedAt time.Time, ) *CardChange`
+`func NewCardChange(changeType ChangeType, channel ChangeChannel, id string, state CardChangeState, updatedAt time.Time, updatedBy string, ) *CardChange`
 
 NewCardChange instantiates a new CardChange object
 This constructor will assign default values to properties that have it defined,
@@ -31,26 +31,6 @@ will change when the set of required properties is changed
 NewCardChangeWithDefaults instantiates a new CardChange object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *CardChange) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *CardChange) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *CardChange) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetChangeType
 
@@ -70,26 +50,6 @@ and a boolean to check if the value has been set.
 `func (o *CardChange) SetChangeType(v ChangeType)`
 
 SetChangeType sets ChangeType field to given value.
-
-
-### GetState
-
-`func (o *CardChange) GetState() CardChangeState`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *CardChange) GetStateOk() (*CardChangeState, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *CardChange) SetState(v CardChangeState)`
-
-SetState sets State field to given value.
 
 
 ### GetChannel
@@ -112,30 +72,25 @@ and a boolean to check if the value has been set.
 SetChannel sets Channel field to given value.
 
 
-### GetReason
+### GetId
 
-`func (o *CardChange) GetReason() CardStatusReasonCode`
+`func (o *CardChange) GetId() string`
 
-GetReason returns the Reason field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetReasonOk
+### GetIdOk
 
-`func (o *CardChange) GetReasonOk() (*CardStatusReasonCode, bool)`
+`func (o *CardChange) GetIdOk() (*string, bool)`
 
-GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetReason
+### SetId
 
-`func (o *CardChange) SetReason(v CardStatusReasonCode)`
+`func (o *CardChange) SetId(v string)`
 
-SetReason sets Reason field to given value.
+SetId sets Id field to given value.
 
-### HasReason
-
-`func (o *CardChange) HasReason() bool`
-
-HasReason returns a boolean if a field has been set.
 
 ### GetMemo
 
@@ -162,24 +117,49 @@ SetMemo sets Memo field to given value.
 
 HasMemo returns a boolean if a field has been set.
 
-### GetUpdatedBy
+### GetReason
 
-`func (o *CardChange) GetUpdatedBy() string`
+`func (o *CardChange) GetReason() CardStatusReasonCode`
 
-GetUpdatedBy returns the UpdatedBy field if non-nil, zero value otherwise.
+GetReason returns the Reason field if non-nil, zero value otherwise.
 
-### GetUpdatedByOk
+### GetReasonOk
 
-`func (o *CardChange) GetUpdatedByOk() (*string, bool)`
+`func (o *CardChange) GetReasonOk() (*CardStatusReasonCode, bool)`
 
-GetUpdatedByOk returns a tuple with the UpdatedBy field if it's non-nil, zero value otherwise
+GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUpdatedBy
+### SetReason
 
-`func (o *CardChange) SetUpdatedBy(v string)`
+`func (o *CardChange) SetReason(v CardStatusReasonCode)`
 
-SetUpdatedBy sets UpdatedBy field to given value.
+SetReason sets Reason field to given value.
+
+### HasReason
+
+`func (o *CardChange) HasReason() bool`
+
+HasReason returns a boolean if a field has been set.
+
+### GetState
+
+`func (o *CardChange) GetState() CardChangeState`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *CardChange) GetStateOk() (*CardChangeState, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *CardChange) SetState(v CardChangeState)`
+
+SetState sets State field to given value.
 
 
 ### GetUpdatedAt
@@ -200,6 +180,26 @@ and a boolean to check if the value has been set.
 `func (o *CardChange) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
+
+
+### GetUpdatedBy
+
+`func (o *CardChange) GetUpdatedBy() string`
+
+GetUpdatedBy returns the UpdatedBy field if non-nil, zero value otherwise.
+
+### GetUpdatedByOk
+
+`func (o *CardChange) GetUpdatedByOk() (*string, bool)`
+
+GetUpdatedByOk returns a tuple with the UpdatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedBy
+
+`func (o *CardChange) SetUpdatedBy(v string)`
+
+SetUpdatedBy sets UpdatedBy field to given value.
 
 
 

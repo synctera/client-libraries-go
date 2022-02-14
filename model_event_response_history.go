@@ -21,10 +21,10 @@ type EventResponseHistory struct {
 	Code *int32 `json:"code,omitempty"`
 	// Response body from the request
 	ResponseBody *string `json:"response_body,omitempty"`
-	// Timestamp that the request is sent
-	SentTime *time.Time `json:"sent_time,omitempty"`
 	// Timestamp that the response is received
 	ResponseTime *time.Time `json:"response_time,omitempty"`
+	// Timestamp that the request is sent
+	SentTime *time.Time `json:"sent_time,omitempty"`
 }
 
 // NewEventResponseHistory instantiates a new EventResponseHistory object
@@ -108,38 +108,6 @@ func (o *EventResponseHistory) SetResponseBody(v string) {
 	o.ResponseBody = &v
 }
 
-// GetSentTime returns the SentTime field value if set, zero value otherwise.
-func (o *EventResponseHistory) GetSentTime() time.Time {
-	if o == nil || o.SentTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.SentTime
-}
-
-// GetSentTimeOk returns a tuple with the SentTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EventResponseHistory) GetSentTimeOk() (*time.Time, bool) {
-	if o == nil || o.SentTime == nil {
-		return nil, false
-	}
-	return o.SentTime, true
-}
-
-// HasSentTime returns a boolean if a field has been set.
-func (o *EventResponseHistory) HasSentTime() bool {
-	if o != nil && o.SentTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSentTime gets a reference to the given time.Time and assigns it to the SentTime field.
-func (o *EventResponseHistory) SetSentTime(v time.Time) {
-	o.SentTime = &v
-}
-
 // GetResponseTime returns the ResponseTime field value if set, zero value otherwise.
 func (o *EventResponseHistory) GetResponseTime() time.Time {
 	if o == nil || o.ResponseTime == nil {
@@ -172,6 +140,38 @@ func (o *EventResponseHistory) SetResponseTime(v time.Time) {
 	o.ResponseTime = &v
 }
 
+// GetSentTime returns the SentTime field value if set, zero value otherwise.
+func (o *EventResponseHistory) GetSentTime() time.Time {
+	if o == nil || o.SentTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.SentTime
+}
+
+// GetSentTimeOk returns a tuple with the SentTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventResponseHistory) GetSentTimeOk() (*time.Time, bool) {
+	if o == nil || o.SentTime == nil {
+		return nil, false
+	}
+	return o.SentTime, true
+}
+
+// HasSentTime returns a boolean if a field has been set.
+func (o *EventResponseHistory) HasSentTime() bool {
+	if o != nil && o.SentTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSentTime gets a reference to the given time.Time and assigns it to the SentTime field.
+func (o *EventResponseHistory) SetSentTime(v time.Time) {
+	o.SentTime = &v
+}
+
 func (o EventResponseHistory) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Code != nil {
@@ -180,11 +180,11 @@ func (o EventResponseHistory) MarshalJSON() ([]byte, error) {
 	if o.ResponseBody != nil {
 		toSerialize["response_body"] = o.ResponseBody
 	}
-	if o.SentTime != nil {
-		toSerialize["sent_time"] = o.SentTime
-	}
 	if o.ResponseTime != nil {
 		toSerialize["response_time"] = o.ResponseTime
+	}
+	if o.SentTime != nil {
+		toSerialize["sent_time"] = o.SentTime
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,25 +16,25 @@ import (
 
 // VerificationVendorJson struct for VerificationVendorJson
 type VerificationVendorJson struct {
-	// Name of the vendor used.
-	Vendor string `json:"vendor"`
 	// Describes the content-type encoding received from the vendor.
 	ContentType string `json:"content_type"`
-	// Data representation in JSON.
-	Json map[string]interface{} `json:"json"`
 	// Array of vendor specific information.
 	Details *[]VerificationVendorInfoDetail `json:"details,omitempty"`
+	// Data representation in JSON.
+	Json map[string]interface{} `json:"json"`
+	// Name of the vendor used.
+	Vendor string `json:"vendor"`
 }
 
 // NewVerificationVendorJson instantiates a new VerificationVendorJson object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerificationVendorJson(vendor string, contentType string, json map[string]interface{}) *VerificationVendorJson {
+func NewVerificationVendorJson(contentType string, json map[string]interface{}, vendor string) *VerificationVendorJson {
 	this := VerificationVendorJson{}
-	this.Vendor = vendor
 	this.ContentType = contentType
 	this.Json = json
+	this.Vendor = vendor
 	return &this
 }
 
@@ -44,30 +44,6 @@ func NewVerificationVendorJson(vendor string, contentType string, json map[strin
 func NewVerificationVendorJsonWithDefaults() *VerificationVendorJson {
 	this := VerificationVendorJson{}
 	return &this
-}
-
-// GetVendor returns the Vendor field value
-func (o *VerificationVendorJson) GetVendor() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Vendor
-}
-
-// GetVendorOk returns a tuple with the Vendor field value
-// and a boolean to check if the value has been set.
-func (o *VerificationVendorJson) GetVendorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Vendor, true
-}
-
-// SetVendor sets field value
-func (o *VerificationVendorJson) SetVendor(v string) {
-	o.Vendor = v
 }
 
 // GetContentType returns the ContentType field value
@@ -92,30 +68,6 @@ func (o *VerificationVendorJson) GetContentTypeOk() (*string, bool) {
 // SetContentType sets field value
 func (o *VerificationVendorJson) SetContentType(v string) {
 	o.ContentType = v
-}
-
-// GetJson returns the Json field value
-func (o *VerificationVendorJson) GetJson() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.Json
-}
-
-// GetJsonOk returns a tuple with the Json field value
-// and a boolean to check if the value has been set.
-func (o *VerificationVendorJson) GetJsonOk() (*map[string]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Json, true
-}
-
-// SetJson sets field value
-func (o *VerificationVendorJson) SetJson(v map[string]interface{}) {
-	o.Json = v
 }
 
 // GetDetails returns the Details field value if set, zero value otherwise.
@@ -150,19 +102,67 @@ func (o *VerificationVendorJson) SetDetails(v []VerificationVendorInfoDetail) {
 	o.Details = &v
 }
 
+// GetJson returns the Json field value
+func (o *VerificationVendorJson) GetJson() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value
+// and a boolean to check if the value has been set.
+func (o *VerificationVendorJson) GetJsonOk() (*map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Json, true
+}
+
+// SetJson sets field value
+func (o *VerificationVendorJson) SetJson(v map[string]interface{}) {
+	o.Json = v
+}
+
+// GetVendor returns the Vendor field value
+func (o *VerificationVendorJson) GetVendor() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Vendor
+}
+
+// GetVendorOk returns a tuple with the Vendor field value
+// and a boolean to check if the value has been set.
+func (o *VerificationVendorJson) GetVendorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Vendor, true
+}
+
+// SetVendor sets field value
+func (o *VerificationVendorJson) SetVendor(v string) {
+	o.Vendor = v
+}
+
 func (o VerificationVendorJson) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["vendor"] = o.Vendor
-	}
-	if true {
 		toSerialize["content_type"] = o.ContentType
+	}
+	if o.Details != nil {
+		toSerialize["details"] = o.Details
 	}
 	if true {
 		toSerialize["json"] = o.Json
 	}
-	if o.Details != nil {
-		toSerialize["details"] = o.Details
+	if true {
+		toSerialize["vendor"] = o.Vendor
 	}
 	return json.Marshal(toSerialize)
 }

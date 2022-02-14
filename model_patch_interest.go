@@ -16,15 +16,15 @@ import (
 
 // PatchInterest struct for PatchInterest
 type PatchInterest struct {
+	AccrualPayoutSchedule *AccrualPayoutSchedule `json:"accrual_payout_schedule,omitempty"`
+	CalculationMethod     *CalculationMethod     `json:"calculation_method,omitempty"`
+	// User provided description for the current interest.
+	Description *string `json:"description,omitempty"`
 	// Interest ID
 	Id          *string `json:"id,omitempty"`
 	ProductType string  `json:"product_type"`
-	// User provided description for the current interest.
-	Description       *string            `json:"description,omitempty"`
-	CalculationMethod *CalculationMethod `json:"calculation_method,omitempty"`
 	// A list of interest rate. Date intervals between valid_from and valid_to expect to have no overlap.
-	Rates                 *[]RateDetails         `json:"rates,omitempty"`
-	AccrualPayoutSchedule *AccrualPayoutSchedule `json:"accrual_payout_schedule,omitempty"`
+	Rates *[]RateDetails `json:"rates,omitempty"`
 }
 
 // NewPatchInterest instantiates a new PatchInterest object
@@ -43,6 +43,102 @@ func NewPatchInterest(productType string) *PatchInterest {
 func NewPatchInterestWithDefaults() *PatchInterest {
 	this := PatchInterest{}
 	return &this
+}
+
+// GetAccrualPayoutSchedule returns the AccrualPayoutSchedule field value if set, zero value otherwise.
+func (o *PatchInterest) GetAccrualPayoutSchedule() AccrualPayoutSchedule {
+	if o == nil || o.AccrualPayoutSchedule == nil {
+		var ret AccrualPayoutSchedule
+		return ret
+	}
+	return *o.AccrualPayoutSchedule
+}
+
+// GetAccrualPayoutScheduleOk returns a tuple with the AccrualPayoutSchedule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchInterest) GetAccrualPayoutScheduleOk() (*AccrualPayoutSchedule, bool) {
+	if o == nil || o.AccrualPayoutSchedule == nil {
+		return nil, false
+	}
+	return o.AccrualPayoutSchedule, true
+}
+
+// HasAccrualPayoutSchedule returns a boolean if a field has been set.
+func (o *PatchInterest) HasAccrualPayoutSchedule() bool {
+	if o != nil && o.AccrualPayoutSchedule != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccrualPayoutSchedule gets a reference to the given AccrualPayoutSchedule and assigns it to the AccrualPayoutSchedule field.
+func (o *PatchInterest) SetAccrualPayoutSchedule(v AccrualPayoutSchedule) {
+	o.AccrualPayoutSchedule = &v
+}
+
+// GetCalculationMethod returns the CalculationMethod field value if set, zero value otherwise.
+func (o *PatchInterest) GetCalculationMethod() CalculationMethod {
+	if o == nil || o.CalculationMethod == nil {
+		var ret CalculationMethod
+		return ret
+	}
+	return *o.CalculationMethod
+}
+
+// GetCalculationMethodOk returns a tuple with the CalculationMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchInterest) GetCalculationMethodOk() (*CalculationMethod, bool) {
+	if o == nil || o.CalculationMethod == nil {
+		return nil, false
+	}
+	return o.CalculationMethod, true
+}
+
+// HasCalculationMethod returns a boolean if a field has been set.
+func (o *PatchInterest) HasCalculationMethod() bool {
+	if o != nil && o.CalculationMethod != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCalculationMethod gets a reference to the given CalculationMethod and assigns it to the CalculationMethod field.
+func (o *PatchInterest) SetCalculationMethod(v CalculationMethod) {
+	o.CalculationMethod = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *PatchInterest) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchInterest) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *PatchInterest) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *PatchInterest) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -101,70 +197,6 @@ func (o *PatchInterest) SetProductType(v string) {
 	o.ProductType = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *PatchInterest) GetDescription() string {
-	if o == nil || o.Description == nil {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchInterest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *PatchInterest) HasDescription() bool {
-	if o != nil && o.Description != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *PatchInterest) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetCalculationMethod returns the CalculationMethod field value if set, zero value otherwise.
-func (o *PatchInterest) GetCalculationMethod() CalculationMethod {
-	if o == nil || o.CalculationMethod == nil {
-		var ret CalculationMethod
-		return ret
-	}
-	return *o.CalculationMethod
-}
-
-// GetCalculationMethodOk returns a tuple with the CalculationMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchInterest) GetCalculationMethodOk() (*CalculationMethod, bool) {
-	if o == nil || o.CalculationMethod == nil {
-		return nil, false
-	}
-	return o.CalculationMethod, true
-}
-
-// HasCalculationMethod returns a boolean if a field has been set.
-func (o *PatchInterest) HasCalculationMethod() bool {
-	if o != nil && o.CalculationMethod != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCalculationMethod gets a reference to the given CalculationMethod and assigns it to the CalculationMethod field.
-func (o *PatchInterest) SetCalculationMethod(v CalculationMethod) {
-	o.CalculationMethod = &v
-}
-
 // GetRates returns the Rates field value if set, zero value otherwise.
 func (o *PatchInterest) GetRates() []RateDetails {
 	if o == nil || o.Rates == nil {
@@ -197,57 +229,25 @@ func (o *PatchInterest) SetRates(v []RateDetails) {
 	o.Rates = &v
 }
 
-// GetAccrualPayoutSchedule returns the AccrualPayoutSchedule field value if set, zero value otherwise.
-func (o *PatchInterest) GetAccrualPayoutSchedule() AccrualPayoutSchedule {
-	if o == nil || o.AccrualPayoutSchedule == nil {
-		var ret AccrualPayoutSchedule
-		return ret
-	}
-	return *o.AccrualPayoutSchedule
-}
-
-// GetAccrualPayoutScheduleOk returns a tuple with the AccrualPayoutSchedule field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchInterest) GetAccrualPayoutScheduleOk() (*AccrualPayoutSchedule, bool) {
-	if o == nil || o.AccrualPayoutSchedule == nil {
-		return nil, false
-	}
-	return o.AccrualPayoutSchedule, true
-}
-
-// HasAccrualPayoutSchedule returns a boolean if a field has been set.
-func (o *PatchInterest) HasAccrualPayoutSchedule() bool {
-	if o != nil && o.AccrualPayoutSchedule != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAccrualPayoutSchedule gets a reference to the given AccrualPayoutSchedule and assigns it to the AccrualPayoutSchedule field.
-func (o *PatchInterest) SetAccrualPayoutSchedule(v AccrualPayoutSchedule) {
-	o.AccrualPayoutSchedule = &v
-}
-
 func (o PatchInterest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccrualPayoutSchedule != nil {
+		toSerialize["accrual_payout_schedule"] = o.AccrualPayoutSchedule
+	}
+	if o.CalculationMethod != nil {
+		toSerialize["calculation_method"] = o.CalculationMethod
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["product_type"] = o.ProductType
 	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.CalculationMethod != nil {
-		toSerialize["calculation_method"] = o.CalculationMethod
-	}
 	if o.Rates != nil {
 		toSerialize["rates"] = o.Rates
-	}
-	if o.AccrualPayoutSchedule != nil {
-		toSerialize["accrual_payout_schedule"] = o.AccrualPayoutSchedule
 	}
 	return json.Marshal(toSerialize)
 }

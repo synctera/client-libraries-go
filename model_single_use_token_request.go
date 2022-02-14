@@ -16,20 +16,20 @@ import (
 
 // SingleUseTokenRequest struct for SingleUseTokenRequest
 type SingleUseTokenRequest struct {
-	// The ID of the customer to whom the token will be issued
-	CustomerId string `json:"customer_id"`
 	// The ID of the account to which the token will be linked
 	AccountId string `json:"account_id"`
+	// The ID of the customer to whom the token will be issued
+	CustomerId string `json:"customer_id"`
 }
 
 // NewSingleUseTokenRequest instantiates a new SingleUseTokenRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSingleUseTokenRequest(customerId string, accountId string) *SingleUseTokenRequest {
+func NewSingleUseTokenRequest(accountId string, customerId string) *SingleUseTokenRequest {
 	this := SingleUseTokenRequest{}
-	this.CustomerId = customerId
 	this.AccountId = accountId
+	this.CustomerId = customerId
 	return &this
 }
 
@@ -39,30 +39,6 @@ func NewSingleUseTokenRequest(customerId string, accountId string) *SingleUseTok
 func NewSingleUseTokenRequestWithDefaults() *SingleUseTokenRequest {
 	this := SingleUseTokenRequest{}
 	return &this
-}
-
-// GetCustomerId returns the CustomerId field value
-func (o *SingleUseTokenRequest) GetCustomerId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CustomerId
-}
-
-// GetCustomerIdOk returns a tuple with the CustomerId field value
-// and a boolean to check if the value has been set.
-func (o *SingleUseTokenRequest) GetCustomerIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CustomerId, true
-}
-
-// SetCustomerId sets field value
-func (o *SingleUseTokenRequest) SetCustomerId(v string) {
-	o.CustomerId = v
 }
 
 // GetAccountId returns the AccountId field value
@@ -89,13 +65,37 @@ func (o *SingleUseTokenRequest) SetAccountId(v string) {
 	o.AccountId = v
 }
 
+// GetCustomerId returns the CustomerId field value
+func (o *SingleUseTokenRequest) GetCustomerId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value
+// and a boolean to check if the value has been set.
+func (o *SingleUseTokenRequest) GetCustomerIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CustomerId, true
+}
+
+// SetCustomerId sets field value
+func (o *SingleUseTokenRequest) SetCustomerId(v string) {
+	o.CustomerId = v
+}
+
 func (o SingleUseTokenRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["customer_id"] = o.CustomerId
+		toSerialize["account_id"] = o.AccountId
 	}
 	if true {
-		toSerialize["account_id"] = o.AccountId
+		toSerialize["customer_id"] = o.CustomerId
 	}
 	return json.Marshal(toSerialize)
 }

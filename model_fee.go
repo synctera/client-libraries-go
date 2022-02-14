@@ -16,27 +16,27 @@ import (
 
 // Fee struct for Fee
 type Fee struct {
-	// Fee ID
-	Id          *string `json:"id,omitempty"`
-	ProductType string  `json:"product_type"`
-	// Fee type
-	FeeType string `json:"fee_type"`
 	// Fee amount
 	Amount int64 `json:"amount"`
 	// Fee currency code in ISO 4217
 	Currency string `json:"currency"`
+	// Fee type
+	FeeType string `json:"fee_type"`
+	// Fee ID
+	Id          *string `json:"id,omitempty"`
+	ProductType string  `json:"product_type"`
 }
 
 // NewFee instantiates a new Fee object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFee(productType string, feeType string, amount int64, currency string) *Fee {
+func NewFee(amount int64, currency string, feeType string, productType string) *Fee {
 	this := Fee{}
-	this.ProductType = productType
-	this.FeeType = feeType
 	this.Amount = amount
 	this.Currency = currency
+	this.FeeType = feeType
+	this.ProductType = productType
 	return &this
 }
 
@@ -46,6 +46,78 @@ func NewFee(productType string, feeType string, amount int64, currency string) *
 func NewFeeWithDefaults() *Fee {
 	this := Fee{}
 	return &this
+}
+
+// GetAmount returns the Amount field value
+func (o *Fee) GetAmount() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.Amount
+}
+
+// GetAmountOk returns a tuple with the Amount field value
+// and a boolean to check if the value has been set.
+func (o *Fee) GetAmountOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Amount, true
+}
+
+// SetAmount sets field value
+func (o *Fee) SetAmount(v int64) {
+	o.Amount = v
+}
+
+// GetCurrency returns the Currency field value
+func (o *Fee) GetCurrency() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value
+// and a boolean to check if the value has been set.
+func (o *Fee) GetCurrencyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Currency, true
+}
+
+// SetCurrency sets field value
+func (o *Fee) SetCurrency(v string) {
+	o.Currency = v
+}
+
+// GetFeeType returns the FeeType field value
+func (o *Fee) GetFeeType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.FeeType
+}
+
+// GetFeeTypeOk returns a tuple with the FeeType field value
+// and a boolean to check if the value has been set.
+func (o *Fee) GetFeeTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FeeType, true
+}
+
+// SetFeeType sets field value
+func (o *Fee) SetFeeType(v string) {
+	o.FeeType = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -104,94 +176,22 @@ func (o *Fee) SetProductType(v string) {
 	o.ProductType = v
 }
 
-// GetFeeType returns the FeeType field value
-func (o *Fee) GetFeeType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.FeeType
-}
-
-// GetFeeTypeOk returns a tuple with the FeeType field value
-// and a boolean to check if the value has been set.
-func (o *Fee) GetFeeTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.FeeType, true
-}
-
-// SetFeeType sets field value
-func (o *Fee) SetFeeType(v string) {
-	o.FeeType = v
-}
-
-// GetAmount returns the Amount field value
-func (o *Fee) GetAmount() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.Amount
-}
-
-// GetAmountOk returns a tuple with the Amount field value
-// and a boolean to check if the value has been set.
-func (o *Fee) GetAmountOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Amount, true
-}
-
-// SetAmount sets field value
-func (o *Fee) SetAmount(v int64) {
-	o.Amount = v
-}
-
-// GetCurrency returns the Currency field value
-func (o *Fee) GetCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *Fee) GetCurrencyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *Fee) SetCurrency(v string) {
-	o.Currency = v
-}
-
 func (o Fee) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["product_type"] = o.ProductType
-	}
-	if true {
-		toSerialize["fee_type"] = o.FeeType
-	}
 	if true {
 		toSerialize["amount"] = o.Amount
 	}
 	if true {
 		toSerialize["currency"] = o.Currency
+	}
+	if true {
+		toSerialize["fee_type"] = o.FeeType
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["product_type"] = o.ProductType
 	}
 	return json.Marshal(toSerialize)
 }

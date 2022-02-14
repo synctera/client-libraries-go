@@ -5,10 +5,8 @@ All URIs are relative to *https://api.synctera.com/v0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateDisclosure**](DisclosuresApi.md#CreateDisclosure) | **Post** /disclosures | Create disclosure
-[**CreateMasterDisclosure**](DisclosuresApi.md#CreateMasterDisclosure) | **Post** /disclosures/masters | Create master disclosure
 [**GetDisclosure**](DisclosuresApi.md#GetDisclosure) | **Get** /disclosures/{disclosure_id} | Get disclosure
 [**ListDisclosures**](DisclosuresApi.md#ListDisclosures) | **Get** /disclosures | List disclosures
-[**ListDisclosuresMaster**](DisclosuresApi.md#ListDisclosuresMaster) | **Get** /disclosures/masters | List master disclosures
 
 
 
@@ -34,7 +32,7 @@ import (
 )
 
 func main() {
-    disclosure := *openapiclient.NewDisclosure(openapiclient.disclosure_type("REG_DD"), "1.0", "ACKNOWLEDGED", time.Now()) // Disclosure | Disclosure to create.
+    disclosure := *openapiclient.NewDisclosure(time.Now(), "ACKNOWLEDGED", openapiclient.disclosure_type("REG_DD"), "1.0") // Disclosure | Disclosure to create.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -64,72 +62,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Disclosure**](Disclosure.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateMasterDisclosure
-
-> MasterDisclosure CreateMasterDisclosure(ctx).MasterDisclosure(masterDisclosure).Execute()
-
-Create master disclosure
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    masterDisclosure := *openapiclient.NewMasterDisclosure(openapiclient.disclosure_type("REG_DD"), "1.0") // MasterDisclosure | Master disclosure to create.
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DisclosuresApi.CreateMasterDisclosure(context.Background()).MasterDisclosure(masterDisclosure).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DisclosuresApi.CreateMasterDisclosure``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateMasterDisclosure`: MasterDisclosure
-    fmt.Fprintf(os.Stdout, "Response from `DisclosuresApi.CreateMasterDisclosure`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateMasterDisclosureRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **masterDisclosure** | [**MasterDisclosure**](MasterDisclosure.md) | Master disclosure to create. | 
-
-### Return type
-
-[**MasterDisclosure**](MasterDisclosure.md)
 
 ### Authorization
 
@@ -274,74 +206,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DisclosureList**](DisclosureList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListDisclosuresMaster
-
-> MasterDisclosureList ListDisclosuresMaster(ctx).Limit(limit).PageToken(pageToken).Execute()
-
-List master disclosures
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    limit := int32(100) // int32 |  (optional) (default to 100)
-    pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DisclosuresApi.ListDisclosuresMaster(context.Background()).Limit(limit).PageToken(pageToken).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DisclosuresApi.ListDisclosuresMaster``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListDisclosuresMaster`: MasterDisclosureList
-    fmt.Fprintf(os.Stdout, "Response from `DisclosuresApi.ListDisclosuresMaster`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListDisclosuresMasterRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | [default to 100]
- **pageToken** | **string** |  | 
-
-### Return type
-
-[**MasterDisclosureList**](MasterDisclosureList.md)
 
 ### Authorization
 

@@ -16,11 +16,11 @@ import (
 
 // AddVendorAccountFailure struct for AddVendorAccountFailure
 type AddVendorAccountFailure struct {
-	// The vendor account ID for the account that failed. For Plaid, this is an `account_id`.
-	VendorAccountId string                       `json:"vendor_account_id"`
-	Reason          AddVendorAccountsErrorReason `json:"reason"`
+	Reason AddVendorAccountsErrorReason `json:"reason"`
 	// A human-readable message describing the reason for the failure.
 	ReasonDescription string `json:"reason_description"`
+	// The vendor account ID for the account that failed. For Plaid, this is an `account_id`.
+	VendorAccountId string `json:"vendor_account_id"`
 	// The display_message returned by the vendor. Only returned if reason is set to `PROVIDER_ERROR`. For Plaid, this is the `display_message`.
 	VendorErrorMessage *string `json:"vendor_error_message,omitempty"`
 	// A unique identifier for the request from the vendor, which can be used for troubleshooting. Only returned if reason is set to `PROVIDER_ERROR`.
@@ -31,11 +31,11 @@ type AddVendorAccountFailure struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddVendorAccountFailure(vendorAccountId string, reason AddVendorAccountsErrorReason, reasonDescription string) *AddVendorAccountFailure {
+func NewAddVendorAccountFailure(reason AddVendorAccountsErrorReason, reasonDescription string, vendorAccountId string) *AddVendorAccountFailure {
 	this := AddVendorAccountFailure{}
-	this.VendorAccountId = vendorAccountId
 	this.Reason = reason
 	this.ReasonDescription = reasonDescription
+	this.VendorAccountId = vendorAccountId
 	return &this
 }
 
@@ -45,30 +45,6 @@ func NewAddVendorAccountFailure(vendorAccountId string, reason AddVendorAccounts
 func NewAddVendorAccountFailureWithDefaults() *AddVendorAccountFailure {
 	this := AddVendorAccountFailure{}
 	return &this
-}
-
-// GetVendorAccountId returns the VendorAccountId field value
-func (o *AddVendorAccountFailure) GetVendorAccountId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.VendorAccountId
-}
-
-// GetVendorAccountIdOk returns a tuple with the VendorAccountId field value
-// and a boolean to check if the value has been set.
-func (o *AddVendorAccountFailure) GetVendorAccountIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.VendorAccountId, true
-}
-
-// SetVendorAccountId sets field value
-func (o *AddVendorAccountFailure) SetVendorAccountId(v string) {
-	o.VendorAccountId = v
 }
 
 // GetReason returns the Reason field value
@@ -117,6 +93,30 @@ func (o *AddVendorAccountFailure) GetReasonDescriptionOk() (*string, bool) {
 // SetReasonDescription sets field value
 func (o *AddVendorAccountFailure) SetReasonDescription(v string) {
 	o.ReasonDescription = v
+}
+
+// GetVendorAccountId returns the VendorAccountId field value
+func (o *AddVendorAccountFailure) GetVendorAccountId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.VendorAccountId
+}
+
+// GetVendorAccountIdOk returns a tuple with the VendorAccountId field value
+// and a boolean to check if the value has been set.
+func (o *AddVendorAccountFailure) GetVendorAccountIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VendorAccountId, true
+}
+
+// SetVendorAccountId sets field value
+func (o *AddVendorAccountFailure) SetVendorAccountId(v string) {
+	o.VendorAccountId = v
 }
 
 // GetVendorErrorMessage returns the VendorErrorMessage field value if set, zero value otherwise.
@@ -186,13 +186,13 @@ func (o *AddVendorAccountFailure) SetVendorRequestId(v string) {
 func (o AddVendorAccountFailure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["vendor_account_id"] = o.VendorAccountId
-	}
-	if true {
 		toSerialize["reason"] = o.Reason
 	}
 	if true {
 		toSerialize["reason_description"] = o.ReasonDescription
+	}
+	if true {
+		toSerialize["vendor_account_id"] = o.VendorAccountId
 	}
 	if o.VendorErrorMessage != nil {
 		toSerialize["vendor_error_message"] = o.VendorErrorMessage

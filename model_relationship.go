@@ -16,21 +16,21 @@ import (
 
 // Relationship struct for Relationship
 type Relationship struct {
+	// Customer that the current account is associated with
+	CustomerId string `json:"customer_id"`
 	// ID of account relationship
 	Id               *string                 `json:"id,omitempty"`
 	RelationshipType AccountRelationshipType `json:"relationship_type"`
-	// Customer that the current account is associated with
-	CustomerId string `json:"customer_id"`
 }
 
 // NewRelationship instantiates a new Relationship object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRelationship(relationshipType AccountRelationshipType, customerId string) *Relationship {
+func NewRelationship(customerId string, relationshipType AccountRelationshipType) *Relationship {
 	this := Relationship{}
-	this.RelationshipType = relationshipType
 	this.CustomerId = customerId
+	this.RelationshipType = relationshipType
 	return &this
 }
 
@@ -40,6 +40,30 @@ func NewRelationship(relationshipType AccountRelationshipType, customerId string
 func NewRelationshipWithDefaults() *Relationship {
 	this := Relationship{}
 	return &this
+}
+
+// GetCustomerId returns the CustomerId field value
+func (o *Relationship) GetCustomerId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value
+// and a boolean to check if the value has been set.
+func (o *Relationship) GetCustomerIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CustomerId, true
+}
+
+// SetCustomerId sets field value
+func (o *Relationship) SetCustomerId(v string) {
+	o.CustomerId = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -98,40 +122,16 @@ func (o *Relationship) SetRelationshipType(v AccountRelationshipType) {
 	o.RelationshipType = v
 }
 
-// GetCustomerId returns the CustomerId field value
-func (o *Relationship) GetCustomerId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CustomerId
-}
-
-// GetCustomerIdOk returns a tuple with the CustomerId field value
-// and a boolean to check if the value has been set.
-func (o *Relationship) GetCustomerIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CustomerId, true
-}
-
-// SetCustomerId sets field value
-func (o *Relationship) SetCustomerId(v string) {
-	o.CustomerId = v
-}
-
 func (o Relationship) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["customer_id"] = o.CustomerId
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["relationship_type"] = o.RelationshipType
-	}
-	if true {
-		toSerialize["customer_id"] = o.CustomerId
 	}
 	return json.Marshal(toSerialize)
 }

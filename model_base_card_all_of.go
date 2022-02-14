@@ -17,39 +17,39 @@ import (
 
 // BaseCardAllOf struct for BaseCardAllOf
 type BaseCardAllOf struct {
-	// Card ID
-	Id *string `json:"id,omitempty"`
-	// The bin number
-	Bin *string `json:"bin,omitempty"`
-	// The ID of the customer to whom the card will be issued
-	CustomerId *string `json:"customer_id,omitempty"`
 	// The ID of the account to which the card will be linked
 	AccountId *string `json:"account_id,omitempty"`
-	// Indicates the type of card to be issued
-	Type       *string     `json:"type,omitempty"`
-	EmbossName *EmbossName `json:"emboss_name,omitempty"`
-	// The last 4 digits of the card PAN
-	LastFour *string `json:"last_four,omitempty"`
+	// The bin number
+	Bin       *string    `json:"bin,omitempty"`
+	CardBrand *CardBrand `json:"card_brand,omitempty"`
 	// The card product to which the card is attached
-	CardProductId   *string    `json:"card_product_id,omitempty"`
-	CardBrand       *CardBrand `json:"card_brand,omitempty"`
-	ExpirationYear  *string    `json:"expiration_year,omitempty"`
-	ExpirationMonth *string    `json:"expiration_month,omitempty"`
-	// The timestamp representing when the card would expire at
-	ExpirationTime *time.Time `json:"expiration_time,omitempty"`
+	CardProductId *string `json:"card_product_id,omitempty"`
 	// The timestamp representing when the card issuance request was made
 	CreationTime *time.Time `json:"creation_time,omitempty"`
+	// The ID of the customer to whom the card will be issued
+	CustomerId      *string     `json:"customer_id,omitempty"`
+	EmbossName      *EmbossName `json:"emboss_name,omitempty"`
+	ExpirationMonth *string     `json:"expiration_month,omitempty"`
+	// The timestamp representing when the card would expire at
+	ExpirationTime *time.Time `json:"expiration_time,omitempty"`
+	ExpirationYear *string    `json:"expiration_year,omitempty"`
+	// Card ID
+	Id *string `json:"id,omitempty"`
+	// The last 4 digits of the card PAN
+	LastFour *string `json:"last_four,omitempty"`
 	// The timestamp representing when the card was last modified at
 	LastModifiedTime *time.Time `json:"last_modified_time,omitempty"`
-	// If this card was reissued, this ID refers to the card that replaced it.
-	ReissuedToId *string `json:"reissued_to_id,omitempty"`
-	// When reissuing a card, specify the card to be replaced here. When getting a card's details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced.
-	ReissuedFromId *string `json:"reissued_from_id,omitempty"`
-	// The reason the card needs to be reissued
-	ReissueReason *string   `json:"reissue_reason,omitempty"`
-	Shipping      *Shipping `json:"shipping,omitempty"`
 	// Additional data to include in the request structured as key-value pairs
 	Metadata *map[string]string `json:"metadata,omitempty"`
+	// The reason the card needs to be reissued
+	ReissueReason *string `json:"reissue_reason,omitempty"`
+	// When reissuing a card, specify the card to be replaced here. When getting a card's details, if this card was issued as a reissuance of another card, this ID refers to the card was replaced.
+	ReissuedFromId *string `json:"reissued_from_id,omitempty"`
+	// If this card was reissued, this ID refers to the card that replaced it.
+	ReissuedToId *string   `json:"reissued_to_id,omitempty"`
+	Shipping     *Shipping `json:"shipping,omitempty"`
+	// Indicates the type of card to be issued
+	Type *string `json:"type,omitempty"`
 }
 
 // NewBaseCardAllOf instantiates a new BaseCardAllOf object
@@ -67,102 +67,6 @@ func NewBaseCardAllOf() *BaseCardAllOf {
 func NewBaseCardAllOfWithDefaults() *BaseCardAllOf {
 	this := BaseCardAllOf{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *BaseCardAllOf) SetId(v string) {
-	o.Id = &v
-}
-
-// GetBin returns the Bin field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetBin() string {
-	if o == nil || o.Bin == nil {
-		var ret string
-		return ret
-	}
-	return *o.Bin
-}
-
-// GetBinOk returns a tuple with the Bin field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetBinOk() (*string, bool) {
-	if o == nil || o.Bin == nil {
-		return nil, false
-	}
-	return o.Bin, true
-}
-
-// HasBin returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasBin() bool {
-	if o != nil && o.Bin != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBin gets a reference to the given string and assigns it to the Bin field.
-func (o *BaseCardAllOf) SetBin(v string) {
-	o.Bin = &v
-}
-
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetCustomerId() string {
-	if o == nil || o.CustomerId == nil {
-		var ret string
-		return ret
-	}
-	return *o.CustomerId
-}
-
-// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetCustomerIdOk() (*string, bool) {
-	if o == nil || o.CustomerId == nil {
-		return nil, false
-	}
-	return o.CustomerId, true
-}
-
-// HasCustomerId returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasCustomerId() bool {
-	if o != nil && o.CustomerId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
-func (o *BaseCardAllOf) SetCustomerId(v string) {
-	o.CustomerId = &v
 }
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
@@ -197,132 +101,36 @@ func (o *BaseCardAllOf) SetAccountId(v string) {
 	o.AccountId = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetType() string {
-	if o == nil || o.Type == nil {
+// GetBin returns the Bin field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetBin() string {
+	if o == nil || o.Bin == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Bin
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetBinOk returns a tuple with the Bin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+func (o *BaseCardAllOf) GetBinOk() (*string, bool) {
+	if o == nil || o.Bin == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Bin, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasType() bool {
-	if o != nil && o.Type != nil {
+// HasBin returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasBin() bool {
+	if o != nil && o.Bin != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *BaseCardAllOf) SetType(v string) {
-	o.Type = &v
-}
-
-// GetEmbossName returns the EmbossName field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetEmbossName() EmbossName {
-	if o == nil || o.EmbossName == nil {
-		var ret EmbossName
-		return ret
-	}
-	return *o.EmbossName
-}
-
-// GetEmbossNameOk returns a tuple with the EmbossName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetEmbossNameOk() (*EmbossName, bool) {
-	if o == nil || o.EmbossName == nil {
-		return nil, false
-	}
-	return o.EmbossName, true
-}
-
-// HasEmbossName returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasEmbossName() bool {
-	if o != nil && o.EmbossName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEmbossName gets a reference to the given EmbossName and assigns it to the EmbossName field.
-func (o *BaseCardAllOf) SetEmbossName(v EmbossName) {
-	o.EmbossName = &v
-}
-
-// GetLastFour returns the LastFour field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetLastFour() string {
-	if o == nil || o.LastFour == nil {
-		var ret string
-		return ret
-	}
-	return *o.LastFour
-}
-
-// GetLastFourOk returns a tuple with the LastFour field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetLastFourOk() (*string, bool) {
-	if o == nil || o.LastFour == nil {
-		return nil, false
-	}
-	return o.LastFour, true
-}
-
-// HasLastFour returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasLastFour() bool {
-	if o != nil && o.LastFour != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastFour gets a reference to the given string and assigns it to the LastFour field.
-func (o *BaseCardAllOf) SetLastFour(v string) {
-	o.LastFour = &v
-}
-
-// GetCardProductId returns the CardProductId field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetCardProductId() string {
-	if o == nil || o.CardProductId == nil {
-		var ret string
-		return ret
-	}
-	return *o.CardProductId
-}
-
-// GetCardProductIdOk returns a tuple with the CardProductId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetCardProductIdOk() (*string, bool) {
-	if o == nil || o.CardProductId == nil {
-		return nil, false
-	}
-	return o.CardProductId, true
-}
-
-// HasCardProductId returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasCardProductId() bool {
-	if o != nil && o.CardProductId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCardProductId gets a reference to the given string and assigns it to the CardProductId field.
-func (o *BaseCardAllOf) SetCardProductId(v string) {
-	o.CardProductId = &v
+// SetBin gets a reference to the given string and assigns it to the Bin field.
+func (o *BaseCardAllOf) SetBin(v string) {
+	o.Bin = &v
 }
 
 // GetCardBrand returns the CardBrand field value if set, zero value otherwise.
@@ -357,36 +165,132 @@ func (o *BaseCardAllOf) SetCardBrand(v CardBrand) {
 	o.CardBrand = &v
 }
 
-// GetExpirationYear returns the ExpirationYear field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetExpirationYear() string {
-	if o == nil || o.ExpirationYear == nil {
+// GetCardProductId returns the CardProductId field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetCardProductId() string {
+	if o == nil || o.CardProductId == nil {
 		var ret string
 		return ret
 	}
-	return *o.ExpirationYear
+	return *o.CardProductId
 }
 
-// GetExpirationYearOk returns a tuple with the ExpirationYear field value if set, nil otherwise
+// GetCardProductIdOk returns a tuple with the CardProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetExpirationYearOk() (*string, bool) {
-	if o == nil || o.ExpirationYear == nil {
+func (o *BaseCardAllOf) GetCardProductIdOk() (*string, bool) {
+	if o == nil || o.CardProductId == nil {
 		return nil, false
 	}
-	return o.ExpirationYear, true
+	return o.CardProductId, true
 }
 
-// HasExpirationYear returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasExpirationYear() bool {
-	if o != nil && o.ExpirationYear != nil {
+// HasCardProductId returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasCardProductId() bool {
+	if o != nil && o.CardProductId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetExpirationYear gets a reference to the given string and assigns it to the ExpirationYear field.
-func (o *BaseCardAllOf) SetExpirationYear(v string) {
-	o.ExpirationYear = &v
+// SetCardProductId gets a reference to the given string and assigns it to the CardProductId field.
+func (o *BaseCardAllOf) SetCardProductId(v string) {
+	o.CardProductId = &v
+}
+
+// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetCreationTime() time.Time {
+	if o == nil || o.CreationTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreationTime
+}
+
+// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCardAllOf) GetCreationTimeOk() (*time.Time, bool) {
+	if o == nil || o.CreationTime == nil {
+		return nil, false
+	}
+	return o.CreationTime, true
+}
+
+// HasCreationTime returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasCreationTime() bool {
+	if o != nil && o.CreationTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
+func (o *BaseCardAllOf) SetCreationTime(v time.Time) {
+	o.CreationTime = &v
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetCustomerId() string {
+	if o == nil || o.CustomerId == nil {
+		var ret string
+		return ret
+	}
+	return *o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCardAllOf) GetCustomerIdOk() (*string, bool) {
+	if o == nil || o.CustomerId == nil {
+		return nil, false
+	}
+	return o.CustomerId, true
+}
+
+// HasCustomerId returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasCustomerId() bool {
+	if o != nil && o.CustomerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+func (o *BaseCardAllOf) SetCustomerId(v string) {
+	o.CustomerId = &v
+}
+
+// GetEmbossName returns the EmbossName field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetEmbossName() EmbossName {
+	if o == nil || o.EmbossName == nil {
+		var ret EmbossName
+		return ret
+	}
+	return *o.EmbossName
+}
+
+// GetEmbossNameOk returns a tuple with the EmbossName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCardAllOf) GetEmbossNameOk() (*EmbossName, bool) {
+	if o == nil || o.EmbossName == nil {
+		return nil, false
+	}
+	return o.EmbossName, true
+}
+
+// HasEmbossName returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasEmbossName() bool {
+	if o != nil && o.EmbossName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEmbossName gets a reference to the given EmbossName and assigns it to the EmbossName field.
+func (o *BaseCardAllOf) SetEmbossName(v EmbossName) {
+	o.EmbossName = &v
 }
 
 // GetExpirationMonth returns the ExpirationMonth field value if set, zero value otherwise.
@@ -453,36 +357,100 @@ func (o *BaseCardAllOf) SetExpirationTime(v time.Time) {
 	o.ExpirationTime = &v
 }
 
-// GetCreationTime returns the CreationTime field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetCreationTime() time.Time {
-	if o == nil || o.CreationTime == nil {
-		var ret time.Time
+// GetExpirationYear returns the ExpirationYear field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetExpirationYear() string {
+	if o == nil || o.ExpirationYear == nil {
+		var ret string
 		return ret
 	}
-	return *o.CreationTime
+	return *o.ExpirationYear
 }
 
-// GetCreationTimeOk returns a tuple with the CreationTime field value if set, nil otherwise
+// GetExpirationYearOk returns a tuple with the ExpirationYear field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetCreationTimeOk() (*time.Time, bool) {
-	if o == nil || o.CreationTime == nil {
+func (o *BaseCardAllOf) GetExpirationYearOk() (*string, bool) {
+	if o == nil || o.ExpirationYear == nil {
 		return nil, false
 	}
-	return o.CreationTime, true
+	return o.ExpirationYear, true
 }
 
-// HasCreationTime returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasCreationTime() bool {
-	if o != nil && o.CreationTime != nil {
+// HasExpirationYear returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasExpirationYear() bool {
+	if o != nil && o.ExpirationYear != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCreationTime gets a reference to the given time.Time and assigns it to the CreationTime field.
-func (o *BaseCardAllOf) SetCreationTime(v time.Time) {
-	o.CreationTime = &v
+// SetExpirationYear gets a reference to the given string and assigns it to the ExpirationYear field.
+func (o *BaseCardAllOf) SetExpirationYear(v string) {
+	o.ExpirationYear = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCardAllOf) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *BaseCardAllOf) SetId(v string) {
+	o.Id = &v
+}
+
+// GetLastFour returns the LastFour field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetLastFour() string {
+	if o == nil || o.LastFour == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastFour
+}
+
+// GetLastFourOk returns a tuple with the LastFour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCardAllOf) GetLastFourOk() (*string, bool) {
+	if o == nil || o.LastFour == nil {
+		return nil, false
+	}
+	return o.LastFour, true
+}
+
+// HasLastFour returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasLastFour() bool {
+	if o != nil && o.LastFour != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastFour gets a reference to the given string and assigns it to the LastFour field.
+func (o *BaseCardAllOf) SetLastFour(v string) {
+	o.LastFour = &v
 }
 
 // GetLastModifiedTime returns the LastModifiedTime field value if set, zero value otherwise.
@@ -517,68 +485,36 @@ func (o *BaseCardAllOf) SetLastModifiedTime(v time.Time) {
 	o.LastModifiedTime = &v
 }
 
-// GetReissuedToId returns the ReissuedToId field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetReissuedToId() string {
-	if o == nil || o.ReissuedToId == nil {
-		var ret string
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetMetadata() map[string]string {
+	if o == nil || o.Metadata == nil {
+		var ret map[string]string
 		return ret
 	}
-	return *o.ReissuedToId
+	return *o.Metadata
 }
 
-// GetReissuedToIdOk returns a tuple with the ReissuedToId field value if set, nil otherwise
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetReissuedToIdOk() (*string, bool) {
-	if o == nil || o.ReissuedToId == nil {
+func (o *BaseCardAllOf) GetMetadataOk() (*map[string]string, bool) {
+	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
-	return o.ReissuedToId, true
+	return o.Metadata, true
 }
 
-// HasReissuedToId returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasReissuedToId() bool {
-	if o != nil && o.ReissuedToId != nil {
+// HasMetadata returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetReissuedToId gets a reference to the given string and assigns it to the ReissuedToId field.
-func (o *BaseCardAllOf) SetReissuedToId(v string) {
-	o.ReissuedToId = &v
-}
-
-// GetReissuedFromId returns the ReissuedFromId field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetReissuedFromId() string {
-	if o == nil || o.ReissuedFromId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ReissuedFromId
-}
-
-// GetReissuedFromIdOk returns a tuple with the ReissuedFromId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetReissuedFromIdOk() (*string, bool) {
-	if o == nil || o.ReissuedFromId == nil {
-		return nil, false
-	}
-	return o.ReissuedFromId, true
-}
-
-// HasReissuedFromId returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasReissuedFromId() bool {
-	if o != nil && o.ReissuedFromId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReissuedFromId gets a reference to the given string and assigns it to the ReissuedFromId field.
-func (o *BaseCardAllOf) SetReissuedFromId(v string) {
-	o.ReissuedFromId = &v
+// SetMetadata gets a reference to the given map[string]string and assigns it to the Metadata field.
+func (o *BaseCardAllOf) SetMetadata(v map[string]string) {
+	o.Metadata = &v
 }
 
 // GetReissueReason returns the ReissueReason field value if set, zero value otherwise.
@@ -613,6 +549,70 @@ func (o *BaseCardAllOf) SetReissueReason(v string) {
 	o.ReissueReason = &v
 }
 
+// GetReissuedFromId returns the ReissuedFromId field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetReissuedFromId() string {
+	if o == nil || o.ReissuedFromId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ReissuedFromId
+}
+
+// GetReissuedFromIdOk returns a tuple with the ReissuedFromId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCardAllOf) GetReissuedFromIdOk() (*string, bool) {
+	if o == nil || o.ReissuedFromId == nil {
+		return nil, false
+	}
+	return o.ReissuedFromId, true
+}
+
+// HasReissuedFromId returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasReissuedFromId() bool {
+	if o != nil && o.ReissuedFromId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReissuedFromId gets a reference to the given string and assigns it to the ReissuedFromId field.
+func (o *BaseCardAllOf) SetReissuedFromId(v string) {
+	o.ReissuedFromId = &v
+}
+
+// GetReissuedToId returns the ReissuedToId field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetReissuedToId() string {
+	if o == nil || o.ReissuedToId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ReissuedToId
+}
+
+// GetReissuedToIdOk returns a tuple with the ReissuedToId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCardAllOf) GetReissuedToIdOk() (*string, bool) {
+	if o == nil || o.ReissuedToId == nil {
+		return nil, false
+	}
+	return o.ReissuedToId, true
+}
+
+// HasReissuedToId returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasReissuedToId() bool {
+	if o != nil && o.ReissuedToId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReissuedToId gets a reference to the given string and assigns it to the ReissuedToId field.
+func (o *BaseCardAllOf) SetReissuedToId(v string) {
+	o.ReissuedToId = &v
+}
+
 // GetShipping returns the Shipping field value if set, zero value otherwise.
 func (o *BaseCardAllOf) GetShipping() Shipping {
 	if o == nil || o.Shipping == nil {
@@ -645,69 +645,60 @@ func (o *BaseCardAllOf) SetShipping(v Shipping) {
 	o.Shipping = &v
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *BaseCardAllOf) GetMetadata() map[string]string {
-	if o == nil || o.Metadata == nil {
-		var ret map[string]string
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *BaseCardAllOf) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
 		return ret
 	}
-	return *o.Metadata
+	return *o.Type
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseCardAllOf) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || o.Metadata == nil {
+func (o *BaseCardAllOf) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
 		return nil, false
 	}
-	return o.Metadata, true
+	return o.Type, true
 }
 
-// HasMetadata returns a boolean if a field has been set.
-func (o *BaseCardAllOf) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+// HasType returns a boolean if a field has been set.
+func (o *BaseCardAllOf) HasType() bool {
+	if o != nil && o.Type != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadata gets a reference to the given map[string]string and assigns it to the Metadata field.
-func (o *BaseCardAllOf) SetMetadata(v map[string]string) {
-	o.Metadata = &v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *BaseCardAllOf) SetType(v string) {
+	o.Type = &v
 }
 
 func (o BaseCardAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	if o.AccountId != nil {
+		toSerialize["account_id"] = o.AccountId
 	}
 	if o.Bin != nil {
 		toSerialize["bin"] = o.Bin
 	}
-	if o.CustomerId != nil {
-		toSerialize["customer_id"] = o.CustomerId
-	}
-	if o.AccountId != nil {
-		toSerialize["account_id"] = o.AccountId
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.EmbossName != nil {
-		toSerialize["emboss_name"] = o.EmbossName
-	}
-	if o.LastFour != nil {
-		toSerialize["last_four"] = o.LastFour
+	if o.CardBrand != nil {
+		toSerialize["card_brand"] = o.CardBrand
 	}
 	if o.CardProductId != nil {
 		toSerialize["card_product_id"] = o.CardProductId
 	}
-	if o.CardBrand != nil {
-		toSerialize["card_brand"] = o.CardBrand
+	if o.CreationTime != nil {
+		toSerialize["creation_time"] = o.CreationTime
 	}
-	if o.ExpirationYear != nil {
-		toSerialize["expiration_year"] = o.ExpirationYear
+	if o.CustomerId != nil {
+		toSerialize["customer_id"] = o.CustomerId
+	}
+	if o.EmbossName != nil {
+		toSerialize["emboss_name"] = o.EmbossName
 	}
 	if o.ExpirationMonth != nil {
 		toSerialize["expiration_month"] = o.ExpirationMonth
@@ -715,26 +706,35 @@ func (o BaseCardAllOf) MarshalJSON() ([]byte, error) {
 	if o.ExpirationTime != nil {
 		toSerialize["expiration_time"] = o.ExpirationTime
 	}
-	if o.CreationTime != nil {
-		toSerialize["creation_time"] = o.CreationTime
+	if o.ExpirationYear != nil {
+		toSerialize["expiration_year"] = o.ExpirationYear
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if o.LastFour != nil {
+		toSerialize["last_four"] = o.LastFour
 	}
 	if o.LastModifiedTime != nil {
 		toSerialize["last_modified_time"] = o.LastModifiedTime
 	}
-	if o.ReissuedToId != nil {
-		toSerialize["reissued_to_id"] = o.ReissuedToId
-	}
-	if o.ReissuedFromId != nil {
-		toSerialize["reissued_from_id"] = o.ReissuedFromId
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
 	}
 	if o.ReissueReason != nil {
 		toSerialize["reissue_reason"] = o.ReissueReason
 	}
+	if o.ReissuedFromId != nil {
+		toSerialize["reissued_from_id"] = o.ReissuedFromId
+	}
+	if o.ReissuedToId != nil {
+		toSerialize["reissued_to_id"] = o.ReissuedToId
+	}
 	if o.Shipping != nil {
 		toSerialize["shipping"] = o.Shipping
 	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

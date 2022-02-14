@@ -16,10 +16,10 @@ import (
 
 // AccountCreationAllOf struct for AccountCreationAllOf
 type AccountCreationAllOf struct {
-	// List of the relationship for this account to the parties
-	Relationships *[]Relationship `json:"relationships,omitempty"`
 	// Account template ID
 	AccountTemplateId *string `json:"account_template_id,omitempty"`
+	// List of the relationship for this account to the parties
+	Relationships *[]Relationship `json:"relationships,omitempty"`
 }
 
 // NewAccountCreationAllOf instantiates a new AccountCreationAllOf object
@@ -37,38 +37,6 @@ func NewAccountCreationAllOf() *AccountCreationAllOf {
 func NewAccountCreationAllOfWithDefaults() *AccountCreationAllOf {
 	this := AccountCreationAllOf{}
 	return &this
-}
-
-// GetRelationships returns the Relationships field value if set, zero value otherwise.
-func (o *AccountCreationAllOf) GetRelationships() []Relationship {
-	if o == nil || o.Relationships == nil {
-		var ret []Relationship
-		return ret
-	}
-	return *o.Relationships
-}
-
-// GetRelationshipsOk returns a tuple with the Relationships field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountCreationAllOf) GetRelationshipsOk() (*[]Relationship, bool) {
-	if o == nil || o.Relationships == nil {
-		return nil, false
-	}
-	return o.Relationships, true
-}
-
-// HasRelationships returns a boolean if a field has been set.
-func (o *AccountCreationAllOf) HasRelationships() bool {
-	if o != nil && o.Relationships != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRelationships gets a reference to the given []Relationship and assigns it to the Relationships field.
-func (o *AccountCreationAllOf) SetRelationships(v []Relationship) {
-	o.Relationships = &v
 }
 
 // GetAccountTemplateId returns the AccountTemplateId field value if set, zero value otherwise.
@@ -103,13 +71,45 @@ func (o *AccountCreationAllOf) SetAccountTemplateId(v string) {
 	o.AccountTemplateId = &v
 }
 
+// GetRelationships returns the Relationships field value if set, zero value otherwise.
+func (o *AccountCreationAllOf) GetRelationships() []Relationship {
+	if o == nil || o.Relationships == nil {
+		var ret []Relationship
+		return ret
+	}
+	return *o.Relationships
+}
+
+// GetRelationshipsOk returns a tuple with the Relationships field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCreationAllOf) GetRelationshipsOk() (*[]Relationship, bool) {
+	if o == nil || o.Relationships == nil {
+		return nil, false
+	}
+	return o.Relationships, true
+}
+
+// HasRelationships returns a boolean if a field has been set.
+func (o *AccountCreationAllOf) HasRelationships() bool {
+	if o != nil && o.Relationships != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRelationships gets a reference to the given []Relationship and assigns it to the Relationships field.
+func (o *AccountCreationAllOf) SetRelationships(v []Relationship) {
+	o.Relationships = &v
+}
+
 func (o AccountCreationAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Relationships != nil {
-		toSerialize["relationships"] = o.Relationships
-	}
 	if o.AccountTemplateId != nil {
 		toSerialize["account_template_id"] = o.AccountTemplateId
+	}
+	if o.Relationships != nil {
+		toSerialize["relationships"] = o.Relationships
 	}
 	return json.Marshal(toSerialize)
 }

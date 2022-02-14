@@ -16,19 +16,19 @@ import (
 
 // Balance struct for Balance
 type Balance struct {
-	Type BalanceType `json:"type"`
 	// balance in ISO 4217 minor currency units
-	Balance int64 `json:"balance"`
+	Balance int64       `json:"balance"`
+	Type    BalanceType `json:"type"`
 }
 
 // NewBalance instantiates a new Balance object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBalance(type_ BalanceType, balance int64) *Balance {
+func NewBalance(balance int64, type_ BalanceType) *Balance {
 	this := Balance{}
-	this.Type = type_
 	this.Balance = balance
+	this.Type = type_
 	return &this
 }
 
@@ -38,30 +38,6 @@ func NewBalance(type_ BalanceType, balance int64) *Balance {
 func NewBalanceWithDefaults() *Balance {
 	this := Balance{}
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *Balance) GetType() BalanceType {
-	if o == nil {
-		var ret BalanceType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *Balance) GetTypeOk() (*BalanceType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *Balance) SetType(v BalanceType) {
-	o.Type = v
 }
 
 // GetBalance returns the Balance field value
@@ -88,13 +64,37 @@ func (o *Balance) SetBalance(v int64) {
 	o.Balance = v
 }
 
+// GetType returns the Type field value
+func (o *Balance) GetType() BalanceType {
+	if o == nil {
+		var ret BalanceType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *Balance) GetTypeOk() (*BalanceType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *Balance) SetType(v BalanceType) {
+	o.Type = v
+}
+
 func (o Balance) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["type"] = o.Type
+		toSerialize["balance"] = o.Balance
 	}
 	if true {
-		toSerialize["balance"] = o.Balance
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

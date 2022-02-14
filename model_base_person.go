@@ -17,31 +17,31 @@ import (
 
 // BasePerson struct for BasePerson
 type BasePerson struct {
-	// Customer unique identifier
-	Id *string `json:"id,omitempty"`
 	// The date and time the resource was created.
 	CreationTime *time.Time `json:"creation_time,omitempty"`
-	// The date and time the resource was last updated.
-	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
-	// Customer's middle name
-	MiddleName      *string   `json:"middle_name,omitempty"`
-	LegalAddress    *Address1 `json:"legal_address,omitempty"`
-	ShippingAddress *Address1 `json:"shipping_address,omitempty"`
-	// Customer's full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Input must match the pattern ^\\d{3}-\\d{2}-\\d{4}$. The response contains the last 4 digits only (e.g. 6789).
-	Ssn *string `json:"ssn,omitempty"`
 	// Customer's email
 	Email *string `json:"email,omitempty"`
-	// Customer's mobile phone number with country code in E.164 format
-	PhoneNumber *string            `json:"phone_number,omitempty"`
-	KycStatus   *CustomerKycStatus `json:"kyc_status,omitempty"`
+	// Customer unique identifier
+	Id *string `json:"id,omitempty"`
 	// Customer's KYC exemption
 	KycExempt *bool `json:"kyc_exempt,omitempty"`
 	// Date and time KYC was last run on the customer
-	KycLastRun *time.Time `json:"kyc_last_run,omitempty"`
-	// Customer's relationships with other accounts eg. guardian
-	RelatedCustomers *[]Relationship1 `json:"related_customers,omitempty"`
+	KycLastRun *time.Time         `json:"kyc_last_run,omitempty"`
+	KycStatus  *CustomerKycStatus `json:"kyc_status,omitempty"`
+	// The date and time the resource was last updated.
+	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
+	LegalAddress    *Address1  `json:"legal_address,omitempty"`
 	// User-supplied metadata. Do not use to store PII.
 	Metadata *map[string]interface{} `json:"metadata,omitempty"`
+	// Customer's middle name
+	MiddleName *string `json:"middle_name,omitempty"`
+	// Customer's mobile phone number with country code in E.164 format
+	PhoneNumber *string `json:"phone_number,omitempty"`
+	// Customer's relationships with other accounts eg. guardian
+	RelatedCustomers *[]Relationship1 `json:"related_customers,omitempty"`
+	ShippingAddress  *Address1        `json:"shipping_address,omitempty"`
+	// Customer's full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Input must match the pattern ^\\d{3}-\\d{2}-\\d{4}$. The response contains the last 4 digits only (e.g. 6789).
+	Ssn *string `json:"ssn,omitempty"`
 }
 
 // NewBasePerson instantiates a new BasePerson object
@@ -59,38 +59,6 @@ func NewBasePerson() *BasePerson {
 func NewBasePersonWithDefaults() *BasePerson {
 	this := BasePerson{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *BasePerson) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BasePerson) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *BasePerson) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *BasePerson) SetId(v string) {
-	o.Id = &v
 }
 
 // GetCreationTime returns the CreationTime field value if set, zero value otherwise.
@@ -125,166 +93,6 @@ func (o *BasePerson) SetCreationTime(v time.Time) {
 	o.CreationTime = &v
 }
 
-// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
-func (o *BasePerson) GetLastUpdatedTime() time.Time {
-	if o == nil || o.LastUpdatedTime == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.LastUpdatedTime
-}
-
-// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BasePerson) GetLastUpdatedTimeOk() (*time.Time, bool) {
-	if o == nil || o.LastUpdatedTime == nil {
-		return nil, false
-	}
-	return o.LastUpdatedTime, true
-}
-
-// HasLastUpdatedTime returns a boolean if a field has been set.
-func (o *BasePerson) HasLastUpdatedTime() bool {
-	if o != nil && o.LastUpdatedTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastUpdatedTime gets a reference to the given time.Time and assigns it to the LastUpdatedTime field.
-func (o *BasePerson) SetLastUpdatedTime(v time.Time) {
-	o.LastUpdatedTime = &v
-}
-
-// GetMiddleName returns the MiddleName field value if set, zero value otherwise.
-func (o *BasePerson) GetMiddleName() string {
-	if o == nil || o.MiddleName == nil {
-		var ret string
-		return ret
-	}
-	return *o.MiddleName
-}
-
-// GetMiddleNameOk returns a tuple with the MiddleName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BasePerson) GetMiddleNameOk() (*string, bool) {
-	if o == nil || o.MiddleName == nil {
-		return nil, false
-	}
-	return o.MiddleName, true
-}
-
-// HasMiddleName returns a boolean if a field has been set.
-func (o *BasePerson) HasMiddleName() bool {
-	if o != nil && o.MiddleName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMiddleName gets a reference to the given string and assigns it to the MiddleName field.
-func (o *BasePerson) SetMiddleName(v string) {
-	o.MiddleName = &v
-}
-
-// GetLegalAddress returns the LegalAddress field value if set, zero value otherwise.
-func (o *BasePerson) GetLegalAddress() Address1 {
-	if o == nil || o.LegalAddress == nil {
-		var ret Address1
-		return ret
-	}
-	return *o.LegalAddress
-}
-
-// GetLegalAddressOk returns a tuple with the LegalAddress field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BasePerson) GetLegalAddressOk() (*Address1, bool) {
-	if o == nil || o.LegalAddress == nil {
-		return nil, false
-	}
-	return o.LegalAddress, true
-}
-
-// HasLegalAddress returns a boolean if a field has been set.
-func (o *BasePerson) HasLegalAddress() bool {
-	if o != nil && o.LegalAddress != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLegalAddress gets a reference to the given Address1 and assigns it to the LegalAddress field.
-func (o *BasePerson) SetLegalAddress(v Address1) {
-	o.LegalAddress = &v
-}
-
-// GetShippingAddress returns the ShippingAddress field value if set, zero value otherwise.
-func (o *BasePerson) GetShippingAddress() Address1 {
-	if o == nil || o.ShippingAddress == nil {
-		var ret Address1
-		return ret
-	}
-	return *o.ShippingAddress
-}
-
-// GetShippingAddressOk returns a tuple with the ShippingAddress field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BasePerson) GetShippingAddressOk() (*Address1, bool) {
-	if o == nil || o.ShippingAddress == nil {
-		return nil, false
-	}
-	return o.ShippingAddress, true
-}
-
-// HasShippingAddress returns a boolean if a field has been set.
-func (o *BasePerson) HasShippingAddress() bool {
-	if o != nil && o.ShippingAddress != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetShippingAddress gets a reference to the given Address1 and assigns it to the ShippingAddress field.
-func (o *BasePerson) SetShippingAddress(v Address1) {
-	o.ShippingAddress = &v
-}
-
-// GetSsn returns the Ssn field value if set, zero value otherwise.
-func (o *BasePerson) GetSsn() string {
-	if o == nil || o.Ssn == nil {
-		var ret string
-		return ret
-	}
-	return *o.Ssn
-}
-
-// GetSsnOk returns a tuple with the Ssn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BasePerson) GetSsnOk() (*string, bool) {
-	if o == nil || o.Ssn == nil {
-		return nil, false
-	}
-	return o.Ssn, true
-}
-
-// HasSsn returns a boolean if a field has been set.
-func (o *BasePerson) HasSsn() bool {
-	if o != nil && o.Ssn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSsn gets a reference to the given string and assigns it to the Ssn field.
-func (o *BasePerson) SetSsn(v string) {
-	o.Ssn = &v
-}
-
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *BasePerson) GetEmail() string {
 	if o == nil || o.Email == nil {
@@ -317,68 +125,36 @@ func (o *BasePerson) SetEmail(v string) {
 	o.Email = &v
 }
 
-// GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
-func (o *BasePerson) GetPhoneNumber() string {
-	if o == nil || o.PhoneNumber == nil {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *BasePerson) GetId() string {
+	if o == nil || o.Id == nil {
 		var ret string
 		return ret
 	}
-	return *o.PhoneNumber
+	return *o.Id
 }
 
-// GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BasePerson) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || o.PhoneNumber == nil {
+func (o *BasePerson) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
-	return o.PhoneNumber, true
+	return o.Id, true
 }
 
-// HasPhoneNumber returns a boolean if a field has been set.
-func (o *BasePerson) HasPhoneNumber() bool {
-	if o != nil && o.PhoneNumber != nil {
+// HasId returns a boolean if a field has been set.
+func (o *BasePerson) HasId() bool {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPhoneNumber gets a reference to the given string and assigns it to the PhoneNumber field.
-func (o *BasePerson) SetPhoneNumber(v string) {
-	o.PhoneNumber = &v
-}
-
-// GetKycStatus returns the KycStatus field value if set, zero value otherwise.
-func (o *BasePerson) GetKycStatus() CustomerKycStatus {
-	if o == nil || o.KycStatus == nil {
-		var ret CustomerKycStatus
-		return ret
-	}
-	return *o.KycStatus
-}
-
-// GetKycStatusOk returns a tuple with the KycStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BasePerson) GetKycStatusOk() (*CustomerKycStatus, bool) {
-	if o == nil || o.KycStatus == nil {
-		return nil, false
-	}
-	return o.KycStatus, true
-}
-
-// HasKycStatus returns a boolean if a field has been set.
-func (o *BasePerson) HasKycStatus() bool {
-	if o != nil && o.KycStatus != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetKycStatus gets a reference to the given CustomerKycStatus and assigns it to the KycStatus field.
-func (o *BasePerson) SetKycStatus(v CustomerKycStatus) {
-	o.KycStatus = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *BasePerson) SetId(v string) {
+	o.Id = &v
 }
 
 // GetKycExempt returns the KycExempt field value if set, zero value otherwise.
@@ -445,36 +221,100 @@ func (o *BasePerson) SetKycLastRun(v time.Time) {
 	o.KycLastRun = &v
 }
 
-// GetRelatedCustomers returns the RelatedCustomers field value if set, zero value otherwise.
-func (o *BasePerson) GetRelatedCustomers() []Relationship1 {
-	if o == nil || o.RelatedCustomers == nil {
-		var ret []Relationship1
+// GetKycStatus returns the KycStatus field value if set, zero value otherwise.
+func (o *BasePerson) GetKycStatus() CustomerKycStatus {
+	if o == nil || o.KycStatus == nil {
+		var ret CustomerKycStatus
 		return ret
 	}
-	return *o.RelatedCustomers
+	return *o.KycStatus
 }
 
-// GetRelatedCustomersOk returns a tuple with the RelatedCustomers field value if set, nil otherwise
+// GetKycStatusOk returns a tuple with the KycStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BasePerson) GetRelatedCustomersOk() (*[]Relationship1, bool) {
-	if o == nil || o.RelatedCustomers == nil {
+func (o *BasePerson) GetKycStatusOk() (*CustomerKycStatus, bool) {
+	if o == nil || o.KycStatus == nil {
 		return nil, false
 	}
-	return o.RelatedCustomers, true
+	return o.KycStatus, true
 }
 
-// HasRelatedCustomers returns a boolean if a field has been set.
-func (o *BasePerson) HasRelatedCustomers() bool {
-	if o != nil && o.RelatedCustomers != nil {
+// HasKycStatus returns a boolean if a field has been set.
+func (o *BasePerson) HasKycStatus() bool {
+	if o != nil && o.KycStatus != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetRelatedCustomers gets a reference to the given []Relationship1 and assigns it to the RelatedCustomers field.
-func (o *BasePerson) SetRelatedCustomers(v []Relationship1) {
-	o.RelatedCustomers = &v
+// SetKycStatus gets a reference to the given CustomerKycStatus and assigns it to the KycStatus field.
+func (o *BasePerson) SetKycStatus(v CustomerKycStatus) {
+	o.KycStatus = &v
+}
+
+// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
+func (o *BasePerson) GetLastUpdatedTime() time.Time {
+	if o == nil || o.LastUpdatedTime == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastUpdatedTime
+}
+
+// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BasePerson) GetLastUpdatedTimeOk() (*time.Time, bool) {
+	if o == nil || o.LastUpdatedTime == nil {
+		return nil, false
+	}
+	return o.LastUpdatedTime, true
+}
+
+// HasLastUpdatedTime returns a boolean if a field has been set.
+func (o *BasePerson) HasLastUpdatedTime() bool {
+	if o != nil && o.LastUpdatedTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdatedTime gets a reference to the given time.Time and assigns it to the LastUpdatedTime field.
+func (o *BasePerson) SetLastUpdatedTime(v time.Time) {
+	o.LastUpdatedTime = &v
+}
+
+// GetLegalAddress returns the LegalAddress field value if set, zero value otherwise.
+func (o *BasePerson) GetLegalAddress() Address1 {
+	if o == nil || o.LegalAddress == nil {
+		var ret Address1
+		return ret
+	}
+	return *o.LegalAddress
+}
+
+// GetLegalAddressOk returns a tuple with the LegalAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BasePerson) GetLegalAddressOk() (*Address1, bool) {
+	if o == nil || o.LegalAddress == nil {
+		return nil, false
+	}
+	return o.LegalAddress, true
+}
+
+// HasLegalAddress returns a boolean if a field has been set.
+func (o *BasePerson) HasLegalAddress() bool {
+	if o != nil && o.LegalAddress != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLegalAddress gets a reference to the given Address1 and assigns it to the LegalAddress field.
+func (o *BasePerson) SetLegalAddress(v Address1) {
+	o.LegalAddress = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -509,37 +349,176 @@ func (o *BasePerson) SetMetadata(v map[string]interface{}) {
 	o.Metadata = &v
 }
 
+// GetMiddleName returns the MiddleName field value if set, zero value otherwise.
+func (o *BasePerson) GetMiddleName() string {
+	if o == nil || o.MiddleName == nil {
+		var ret string
+		return ret
+	}
+	return *o.MiddleName
+}
+
+// GetMiddleNameOk returns a tuple with the MiddleName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BasePerson) GetMiddleNameOk() (*string, bool) {
+	if o == nil || o.MiddleName == nil {
+		return nil, false
+	}
+	return o.MiddleName, true
+}
+
+// HasMiddleName returns a boolean if a field has been set.
+func (o *BasePerson) HasMiddleName() bool {
+	if o != nil && o.MiddleName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMiddleName gets a reference to the given string and assigns it to the MiddleName field.
+func (o *BasePerson) SetMiddleName(v string) {
+	o.MiddleName = &v
+}
+
+// GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
+func (o *BasePerson) GetPhoneNumber() string {
+	if o == nil || o.PhoneNumber == nil {
+		var ret string
+		return ret
+	}
+	return *o.PhoneNumber
+}
+
+// GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BasePerson) GetPhoneNumberOk() (*string, bool) {
+	if o == nil || o.PhoneNumber == nil {
+		return nil, false
+	}
+	return o.PhoneNumber, true
+}
+
+// HasPhoneNumber returns a boolean if a field has been set.
+func (o *BasePerson) HasPhoneNumber() bool {
+	if o != nil && o.PhoneNumber != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPhoneNumber gets a reference to the given string and assigns it to the PhoneNumber field.
+func (o *BasePerson) SetPhoneNumber(v string) {
+	o.PhoneNumber = &v
+}
+
+// GetRelatedCustomers returns the RelatedCustomers field value if set, zero value otherwise.
+func (o *BasePerson) GetRelatedCustomers() []Relationship1 {
+	if o == nil || o.RelatedCustomers == nil {
+		var ret []Relationship1
+		return ret
+	}
+	return *o.RelatedCustomers
+}
+
+// GetRelatedCustomersOk returns a tuple with the RelatedCustomers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BasePerson) GetRelatedCustomersOk() (*[]Relationship1, bool) {
+	if o == nil || o.RelatedCustomers == nil {
+		return nil, false
+	}
+	return o.RelatedCustomers, true
+}
+
+// HasRelatedCustomers returns a boolean if a field has been set.
+func (o *BasePerson) HasRelatedCustomers() bool {
+	if o != nil && o.RelatedCustomers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRelatedCustomers gets a reference to the given []Relationship1 and assigns it to the RelatedCustomers field.
+func (o *BasePerson) SetRelatedCustomers(v []Relationship1) {
+	o.RelatedCustomers = &v
+}
+
+// GetShippingAddress returns the ShippingAddress field value if set, zero value otherwise.
+func (o *BasePerson) GetShippingAddress() Address1 {
+	if o == nil || o.ShippingAddress == nil {
+		var ret Address1
+		return ret
+	}
+	return *o.ShippingAddress
+}
+
+// GetShippingAddressOk returns a tuple with the ShippingAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BasePerson) GetShippingAddressOk() (*Address1, bool) {
+	if o == nil || o.ShippingAddress == nil {
+		return nil, false
+	}
+	return o.ShippingAddress, true
+}
+
+// HasShippingAddress returns a boolean if a field has been set.
+func (o *BasePerson) HasShippingAddress() bool {
+	if o != nil && o.ShippingAddress != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetShippingAddress gets a reference to the given Address1 and assigns it to the ShippingAddress field.
+func (o *BasePerson) SetShippingAddress(v Address1) {
+	o.ShippingAddress = &v
+}
+
+// GetSsn returns the Ssn field value if set, zero value otherwise.
+func (o *BasePerson) GetSsn() string {
+	if o == nil || o.Ssn == nil {
+		var ret string
+		return ret
+	}
+	return *o.Ssn
+}
+
+// GetSsnOk returns a tuple with the Ssn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BasePerson) GetSsnOk() (*string, bool) {
+	if o == nil || o.Ssn == nil {
+		return nil, false
+	}
+	return o.Ssn, true
+}
+
+// HasSsn returns a boolean if a field has been set.
+func (o *BasePerson) HasSsn() bool {
+	if o != nil && o.Ssn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSsn gets a reference to the given string and assigns it to the Ssn field.
+func (o *BasePerson) SetSsn(v string) {
+	o.Ssn = &v
+}
+
 func (o BasePerson) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
 	if o.CreationTime != nil {
 		toSerialize["creation_time"] = o.CreationTime
-	}
-	if o.LastUpdatedTime != nil {
-		toSerialize["last_updated_time"] = o.LastUpdatedTime
-	}
-	if o.MiddleName != nil {
-		toSerialize["middle_name"] = o.MiddleName
-	}
-	if o.LegalAddress != nil {
-		toSerialize["legal_address"] = o.LegalAddress
-	}
-	if o.ShippingAddress != nil {
-		toSerialize["shipping_address"] = o.ShippingAddress
-	}
-	if o.Ssn != nil {
-		toSerialize["ssn"] = o.Ssn
 	}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email
 	}
-	if o.PhoneNumber != nil {
-		toSerialize["phone_number"] = o.PhoneNumber
-	}
-	if o.KycStatus != nil {
-		toSerialize["kyc_status"] = o.KycStatus
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if o.KycExempt != nil {
 		toSerialize["kyc_exempt"] = o.KycExempt
@@ -547,11 +526,32 @@ func (o BasePerson) MarshalJSON() ([]byte, error) {
 	if o.KycLastRun != nil {
 		toSerialize["kyc_last_run"] = o.KycLastRun
 	}
-	if o.RelatedCustomers != nil {
-		toSerialize["related_customers"] = o.RelatedCustomers
+	if o.KycStatus != nil {
+		toSerialize["kyc_status"] = o.KycStatus
+	}
+	if o.LastUpdatedTime != nil {
+		toSerialize["last_updated_time"] = o.LastUpdatedTime
+	}
+	if o.LegalAddress != nil {
+		toSerialize["legal_address"] = o.LegalAddress
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
+	}
+	if o.MiddleName != nil {
+		toSerialize["middle_name"] = o.MiddleName
+	}
+	if o.PhoneNumber != nil {
+		toSerialize["phone_number"] = o.PhoneNumber
+	}
+	if o.RelatedCustomers != nil {
+		toSerialize["related_customers"] = o.RelatedCustomers
+	}
+	if o.ShippingAddress != nil {
+		toSerialize["shipping_address"] = o.ShippingAddress
+	}
+	if o.Ssn != nil {
+		toSerialize["ssn"] = o.Ssn
 	}
 	return json.Marshal(toSerialize)
 }

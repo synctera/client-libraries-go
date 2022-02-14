@@ -16,13 +16,13 @@ import (
 
 // WebhookConfig struct for WebhookConfig
 type WebhookConfig struct {
+	CustomHeader *CustomHeaders `json:"custom_header,omitempty"`
+	// password for access webhook endpoint
+	Password *string `json:"password,omitempty"`
 	// url of webhook endpoint
 	Url *string `json:"url,omitempty"`
 	// username for access webhook endpoint
 	Username *string `json:"username,omitempty"`
-	// password for access webhook endpoint
-	Password     *string        `json:"password,omitempty"`
-	CustomHeader *CustomHeaders `json:"custom_header,omitempty"`
 }
 
 // NewWebhookConfig instantiates a new WebhookConfig object
@@ -40,6 +40,70 @@ func NewWebhookConfig() *WebhookConfig {
 func NewWebhookConfigWithDefaults() *WebhookConfig {
 	this := WebhookConfig{}
 	return &this
+}
+
+// GetCustomHeader returns the CustomHeader field value if set, zero value otherwise.
+func (o *WebhookConfig) GetCustomHeader() CustomHeaders {
+	if o == nil || o.CustomHeader == nil {
+		var ret CustomHeaders
+		return ret
+	}
+	return *o.CustomHeader
+}
+
+// GetCustomHeaderOk returns a tuple with the CustomHeader field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebhookConfig) GetCustomHeaderOk() (*CustomHeaders, bool) {
+	if o == nil || o.CustomHeader == nil {
+		return nil, false
+	}
+	return o.CustomHeader, true
+}
+
+// HasCustomHeader returns a boolean if a field has been set.
+func (o *WebhookConfig) HasCustomHeader() bool {
+	if o != nil && o.CustomHeader != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomHeader gets a reference to the given CustomHeaders and assigns it to the CustomHeader field.
+func (o *WebhookConfig) SetCustomHeader(v CustomHeaders) {
+	o.CustomHeader = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *WebhookConfig) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebhookConfig) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *WebhookConfig) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *WebhookConfig) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetUrl returns the Url field value if set, zero value otherwise.
@@ -106,83 +170,19 @@ func (o *WebhookConfig) SetUsername(v string) {
 	o.Username = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *WebhookConfig) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WebhookConfig) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *WebhookConfig) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *WebhookConfig) SetPassword(v string) {
-	o.Password = &v
-}
-
-// GetCustomHeader returns the CustomHeader field value if set, zero value otherwise.
-func (o *WebhookConfig) GetCustomHeader() CustomHeaders {
-	if o == nil || o.CustomHeader == nil {
-		var ret CustomHeaders
-		return ret
-	}
-	return *o.CustomHeader
-}
-
-// GetCustomHeaderOk returns a tuple with the CustomHeader field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *WebhookConfig) GetCustomHeaderOk() (*CustomHeaders, bool) {
-	if o == nil || o.CustomHeader == nil {
-		return nil, false
-	}
-	return o.CustomHeader, true
-}
-
-// HasCustomHeader returns a boolean if a field has been set.
-func (o *WebhookConfig) HasCustomHeader() bool {
-	if o != nil && o.CustomHeader != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomHeader gets a reference to the given CustomHeaders and assigns it to the CustomHeader field.
-func (o *WebhookConfig) SetCustomHeader(v CustomHeaders) {
-	o.CustomHeader = &v
-}
-
 func (o WebhookConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CustomHeader != nil {
+		toSerialize["custom_header"] = o.CustomHeader
+	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
+	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
-	if o.CustomHeader != nil {
-		toSerialize["custom_header"] = o.CustomHeader
 	}
 	return json.Marshal(toSerialize)
 }

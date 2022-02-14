@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Program name | [optional] 
 **CardBrand** | Pointer to [**CardBrand**](CardBrand.md) |  | [optional] 
 **CardCategory** | Pointer to [**CardCategory**](CardCategory.md) |  | [optional] 
 **CardProductType** | Pointer to [**CardProductType**](CardProductType.md) |  | [optional] 
-**StartDate** | Pointer to **time.Time** | The time when program becomes active | [optional] 
 **EndDate** | Pointer to **time.Time** | The time when program became inactive | [optional] 
+**Name** | Pointer to **string** | Program name | [optional] 
+**StartDate** | Pointer to **time.Time** | The time when program becomes active | [optional] 
 
 ## Methods
 
@@ -29,31 +29,6 @@ will change when the set of required properties is changed
 NewCardProgramUpdateRequestWithDefaults instantiates a new CardProgramUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *CardProgramUpdateRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CardProgramUpdateRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CardProgramUpdateRequest) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *CardProgramUpdateRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetCardBrand
 
@@ -130,31 +105,6 @@ SetCardProductType sets CardProductType field to given value.
 
 HasCardProductType returns a boolean if a field has been set.
 
-### GetStartDate
-
-`func (o *CardProgramUpdateRequest) GetStartDate() time.Time`
-
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
-
-### GetStartDateOk
-
-`func (o *CardProgramUpdateRequest) GetStartDateOk() (*time.Time, bool)`
-
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartDate
-
-`func (o *CardProgramUpdateRequest) SetStartDate(v time.Time)`
-
-SetStartDate sets StartDate field to given value.
-
-### HasStartDate
-
-`func (o *CardProgramUpdateRequest) HasStartDate() bool`
-
-HasStartDate returns a boolean if a field has been set.
-
 ### GetEndDate
 
 `func (o *CardProgramUpdateRequest) GetEndDate() time.Time`
@@ -179,6 +129,56 @@ SetEndDate sets EndDate field to given value.
 `func (o *CardProgramUpdateRequest) HasEndDate() bool`
 
 HasEndDate returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *CardProgramUpdateRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CardProgramUpdateRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CardProgramUpdateRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CardProgramUpdateRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetStartDate
+
+`func (o *CardProgramUpdateRequest) GetStartDate() time.Time`
+
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+
+### GetStartDateOk
+
+`func (o *CardProgramUpdateRequest) GetStartDateOk() (*time.Time, bool)`
+
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartDate
+
+`func (o *CardProgramUpdateRequest) SetStartDate(v time.Time)`
+
+SetStartDate sets StartDate field to given value.
+
+### HasStartDate
+
+`func (o *CardProgramUpdateRequest) HasStartDate() bool`
+
+HasStartDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

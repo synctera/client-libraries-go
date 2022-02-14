@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**GetWatchlistSubscription**](WatchlistApi.md#GetWatchlistSubscription) | **Get** /customers/{customer_id}/watchlists/subscriptions/{subscription_id} | Retrieve watchlist monitoring subscription
 [**ListWatchlistAlerts**](WatchlistApi.md#ListWatchlistAlerts) | **Get** /customers/{customer_id}/watchlists/alerts | List watchlist monitoring alerts for a customer
 [**ListWatchlistSubscriptions**](WatchlistApi.md#ListWatchlistSubscriptions) | **Get** /customers/{customer_id}/watchlists/subscriptions | List watchlist monitoring subscriptions for a customer
-[**ProcessWatchlistEvent**](WatchlistApi.md#ProcessWatchlistEvent) | **Post** /kyc/watchlists/{vendor_id} | Process incoming webhooks coming from external vendors
 [**SuppressWatchlistEntityAlert**](WatchlistApi.md#SuppressWatchlistEntityAlert) | **Post** /customers/{customer_id}/watchlists/suppressions | Suppress entity alert
 [**UpdateWatchlistAlert**](WatchlistApi.md#UpdateWatchlistAlert) | **Put** /customers/{customer_id}/watchlists/alerts/{alert_id} | Update watchlist alert
 [**UpdateWatchlistSubscription**](WatchlistApi.md#UpdateWatchlistSubscription) | **Put** /customers/{customer_id}/watchlists/subscriptions/{subscription_id} | Update watchlist monitoring subscription
@@ -294,76 +293,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ProcessWatchlistEvent
-
-> SocureEventBody ProcessWatchlistEvent(ctx, vendorId).SocureEventBody(socureEventBody).Execute()
-
-Process incoming webhooks coming from external vendors
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    vendorId := "vendorId_example" // string | Vendor ID
-    socureEventBody := *openapiclient.NewSocureEventBody("Id_example", "EnvironmentName_example", *openapiclient.NewSocureWatchlistResult("ReferenceId_example")) // SocureEventBody | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WatchlistApi.ProcessWatchlistEvent(context.Background(), vendorId).SocureEventBody(socureEventBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WatchlistApi.ProcessWatchlistEvent``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProcessWatchlistEvent`: SocureEventBody
-    fmt.Fprintf(os.Stdout, "Response from `WatchlistApi.ProcessWatchlistEvent`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**vendorId** | **string** | Vendor ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiProcessWatchlistEventRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **socureEventBody** | [**SocureEventBody**](SocureEventBody.md) |  | 
-
-### Return type
-
-[**SocureEventBody**](SocureEventBody.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## SuppressWatchlistEntityAlert
 
 > SuppressWatchlistEntityAlert(ctx, customerId).WatchlistSuppress(watchlistSuppress).Execute()
@@ -384,7 +313,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    watchlistSuppress := *openapiclient.NewWatchlistSuppress("ProviderSubscriptionId_example", "ProviderSubjectId_example", "Status_example") // WatchlistSuppress | A watchlist suppression object
+    watchlistSuppress := *openapiclient.NewWatchlistSuppress("ProviderSubjectId_example", "ProviderSubscriptionId_example", "Status_example") // WatchlistSuppress | A watchlist suppression object
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

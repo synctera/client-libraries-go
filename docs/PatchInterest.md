@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccrualPayoutSchedule** | Pointer to [**AccrualPayoutSchedule**](AccrualPayoutSchedule.md) |  | [optional] 
+**CalculationMethod** | Pointer to [**CalculationMethod**](CalculationMethod.md) |  | [optional] 
+**Description** | Pointer to **string** | User provided description for the current interest. | [optional] 
 **Id** | Pointer to **string** | Interest ID | [optional] [readonly] 
 **ProductType** | **string** |  | 
-**Description** | Pointer to **string** | User provided description for the current interest. | [optional] 
-**CalculationMethod** | Pointer to [**CalculationMethod**](CalculationMethod.md) |  | [optional] 
 **Rates** | Pointer to [**[]RateDetails**](RateDetails.md) | A list of interest rate. Date intervals between valid_from and valid_to expect to have no overlap.  | [optional] 
-**AccrualPayoutSchedule** | Pointer to [**AccrualPayoutSchedule**](AccrualPayoutSchedule.md) |  | [optional] 
 
 ## Methods
 
@@ -29,6 +29,81 @@ will change when the set of required properties is changed
 NewPatchInterestWithDefaults instantiates a new PatchInterest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccrualPayoutSchedule
+
+`func (o *PatchInterest) GetAccrualPayoutSchedule() AccrualPayoutSchedule`
+
+GetAccrualPayoutSchedule returns the AccrualPayoutSchedule field if non-nil, zero value otherwise.
+
+### GetAccrualPayoutScheduleOk
+
+`func (o *PatchInterest) GetAccrualPayoutScheduleOk() (*AccrualPayoutSchedule, bool)`
+
+GetAccrualPayoutScheduleOk returns a tuple with the AccrualPayoutSchedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccrualPayoutSchedule
+
+`func (o *PatchInterest) SetAccrualPayoutSchedule(v AccrualPayoutSchedule)`
+
+SetAccrualPayoutSchedule sets AccrualPayoutSchedule field to given value.
+
+### HasAccrualPayoutSchedule
+
+`func (o *PatchInterest) HasAccrualPayoutSchedule() bool`
+
+HasAccrualPayoutSchedule returns a boolean if a field has been set.
+
+### GetCalculationMethod
+
+`func (o *PatchInterest) GetCalculationMethod() CalculationMethod`
+
+GetCalculationMethod returns the CalculationMethod field if non-nil, zero value otherwise.
+
+### GetCalculationMethodOk
+
+`func (o *PatchInterest) GetCalculationMethodOk() (*CalculationMethod, bool)`
+
+GetCalculationMethodOk returns a tuple with the CalculationMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCalculationMethod
+
+`func (o *PatchInterest) SetCalculationMethod(v CalculationMethod)`
+
+SetCalculationMethod sets CalculationMethod field to given value.
+
+### HasCalculationMethod
+
+`func (o *PatchInterest) HasCalculationMethod() bool`
+
+HasCalculationMethod returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *PatchInterest) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *PatchInterest) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *PatchInterest) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *PatchInterest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetId
 
@@ -75,56 +150,6 @@ and a boolean to check if the value has been set.
 SetProductType sets ProductType field to given value.
 
 
-### GetDescription
-
-`func (o *PatchInterest) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *PatchInterest) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *PatchInterest) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *PatchInterest) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### GetCalculationMethod
-
-`func (o *PatchInterest) GetCalculationMethod() CalculationMethod`
-
-GetCalculationMethod returns the CalculationMethod field if non-nil, zero value otherwise.
-
-### GetCalculationMethodOk
-
-`func (o *PatchInterest) GetCalculationMethodOk() (*CalculationMethod, bool)`
-
-GetCalculationMethodOk returns a tuple with the CalculationMethod field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCalculationMethod
-
-`func (o *PatchInterest) SetCalculationMethod(v CalculationMethod)`
-
-SetCalculationMethod sets CalculationMethod field to given value.
-
-### HasCalculationMethod
-
-`func (o *PatchInterest) HasCalculationMethod() bool`
-
-HasCalculationMethod returns a boolean if a field has been set.
-
 ### GetRates
 
 `func (o *PatchInterest) GetRates() []RateDetails`
@@ -149,31 +174,6 @@ SetRates sets Rates field to given value.
 `func (o *PatchInterest) HasRates() bool`
 
 HasRates returns a boolean if a field has been set.
-
-### GetAccrualPayoutSchedule
-
-`func (o *PatchInterest) GetAccrualPayoutSchedule() AccrualPayoutSchedule`
-
-GetAccrualPayoutSchedule returns the AccrualPayoutSchedule field if non-nil, zero value otherwise.
-
-### GetAccrualPayoutScheduleOk
-
-`func (o *PatchInterest) GetAccrualPayoutScheduleOk() (*AccrualPayoutSchedule, bool)`
-
-GetAccrualPayoutScheduleOk returns a tuple with the AccrualPayoutSchedule field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccrualPayoutSchedule
-
-`func (o *PatchInterest) SetAccrualPayoutSchedule(v AccrualPayoutSchedule)`
-
-SetAccrualPayoutSchedule sets AccrualPayoutSchedule field to given value.
-
-### HasAccrualPayoutSchedule
-
-`func (o *PatchInterest) HasAccrualPayoutSchedule() bool`
-
-HasAccrualPayoutSchedule returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

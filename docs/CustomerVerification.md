@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VerificationType** | [**[]VerificationType**](VerificationType.md) | List of possible checks to run on a customer. | 
+**CustomerConsent** | **bool** | Whether this customer has consented to a KYC check.  | 
 **CustomerIpAddress** | Pointer to **string** | IP address of the customer being verified. | [optional] 
 **DocumentId** | Pointer to **string** | The ID of the uploaded government-issued identification document provided by the DV API endpoint.  | [optional] 
-**CustomerConsent** | **bool** | Whether this customer has consented to a KYC check.  | 
+**VerificationType** | [**[]VerificationType**](VerificationType.md) | List of possible checks to run on a customer. | 
 
 ## Methods
 
 ### NewCustomerVerification
 
-`func NewCustomerVerification(verificationType []VerificationType, customerConsent bool, ) *CustomerVerification`
+`func NewCustomerVerification(customerConsent bool, verificationType []VerificationType, ) *CustomerVerification`
 
 NewCustomerVerification instantiates a new CustomerVerification object
 This constructor will assign default values to properties that have it defined,
@@ -28,24 +28,24 @@ NewCustomerVerificationWithDefaults instantiates a new CustomerVerification obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetVerificationType
+### GetCustomerConsent
 
-`func (o *CustomerVerification) GetVerificationType() []VerificationType`
+`func (o *CustomerVerification) GetCustomerConsent() bool`
 
-GetVerificationType returns the VerificationType field if non-nil, zero value otherwise.
+GetCustomerConsent returns the CustomerConsent field if non-nil, zero value otherwise.
 
-### GetVerificationTypeOk
+### GetCustomerConsentOk
 
-`func (o *CustomerVerification) GetVerificationTypeOk() (*[]VerificationType, bool)`
+`func (o *CustomerVerification) GetCustomerConsentOk() (*bool, bool)`
 
-GetVerificationTypeOk returns a tuple with the VerificationType field if it's non-nil, zero value otherwise
+GetCustomerConsentOk returns a tuple with the CustomerConsent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVerificationType
+### SetCustomerConsent
 
-`func (o *CustomerVerification) SetVerificationType(v []VerificationType)`
+`func (o *CustomerVerification) SetCustomerConsent(v bool)`
 
-SetVerificationType sets VerificationType field to given value.
+SetCustomerConsent sets CustomerConsent field to given value.
 
 
 ### GetCustomerIpAddress
@@ -98,24 +98,24 @@ SetDocumentId sets DocumentId field to given value.
 
 HasDocumentId returns a boolean if a field has been set.
 
-### GetCustomerConsent
+### GetVerificationType
 
-`func (o *CustomerVerification) GetCustomerConsent() bool`
+`func (o *CustomerVerification) GetVerificationType() []VerificationType`
 
-GetCustomerConsent returns the CustomerConsent field if non-nil, zero value otherwise.
+GetVerificationType returns the VerificationType field if non-nil, zero value otherwise.
 
-### GetCustomerConsentOk
+### GetVerificationTypeOk
 
-`func (o *CustomerVerification) GetCustomerConsentOk() (*bool, bool)`
+`func (o *CustomerVerification) GetVerificationTypeOk() (*[]VerificationType, bool)`
 
-GetCustomerConsentOk returns a tuple with the CustomerConsent field if it's non-nil, zero value otherwise
+GetVerificationTypeOk returns a tuple with the VerificationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCustomerConsent
+### SetVerificationType
 
-`func (o *CustomerVerification) SetCustomerConsent(v bool)`
+`func (o *CustomerVerification) SetVerificationType(v []VerificationType)`
 
-SetCustomerConsent sets CustomerConsent field to given value.
+SetVerificationType sets VerificationType field to given value.
 
 
 

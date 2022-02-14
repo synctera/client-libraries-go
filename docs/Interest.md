@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccrualPayoutSchedule** | [**AccrualPayoutSchedule**](AccrualPayoutSchedule.md) |  | 
+**CalculationMethod** | [**CalculationMethod**](CalculationMethod.md) |  | 
+**Description** | Pointer to **string** | User provided description for the current interest. | [optional] 
 **Id** | Pointer to **string** | Interest ID | [optional] [readonly] 
 **ProductType** | **string** |  | 
-**Description** | Pointer to **string** | User provided description for the current interest. | [optional] 
-**CalculationMethod** | [**CalculationMethod**](CalculationMethod.md) |  | 
 **Rates** | [**[]RateDetails**](RateDetails.md) | A list of interest rate. Date intervals between valid_from and valid_to expect to have no overlap.  | 
-**AccrualPayoutSchedule** | [**AccrualPayoutSchedule**](AccrualPayoutSchedule.md) |  | 
 
 ## Methods
 
 ### NewInterest
 
-`func NewInterest(productType string, calculationMethod CalculationMethod, rates []RateDetails, accrualPayoutSchedule AccrualPayoutSchedule, ) *Interest`
+`func NewInterest(accrualPayoutSchedule AccrualPayoutSchedule, calculationMethod CalculationMethod, productType string, rates []RateDetails, ) *Interest`
 
 NewInterest instantiates a new Interest object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +29,71 @@ will change when the set of required properties is changed
 NewInterestWithDefaults instantiates a new Interest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccrualPayoutSchedule
+
+`func (o *Interest) GetAccrualPayoutSchedule() AccrualPayoutSchedule`
+
+GetAccrualPayoutSchedule returns the AccrualPayoutSchedule field if non-nil, zero value otherwise.
+
+### GetAccrualPayoutScheduleOk
+
+`func (o *Interest) GetAccrualPayoutScheduleOk() (*AccrualPayoutSchedule, bool)`
+
+GetAccrualPayoutScheduleOk returns a tuple with the AccrualPayoutSchedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccrualPayoutSchedule
+
+`func (o *Interest) SetAccrualPayoutSchedule(v AccrualPayoutSchedule)`
+
+SetAccrualPayoutSchedule sets AccrualPayoutSchedule field to given value.
+
+
+### GetCalculationMethod
+
+`func (o *Interest) GetCalculationMethod() CalculationMethod`
+
+GetCalculationMethod returns the CalculationMethod field if non-nil, zero value otherwise.
+
+### GetCalculationMethodOk
+
+`func (o *Interest) GetCalculationMethodOk() (*CalculationMethod, bool)`
+
+GetCalculationMethodOk returns a tuple with the CalculationMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCalculationMethod
+
+`func (o *Interest) SetCalculationMethod(v CalculationMethod)`
+
+SetCalculationMethod sets CalculationMethod field to given value.
+
+
+### GetDescription
+
+`func (o *Interest) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Interest) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Interest) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *Interest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetId
 
@@ -75,51 +140,6 @@ and a boolean to check if the value has been set.
 SetProductType sets ProductType field to given value.
 
 
-### GetDescription
-
-`func (o *Interest) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *Interest) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *Interest) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *Interest) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### GetCalculationMethod
-
-`func (o *Interest) GetCalculationMethod() CalculationMethod`
-
-GetCalculationMethod returns the CalculationMethod field if non-nil, zero value otherwise.
-
-### GetCalculationMethodOk
-
-`func (o *Interest) GetCalculationMethodOk() (*CalculationMethod, bool)`
-
-GetCalculationMethodOk returns a tuple with the CalculationMethod field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCalculationMethod
-
-`func (o *Interest) SetCalculationMethod(v CalculationMethod)`
-
-SetCalculationMethod sets CalculationMethod field to given value.
-
-
 ### GetRates
 
 `func (o *Interest) GetRates() []RateDetails`
@@ -138,26 +158,6 @@ and a boolean to check if the value has been set.
 `func (o *Interest) SetRates(v []RateDetails)`
 
 SetRates sets Rates field to given value.
-
-
-### GetAccrualPayoutSchedule
-
-`func (o *Interest) GetAccrualPayoutSchedule() AccrualPayoutSchedule`
-
-GetAccrualPayoutSchedule returns the AccrualPayoutSchedule field if non-nil, zero value otherwise.
-
-### GetAccrualPayoutScheduleOk
-
-`func (o *Interest) GetAccrualPayoutScheduleOk() (*AccrualPayoutSchedule, bool)`
-
-GetAccrualPayoutScheduleOk returns a tuple with the AccrualPayoutSchedule field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccrualPayoutSchedule
-
-`func (o *Interest) SetAccrualPayoutSchedule(v AccrualPayoutSchedule)`
-
-SetAccrualPayoutSchedule sets AccrualPayoutSchedule field to given value.
 
 
 

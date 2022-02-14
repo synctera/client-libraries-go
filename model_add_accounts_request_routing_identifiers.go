@@ -16,23 +16,23 @@ import (
 
 // AddAccountsRequestRoutingIdentifiers struct for AddAccountsRequestRoutingIdentifiers
 type AddAccountsRequestRoutingIdentifiers struct {
-	// The name of the bank managing the account
-	BankName string `json:"bank_name"`
-	// The countries that this bank operates the account in
-	BankCountries []string `json:"bank_countries"`
 	// The routing number used for US ACH payments.
 	AchRoutingNumber string `json:"ach_routing_number"`
+	// The countries that this bank operates the account in
+	BankCountries []string `json:"bank_countries"`
+	// The name of the bank managing the account
+	BankName string `json:"bank_name"`
 }
 
 // NewAddAccountsRequestRoutingIdentifiers instantiates a new AddAccountsRequestRoutingIdentifiers object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddAccountsRequestRoutingIdentifiers(bankName string, bankCountries []string, achRoutingNumber string) *AddAccountsRequestRoutingIdentifiers {
+func NewAddAccountsRequestRoutingIdentifiers(achRoutingNumber string, bankCountries []string, bankName string) *AddAccountsRequestRoutingIdentifiers {
 	this := AddAccountsRequestRoutingIdentifiers{}
-	this.BankName = bankName
-	this.BankCountries = bankCountries
 	this.AchRoutingNumber = achRoutingNumber
+	this.BankCountries = bankCountries
+	this.BankName = bankName
 	return &this
 }
 
@@ -42,54 +42,6 @@ func NewAddAccountsRequestRoutingIdentifiers(bankName string, bankCountries []st
 func NewAddAccountsRequestRoutingIdentifiersWithDefaults() *AddAccountsRequestRoutingIdentifiers {
 	this := AddAccountsRequestRoutingIdentifiers{}
 	return &this
-}
-
-// GetBankName returns the BankName field value
-func (o *AddAccountsRequestRoutingIdentifiers) GetBankName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BankName
-}
-
-// GetBankNameOk returns a tuple with the BankName field value
-// and a boolean to check if the value has been set.
-func (o *AddAccountsRequestRoutingIdentifiers) GetBankNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BankName, true
-}
-
-// SetBankName sets field value
-func (o *AddAccountsRequestRoutingIdentifiers) SetBankName(v string) {
-	o.BankName = v
-}
-
-// GetBankCountries returns the BankCountries field value
-func (o *AddAccountsRequestRoutingIdentifiers) GetBankCountries() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.BankCountries
-}
-
-// GetBankCountriesOk returns a tuple with the BankCountries field value
-// and a boolean to check if the value has been set.
-func (o *AddAccountsRequestRoutingIdentifiers) GetBankCountriesOk() (*[]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BankCountries, true
-}
-
-// SetBankCountries sets field value
-func (o *AddAccountsRequestRoutingIdentifiers) SetBankCountries(v []string) {
-	o.BankCountries = v
 }
 
 // GetAchRoutingNumber returns the AchRoutingNumber field value
@@ -116,16 +68,64 @@ func (o *AddAccountsRequestRoutingIdentifiers) SetAchRoutingNumber(v string) {
 	o.AchRoutingNumber = v
 }
 
+// GetBankCountries returns the BankCountries field value
+func (o *AddAccountsRequestRoutingIdentifiers) GetBankCountries() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.BankCountries
+}
+
+// GetBankCountriesOk returns a tuple with the BankCountries field value
+// and a boolean to check if the value has been set.
+func (o *AddAccountsRequestRoutingIdentifiers) GetBankCountriesOk() (*[]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BankCountries, true
+}
+
+// SetBankCountries sets field value
+func (o *AddAccountsRequestRoutingIdentifiers) SetBankCountries(v []string) {
+	o.BankCountries = v
+}
+
+// GetBankName returns the BankName field value
+func (o *AddAccountsRequestRoutingIdentifiers) GetBankName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BankName
+}
+
+// GetBankNameOk returns a tuple with the BankName field value
+// and a boolean to check if the value has been set.
+func (o *AddAccountsRequestRoutingIdentifiers) GetBankNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BankName, true
+}
+
+// SetBankName sets field value
+func (o *AddAccountsRequestRoutingIdentifiers) SetBankName(v string) {
+	o.BankName = v
+}
+
 func (o AddAccountsRequestRoutingIdentifiers) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["bank_name"] = o.BankName
+		toSerialize["ach_routing_number"] = o.AchRoutingNumber
 	}
 	if true {
 		toSerialize["bank_countries"] = o.BankCountries
 	}
 	if true {
-		toSerialize["ach_routing_number"] = o.AchRoutingNumber
+		toSerialize["bank_name"] = o.BankName
 	}
 	return json.Marshal(toSerialize)
 }

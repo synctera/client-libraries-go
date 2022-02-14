@@ -16,10 +16,10 @@ import (
 
 // SocureGlobalWatchlist struct for SocureGlobalWatchlist
 type SocureGlobalWatchlist struct {
-	// Array of reason codes
-	ReasonCodes *[]string `json:"reasonCodes,omitempty"`
 	// Contains key-value pair of the Source list name and an array of details about that match.
 	Matches map[string][]SocureMatch `json:"matches"`
+	// Array of reason codes
+	ReasonCodes *[]string `json:"reasonCodes,omitempty"`
 }
 
 // NewSocureGlobalWatchlist instantiates a new SocureGlobalWatchlist object
@@ -38,6 +38,30 @@ func NewSocureGlobalWatchlist(matches map[string][]SocureMatch) *SocureGlobalWat
 func NewSocureGlobalWatchlistWithDefaults() *SocureGlobalWatchlist {
 	this := SocureGlobalWatchlist{}
 	return &this
+}
+
+// GetMatches returns the Matches field value
+func (o *SocureGlobalWatchlist) GetMatches() map[string][]SocureMatch {
+	if o == nil {
+		var ret map[string][]SocureMatch
+		return ret
+	}
+
+	return o.Matches
+}
+
+// GetMatchesOk returns a tuple with the Matches field value
+// and a boolean to check if the value has been set.
+func (o *SocureGlobalWatchlist) GetMatchesOk() (*map[string][]SocureMatch, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Matches, true
+}
+
+// SetMatches sets field value
+func (o *SocureGlobalWatchlist) SetMatches(v map[string][]SocureMatch) {
+	o.Matches = v
 }
 
 // GetReasonCodes returns the ReasonCodes field value if set, zero value otherwise.
@@ -72,37 +96,13 @@ func (o *SocureGlobalWatchlist) SetReasonCodes(v []string) {
 	o.ReasonCodes = &v
 }
 
-// GetMatches returns the Matches field value
-func (o *SocureGlobalWatchlist) GetMatches() map[string][]SocureMatch {
-	if o == nil {
-		var ret map[string][]SocureMatch
-		return ret
-	}
-
-	return o.Matches
-}
-
-// GetMatchesOk returns a tuple with the Matches field value
-// and a boolean to check if the value has been set.
-func (o *SocureGlobalWatchlist) GetMatchesOk() (*map[string][]SocureMatch, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Matches, true
-}
-
-// SetMatches sets field value
-func (o *SocureGlobalWatchlist) SetMatches(v map[string][]SocureMatch) {
-	o.Matches = v
-}
-
 func (o SocureGlobalWatchlist) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ReasonCodes != nil {
-		toSerialize["reasonCodes"] = o.ReasonCodes
-	}
 	if true {
 		toSerialize["matches"] = o.Matches
+	}
+	if o.ReasonCodes != nil {
+		toSerialize["reasonCodes"] = o.ReasonCodes
 	}
 	return json.Marshal(toSerialize)
 }

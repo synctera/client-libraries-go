@@ -6,17 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique ID for this verification result. | [optional] [readonly] 
 **Issues** | Pointer to **[]string** | List of potential problems found. These are subject to change.  | [optional] [readonly] 
-**VerificationType** | [**VerificationType**](VerificationType.md) |  | 
-**VendorInfo** | Pointer to [**VerificationVendorInfo**](VerificationVendorInfo.md) |  | [optional] 
 **RawResponse** | Pointer to [**RawResponse**](RawResponse.md) |  | [optional] 
 **Result** | **string** | The determination of this verification. | 
+**VendorInfo** | Pointer to [**VerificationVendorInfo**](VerificationVendorInfo.md) |  | [optional] 
 **VerificationTime** | **time.Time** | The date and time the verification was completed. | 
+**VerificationType** | [**VerificationType**](VerificationType.md) |  | 
 
 ## Methods
 
 ### NewCustomerVerificationResult
 
-`func NewCustomerVerificationResult(verificationType VerificationType, result string, verificationTime time.Time, ) *CustomerVerificationResult`
+`func NewCustomerVerificationResult(result string, verificationTime time.Time, verificationType VerificationType, ) *CustomerVerificationResult`
 
 NewCustomerVerificationResult instantiates a new CustomerVerificationResult object
 This constructor will assign default values to properties that have it defined,
@@ -81,51 +81,6 @@ SetIssues sets Issues field to given value.
 
 HasIssues returns a boolean if a field has been set.
 
-### GetVerificationType
-
-`func (o *CustomerVerificationResult) GetVerificationType() VerificationType`
-
-GetVerificationType returns the VerificationType field if non-nil, zero value otherwise.
-
-### GetVerificationTypeOk
-
-`func (o *CustomerVerificationResult) GetVerificationTypeOk() (*VerificationType, bool)`
-
-GetVerificationTypeOk returns a tuple with the VerificationType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVerificationType
-
-`func (o *CustomerVerificationResult) SetVerificationType(v VerificationType)`
-
-SetVerificationType sets VerificationType field to given value.
-
-
-### GetVendorInfo
-
-`func (o *CustomerVerificationResult) GetVendorInfo() VerificationVendorInfo`
-
-GetVendorInfo returns the VendorInfo field if non-nil, zero value otherwise.
-
-### GetVendorInfoOk
-
-`func (o *CustomerVerificationResult) GetVendorInfoOk() (*VerificationVendorInfo, bool)`
-
-GetVendorInfoOk returns a tuple with the VendorInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVendorInfo
-
-`func (o *CustomerVerificationResult) SetVendorInfo(v VerificationVendorInfo)`
-
-SetVendorInfo sets VendorInfo field to given value.
-
-### HasVendorInfo
-
-`func (o *CustomerVerificationResult) HasVendorInfo() bool`
-
-HasVendorInfo returns a boolean if a field has been set.
-
 ### GetRawResponse
 
 `func (o *CustomerVerificationResult) GetRawResponse() RawResponse`
@@ -171,6 +126,31 @@ and a boolean to check if the value has been set.
 SetResult sets Result field to given value.
 
 
+### GetVendorInfo
+
+`func (o *CustomerVerificationResult) GetVendorInfo() VerificationVendorInfo`
+
+GetVendorInfo returns the VendorInfo field if non-nil, zero value otherwise.
+
+### GetVendorInfoOk
+
+`func (o *CustomerVerificationResult) GetVendorInfoOk() (*VerificationVendorInfo, bool)`
+
+GetVendorInfoOk returns a tuple with the VendorInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendorInfo
+
+`func (o *CustomerVerificationResult) SetVendorInfo(v VerificationVendorInfo)`
+
+SetVendorInfo sets VendorInfo field to given value.
+
+### HasVendorInfo
+
+`func (o *CustomerVerificationResult) HasVendorInfo() bool`
+
+HasVendorInfo returns a boolean if a field has been set.
+
 ### GetVerificationTime
 
 `func (o *CustomerVerificationResult) GetVerificationTime() time.Time`
@@ -189,6 +169,26 @@ and a boolean to check if the value has been set.
 `func (o *CustomerVerificationResult) SetVerificationTime(v time.Time)`
 
 SetVerificationTime sets VerificationTime field to given value.
+
+
+### GetVerificationType
+
+`func (o *CustomerVerificationResult) GetVerificationType() VerificationType`
+
+GetVerificationType returns the VerificationType field if non-nil, zero value otherwise.
+
+### GetVerificationTypeOk
+
+`func (o *CustomerVerificationResult) GetVerificationTypeOk() (*VerificationType, bool)`
+
+GetVerificationTypeOk returns a tuple with the VerificationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerificationType
+
+`func (o *CustomerVerificationResult) SetVerificationType(v VerificationType)`
+
+SetVerificationType sets VerificationType field to given value.
 
 
 

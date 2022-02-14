@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Alias ID | [optional] [readonly] 
-**AliasType** | Pointer to **string** | Alias type | [optional] 
-**AliasName** | Pointer to **string** | Alias name | [optional] 
-**AliasSource** | Pointer to **string** | Alias source | [optional] 
-**AliasInfo** | Pointer to **map[string]interface{}** | Additional information for the alias | [optional] 
 **AccountId** | Pointer to **string** | Account ID | [optional] 
 **AccountNumber** | Pointer to **string** | Account number | [optional] 
+**AliasInfo** | Pointer to **map[string]interface{}** | Additional information for the alias | [optional] 
+**AliasName** | Pointer to **string** | Alias name | [optional] 
+**AliasSource** | Pointer to **string** | Alias source | [optional] 
+**AliasType** | Pointer to **string** | Alias type | [optional] 
+**Id** | Pointer to **string** | Alias ID | [optional] [readonly] 
 
 ## Methods
 
@@ -31,55 +31,80 @@ NewAliasWithDefaults instantiates a new Alias object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetAccountId
 
-`func (o *Alias) GetId() string`
+`func (o *Alias) GetAccountId() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetAccountIdOk
 
-`func (o *Alias) GetIdOk() (*string, bool)`
+`func (o *Alias) GetAccountIdOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetAccountId
 
-`func (o *Alias) SetId(v string)`
+`func (o *Alias) SetAccountId(v string)`
 
-SetId sets Id field to given value.
+SetAccountId sets AccountId field to given value.
 
-### HasId
+### HasAccountId
 
-`func (o *Alias) HasId() bool`
+`func (o *Alias) HasAccountId() bool`
 
-HasId returns a boolean if a field has been set.
+HasAccountId returns a boolean if a field has been set.
 
-### GetAliasType
+### GetAccountNumber
 
-`func (o *Alias) GetAliasType() string`
+`func (o *Alias) GetAccountNumber() string`
 
-GetAliasType returns the AliasType field if non-nil, zero value otherwise.
+GetAccountNumber returns the AccountNumber field if non-nil, zero value otherwise.
 
-### GetAliasTypeOk
+### GetAccountNumberOk
 
-`func (o *Alias) GetAliasTypeOk() (*string, bool)`
+`func (o *Alias) GetAccountNumberOk() (*string, bool)`
 
-GetAliasTypeOk returns a tuple with the AliasType field if it's non-nil, zero value otherwise
+GetAccountNumberOk returns a tuple with the AccountNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAliasType
+### SetAccountNumber
 
-`func (o *Alias) SetAliasType(v string)`
+`func (o *Alias) SetAccountNumber(v string)`
 
-SetAliasType sets AliasType field to given value.
+SetAccountNumber sets AccountNumber field to given value.
 
-### HasAliasType
+### HasAccountNumber
 
-`func (o *Alias) HasAliasType() bool`
+`func (o *Alias) HasAccountNumber() bool`
 
-HasAliasType returns a boolean if a field has been set.
+HasAccountNumber returns a boolean if a field has been set.
+
+### GetAliasInfo
+
+`func (o *Alias) GetAliasInfo() map[string]interface{}`
+
+GetAliasInfo returns the AliasInfo field if non-nil, zero value otherwise.
+
+### GetAliasInfoOk
+
+`func (o *Alias) GetAliasInfoOk() (*map[string]interface{}, bool)`
+
+GetAliasInfoOk returns a tuple with the AliasInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAliasInfo
+
+`func (o *Alias) SetAliasInfo(v map[string]interface{})`
+
+SetAliasInfo sets AliasInfo field to given value.
+
+### HasAliasInfo
+
+`func (o *Alias) HasAliasInfo() bool`
+
+HasAliasInfo returns a boolean if a field has been set.
 
 ### GetAliasName
 
@@ -131,80 +156,55 @@ SetAliasSource sets AliasSource field to given value.
 
 HasAliasSource returns a boolean if a field has been set.
 
-### GetAliasInfo
+### GetAliasType
 
-`func (o *Alias) GetAliasInfo() map[string]interface{}`
+`func (o *Alias) GetAliasType() string`
 
-GetAliasInfo returns the AliasInfo field if non-nil, zero value otherwise.
+GetAliasType returns the AliasType field if non-nil, zero value otherwise.
 
-### GetAliasInfoOk
+### GetAliasTypeOk
 
-`func (o *Alias) GetAliasInfoOk() (*map[string]interface{}, bool)`
+`func (o *Alias) GetAliasTypeOk() (*string, bool)`
 
-GetAliasInfoOk returns a tuple with the AliasInfo field if it's non-nil, zero value otherwise
+GetAliasTypeOk returns a tuple with the AliasType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAliasInfo
+### SetAliasType
 
-`func (o *Alias) SetAliasInfo(v map[string]interface{})`
+`func (o *Alias) SetAliasType(v string)`
 
-SetAliasInfo sets AliasInfo field to given value.
+SetAliasType sets AliasType field to given value.
 
-### HasAliasInfo
+### HasAliasType
 
-`func (o *Alias) HasAliasInfo() bool`
+`func (o *Alias) HasAliasType() bool`
 
-HasAliasInfo returns a boolean if a field has been set.
+HasAliasType returns a boolean if a field has been set.
 
-### GetAccountId
+### GetId
 
-`func (o *Alias) GetAccountId() string`
+`func (o *Alias) GetId() string`
 
-GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetAccountIdOk
+### GetIdOk
 
-`func (o *Alias) GetAccountIdOk() (*string, bool)`
+`func (o *Alias) GetIdOk() (*string, bool)`
 
-GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccountId
+### SetId
 
-`func (o *Alias) SetAccountId(v string)`
+`func (o *Alias) SetId(v string)`
 
-SetAccountId sets AccountId field to given value.
+SetId sets Id field to given value.
 
-### HasAccountId
+### HasId
 
-`func (o *Alias) HasAccountId() bool`
+`func (o *Alias) HasId() bool`
 
-HasAccountId returns a boolean if a field has been set.
-
-### GetAccountNumber
-
-`func (o *Alias) GetAccountNumber() string`
-
-GetAccountNumber returns the AccountNumber field if non-nil, zero value otherwise.
-
-### GetAccountNumberOk
-
-`func (o *Alias) GetAccountNumberOk() (*string, bool)`
-
-GetAccountNumberOk returns a tuple with the AccountNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountNumber
-
-`func (o *Alias) SetAccountNumber(v string)`
-
-SetAccountNumber sets AccountNumber field to given value.
-
-### HasAccountNumber
-
-`func (o *Alias) HasAccountNumber() bool`
-
-HasAccountNumber returns a boolean if a field has been set.
+HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

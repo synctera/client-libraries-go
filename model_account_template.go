@@ -16,25 +16,25 @@ import (
 
 // AccountTemplate struct for AccountTemplate
 type AccountTemplate struct {
-	// Generated ID for the template
-	Id *string `json:"id,omitempty"`
-	// Unique account template name
-	Name string `json:"name"`
 	// Account template description
 	Description *string `json:"description,omitempty"`
+	// Generated ID for the template
+	Id *string `json:"id,omitempty"`
 	// Whether this template can be used for account creation
-	IsEnabled bool           `json:"is_enabled"`
-	Template  TemplateFields `json:"template"`
+	IsEnabled bool `json:"is_enabled"`
+	// Unique account template name
+	Name     string         `json:"name"`
+	Template TemplateFields `json:"template"`
 }
 
 // NewAccountTemplate instantiates a new AccountTemplate object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountTemplate(name string, isEnabled bool, template TemplateFields) *AccountTemplate {
+func NewAccountTemplate(isEnabled bool, name string, template TemplateFields) *AccountTemplate {
 	this := AccountTemplate{}
-	this.Name = name
 	this.IsEnabled = isEnabled
+	this.Name = name
 	this.Template = template
 	return &this
 }
@@ -45,62 +45,6 @@ func NewAccountTemplate(name string, isEnabled bool, template TemplateFields) *A
 func NewAccountTemplateWithDefaults() *AccountTemplate {
 	this := AccountTemplate{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *AccountTemplate) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountTemplate) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *AccountTemplate) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AccountTemplate) SetId(v string) {
-	o.Id = &v
-}
-
-// GetName returns the Name field value
-func (o *AccountTemplate) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AccountTemplate) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AccountTemplate) SetName(v string) {
-	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -135,6 +79,38 @@ func (o *AccountTemplate) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AccountTemplate) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountTemplate) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *AccountTemplate) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AccountTemplate) SetId(v string) {
+	o.Id = &v
+}
+
 // GetIsEnabled returns the IsEnabled field value
 func (o *AccountTemplate) GetIsEnabled() bool {
 	if o == nil {
@@ -157,6 +133,30 @@ func (o *AccountTemplate) GetIsEnabledOk() (*bool, bool) {
 // SetIsEnabled sets field value
 func (o *AccountTemplate) SetIsEnabled(v bool) {
 	o.IsEnabled = v
+}
+
+// GetName returns the Name field value
+func (o *AccountTemplate) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *AccountTemplate) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *AccountTemplate) SetName(v string) {
+	o.Name = v
 }
 
 // GetTemplate returns the Template field value
@@ -185,17 +185,17 @@ func (o *AccountTemplate) SetTemplate(v TemplateFields) {
 
 func (o AccountTemplate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+		toSerialize["is_enabled"] = o.IsEnabled
 	}
 	if true {
-		toSerialize["is_enabled"] = o.IsEnabled
+		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["template"] = o.Template

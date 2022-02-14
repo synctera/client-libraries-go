@@ -5,23 +5,23 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountType** | [**AccountType**](AccountType.md) |  | 
-**Currency** | **string** | Account currency. ISO 4217 alphabetic currency code | 
+**BalanceCeiling** | Pointer to [**BalanceCeiling**](BalanceCeiling.md) |  | [optional] 
+**BalanceFloor** | Pointer to [**BalanceFloor**](BalanceFloor.md) |  | [optional] 
 **BankCountry** | **string** | Bank country of the account | 
-**IsP2pEnabled** | Pointer to **bool** | Enable P2P transaction on ledger. Default is false | [optional] 
+**Currency** | **string** | Account currency. ISO 4217 alphabetic currency code | 
+**FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that new accounts will associate with | [optional] 
+**InterestProductId** | Pointer to **string** | Interest from account product that new accounts will associate with | [optional] 
 **IsAchEnabled** | Pointer to **bool** | Enable ACH transaction on ledger. Default is false | [optional] 
 **IsCardEnabled** | Pointer to **bool** | Enable card transaction on ledger. Default is false | [optional] 
+**IsP2pEnabled** | Pointer to **bool** | Enable P2P transaction on ledger. Default is false | [optional] 
 **OverdraftLimit** | Pointer to **int64** | Account&#39;s overdraft limit. Default is 0 | [optional] 
 **SpendingLimits** | Pointer to [**SpendingLimits**](SpendingLimits.md) |  | [optional] 
-**InterestProductId** | Pointer to **string** | Interest from account product that new accounts will associate with | [optional] 
-**FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that new accounts will associate with | [optional] 
-**BalanceFloor** | Pointer to [**BalanceFloor**](BalanceFloor.md) |  | [optional] 
-**BalanceCeiling** | Pointer to [**BalanceCeiling**](BalanceCeiling.md) |  | [optional] 
 
 ## Methods
 
 ### NewTemplateFields
 
-`func NewTemplateFields(accountType AccountType, currency string, bankCountry string, ) *TemplateFields`
+`func NewTemplateFields(accountType AccountType, bankCountry string, currency string, ) *TemplateFields`
 
 NewTemplateFields instantiates a new TemplateFields object
 This constructor will assign default values to properties that have it defined,
@@ -56,25 +56,55 @@ and a boolean to check if the value has been set.
 SetAccountType sets AccountType field to given value.
 
 
-### GetCurrency
+### GetBalanceCeiling
 
-`func (o *TemplateFields) GetCurrency() string`
+`func (o *TemplateFields) GetBalanceCeiling() BalanceCeiling`
 
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
+GetBalanceCeiling returns the BalanceCeiling field if non-nil, zero value otherwise.
 
-### GetCurrencyOk
+### GetBalanceCeilingOk
 
-`func (o *TemplateFields) GetCurrencyOk() (*string, bool)`
+`func (o *TemplateFields) GetBalanceCeilingOk() (*BalanceCeiling, bool)`
 
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+GetBalanceCeilingOk returns a tuple with the BalanceCeiling field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCurrency
+### SetBalanceCeiling
 
-`func (o *TemplateFields) SetCurrency(v string)`
+`func (o *TemplateFields) SetBalanceCeiling(v BalanceCeiling)`
 
-SetCurrency sets Currency field to given value.
+SetBalanceCeiling sets BalanceCeiling field to given value.
 
+### HasBalanceCeiling
+
+`func (o *TemplateFields) HasBalanceCeiling() bool`
+
+HasBalanceCeiling returns a boolean if a field has been set.
+
+### GetBalanceFloor
+
+`func (o *TemplateFields) GetBalanceFloor() BalanceFloor`
+
+GetBalanceFloor returns the BalanceFloor field if non-nil, zero value otherwise.
+
+### GetBalanceFloorOk
+
+`func (o *TemplateFields) GetBalanceFloorOk() (*BalanceFloor, bool)`
+
+GetBalanceFloorOk returns a tuple with the BalanceFloor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBalanceFloor
+
+`func (o *TemplateFields) SetBalanceFloor(v BalanceFloor)`
+
+SetBalanceFloor sets BalanceFloor field to given value.
+
+### HasBalanceFloor
+
+`func (o *TemplateFields) HasBalanceFloor() bool`
+
+HasBalanceFloor returns a boolean if a field has been set.
 
 ### GetBankCountry
 
@@ -96,30 +126,75 @@ and a boolean to check if the value has been set.
 SetBankCountry sets BankCountry field to given value.
 
 
-### GetIsP2pEnabled
+### GetCurrency
 
-`func (o *TemplateFields) GetIsP2pEnabled() bool`
+`func (o *TemplateFields) GetCurrency() string`
 
-GetIsP2pEnabled returns the IsP2pEnabled field if non-nil, zero value otherwise.
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
 
-### GetIsP2pEnabledOk
+### GetCurrencyOk
 
-`func (o *TemplateFields) GetIsP2pEnabledOk() (*bool, bool)`
+`func (o *TemplateFields) GetCurrencyOk() (*string, bool)`
 
-GetIsP2pEnabledOk returns a tuple with the IsP2pEnabled field if it's non-nil, zero value otherwise
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsP2pEnabled
+### SetCurrency
 
-`func (o *TemplateFields) SetIsP2pEnabled(v bool)`
+`func (o *TemplateFields) SetCurrency(v string)`
 
-SetIsP2pEnabled sets IsP2pEnabled field to given value.
+SetCurrency sets Currency field to given value.
 
-### HasIsP2pEnabled
 
-`func (o *TemplateFields) HasIsP2pEnabled() bool`
+### GetFeeProductIds
 
-HasIsP2pEnabled returns a boolean if a field has been set.
+`func (o *TemplateFields) GetFeeProductIds() []string`
+
+GetFeeProductIds returns the FeeProductIds field if non-nil, zero value otherwise.
+
+### GetFeeProductIdsOk
+
+`func (o *TemplateFields) GetFeeProductIdsOk() (*[]string, bool)`
+
+GetFeeProductIdsOk returns a tuple with the FeeProductIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeeProductIds
+
+`func (o *TemplateFields) SetFeeProductIds(v []string)`
+
+SetFeeProductIds sets FeeProductIds field to given value.
+
+### HasFeeProductIds
+
+`func (o *TemplateFields) HasFeeProductIds() bool`
+
+HasFeeProductIds returns a boolean if a field has been set.
+
+### GetInterestProductId
+
+`func (o *TemplateFields) GetInterestProductId() string`
+
+GetInterestProductId returns the InterestProductId field if non-nil, zero value otherwise.
+
+### GetInterestProductIdOk
+
+`func (o *TemplateFields) GetInterestProductIdOk() (*string, bool)`
+
+GetInterestProductIdOk returns a tuple with the InterestProductId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterestProductId
+
+`func (o *TemplateFields) SetInterestProductId(v string)`
+
+SetInterestProductId sets InterestProductId field to given value.
+
+### HasInterestProductId
+
+`func (o *TemplateFields) HasInterestProductId() bool`
+
+HasInterestProductId returns a boolean if a field has been set.
 
 ### GetIsAchEnabled
 
@@ -171,6 +246,31 @@ SetIsCardEnabled sets IsCardEnabled field to given value.
 
 HasIsCardEnabled returns a boolean if a field has been set.
 
+### GetIsP2pEnabled
+
+`func (o *TemplateFields) GetIsP2pEnabled() bool`
+
+GetIsP2pEnabled returns the IsP2pEnabled field if non-nil, zero value otherwise.
+
+### GetIsP2pEnabledOk
+
+`func (o *TemplateFields) GetIsP2pEnabledOk() (*bool, bool)`
+
+GetIsP2pEnabledOk returns a tuple with the IsP2pEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsP2pEnabled
+
+`func (o *TemplateFields) SetIsP2pEnabled(v bool)`
+
+SetIsP2pEnabled sets IsP2pEnabled field to given value.
+
+### HasIsP2pEnabled
+
+`func (o *TemplateFields) HasIsP2pEnabled() bool`
+
+HasIsP2pEnabled returns a boolean if a field has been set.
+
 ### GetOverdraftLimit
 
 `func (o *TemplateFields) GetOverdraftLimit() int64`
@@ -220,106 +320,6 @@ SetSpendingLimits sets SpendingLimits field to given value.
 `func (o *TemplateFields) HasSpendingLimits() bool`
 
 HasSpendingLimits returns a boolean if a field has been set.
-
-### GetInterestProductId
-
-`func (o *TemplateFields) GetInterestProductId() string`
-
-GetInterestProductId returns the InterestProductId field if non-nil, zero value otherwise.
-
-### GetInterestProductIdOk
-
-`func (o *TemplateFields) GetInterestProductIdOk() (*string, bool)`
-
-GetInterestProductIdOk returns a tuple with the InterestProductId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInterestProductId
-
-`func (o *TemplateFields) SetInterestProductId(v string)`
-
-SetInterestProductId sets InterestProductId field to given value.
-
-### HasInterestProductId
-
-`func (o *TemplateFields) HasInterestProductId() bool`
-
-HasInterestProductId returns a boolean if a field has been set.
-
-### GetFeeProductIds
-
-`func (o *TemplateFields) GetFeeProductIds() []string`
-
-GetFeeProductIds returns the FeeProductIds field if non-nil, zero value otherwise.
-
-### GetFeeProductIdsOk
-
-`func (o *TemplateFields) GetFeeProductIdsOk() (*[]string, bool)`
-
-GetFeeProductIdsOk returns a tuple with the FeeProductIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFeeProductIds
-
-`func (o *TemplateFields) SetFeeProductIds(v []string)`
-
-SetFeeProductIds sets FeeProductIds field to given value.
-
-### HasFeeProductIds
-
-`func (o *TemplateFields) HasFeeProductIds() bool`
-
-HasFeeProductIds returns a boolean if a field has been set.
-
-### GetBalanceFloor
-
-`func (o *TemplateFields) GetBalanceFloor() BalanceFloor`
-
-GetBalanceFloor returns the BalanceFloor field if non-nil, zero value otherwise.
-
-### GetBalanceFloorOk
-
-`func (o *TemplateFields) GetBalanceFloorOk() (*BalanceFloor, bool)`
-
-GetBalanceFloorOk returns a tuple with the BalanceFloor field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBalanceFloor
-
-`func (o *TemplateFields) SetBalanceFloor(v BalanceFloor)`
-
-SetBalanceFloor sets BalanceFloor field to given value.
-
-### HasBalanceFloor
-
-`func (o *TemplateFields) HasBalanceFloor() bool`
-
-HasBalanceFloor returns a boolean if a field has been set.
-
-### GetBalanceCeiling
-
-`func (o *TemplateFields) GetBalanceCeiling() BalanceCeiling`
-
-GetBalanceCeiling returns the BalanceCeiling field if non-nil, zero value otherwise.
-
-### GetBalanceCeilingOk
-
-`func (o *TemplateFields) GetBalanceCeilingOk() (*BalanceCeiling, bool)`
-
-GetBalanceCeilingOk returns a tuple with the BalanceCeiling field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBalanceCeiling
-
-`func (o *TemplateFields) SetBalanceCeiling(v BalanceCeiling)`
-
-SetBalanceCeiling sets BalanceCeiling field to given value.
-
-### HasBalanceCeiling
-
-`func (o *TemplateFields) HasBalanceCeiling() bool`
-
-HasBalanceCeiling returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
