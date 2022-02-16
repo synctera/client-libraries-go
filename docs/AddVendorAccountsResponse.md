@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddedAccounts** | [**[]ExternalAccount**](ExternalAccount.md) |  | 
+**DeletedAccounts** | Pointer to [**[]ExternalAccount**](ExternalAccount.md) |  | [optional] 
 **FailedAccounts** | [**[]AddVendorAccountFailure**](AddVendorAccountFailure.md) |  | 
 
 ## Methods
@@ -45,6 +46,31 @@ and a boolean to check if the value has been set.
 
 SetAddedAccounts sets AddedAccounts field to given value.
 
+
+### GetDeletedAccounts
+
+`func (o *AddVendorAccountsResponse) GetDeletedAccounts() []ExternalAccount`
+
+GetDeletedAccounts returns the DeletedAccounts field if non-nil, zero value otherwise.
+
+### GetDeletedAccountsOk
+
+`func (o *AddVendorAccountsResponse) GetDeletedAccountsOk() (*[]ExternalAccount, bool)`
+
+GetDeletedAccountsOk returns a tuple with the DeletedAccounts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeletedAccounts
+
+`func (o *AddVendorAccountsResponse) SetDeletedAccounts(v []ExternalAccount)`
+
+SetDeletedAccounts sets DeletedAccounts field to given value.
+
+### HasDeletedAccounts
+
+`func (o *AddVendorAccountsResponse) HasDeletedAccounts() bool`
+
+HasDeletedAccounts returns a boolean if a field has been set.
 
 ### GetFailedAccounts
 

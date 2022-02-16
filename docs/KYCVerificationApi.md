@@ -179,7 +179,7 @@ import (
 
 func main() {
     customerId := TODO // string | The customer's unique identifier
-    includeHistory := true // bool | If true, include old (inactive) records as well. (optional)
+    includeHistory := true // bool | If true, include old (inactive) records as well. (optional) (default to false)
     limit := int32(100) // int32 |  (optional) (default to 100)
     pageToken := "faker.random.alphaNumeric(10)" // string |  (optional)
 
@@ -211,7 +211,7 @@ Other parameters are passed through a pointer to a apiListVerificationsRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeHistory** | **bool** | If true, include old (inactive) records as well. | 
+ **includeHistory** | **bool** | If true, include old (inactive) records as well. | [default to false]
  **limit** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
 

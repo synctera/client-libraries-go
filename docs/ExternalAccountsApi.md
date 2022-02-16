@@ -8,10 +8,12 @@ Method | HTTP request | Description
 [**AddVendorExternalAccounts**](ExternalAccountsApi.md#AddVendorExternalAccounts) | **Post** /external_accounts/add_vendor_accounts | Add external accounts through a vendor, such as Plaid.
 [**CreateAccessToken**](ExternalAccountsApi.md#CreateAccessToken) | **Post** /external_accounts/access_tokens | Create a permanent access token for an external account
 [**CreateVerificationLinkToken**](ExternalAccountsApi.md#CreateVerificationLinkToken) | **Post** /external_accounts/link_tokens | Create a link token to verify an external account
+[**DeleteExternalAccount**](ExternalAccountsApi.md#DeleteExternalAccount) | **Delete** /external_accounts/{external_account_id} | Delete an external account
 [**GetExternalAccount**](ExternalAccountsApi.md#GetExternalAccount) | **Get** /external_accounts/{external_account_id} | Get an external account
 [**GetExternalAccountBalance**](ExternalAccountsApi.md#GetExternalAccountBalance) | **Get** /external_accounts/{external_account_id}/balance | Get an external account balance
 [**GetExternalAccountTransactions**](ExternalAccountsApi.md#GetExternalAccountTransactions) | **Get** /external_accounts/{external_account_id}/transactions | List transactions of a given external account
 [**ListExternalAccounts**](ExternalAccountsApi.md#ListExternalAccounts) | **Get** /external_accounts | List external accounts
+[**SyncVendorExternalAccounts**](ExternalAccountsApi.md#SyncVendorExternalAccounts) | **Post** /external_accounts/sync_vendor_accounts | Sync external accounts through a vendor, such as Plaid.
 [**UpdateExternalAccount**](ExternalAccountsApi.md#UpdateExternalAccount) | **Patch** /external_accounts/{external_account_id} | Patch an external account
 
 
@@ -269,6 +271,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteExternalAccount
+
+> DeleteResponse DeleteExternalAccount(ctx, externalAccountId).Execute()
+
+Delete an external account
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    externalAccountId := TODO // string | External Account ID
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ExternalAccountsApi.DeleteExternalAccount(context.Background(), externalAccountId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ExternalAccountsApi.DeleteExternalAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteExternalAccount`: DeleteResponse
+    fmt.Fprintf(os.Stdout, "Response from `ExternalAccountsApi.DeleteExternalAccount`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**externalAccountId** | [**string**](.md) | External Account ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteExternalAccountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -554,6 +626,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SyncVendorExternalAccounts
+
+> AddVendorAccountsResponse SyncVendorExternalAccounts(ctx).AddVendorAccountsRequest(addVendorAccountsRequest).Execute()
+
+Sync external accounts through a vendor, such as Plaid.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    addVendorAccountsRequest := *openapiclient.NewAddVendorAccountsRequest("CustomerId_example", "CustomerType_example", openapiclient.external_account_vendor_values("PLAID"), "access-sandbox-de3ce8ef-33f8-452c-a685-8671031fc0f6", []string{"blgvvBlXw3cq5GMPwqB6s6q4dLKB9WcVqGDGo"}) // AddVendorAccountsRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ExternalAccountsApi.SyncVendorExternalAccounts(context.Background()).AddVendorAccountsRequest(addVendorAccountsRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ExternalAccountsApi.SyncVendorExternalAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SyncVendorExternalAccounts`: AddVendorAccountsResponse
+    fmt.Fprintf(os.Stdout, "Response from `ExternalAccountsApi.SyncVendorExternalAccounts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSyncVendorExternalAccountsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addVendorAccountsRequest** | [**AddVendorAccountsRequest**](AddVendorAccountsRequest.md) |  | 
+
+### Return type
+
+[**AddVendorAccountsResponse**](AddVendorAccountsResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

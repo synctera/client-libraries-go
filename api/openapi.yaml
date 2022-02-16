@@ -15,8 +15,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
+- description: Requests to create and manage account products, including fees, interest.
+  name: Account Products
 - description: Request to create and manage accounts
   name: Accounts
+- description: Account Template
+  name: Account Templates
+- description: Create and manage payments
+  name: Payments
 - description: Requests to issue and manage cards
   name: Cards
 - description: Requests to create and manage customers
@@ -30,6 +36,10 @@ tags:
     The External Account resource is used for managing links to accounts
     that operate outside of the Synctera ecosystem.
   name: External Accounts
+- description: |
+    The internal account resource is used for managing links to internal
+    accounts where the funds are managed by integrators.
+  name: Internal Accounts
 - description: Requests to initiate customer verification.
   name: KYC Verification
 - description: Requests to create and manage reconciliation
@@ -53,11 +63,27 @@ paths:
         name: id
         required: false
         schema:
-          example: 64438afd-fa20-4010-a573-2bbdca77cdb6,84ef251c-ab8f-47a5-bbfd-a16648f95157
-          items:
-            format: uuid
-            type: string
-          type: array
+          $ref: '#/components/schemas/account_id_query_schema'
+        style: form
+        x-external: true
+      - description: |
+          Overdraft account ID(s). Multiple IDs can be provided as a comma-separated list.
+        explode: false
+        in: query
+        name: overdraft_account_id
+        required: false
+        schema:
+          $ref: '#/components/schemas/account_id_query_schema'
+        style: form
+        x-external: true
+      - description: |
+          Overflow account ID(s). Multiple IDs can be provided as a comma-separated list.
+        explode: false
+        in: query
+        name: overflow_account_id
+        required: false
+        schema:
+          $ref: '#/components/schemas/account_id_query_schema'
         style: form
         x-external: true
       - description: |
@@ -1036,6 +1062,62 @@ paths:
       - Accounts
       x-external: true
     summary: account
+  /ach:
+    description: |
+      The ACH object represents your outgoing ACH.
+    post:
+      description: |
+        Create an outgoing ACH
+      operationId: addOutgoingACHTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/outgoing_ach'
+        description: Outgoing ACH
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/outgoing_ach'
+          description: Created an Outgoing ACH
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: BadRequest
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden error
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unprocessable entity request response
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal server error
+      summary: Create an outgoing ACH
+      tags:
+      - Payments
+      x-external: true
+    summary: Outgoing ACH
   /cards:
     description: |
       The Card object represents your customer's spending card.
@@ -1831,7 +1913,7 @@ paths:
       - explode: true
         in: query
         name: customer_id
-        required: false
+        required: true
         schema:
           $ref: '#/components/schemas/customer_id1'
         style: form
@@ -2425,6 +2507,131 @@ paths:
       - Customers
       x-external: true
     summary: Customer
+  /customers/{customer_id}/disclosures:
+    description: |
+      Disclosures to be made to customers
+    get:
+      description: Retrieves paginated list of disclosures associated with the authorized
+        requester
+      operationId: listDisclosures1
+      parameters:
+      - description: The customer's unique identifier
+        explode: false
+        in: path
+        name: customer_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/customer_id'
+        style: simple
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 100
+          description: |
+            Maximum number of objects to return per page. If the limit is greater than 100, then it will be set to 100.
+          example: 100
+          minimum: 1
+          type: integer
+        style: form
+        x-external: true
+      - explode: true
+        in: query
+        name: page_token
+        required: false
+        schema:
+          description: Optional pagination token to be provided to retrieve subsequent
+            pages, returned from previous get
+          example: faker.random.alphaNumeric(10)
+          type: string
+        style: form
+        x-external: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/disclosure_response'
+          description: List of disclosures
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden error
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal server error
+      summary: List Disclosures
+      tags:
+      - Disclosures
+      x-external: true
+    post:
+      description: |
+        Disclosures to be made to customers
+      operationId: createDisclosure1
+      parameters:
+      - description: The customer's unique identifier
+        explode: false
+        in: path
+        name: customer_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/customer_id'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/disclosure1'
+        description: Disclosure to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/disclosure1'
+          description: Created disclosure
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: BadRequest
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden error
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal server error
+      summary: Create a Disclosure
+      tags:
+      - Disclosures
+      x-external: true
+    summary: Disclosures
   /customers/{customer_id}/employment:
     get:
       description: |
@@ -2841,6 +3048,7 @@ paths:
         name: include_history
         required: false
         schema:
+          default: false
           type: boolean
         style: form
         x-external: true
@@ -3910,6 +4118,67 @@ paths:
       x-external: true
     summary: External Accounts
   /external_accounts/{external_account_id}:
+    delete:
+      description: |
+        Deletes an external account, given an external account ID. If no accounts left, the access token to the financial institution will be removed
+      operationId: deleteExternalAccount
+      parameters:
+      - description: External Account ID
+        explode: false
+        in: path
+        name: external_account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/delete_response'
+          description: Resource has been deleted
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden error
+        "404":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Resource not found
+        "409":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Resource already exists error
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unprocessable entity request response
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal server error
+      summary: Delete an external account
+      tags:
+      - External Accounts
+      x-external: true
     description: |
       The External Account resource is used for managing links to accounts that operate outside of the Synctera ecosystem.
     get:
@@ -4306,6 +4575,169 @@ paths:
       - External Accounts
       x-external: true
     summary: External account verification link token
+  /external_accounts/sync_vendor_accounts:
+    description: |
+      The External Account resource is used for managing links to accounts that operate outside of the Synctera ecosystem.
+    post:
+      description: |
+        Sync external accounts for a customer through an existing access token. The token must be valid, and the information on the accounts returned by the vendor must correspond to the customer. A success response for this route may include failures if an account could not be added and deletions if the account is removed by the end user, so it's important that the caller checks the response body.
+      operationId: syncVendorExternalAccounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/add_vendor_accounts_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/add_vendor_accounts_response'
+          description: |
+            Result of syncing accounts through the vendor.
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: BadRequest
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden error
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal server error
+      summary: Sync external accounts through a vendor, such as Plaid.
+      tags:
+      - External Accounts
+      x-external: true
+    summary: External Accounts
+  /internal_accounts:
+    description: |
+      The internal account resource is used for managing links to internal accounts where the funds are managed by integrators.
+    get:
+      description: |
+        Returns a list of all internal accounts.
+      operationId: listInternalAccounts
+      parameters:
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 100
+          description: |
+            Maximum number of objects to return per page. If the limit is greater than 100, then it will be set to 100.
+          example: 100
+          minimum: 1
+          type: integer
+        style: form
+        x-external: true
+      - explode: true
+        in: query
+        name: page_token
+        required: false
+        schema:
+          description: Optional pagination token to be provided to retrieve subsequent
+            pages, returned from previous get
+          example: faker.random.alphaNumeric(10)
+          type: string
+        style: form
+        x-external: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_accounts_list'
+          description: List of internal accounts
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden error
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal server error
+      summary: List internal accounts
+      tags:
+      - Internal Accounts
+      x-external: true
+    post:
+      description: |
+        Add an internal account
+      operationId: addInternalAccounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_account'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_account'
+          description: The internal account added.
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: BadRequest
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden error
+        "409":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Resource already exists error
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal server error
+      summary: Add internal accounts
+      tags:
+      - Internal Accounts
+      x-external: true
+    summary: Internal Accounts
   /reconciliations:
     description: |
       The Reconcilations collections represents the jobs reconciling transactions.
@@ -5483,11 +5915,7 @@ components:
       name: id
       required: false
       schema:
-        example: 64438afd-fa20-4010-a573-2bbdca77cdb6,84ef251c-ab8f-47a5-bbfd-a16648f95157
-        items:
-          format: uuid
-          type: string
-        type: array
+        $ref: '#/components/schemas/account_id_query_schema'
       style: form
       x-external: true
     account_id_query1:
@@ -5733,6 +6161,15 @@ components:
         $ref: '#/components/schemas/customer_id'
       style: form
       x-external: true
+    customer_id_query_required:
+      explode: true
+      in: query
+      name: customer_id
+      required: true
+      schema:
+        $ref: '#/components/schemas/customer_id1'
+      style: form
+      x-external: true
     customer_sort_by_query:
       description: |
         Specifies the sort order for the returned customers.
@@ -5915,16 +6352,6 @@ components:
         type: boolean
       style: form
       x-external: true
-    include_history1:
-      description: If true, include old (inactive) records as well.
-      explode: true
-      in: query
-      name: include_history
-      required: false
-      schema:
-        type: boolean
-      style: form
-      x-external: true
     interest_product_id_query:
       description: Interest product ID that accounts associate with. Multiple IDs
         can be provided as a comma-separated list.
@@ -5972,6 +6399,28 @@ components:
         example: 100
         minimum: 1
         type: integer
+      style: form
+      x-external: true
+    overdraft_account_id_query:
+      description: |
+        Overdraft account ID(s). Multiple IDs can be provided as a comma-separated list.
+      explode: false
+      in: query
+      name: overdraft_account_id
+      required: false
+      schema:
+        $ref: '#/components/schemas/account_id_query_schema'
+      style: form
+      x-external: true
+    overflow_account_id_query:
+      description: |
+        Overflow account ID(s). Multiple IDs can be provided as a comma-separated list.
+      explode: false
+      in: query
+      name: overflow_account_id
+      required: false
+      schema:
+        $ref: '#/components/schemas/account_id_query_schema'
       style: form
       x-external: true
     page_token:
@@ -6160,6 +6609,16 @@ components:
         type: string
       style: form
       x-external: true
+    transaction_id:
+      description: Transaction ID in the ledger
+      explode: false
+      in: path
+      name: transaction_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
     vendor_id:
       description: Vendor ID
       explode: false
@@ -6435,6 +6894,12 @@ components:
       description: The unique identifier of an account
       format: uuid
       type: string
+    account_id_query_schema:
+      example: 64438afd-fa20-4010-a573-2bbdca77cdb6,84ef251c-ab8f-47a5-bbfd-a16648f95157
+      items:
+        format: uuid
+        type: string
+      type: array
     account_identifiers:
       example:
         number: "78277121"
@@ -6873,6 +7338,59 @@ components:
       type: object
     add_vendor_accounts_response:
       example:
+        deleted_accounts:
+        - creation_time: 2022-01-01T00:00:00Z
+          metadata: '{}'
+          routing_identifiers:
+            eft_routing_number: "02101140"
+            swift_code: CHASUS3AXXX
+            bank_countries:
+            - US
+            - US
+            bank_name: Chase
+            wire_routing_number: "756392185"
+            ach_routing_number: "756392185"
+          vendor_data:
+            account_number_mask: account_number_mask
+            institution_id: institution_id
+          type: CHECKING
+          account_identifiers:
+            number: "78277121"
+            iban: faker.finance.iban
+          last_updated_time: 2022-01-01T00:00:00Z
+          nickname: faker.finance.accountName
+          account_owner_names:
+          - faker.name.findName
+          - faker.name.findName
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          customer_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: ACTIVE
+        - creation_time: 2022-01-01T00:00:00Z
+          metadata: '{}'
+          routing_identifiers:
+            eft_routing_number: "02101140"
+            swift_code: CHASUS3AXXX
+            bank_countries:
+            - US
+            - US
+            bank_name: Chase
+            wire_routing_number: "756392185"
+            ach_routing_number: "756392185"
+          vendor_data:
+            account_number_mask: account_number_mask
+            institution_id: institution_id
+          type: CHECKING
+          account_identifiers:
+            number: "78277121"
+            iban: faker.finance.iban
+          last_updated_time: 2022-01-01T00:00:00Z
+          nickname: faker.finance.accountName
+          account_owner_names:
+          - faker.name.findName
+          - faker.name.findName
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          customer_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: ACTIVE
         failed_accounts:
         - vendor_request_id: vendor_request_id
           vendor_error_message: vendor_error_message
@@ -6937,6 +7455,10 @@ components:
           status: ACTIVE
       properties:
         added_accounts:
+          items:
+            $ref: '#/components/schemas/external_account'
+          type: array
+        deleted_accounts:
           items:
             $ref: '#/components/schemas/external_account'
           type: array
@@ -7293,7 +7815,7 @@ components:
           type: string
         phone_number:
           description: Customer's mobile phone number with country code in E.164 format
-          example: faker.helpers.replaceSymbols(+###########)
+          example: +14374570680
           pattern: ^\+[1-9]\d{1,14}$
           type: string
         related_customers:
@@ -8022,6 +8544,22 @@ components:
           type: string
       title: Client Token
       type: object
+    contest_ach:
+      description: Contested return
+      properties:
+        type:
+          enum:
+          - contested_misrouted
+          - contested_untimely
+          - contested_timely_original
+          - contested_corrected
+          - contested_not_duplicate
+          - contested_no_errors
+          - contested_non_acceptance
+          type: string
+      required:
+      - type
+      type: object
     country_code:
       description: ISO-3166-1 Alpha-2 country code
       example: faker.address.countryCode
@@ -8372,6 +8910,32 @@ components:
       allOf:
       - $ref: '#/components/schemas/disclosure_list_allOf'
       - $ref: '#/components/schemas/paginated_response'
+    disclosure_response:
+      description: Represents all customer disclosures
+      example:
+        disclosures:
+        - creation_time: 2021-05-01T23:59:59Z
+          event_type: VIEWED
+          last_updated_time: 2021-05-01T23:59:59Z
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: REG_DD
+          version: v1.1
+          timestamp: 2021-05-01T23:59:59Z
+        - creation_time: 2021-05-01T23:59:59Z
+          event_type: VIEWED
+          last_updated_time: 2021-05-01T23:59:59Z
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: REG_DD
+          version: v1.1
+          timestamp: 2021-05-01T23:59:59Z
+      properties:
+        disclosures:
+          description: List of the customer's disclosures
+          items:
+            $ref: '#/components/schemas/disclosure1'
+          type: array
+      title: List of Customer Disclosures
+      type: object
     disclosure_type:
       description: |
         Describes the regulatory requirement that triggered the disclosure.
@@ -8384,6 +8948,93 @@ components:
       - PRIVACY_NOTICE
       - TERMS_AND_CONDITIONS
       type: string
+    disclosure1:
+      description: Represents a disclosure
+      example:
+        creation_time: 2021-05-01T23:59:59Z
+        event_type: VIEWED
+        last_updated_time: 2021-05-01T23:59:59Z
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: REG_DD
+        version: v1.1
+        timestamp: 2021-05-01T23:59:59Z
+      properties:
+        creation_time:
+          example: 2021-05-01T23:59:59Z
+          format: date-time
+          readOnly: true
+          type: string
+        event_type:
+          enum:
+          - DISPLAYED
+          - VIEWED
+          - ACKNOWLEDGED
+          example: VIEWED
+          type: string
+        id:
+          description: Disclosure ID
+          format: uuid
+          type: string
+        last_updated_time:
+          example: 2021-05-01T23:59:59Z
+          format: date-time
+          readOnly: true
+          type: string
+        timestamp:
+          description: Date of disclosure
+          example: 2021-05-01T23:59:59Z
+          format: date-time
+          type: string
+        type:
+          description: Disclosure Type
+          enum:
+          - REG_DD
+          - KYC_DATA_COLLECTION
+          - REG_E
+          - REG_CC
+          - E_SIGN
+          - PRIVACY_NOTICE
+          - TERMS_AND_CONDITIONS
+          example: REG_DD
+          type: string
+        version:
+          description: Disclosure Version
+          example: v1.1
+          type: string
+      required:
+      - event_type
+      - timestamp
+      - type
+      - version
+      title: Disclosure
+      type: object
+    dishonor_ach:
+      description: Dishonored return
+      properties:
+        field_errors:
+          items:
+            enum:
+            - account_number
+            - original_trace_number
+            - amount
+            - identification_number
+            - transaction_code
+            - company_identification
+            - effective_date
+            type: string
+          type: array
+        type:
+          enum:
+          - dishonored_misrouted
+          - dishonored_erroneous_debit
+          - dishonored_duplicate
+          - dishonored_untimely
+          - dishonored_field_errors
+          - dishonored_not_requested
+          type: string
+      required:
+      - type
+      type: object
     emboss_name:
       description: The customer details to emboss on the card - Defaults to customer
         first and last name. Is limited to 21 characters. Valid characters are A-Z,
@@ -8683,6 +9334,7 @@ components:
           - SAVINGS
           - CREDIT_CARD
           - MONEY_MARKET
+          - INVESTMENT_529
           - OTHER
           type: string
         vendor_data:
@@ -8849,6 +9501,7 @@ components:
           enum:
           - DEPOSITORY
           - CREDIT
+          - INVESTMENT
           - MICRO_DEPOSIT
           type: string
         vendor_access_token:
@@ -9136,6 +9789,76 @@ components:
       - product_type
       - rates
       type: object
+    internal_account:
+      example:
+        creation_time: 2021-06-14T11:23:41Z
+        account_number: account_number
+        balances:
+        - balance: 1
+        - balance: 1
+        last_updated_time: 2022-01-18T17:54:12Z
+        description: description
+        bank_routing: bank_routing
+        currency: faker.finance.currencyCode
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: ACTIVE
+      properties:
+        account_number:
+          description: Generated internal account number
+          maxLength: 15
+          minLength: 12
+          readOnly: true
+          type: string
+        balances:
+          description: A list of balances for internal account based on different
+            type
+          items:
+            $ref: '#/components/schemas/balance'
+          readOnly: true
+          type: array
+        bank_routing:
+          description: Bank routing number
+          maxLength: 9
+          readOnly: true
+          type: string
+        creation_time:
+          description: The date and time the resource was created.
+          example: 2021-06-14T11:23:41Z
+          format: date-time
+          readOnly: true
+          type: string
+        currency:
+          description: Account currency or account settlement currency. ISO 4217 alphabetic
+            currency code.
+          example: faker.finance.currencyCode
+          pattern: ^[A-Z]{3}$
+          type: string
+        description:
+          description: A user provided description for the current account
+          type: string
+        id:
+          description: Generated ID for internal account
+          format: uuid
+          readOnly: true
+          type: string
+        last_updated_time:
+          description: The date and time the resource was last updated.
+          example: 2022-01-18T17:54:12Z
+          format: date-time
+          readOnly: true
+          type: string
+        status:
+          enum:
+          - ACTIVE
+          type: string
+      required:
+      - currency
+      - status
+      type: object
+    internal_accounts_list:
+      allOf:
+      - $ref: '#/components/schemas/internal_accounts_list_allOf'
+      - $ref: '#/components/schemas/paginated_response'
     internal_transfer:
       example:
         amount: 1025
@@ -9228,6 +9951,94 @@ components:
       description: |
         Optional field to store additional informaton about the resource.  Intended to be used by the integrator to store non-sensitive data.
       type: object
+    outgoing_ach:
+      description: Create an outgoing ACH
+      example:
+        amount: 607
+        external_data: '{}'
+        originating_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        receiving_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        is_same_day: true
+        memo: memo
+        dc_sign: debit
+        final_customer_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        effective_date: 2000-01-23
+        reference_info: Tempore atque et cum.
+        currency: USD
+        risk:
+          client_ip: client_ip
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        customer_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        amount:
+          description: Amount to transfer in ISO 4217 minor currency units
+          example: 607
+          type: integer
+        currency:
+          description: ISO 4217 alphabetic currency code of the transfer amount
+          example: USD
+          type: string
+        customer_id:
+          description: The customer's unique identifier
+          format: uuid
+          type: string
+        dc_sign:
+          description: The type of transaction (debit or credit). A debit is a transfer
+            in and a credit is a transfer out of the originating account
+          enum:
+          - debit
+          - credit
+          example: debit
+          type: string
+        effective_date:
+          description: Effective date transaction proccesses (is_same_day needs to
+            be false or not present at all)
+          format: date
+          type: string
+        external_data:
+          description: Additional transfer metadata structured as key-value pairs
+          type: object
+        final_customer_id:
+          description: ID of the international customer that receives the final remittance
+            transfer (required for OFAC enabled payments)
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        is_same_day:
+          description: Send as same day ACH transaction (use only is_same_day without
+            specific effective_date)
+          type: boolean
+        memo:
+          description: Memo for the payment
+          type: string
+        originating_account_id:
+          description: The unique identifier for an originating account
+          format: uuid
+          type: string
+        receiving_account_id:
+          description: The unique identifier for an receiving account
+          format: uuid
+          type: string
+        reference_info:
+          description: Will be sent to the ACH network and maps to Addenda record
+            05 - the recipient bank will receive this info
+          example: Tempore atque et cum.
+          type: string
+        risk:
+          $ref: '#/components/schemas/risk_data'
+      required:
+      - amount
+      - currency
+      - customer_id
+      - dc_sign
+      - originating_account_id
+      - receiving_account_id
+      - risk
+      title: Outgoing ACH requests
+      type: object
     paginated_response:
       properties:
         next_page_token:
@@ -9302,7 +10113,7 @@ components:
           type: string
         phone_number:
           description: Customer's mobile phone number with country code in E.164 format
-          example: faker.helpers.replaceSymbols(+###########)
+          example: +14374570680
           pattern: ^\+[1-9]\d{1,14}$
           type: string
         shipping_address:
@@ -10687,6 +11498,49 @@ components:
           example: usertransition response
           type: string
       type: object
+    return_ach:
+      description: Regular return
+      properties:
+        type:
+          enum:
+          - insufficient_funds
+          - acc_closed
+          - acc_not_found
+          - acc_invalid
+          - unauthorized_corp_debit
+          - return_requested
+          - auth_revoked
+          - payment_stopped
+          - uncollected_funds
+          - unauthorized_debit
+          - failed_terms
+          - account_sold
+          - acc_frozen
+          - fields_not_processable
+          - improper_effective_date
+          - non_transaction_account
+          - credit_refused
+          - duplicate_transaction
+          - corp_receiver_unauthorized
+          - permissible_return
+          - source_document_presented
+          - source_document_stop_payment
+          - improper_source_document
+          - state_law_affecting_acceptance
+          - ineligible_or_improper_entry
+          - item_stop_payment
+          type: string
+      required:
+      - type
+      type: object
+    risk_data:
+      example:
+        client_ip: client_ip
+      properties:
+        client_ip:
+          description: Client IP
+          type: string
+      type: object
     risk_rating:
       description: Represents a customer's risk profile
       example:
@@ -12022,6 +12876,16 @@ components:
           type: array
       required:
       - external_accounts
+      type: object
+    internal_accounts_list_allOf:
+      properties:
+        internal_accounts:
+          description: Array of internal accounts
+          items:
+            $ref: '#/components/schemas/internal_account'
+          type: array
+      required:
+      - internal_accounts
       type: object
     internal_transfer_response_allOf:
       properties:

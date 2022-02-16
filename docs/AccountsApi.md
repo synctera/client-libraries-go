@@ -941,7 +941,7 @@ Name | Type | Description  | Notes
 
 ## ListAccounts
 
-> AccountList ListAccounts(ctx).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
+> AccountList ListAccounts(ctx).Id(id).OverdraftAccountId(overdraftAccountId).OverflowAccountId(overflowAccountId).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
 
 List accounts
 
@@ -961,6 +961,8 @@ import (
 
 func main() {
     id := []string{"Inner_example"} // []string | Account ID(s). Multiple IDs can be provided as a comma-separated list.  (optional)
+    overdraftAccountId := []string{"Inner_example"} // []string | Overdraft account ID(s). Multiple IDs can be provided as a comma-separated list.  (optional)
+    overflowAccountId := []string{"Inner_example"} // []string | Overflow account ID(s). Multiple IDs can be provided as a comma-separated list.  (optional)
     accountNumber := []string{"Inner_example"} // []string | Account number(s). Multiple account numbers can be provided as a comma-separated list. When only a single account number is provided, any * characters in the string are wildcards, and match any characters.  (optional)
     status := openapiclient.status("APPLICATION_SUBMITTED") // Status |  (optional)
     interestProductId := "interestProductId_example" // string | Interest product ID that accounts associate with. Multiple IDs can be provided as a comma-separated list. (optional)
@@ -973,7 +975,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Id(id).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
+    resp, r, err := api_client.AccountsApi.ListAccounts(context.Background()).Id(id).OverdraftAccountId(overdraftAccountId).OverflowAccountId(overflowAccountId).AccountNumber(accountNumber).Status(status).InterestProductId(interestProductId).CustomerId(customerId).FirstName(firstName).LastName(lastName).Limit(limit).PageToken(pageToken).SortBy(sortBy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -995,6 +997,8 @@ Other parameters are passed through a pointer to a apiListAccountsRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **[]string** | Account ID(s). Multiple IDs can be provided as a comma-separated list.  | 
+ **overdraftAccountId** | **[]string** | Overdraft account ID(s). Multiple IDs can be provided as a comma-separated list.  | 
+ **overflowAccountId** | **[]string** | Overflow account ID(s). Multiple IDs can be provided as a comma-separated list.  | 
  **accountNumber** | **[]string** | Account number(s). Multiple account numbers can be provided as a comma-separated list. When only a single account number is provided, any * characters in the string are wildcards, and match any characters.  | 
  **status** | [**Status**](Status.md) |  | 
  **interestProductId** | **string** | Interest product ID that accounts associate with. Multiple IDs can be provided as a comma-separated list. | 

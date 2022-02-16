@@ -124,21 +124,28 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**UpdateCustomer**](docs/CustomersApi.md#updatecustomer) | **Put** /customers/{customer_id} | Update Customer
 *CustomersApi* | [**UpdatePartyEmployment**](docs/CustomersApi.md#updatepartyemployment) | **Put** /customers/{customer_id}/employment/{employment_id} | Update customer employment record
 *DisclosuresApi* | [**CreateDisclosure**](docs/DisclosuresApi.md#createdisclosure) | **Post** /disclosures | Create disclosure
+*DisclosuresApi* | [**CreateDisclosure1**](docs/DisclosuresApi.md#createdisclosure1) | **Post** /customers/{customer_id}/disclosures | Create a Disclosure
 *DisclosuresApi* | [**GetDisclosure**](docs/DisclosuresApi.md#getdisclosure) | **Get** /disclosures/{disclosure_id} | Get disclosure
 *DisclosuresApi* | [**ListDisclosures**](docs/DisclosuresApi.md#listdisclosures) | **Get** /disclosures | List disclosures
+*DisclosuresApi* | [**ListDisclosures1**](docs/DisclosuresApi.md#listdisclosures1) | **Get** /customers/{customer_id}/disclosures | List Disclosures
 *ExternalAccountsApi* | [**AddExternalAccounts**](docs/ExternalAccountsApi.md#addexternalaccounts) | **Post** /external_accounts | Add external accounts
 *ExternalAccountsApi* | [**AddVendorExternalAccounts**](docs/ExternalAccountsApi.md#addvendorexternalaccounts) | **Post** /external_accounts/add_vendor_accounts | Add external accounts through a vendor, such as Plaid.
 *ExternalAccountsApi* | [**CreateAccessToken**](docs/ExternalAccountsApi.md#createaccesstoken) | **Post** /external_accounts/access_tokens | Create a permanent access token for an external account
 *ExternalAccountsApi* | [**CreateVerificationLinkToken**](docs/ExternalAccountsApi.md#createverificationlinktoken) | **Post** /external_accounts/link_tokens | Create a link token to verify an external account
+*ExternalAccountsApi* | [**DeleteExternalAccount**](docs/ExternalAccountsApi.md#deleteexternalaccount) | **Delete** /external_accounts/{external_account_id} | Delete an external account
 *ExternalAccountsApi* | [**GetExternalAccount**](docs/ExternalAccountsApi.md#getexternalaccount) | **Get** /external_accounts/{external_account_id} | Get an external account
 *ExternalAccountsApi* | [**GetExternalAccountBalance**](docs/ExternalAccountsApi.md#getexternalaccountbalance) | **Get** /external_accounts/{external_account_id}/balance | Get an external account balance
 *ExternalAccountsApi* | [**GetExternalAccountTransactions**](docs/ExternalAccountsApi.md#getexternalaccounttransactions) | **Get** /external_accounts/{external_account_id}/transactions | List transactions of a given external account
 *ExternalAccountsApi* | [**ListExternalAccounts**](docs/ExternalAccountsApi.md#listexternalaccounts) | **Get** /external_accounts | List external accounts
+*ExternalAccountsApi* | [**SyncVendorExternalAccounts**](docs/ExternalAccountsApi.md#syncvendorexternalaccounts) | **Post** /external_accounts/sync_vendor_accounts | Sync external accounts through a vendor, such as Plaid.
 *ExternalAccountsApi* | [**UpdateExternalAccount**](docs/ExternalAccountsApi.md#updateexternalaccount) | **Patch** /external_accounts/{external_account_id} | Patch an external account
+*InternalAccountsApi* | [**AddInternalAccounts**](docs/InternalAccountsApi.md#addinternalaccounts) | **Post** /internal_accounts | Add internal accounts
+*InternalAccountsApi* | [**ListInternalAccounts**](docs/InternalAccountsApi.md#listinternalaccounts) | **Get** /internal_accounts | List internal accounts
 *KYCVerificationApi* | [**CreateCustomerVerificationResult**](docs/KYCVerificationApi.md#createcustomerverificationresult) | **Post** /customers/{customer_id}/verifications | Create a customer verification result
 *KYCVerificationApi* | [**GetVerification**](docs/KYCVerificationApi.md#getverification) | **Get** /customers/{customer_id}/verifications/{verification_id} | Get verification result
 *KYCVerificationApi* | [**ListVerifications**](docs/KYCVerificationApi.md#listverifications) | **Get** /customers/{customer_id}/verifications | List verification results
 *KYCVerificationApi* | [**VerifyCustomer**](docs/KYCVerificationApi.md#verifycustomer) | **Post** /customers/{customer_id}/verify | Verify a customer&#39;s identity
+*PaymentsApi* | [**AddOutgoingACHTransaction**](docs/PaymentsApi.md#addoutgoingachtransaction) | **Post** /ach | Create an outgoing ACH
 *ReconciliationsApi* | [**CreateReconciliation**](docs/ReconciliationsApi.md#createreconciliation) | **Post** /reconciliations | Create a reconciliation
 *ReconciliationsApi* | [**GetReconciliation**](docs/ReconciliationsApi.md#getreconciliation) | **Get** /reconciliations/{reconciliation_id} | Get reconciliation
 *ReconciliationsApi* | [**ListReconciliations**](docs/ReconciliationsApi.md#listreconciliations) | **Get** /reconciliations | List reconciliations
@@ -266,6 +273,7 @@ Class | Method | HTTP request | Description
  - [ChangeChannel](docs/ChangeChannel.md)
  - [ChangeType](docs/ChangeType.md)
  - [ClientToken](docs/ClientToken.md)
+ - [ContestAch](docs/ContestAch.md)
  - [CreateCardImageRequest](docs/CreateCardImageRequest.md)
  - [CreateWebhookRequest](docs/CreateWebhookRequest.md)
  - [CustomHeaders](docs/CustomHeaders.md)
@@ -294,9 +302,12 @@ Class | Method | HTTP request | Description
  - [DigitalWalletTokenEditRequest](docs/DigitalWalletTokenEditRequest.md)
  - [DigitalWalletTokenResponse](docs/DigitalWalletTokenResponse.md)
  - [Disclosure](docs/Disclosure.md)
+ - [Disclosure1](docs/Disclosure1.md)
  - [DisclosureList](docs/DisclosureList.md)
  - [DisclosureListAllOf](docs/DisclosureListAllOf.md)
+ - [DisclosureResponse](docs/DisclosureResponse.md)
  - [DisclosureType](docs/DisclosureType.md)
+ - [DishonorAch](docs/DishonorAch.md)
  - [EmbossName](docs/EmbossName.md)
  - [Employment](docs/Employment.md)
  - [EmploymentList](docs/EmploymentList.md)
@@ -333,6 +344,9 @@ Class | Method | HTTP request | Description
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse201](docs/InlineResponse201.md)
  - [Interest](docs/Interest.md)
+ - [InternalAccount](docs/InternalAccount.md)
+ - [InternalAccountsList](docs/InternalAccountsList.md)
+ - [InternalAccountsListAllOf](docs/InternalAccountsListAllOf.md)
  - [InternalTransfer](docs/InternalTransfer.md)
  - [InternalTransferResponse](docs/InternalTransferResponse.md)
  - [InternalTransferResponseAllOf](docs/InternalTransferResponseAllOf.md)
@@ -341,6 +355,7 @@ Class | Method | HTTP request | Description
  - [MasterDisclosureList](docs/MasterDisclosureList.md)
  - [MasterDisclosureListAllOf](docs/MasterDisclosureListAllOf.md)
  - [ModelError](docs/ModelError.md)
+ - [OutgoingAch](docs/OutgoingAch.md)
  - [PaginatedResponse](docs/PaginatedResponse.md)
  - [PatchAccountProduct](docs/PatchAccountProduct.md)
  - [PatchAccountsRequestAccountIdentifiers](docs/PatchAccountsRequestAccountIdentifiers.md)
@@ -384,6 +399,8 @@ Class | Method | HTTP request | Description
  - [RelationshipListAllOf](docs/RelationshipListAllOf.md)
  - [RelationshipRole](docs/RelationshipRole.md)
  - [ResendResponse](docs/ResendResponse.md)
+ - [ReturnAch](docs/ReturnAch.md)
+ - [RiskData](docs/RiskData.md)
  - [RiskRating](docs/RiskRating.md)
  - [RiskRatingList](docs/RiskRatingList.md)
  - [RiskRatingListAllOf](docs/RiskRatingListAllOf.md)

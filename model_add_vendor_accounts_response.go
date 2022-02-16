@@ -16,8 +16,9 @@ import (
 
 // AddVendorAccountsResponse struct for AddVendorAccountsResponse
 type AddVendorAccountsResponse struct {
-	AddedAccounts  []ExternalAccount         `json:"added_accounts"`
-	FailedAccounts []AddVendorAccountFailure `json:"failed_accounts"`
+	AddedAccounts   []ExternalAccount         `json:"added_accounts"`
+	DeletedAccounts *[]ExternalAccount        `json:"deleted_accounts,omitempty"`
+	FailedAccounts  []AddVendorAccountFailure `json:"failed_accounts"`
 }
 
 // NewAddVendorAccountsResponse instantiates a new AddVendorAccountsResponse object
@@ -63,6 +64,38 @@ func (o *AddVendorAccountsResponse) SetAddedAccounts(v []ExternalAccount) {
 	o.AddedAccounts = v
 }
 
+// GetDeletedAccounts returns the DeletedAccounts field value if set, zero value otherwise.
+func (o *AddVendorAccountsResponse) GetDeletedAccounts() []ExternalAccount {
+	if o == nil || o.DeletedAccounts == nil {
+		var ret []ExternalAccount
+		return ret
+	}
+	return *o.DeletedAccounts
+}
+
+// GetDeletedAccountsOk returns a tuple with the DeletedAccounts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddVendorAccountsResponse) GetDeletedAccountsOk() (*[]ExternalAccount, bool) {
+	if o == nil || o.DeletedAccounts == nil {
+		return nil, false
+	}
+	return o.DeletedAccounts, true
+}
+
+// HasDeletedAccounts returns a boolean if a field has been set.
+func (o *AddVendorAccountsResponse) HasDeletedAccounts() bool {
+	if o != nil && o.DeletedAccounts != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeletedAccounts gets a reference to the given []ExternalAccount and assigns it to the DeletedAccounts field.
+func (o *AddVendorAccountsResponse) SetDeletedAccounts(v []ExternalAccount) {
+	o.DeletedAccounts = &v
+}
+
 // GetFailedAccounts returns the FailedAccounts field value
 func (o *AddVendorAccountsResponse) GetFailedAccounts() []AddVendorAccountFailure {
 	if o == nil {
@@ -91,6 +124,9 @@ func (o AddVendorAccountsResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["added_accounts"] = o.AddedAccounts
+	}
+	if o.DeletedAccounts != nil {
+		toSerialize["deleted_accounts"] = o.DeletedAccounts
 	}
 	if true {
 		toSerialize["failed_accounts"] = o.FailedAccounts

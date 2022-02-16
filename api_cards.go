@@ -1482,10 +1482,11 @@ func (a *CardsApiService) ListCardImageDetailsExecute(r ApiListCardImageDetailsR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-
-	if r.customerId != nil {
-		localVarQueryParams.Add("customer_id", parameterToString(*r.customerId, ""))
+	if r.customerId == nil {
+		return localVarReturnValue, nil, reportError("customerId is required and must be specified")
 	}
+
+	localVarQueryParams.Add("customer_id", parameterToString(*r.customerId, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

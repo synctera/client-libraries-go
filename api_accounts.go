@@ -1727,23 +1727,37 @@ func (a *AccountsApiService) ListAccountTemplatesExecute(r ApiListAccountTemplat
 }
 
 type ApiListAccountsRequest struct {
-	ctx               _context.Context
-	ApiService        *AccountsApiService
-	id                *[]string
-	accountNumber     *[]string
-	status            *Status
-	interestProductId *string
-	customerId        *string
-	firstName         *string
-	lastName          *string
-	limit             *int32
-	pageToken         *string
-	sortBy            *[]string
+	ctx                _context.Context
+	ApiService         *AccountsApiService
+	id                 *[]string
+	overdraftAccountId *[]string
+	overflowAccountId  *[]string
+	accountNumber      *[]string
+	status             *Status
+	interestProductId  *string
+	customerId         *string
+	firstName          *string
+	lastName           *string
+	limit              *int32
+	pageToken          *string
+	sortBy             *[]string
 }
 
 // Account ID(s). Multiple IDs can be provided as a comma-separated list.
 func (r ApiListAccountsRequest) Id(id []string) ApiListAccountsRequest {
 	r.id = &id
+	return r
+}
+
+// Overdraft account ID(s). Multiple IDs can be provided as a comma-separated list.
+func (r ApiListAccountsRequest) OverdraftAccountId(overdraftAccountId []string) ApiListAccountsRequest {
+	r.overdraftAccountId = &overdraftAccountId
+	return r
+}
+
+// Overflow account ID(s). Multiple IDs can be provided as a comma-separated list.
+func (r ApiListAccountsRequest) OverflowAccountId(overflowAccountId []string) ApiListAccountsRequest {
+	r.overflowAccountId = &overflowAccountId
 	return r
 }
 
@@ -1835,6 +1849,12 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) (Acco
 
 	if r.id != nil {
 		localVarQueryParams.Add("id", parameterToString(*r.id, "csv"))
+	}
+	if r.overdraftAccountId != nil {
+		localVarQueryParams.Add("overdraft_account_id", parameterToString(*r.overdraftAccountId, "csv"))
+	}
+	if r.overflowAccountId != nil {
+		localVarQueryParams.Add("overflow_account_id", parameterToString(*r.overflowAccountId, "csv"))
 	}
 	if r.accountNumber != nil {
 		localVarQueryParams.Add("account_number", parameterToString(*r.accountNumber, "csv"))

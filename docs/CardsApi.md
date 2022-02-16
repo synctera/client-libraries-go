@@ -659,7 +659,7 @@ import (
 )
 
 func main() {
-    customerId := TODO // string |  (optional)
+    customerId := TODO // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
