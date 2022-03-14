@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Network** | Pointer to **string** |  | [optional] 
 **OpaquePaymentCard** | Pointer to **string** |  | [optional] 
 **TokenServiceProvider** | Pointer to **string** |  | [optional] 
-**UserAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
+**UserAddress** | Pointer to [**Address1**](Address1.md) |  | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasTokenServiceProvider returns a boolean if a field has been set.
 
 ### GetUserAddress
 
-`func (o *PushTokenizeRequestData) GetUserAddress() Address`
+`func (o *PushTokenizeRequestData) GetUserAddress() Address1`
 
 GetUserAddress returns the UserAddress field if non-nil, zero value otherwise.
 
 ### GetUserAddressOk
 
-`func (o *PushTokenizeRequestData) GetUserAddressOk() (*Address, bool)`
+`func (o *PushTokenizeRequestData) GetUserAddressOk() (*Address1, bool)`
 
 GetUserAddressOk returns a tuple with the UserAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserAddress
 
-`func (o *PushTokenizeRequestData) SetUserAddress(v Address)`
+`func (o *PushTokenizeRequestData) SetUserAddress(v Address1)`
 
 SetUserAddress sets UserAddress field to given value.
 

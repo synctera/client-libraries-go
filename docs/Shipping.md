@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to [**Address**](Address.md) |  | [optional] 
+**Address** | Pointer to [**Address1**](Address1.md) |  | [optional] 
 **CareOfLine** | Pointer to **string** | The name of the person to send in care of | [optional] 
 **IsExpeditedFulfillment** | Pointer to **bool** | Is the shipment expedited | [optional] [default to false]
 **Method** | Pointer to **string** | The shipping method | [optional] [default to "LOCAL_MAIL"]
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAddress
 
-`func (o *Shipping) GetAddress() Address`
+`func (o *Shipping) GetAddress() Address1`
 
 GetAddress returns the Address field if non-nil, zero value otherwise.
 
 ### GetAddressOk
 
-`func (o *Shipping) GetAddressOk() (*Address, bool)`
+`func (o *Shipping) GetAddressOk() (*Address1, bool)`
 
 GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAddress
 
-`func (o *Shipping) SetAddress(v Address)`
+`func (o *Shipping) SetAddress(v Address1)`
 
 SetAddress sets Address field to given value.
 

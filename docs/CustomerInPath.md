@@ -15,12 +15,12 @@ Name | Type | Description | Notes
 **KycLastRun** | Pointer to **time.Time** | Date and time KYC was last run on the customer | [optional] [readonly] 
 **KycStatus** | Pointer to [**CustomerKycStatus**](CustomerKycStatus.md) |  | [optional] 
 **LastUpdatedTime** | Pointer to **time.Time** | The date and time the resource was last updated. | [optional] [readonly] 
-**LegalAddress** | Pointer to [**Address1**](Address1.md) |  | [optional] 
+**LegalAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
 **Metadata** | Pointer to **map[string]interface{}** | User-supplied metadata. Do not use to store PII. | [optional] 
 **MiddleName** | Pointer to **string** | Customer&#39;s middle name | [optional] 
 **PhoneNumber** | Pointer to **string** | Customer&#39;s mobile phone number with country code in E.164 format | [optional] 
 **RelatedCustomers** | Pointer to [**[]Relationship1**](Relationship1.md) | Customer&#39;s relationships with other accounts eg. guardian | [optional] 
-**ShippingAddress** | Pointer to [**Address1**](Address1.md) |  | [optional] 
+**ShippingAddress** | Pointer to [**Address**](Address.md) |  | [optional] 
 **Ssn** | Pointer to **string** | Customer&#39;s full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Input must match the pattern ^\\d{3}-\\d{2}-\\d{4}$. The response contains the last 4 digits only (e.g. 6789). | [optional] 
 
 ## Methods
@@ -299,20 +299,20 @@ HasLastUpdatedTime returns a boolean if a field has been set.
 
 ### GetLegalAddress
 
-`func (o *CustomerInPath) GetLegalAddress() Address1`
+`func (o *CustomerInPath) GetLegalAddress() Address`
 
 GetLegalAddress returns the LegalAddress field if non-nil, zero value otherwise.
 
 ### GetLegalAddressOk
 
-`func (o *CustomerInPath) GetLegalAddressOk() (*Address1, bool)`
+`func (o *CustomerInPath) GetLegalAddressOk() (*Address, bool)`
 
 GetLegalAddressOk returns a tuple with the LegalAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLegalAddress
 
-`func (o *CustomerInPath) SetLegalAddress(v Address1)`
+`func (o *CustomerInPath) SetLegalAddress(v Address)`
 
 SetLegalAddress sets LegalAddress field to given value.
 
@@ -424,20 +424,20 @@ HasRelatedCustomers returns a boolean if a field has been set.
 
 ### GetShippingAddress
 
-`func (o *CustomerInPath) GetShippingAddress() Address1`
+`func (o *CustomerInPath) GetShippingAddress() Address`
 
 GetShippingAddress returns the ShippingAddress field if non-nil, zero value otherwise.
 
 ### GetShippingAddressOk
 
-`func (o *CustomerInPath) GetShippingAddressOk() (*Address1, bool)`
+`func (o *CustomerInPath) GetShippingAddressOk() (*Address, bool)`
 
 GetShippingAddressOk returns a tuple with the ShippingAddress field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingAddress
 
-`func (o *CustomerInPath) SetShippingAddress(v Address1)`
+`func (o *CustomerInPath) SetShippingAddress(v Address)`
 
 SetShippingAddress sets ShippingAddress field to given value.
 

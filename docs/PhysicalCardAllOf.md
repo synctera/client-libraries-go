@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CardImageId** | Pointer to **string** | The ID of the custom card image used for this card | [optional] 
 **IsPinSet** | Pointer to **bool** | indicates whether a pin has been set on the card | [optional] [readonly] [default to false]
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewPhysicalCardAllOfWithDefaults instantiates a new PhysicalCardAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCardImageId
+
+`func (o *PhysicalCardAllOf) GetCardImageId() string`
+
+GetCardImageId returns the CardImageId field if non-nil, zero value otherwise.
+
+### GetCardImageIdOk
+
+`func (o *PhysicalCardAllOf) GetCardImageIdOk() (*string, bool)`
+
+GetCardImageIdOk returns a tuple with the CardImageId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardImageId
+
+`func (o *PhysicalCardAllOf) SetCardImageId(v string)`
+
+SetCardImageId sets CardImageId field to given value.
+
+### HasCardImageId
+
+`func (o *PhysicalCardAllOf) HasCardImageId() bool`
+
+HasCardImageId returns a boolean if a field has been set.
 
 ### GetIsPinSet
 

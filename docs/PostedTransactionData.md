@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExternalData** | **map[string]interface{}** | an unstructured json blob representing additional transaction information supplied by the integrator. | 
+**HoldId** | Pointer to **string** | The uuid of the hold (pending transaction) that this transaction originated from, if any. | [optional] 
 **Lines** | [**[]TransactionLine**](TransactionLine.md) | The set of accounting entries associated with this transaction. For example, a debit to a customer account will have a corresponding credit in a general ledger account. | 
 **Memo** | **string** |  | 
 **Metadata** | **map[string]interface{}** |  | 
@@ -61,6 +62,31 @@ SetExternalData sets ExternalData field to given value.
 `func (o *PostedTransactionData) UnsetExternalData()`
 
 UnsetExternalData ensures that no value is present for ExternalData, not even an explicit nil
+### GetHoldId
+
+`func (o *PostedTransactionData) GetHoldId() string`
+
+GetHoldId returns the HoldId field if non-nil, zero value otherwise.
+
+### GetHoldIdOk
+
+`func (o *PostedTransactionData) GetHoldIdOk() (*string, bool)`
+
+GetHoldIdOk returns a tuple with the HoldId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHoldId
+
+`func (o *PostedTransactionData) SetHoldId(v string)`
+
+SetHoldId sets HoldId field to given value.
+
+### HasHoldId
+
+`func (o *PostedTransactionData) HasHoldId() bool`
+
+HasHoldId returns a boolean if a field has been set.
+
 ### GetLines
 
 `func (o *PostedTransactionData) GetLines() []TransactionLine`

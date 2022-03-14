@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **EventType** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** | The unique identifier for this resource. | [optional] [readonly] 
 **LastUpdatedTime** | Pointer to **time.Time** | The date and time the resource was last updated. | [optional] [readonly] 
-**Metadata** | Pointer to **map[string]interface{}** | Optional field to store additional informaton about the resource.  Intended to be used by the integrator to store non-sensitive data.  | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | Optional field to store additional information about the resource. Intended to be used by the integrator to store non-sensitive data.  | [optional] 
 **PersonId** | Pointer to **string** | Unique ID for the person. Exactly one of &#x60;person_id&#x60; or &#x60;business_id&#x60; must be set.  | [optional] 
 **Type** | Pointer to [**DisclosureType**](DisclosureType.md) |  | [optional] 
 **Version** | Pointer to **string** | Version of the disclosure document. | [optional] 

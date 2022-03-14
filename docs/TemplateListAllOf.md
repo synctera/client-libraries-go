@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountTemplates** | [**[]AccountTemplate**](AccountTemplate.md) | Array of account templates | 
+**AccountTemplates** | [**[]AccountTemplateResponse**](AccountTemplateResponse.md) | Array of account templates | 
 
 ## Methods
 
 ### NewTemplateListAllOf
 
-`func NewTemplateListAllOf(accountTemplates []AccountTemplate, ) *TemplateListAllOf`
+`func NewTemplateListAllOf(accountTemplates []AccountTemplateResponse, ) *TemplateListAllOf`
 
 NewTemplateListAllOf instantiates a new TemplateListAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAccountTemplates
 
-`func (o *TemplateListAllOf) GetAccountTemplates() []AccountTemplate`
+`func (o *TemplateListAllOf) GetAccountTemplates() []AccountTemplateResponse`
 
 GetAccountTemplates returns the AccountTemplates field if non-nil, zero value otherwise.
 
 ### GetAccountTemplatesOk
 
-`func (o *TemplateListAllOf) GetAccountTemplatesOk() (*[]AccountTemplate, bool)`
+`func (o *TemplateListAllOf) GetAccountTemplatesOk() (*[]AccountTemplateResponse, bool)`
 
 GetAccountTemplatesOk returns a tuple with the AccountTemplates field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountTemplates
 
-`func (o *TemplateListAllOf) SetAccountTemplates(v []AccountTemplate)`
+`func (o *TemplateListAllOf) SetAccountTemplates(v []AccountTemplateResponse)`
 
 SetAccountTemplates sets AccountTemplates field to given value.
 

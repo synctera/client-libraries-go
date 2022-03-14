@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerId** | **string** | The unique identifier of a customer | 
-**ImageData** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -45,31 +44,6 @@ and a boolean to check if the value has been set.
 
 SetCustomerId sets CustomerId field to given value.
 
-
-### GetImageData
-
-`func (o *CreateCardImageRequest) GetImageData() string`
-
-GetImageData returns the ImageData field if non-nil, zero value otherwise.
-
-### GetImageDataOk
-
-`func (o *CreateCardImageRequest) GetImageDataOk() (*string, bool)`
-
-GetImageDataOk returns a tuple with the ImageData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImageData
-
-`func (o *CreateCardImageRequest) SetImageData(v string)`
-
-SetImageData sets ImageData field to given value.
-
-### HasImageData
-
-`func (o *CreateCardImageRequest) HasImageData() bool`
-
-HasImageData returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

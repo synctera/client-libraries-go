@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Balance** | **int64** | Maximum balance in the account&#39;s currency | 
-**OverflowAccountId** | **string** | ID of overflow account for JIT funding of transactions | 
+**OverflowAccountId** | Pointer to **string** | ID of overflow account for JIT funding of transactions | [optional] 
 
 ## Methods
 
 ### NewBalanceCeiling
 
-`func NewBalanceCeiling(balance int64, overflowAccountId string, ) *BalanceCeiling`
+`func NewBalanceCeiling(balance int64, ) *BalanceCeiling`
 
 NewBalanceCeiling instantiates a new BalanceCeiling object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetOverflowAccountId sets OverflowAccountId field to given value.
 
+### HasOverflowAccountId
+
+`func (o *BalanceCeiling) HasOverflowAccountId() bool`
+
+HasOverflowAccountId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

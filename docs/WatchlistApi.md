@@ -34,12 +34,12 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | The customer's unique identifier
-    alertId := TODO // string | Unique identifier for this watchlist alert.
+    customerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The customer's unique identifier
+    alertId := "0ccfb59e-03f3-4f05-9560-faaf69d5d13a" // string | Unique identifier for this watchlist alert.
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WatchlistApi.GetWatchlistAlert(context.Background(), customerId, alertId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WatchlistApi.GetWatchlistAlert(context.Background(), customerId, alertId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WatchlistApi.GetWatchlistAlert``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -55,8 +55,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-**alertId** | [**string**](.md) | Unique identifier for this watchlist alert. | 
+**customerId** | **string** | The customer&#39;s unique identifier | 
+**alertId** | **string** | Unique identifier for this watchlist alert. | 
 
 ### Other Parameters
 
@@ -105,12 +105,12 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | The customer's unique identifier
-    subscriptionId := TODO // string | Watchlist monitoring subscription ID
+    customerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The customer's unique identifier
+    subscriptionId := "63834fd4-3ad6-4da4-8a7a-b057d480be7f" // string | Watchlist monitoring subscription ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WatchlistApi.GetWatchlistSubscription(context.Background(), customerId, subscriptionId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WatchlistApi.GetWatchlistSubscription(context.Background(), customerId, subscriptionId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WatchlistApi.GetWatchlistSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -126,8 +126,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-**subscriptionId** | [**string**](.md) | Watchlist monitoring subscription ID | 
+**customerId** | **string** | The customer&#39;s unique identifier | 
+**subscriptionId** | **string** | Watchlist monitoring subscription ID | 
 
 ### Other Parameters
 
@@ -176,11 +176,11 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | The customer's unique identifier
+    customerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The customer's unique identifier
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WatchlistApi.ListWatchlistAlerts(context.Background(), customerId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WatchlistApi.ListWatchlistAlerts(context.Background(), customerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WatchlistApi.ListWatchlistAlerts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -196,7 +196,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
+**customerId** | **string** | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -244,11 +244,11 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | The customer's unique identifier
+    customerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The customer's unique identifier
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WatchlistApi.ListWatchlistSubscriptions(context.Background(), customerId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WatchlistApi.ListWatchlistSubscriptions(context.Background(), customerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WatchlistApi.ListWatchlistSubscriptions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -264,7 +264,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
+**customerId** | **string** | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## SuppressWatchlistEntityAlert
 
-> SuppressWatchlistEntityAlert(ctx, customerId).WatchlistSuppress(watchlistSuppress).Execute()
+> SuppressWatchlistEntityAlert(ctx, customerId).WatchlistSuppress(watchlistSuppress).IdempotencyKey(idempotencyKey).Execute()
 
 Suppress entity alert
 
@@ -312,12 +312,13 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | The customer's unique identifier
+    customerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The customer's unique identifier
     watchlistSuppress := *openapiclient.NewWatchlistSuppress("ProviderSubjectId_example", "ProviderSubscriptionId_example", "Status_example") // WatchlistSuppress | A watchlist suppression object
+    idempotencyKey := "e6504ae6-eb80-4a05-b429-956675dd4604" // string | An idempotency key is an arbitrary unique value generated by client to detect subsequent retries of the same request. It is recommended that a UUID or a similar random identifier be used as an idempotency key (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WatchlistApi.SuppressWatchlistEntityAlert(context.Background(), customerId).WatchlistSuppress(watchlistSuppress).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WatchlistApi.SuppressWatchlistEntityAlert(context.Background(), customerId).WatchlistSuppress(watchlistSuppress).IdempotencyKey(idempotencyKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WatchlistApi.SuppressWatchlistEntityAlert``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -331,7 +332,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
+**customerId** | **string** | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -342,6 +343,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **watchlistSuppress** | [**WatchlistSuppress**](WatchlistSuppress.md) | A watchlist suppression object | 
+ **idempotencyKey** | **string** | An idempotency key is an arbitrary unique value generated by client to detect subsequent retries of the same request. It is recommended that a UUID or a similar random identifier be used as an idempotency key | 
 
 ### Return type
 
@@ -380,13 +382,13 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | The customer's unique identifier
-    alertId := TODO // string | Unique identifier for this watchlist alert.
+    customerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The customer's unique identifier
+    alertId := "0ccfb59e-03f3-4f05-9560-faaf69d5d13a" // string | Unique identifier for this watchlist alert.
     watchlistAlert := *openapiclient.NewWatchlistAlert("Status_example") // WatchlistAlert | A watchlist body
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WatchlistApi.UpdateWatchlistAlert(context.Background(), customerId, alertId).WatchlistAlert(watchlistAlert).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WatchlistApi.UpdateWatchlistAlert(context.Background(), customerId, alertId).WatchlistAlert(watchlistAlert).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WatchlistApi.UpdateWatchlistAlert``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +402,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-**alertId** | [**string**](.md) | Unique identifier for this watchlist alert. | 
+**customerId** | **string** | The customer&#39;s unique identifier | 
+**alertId** | **string** | Unique identifier for this watchlist alert. | 
 
 ### Other Parameters
 
@@ -451,13 +453,13 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | The customer's unique identifier
-    subscriptionId := TODO // string | Watchlist monitoring subscription ID
+    customerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The customer's unique identifier
+    subscriptionId := "63834fd4-3ad6-4da4-8a7a-b057d480be7f" // string | Watchlist monitoring subscription ID
     watchlistSubscription := *openapiclient.NewWatchlistSubscription(false) // WatchlistSubscription | Watchlist monitoring subscription to be updated. The only field that matters is `status`; all other fields are ignored. 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WatchlistApi.UpdateWatchlistSubscription(context.Background(), customerId, subscriptionId).WatchlistSubscription(watchlistSubscription).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WatchlistApi.UpdateWatchlistSubscription(context.Background(), customerId, subscriptionId).WatchlistSubscription(watchlistSubscription).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WatchlistApi.UpdateWatchlistSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -473,8 +475,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
-**subscriptionId** | [**string**](.md) | Watchlist monitoring subscription ID | 
+**customerId** | **string** | The customer&#39;s unique identifier | 
+**subscriptionId** | **string** | Watchlist monitoring subscription ID | 
 
 ### Other Parameters
 
@@ -507,7 +509,7 @@ Name | Type | Description  | Notes
 
 ## WatchlistSubscribe
 
-> WatchlistSubscription WatchlistSubscribe(ctx, customerId).WatchlistSubscription(watchlistSubscription).Execute()
+> WatchlistSubscription WatchlistSubscribe(ctx, customerId).WatchlistSubscription(watchlistSubscription).IdempotencyKey(idempotencyKey).Execute()
 
 Subscribe a customer to watchlist monitoring
 
@@ -524,12 +526,13 @@ import (
 )
 
 func main() {
-    customerId := TODO // string | The customer's unique identifier
+    customerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The customer's unique identifier
     watchlistSubscription := *openapiclient.NewWatchlistSubscription(false) // WatchlistSubscription | A watchlist subscription
+    idempotencyKey := "e6504ae6-eb80-4a05-b429-956675dd4604" // string | An idempotency key is an arbitrary unique value generated by client to detect subsequent retries of the same request. It is recommended that a UUID or a similar random identifier be used as an idempotency key (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WatchlistApi.WatchlistSubscribe(context.Background(), customerId).WatchlistSubscription(watchlistSubscription).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WatchlistApi.WatchlistSubscribe(context.Background(), customerId).WatchlistSubscription(watchlistSubscription).IdempotencyKey(idempotencyKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WatchlistApi.WatchlistSubscribe``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -545,7 +548,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**customerId** | [**string**](.md) | The customer&#39;s unique identifier | 
+**customerId** | **string** | The customer&#39;s unique identifier | 
 
 ### Other Parameters
 
@@ -556,6 +559,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **watchlistSubscription** | [**WatchlistSubscription**](WatchlistSubscription.md) | A watchlist subscription | 
+ **idempotencyKey** | **string** | An idempotency key is an arbitrary unique value generated by client to detect subsequent retries of the same request. It is recommended that a UUID or a similar random identifier be used as an idempotency key | 
 
 ### Return type
 
