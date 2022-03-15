@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **CustomerId** | **string** | The identifier for the customer associated with these accounts. | 
 **CustomerType** | **string** | The type of customer. | 
 **Vendor** | [**ExternalAccountVendorValues**](ExternalAccountVendorValues.md) |  | 
-**VendorAccessToken** | **string** | The token provided to link external accounts. For Plaid, this is their &#x60;access_token&#x60;.  | 
-**VendorAccountIds** | **[]string** | The list of vendor account IDs that the customer chose to link. For Plaid, these are &#x60;account_id&#x60;s.  | 
+**VendorAccessToken** | Pointer to **string** | The token provided to link external accounts. For Plaid, this is their &#x60;access_token&#x60;.  | [optional] 
+**VendorAccountIds** | Pointer to **[]string** | The list of vendor account IDs that the customer chose to link. For Plaid, these are &#x60;account_id&#x60;s.  | [optional] 
 **VerifyOwner** | Pointer to **bool** | Synctera will attempt to verify that the external account owner is the same as the customer by comparing external account data to customer data. At least 2 of the following fields must match: name, phone number, email, address. Verification will be suppressed by default  | [optional] [default to false]
 
 ## Methods
 
 ### NewAddVendorAccountsRequest
 
-`func NewAddVendorAccountsRequest(customerId string, customerType string, vendor ExternalAccountVendorValues, vendorAccessToken string, vendorAccountIds []string, ) *AddVendorAccountsRequest`
+`func NewAddVendorAccountsRequest(customerId string, customerType string, vendor ExternalAccountVendorValues, ) *AddVendorAccountsRequest`
 
 NewAddVendorAccountsRequest instantiates a new AddVendorAccountsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -109,6 +109,11 @@ and a boolean to check if the value has been set.
 
 SetVendorAccessToken sets VendorAccessToken field to given value.
 
+### HasVendorAccessToken
+
+`func (o *AddVendorAccountsRequest) HasVendorAccessToken() bool`
+
+HasVendorAccessToken returns a boolean if a field has been set.
 
 ### GetVendorAccountIds
 
@@ -129,6 +134,11 @@ and a boolean to check if the value has been set.
 
 SetVendorAccountIds sets VendorAccountIds field to given value.
 
+### HasVendorAccountIds
+
+`func (o *AddVendorAccountsRequest) HasVendorAccountIds() bool`
+
+HasVendorAccountIds returns a boolean if a field has been set.
 
 ### GetVerifyOwner
 

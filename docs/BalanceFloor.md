@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Balance** | **int64** | Minimum balance in the account&#39;s currency | 
-**OverdraftAccountId** | **string** | ID of overdraft account for just-in-time (JIT) funding of transactions | 
+**OverdraftAccountId** | Pointer to **string** | ID of overdraft account for just-in-time (JIT) funding of transactions | [optional] 
 
 ## Methods
 
 ### NewBalanceFloor
 
-`func NewBalanceFloor(balance int64, overdraftAccountId string, ) *BalanceFloor`
+`func NewBalanceFloor(balance int64, ) *BalanceFloor`
 
 NewBalanceFloor instantiates a new BalanceFloor object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetOverdraftAccountId sets OverdraftAccountId field to given value.
 
+### HasOverdraftAccountId
+
+`func (o *BalanceFloor) HasOverdraftAccountId() bool`
+
+HasOverdraftAccountId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

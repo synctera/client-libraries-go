@@ -7,7 +7,9 @@ api_cards.go
 api_customers.go
 api_disclosures.go
 api_external_accounts.go
+api_internal_accounts.go
 api_kyc_verification.go
+api_payments.go
 api_reconciliations.go
 api_transactions.go
 api_watchlist.go
@@ -111,6 +113,7 @@ docs/CardsApi.md
 docs/ChangeChannel.md
 docs/ChangeType.md
 docs/ClientToken.md
+docs/ContestAch.md
 docs/CreateCardImageRequest.md
 docs/CreateWebhookRequest.md
 docs/CustomHeaders.md
@@ -140,10 +143,13 @@ docs/DeleteResponse.md
 docs/DigitalWalletTokenEditRequest.md
 docs/DigitalWalletTokenResponse.md
 docs/Disclosure.md
+docs/Disclosure1.md
 docs/DisclosureList.md
 docs/DisclosureListAllOf.md
+docs/DisclosureResponse.md
 docs/DisclosureType.md
 docs/DisclosuresApi.md
+docs/DishonorAch.md
 docs/EmbossName.md
 docs/Employment.md
 docs/EmploymentList.md
@@ -181,6 +187,10 @@ docs/InlineResponse200.md
 docs/InlineResponse2001.md
 docs/InlineResponse201.md
 docs/Interest.md
+docs/InternalAccount.md
+docs/InternalAccountsApi.md
+docs/InternalAccountsList.md
+docs/InternalAccountsListAllOf.md
 docs/InternalTransfer.md
 docs/InternalTransferResponse.md
 docs/InternalTransferResponseAllOf.md
@@ -190,6 +200,7 @@ docs/MasterDisclosure.md
 docs/MasterDisclosureList.md
 docs/MasterDisclosureListAllOf.md
 docs/ModelError.md
+docs/OutgoingAch.md
 docs/PaginatedResponse.md
 docs/PatchAccountProduct.md
 docs/PatchAccountsRequestAccountIdentifiers.md
@@ -197,6 +208,7 @@ docs/PatchAccountsRequestRoutingIdentifiers.md
 docs/PatchCustomer.md
 docs/PatchExternalAccount.md
 docs/PatchInterest.md
+docs/PaymentsApi.md
 docs/PendingTransaction.md
 docs/PendingTransactionData.md
 docs/PendingTransactionHistory.md
@@ -234,6 +246,8 @@ docs/RelationshipList.md
 docs/RelationshipListAllOf.md
 docs/RelationshipRole.md
 docs/ResendResponse.md
+docs/ReturnAch.md
+docs/RiskData.md
 docs/RiskRating.md
 docs/RiskRatingList.md
 docs/RiskRatingListAllOf.md
@@ -384,6 +398,7 @@ model_card_widget_url_response.go
 model_change_channel.go
 model_change_type.go
 model_client_token.go
+model_contest_ach.go
 model_create_card_image_request.go
 model_create_webhook_request.go
 model_custom_headers.go
@@ -412,9 +427,12 @@ model_delete_response.go
 model_digital_wallet_token_edit_request.go
 model_digital_wallet_token_response.go
 model_disclosure.go
+model_disclosure1.go
 model_disclosure_list.go
 model_disclosure_list_all_of.go
+model_disclosure_response.go
 model_disclosure_type.go
+model_dishonor_ach.go
 model_emboss_name.go
 model_employment.go
 model_employment_list.go
@@ -452,6 +470,9 @@ model_inline_response_200.go
 model_inline_response_200_1.go
 model_inline_response_201.go
 model_interest.go
+model_internal_account.go
+model_internal_accounts_list.go
+model_internal_accounts_list_all_of.go
 model_internal_transfer.go
 model_internal_transfer_response.go
 model_internal_transfer_response_all_of.go
@@ -459,6 +480,7 @@ model_manual_account_verification.go
 model_master_disclosure.go
 model_master_disclosure_list.go
 model_master_disclosure_list_all_of.go
+model_outgoing_ach.go
 model_paginated_response.go
 model_patch_account_product.go
 model_patch_accounts_request_account_identifiers.go
@@ -502,6 +524,8 @@ model_relationship_list.go
 model_relationship_list_all_of.go
 model_relationship_role.go
 model_resend_response.go
+model_return_ach.go
+model_risk_data.go
 model_risk_rating.go
 model_risk_rating_list.go
 model_risk_rating_list_all_of.go

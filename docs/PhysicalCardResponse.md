@@ -12,11 +12,11 @@ Name | Type | Description | Notes
 **CreationTime** | **time.Time** | The timestamp representing when the card issuance request was made | [readonly] 
 **CustomerId** | **string** | The ID of the customer to whom the card will be issued | 
 **EmbossName** | [**EmbossName**](EmbossName.md) |  | 
-**ExpirationMonth** | **string** |  | [readonly] 
+**ExpirationMonth** | Pointer to **string** |  | [optional] [readonly] 
 **ExpirationTime** | Pointer to **time.Time** | The timestamp representing when the card would expire at | [optional] [readonly] 
-**ExpirationYear** | **string** |  | [readonly] 
+**ExpirationYear** | Pointer to **string** |  | [optional] [readonly] 
 **Id** | **string** | Card ID | [readonly] 
-**LastFour** | **string** | The last 4 digits of the card PAN | [readonly] 
+**LastFour** | Pointer to **string** | The last 4 digits of the card PAN | [optional] [readonly] 
 **LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the card was last modified at | [optional] [readonly] 
 **Metadata** | Pointer to **map[string]string** | Additional data to include in the request structured as key-value pairs | [optional] 
 **ReissueReason** | Pointer to **string** | The reason the card needs to be reissued | [optional] 
@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **ReissuedToId** | Pointer to **string** | If this card was reissued, this ID refers to the card that replaced it. | [optional] [readonly] 
 **Shipping** | [**Shipping**](Shipping.md) |  | 
 **Type** | **string** | Indicates the type of card to be issued | 
+**CardImageId** | Pointer to **string** | The ID of the custom card image used for this card | [optional] 
 **IsPinSet** | Pointer to **bool** | indicates whether a pin has been set on the card | [optional] [readonly] [default to false]
 **CardStatus** | [**CardStatus**](CardStatus.md) |  | 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
@@ -36,7 +37,7 @@ Name | Type | Description | Notes
 
 ### NewPhysicalCardResponse
 
-`func NewPhysicalCardResponse(form string, accountId string, cardBrand CardBrand, cardProductId string, creationTime time.Time, customerId string, embossName EmbossName, expirationMonth string, expirationYear string, id string, lastFour string, shipping Shipping, type_ string, cardStatus CardStatus, statusReason CardStatusReasonCode, cardFulfillmentStatus CardFulfillmentStatus, physicalCardFormat PhysicalCardFormat, ) *PhysicalCardResponse`
+`func NewPhysicalCardResponse(form string, accountId string, cardBrand CardBrand, cardProductId string, creationTime time.Time, customerId string, embossName EmbossName, id string, shipping Shipping, type_ string, cardStatus CardStatus, statusReason CardStatusReasonCode, cardFulfillmentStatus CardFulfillmentStatus, physicalCardFormat PhysicalCardFormat, ) *PhysicalCardResponse`
 
 NewPhysicalCardResponse instantiates a new PhysicalCardResponse object
 This constructor will assign default values to properties that have it defined,
@@ -235,6 +236,11 @@ and a boolean to check if the value has been set.
 
 SetExpirationMonth sets ExpirationMonth field to given value.
 
+### HasExpirationMonth
+
+`func (o *PhysicalCardResponse) HasExpirationMonth() bool`
+
+HasExpirationMonth returns a boolean if a field has been set.
 
 ### GetExpirationTime
 
@@ -280,6 +286,11 @@ and a boolean to check if the value has been set.
 
 SetExpirationYear sets ExpirationYear field to given value.
 
+### HasExpirationYear
+
+`func (o *PhysicalCardResponse) HasExpirationYear() bool`
+
+HasExpirationYear returns a boolean if a field has been set.
 
 ### GetId
 
@@ -320,6 +331,11 @@ and a boolean to check if the value has been set.
 
 SetLastFour sets LastFour field to given value.
 
+### HasLastFour
+
+`func (o *PhysicalCardResponse) HasLastFour() bool`
+
+HasLastFour returns a boolean if a field has been set.
 
 ### GetLastModifiedTime
 
@@ -485,6 +501,31 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+
+### GetCardImageId
+
+`func (o *PhysicalCardResponse) GetCardImageId() string`
+
+GetCardImageId returns the CardImageId field if non-nil, zero value otherwise.
+
+### GetCardImageIdOk
+
+`func (o *PhysicalCardResponse) GetCardImageIdOk() (*string, bool)`
+
+GetCardImageIdOk returns a tuple with the CardImageId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardImageId
+
+`func (o *PhysicalCardResponse) SetCardImageId(v string)`
+
+SetCardImageId sets CardImageId field to given value.
+
+### HasCardImageId
+
+`func (o *PhysicalCardResponse) HasCardImageId() bool`
+
+HasCardImageId returns a boolean if a field has been set.
 
 ### GetIsPinSet
 

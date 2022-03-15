@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerId** | **string** | The unique identifier of a customer | 
 **Id** | **string** | The unique identifier of a card image | 
+**RejectionMemo** | Pointer to **string** |  | [optional] 
+**RejectionReason** | Pointer to [**CardImageRejectionReason**](CardImageRejectionReason.md) |  | [optional] 
 **Status** | [**CardImageStatus**](CardImageStatus.md) |  | 
 
 ## Methods
@@ -66,6 +68,56 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+
+### GetRejectionMemo
+
+`func (o *CardImageDetails) GetRejectionMemo() string`
+
+GetRejectionMemo returns the RejectionMemo field if non-nil, zero value otherwise.
+
+### GetRejectionMemoOk
+
+`func (o *CardImageDetails) GetRejectionMemoOk() (*string, bool)`
+
+GetRejectionMemoOk returns a tuple with the RejectionMemo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRejectionMemo
+
+`func (o *CardImageDetails) SetRejectionMemo(v string)`
+
+SetRejectionMemo sets RejectionMemo field to given value.
+
+### HasRejectionMemo
+
+`func (o *CardImageDetails) HasRejectionMemo() bool`
+
+HasRejectionMemo returns a boolean if a field has been set.
+
+### GetRejectionReason
+
+`func (o *CardImageDetails) GetRejectionReason() CardImageRejectionReason`
+
+GetRejectionReason returns the RejectionReason field if non-nil, zero value otherwise.
+
+### GetRejectionReasonOk
+
+`func (o *CardImageDetails) GetRejectionReasonOk() (*CardImageRejectionReason, bool)`
+
+GetRejectionReasonOk returns a tuple with the RejectionReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRejectionReason
+
+`func (o *CardImageDetails) SetRejectionReason(v CardImageRejectionReason)`
+
+SetRejectionReason sets RejectionReason field to given value.
+
+### HasRejectionReason
+
+`func (o *CardImageDetails) HasRejectionReason() bool`
+
+HasRejectionReason returns a boolean if a field has been set.
 
 ### GetStatus
 

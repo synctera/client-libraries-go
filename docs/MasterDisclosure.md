@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CreationTime** | Pointer to **time.Time** | The date and time the resource was created. | [optional] [readonly] 
 **Id** | Pointer to **string** | The unique identifier for this resource. | [optional] [readonly] 
 **LastUpdatedTime** | Pointer to **time.Time** | The date and time the resource was last updated. | [optional] [readonly] 
-**Metadata** | Pointer to **map[string]interface{}** | Optional field to store additional informaton about the resource.  Intended to be used by the integrator to store non-sensitive data.  | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | Optional field to store additional information about the resource. Intended to be used by the integrator to store non-sensitive data.  | [optional] 
 **Type** | [**DisclosureType**](DisclosureType.md) |  | 
 **Version** | **string** | Version of the disclosure document. | 
 

@@ -9,6 +9,10 @@
 
 * `CUSTOMER` (value: `"CUSTOMER.*"`)
 
+* `BUSINESS` (value: `"BUSINESS.*"`)
+
+* `PERSON` (value: `"PERSON.*"`)
+
 * `INTEREST` (value: `"INTEREST.*"`)
 
 * `INTERNAL_TRANSFER` (value: `"INTERNAL_TRANSFER.*"`)

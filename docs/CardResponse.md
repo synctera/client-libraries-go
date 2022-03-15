@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **ReissuedToId** | Pointer to **string** | If this card was reissued, this ID refers to the card that replaced it. | [optional] [readonly] 
 **Shipping** | [**Shipping**](Shipping.md) |  | 
 **Type** | **string** | Indicates the type of card to be issued | 
+**CardImageId** | Pointer to **string** | The ID of the custom card image used for this card | [optional] 
 **IsPinSet** | Pointer to **bool** | indicates whether a pin has been set on the card | [optional] [readonly] [default to false]
 **CardStatus** | [**CardStatus**](CardStatus.md) |  | 
 **Memo** | Pointer to **string** | Additional details about the reason for the status change | [optional] 
@@ -485,6 +486,31 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+
+### GetCardImageId
+
+`func (o *CardResponse) GetCardImageId() string`
+
+GetCardImageId returns the CardImageId field if non-nil, zero value otherwise.
+
+### GetCardImageIdOk
+
+`func (o *CardResponse) GetCardImageIdOk() (*string, bool)`
+
+GetCardImageIdOk returns a tuple with the CardImageId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardImageId
+
+`func (o *CardResponse) SetCardImageId(v string)`
+
+SetCardImageId sets CardImageId field to given value.
+
+### HasCardImageId
+
+`func (o *CardResponse) HasCardImageId() bool`
+
+HasCardImageId returns a boolean if a field has been set.
 
 ### GetIsPinSet
 

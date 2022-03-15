@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountType** | [**AccountType**](AccountType.md) |  | 
-**BalanceCeiling** | Pointer to [**BalanceCeiling**](BalanceCeiling.md) |  | [optional] 
-**BalanceFloor** | Pointer to [**BalanceFloor**](BalanceFloor.md) |  | [optional] 
 **BankCountry** | **string** | Bank country of the account | 
 **Currency** | **string** | Account currency. ISO 4217 alphabetic currency code | 
+**BalanceCeiling** | Pointer to [**BalanceCeiling**](BalanceCeiling.md) |  | [optional] 
+**BalanceFloor** | Pointer to [**BalanceFloor**](BalanceFloor.md) |  | [optional] 
 **FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that new accounts will associate with | [optional] 
 **InterestProductId** | Pointer to **string** | Interest from account product that new accounts will associate with | [optional] 
 **IsAchEnabled** | Pointer to **bool** | Enable ACH transaction on ledger. Default is false | [optional] 
@@ -54,6 +54,46 @@ and a boolean to check if the value has been set.
 `func (o *TemplateFields) SetAccountType(v AccountType)`
 
 SetAccountType sets AccountType field to given value.
+
+
+### GetBankCountry
+
+`func (o *TemplateFields) GetBankCountry() string`
+
+GetBankCountry returns the BankCountry field if non-nil, zero value otherwise.
+
+### GetBankCountryOk
+
+`func (o *TemplateFields) GetBankCountryOk() (*string, bool)`
+
+GetBankCountryOk returns a tuple with the BankCountry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBankCountry
+
+`func (o *TemplateFields) SetBankCountry(v string)`
+
+SetBankCountry sets BankCountry field to given value.
+
+
+### GetCurrency
+
+`func (o *TemplateFields) GetCurrency() string`
+
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
+
+### GetCurrencyOk
+
+`func (o *TemplateFields) GetCurrencyOk() (*string, bool)`
+
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrency
+
+`func (o *TemplateFields) SetCurrency(v string)`
+
+SetCurrency sets Currency field to given value.
 
 
 ### GetBalanceCeiling
@@ -105,46 +145,6 @@ SetBalanceFloor sets BalanceFloor field to given value.
 `func (o *TemplateFields) HasBalanceFloor() bool`
 
 HasBalanceFloor returns a boolean if a field has been set.
-
-### GetBankCountry
-
-`func (o *TemplateFields) GetBankCountry() string`
-
-GetBankCountry returns the BankCountry field if non-nil, zero value otherwise.
-
-### GetBankCountryOk
-
-`func (o *TemplateFields) GetBankCountryOk() (*string, bool)`
-
-GetBankCountryOk returns a tuple with the BankCountry field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBankCountry
-
-`func (o *TemplateFields) SetBankCountry(v string)`
-
-SetBankCountry sets BankCountry field to given value.
-
-
-### GetCurrency
-
-`func (o *TemplateFields) GetCurrency() string`
-
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
-
-### GetCurrencyOk
-
-`func (o *TemplateFields) GetCurrencyOk() (*string, bool)`
-
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrency
-
-`func (o *TemplateFields) SetCurrency(v string)`
-
-SetCurrency sets Currency field to given value.
-
 
 ### GetFeeProductIds
 

@@ -27,49 +27,79 @@ import (
 ```
 
 ## Usage example
+This is the example for MainAPI SDK usage, please change as needed.
+
 ### URL and client configration
 ```golang
-package main
-
 import (
-	"context"
-	"log"
 	"net/http"
-	"time"
-
-	"github.com/davecgh/go-spew/spew"
-	synctera "github.com/synctera/client-libraries-go"
-	"golang.org/x/oauth2"
+	"net/url"
+	mainapi "gitlab.com/synctera/clients/mainapi-client-go"
+	"gitlab.com/synctera/gocommon/httpclient"
 )
 
-func main() {
-	c := func(e error) {
-		if e != nil {
-			log.Fatal(e)
-		}
+type MainAPIClient struct {
+	client        *http.Client
+	openAPIClient *mainapi.APIClient
+	baseURL       string
+}
+
+func NewMainAPIClient() *MainAPIClient {
+	baseURL := os.Getenv("MAINAPI_URL")
+	client := httpclient.Default(baseURL)
+	mainAPIURL, err := url.Parse(baseURL)
+	if err != nil {
+		log.Fatal().AnErr("MAINAPI_URL", err)
 	}
 
-	_ = c
+	openAPIConf := mainapi.NewConfiguration()
+	// Need to preserve the client for automatic GCP and Synctera identity support
+	openAPIConf.HTTPClient = httpclient.Default(baseURL)
+	openAPIConf.UserAgent = "synctera"
+	openAPIConf.Scheme = mainAPIURL.Scheme
+	openAPIConf.Host = mainAPIURL.Host
 
-	openapiConf := synctera.NewConfiguration()
-	openapiConf.Host = "api-staging.synctera.com"
-	hc := &http.Client{
-		Timeout: 10 * time.Second,
-		Transport: &oauth2.Transport{Source: oauth2.StaticTokenSource(&oauth2.Token{
-			AccessToken: "your-api-key",
-		})},
+	openAPIClient := mainapi.NewAPIClient(openAPIConf)
+
+	return &MainAPIClient{
+		client:        client,
+		openAPIClient: openAPIClient,
+		baseURL:       baseURL,
 	}
-
-	openapiConf.HTTPClient = hc
-
-	client := synctera.NewAPIClient(openapiConf)
-
-	accounts, _, err := client.AccountsApi.ListAccounts(context.Background()).Execute()
-
-	c(err)
-	spew.Dump(accounts)
 }
 ```
+
+### GET /v0/accounts/products
+Corresponding URL: GET /v0/accounts/products&product_types=INTEREST&start_date=2022-01-01
+```golang
+func (m *MainAPIClient) GetAccountProducts(ctx context.Context) (mainapi.AccountProductList, error) {
+	startDateTime, _ := time.Parse("2006-01-02", "2022-01-01")
+	startDate := types.Date{Time: startDateTime}
+	products, resp, err := m.APIClient.AccountProductsApi.ListAccountProducts(ctx).ProductType("INTEREST").StartDate(startDate).Execute()
+	if err != nil {
+		// handle the error, this includes http response code
+	}
+	// resp handling. resp.Body no need to be closed
+	return products, nil
+}
+```
+
+Corresponding URL: PATCH /v0/accounts/af029ff5-6b15-4802-a9c0-c183e8796a40 with status update
+```golang
+func (m *MainAPIClient) PatchAccount(ctx context.Context) (account mainapi.Account, err error) {
+	newStatus := mainapi.STATUS_RESTRICTED
+	patchFeild := mainapi.Account{
+		Status: &newStatus, 
+	}
+	account, _, err := accountm.openAPIClient.AccountsApi.PatchAccount(ctx, "af029ff5-6b15-4802-a9c0-c183e8796a40").Account(patchFeild).Execute()
+	if err != nil {
+		// handle the error, this includes http response code
+	}
+	// resp handling. resp.Body no need to be closed
+	return account, nil
+}
+```
+
 
 ## Documentation for API Endpoints
 
@@ -96,10 +126,15 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **Put** /accounts/{account_id} | Update account
 *AccountsApi* | [**UpdateAccountRelationship**](docs/AccountsApi.md#updateaccountrelationship) | **Put** /accounts/{account_id}/relationships/{relationship_id} | Update account relationship
 *AccountsApi* | [**UpdateAccountTemplate**](docs/AccountsApi.md#updateaccounttemplate) | **Put** /accounts/templates/{template_id} | Update account template
+*BusinessesApi* | [**CreateBusiness**](docs/BusinessesApi.md#createbusiness) | **Post** /businesses | Create a business
+*BusinessesApi* | [**GetBusiness**](docs/BusinessesApi.md#getbusiness) | **Get** /businesses/{business_id} | Get business
+*BusinessesApi* | [**ListBusinesses**](docs/BusinessesApi.md#listbusinesses) | **Get** /businesses | List business
+*BusinessesApi* | [**UpdateBusiness**](docs/BusinessesApi.md#updatebusiness) | **Patch** /businesses/{business_id} | Patch business
 *CardsApi* | [**ActivateCard**](docs/CardsApi.md#activatecard) | **Post** /cards/activate | Activate a card
 *CardsApi* | [**CreateCardImage**](docs/CardsApi.md#createcardimage) | **Post** /cards/images | Create Card Image
 *CardsApi* | [**GetCard**](docs/CardsApi.md#getcard) | **Get** /cards/{card_id} | Get Card
 *CardsApi* | [**GetCardBarcode**](docs/CardsApi.md#getcardbarcode) | **Get** /cards/{card_id}/barcodes | Get Card Barcode
+*CardsApi* | [**GetCardImageData**](docs/CardsApi.md#getcardimagedata) | **Get** /cards/images/{card_image_id}/data | Get Card Image Data
 *CardsApi* | [**GetCardImageDetails**](docs/CardsApi.md#getcardimagedetails) | **Get** /cards/images/{card_image_id} | Get Card Image Details
 *CardsApi* | [**GetCardWidgetURL**](docs/CardsApi.md#getcardwidgeturl) | **Get** /cards/card_widget_url | Get card widget URL
 *CardsApi* | [**GetClientAccessToken**](docs/CardsApi.md#getclientaccesstoken) | **Post** /cards/{card_id}/client_token | Get a client token
@@ -111,6 +146,8 @@ Class | Method | HTTP request | Description
 *CardsApi* | [**UpdateAccountRange**](docs/CardsApi.md#updateaccountrange) | **Patch** /cards/account_ranges/{account_range_id} | Update Account Range
 *CardsApi* | [**UpdateBin**](docs/CardsApi.md#updatebin) | **Patch** /cards/bins/{bin_id} | Update BIN
 *CardsApi* | [**UpdateCard**](docs/CardsApi.md#updatecard) | **Patch** /cards/{card_id} | Update Card
+*CardsApi* | [**UpdateCardImageDetails**](docs/CardsApi.md#updatecardimagedetails) | **Patch** /cards/images/{card_image_id} | Update Card Image Details
+*CardsApi* | [**UploadCardImageData**](docs/CardsApi.md#uploadcardimagedata) | **Post** /cards/images/{card_image_id}/data | Upload Card Image
 *CustomersApi* | [**CreateCustomer**](docs/CustomersApi.md#createcustomer) | **Post** /customers | Create a Customer
 *CustomersApi* | [**CreateCustomerEmployment**](docs/CustomersApi.md#createcustomeremployment) | **Post** /customers/{customer_id}/employment | Create employment record
 *CustomersApi* | [**CreateCustomerRiskRating**](docs/CustomersApi.md#createcustomerriskrating) | **Post** /customers/{customer_id}/risk_ratings | Create customer risk rating
@@ -124,24 +161,48 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**UpdateCustomer**](docs/CustomersApi.md#updatecustomer) | **Put** /customers/{customer_id} | Update Customer
 *CustomersApi* | [**UpdatePartyEmployment**](docs/CustomersApi.md#updatepartyemployment) | **Put** /customers/{customer_id}/employment/{employment_id} | Update customer employment record
 *DisclosuresApi* | [**CreateDisclosure**](docs/DisclosuresApi.md#createdisclosure) | **Post** /disclosures | Create disclosure
+*DisclosuresApi* | [**CreateDisclosure1**](docs/DisclosuresApi.md#createdisclosure1) | **Post** /customers/{customer_id}/disclosures | Create a Disclosure
 *DisclosuresApi* | [**GetDisclosure**](docs/DisclosuresApi.md#getdisclosure) | **Get** /disclosures/{disclosure_id} | Get disclosure
 *DisclosuresApi* | [**ListDisclosures**](docs/DisclosuresApi.md#listdisclosures) | **Get** /disclosures | List disclosures
+*DisclosuresApi* | [**ListDisclosures1**](docs/DisclosuresApi.md#listdisclosures1) | **Get** /customers/{customer_id}/disclosures | List Disclosures
 *ExternalAccountsApi* | [**AddExternalAccounts**](docs/ExternalAccountsApi.md#addexternalaccounts) | **Post** /external_accounts | Add external accounts
 *ExternalAccountsApi* | [**AddVendorExternalAccounts**](docs/ExternalAccountsApi.md#addvendorexternalaccounts) | **Post** /external_accounts/add_vendor_accounts | Add external accounts through a vendor, such as Plaid.
 *ExternalAccountsApi* | [**CreateAccessToken**](docs/ExternalAccountsApi.md#createaccesstoken) | **Post** /external_accounts/access_tokens | Create a permanent access token for an external account
 *ExternalAccountsApi* | [**CreateVerificationLinkToken**](docs/ExternalAccountsApi.md#createverificationlinktoken) | **Post** /external_accounts/link_tokens | Create a link token to verify an external account
+*ExternalAccountsApi* | [**DeleteExternalAccount**](docs/ExternalAccountsApi.md#deleteexternalaccount) | **Delete** /external_accounts/{external_account_id} | Delete an external account
 *ExternalAccountsApi* | [**GetExternalAccount**](docs/ExternalAccountsApi.md#getexternalaccount) | **Get** /external_accounts/{external_account_id} | Get an external account
 *ExternalAccountsApi* | [**GetExternalAccountBalance**](docs/ExternalAccountsApi.md#getexternalaccountbalance) | **Get** /external_accounts/{external_account_id}/balance | Get an external account balance
 *ExternalAccountsApi* | [**GetExternalAccountTransactions**](docs/ExternalAccountsApi.md#getexternalaccounttransactions) | **Get** /external_accounts/{external_account_id}/transactions | List transactions of a given external account
 *ExternalAccountsApi* | [**ListExternalAccounts**](docs/ExternalAccountsApi.md#listexternalaccounts) | **Get** /external_accounts | List external accounts
+*ExternalAccountsApi* | [**SyncVendorExternalAccounts**](docs/ExternalAccountsApi.md#syncvendorexternalaccounts) | **Post** /external_accounts/sync_vendor_accounts | Sync external accounts through a vendor, such as Plaid.
 *ExternalAccountsApi* | [**UpdateExternalAccount**](docs/ExternalAccountsApi.md#updateexternalaccount) | **Patch** /external_accounts/{external_account_id} | Patch an external account
+*InternalAccountsApi* | [**AddInternalAccounts**](docs/InternalAccountsApi.md#addinternalaccounts) | **Post** /internal_accounts | Add internal accounts
+*InternalAccountsApi* | [**ListInternalAccounts**](docs/InternalAccountsApi.md#listinternalaccounts) | **Get** /internal_accounts | List internal accounts
+*KYCKYBVerificationsApi* | [**CreateVerification**](docs/KYCKYBVerificationsApi.md#createverification) | **Post** /verifications | Create a verification
+*KYCKYBVerificationsApi* | [**GetVerification1**](docs/KYCKYBVerificationsApi.md#getverification1) | **Get** /verifications/{verification_id} | Get verification
+*KYCKYBVerificationsApi* | [**ListVerifications1**](docs/KYCKYBVerificationsApi.md#listverifications1) | **Get** /verifications | List verifications
+*KYCKYBVerificationsApi* | [**Verify**](docs/KYCKYBVerificationsApi.md#verify) | **Post** /verifications/verify | Verify a customer&#39;s identity
+*KYCKYBVerificationsApi* | [**VerifyAdHoc**](docs/KYCKYBVerificationsApi.md#verifyadhoc) | **Post** /verifications/adhoc | Check if an individual is on any watchlists
 *KYCVerificationApi* | [**CreateCustomerVerificationResult**](docs/KYCVerificationApi.md#createcustomerverificationresult) | **Post** /customers/{customer_id}/verifications | Create a customer verification result
 *KYCVerificationApi* | [**GetVerification**](docs/KYCVerificationApi.md#getverification) | **Get** /customers/{customer_id}/verifications/{verification_id} | Get verification result
 *KYCVerificationApi* | [**ListVerifications**](docs/KYCVerificationApi.md#listverifications) | **Get** /customers/{customer_id}/verifications | List verification results
 *KYCVerificationApi* | [**VerifyCustomer**](docs/KYCVerificationApi.md#verifycustomer) | **Post** /customers/{customer_id}/verify | Verify a customer&#39;s identity
+*PaymentsApi* | [**AddOutgoingACHTransaction**](docs/PaymentsApi.md#addoutgoingachtransaction) | **Post** /ach | Create an outgoing ACH
+*PersonsApi* | [**CreatePerson**](docs/PersonsApi.md#createperson) | **Post** /persons | Create a person
+*PersonsApi* | [**GetPerson**](docs/PersonsApi.md#getperson) | **Get** /persons/{person_id} | Get person
+*PersonsApi* | [**ListPersons**](docs/PersonsApi.md#listpersons) | **Get** /persons | List persons
+*PersonsApi* | [**UpdatePerson**](docs/PersonsApi.md#updateperson) | **Patch** /persons/{person_id} | Update person
+*RDCDepositsApi* | [**CreateRdcDeposit**](docs/RDCDepositsApi.md#createrdcdeposit) | **Post** /accounts/rdc/deposits | Create an RDC Deposit
+*RDCDepositsApi* | [**GetRdcDeposit**](docs/RDCDepositsApi.md#getrdcdeposit) | **Get** /accounts/rdc/deposits/{deposit_id} | Get RDC Deposit
+*RDCDepositsApi* | [**ListRdcDeposits**](docs/RDCDepositsApi.md#listrdcdeposits) | **Get** /accounts/rdc/deposits | List RDC Deposits
 *ReconciliationsApi* | [**CreateReconciliation**](docs/ReconciliationsApi.md#createreconciliation) | **Post** /reconciliations | Create a reconciliation
 *ReconciliationsApi* | [**GetReconciliation**](docs/ReconciliationsApi.md#getreconciliation) | **Get** /reconciliations/{reconciliation_id} | Get reconciliation
 *ReconciliationsApi* | [**ListReconciliations**](docs/ReconciliationsApi.md#listreconciliations) | **Get** /reconciliations | List reconciliations
+*RelationshipsApi* | [**CreateRelationship**](docs/RelationshipsApi.md#createrelationship) | **Post** /relationships | Create a relationship
+*RelationshipsApi* | [**DeleteRelationship**](docs/RelationshipsApi.md#deleterelationship) | **Delete** /relationships/{relationship_id} | Delete relationship
+*RelationshipsApi* | [**GetRelationship**](docs/RelationshipsApi.md#getrelationship) | **Get** /relationships/{relationship_id} | Get relationship
+*RelationshipsApi* | [**ListRelationships**](docs/RelationshipsApi.md#listrelationships) | **Get** /relationships | List relationships
+*RelationshipsApi* | [**UpdateRelationship**](docs/RelationshipsApi.md#updaterelationship) | **Patch** /relationships/{relationship_id} | Update relationship
 *TransactionsApi* | [**CreateInternalTransfer**](docs/TransactionsApi.md#createinternaltransfer) | **Post** /transactions/internal_transfer | Create an internal transfer
 *TransactionsApi* | [**GetPendingTransactionByID**](docs/TransactionsApi.md#getpendingtransactionbyid) | **Get** /transactions/pending/{id} | Get a pending transaction
 *TransactionsApi* | [**GetPostedTransactionByID**](docs/TransactionsApi.md#getpostedtransactionbyid) | **Get** /transactions/posted/{id} | Get a posted transaction
@@ -187,6 +248,7 @@ Class | Method | HTTP request | Description
  - [AccountRelationshipType](docs/AccountRelationshipType.md)
  - [AccountRouting](docs/AccountRouting.md)
  - [AccountTemplate](docs/AccountTemplate.md)
+ - [AccountTemplateResponse](docs/AccountTemplateResponse.md)
  - [AccountType](docs/AccountType.md)
  - [AccountVerification](docs/AccountVerification.md)
  - [AccrualPayoutSchedule](docs/AccrualPayoutSchedule.md)
@@ -197,10 +259,15 @@ Class | Method | HTTP request | Description
  - [AddVendorAccountsErrorReason](docs/AddVendorAccountsErrorReason.md)
  - [AddVendorAccountsRequest](docs/AddVendorAccountsRequest.md)
  - [AddVendorAccountsResponse](docs/AddVendorAccountsResponse.md)
+ - [AdditionalData](docs/AdditionalData.md)
+ - [AdditionalOwnerData](docs/AdditionalOwnerData.md)
  - [Address](docs/Address.md)
  - [Address1](docs/Address1.md)
+ - [AdhocVerificationRequest](docs/AdhocVerificationRequest.md)
+ - [AdhocVerificationResponse](docs/AdhocVerificationResponse.md)
  - [Alias](docs/Alias.md)
  - [AliasList](docs/AliasList.md)
+ - [AppleDigitalWalletProvisionRequest](docs/AppleDigitalWalletProvisionRequest.md)
  - [AppleDigitalWalletProvisionResponse](docs/AppleDigitalWalletProvisionResponse.md)
  - [Balance](docs/Balance.md)
  - [BalanceCeiling](docs/BalanceCeiling.md)
@@ -208,12 +275,15 @@ Class | Method | HTTP request | Description
  - [BalanceType](docs/BalanceType.md)
  - [BankDebitNetworkResponse](docs/BankDebitNetworkResponse.md)
  - [BankDebitNetworkResponseAllOf](docs/BankDebitNetworkResponseAllOf.md)
+ - [Base](docs/Base.md)
  - [BaseAccountVerification](docs/BaseAccountVerification.md)
  - [BaseCard](docs/BaseCard.md)
  - [BaseCardAllOf](docs/BaseCardAllOf.md)
  - [BaseDisclosure](docs/BaseDisclosure.md)
  - [BaseMasterDisclosure](docs/BaseMasterDisclosure.md)
  - [BasePerson](docs/BasePerson.md)
+ - [BasePerson1](docs/BasePerson1.md)
+ - [BaseTemplateFields](docs/BaseTemplateFields.md)
  - [Bin](docs/Bin.md)
  - [BinAndDebitNetwork](docs/BinAndDebitNetwork.md)
  - [BinAndDebitNetworkList](docs/BinAndDebitNetworkList.md)
@@ -225,6 +295,10 @@ Class | Method | HTTP request | Description
  - [BinResponseListAllOf](docs/BinResponseListAllOf.md)
  - [BinStatus](docs/BinStatus.md)
  - [BinUpdateRequest](docs/BinUpdateRequest.md)
+ - [Business](docs/Business.md)
+ - [BusinessBusinessOwnerRelationship](docs/BusinessBusinessOwnerRelationship.md)
+ - [BusinessList](docs/BusinessList.md)
+ - [BusinessListAllOf](docs/BusinessListAllOf.md)
  - [CalculationMethod](docs/CalculationMethod.md)
  - [CardActivationRequest](docs/CardActivationRequest.md)
  - [CardBrand](docs/CardBrand.md)
@@ -240,6 +314,7 @@ Class | Method | HTTP request | Description
  - [CardImageDetailsList](docs/CardImageDetailsList.md)
  - [CardImageDetailsListAllOf](docs/CardImageDetailsListAllOf.md)
  - [CardImageMode](docs/CardImageMode.md)
+ - [CardImageRejectionReason](docs/CardImageRejectionReason.md)
  - [CardImageStatus](docs/CardImageStatus.md)
  - [CardIssuanceRequest](docs/CardIssuanceRequest.md)
  - [CardListResponse](docs/CardListResponse.md)
@@ -266,7 +341,9 @@ Class | Method | HTTP request | Description
  - [ChangeChannel](docs/ChangeChannel.md)
  - [ChangeType](docs/ChangeType.md)
  - [ClientToken](docs/ClientToken.md)
+ - [ContestAch](docs/ContestAch.md)
  - [CreateCardImageRequest](docs/CreateCardImageRequest.md)
+ - [CreateGatewayRequest](docs/CreateGatewayRequest.md)
  - [CreateWebhookRequest](docs/CreateWebhookRequest.md)
  - [CustomHeaders](docs/CustomHeaders.md)
  - [Customer](docs/Customer.md)
@@ -278,6 +355,7 @@ Class | Method | HTTP request | Description
  - [CustomerKycStatus](docs/CustomerKycStatus.md)
  - [CustomerList](docs/CustomerList.md)
  - [CustomerListAllOf](docs/CustomerListAllOf.md)
+ - [CustomerType](docs/CustomerType.md)
  - [CustomerVerification](docs/CustomerVerification.md)
  - [CustomerVerificationResult](docs/CustomerVerificationResult.md)
  - [CustomerVerificationResultList](docs/CustomerVerificationResultList.md)
@@ -291,12 +369,21 @@ Class | Method | HTTP request | Description
  - [DebitNetworkResponseList](docs/DebitNetworkResponseList.md)
  - [DebitNetworkResponseListAllOf](docs/DebitNetworkResponseListAllOf.md)
  - [DeleteResponse](docs/DeleteResponse.md)
+ - [Deposit](docs/Deposit.md)
+ - [DepositFeedback](docs/DepositFeedback.md)
+ - [DepositList](docs/DepositList.md)
+ - [DepositListAllOf](docs/DepositListAllOf.md)
+ - [Detail](docs/Detail.md)
+ - [DeviceType](docs/DeviceType.md)
  - [DigitalWalletTokenEditRequest](docs/DigitalWalletTokenEditRequest.md)
  - [DigitalWalletTokenResponse](docs/DigitalWalletTokenResponse.md)
  - [Disclosure](docs/Disclosure.md)
+ - [Disclosure1](docs/Disclosure1.md)
  - [DisclosureList](docs/DisclosureList.md)
  - [DisclosureListAllOf](docs/DisclosureListAllOf.md)
+ - [DisclosureResponse](docs/DisclosureResponse.md)
  - [DisclosureType](docs/DisclosureType.md)
+ - [DishonorAch](docs/DishonorAch.md)
  - [EmbossName](docs/EmbossName.md)
  - [Employment](docs/Employment.md)
  - [EmploymentList](docs/EmploymentList.md)
@@ -321,10 +408,15 @@ Class | Method | HTTP request | Description
  - [ExternalAccountsListAllOf](docs/ExternalAccountsListAllOf.md)
  - [ExternalAccountsTransactionList](docs/ExternalAccountsTransactionList.md)
  - [Fee](docs/Fee.md)
+ - [FinicityAccountVerification](docs/FinicityAccountVerification.md)
  - [Form](docs/Form.md)
  - [FundingSource](docs/FundingSource.md)
  - [FundingSourceResponse](docs/FundingSourceResponse.md)
  - [FundingSourceResponseList](docs/FundingSourceResponseList.md)
+ - [GatewayListResponse](docs/GatewayListResponse.md)
+ - [GatewayListResponseAllOf](docs/GatewayListResponseAllOf.md)
+ - [GatewayResponse](docs/GatewayResponse.md)
+ - [GoogleDigitalWalletProvisionRequest](docs/GoogleDigitalWalletProvisionRequest.md)
  - [GoogleDigitalWalletProvisionResponse](docs/GoogleDigitalWalletProvisionResponse.md)
  - [IngestionStatus](docs/IngestionStatus.md)
  - [InlineObject](docs/InlineObject.md)
@@ -333,6 +425,9 @@ Class | Method | HTTP request | Description
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse201](docs/InlineResponse201.md)
  - [Interest](docs/Interest.md)
+ - [InternalAccount](docs/InternalAccount.md)
+ - [InternalAccountsList](docs/InternalAccountsList.md)
+ - [InternalAccountsListAllOf](docs/InternalAccountsListAllOf.md)
  - [InternalTransfer](docs/InternalTransfer.md)
  - [InternalTransferResponse](docs/InternalTransferResponse.md)
  - [InternalTransferResponseAllOf](docs/InternalTransferResponseAllOf.md)
@@ -341,18 +436,33 @@ Class | Method | HTTP request | Description
  - [MasterDisclosureList](docs/MasterDisclosureList.md)
  - [MasterDisclosureListAllOf](docs/MasterDisclosureListAllOf.md)
  - [ModelError](docs/ModelError.md)
+ - [OutgoingAch](docs/OutgoingAch.md)
  - [PaginatedResponse](docs/PaginatedResponse.md)
  - [PatchAccountProduct](docs/PatchAccountProduct.md)
  - [PatchAccountsRequestAccountIdentifiers](docs/PatchAccountsRequestAccountIdentifiers.md)
  - [PatchAccountsRequestRoutingIdentifiers](docs/PatchAccountsRequestRoutingIdentifiers.md)
+ - [PatchBusiness](docs/PatchBusiness.md)
+ - [PatchBusinessBusinessOwnerRelationship](docs/PatchBusinessBusinessOwnerRelationship.md)
+ - [PatchBusinessBusinessOwnerRelationshipAllOf](docs/PatchBusinessBusinessOwnerRelationshipAllOf.md)
  - [PatchCustomer](docs/PatchCustomer.md)
  - [PatchExternalAccount](docs/PatchExternalAccount.md)
  - [PatchInterest](docs/PatchInterest.md)
+ - [PatchPerson](docs/PatchPerson.md)
+ - [PatchPersonBusinessOwnerRelationship](docs/PatchPersonBusinessOwnerRelationship.md)
+ - [PatchPersonBusinessOwnerRelationshipAllOf](docs/PatchPersonBusinessOwnerRelationshipAllOf.md)
+ - [PatchPersonBusinessRelationship](docs/PatchPersonBusinessRelationship.md)
+ - [PatchPersonBusinessRelationshipAllOf](docs/PatchPersonBusinessRelationshipAllOf.md)
+ - [PatchRelationshipIn](docs/PatchRelationshipIn.md)
  - [PendingTransaction](docs/PendingTransaction.md)
  - [PendingTransactionData](docs/PendingTransactionData.md)
  - [PendingTransactionHistory](docs/PendingTransactionHistory.md)
  - [PendingTransactionHistoryData](docs/PendingTransactionHistoryData.md)
  - [PendingTransactions](docs/PendingTransactions.md)
+ - [Person](docs/Person.md)
+ - [PersonBusinessOwnerRelationship](docs/PersonBusinessOwnerRelationship.md)
+ - [PersonBusinessRelationship](docs/PersonBusinessRelationship.md)
+ - [PersonList](docs/PersonList.md)
+ - [PersonListAllOf](docs/PersonListAllOf.md)
  - [PhysicalCard](docs/PhysicalCard.md)
  - [PhysicalCardAllOf](docs/PhysicalCardAllOf.md)
  - [PhysicalCardFormat](docs/PhysicalCardFormat.md)
@@ -380,10 +490,15 @@ Class | Method | HTTP request | Description
  - [ReconciliationListAllOf](docs/ReconciliationListAllOf.md)
  - [Relationship](docs/Relationship.md)
  - [Relationship1](docs/Relationship1.md)
+ - [RelationshipIn](docs/RelationshipIn.md)
  - [RelationshipList](docs/RelationshipList.md)
  - [RelationshipListAllOf](docs/RelationshipListAllOf.md)
  - [RelationshipRole](docs/RelationshipRole.md)
+ - [RelationshipsList](docs/RelationshipsList.md)
+ - [RelationshipsListAllOf](docs/RelationshipsListAllOf.md)
  - [ResendResponse](docs/ResendResponse.md)
+ - [ReturnAch](docs/ReturnAch.md)
+ - [RiskData](docs/RiskData.md)
  - [RiskRating](docs/RiskRating.md)
  - [RiskRatingList](docs/RiskRatingList.md)
  - [RiskRatingListAllOf](docs/RiskRatingListAllOf.md)
@@ -399,20 +514,36 @@ Class | Method | HTTP request | Description
  - [SpendingLimits](docs/SpendingLimits.md)
  - [SpendingLimitsTransaction](docs/SpendingLimitsTransaction.md)
  - [Status](docs/Status.md)
+ - [Status1](docs/Status1.md)
  - [TemplateFields](docs/TemplateFields.md)
+ - [TemplateFieldsGeneric](docs/TemplateFieldsGeneric.md)
+ - [TemplateFieldsGenericAllOf](docs/TemplateFieldsGenericAllOf.md)
+ - [TemplateFieldsOverdraft](docs/TemplateFieldsOverdraft.md)
  - [TemplateList](docs/TemplateList.md)
  - [TemplateListAllOf](docs/TemplateListAllOf.md)
  - [TokenListResponse](docs/TokenListResponse.md)
  - [TokenListResponseAllOf](docs/TokenListResponseAllOf.md)
  - [TransactionLine](docs/TransactionLine.md)
+ - [UpdateCardImageRequest](docs/UpdateCardImageRequest.md)
+ - [UpdateGatewayRequest](docs/UpdateGatewayRequest.md)
  - [VendorInfo](docs/VendorInfo.md)
  - [VendorJson](docs/VendorJson.md)
  - [VendorXml](docs/VendorXml.md)
+ - [Verification](docs/Verification.md)
+ - [VerificationAllOf](docs/VerificationAllOf.md)
+ - [VerificationList](docs/VerificationList.md)
+ - [VerificationListAllOf](docs/VerificationListAllOf.md)
+ - [VerificationRequest](docs/VerificationRequest.md)
+ - [VerificationRequestAllOf](docs/VerificationRequestAllOf.md)
+ - [VerificationResult](docs/VerificationResult.md)
+ - [VerificationStatus](docs/VerificationStatus.md)
  - [VerificationType](docs/VerificationType.md)
+ - [VerificationType1](docs/VerificationType1.md)
  - [VerificationVendorInfo](docs/VerificationVendorInfo.md)
  - [VerificationVendorInfoDetail](docs/VerificationVendorInfoDetail.md)
  - [VerificationVendorJson](docs/VerificationVendorJson.md)
  - [VerificationVendorXml](docs/VerificationVendorXml.md)
+ - [VerifyResponse](docs/VerifyResponse.md)
  - [VirtualCard](docs/VirtualCard.md)
  - [VirtualCardIssuanceRequest](docs/VirtualCardIssuanceRequest.md)
  - [VirtualCardPlusStatus](docs/VirtualCardPlusStatus.md)

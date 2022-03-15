@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** | Account template description | [optional] 
+**Description** | Pointer to **string** | User provided account template description | [optional] 
 **Id** | Pointer to **string** | Generated ID for the template | [optional] [readonly] 
 **IsEnabled** | **bool** | Whether this template can be used for account creation | 
 **Name** | **string** | Unique account template name | 

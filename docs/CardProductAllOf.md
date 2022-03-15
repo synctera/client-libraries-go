@@ -4,22 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountRangeId** | **string** | ID of the Account Range for which card product was created | 
-**Active** | **bool** | indicates whether program is active | 
+**AccountRangeId** | **string** | Account Range ID | 
+**Active** | **bool** | Indicates whether the Card Product is active | 
 **AutoAllocateRange** | **bool** | Identifies whether a new account range will be automatically allocated | 
-**BankId** | **int32** | The ID of the bank partner works with within this product | 
-**BinId** | **string** | Bin ID | 
-**CardProgramId** | **string** | Program ID | 
-**CreationTime** | Pointer to **time.Time** | The timestamp representing when the card product was created | [optional] [readonly] 
-**EndDate** | Pointer to **time.Time** | The time when bin is decommissioned | [optional] 
-**FundingSourceId** | **string** | Funding source ID | 
+**BankId** | **int32** | Bank ID | 
+**BinId** | **string** | BIN ID | 
+**CardProgramId** | **string** | Card Program ID | 
+**CreationTime** | Pointer to **time.Time** | The timestamp representing when the Card Product was created | [optional] [readonly] 
+**EndDate** | Pointer to **time.Time** | The time when the Card Product is decommissioned | [optional] 
+**FundingSourceId** | **string** | Funding Source ID | 
+**GatewayId** | Pointer to **string** | Gateway ID, used if the Card Product is utilizing FinTech authorization flow | [optional] 
 **Id** | Pointer to **string** | Card Product ID | [optional] [readonly] 
 **ImageMode** | Pointer to [**CardImageMode**](CardImageMode.md) |  | [optional] 
-**LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the card product was last modified | [optional] [readonly] 
-**Name** | **string** | The name of the card product | 
-**PartnerId** | **int32** | The ID of the partner card product belongs to | 
+**LastModifiedTime** | Pointer to **time.Time** | The timestamp representing when the Card Product was last modified | [optional] [readonly] 
+**Name** | **string** | The name of the Card Product | 
+**PackageId** | Pointer to **string** | Card fulfillment provider’s package ID | [optional] 
+**PartnerId** | **int32** | Partner ID | 
 **PhysicalCardFormat** | Pointer to [**PhysicalCardFormat**](PhysicalCardFormat.md) |  | [optional] 
-**StartDate** | **time.Time** | The time when bin goes live | 
+**ReturnAddress** | Pointer to [**Shipping**](Shipping.md) |  | [optional] 
+**StartDate** | **time.Time** | The time when the Card Product goes live | 
 
 ## Methods
 
@@ -230,6 +233,31 @@ and a boolean to check if the value has been set.
 SetFundingSourceId sets FundingSourceId field to given value.
 
 
+### GetGatewayId
+
+`func (o *CardProductAllOf) GetGatewayId() string`
+
+GetGatewayId returns the GatewayId field if non-nil, zero value otherwise.
+
+### GetGatewayIdOk
+
+`func (o *CardProductAllOf) GetGatewayIdOk() (*string, bool)`
+
+GetGatewayIdOk returns a tuple with the GatewayId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayId
+
+`func (o *CardProductAllOf) SetGatewayId(v string)`
+
+SetGatewayId sets GatewayId field to given value.
+
+### HasGatewayId
+
+`func (o *CardProductAllOf) HasGatewayId() bool`
+
+HasGatewayId returns a boolean if a field has been set.
+
 ### GetId
 
 `func (o *CardProductAllOf) GetId() string`
@@ -325,6 +353,31 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetPackageId
+
+`func (o *CardProductAllOf) GetPackageId() string`
+
+GetPackageId returns the PackageId field if non-nil, zero value otherwise.
+
+### GetPackageIdOk
+
+`func (o *CardProductAllOf) GetPackageIdOk() (*string, bool)`
+
+GetPackageIdOk returns a tuple with the PackageId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPackageId
+
+`func (o *CardProductAllOf) SetPackageId(v string)`
+
+SetPackageId sets PackageId field to given value.
+
+### HasPackageId
+
+`func (o *CardProductAllOf) HasPackageId() bool`
+
+HasPackageId returns a boolean if a field has been set.
+
 ### GetPartnerId
 
 `func (o *CardProductAllOf) GetPartnerId() int32`
@@ -369,6 +422,31 @@ SetPhysicalCardFormat sets PhysicalCardFormat field to given value.
 `func (o *CardProductAllOf) HasPhysicalCardFormat() bool`
 
 HasPhysicalCardFormat returns a boolean if a field has been set.
+
+### GetReturnAddress
+
+`func (o *CardProductAllOf) GetReturnAddress() Shipping`
+
+GetReturnAddress returns the ReturnAddress field if non-nil, zero value otherwise.
+
+### GetReturnAddressOk
+
+`func (o *CardProductAllOf) GetReturnAddressOk() (*Shipping, bool)`
+
+GetReturnAddressOk returns a tuple with the ReturnAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReturnAddress
+
+`func (o *CardProductAllOf) SetReturnAddress(v Shipping)`
+
+SetReturnAddress sets ReturnAddress field to given value.
+
+### HasReturnAddress
+
+`func (o *CardProductAllOf) HasReturnAddress() bool`
+
+HasReturnAddress returns a boolean if a field has been set.
 
 ### GetStartDate
 

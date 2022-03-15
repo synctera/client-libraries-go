@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **CreationTime** | Pointer to **time.Time** | Account creation timestamp in RFC3337 format | [optional] [readonly] 
 **Currency** | Pointer to **string** | Account currency or account settlement currency. ISO 4217 alphabetic currency code. Default USD | [optional] 
 **CustomerIds** | Pointer to **[]string** | A list of the customer IDs of the account holders. | [optional] [readonly] 
+**CustomerType** | Pointer to [**CustomerType**](CustomerType.md) |  | [optional] 
 **ExchangeRateType** | Pointer to **string** | Exchange rate type | [optional] 
 **FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that the current account associate with | [optional] 
 **Iban** | Pointer to **string** | International bank account number | [optional] 
@@ -322,6 +323,31 @@ SetCustomerIds sets CustomerIds field to given value.
 `func (o *Account) HasCustomerIds() bool`
 
 HasCustomerIds returns a boolean if a field has been set.
+
+### GetCustomerType
+
+`func (o *Account) GetCustomerType() CustomerType`
+
+GetCustomerType returns the CustomerType field if non-nil, zero value otherwise.
+
+### GetCustomerTypeOk
+
+`func (o *Account) GetCustomerTypeOk() (*CustomerType, bool)`
+
+GetCustomerTypeOk returns a tuple with the CustomerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerType
+
+`func (o *Account) SetCustomerType(v CustomerType)`
+
+SetCustomerType sets CustomerType field to given value.
+
+### HasCustomerType
+
+`func (o *Account) HasCustomerType() bool`
+
+HasCustomerType returns a boolean if a field has been set.
 
 ### GetExchangeRateType
 
