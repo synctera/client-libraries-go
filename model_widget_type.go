@@ -24,8 +24,7 @@ const (
 	WIDGETTYPE_ACTIVATE_CARD WidgetType = "activate_card"
 )
 
-// All allowed values of WidgetType enum
-var AllowedWidgetTypeEnumValues = []WidgetType{
+var allowedWidgetTypeEnumValues = []WidgetType{
 	"set_pin",
 	"activate_card",
 }
@@ -37,7 +36,7 @@ func (v *WidgetType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := WidgetType(value)
-	for _, existing := range AllowedWidgetTypeEnumValues {
+	for _, existing := range allowedWidgetTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewWidgetTypeFromValue(v string) (*WidgetType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for WidgetType: valid values are %v", v, AllowedWidgetTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for WidgetType: valid values are %v", v, allowedWidgetTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v WidgetType) IsValid() bool {
-	for _, existing := range AllowedWidgetTypeEnumValues {
+	for _, existing := range allowedWidgetTypeEnumValues {
 		if existing == v {
 			return true
 		}

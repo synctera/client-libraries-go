@@ -30,8 +30,7 @@ const (
 	ACCOUNTRELATIONSHIPTYPE_AUTHORIZED_SIGNER      AccountRelationshipType = "AUTHORIZED_SIGNER"
 )
 
-// All allowed values of AccountRelationshipType enum
-var AllowedAccountRelationshipTypeEnumValues = []AccountRelationshipType{
+var allowedAccountRelationshipTypeEnumValues = []AccountRelationshipType{
 	"ACCOUNT_HOLDER",
 	"EMPLOYEE",
 	"BRANCH",
@@ -49,7 +48,7 @@ func (v *AccountRelationshipType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := AccountRelationshipType(value)
-	for _, existing := range AllowedAccountRelationshipTypeEnumValues {
+	for _, existing := range allowedAccountRelationshipTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -66,13 +65,13 @@ func NewAccountRelationshipTypeFromValue(v string) (*AccountRelationshipType, er
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AccountRelationshipType: valid values are %v", v, AllowedAccountRelationshipTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for AccountRelationshipType: valid values are %v", v, allowedAccountRelationshipTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v AccountRelationshipType) IsValid() bool {
-	for _, existing := range AllowedAccountRelationshipTypeEnumValues {
+	for _, existing := range allowedAccountRelationshipTypeEnumValues {
 		if existing == v {
 			return true
 		}

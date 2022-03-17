@@ -23,7 +23,7 @@ type ExternalAccountTransaction struct {
 	// Date that the transaction is authorized. ISO 8601 format ( YYYY-MM-DD ).
 	AuthorizedDate *oapi.Date `json:"authorized_date,omitempty"`
 	// Category of the transaction
-	Category []string `json:"category,omitempty"`
+	Category *[]string `json:"category,omitempty"`
 	// Check number of the transaction. This field will be null if not a check transaction.
 	CheckNumber *string `json:"check_number,omitempty"`
 	// ISO 4217 alphabetic currency code
@@ -129,12 +129,12 @@ func (o *ExternalAccountTransaction) GetCategory() []string {
 		var ret []string
 		return ret
 	}
-	return o.Category
+	return *o.Category
 }
 
 // GetCategoryOk returns a tuple with the Category field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExternalAccountTransaction) GetCategoryOk() ([]string, bool) {
+func (o *ExternalAccountTransaction) GetCategoryOk() (*[]string, bool) {
 	if o == nil || o.Category == nil {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *ExternalAccountTransaction) HasCategory() bool {
 
 // SetCategory gets a reference to the given []string and assigns it to the Category field.
 func (o *ExternalAccountTransaction) SetCategory(v []string) {
-	o.Category = v
+	o.Category = &v
 }
 
 // GetCheckNumber returns the CheckNumber field value if set, zero value otherwise.

@@ -16,13 +16,13 @@ import (
 
 // SpendingLimits Account spending limits
 type SpendingLimits struct {
-	Day SpendingLimitWithTime `json:"day,omitempty"`
+	Day *SpendingLimitWithTime `json:"day,omitempty"`
 	// User provided description on the spending limits
 	Description *string                    `json:"description,omitempty"`
-	Lifetime    SpendingLimitWithTime      `json:"lifetime,omitempty"`
-	Month       SpendingLimitWithTime      `json:"month,omitempty"`
+	Lifetime    *SpendingLimitWithTime     `json:"lifetime,omitempty"`
+	Month       *SpendingLimitWithTime     `json:"month,omitempty"`
 	Transaction *SpendingLimitsTransaction `json:"transaction,omitempty"`
-	Week        SpendingLimitWithTime      `json:"week,omitempty"`
+	Week        *SpendingLimitWithTime     `json:"week,omitempty"`
 }
 
 // NewSpendingLimits instantiates a new SpendingLimits object
@@ -48,12 +48,12 @@ func (o *SpendingLimits) GetDay() SpendingLimitWithTime {
 		var ret SpendingLimitWithTime
 		return ret
 	}
-	return o.Day
+	return *o.Day
 }
 
 // GetDayOk returns a tuple with the Day field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpendingLimits) GetDayOk() (SpendingLimitWithTime, bool) {
+func (o *SpendingLimits) GetDayOk() (*SpendingLimitWithTime, bool) {
 	if o == nil || o.Day == nil {
 		return nil, false
 	}
@@ -71,7 +71,7 @@ func (o *SpendingLimits) HasDay() bool {
 
 // SetDay gets a reference to the given SpendingLimitWithTime and assigns it to the Day field.
 func (o *SpendingLimits) SetDay(v SpendingLimitWithTime) {
-	o.Day = v
+	o.Day = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -112,12 +112,12 @@ func (o *SpendingLimits) GetLifetime() SpendingLimitWithTime {
 		var ret SpendingLimitWithTime
 		return ret
 	}
-	return o.Lifetime
+	return *o.Lifetime
 }
 
 // GetLifetimeOk returns a tuple with the Lifetime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpendingLimits) GetLifetimeOk() (SpendingLimitWithTime, bool) {
+func (o *SpendingLimits) GetLifetimeOk() (*SpendingLimitWithTime, bool) {
 	if o == nil || o.Lifetime == nil {
 		return nil, false
 	}
@@ -135,7 +135,7 @@ func (o *SpendingLimits) HasLifetime() bool {
 
 // SetLifetime gets a reference to the given SpendingLimitWithTime and assigns it to the Lifetime field.
 func (o *SpendingLimits) SetLifetime(v SpendingLimitWithTime) {
-	o.Lifetime = v
+	o.Lifetime = &v
 }
 
 // GetMonth returns the Month field value if set, zero value otherwise.
@@ -144,12 +144,12 @@ func (o *SpendingLimits) GetMonth() SpendingLimitWithTime {
 		var ret SpendingLimitWithTime
 		return ret
 	}
-	return o.Month
+	return *o.Month
 }
 
 // GetMonthOk returns a tuple with the Month field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpendingLimits) GetMonthOk() (SpendingLimitWithTime, bool) {
+func (o *SpendingLimits) GetMonthOk() (*SpendingLimitWithTime, bool) {
 	if o == nil || o.Month == nil {
 		return nil, false
 	}
@@ -167,7 +167,7 @@ func (o *SpendingLimits) HasMonth() bool {
 
 // SetMonth gets a reference to the given SpendingLimitWithTime and assigns it to the Month field.
 func (o *SpendingLimits) SetMonth(v SpendingLimitWithTime) {
-	o.Month = v
+	o.Month = &v
 }
 
 // GetTransaction returns the Transaction field value if set, zero value otherwise.
@@ -208,12 +208,12 @@ func (o *SpendingLimits) GetWeek() SpendingLimitWithTime {
 		var ret SpendingLimitWithTime
 		return ret
 	}
-	return o.Week
+	return *o.Week
 }
 
 // GetWeekOk returns a tuple with the Week field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpendingLimits) GetWeekOk() (SpendingLimitWithTime, bool) {
+func (o *SpendingLimits) GetWeekOk() (*SpendingLimitWithTime, bool) {
 	if o == nil || o.Week == nil {
 		return nil, false
 	}
@@ -231,7 +231,7 @@ func (o *SpendingLimits) HasWeek() bool {
 
 // SetWeek gets a reference to the given SpendingLimitWithTime and assigns it to the Week field.
 func (o *SpendingLimits) SetWeek(v SpendingLimitWithTime) {
-	o.Week = v
+	o.Week = &v
 }
 
 func (o SpendingLimits) MarshalJSON() ([]byte, error) {

@@ -24,8 +24,7 @@ const (
 	DCSIGN_CREDIT DcSign = "credit"
 )
 
-// All allowed values of DcSign enum
-var AllowedDcSignEnumValues = []DcSign{
+var allowedDcSignEnumValues = []DcSign{
 	"debit",
 	"credit",
 }
@@ -37,7 +36,7 @@ func (v *DcSign) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := DcSign(value)
-	for _, existing := range AllowedDcSignEnumValues {
+	for _, existing := range allowedDcSignEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewDcSignFromValue(v string) (*DcSign, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for DcSign: valid values are %v", v, AllowedDcSignEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for DcSign: valid values are %v", v, allowedDcSignEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v DcSign) IsValid() bool {
-	for _, existing := range AllowedDcSignEnumValues {
+	for _, existing := range allowedDcSignEnumValues {
 		if existing == v {
 			return true
 		}

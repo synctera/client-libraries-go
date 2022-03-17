@@ -52,11 +52,11 @@ func (o *WebhookList) GetWebhooks() []Webhook {
 
 // GetWebhooksOk returns a tuple with the Webhooks field value
 // and a boolean to check if the value has been set.
-func (o *WebhookList) GetWebhooksOk() ([]Webhook, bool) {
+func (o *WebhookList) GetWebhooksOk() (*[]Webhook, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Webhooks, true
+	return &o.Webhooks, true
 }
 
 // SetWebhooks sets field value

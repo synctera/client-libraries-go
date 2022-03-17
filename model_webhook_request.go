@@ -20,7 +20,7 @@ type WebhookRequest struct {
 	Active *bool          `json:"active,omitempty"`
 	Config *WebhookConfig `json:"config,omitempty"`
 	// list of webhook events, use * to receive all notifications
-	Events []string `json:"events,omitempty"`
+	Events *[]string `json:"events,omitempty"`
 	// id of the webhook
 	Id *string `json:"id,omitempty"`
 	// name of the webhook
@@ -114,12 +114,12 @@ func (o *WebhookRequest) GetEvents() []string {
 		var ret []string
 		return ret
 	}
-	return o.Events
+	return *o.Events
 }
 
 // GetEventsOk returns a tuple with the Events field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WebhookRequest) GetEventsOk() ([]string, bool) {
+func (o *WebhookRequest) GetEventsOk() (*[]string, bool) {
 	if o == nil || o.Events == nil {
 		return nil, false
 	}
@@ -137,7 +137,7 @@ func (o *WebhookRequest) HasEvents() bool {
 
 // SetEvents gets a reference to the given []string and assigns it to the Events field.
 func (o *WebhookRequest) SetEvents(v []string) {
-	o.Events = v
+	o.Events = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.

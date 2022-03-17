@@ -21,7 +21,7 @@ type Alias struct {
 	// Account number
 	AccountNumber *string `json:"account_number,omitempty"`
 	// Additional information for the alias
-	AliasInfo map[string]interface{} `json:"alias_info,omitempty"`
+	AliasInfo *map[string]interface{} `json:"alias_info,omitempty"`
 	// Alias name
 	AliasName *string `json:"alias_name,omitempty"`
 	// Alias source
@@ -119,12 +119,12 @@ func (o *Alias) GetAliasInfo() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.AliasInfo
+	return *o.AliasInfo
 }
 
 // GetAliasInfoOk returns a tuple with the AliasInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Alias) GetAliasInfoOk() (map[string]interface{}, bool) {
+func (o *Alias) GetAliasInfoOk() (*map[string]interface{}, bool) {
 	if o == nil || o.AliasInfo == nil {
 		return nil, false
 	}
@@ -142,7 +142,7 @@ func (o *Alias) HasAliasInfo() bool {
 
 // SetAliasInfo gets a reference to the given map[string]interface{} and assigns it to the AliasInfo field.
 func (o *Alias) SetAliasInfo(v map[string]interface{}) {
-	o.AliasInfo = v
+	o.AliasInfo = &v
 }
 
 // GetAliasName returns the AliasName field value if set, zero value otherwise.

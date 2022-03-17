@@ -23,8 +23,7 @@ const (
 	CALCULATIONMETHOD_COMPOUNDED_MONTHLY CalculationMethod = "COMPOUNDED_MONTHLY"
 )
 
-// All allowed values of CalculationMethod enum
-var AllowedCalculationMethodEnumValues = []CalculationMethod{
+var allowedCalculationMethodEnumValues = []CalculationMethod{
 	"COMPOUNDED_MONTHLY",
 }
 
@@ -35,7 +34,7 @@ func (v *CalculationMethod) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CalculationMethod(value)
-	for _, existing := range AllowedCalculationMethodEnumValues {
+	for _, existing := range allowedCalculationMethodEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -52,13 +51,13 @@ func NewCalculationMethodFromValue(v string) (*CalculationMethod, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CalculationMethod: valid values are %v", v, AllowedCalculationMethodEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CalculationMethod: valid values are %v", v, allowedCalculationMethodEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CalculationMethod) IsValid() bool {
-	for _, existing := range AllowedCalculationMethodEnumValues {
+	for _, existing := range allowedCalculationMethodEnumValues {
 		if existing == v {
 			return true
 		}

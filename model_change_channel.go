@@ -26,8 +26,7 @@ const (
 	CHANGECHANNEL_FRAUD  ChangeChannel = "FRAUD"
 )
 
-// All allowed values of ChangeChannel enum
-var AllowedChangeChannelEnumValues = []ChangeChannel{
+var allowedChangeChannelEnumValues = []ChangeChannel{
 	"API",
 	"ADMIN",
 	"SYSTEM",
@@ -41,7 +40,7 @@ func (v *ChangeChannel) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ChangeChannel(value)
-	for _, existing := range AllowedChangeChannelEnumValues {
+	for _, existing := range allowedChangeChannelEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -58,13 +57,13 @@ func NewChangeChannelFromValue(v string) (*ChangeChannel, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ChangeChannel: valid values are %v", v, AllowedChangeChannelEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ChangeChannel: valid values are %v", v, allowedChangeChannelEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ChangeChannel) IsValid() bool {
-	for _, existing := range AllowedChangeChannelEnumValues {
+	for _, existing := range allowedChangeChannelEnumValues {
 		if existing == v {
 			return true
 		}

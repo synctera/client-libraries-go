@@ -196,11 +196,11 @@ func (o *Interest) GetRates() []RateDetails {
 
 // GetRatesOk returns a tuple with the Rates field value
 // and a boolean to check if the value has been set.
-func (o *Interest) GetRatesOk() ([]RateDetails, bool) {
+func (o *Interest) GetRatesOk() (*[]RateDetails, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Rates, true
+	return &o.Rates, true
 }
 
 // SetRates sets field value

@@ -26,7 +26,7 @@ type Account struct {
 	BalanceCeiling *BalanceCeiling `json:"balance_ceiling,omitempty"`
 	BalanceFloor   *BalanceFloor   `json:"balance_floor,omitempty"`
 	// A list of balances for account based on different type
-	Balances []Balance `json:"balances,omitempty"`
+	Balances *[]Balance `json:"balances,omitempty"`
 	// Bank routing number
 	BankRouting *string `json:"bank_routing,omitempty"`
 	// Account creation timestamp in RFC3337 format
@@ -34,12 +34,12 @@ type Account struct {
 	// Account currency or account settlement currency. ISO 4217 alphabetic currency code. Default USD
 	Currency *string `json:"currency,omitempty"`
 	// A list of the customer IDs of the account holders.
-	CustomerIds  []string      `json:"customer_ids,omitempty"`
+	CustomerIds  *[]string     `json:"customer_ids,omitempty"`
 	CustomerType *CustomerType `json:"customer_type,omitempty"`
 	// Exchange rate type
 	ExchangeRateType *string `json:"exchange_rate_type,omitempty"`
 	// A list of fee resources from account product that the current account associate with
-	FeeProductIds []string `json:"fee_product_ids,omitempty"`
+	FeeProductIds *[]string `json:"fee_product_ids,omitempty"`
 	// International bank account number
 	Iban *string `json:"iban,omitempty"`
 	// Account ID
@@ -51,7 +51,7 @@ type Account struct {
 	// Timestamp of the last account modification in RFC3337 format
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
 	// User provided account metadata
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// User provided account nickname
 	Nickname *string `json:"nickname,omitempty"`
 	// Account's overdraft limit
@@ -277,12 +277,12 @@ func (o *Account) GetBalances() []Balance {
 		var ret []Balance
 		return ret
 	}
-	return o.Balances
+	return *o.Balances
 }
 
 // GetBalancesOk returns a tuple with the Balances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetBalancesOk() ([]Balance, bool) {
+func (o *Account) GetBalancesOk() (*[]Balance, bool) {
 	if o == nil || o.Balances == nil {
 		return nil, false
 	}
@@ -300,7 +300,7 @@ func (o *Account) HasBalances() bool {
 
 // SetBalances gets a reference to the given []Balance and assigns it to the Balances field.
 func (o *Account) SetBalances(v []Balance) {
-	o.Balances = v
+	o.Balances = &v
 }
 
 // GetBankRouting returns the BankRouting field value if set, zero value otherwise.
@@ -405,12 +405,12 @@ func (o *Account) GetCustomerIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.CustomerIds
+	return *o.CustomerIds
 }
 
 // GetCustomerIdsOk returns a tuple with the CustomerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetCustomerIdsOk() ([]string, bool) {
+func (o *Account) GetCustomerIdsOk() (*[]string, bool) {
 	if o == nil || o.CustomerIds == nil {
 		return nil, false
 	}
@@ -428,7 +428,7 @@ func (o *Account) HasCustomerIds() bool {
 
 // SetCustomerIds gets a reference to the given []string and assigns it to the CustomerIds field.
 func (o *Account) SetCustomerIds(v []string) {
-	o.CustomerIds = v
+	o.CustomerIds = &v
 }
 
 // GetCustomerType returns the CustomerType field value if set, zero value otherwise.
@@ -501,12 +501,12 @@ func (o *Account) GetFeeProductIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.FeeProductIds
+	return *o.FeeProductIds
 }
 
 // GetFeeProductIdsOk returns a tuple with the FeeProductIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetFeeProductIdsOk() ([]string, bool) {
+func (o *Account) GetFeeProductIdsOk() (*[]string, bool) {
 	if o == nil || o.FeeProductIds == nil {
 		return nil, false
 	}
@@ -524,7 +524,7 @@ func (o *Account) HasFeeProductIds() bool {
 
 // SetFeeProductIds gets a reference to the given []string and assigns it to the FeeProductIds field.
 func (o *Account) SetFeeProductIds(v []string) {
-	o.FeeProductIds = v
+	o.FeeProductIds = &v
 }
 
 // GetIban returns the Iban field value if set, zero value otherwise.
@@ -693,12 +693,12 @@ func (o *Account) GetMetadata() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *Account) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -716,7 +716,7 @@ func (o *Account) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *Account) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetNickname returns the Nickname field value if set, zero value otherwise.

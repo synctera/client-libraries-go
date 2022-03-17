@@ -24,7 +24,7 @@ type PatchInterest struct {
 	Id          *string `json:"id,omitempty"`
 	ProductType string  `json:"product_type"`
 	// A list of interest rate. Date intervals between valid_from and valid_to expect to have no overlap.
-	Rates []RateDetails `json:"rates,omitempty"`
+	Rates *[]RateDetails `json:"rates,omitempty"`
 }
 
 // NewPatchInterest instantiates a new PatchInterest object
@@ -203,12 +203,12 @@ func (o *PatchInterest) GetRates() []RateDetails {
 		var ret []RateDetails
 		return ret
 	}
-	return o.Rates
+	return *o.Rates
 }
 
 // GetRatesOk returns a tuple with the Rates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchInterest) GetRatesOk() ([]RateDetails, bool) {
+func (o *PatchInterest) GetRatesOk() (*[]RateDetails, bool) {
 	if o == nil || o.Rates == nil {
 		return nil, false
 	}
@@ -226,7 +226,7 @@ func (o *PatchInterest) HasRates() bool {
 
 // SetRates gets a reference to the given []RateDetails and assigns it to the Rates field.
 func (o *PatchInterest) SetRates(v []RateDetails) {
-	o.Rates = v
+	o.Rates = &v
 }
 
 func (o PatchInterest) MarshalJSON() ([]byte, error) {

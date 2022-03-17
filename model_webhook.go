@@ -97,11 +97,11 @@ func (o *Webhook) GetEnabledEvents() []EventType1 {
 
 // GetEnabledEventsOk returns a tuple with the EnabledEvents field value
 // and a boolean to check if the value has been set.
-func (o *Webhook) GetEnabledEventsOk() ([]EventType1, bool) {
+func (o *Webhook) GetEnabledEventsOk() (*[]EventType1, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.EnabledEvents, true
+	return &o.EnabledEvents, true
 }
 
 // SetEnabledEvents sets field value

@@ -32,8 +32,8 @@ func main() {
     outgoingAch := *openapiclient.NewOutgoingAch(int32(607), "USD", "7e64ebf9-31ab-4cbc-9562-b6e4c2cb988c", "debit", "852f90e6-3327-4b20-a0cd-0bf2a469515a", "d29e4b65-8999-4a51-8fec-1b64c93d1328", *openapiclient.NewRiskData()) // OutgoingAch | Outgoing ACH
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PaymentsApi.AddOutgoingACHTransaction(context.Background()).OutgoingAch(outgoingAch).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PaymentsApi.AddOutgoingACHTransaction(context.Background()).OutgoingAch(outgoingAch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PaymentsApi.AddOutgoingACHTransaction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

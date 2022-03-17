@@ -79,11 +79,11 @@ func (o *VendorJson) GetJson() map[string]interface{} {
 
 // GetJsonOk returns a tuple with the Json field value
 // and a boolean to check if the value has been set.
-func (o *VendorJson) GetJsonOk() (map[string]interface{}, bool) {
+func (o *VendorJson) GetJsonOk() (*map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Json, true
+	return &o.Json, true
 }
 
 // SetJson sets field value

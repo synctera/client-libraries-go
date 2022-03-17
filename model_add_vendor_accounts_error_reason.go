@@ -27,8 +27,7 @@ const (
 	ADDVENDORACCOUNTSERRORREASON_PROVIDER_ERROR           AddVendorAccountsErrorReason = "PROVIDER_ERROR"
 )
 
-// All allowed values of AddVendorAccountsErrorReason enum
-var AllowedAddVendorAccountsErrorReasonEnumValues = []AddVendorAccountsErrorReason{
+var allowedAddVendorAccountsErrorReasonEnumValues = []AddVendorAccountsErrorReason{
 	"FAILED_VERIFICATION",
 	"UNSUPPORTED_ACCOUNT_TYPE",
 	"DUPLICATE_ACCOUNT",
@@ -43,7 +42,7 @@ func (v *AddVendorAccountsErrorReason) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := AddVendorAccountsErrorReason(value)
-	for _, existing := range AllowedAddVendorAccountsErrorReasonEnumValues {
+	for _, existing := range allowedAddVendorAccountsErrorReasonEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -60,13 +59,13 @@ func NewAddVendorAccountsErrorReasonFromValue(v string) (*AddVendorAccountsError
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AddVendorAccountsErrorReason: valid values are %v", v, AllowedAddVendorAccountsErrorReasonEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for AddVendorAccountsErrorReason: valid values are %v", v, allowedAddVendorAccountsErrorReasonEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v AddVendorAccountsErrorReason) IsValid() bool {
-	for _, existing := range AllowedAddVendorAccountsErrorReasonEnumValues {
+	for _, existing := range allowedAddVendorAccountsErrorReasonEnumValues {
 		if existing == v {
 			return true
 		}

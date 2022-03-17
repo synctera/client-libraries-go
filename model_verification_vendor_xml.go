@@ -19,7 +19,7 @@ type VerificationVendorXml struct {
 	// Describes the content-type encoding received from the vendor.
 	ContentType string `json:"content_type"`
 	// Array of vendor specific information.
-	Details []VerificationVendorInfoDetail `json:"details,omitempty"`
+	Details *[]VerificationVendorInfoDetail `json:"details,omitempty"`
 	// Name of the vendor used.
 	Vendor string `json:"vendor"`
 	// Data representaion in XML.
@@ -76,12 +76,12 @@ func (o *VerificationVendorXml) GetDetails() []VerificationVendorInfoDetail {
 		var ret []VerificationVendorInfoDetail
 		return ret
 	}
-	return o.Details
+	return *o.Details
 }
 
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerificationVendorXml) GetDetailsOk() ([]VerificationVendorInfoDetail, bool) {
+func (o *VerificationVendorXml) GetDetailsOk() (*[]VerificationVendorInfoDetail, bool) {
 	if o == nil || o.Details == nil {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *VerificationVendorXml) HasDetails() bool {
 
 // SetDetails gets a reference to the given []VerificationVendorInfoDetail and assigns it to the Details field.
 func (o *VerificationVendorXml) SetDetails(v []VerificationVendorInfoDetail) {
-	o.Details = v
+	o.Details = &v
 }
 
 // GetVendor returns the Vendor field value

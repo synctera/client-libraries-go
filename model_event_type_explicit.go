@@ -35,8 +35,7 @@ const (
 	EVENTTYPEEXPLICIT_TRANSACTION_PENDING_UPDATED           EventTypeExplicit = "TRANSACTION.PENDING.UPDATED"
 )
 
-// All allowed values of EventTypeExplicit enum
-var AllowedEventTypeExplicitEnumValues = []EventTypeExplicit{
+var allowedEventTypeExplicitEnumValues = []EventTypeExplicit{
 	"ACCOUNT.CREATED",
 	"CARD.UPDATED",
 	"CARD.IMAGE.UPDATED",
@@ -59,7 +58,7 @@ func (v *EventTypeExplicit) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := EventTypeExplicit(value)
-	for _, existing := range AllowedEventTypeExplicitEnumValues {
+	for _, existing := range allowedEventTypeExplicitEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -76,13 +75,13 @@ func NewEventTypeExplicitFromValue(v string) (*EventTypeExplicit, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for EventTypeExplicit: valid values are %v", v, AllowedEventTypeExplicitEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for EventTypeExplicit: valid values are %v", v, allowedEventTypeExplicitEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v EventTypeExplicit) IsValid() bool {
-	for _, existing := range AllowedEventTypeExplicitEnumValues {
+	for _, existing := range allowedEventTypeExplicitEnumValues {
 		if existing == v {
 			return true
 		}

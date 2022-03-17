@@ -24,8 +24,7 @@ const (
 	CARDCATEGORY_COMMERCIAL CardCategory = "COMMERCIAL"
 )
 
-// All allowed values of CardCategory enum
-var AllowedCardCategoryEnumValues = []CardCategory{
+var allowedCardCategoryEnumValues = []CardCategory{
 	"CONSUMER",
 	"COMMERCIAL",
 }
@@ -37,7 +36,7 @@ func (v *CardCategory) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CardCategory(value)
-	for _, existing := range AllowedCardCategoryEnumValues {
+	for _, existing := range allowedCardCategoryEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewCardCategoryFromValue(v string) (*CardCategory, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CardCategory: valid values are %v", v, AllowedCardCategoryEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CardCategory: valid values are %v", v, allowedCardCategoryEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CardCategory) IsValid() bool {
-	for _, existing := range AllowedCardCategoryEnumValues {
+	for _, existing := range allowedCardCategoryEnumValues {
 		if existing == v {
 			return true
 		}

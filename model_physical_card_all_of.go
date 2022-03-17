@@ -28,6 +28,8 @@ type PhysicalCardAllOf struct {
 // will change when the set of required properties is changed
 func NewPhysicalCardAllOf() *PhysicalCardAllOf {
 	this := PhysicalCardAllOf{}
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	return &this
 }
 
@@ -36,6 +38,8 @@ func NewPhysicalCardAllOf() *PhysicalCardAllOf {
 // but it doesn't guarantee that properties required by API are set
 func NewPhysicalCardAllOfWithDefaults() *PhysicalCardAllOf {
 	this := PhysicalCardAllOf{}
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	return &this
 }
 

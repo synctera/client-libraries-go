@@ -16,8 +16,8 @@ import (
 
 // DishonorAch Dishonored return
 type DishonorAch struct {
-	FieldErrors []string `json:"field_errors,omitempty"`
-	Type        string   `json:"type"`
+	FieldErrors *[]string `json:"field_errors,omitempty"`
+	Type        string    `json:"type"`
 }
 
 // NewDishonorAch instantiates a new DishonorAch object
@@ -44,12 +44,12 @@ func (o *DishonorAch) GetFieldErrors() []string {
 		var ret []string
 		return ret
 	}
-	return o.FieldErrors
+	return *o.FieldErrors
 }
 
 // GetFieldErrorsOk returns a tuple with the FieldErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DishonorAch) GetFieldErrorsOk() ([]string, bool) {
+func (o *DishonorAch) GetFieldErrorsOk() (*[]string, bool) {
 	if o == nil || o.FieldErrors == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *DishonorAch) HasFieldErrors() bool {
 
 // SetFieldErrors gets a reference to the given []string and assigns it to the FieldErrors field.
 func (o *DishonorAch) SetFieldErrors(v []string) {
-	o.FieldErrors = v
+	o.FieldErrors = &v
 }
 
 // GetType returns the Type field value

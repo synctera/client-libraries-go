@@ -27,8 +27,7 @@ const (
 	PHYSICALCARDFORMAT_PHYSICAL_COMBO  PhysicalCardFormat = "PHYSICAL_COMBO"
 )
 
-// All allowed values of PhysicalCardFormat enum
-var AllowedPhysicalCardFormatEnumValues = []PhysicalCardFormat{
+var allowedPhysicalCardFormatEnumValues = []PhysicalCardFormat{
 	"MAGNETIC_STRIPE",
 	"CHIP",
 	"CONTACT",
@@ -43,7 +42,7 @@ func (v *PhysicalCardFormat) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := PhysicalCardFormat(value)
-	for _, existing := range AllowedPhysicalCardFormatEnumValues {
+	for _, existing := range allowedPhysicalCardFormatEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -60,13 +59,13 @@ func NewPhysicalCardFormatFromValue(v string) (*PhysicalCardFormat, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for PhysicalCardFormat: valid values are %v", v, AllowedPhysicalCardFormatEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for PhysicalCardFormat: valid values are %v", v, allowedPhysicalCardFormatEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v PhysicalCardFormat) IsValid() bool {
-	for _, existing := range AllowedPhysicalCardFormatEnumValues {
+	for _, existing := range allowedPhysicalCardFormatEnumValues {
 		if existing == v {
 			return true
 		}

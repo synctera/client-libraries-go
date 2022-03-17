@@ -50,11 +50,11 @@ func (o *EmploymentListAllOf) GetEmployment() []Employment {
 
 // GetEmploymentOk returns a tuple with the Employment field value
 // and a boolean to check if the value has been set.
-func (o *EmploymentListAllOf) GetEmploymentOk() ([]Employment, bool) {
+func (o *EmploymentListAllOf) GetEmploymentOk() (*[]Employment, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Employment, true
+	return &o.Employment, true
 }
 
 // SetEmployment sets field value

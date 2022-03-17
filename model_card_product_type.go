@@ -25,8 +25,7 @@ const (
 	CARDPRODUCTTYPE_PREPAID CardProductType = "PREPAID"
 )
 
-// All allowed values of CardProductType enum
-var AllowedCardProductTypeEnumValues = []CardProductType{
+var allowedCardProductTypeEnumValues = []CardProductType{
 	"DEBIT",
 	"CREDIT",
 	"PREPAID",
@@ -39,7 +38,7 @@ func (v *CardProductType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CardProductType(value)
-	for _, existing := range AllowedCardProductTypeEnumValues {
+	for _, existing := range allowedCardProductTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +55,13 @@ func NewCardProductTypeFromValue(v string) (*CardProductType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CardProductType: valid values are %v", v, AllowedCardProductTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CardProductType: valid values are %v", v, allowedCardProductTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CardProductType) IsValid() bool {
-	for _, existing := range AllowedCardProductTypeEnumValues {
+	for _, existing := range allowedCardProductTypeEnumValues {
 		if existing == v {
 			return true
 		}

@@ -69,6 +69,8 @@ func NewPhysicalCardIssuanceRequest(form string, accountId string, cardProductId
 	this.CardProductId = cardProductId
 	this.CustomerId = customerId
 	this.Type = type_
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	return &this
 }
 
@@ -77,6 +79,8 @@ func NewPhysicalCardIssuanceRequest(form string, accountId string, cardProductId
 // but it doesn't guarantee that properties required by API are set
 func NewPhysicalCardIssuanceRequestWithDefaults() *PhysicalCardIssuanceRequest {
 	this := PhysicalCardIssuanceRequest{}
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	return &this
 }
 

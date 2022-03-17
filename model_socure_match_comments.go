@@ -16,7 +16,7 @@ import (
 
 // SocureMatchComments struct for SocureMatchComments
 type SocureMatchComments struct {
-	RelatedURL []string `json:"relatedURL,omitempty"`
+	RelatedURL *[]string `json:"relatedURL,omitempty"`
 }
 
 // NewSocureMatchComments instantiates a new SocureMatchComments object
@@ -42,12 +42,12 @@ func (o *SocureMatchComments) GetRelatedURL() []string {
 		var ret []string
 		return ret
 	}
-	return o.RelatedURL
+	return *o.RelatedURL
 }
 
 // GetRelatedURLOk returns a tuple with the RelatedURL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SocureMatchComments) GetRelatedURLOk() ([]string, bool) {
+func (o *SocureMatchComments) GetRelatedURLOk() (*[]string, bool) {
 	if o == nil || o.RelatedURL == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *SocureMatchComments) HasRelatedURL() bool {
 
 // SetRelatedURL gets a reference to the given []string and assigns it to the RelatedURL field.
 func (o *SocureMatchComments) SetRelatedURL(v []string) {
-	o.RelatedURL = v
+	o.RelatedURL = &v
 }
 
 func (o SocureMatchComments) MarshalJSON() ([]byte, error) {

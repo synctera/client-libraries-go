@@ -29,7 +29,7 @@ type BaseDisclosure struct {
 	// The date and time the resource was last updated.
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
 	// Optional field to store additional information about the resource. Intended to be used by the integrator to store non-sensitive data.
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// Unique ID for the person. Exactly one of `person_id` or `business_id` must be set.
 	PersonId *string         `json:"person_id,omitempty"`
 	Type     *DisclosureType `json:"type,omitempty"`
@@ -252,12 +252,12 @@ func (o *BaseDisclosure) GetMetadata() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseDisclosure) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *BaseDisclosure) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -275,7 +275,7 @@ func (o *BaseDisclosure) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *BaseDisclosure) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetPersonId returns the PersonId field value if set, zero value otherwise.

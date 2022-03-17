@@ -30,8 +30,7 @@ const (
 	EVENTTYPEWILDCARD_TRANSACTION       EventTypeWildcard = "TRANSACTION.*"
 )
 
-// All allowed values of EventTypeWildcard enum
-var AllowedEventTypeWildcardEnumValues = []EventTypeWildcard{
+var allowedEventTypeWildcardEnumValues = []EventTypeWildcard{
 	"ACCOUNT.*",
 	"CARD.*",
 	"CUSTOMER.*",
@@ -49,7 +48,7 @@ func (v *EventTypeWildcard) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := EventTypeWildcard(value)
-	for _, existing := range AllowedEventTypeWildcardEnumValues {
+	for _, existing := range allowedEventTypeWildcardEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -66,13 +65,13 @@ func NewEventTypeWildcardFromValue(v string) (*EventTypeWildcard, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for EventTypeWildcard: valid values are %v", v, AllowedEventTypeWildcardEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for EventTypeWildcard: valid values are %v", v, allowedEventTypeWildcardEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v EventTypeWildcard) IsValid() bool {
-	for _, existing := range AllowedEventTypeWildcardEnumValues {
+	for _, existing := range allowedEventTypeWildcardEnumValues {
 		if existing == v {
 			return true
 		}

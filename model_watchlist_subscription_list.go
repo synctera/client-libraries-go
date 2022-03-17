@@ -51,11 +51,11 @@ func (o *WatchlistSubscriptionList) GetSubscriptions() []WatchlistSubscription {
 
 // GetSubscriptionsOk returns a tuple with the Subscriptions field value
 // and a boolean to check if the value has been set.
-func (o *WatchlistSubscriptionList) GetSubscriptionsOk() ([]WatchlistSubscription, bool) {
+func (o *WatchlistSubscriptionList) GetSubscriptionsOk() (*[]WatchlistSubscription, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Subscriptions, true
+	return &o.Subscriptions, true
 }
 
 // SetSubscriptions sets field value

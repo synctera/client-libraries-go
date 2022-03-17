@@ -24,8 +24,7 @@ const (
 	CARDIMAGEMODE_REQUIRED_APPROVED_FIRST CardImageMode = "REQUIRED_APPROVED_FIRST"
 )
 
-// All allowed values of CardImageMode enum
-var AllowedCardImageModeEnumValues = []CardImageMode{
+var allowedCardImageModeEnumValues = []CardImageMode{
 	"REQUIRED",
 	"REQUIRED_APPROVED_FIRST",
 }
@@ -37,7 +36,7 @@ func (v *CardImageMode) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CardImageMode(value)
-	for _, existing := range AllowedCardImageModeEnumValues {
+	for _, existing := range allowedCardImageModeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewCardImageModeFromValue(v string) (*CardImageMode, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CardImageMode: valid values are %v", v, AllowedCardImageModeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CardImageMode: valid values are %v", v, allowedCardImageModeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CardImageMode) IsValid() bool {
-	for _, existing := range AllowedCardImageModeEnumValues {
+	for _, existing := range allowedCardImageModeEnumValues {
 		if existing == v {
 			return true
 		}

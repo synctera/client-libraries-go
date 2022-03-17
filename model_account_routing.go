@@ -93,11 +93,11 @@ func (o *AccountRouting) GetBankCountries() []string {
 
 // GetBankCountriesOk returns a tuple with the BankCountries field value
 // and a boolean to check if the value has been set.
-func (o *AccountRouting) GetBankCountriesOk() ([]string, bool) {
+func (o *AccountRouting) GetBankCountriesOk() (*[]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BankCountries, true
+	return &o.BankCountries, true
 }
 
 // SetBankCountries sets field value

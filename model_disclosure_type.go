@@ -29,8 +29,7 @@ const (
 	DISCLOSURETYPE_TERMS_AND_CONDITIONS DisclosureType = "TERMS_AND_CONDITIONS"
 )
 
-// All allowed values of DisclosureType enum
-var AllowedDisclosureTypeEnumValues = []DisclosureType{
+var allowedDisclosureTypeEnumValues = []DisclosureType{
 	"REG_DD",
 	"KYC_DATA_COLLECTION",
 	"REG_E",
@@ -47,7 +46,7 @@ func (v *DisclosureType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := DisclosureType(value)
-	for _, existing := range AllowedDisclosureTypeEnumValues {
+	for _, existing := range allowedDisclosureTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -64,13 +63,13 @@ func NewDisclosureTypeFromValue(v string) (*DisclosureType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for DisclosureType: valid values are %v", v, AllowedDisclosureTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for DisclosureType: valid values are %v", v, allowedDisclosureTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v DisclosureType) IsValid() bool {
-	for _, existing := range AllowedDisclosureTypeEnumValues {
+	for _, existing := range allowedDisclosureTypeEnumValues {
 		if existing == v {
 			return true
 		}

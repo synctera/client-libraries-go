@@ -17,7 +17,7 @@ import (
 // DisclosureResponse Represents all customer disclosures
 type DisclosureResponse struct {
 	// List of the customer's disclosures
-	Disclosures []Disclosure1 `json:"disclosures,omitempty"`
+	Disclosures *[]Disclosure1 `json:"disclosures,omitempty"`
 }
 
 // NewDisclosureResponse instantiates a new DisclosureResponse object
@@ -43,12 +43,12 @@ func (o *DisclosureResponse) GetDisclosures() []Disclosure1 {
 		var ret []Disclosure1
 		return ret
 	}
-	return o.Disclosures
+	return *o.Disclosures
 }
 
 // GetDisclosuresOk returns a tuple with the Disclosures field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DisclosureResponse) GetDisclosuresOk() ([]Disclosure1, bool) {
+func (o *DisclosureResponse) GetDisclosuresOk() (*[]Disclosure1, bool) {
 	if o == nil || o.Disclosures == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *DisclosureResponse) HasDisclosures() bool {
 
 // SetDisclosures gets a reference to the given []Disclosure1 and assigns it to the Disclosures field.
 func (o *DisclosureResponse) SetDisclosures(v []Disclosure1) {
-	o.Disclosures = v
+	o.Disclosures = &v
 }
 
 func (o DisclosureResponse) MarshalJSON() ([]byte, error) {

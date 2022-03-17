@@ -24,8 +24,7 @@ const (
 	FORM_VIRTUAL  Form = "VIRTUAL"
 )
 
-// All allowed values of Form enum
-var AllowedFormEnumValues = []Form{
+var allowedFormEnumValues = []Form{
 	"PHYSICAL",
 	"VIRTUAL",
 }
@@ -37,7 +36,7 @@ func (v *Form) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := Form(value)
-	for _, existing := range AllowedFormEnumValues {
+	for _, existing := range allowedFormEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewFormFromValue(v string) (*Form, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for Form: valid values are %v", v, AllowedFormEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for Form: valid values are %v", v, allowedFormEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v Form) IsValid() bool {
-	for _, existing := range AllowedFormEnumValues {
+	for _, existing := range allowedFormEnumValues {
 		if existing == v {
 			return true
 		}

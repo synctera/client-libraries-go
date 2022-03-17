@@ -17,7 +17,7 @@ import (
 // AddVendorAccountsResponse struct for AddVendorAccountsResponse
 type AddVendorAccountsResponse struct {
 	AddedAccounts   []ExternalAccount         `json:"added_accounts"`
-	DeletedAccounts []ExternalAccount         `json:"deleted_accounts,omitempty"`
+	DeletedAccounts *[]ExternalAccount        `json:"deleted_accounts,omitempty"`
 	FailedAccounts  []AddVendorAccountFailure `json:"failed_accounts"`
 }
 
@@ -52,11 +52,11 @@ func (o *AddVendorAccountsResponse) GetAddedAccounts() []ExternalAccount {
 
 // GetAddedAccountsOk returns a tuple with the AddedAccounts field value
 // and a boolean to check if the value has been set.
-func (o *AddVendorAccountsResponse) GetAddedAccountsOk() ([]ExternalAccount, bool) {
+func (o *AddVendorAccountsResponse) GetAddedAccountsOk() (*[]ExternalAccount, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AddedAccounts, true
+	return &o.AddedAccounts, true
 }
 
 // SetAddedAccounts sets field value
@@ -70,12 +70,12 @@ func (o *AddVendorAccountsResponse) GetDeletedAccounts() []ExternalAccount {
 		var ret []ExternalAccount
 		return ret
 	}
-	return o.DeletedAccounts
+	return *o.DeletedAccounts
 }
 
 // GetDeletedAccountsOk returns a tuple with the DeletedAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddVendorAccountsResponse) GetDeletedAccountsOk() ([]ExternalAccount, bool) {
+func (o *AddVendorAccountsResponse) GetDeletedAccountsOk() (*[]ExternalAccount, bool) {
 	if o == nil || o.DeletedAccounts == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *AddVendorAccountsResponse) HasDeletedAccounts() bool {
 
 // SetDeletedAccounts gets a reference to the given []ExternalAccount and assigns it to the DeletedAccounts field.
 func (o *AddVendorAccountsResponse) SetDeletedAccounts(v []ExternalAccount) {
-	o.DeletedAccounts = v
+	o.DeletedAccounts = &v
 }
 
 // GetFailedAccounts returns the FailedAccounts field value
@@ -108,11 +108,11 @@ func (o *AddVendorAccountsResponse) GetFailedAccounts() []AddVendorAccountFailur
 
 // GetFailedAccountsOk returns a tuple with the FailedAccounts field value
 // and a boolean to check if the value has been set.
-func (o *AddVendorAccountsResponse) GetFailedAccountsOk() ([]AddVendorAccountFailure, bool) {
+func (o *AddVendorAccountsResponse) GetFailedAccountsOk() (*[]AddVendorAccountFailure, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.FailedAccounts, true
+	return &o.FailedAccounts, true
 }
 
 // SetFailedAccounts sets field value

@@ -24,8 +24,7 @@ const (
 	CARDPINSTATUS_CHANGED CardPinStatus = "CHANGED"
 )
 
-// All allowed values of CardPinStatus enum
-var AllowedCardPinStatusEnumValues = []CardPinStatus{
+var allowedCardPinStatusEnumValues = []CardPinStatus{
 	"SET",
 	"CHANGED",
 }
@@ -37,7 +36,7 @@ func (v *CardPinStatus) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CardPinStatus(value)
-	for _, existing := range AllowedCardPinStatusEnumValues {
+	for _, existing := range allowedCardPinStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewCardPinStatusFromValue(v string) (*CardPinStatus, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CardPinStatus: valid values are %v", v, AllowedCardPinStatusEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CardPinStatus: valid values are %v", v, allowedCardPinStatusEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CardPinStatus) IsValid() bool {
-	for _, existing := range AllowedCardPinStatusEnumValues {
+	for _, existing := range allowedCardPinStatusEnumValues {
 		if existing == v {
 			return true
 		}

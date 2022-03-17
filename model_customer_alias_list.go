@@ -50,11 +50,11 @@ func (o *CustomerAliasList) GetCustomerAlias() []CustomerAlias {
 
 // GetCustomerAliasOk returns a tuple with the CustomerAlias field value
 // and a boolean to check if the value has been set.
-func (o *CustomerAliasList) GetCustomerAliasOk() ([]CustomerAlias, bool) {
+func (o *CustomerAliasList) GetCustomerAliasOk() (*[]CustomerAlias, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CustomerAlias, true
+	return &o.CustomerAlias, true
 }
 
 // SetCustomerAlias sets field value

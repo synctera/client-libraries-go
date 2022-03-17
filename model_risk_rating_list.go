@@ -52,11 +52,11 @@ func (o *RiskRatingList) GetRiskRatings() []RiskRating {
 
 // GetRiskRatingsOk returns a tuple with the RiskRatings field value
 // and a boolean to check if the value has been set.
-func (o *RiskRatingList) GetRiskRatingsOk() ([]RiskRating, bool) {
+func (o *RiskRatingList) GetRiskRatingsOk() (*[]RiskRating, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.RiskRatings, true
+	return &o.RiskRatings, true
 }
 
 // SetRiskRatings sets field value

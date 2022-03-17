@@ -25,8 +25,7 @@ const (
 	CHANGETYPE_PIN         ChangeType = "PIN"
 )
 
-// All allowed values of ChangeType enum
-var AllowedChangeTypeEnumValues = []ChangeType{
+var allowedChangeTypeEnumValues = []ChangeType{
 	"STATUS",
 	"FULFILLMENT",
 	"PIN",
@@ -39,7 +38,7 @@ func (v *ChangeType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ChangeType(value)
-	for _, existing := range AllowedChangeTypeEnumValues {
+	for _, existing := range allowedChangeTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +55,13 @@ func NewChangeTypeFromValue(v string) (*ChangeType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ChangeType: valid values are %v", v, AllowedChangeTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ChangeType: valid values are %v", v, allowedChangeTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ChangeType) IsValid() bool {
-	for _, existing := range AllowedChangeTypeEnumValues {
+	for _, existing := range allowedChangeTypeEnumValues {
 		if existing == v {
 			return true
 		}

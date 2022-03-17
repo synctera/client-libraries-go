@@ -17,7 +17,7 @@ import (
 // TokenListResponseAllOf struct for TokenListResponseAllOf
 type TokenListResponseAllOf struct {
 	// Array of digital wallet token information of a card
-	DigitalWalletTokens []DigitalWalletTokenResponse `json:"digital_wallet_tokens,omitempty"`
+	DigitalWalletTokens *[]DigitalWalletTokenResponse `json:"digital_wallet_tokens,omitempty"`
 }
 
 // NewTokenListResponseAllOf instantiates a new TokenListResponseAllOf object
@@ -43,12 +43,12 @@ func (o *TokenListResponseAllOf) GetDigitalWalletTokens() []DigitalWalletTokenRe
 		var ret []DigitalWalletTokenResponse
 		return ret
 	}
-	return o.DigitalWalletTokens
+	return *o.DigitalWalletTokens
 }
 
 // GetDigitalWalletTokensOk returns a tuple with the DigitalWalletTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenListResponseAllOf) GetDigitalWalletTokensOk() ([]DigitalWalletTokenResponse, bool) {
+func (o *TokenListResponseAllOf) GetDigitalWalletTokensOk() (*[]DigitalWalletTokenResponse, bool) {
 	if o == nil || o.DigitalWalletTokens == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *TokenListResponseAllOf) HasDigitalWalletTokens() bool {
 
 // SetDigitalWalletTokens gets a reference to the given []DigitalWalletTokenResponse and assigns it to the DigitalWalletTokens field.
 func (o *TokenListResponseAllOf) SetDigitalWalletTokens(v []DigitalWalletTokenResponse) {
-	o.DigitalWalletTokens = v
+	o.DigitalWalletTokens = &v
 }
 
 func (o TokenListResponseAllOf) MarshalJSON() ([]byte, error) {

@@ -32,14 +32,14 @@ type BasePerson struct {
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
 	LegalAddress    *Address   `json:"legal_address,omitempty"`
 	// User-supplied metadata. Do not use to store PII.
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// Customer's middle name
 	MiddleName *string `json:"middle_name,omitempty"`
 	// Customer's mobile phone number with country code in E.164 format
 	PhoneNumber *string `json:"phone_number,omitempty"`
 	// Customer's relationships with other accounts eg. guardian
-	RelatedCustomers []Relationship1 `json:"related_customers,omitempty"`
-	ShippingAddress  *Address        `json:"shipping_address,omitempty"`
+	RelatedCustomers *[]Relationship1 `json:"related_customers,omitempty"`
+	ShippingAddress  *Address         `json:"shipping_address,omitempty"`
 	// Customer's full tax ID eg SSN formatted with hyphens. This optional parameter is required when running KYC on a customer. Input must match the pattern ^\\d{3}-\\d{2}-\\d{4}$. The response contains the last 4 digits only (e.g. 6789).
 	Ssn *string `json:"ssn,omitempty"`
 }
@@ -323,12 +323,12 @@ func (o *BasePerson) GetMetadata() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BasePerson) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *BasePerson) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -346,7 +346,7 @@ func (o *BasePerson) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *BasePerson) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetMiddleName returns the MiddleName field value if set, zero value otherwise.
@@ -419,12 +419,12 @@ func (o *BasePerson) GetRelatedCustomers() []Relationship1 {
 		var ret []Relationship1
 		return ret
 	}
-	return o.RelatedCustomers
+	return *o.RelatedCustomers
 }
 
 // GetRelatedCustomersOk returns a tuple with the RelatedCustomers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BasePerson) GetRelatedCustomersOk() ([]Relationship1, bool) {
+func (o *BasePerson) GetRelatedCustomersOk() (*[]Relationship1, bool) {
 	if o == nil || o.RelatedCustomers == nil {
 		return nil, false
 	}
@@ -442,7 +442,7 @@ func (o *BasePerson) HasRelatedCustomers() bool {
 
 // SetRelatedCustomers gets a reference to the given []Relationship1 and assigns it to the RelatedCustomers field.
 func (o *BasePerson) SetRelatedCustomers(v []Relationship1) {
-	o.RelatedCustomers = v
+	o.RelatedCustomers = &v
 }
 
 // GetShippingAddress returns the ShippingAddress field value if set, zero value otherwise.

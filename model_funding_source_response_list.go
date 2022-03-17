@@ -50,11 +50,11 @@ func (o *FundingSourceResponseList) GetFundingSources() []FundingSourceResponse 
 
 // GetFundingSourcesOk returns a tuple with the FundingSources field value
 // and a boolean to check if the value has been set.
-func (o *FundingSourceResponseList) GetFundingSourcesOk() ([]FundingSourceResponse, bool) {
+func (o *FundingSourceResponseList) GetFundingSourcesOk() (*[]FundingSourceResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.FundingSources, true
+	return &o.FundingSources, true
 }
 
 // SetFundingSources sets field value

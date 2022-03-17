@@ -52,11 +52,11 @@ func (o *DisclosureList) GetDisclosures() []Disclosure {
 
 // GetDisclosuresOk returns a tuple with the Disclosures field value
 // and a boolean to check if the value has been set.
-func (o *DisclosureList) GetDisclosuresOk() ([]Disclosure, bool) {
+func (o *DisclosureList) GetDisclosuresOk() (*[]Disclosure, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Disclosures, true
+	return &o.Disclosures, true
 }
 
 // SetDisclosures sets field value

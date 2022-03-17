@@ -52,11 +52,11 @@ func (o *CustomerList) GetCustomers() []CustomerInPath {
 
 // GetCustomersOk returns a tuple with the Customers field value
 // and a boolean to check if the value has been set.
-func (o *CustomerList) GetCustomersOk() ([]CustomerInPath, bool) {
+func (o *CustomerList) GetCustomersOk() (*[]CustomerInPath, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Customers, true
+	return &o.Customers, true
 }
 
 // SetCustomers sets field value

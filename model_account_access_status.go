@@ -24,8 +24,7 @@ const (
 	ACCOUNTACCESSSTATUS_FROZEN AccountAccessStatus = "FROZEN"
 )
 
-// All allowed values of AccountAccessStatus enum
-var AllowedAccountAccessStatusEnumValues = []AccountAccessStatus{
+var allowedAccountAccessStatusEnumValues = []AccountAccessStatus{
 	"ACTIVE",
 	"FROZEN",
 }
@@ -37,7 +36,7 @@ func (v *AccountAccessStatus) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := AccountAccessStatus(value)
-	for _, existing := range AllowedAccountAccessStatusEnumValues {
+	for _, existing := range allowedAccountAccessStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewAccountAccessStatusFromValue(v string) (*AccountAccessStatus, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AccountAccessStatus: valid values are %v", v, AllowedAccountAccessStatusEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for AccountAccessStatus: valid values are %v", v, allowedAccountAccessStatusEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v AccountAccessStatus) IsValid() bool {
-	for _, existing := range AllowedAccountAccessStatusEnumValues {
+	for _, existing := range allowedAccountAccessStatusEnumValues {
 		if existing == v {
 			return true
 		}

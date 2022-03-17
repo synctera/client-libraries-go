@@ -28,7 +28,7 @@ type Employment struct {
 	// The 3-letter alphabetic ISO 4217 code for the currency in which the employee was paid.
 	EmploymentIncomeCurrency *string `json:"employment_income_currency,omitempty"`
 	// A collection of arbitrary key-value pairs providing additional information about this employment relationship.
-	EmploymentInfo map[string]interface{} `json:"employment_info,omitempty"`
+	EmploymentInfo *map[string]interface{} `json:"employment_info,omitempty"`
 	// Customer's work title, profession, or field.
 	EmploymentOccupation *string `json:"employment_occupation,omitempty"`
 	// Last day of employment.
@@ -213,12 +213,12 @@ func (o *Employment) GetEmploymentInfo() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.EmploymentInfo
+	return *o.EmploymentInfo
 }
 
 // GetEmploymentInfoOk returns a tuple with the EmploymentInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Employment) GetEmploymentInfoOk() (map[string]interface{}, bool) {
+func (o *Employment) GetEmploymentInfoOk() (*map[string]interface{}, bool) {
 	if o == nil || o.EmploymentInfo == nil {
 		return nil, false
 	}
@@ -236,7 +236,7 @@ func (o *Employment) HasEmploymentInfo() bool {
 
 // SetEmploymentInfo gets a reference to the given map[string]interface{} and assigns it to the EmploymentInfo field.
 func (o *Employment) SetEmploymentInfo(v map[string]interface{}) {
-	o.EmploymentInfo = v
+	o.EmploymentInfo = &v
 }
 
 // GetEmploymentOccupation returns the EmploymentOccupation field value if set, zero value otherwise.

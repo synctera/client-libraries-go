@@ -73,11 +73,11 @@ func (o *AccountRangeResponse) GetAccountRange() []int32 {
 
 // GetAccountRangeOk returns a tuple with the AccountRange field value
 // and a boolean to check if the value has been set.
-func (o *AccountRangeResponse) GetAccountRangeOk() ([]int32, bool) {
+func (o *AccountRangeResponse) GetAccountRangeOk() (*[]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountRange, true
+	return &o.AccountRange, true
 }
 
 // SetAccountRange sets field value

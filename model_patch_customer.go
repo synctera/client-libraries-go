@@ -28,7 +28,7 @@ type PatchCustomer struct {
 	LastName     *string  `json:"last_name,omitempty"`
 	LegalAddress *Address `json:"legal_address,omitempty"`
 	// User-supplied JSON format metadata. Do not use to store PII.
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// Customer's middle name
 	MiddleName *string `json:"middle_name,omitempty"`
 	// Customer's mobile phone number with country code in E.164 format
@@ -223,12 +223,12 @@ func (o *PatchCustomer) GetMetadata() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchCustomer) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *PatchCustomer) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -246,7 +246,7 @@ func (o *PatchCustomer) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *PatchCustomer) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetMiddleName returns the MiddleName field value if set, zero value otherwise.

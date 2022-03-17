@@ -35,8 +35,7 @@ const (
 	VERIFICATIONTYPE_DECISION             VerificationType = "decision"
 )
 
-// All allowed values of VerificationType enum
-var AllowedVerificationTypeEnumValues = []VerificationType{
+var allowedVerificationTypeEnumValues = []VerificationType{
 	"fraud",
 	"synthetic",
 	"emailrisk",
@@ -59,7 +58,7 @@ func (v *VerificationType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := VerificationType(value)
-	for _, existing := range AllowedVerificationTypeEnumValues {
+	for _, existing := range allowedVerificationTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -76,13 +75,13 @@ func NewVerificationTypeFromValue(v string) (*VerificationType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for VerificationType: valid values are %v", v, AllowedVerificationTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for VerificationType: valid values are %v", v, allowedVerificationTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v VerificationType) IsValid() bool {
-	for _, existing := range AllowedVerificationTypeEnumValues {
+	for _, existing := range allowedVerificationTypeEnumValues {
 		if existing == v {
 			return true
 		}

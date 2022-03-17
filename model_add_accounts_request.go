@@ -24,7 +24,7 @@ type AddAccountsRequest struct {
 	// The type of customer.
 	CustomerType string `json:"customer_type"`
 	// User-supplied metadata
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// A user-meaningful name for the account
 	Nickname           *string                              `json:"nickname,omitempty"`
 	RoutingIdentifiers AddAccountsRequestRoutingIdentifiers `json:"routing_identifiers"`
@@ -94,11 +94,11 @@ func (o *AddAccountsRequest) GetAccountOwnerNames() []string {
 
 // GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field value
 // and a boolean to check if the value has been set.
-func (o *AddAccountsRequest) GetAccountOwnerNamesOk() ([]string, bool) {
+func (o *AddAccountsRequest) GetAccountOwnerNamesOk() (*[]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountOwnerNames, true
+	return &o.AccountOwnerNames, true
 }
 
 // SetAccountOwnerNames sets field value
@@ -160,12 +160,12 @@ func (o *AddAccountsRequest) GetMetadata() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddAccountsRequest) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *AddAccountsRequest) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -183,7 +183,7 @@ func (o *AddAccountsRequest) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *AddAccountsRequest) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetNickname returns the Nickname field value if set, zero value otherwise.

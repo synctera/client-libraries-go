@@ -19,7 +19,7 @@ type AccountCreationAllOf struct {
 	// Account template ID
 	AccountTemplateId *string `json:"account_template_id,omitempty"`
 	// List of the relationship for this account to the parties
-	Relationships []Relationship `json:"relationships,omitempty"`
+	Relationships *[]Relationship `json:"relationships,omitempty"`
 }
 
 // NewAccountCreationAllOf instantiates a new AccountCreationAllOf object
@@ -77,12 +77,12 @@ func (o *AccountCreationAllOf) GetRelationships() []Relationship {
 		var ret []Relationship
 		return ret
 	}
-	return o.Relationships
+	return *o.Relationships
 }
 
 // GetRelationshipsOk returns a tuple with the Relationships field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreationAllOf) GetRelationshipsOk() ([]Relationship, bool) {
+func (o *AccountCreationAllOf) GetRelationshipsOk() (*[]Relationship, bool) {
 	if o == nil || o.Relationships == nil {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *AccountCreationAllOf) HasRelationships() bool {
 
 // SetRelationships gets a reference to the given []Relationship and assigns it to the Relationships field.
 func (o *AccountCreationAllOf) SetRelationships(v []Relationship) {
-	o.Relationships = v
+	o.Relationships = &v
 }
 
 func (o AccountCreationAllOf) MarshalJSON() ([]byte, error) {

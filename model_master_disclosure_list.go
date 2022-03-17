@@ -52,11 +52,11 @@ func (o *MasterDisclosureList) GetMasterDisclosures() []MasterDisclosure {
 
 // GetMasterDisclosuresOk returns a tuple with the MasterDisclosures field value
 // and a boolean to check if the value has been set.
-func (o *MasterDisclosureList) GetMasterDisclosuresOk() ([]MasterDisclosure, bool) {
+func (o *MasterDisclosureList) GetMasterDisclosuresOk() (*[]MasterDisclosure, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.MasterDisclosures, true
+	return &o.MasterDisclosures, true
 }
 
 // SetMasterDisclosures sets field value

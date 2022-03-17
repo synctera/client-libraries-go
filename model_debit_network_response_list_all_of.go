@@ -50,11 +50,11 @@ func (o *DebitNetworkResponseListAllOf) GetDebitNetworks() []DebitNetworkRespons
 
 // GetDebitNetworksOk returns a tuple with the DebitNetworks field value
 // and a boolean to check if the value has been set.
-func (o *DebitNetworkResponseListAllOf) GetDebitNetworksOk() ([]DebitNetworkResponse, bool) {
+func (o *DebitNetworkResponseListAllOf) GetDebitNetworksOk() (*[]DebitNetworkResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.DebitNetworks, true
+	return &o.DebitNetworks, true
 }
 
 // SetDebitNetworks sets field value
