@@ -65,6 +65,8 @@ type PhysicalCard struct {
 func NewPhysicalCard(form string) *PhysicalCard {
 	this := PhysicalCard{}
 	this.Form = form
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	return &this
 }
 
@@ -73,6 +75,8 @@ func NewPhysicalCard(form string) *PhysicalCard {
 // but it doesn't guarantee that properties required by API are set
 func NewPhysicalCardWithDefaults() *PhysicalCard {
 	this := PhysicalCard{}
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	return &this
 }
 

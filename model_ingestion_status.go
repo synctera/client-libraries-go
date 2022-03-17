@@ -25,8 +25,7 @@ const (
 	INGESTIONSTATUS_FAILED     IngestionStatus = "FAILED"
 )
 
-// All allowed values of IngestionStatus enum
-var AllowedIngestionStatusEnumValues = []IngestionStatus{
+var allowedIngestionStatusEnumValues = []IngestionStatus{
 	"IN_PROCESS",
 	"COMPLETED",
 	"FAILED",
@@ -39,7 +38,7 @@ func (v *IngestionStatus) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := IngestionStatus(value)
-	for _, existing := range AllowedIngestionStatusEnumValues {
+	for _, existing := range allowedIngestionStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +55,13 @@ func NewIngestionStatusFromValue(v string) (*IngestionStatus, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for IngestionStatus: valid values are %v", v, AllowedIngestionStatusEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for IngestionStatus: valid values are %v", v, allowedIngestionStatusEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v IngestionStatus) IsValid() bool {
-	for _, existing := range AllowedIngestionStatusEnumValues {
+	for _, existing := range allowedIngestionStatusEnumValues {
 		if existing == v {
 			return true
 		}

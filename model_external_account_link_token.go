@@ -107,11 +107,11 @@ func (o *ExternalAccountLinkToken) GetCountryCodes() []string {
 
 // GetCountryCodesOk returns a tuple with the CountryCodes field value
 // and a boolean to check if the value has been set.
-func (o *ExternalAccountLinkToken) GetCountryCodesOk() ([]string, bool) {
+func (o *ExternalAccountLinkToken) GetCountryCodesOk() (*[]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CountryCodes, true
+	return &o.CountryCodes, true
 }
 
 // SetCountryCodes sets field value

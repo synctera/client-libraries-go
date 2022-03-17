@@ -52,11 +52,11 @@ func (o *BinResponseList) GetBins() []BinResponse {
 
 // GetBinsOk returns a tuple with the Bins field value
 // and a boolean to check if the value has been set.
-func (o *BinResponseList) GetBinsOk() ([]BinResponse, bool) {
+func (o *BinResponseList) GetBinsOk() (*[]BinResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Bins, true
+	return &o.Bins, true
 }
 
 // SetBins sets field value

@@ -34,8 +34,8 @@ func main() {
     reconciliationInput := *openapiclient.NewReconciliationInput(string(123), "lgwxdc7lsu2q18") // ReconciliationInput | Reconciliation to perform (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReconciliationsApi.CreateReconciliation(context.Background()).ReconciliationInput(reconciliationInput).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ReconciliationsApi.CreateReconciliation(context.Background()).ReconciliationInput(reconciliationInput).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ReconciliationsApi.CreateReconciliation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -97,11 +97,11 @@ import (
 )
 
 func main() {
-    reconciliationId := "4fff18ff-cdba-4dc5-954a-1f2335c6e406" // string | Reconciliation id
+    reconciliationId := TODO // string | Reconciliation id
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReconciliationsApi.GetReconciliation(context.Background(), reconciliationId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ReconciliationsApi.GetReconciliation(context.Background(), reconciliationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ReconciliationsApi.GetReconciliation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -117,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reconciliationId** | **string** | Reconciliation id | 
+**reconciliationId** | [**string**](.md) | Reconciliation id | 
 
 ### Other Parameters
 
@@ -171,8 +171,8 @@ func main() {
     pageToken := "2ss64pmfs8" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReconciliationsApi.ListReconciliations(context.Background()).Limit(limit).PageToken(pageToken).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ReconciliationsApi.ListReconciliations(context.Background()).Limit(limit).PageToken(pageToken).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ReconciliationsApi.ListReconciliations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

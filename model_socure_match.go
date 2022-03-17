@@ -18,8 +18,8 @@ import (
 type SocureMatch struct {
 	Comments    *SocureMatchComments `json:"comments,omitempty"`
 	EntityId    string               `json:"entityId"`
-	MatchFields []string             `json:"matchFields,omitempty"`
-	SourceUrls  []string             `json:"sourceUrls,omitempty"`
+	MatchFields *[]string            `json:"matchFields,omitempty"`
+	SourceUrls  *[]string            `json:"sourceUrls,omitempty"`
 	Status      string               `json:"status"`
 }
 
@@ -104,12 +104,12 @@ func (o *SocureMatch) GetMatchFields() []string {
 		var ret []string
 		return ret
 	}
-	return o.MatchFields
+	return *o.MatchFields
 }
 
 // GetMatchFieldsOk returns a tuple with the MatchFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SocureMatch) GetMatchFieldsOk() ([]string, bool) {
+func (o *SocureMatch) GetMatchFieldsOk() (*[]string, bool) {
 	if o == nil || o.MatchFields == nil {
 		return nil, false
 	}
@@ -127,7 +127,7 @@ func (o *SocureMatch) HasMatchFields() bool {
 
 // SetMatchFields gets a reference to the given []string and assigns it to the MatchFields field.
 func (o *SocureMatch) SetMatchFields(v []string) {
-	o.MatchFields = v
+	o.MatchFields = &v
 }
 
 // GetSourceUrls returns the SourceUrls field value if set, zero value otherwise.
@@ -136,12 +136,12 @@ func (o *SocureMatch) GetSourceUrls() []string {
 		var ret []string
 		return ret
 	}
-	return o.SourceUrls
+	return *o.SourceUrls
 }
 
 // GetSourceUrlsOk returns a tuple with the SourceUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SocureMatch) GetSourceUrlsOk() ([]string, bool) {
+func (o *SocureMatch) GetSourceUrlsOk() (*[]string, bool) {
 	if o == nil || o.SourceUrls == nil {
 		return nil, false
 	}
@@ -159,7 +159,7 @@ func (o *SocureMatch) HasSourceUrls() bool {
 
 // SetSourceUrls gets a reference to the given []string and assigns it to the SourceUrls field.
 func (o *SocureMatch) SetSourceUrls(v []string) {
-	o.SourceUrls = v
+	o.SourceUrls = &v
 }
 
 // GetStatus returns the Status field value

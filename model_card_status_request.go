@@ -25,8 +25,7 @@ const (
 	CARDSTATUSREQUEST_TERMINATED CardStatusRequest = "TERMINATED"
 )
 
-// All allowed values of CardStatusRequest enum
-var AllowedCardStatusRequestEnumValues = []CardStatusRequest{
+var allowedCardStatusRequestEnumValues = []CardStatusRequest{
 	"ACTIVE",
 	"SUSPENDED",
 	"TERMINATED",
@@ -39,7 +38,7 @@ func (v *CardStatusRequest) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CardStatusRequest(value)
-	for _, existing := range AllowedCardStatusRequestEnumValues {
+	for _, existing := range allowedCardStatusRequestEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +55,13 @@ func NewCardStatusRequestFromValue(v string) (*CardStatusRequest, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CardStatusRequest: valid values are %v", v, AllowedCardStatusRequestEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CardStatusRequest: valid values are %v", v, allowedCardStatusRequestEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CardStatusRequest) IsValid() bool {
-	for _, existing := range AllowedCardStatusRequestEnumValues {
+	for _, existing := range allowedCardStatusRequestEnumValues {
 		if existing == v {
 			return true
 		}

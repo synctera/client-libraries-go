@@ -26,7 +26,7 @@ type AccountCreation struct {
 	BalanceCeiling *BalanceCeiling `json:"balance_ceiling,omitempty"`
 	BalanceFloor   *BalanceFloor   `json:"balance_floor,omitempty"`
 	// A list of balances for account based on different type
-	Balances []Balance `json:"balances,omitempty"`
+	Balances *[]Balance `json:"balances,omitempty"`
 	// Bank routing number
 	BankRouting *string `json:"bank_routing,omitempty"`
 	// Account creation timestamp in RFC3337 format
@@ -34,12 +34,12 @@ type AccountCreation struct {
 	// Account currency or account settlement currency. ISO 4217 alphabetic currency code. Default USD
 	Currency *string `json:"currency,omitempty"`
 	// A list of the customer IDs of the account holders.
-	CustomerIds  []string      `json:"customer_ids,omitempty"`
+	CustomerIds  *[]string     `json:"customer_ids,omitempty"`
 	CustomerType *CustomerType `json:"customer_type,omitempty"`
 	// Exchange rate type
 	ExchangeRateType *string `json:"exchange_rate_type,omitempty"`
 	// A list of fee resources from account product that the current account associate with
-	FeeProductIds []string `json:"fee_product_ids,omitempty"`
+	FeeProductIds *[]string `json:"fee_product_ids,omitempty"`
 	// International bank account number
 	Iban *string `json:"iban,omitempty"`
 	// Account ID
@@ -51,7 +51,7 @@ type AccountCreation struct {
 	// Timestamp of the last account modification in RFC3337 format
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
 	// User provided account metadata
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// User provided account nickname
 	Nickname *string `json:"nickname,omitempty"`
 	// Account's overdraft limit
@@ -63,7 +63,7 @@ type AccountCreation struct {
 	// Account template ID
 	AccountTemplateId *string `json:"account_template_id,omitempty"`
 	// List of the relationship for this account to the parties
-	Relationships []Relationship `json:"relationships,omitempty"`
+	Relationships *[]Relationship `json:"relationships,omitempty"`
 }
 
 // NewAccountCreation instantiates a new AccountCreation object
@@ -281,12 +281,12 @@ func (o *AccountCreation) GetBalances() []Balance {
 		var ret []Balance
 		return ret
 	}
-	return o.Balances
+	return *o.Balances
 }
 
 // GetBalancesOk returns a tuple with the Balances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreation) GetBalancesOk() ([]Balance, bool) {
+func (o *AccountCreation) GetBalancesOk() (*[]Balance, bool) {
 	if o == nil || o.Balances == nil {
 		return nil, false
 	}
@@ -304,7 +304,7 @@ func (o *AccountCreation) HasBalances() bool {
 
 // SetBalances gets a reference to the given []Balance and assigns it to the Balances field.
 func (o *AccountCreation) SetBalances(v []Balance) {
-	o.Balances = v
+	o.Balances = &v
 }
 
 // GetBankRouting returns the BankRouting field value if set, zero value otherwise.
@@ -409,12 +409,12 @@ func (o *AccountCreation) GetCustomerIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.CustomerIds
+	return *o.CustomerIds
 }
 
 // GetCustomerIdsOk returns a tuple with the CustomerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreation) GetCustomerIdsOk() ([]string, bool) {
+func (o *AccountCreation) GetCustomerIdsOk() (*[]string, bool) {
 	if o == nil || o.CustomerIds == nil {
 		return nil, false
 	}
@@ -432,7 +432,7 @@ func (o *AccountCreation) HasCustomerIds() bool {
 
 // SetCustomerIds gets a reference to the given []string and assigns it to the CustomerIds field.
 func (o *AccountCreation) SetCustomerIds(v []string) {
-	o.CustomerIds = v
+	o.CustomerIds = &v
 }
 
 // GetCustomerType returns the CustomerType field value if set, zero value otherwise.
@@ -505,12 +505,12 @@ func (o *AccountCreation) GetFeeProductIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.FeeProductIds
+	return *o.FeeProductIds
 }
 
 // GetFeeProductIdsOk returns a tuple with the FeeProductIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreation) GetFeeProductIdsOk() ([]string, bool) {
+func (o *AccountCreation) GetFeeProductIdsOk() (*[]string, bool) {
 	if o == nil || o.FeeProductIds == nil {
 		return nil, false
 	}
@@ -528,7 +528,7 @@ func (o *AccountCreation) HasFeeProductIds() bool {
 
 // SetFeeProductIds gets a reference to the given []string and assigns it to the FeeProductIds field.
 func (o *AccountCreation) SetFeeProductIds(v []string) {
-	o.FeeProductIds = v
+	o.FeeProductIds = &v
 }
 
 // GetIban returns the Iban field value if set, zero value otherwise.
@@ -697,12 +697,12 @@ func (o *AccountCreation) GetMetadata() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreation) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *AccountCreation) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -720,7 +720,7 @@ func (o *AccountCreation) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *AccountCreation) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetNickname returns the Nickname field value if set, zero value otherwise.
@@ -921,12 +921,12 @@ func (o *AccountCreation) GetRelationships() []Relationship {
 		var ret []Relationship
 		return ret
 	}
-	return o.Relationships
+	return *o.Relationships
 }
 
 // GetRelationshipsOk returns a tuple with the Relationships field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCreation) GetRelationshipsOk() ([]Relationship, bool) {
+func (o *AccountCreation) GetRelationshipsOk() (*[]Relationship, bool) {
 	if o == nil || o.Relationships == nil {
 		return nil, false
 	}
@@ -944,7 +944,7 @@ func (o *AccountCreation) HasRelationships() bool {
 
 // SetRelationships gets a reference to the given []Relationship and assigns it to the Relationships field.
 func (o *AccountCreation) SetRelationships(v []Relationship) {
-	o.Relationships = v
+	o.Relationships = &v
 }
 
 func (o AccountCreation) MarshalJSON() ([]byte, error) {

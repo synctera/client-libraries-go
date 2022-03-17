@@ -25,8 +25,7 @@ const (
 	RELATIONSHIPROLE_PARTNER     RelationshipRole = "PARTNER"
 )
 
-// All allowed values of RelationshipRole enum
-var AllowedRelationshipRoleEnumValues = []RelationshipRole{
+var allowedRelationshipRoleEnumValues = []RelationshipRole{
 	"CUSTODIAN",
 	"BENEFICIARY",
 	"PARTNER",
@@ -39,7 +38,7 @@ func (v *RelationshipRole) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := RelationshipRole(value)
-	for _, existing := range AllowedRelationshipRoleEnumValues {
+	for _, existing := range allowedRelationshipRoleEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -56,13 +55,13 @@ func NewRelationshipRoleFromValue(v string) (*RelationshipRole, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for RelationshipRole: valid values are %v", v, AllowedRelationshipRoleEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for RelationshipRole: valid values are %v", v, allowedRelationshipRoleEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v RelationshipRole) IsValid() bool {
-	for _, existing := range AllowedRelationshipRoleEnumValues {
+	for _, existing := range allowedRelationshipRoleEnumValues {
 		if existing == v {
 			return true
 		}

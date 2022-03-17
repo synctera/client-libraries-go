@@ -19,7 +19,7 @@ type VerificationVendorJson struct {
 	// Describes the content-type encoding received from the vendor.
 	ContentType string `json:"content_type"`
 	// Array of vendor specific information.
-	Details []VerificationVendorInfoDetail `json:"details,omitempty"`
+	Details *[]VerificationVendorInfoDetail `json:"details,omitempty"`
 	// Data representation in JSON.
 	Json map[string]interface{} `json:"json"`
 	// Name of the vendor used.
@@ -76,12 +76,12 @@ func (o *VerificationVendorJson) GetDetails() []VerificationVendorInfoDetail {
 		var ret []VerificationVendorInfoDetail
 		return ret
 	}
-	return o.Details
+	return *o.Details
 }
 
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerificationVendorJson) GetDetailsOk() ([]VerificationVendorInfoDetail, bool) {
+func (o *VerificationVendorJson) GetDetailsOk() (*[]VerificationVendorInfoDetail, bool) {
 	if o == nil || o.Details == nil {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *VerificationVendorJson) HasDetails() bool {
 
 // SetDetails gets a reference to the given []VerificationVendorInfoDetail and assigns it to the Details field.
 func (o *VerificationVendorJson) SetDetails(v []VerificationVendorInfoDetail) {
-	o.Details = v
+	o.Details = &v
 }
 
 // GetJson returns the Json field value
@@ -114,11 +114,11 @@ func (o *VerificationVendorJson) GetJson() map[string]interface{} {
 
 // GetJsonOk returns a tuple with the Json field value
 // and a boolean to check if the value has been set.
-func (o *VerificationVendorJson) GetJsonOk() (map[string]interface{}, bool) {
+func (o *VerificationVendorJson) GetJsonOk() (*map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Json, true
+	return &o.Json, true
 }
 
 // SetJson sets field value

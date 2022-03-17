@@ -82,6 +82,8 @@ func NewPhysicalCardResponse(form string, accountId string, cardBrand CardBrand,
 	this.Id = id
 	this.Shipping = shipping
 	this.Type = type_
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	this.CardStatus = cardStatus
 	this.StatusReason = statusReason
 	this.CardFulfillmentStatus = cardFulfillmentStatus
@@ -94,6 +96,8 @@ func NewPhysicalCardResponse(form string, accountId string, cardBrand CardBrand,
 // but it doesn't guarantee that properties required by API are set
 func NewPhysicalCardResponseWithDefaults() *PhysicalCardResponse {
 	this := PhysicalCardResponse{}
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	return &this
 }
 

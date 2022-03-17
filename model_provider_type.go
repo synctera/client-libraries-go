@@ -24,8 +24,7 @@ const (
 	PROVIDERTYPE_SOCURE  ProviderType = "SOCURE"
 )
 
-// All allowed values of ProviderType enum
-var AllowedProviderTypeEnumValues = []ProviderType{
+var allowedProviderTypeEnumValues = []ProviderType{
 	"IDOLOGY",
 	"SOCURE",
 }
@@ -37,7 +36,7 @@ func (v *ProviderType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ProviderType(value)
-	for _, existing := range AllowedProviderTypeEnumValues {
+	for _, existing := range allowedProviderTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewProviderTypeFromValue(v string) (*ProviderType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ProviderType: valid values are %v", v, AllowedProviderTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ProviderType: valid values are %v", v, allowedProviderTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ProviderType) IsValid() bool {
-	for _, existing := range AllowedProviderTypeEnumValues {
+	for _, existing := range allowedProviderTypeEnumValues {
 		if existing == v {
 			return true
 		}

@@ -78,11 +78,11 @@ func (o *CustomerVerifyResponse) GetVerifications() []CustomerVerificationResult
 
 // GetVerificationsOk returns a tuple with the Verifications field value
 // and a boolean to check if the value has been set.
-func (o *CustomerVerifyResponse) GetVerificationsOk() ([]CustomerVerificationResult, bool) {
+func (o *CustomerVerifyResponse) GetVerificationsOk() (*[]CustomerVerificationResult, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Verifications, true
+	return &o.Verifications, true
 }
 
 // SetVerifications sets field value

@@ -52,11 +52,11 @@ func (o *ReconciliationList) GetReconciliations() []Reconciliation {
 
 // GetReconciliationsOk returns a tuple with the Reconciliations field value
 // and a boolean to check if the value has been set.
-func (o *ReconciliationList) GetReconciliationsOk() ([]Reconciliation, bool) {
+func (o *ReconciliationList) GetReconciliationsOk() (*[]Reconciliation, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Reconciliations, true
+	return &o.Reconciliations, true
 }
 
 // SetReconciliations sets field value

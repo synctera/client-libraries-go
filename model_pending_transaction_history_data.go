@@ -276,11 +276,11 @@ func (o *PendingTransactionHistoryData) GetExternalData() map[string]interface{}
 // GetExternalDataOk returns a tuple with the ExternalData field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PendingTransactionHistoryData) GetExternalDataOk() (map[string]interface{}, bool) {
+func (o *PendingTransactionHistoryData) GetExternalDataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.ExternalData == nil {
 		return nil, false
 	}
-	return o.ExternalData, true
+	return &o.ExternalData, true
 }
 
 // SetExternalData sets field value
@@ -422,11 +422,11 @@ func (o *PendingTransactionHistoryData) GetRiskInfo() map[string]interface{} {
 // GetRiskInfoOk returns a tuple with the RiskInfo field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PendingTransactionHistoryData) GetRiskInfoOk() (map[string]interface{}, bool) {
+func (o *PendingTransactionHistoryData) GetRiskInfoOk() (*map[string]interface{}, bool) {
 	if o == nil || o.RiskInfo == nil {
 		return nil, false
 	}
-	return o.RiskInfo, true
+	return &o.RiskInfo, true
 }
 
 // SetRiskInfo sets field value
@@ -544,11 +544,11 @@ func (o *PendingTransactionHistoryData) GetUserData() map[string]interface{} {
 // GetUserDataOk returns a tuple with the UserData field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PendingTransactionHistoryData) GetUserDataOk() (map[string]interface{}, bool) {
+func (o *PendingTransactionHistoryData) GetUserDataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.UserData == nil {
 		return nil, false
 	}
-	return o.UserData, true
+	return &o.UserData, true
 }
 
 // SetUserData sets field value

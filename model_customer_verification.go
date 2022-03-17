@@ -145,11 +145,11 @@ func (o *CustomerVerification) GetVerificationType() []VerificationType {
 
 // GetVerificationTypeOk returns a tuple with the VerificationType field value
 // and a boolean to check if the value has been set.
-func (o *CustomerVerification) GetVerificationTypeOk() ([]VerificationType, bool) {
+func (o *CustomerVerification) GetVerificationTypeOk() (*[]VerificationType, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.VerificationType, true
+	return &o.VerificationType, true
 }
 
 // SetVerificationType sets field value

@@ -34,8 +34,7 @@ const (
 	STATUS_RESTRICTED              Status = "RESTRICTED"
 )
 
-// All allowed values of Status enum
-var AllowedStatusEnumValues = []Status{
+var allowedStatusEnumValues = []Status{
 	"APPLICATION_SUBMITTED",
 	"FAILED_KYC",
 	"ACCOUNT_NOT_DESIRED",
@@ -57,7 +56,7 @@ func (v *Status) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := Status(value)
-	for _, existing := range AllowedStatusEnumValues {
+	for _, existing := range allowedStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -74,13 +73,13 @@ func NewStatusFromValue(v string) (*Status, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for Status: valid values are %v", v, AllowedStatusEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for Status: valid values are %v", v, allowedStatusEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v Status) IsValid() bool {
-	for _, existing := range AllowedStatusEnumValues {
+	for _, existing := range allowedStatusEnumValues {
 		if existing == v {
 			return true
 		}

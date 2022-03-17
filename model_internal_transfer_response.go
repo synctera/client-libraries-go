@@ -23,7 +23,7 @@ type InternalTransferResponse struct {
 	// A short note to the recipient
 	Memo *string `json:"memo,omitempty"`
 	// Arbitrary key-value metadata to associate with the transaction
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 	// An alias representing a GL account to debit. This is alternative to specifying by account id
 	OriginatingAccountAlias *string `json:"originating_account_alias,omitempty"`
 	// The UUID of the account being debited
@@ -147,12 +147,12 @@ func (o *InternalTransferResponse) GetMetadata() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InternalTransferResponse) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *InternalTransferResponse) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *InternalTransferResponse) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *InternalTransferResponse) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetOriginatingAccountAlias returns the OriginatingAccountAlias field value if set, zero value otherwise.

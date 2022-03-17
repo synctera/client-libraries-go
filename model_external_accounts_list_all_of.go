@@ -50,11 +50,11 @@ func (o *ExternalAccountsListAllOf) GetExternalAccounts() []ExternalAccount {
 
 // GetExternalAccountsOk returns a tuple with the ExternalAccounts field value
 // and a boolean to check if the value has been set.
-func (o *ExternalAccountsListAllOf) GetExternalAccountsOk() ([]ExternalAccount, bool) {
+func (o *ExternalAccountsListAllOf) GetExternalAccountsOk() (*[]ExternalAccount, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExternalAccounts, true
+	return &o.ExternalAccounts, true
 }
 
 // SetExternalAccounts sets field value

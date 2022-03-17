@@ -29,7 +29,7 @@ type OutgoingAch struct {
 	// Effective date transaction proccesses (is_same_day needs to be false or not present at all)
 	EffectiveDate *oapi.Date `json:"effective_date,omitempty"`
 	// Additional transfer metadata structured as key-value pairs
-	ExternalData map[string]interface{} `json:"external_data,omitempty"`
+	ExternalData *map[string]interface{} `json:"external_data,omitempty"`
 	// ID of the international customer that receives the final remittance transfer (required for OFAC enabled payments)
 	FinalCustomerId *string `json:"final_customer_id,omitempty"`
 	Id              *string `json:"id,omitempty"`
@@ -204,12 +204,12 @@ func (o *OutgoingAch) GetExternalData() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.ExternalData
+	return *o.ExternalData
 }
 
 // GetExternalDataOk returns a tuple with the ExternalData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OutgoingAch) GetExternalDataOk() (map[string]interface{}, bool) {
+func (o *OutgoingAch) GetExternalDataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.ExternalData == nil {
 		return nil, false
 	}
@@ -227,7 +227,7 @@ func (o *OutgoingAch) HasExternalData() bool {
 
 // SetExternalData gets a reference to the given map[string]interface{} and assigns it to the ExternalData field.
 func (o *OutgoingAch) SetExternalData(v map[string]interface{}) {
-	o.ExternalData = v
+	o.ExternalData = &v
 }
 
 // GetFinalCustomerId returns the FinalCustomerId field value if set, zero value otherwise.

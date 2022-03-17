@@ -52,11 +52,11 @@ func (o *AccountList) GetAccounts() []Account {
 
 // GetAccountsOk returns a tuple with the Accounts field value
 // and a boolean to check if the value has been set.
-func (o *AccountList) GetAccountsOk() ([]Account, bool) {
+func (o *AccountList) GetAccountsOk() (*[]Account, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Accounts, true
+	return &o.Accounts, true
 }
 
 // SetAccounts sets field value

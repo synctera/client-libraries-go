@@ -23,8 +23,7 @@ const (
 	CARDBRAND_MASTERCARD CardBrand = "MASTERCARD"
 )
 
-// All allowed values of CardBrand enum
-var AllowedCardBrandEnumValues = []CardBrand{
+var allowedCardBrandEnumValues = []CardBrand{
 	"MASTERCARD",
 }
 
@@ -35,7 +34,7 @@ func (v *CardBrand) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CardBrand(value)
-	for _, existing := range AllowedCardBrandEnumValues {
+	for _, existing := range allowedCardBrandEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -52,13 +51,13 @@ func NewCardBrandFromValue(v string) (*CardBrand, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CardBrand: valid values are %v", v, AllowedCardBrandEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CardBrand: valid values are %v", v, allowedCardBrandEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CardBrand) IsValid() bool {
-	for _, existing := range AllowedCardBrandEnumValues {
+	for _, existing := range allowedCardBrandEnumValues {
 		if existing == v {
 			return true
 		}

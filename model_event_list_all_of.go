@@ -50,11 +50,11 @@ func (o *EventListAllOf) GetEventList() []Event {
 
 // GetEventListOk returns a tuple with the EventList field value
 // and a boolean to check if the value has been set.
-func (o *EventListAllOf) GetEventListOk() ([]Event, bool) {
+func (o *EventListAllOf) GetEventListOk() (*[]Event, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.EventList, true
+	return &o.EventList, true
 }
 
 // SetEventList sets field value

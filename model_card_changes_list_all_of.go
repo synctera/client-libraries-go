@@ -50,11 +50,11 @@ func (o *CardChangesListAllOf) GetChanges() []CardChange {
 
 // GetChangesOk returns a tuple with the Changes field value
 // and a boolean to check if the value has been set.
-func (o *CardChangesListAllOf) GetChangesOk() ([]CardChange, bool) {
+func (o *CardChangesListAllOf) GetChangesOk() (*[]CardChange, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Changes, true
+	return &o.Changes, true
 }
 
 // SetChanges sets field value

@@ -53,8 +53,7 @@ const (
 	CARDSTATUSREASONCODE_OTH CardStatusReasonCode = "OTH"
 )
 
-// All allowed values of CardStatusReasonCode enum
-var AllowedCardStatusReasonCodeEnumValues = []CardStatusReasonCode{
+var allowedCardStatusReasonCodeEnumValues = []CardStatusReasonCode{
 	"NEW",
 	"REQ",
 	"INA",
@@ -95,7 +94,7 @@ func (v *CardStatusReasonCode) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CardStatusReasonCode(value)
-	for _, existing := range AllowedCardStatusReasonCodeEnumValues {
+	for _, existing := range allowedCardStatusReasonCodeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -112,13 +111,13 @@ func NewCardStatusReasonCodeFromValue(v string) (*CardStatusReasonCode, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CardStatusReasonCode: valid values are %v", v, AllowedCardStatusReasonCodeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CardStatusReasonCode: valid values are %v", v, allowedCardStatusReasonCodeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CardStatusReasonCode) IsValid() bool {
-	for _, existing := range AllowedCardStatusReasonCodeEnumValues {
+	for _, existing := range allowedCardStatusReasonCodeEnumValues {
 		if existing == v {
 			return true
 		}

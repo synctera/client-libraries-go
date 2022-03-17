@@ -24,8 +24,8 @@ type BaseMasterDisclosure struct {
 	// The date and time the resource was last updated.
 	LastUpdatedTime *time.Time `json:"last_updated_time,omitempty"`
 	// Optional field to store additional information about the resource. Intended to be used by the integrator to store non-sensitive data.
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
-	Type     *DisclosureType        `json:"type,omitempty"`
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
+	Type     *DisclosureType         `json:"type,omitempty"`
 	// Version of the disclosure document.
 	Version *string `json:"version,omitempty"`
 }
@@ -149,12 +149,12 @@ func (o *BaseMasterDisclosure) GetMetadata() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseMasterDisclosure) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *BaseMasterDisclosure) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -172,7 +172,7 @@ func (o *BaseMasterDisclosure) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *BaseMasterDisclosure) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.

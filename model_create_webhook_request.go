@@ -115,11 +115,11 @@ func (o *CreateWebhookRequest) GetEvents() []string {
 
 // GetEventsOk returns a tuple with the Events field value
 // and a boolean to check if the value has been set.
-func (o *CreateWebhookRequest) GetEventsOk() ([]string, bool) {
+func (o *CreateWebhookRequest) GetEventsOk() (*[]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Events, true
+	return &o.Events, true
 }
 
 // SetEvents sets field value

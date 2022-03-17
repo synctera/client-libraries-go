@@ -50,11 +50,11 @@ func (o *CardImageDetailsListAllOf) GetImages() []CardImageDetails {
 
 // GetImagesOk returns a tuple with the Images field value
 // and a boolean to check if the value has been set.
-func (o *CardImageDetailsListAllOf) GetImagesOk() ([]CardImageDetails, bool) {
+func (o *CardImageDetailsListAllOf) GetImagesOk() (*[]CardImageDetails, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Images, true
+	return &o.Images, true
 }
 
 // SetImages sets field value

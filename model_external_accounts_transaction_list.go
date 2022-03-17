@@ -50,11 +50,11 @@ func (o *ExternalAccountsTransactionList) GetTransactions() []ExternalAccountTra
 
 // GetTransactionsOk returns a tuple with the Transactions field value
 // and a boolean to check if the value has been set.
-func (o *ExternalAccountsTransactionList) GetTransactionsOk() ([]ExternalAccountTransaction, bool) {
+func (o *ExternalAccountsTransactionList) GetTransactionsOk() (*[]ExternalAccountTransaction, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Transactions, true
+	return &o.Transactions, true
 }
 
 // SetTransactions sets field value

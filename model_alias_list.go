@@ -50,11 +50,11 @@ func (o *AliasList) GetAliases() []Alias {
 
 // GetAliasesOk returns a tuple with the Aliases field value
 // and a boolean to check if the value has been set.
-func (o *AliasList) GetAliasesOk() ([]Alias, bool) {
+func (o *AliasList) GetAliasesOk() (*[]Alias, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Aliases, true
+	return &o.Aliases, true
 }
 
 // SetAliases sets field value

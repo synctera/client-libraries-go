@@ -72,6 +72,8 @@ type PhysicalCardPlusStatus struct {
 func NewPhysicalCardPlusStatus(form string, cardStatus CardStatus, statusReason CardStatusReasonCode, cardFulfillmentStatus CardFulfillmentStatus) *PhysicalCardPlusStatus {
 	this := PhysicalCardPlusStatus{}
 	this.Form = form
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	this.CardStatus = cardStatus
 	this.StatusReason = statusReason
 	this.CardFulfillmentStatus = cardFulfillmentStatus
@@ -83,6 +85,8 @@ func NewPhysicalCardPlusStatus(form string, cardStatus CardStatus, statusReason 
 // but it doesn't guarantee that properties required by API are set
 func NewPhysicalCardPlusStatusWithDefaults() *PhysicalCardPlusStatus {
 	this := PhysicalCardPlusStatus{}
+	var isPinSet bool = false
+	this.IsPinSet = &isPinSet
 	return &this
 }
 

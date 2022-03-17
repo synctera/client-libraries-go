@@ -28,8 +28,7 @@ const (
 	CARDSTATUS_IMAGE_REJECTED CardStatus = "IMAGE_REJECTED"
 )
 
-// All allowed values of CardStatus enum
-var AllowedCardStatusEnumValues = []CardStatus{
+var allowedCardStatusEnumValues = []CardStatus{
 	"ACTIVE",
 	"UNACTIVATED",
 	"SUSPENDED",
@@ -45,7 +44,7 @@ func (v *CardStatus) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CardStatus(value)
-	for _, existing := range AllowedCardStatusEnumValues {
+	for _, existing := range allowedCardStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -62,13 +61,13 @@ func NewCardStatusFromValue(v string) (*CardStatus, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CardStatus: valid values are %v", v, AllowedCardStatusEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CardStatus: valid values are %v", v, allowedCardStatusEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CardStatus) IsValid() bool {
-	for _, existing := range AllowedCardStatusEnumValues {
+	for _, existing := range allowedCardStatusEnumValues {
 		if existing == v {
 			return true
 		}

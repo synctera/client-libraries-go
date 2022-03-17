@@ -18,7 +18,7 @@ import (
 type PatchExternalAccount struct {
 	AccountIdentifiers *PatchAccountsRequestAccountIdentifiers `json:"account_identifiers,omitempty"`
 	// The names of the account owners.
-	AccountOwnerNames []string `json:"account_owner_names,omitempty"`
+	AccountOwnerNames *[]string `json:"account_owner_names,omitempty"`
 	// A user-meaningful name for the account
 	Nickname           *string                                 `json:"nickname,omitempty"`
 	RoutingIdentifiers *PatchAccountsRequestRoutingIdentifiers `json:"routing_identifiers,omitempty"`
@@ -82,12 +82,12 @@ func (o *PatchExternalAccount) GetAccountOwnerNames() []string {
 		var ret []string
 		return ret
 	}
-	return o.AccountOwnerNames
+	return *o.AccountOwnerNames
 }
 
 // GetAccountOwnerNamesOk returns a tuple with the AccountOwnerNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchExternalAccount) GetAccountOwnerNamesOk() ([]string, bool) {
+func (o *PatchExternalAccount) GetAccountOwnerNamesOk() (*[]string, bool) {
 	if o == nil || o.AccountOwnerNames == nil {
 		return nil, false
 	}
@@ -105,7 +105,7 @@ func (o *PatchExternalAccount) HasAccountOwnerNames() bool {
 
 // SetAccountOwnerNames gets a reference to the given []string and assigns it to the AccountOwnerNames field.
 func (o *PatchExternalAccount) SetAccountOwnerNames(v []string) {
-	o.AccountOwnerNames = v
+	o.AccountOwnerNames = &v
 }
 
 // GetNickname returns the Nickname field value if set, zero value otherwise.

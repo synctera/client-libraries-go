@@ -27,8 +27,7 @@ const (
 	CUSTOMERKYCSTATUS_REJECTED         CustomerKycStatus = "REJECTED"
 )
 
-// All allowed values of CustomerKycStatus enum
-var AllowedCustomerKycStatusEnumValues = []CustomerKycStatus{
+var allowedCustomerKycStatusEnumValues = []CustomerKycStatus{
 	"UNVERIFIED",
 	"REVIEW",
 	"PROVIDER_FAILURE",
@@ -43,7 +42,7 @@ func (v *CustomerKycStatus) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CustomerKycStatus(value)
-	for _, existing := range AllowedCustomerKycStatusEnumValues {
+	for _, existing := range allowedCustomerKycStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -60,13 +59,13 @@ func NewCustomerKycStatusFromValue(v string) (*CustomerKycStatus, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CustomerKycStatus: valid values are %v", v, AllowedCustomerKycStatusEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CustomerKycStatus: valid values are %v", v, allowedCustomerKycStatusEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CustomerKycStatus) IsValid() bool {
-	for _, existing := range AllowedCustomerKycStatusEnumValues {
+	for _, existing := range allowedCustomerKycStatusEnumValues {
 		if existing == v {
 			return true
 		}

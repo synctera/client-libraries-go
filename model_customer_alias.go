@@ -16,12 +16,12 @@ import (
 
 // CustomerAlias Represents a customer's alias
 type CustomerAlias struct {
-	AliasInfo       map[string]interface{} `json:"alias_info,omitempty"`
-	AliasName       *string                `json:"alias_name,omitempty"`
-	AliasSource     *string                `json:"alias_source,omitempty"`
-	AliasType       *string                `json:"alias_type,omitempty"`
-	CustomerAliasId *string                `json:"customer_alias_id,omitempty"`
-	CustomerId      *string                `json:"customer_id,omitempty"`
+	AliasInfo       *map[string]interface{} `json:"alias_info,omitempty"`
+	AliasName       *string                 `json:"alias_name,omitempty"`
+	AliasSource     *string                 `json:"alias_source,omitempty"`
+	AliasType       *string                 `json:"alias_type,omitempty"`
+	CustomerAliasId *string                 `json:"customer_alias_id,omitempty"`
+	CustomerId      *string                 `json:"customer_id,omitempty"`
 }
 
 // NewCustomerAlias instantiates a new CustomerAlias object
@@ -47,12 +47,12 @@ func (o *CustomerAlias) GetAliasInfo() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.AliasInfo
+	return *o.AliasInfo
 }
 
 // GetAliasInfoOk returns a tuple with the AliasInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomerAlias) GetAliasInfoOk() (map[string]interface{}, bool) {
+func (o *CustomerAlias) GetAliasInfoOk() (*map[string]interface{}, bool) {
 	if o == nil || o.AliasInfo == nil {
 		return nil, false
 	}
@@ -70,7 +70,7 @@ func (o *CustomerAlias) HasAliasInfo() bool {
 
 // SetAliasInfo gets a reference to the given map[string]interface{} and assigns it to the AliasInfo field.
 func (o *CustomerAlias) SetAliasInfo(v map[string]interface{}) {
-	o.AliasInfo = v
+	o.AliasInfo = &v
 }
 
 // GetAliasName returns the AliasName field value if set, zero value otherwise.

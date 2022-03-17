@@ -52,11 +52,11 @@ func (o *CardProductListResponse) GetCardProducts() []CardProductResponse {
 
 // GetCardProductsOk returns a tuple with the CardProducts field value
 // and a boolean to check if the value has been set.
-func (o *CardProductListResponse) GetCardProductsOk() ([]CardProductResponse, bool) {
+func (o *CardProductListResponse) GetCardProductsOk() (*[]CardProductResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CardProducts, true
+	return &o.CardProducts, true
 }
 
 // SetCardProducts sets field value

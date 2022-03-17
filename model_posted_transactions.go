@@ -79,11 +79,11 @@ func (o *PostedTransactions) GetResult() []PostedTransaction {
 
 // GetResultOk returns a tuple with the Result field value
 // and a boolean to check if the value has been set.
-func (o *PostedTransactions) GetResultOk() ([]PostedTransaction, bool) {
+func (o *PostedTransactions) GetResultOk() (*[]PostedTransaction, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Result, true
+	return &o.Result, true
 }
 
 // SetResult sets field value

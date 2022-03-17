@@ -26,8 +26,7 @@ const (
 	ACCOUNTTYPE_ODP            AccountType = "ODP"
 )
 
-// All allowed values of AccountType enum
-var AllowedAccountTypeEnumValues = []AccountType{
+var allowedAccountTypeEnumValues = []AccountType{
 	"SAVING",
 	"CHECKING",
 	"LINE_OF_CREDIT",
@@ -41,7 +40,7 @@ func (v *AccountType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := AccountType(value)
-	for _, existing := range AllowedAccountTypeEnumValues {
+	for _, existing := range allowedAccountTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -58,13 +57,13 @@ func NewAccountTypeFromValue(v string) (*AccountType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AccountType: valid values are %v", v, AllowedAccountTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for AccountType: valid values are %v", v, allowedAccountTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v AccountType) IsValid() bool {
-	for _, existing := range AllowedAccountTypeEnumValues {
+	for _, existing := range allowedAccountTypeEnumValues {
 		if existing == v {
 			return true
 		}

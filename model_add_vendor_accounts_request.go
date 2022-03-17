@@ -24,7 +24,7 @@ type AddVendorAccountsRequest struct {
 	// The token provided to link external accounts. For Plaid, this is their `access_token`.
 	VendorAccessToken *string `json:"vendor_access_token,omitempty"`
 	// The list of vendor account IDs that the customer chose to link. For Plaid, these are `account_id`s.
-	VendorAccountIds []string `json:"vendor_account_ids,omitempty"`
+	VendorAccountIds *[]string `json:"vendor_account_ids,omitempty"`
 	// Synctera will attempt to verify that the external account owner is the same as the customer by comparing external account data to customer data. At least 2 of the following fields must match: name, phone number, email, address. Verification will be suppressed by default
 	VerifyOwner *bool `json:"verify_owner,omitempty"`
 }
@@ -163,12 +163,12 @@ func (o *AddVendorAccountsRequest) GetVendorAccountIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.VendorAccountIds
+	return *o.VendorAccountIds
 }
 
 // GetVendorAccountIdsOk returns a tuple with the VendorAccountIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddVendorAccountsRequest) GetVendorAccountIdsOk() ([]string, bool) {
+func (o *AddVendorAccountsRequest) GetVendorAccountIdsOk() (*[]string, bool) {
 	if o == nil || o.VendorAccountIds == nil {
 		return nil, false
 	}
@@ -186,7 +186,7 @@ func (o *AddVendorAccountsRequest) HasVendorAccountIds() bool {
 
 // SetVendorAccountIds gets a reference to the given []string and assigns it to the VendorAccountIds field.
 func (o *AddVendorAccountsRequest) SetVendorAccountIds(v []string) {
-	o.VendorAccountIds = v
+	o.VendorAccountIds = &v
 }
 
 // GetVerifyOwner returns the VerifyOwner field value if set, zero value otherwise.

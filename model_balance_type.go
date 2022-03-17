@@ -24,8 +24,7 @@ const (
 	BALANCETYPE_AVAILABLE_BALANCE BalanceType = "AVAILABLE_BALANCE"
 )
 
-// All allowed values of BalanceType enum
-var AllowedBalanceTypeEnumValues = []BalanceType{
+var allowedBalanceTypeEnumValues = []BalanceType{
 	"ACCOUNT_BALANCE",
 	"AVAILABLE_BALANCE",
 }
@@ -37,7 +36,7 @@ func (v *BalanceType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := BalanceType(value)
-	for _, existing := range AllowedBalanceTypeEnumValues {
+	for _, existing := range allowedBalanceTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewBalanceTypeFromValue(v string) (*BalanceType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for BalanceType: valid values are %v", v, AllowedBalanceTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for BalanceType: valid values are %v", v, allowedBalanceTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v BalanceType) IsValid() bool {
-	for _, existing := range AllowedBalanceTypeEnumValues {
+	for _, existing := range allowedBalanceTypeEnumValues {
 		if existing == v {
 			return true
 		}

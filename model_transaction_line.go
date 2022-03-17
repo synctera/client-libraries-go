@@ -390,11 +390,11 @@ func (o *TransactionLine) GetMeta() map[string]interface{} {
 // GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TransactionLine) GetMetaOk() (map[string]interface{}, bool) {
+func (o *TransactionLine) GetMetaOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Meta == nil {
 		return nil, false
 	}
-	return o.Meta, true
+	return &o.Meta, true
 }
 
 // SetMeta sets field value

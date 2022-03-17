@@ -21,7 +21,7 @@ type CustomerVerificationResult struct {
 	Id *string `json:"id,omitempty"`
 	// List of potential problems found. These are subject to change.
 	// Deprecated
-	Issues []string `json:"issues,omitempty"`
+	Issues *[]string `json:"issues,omitempty"`
 	// Deprecated
 	RawResponse *RawResponse `json:"raw_response,omitempty"`
 	// The determination of this verification.
@@ -91,13 +91,13 @@ func (o *CustomerVerificationResult) GetIssues() []string {
 		var ret []string
 		return ret
 	}
-	return o.Issues
+	return *o.Issues
 }
 
 // GetIssuesOk returns a tuple with the Issues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *CustomerVerificationResult) GetIssuesOk() ([]string, bool) {
+func (o *CustomerVerificationResult) GetIssuesOk() (*[]string, bool) {
 	if o == nil || o.Issues == nil {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *CustomerVerificationResult) HasIssues() bool {
 // SetIssues gets a reference to the given []string and assigns it to the Issues field.
 // Deprecated
 func (o *CustomerVerificationResult) SetIssues(v []string) {
-	o.Issues = v
+	o.Issues = &v
 }
 
 // GetRawResponse returns the RawResponse field value if set, zero value otherwise.

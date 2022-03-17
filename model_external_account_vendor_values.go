@@ -24,8 +24,7 @@ const (
 	EXTERNALACCOUNTVENDORVALUES_FINICITY ExternalAccountVendorValues = "FINICITY"
 )
 
-// All allowed values of ExternalAccountVendorValues enum
-var AllowedExternalAccountVendorValuesEnumValues = []ExternalAccountVendorValues{
+var allowedExternalAccountVendorValuesEnumValues = []ExternalAccountVendorValues{
 	"PLAID",
 	"FINICITY",
 }
@@ -37,7 +36,7 @@ func (v *ExternalAccountVendorValues) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ExternalAccountVendorValues(value)
-	for _, existing := range AllowedExternalAccountVendorValuesEnumValues {
+	for _, existing := range allowedExternalAccountVendorValuesEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewExternalAccountVendorValuesFromValue(v string) (*ExternalAccountVendorVa
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ExternalAccountVendorValues: valid values are %v", v, AllowedExternalAccountVendorValuesEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ExternalAccountVendorValues: valid values are %v", v, allowedExternalAccountVendorValuesEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ExternalAccountVendorValues) IsValid() bool {
-	for _, existing := range AllowedExternalAccountVendorValuesEnumValues {
+	for _, existing := range allowedExternalAccountVendorValuesEnumValues {
 		if existing == v {
 			return true
 		}

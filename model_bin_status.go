@@ -24,8 +24,7 @@ const (
 	BINSTATUS_INACTIVE BinStatus = "INACTIVE"
 )
 
-// All allowed values of BinStatus enum
-var AllowedBinStatusEnumValues = []BinStatus{
+var allowedBinStatusEnumValues = []BinStatus{
 	"ACTIVE",
 	"INACTIVE",
 }
@@ -37,7 +36,7 @@ func (v *BinStatus) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := BinStatus(value)
-	for _, existing := range AllowedBinStatusEnumValues {
+	for _, existing := range allowedBinStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewBinStatusFromValue(v string) (*BinStatus, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for BinStatus: valid values are %v", v, AllowedBinStatusEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for BinStatus: valid values are %v", v, allowedBinStatusEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v BinStatus) IsValid() bool {
-	for _, existing := range AllowedBinStatusEnumValues {
+	for _, existing := range allowedBinStatusEnumValues {
 		if existing == v {
 			return true
 		}

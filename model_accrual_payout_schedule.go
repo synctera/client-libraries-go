@@ -24,8 +24,7 @@ const (
 	ACCRUALPAYOUTSCHEDULE_MONTHLY AccrualPayoutSchedule = "MONTHLY"
 )
 
-// All allowed values of AccrualPayoutSchedule enum
-var AllowedAccrualPayoutScheduleEnumValues = []AccrualPayoutSchedule{
+var allowedAccrualPayoutScheduleEnumValues = []AccrualPayoutSchedule{
 	"NONE",
 	"MONTHLY",
 }
@@ -37,7 +36,7 @@ func (v *AccrualPayoutSchedule) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := AccrualPayoutSchedule(value)
-	for _, existing := range AllowedAccrualPayoutScheduleEnumValues {
+	for _, existing := range allowedAccrualPayoutScheduleEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -54,13 +53,13 @@ func NewAccrualPayoutScheduleFromValue(v string) (*AccrualPayoutSchedule, error)
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for AccrualPayoutSchedule: valid values are %v", v, AllowedAccrualPayoutScheduleEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for AccrualPayoutSchedule: valid values are %v", v, allowedAccrualPayoutScheduleEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v AccrualPayoutSchedule) IsValid() bool {
-	for _, existing := range AllowedAccrualPayoutScheduleEnumValues {
+	for _, existing := range allowedAccrualPayoutScheduleEnumValues {
 		if existing == v {
 			return true
 		}

@@ -20,7 +20,7 @@ type InternalAccount struct {
 	// Generated internal account number
 	AccountNumber *string `json:"account_number,omitempty"`
 	// A list of balances for internal account based on different type
-	Balances []Balance `json:"balances,omitempty"`
+	Balances *[]Balance `json:"balances,omitempty"`
 	// Bank routing number
 	BankRouting *string `json:"bank_routing,omitempty"`
 	// The date and time the resource was created.
@@ -93,12 +93,12 @@ func (o *InternalAccount) GetBalances() []Balance {
 		var ret []Balance
 		return ret
 	}
-	return o.Balances
+	return *o.Balances
 }
 
 // GetBalancesOk returns a tuple with the Balances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InternalAccount) GetBalancesOk() ([]Balance, bool) {
+func (o *InternalAccount) GetBalancesOk() (*[]Balance, bool) {
 	if o == nil || o.Balances == nil {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *InternalAccount) HasBalances() bool {
 
 // SetBalances gets a reference to the given []Balance and assigns it to the Balances field.
 func (o *InternalAccount) SetBalances(v []Balance) {
-	o.Balances = v
+	o.Balances = &v
 }
 
 // GetBankRouting returns the BankRouting field value if set, zero value otherwise.

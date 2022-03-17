@@ -51,11 +51,11 @@ func (o *WatchlistAlertList) GetAlerts() []WatchlistAlert {
 
 // GetAlertsOk returns a tuple with the Alerts field value
 // and a boolean to check if the value has been set.
-func (o *WatchlistAlertList) GetAlertsOk() ([]WatchlistAlert, bool) {
+func (o *WatchlistAlertList) GetAlertsOk() (*[]WatchlistAlert, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Alerts, true
+	return &o.Alerts, true
 }
 
 // SetAlerts sets field value

@@ -50,11 +50,11 @@ func (o *TemplateListAllOf) GetAccountTemplates() []AccountTemplateResponse {
 
 // GetAccountTemplatesOk returns a tuple with the AccountTemplates field value
 // and a boolean to check if the value has been set.
-func (o *TemplateListAllOf) GetAccountTemplatesOk() ([]AccountTemplateResponse, bool) {
+func (o *TemplateListAllOf) GetAccountTemplatesOk() (*[]AccountTemplateResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountTemplates, true
+	return &o.AccountTemplates, true
 }
 
 // SetAccountTemplates sets field value

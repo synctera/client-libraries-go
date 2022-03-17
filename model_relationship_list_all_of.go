@@ -50,11 +50,11 @@ func (o *RelationshipListAllOf) GetRelationships() []Relationship {
 
 // GetRelationshipsOk returns a tuple with the Relationships field value
 // and a boolean to check if the value has been set.
-func (o *RelationshipListAllOf) GetRelationshipsOk() ([]Relationship, bool) {
+func (o *RelationshipListAllOf) GetRelationshipsOk() (*[]Relationship, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Relationships, true
+	return &o.Relationships, true
 }
 
 // SetRelationships sets field value

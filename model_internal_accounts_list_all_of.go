@@ -50,11 +50,11 @@ func (o *InternalAccountsListAllOf) GetInternalAccounts() []InternalAccount {
 
 // GetInternalAccountsOk returns a tuple with the InternalAccounts field value
 // and a boolean to check if the value has been set.
-func (o *InternalAccountsListAllOf) GetInternalAccountsOk() ([]InternalAccount, bool) {
+func (o *InternalAccountsListAllOf) GetInternalAccountsOk() (*[]InternalAccount, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.InternalAccounts, true
+	return &o.InternalAccounts, true
 }
 
 // SetInternalAccounts sets field value

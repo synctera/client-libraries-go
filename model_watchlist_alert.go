@@ -22,7 +22,7 @@ type WatchlistAlert struct {
 	// Unique identifier for this alert
 	Id *string `json:"id,omitempty"`
 	// The information provided to Synctera that triggered this alert, as an arbitrary JSON object. Interpretation of this object is up to the client.
-	ProviderInfo map[string]interface{} `json:"provider_info,omitempty"`
+	ProviderInfo *map[string]interface{} `json:"provider_info,omitempty"`
 	// The id of the provider subject for this alert
 	ProviderSubjectId *string `json:"provider_subject_id,omitempty"`
 	// The id of the provider subscription for this alert
@@ -32,7 +32,7 @@ type WatchlistAlert struct {
 	// The status of this alert
 	Status string `json:"status"`
 	// Where to get more information about this alert (according to our third-party data provider).
-	Urls       []string    `json:"urls,omitempty"`
+	Urls       *[]string   `json:"urls,omitempty"`
 	VendorInfo *VendorInfo `json:"vendor_info,omitempty"`
 }
 
@@ -124,12 +124,12 @@ func (o *WatchlistAlert) GetProviderInfo() map[string]interface{} {
 		var ret map[string]interface{}
 		return ret
 	}
-	return o.ProviderInfo
+	return *o.ProviderInfo
 }
 
 // GetProviderInfoOk returns a tuple with the ProviderInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WatchlistAlert) GetProviderInfoOk() (map[string]interface{}, bool) {
+func (o *WatchlistAlert) GetProviderInfoOk() (*map[string]interface{}, bool) {
 	if o == nil || o.ProviderInfo == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *WatchlistAlert) HasProviderInfo() bool {
 
 // SetProviderInfo gets a reference to the given map[string]interface{} and assigns it to the ProviderInfo field.
 func (o *WatchlistAlert) SetProviderInfo(v map[string]interface{}) {
-	o.ProviderInfo = v
+	o.ProviderInfo = &v
 }
 
 // GetProviderSubjectId returns the ProviderSubjectId field value if set, zero value otherwise.
@@ -276,12 +276,12 @@ func (o *WatchlistAlert) GetUrls() []string {
 		var ret []string
 		return ret
 	}
-	return o.Urls
+	return *o.Urls
 }
 
 // GetUrlsOk returns a tuple with the Urls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WatchlistAlert) GetUrlsOk() ([]string, bool) {
+func (o *WatchlistAlert) GetUrlsOk() (*[]string, bool) {
 	if o == nil || o.Urls == nil {
 		return nil, false
 	}
@@ -299,7 +299,7 @@ func (o *WatchlistAlert) HasUrls() bool {
 
 // SetUrls gets a reference to the given []string and assigns it to the Urls field.
 func (o *WatchlistAlert) SetUrls(v []string) {
-	o.Urls = v
+	o.Urls = &v
 }
 
 // GetVendorInfo returns the VendorInfo field value if set, zero value otherwise.

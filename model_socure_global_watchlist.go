@@ -19,7 +19,7 @@ type SocureGlobalWatchlist struct {
 	// Contains key-value pair of the Source list name and an array of details about that match.
 	Matches map[string][]SocureMatch `json:"matches"`
 	// Array of reason codes
-	ReasonCodes []string `json:"reasonCodes,omitempty"`
+	ReasonCodes *[]string `json:"reasonCodes,omitempty"`
 }
 
 // NewSocureGlobalWatchlist instantiates a new SocureGlobalWatchlist object
@@ -70,12 +70,12 @@ func (o *SocureGlobalWatchlist) GetReasonCodes() []string {
 		var ret []string
 		return ret
 	}
-	return o.ReasonCodes
+	return *o.ReasonCodes
 }
 
 // GetReasonCodesOk returns a tuple with the ReasonCodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SocureGlobalWatchlist) GetReasonCodesOk() ([]string, bool) {
+func (o *SocureGlobalWatchlist) GetReasonCodesOk() (*[]string, bool) {
 	if o == nil || o.ReasonCodes == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *SocureGlobalWatchlist) HasReasonCodes() bool {
 
 // SetReasonCodes gets a reference to the given []string and assigns it to the ReasonCodes field.
 func (o *SocureGlobalWatchlist) SetReasonCodes(v []string) {
-	o.ReasonCodes = v
+	o.ReasonCodes = &v
 }
 
 func (o SocureGlobalWatchlist) MarshalJSON() ([]byte, error) {

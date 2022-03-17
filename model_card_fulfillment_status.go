@@ -29,8 +29,7 @@ const (
 	CARDFULFILLMENTSTATUS_DIGITALLY_PRESENTED CardFulfillmentStatus = "DIGITALLY_PRESENTED"
 )
 
-// All allowed values of CardFulfillmentStatus enum
-var AllowedCardFulfillmentStatusEnumValues = []CardFulfillmentStatus{
+var allowedCardFulfillmentStatusEnumValues = []CardFulfillmentStatus{
 	"ISSUED",
 	"REISSUED",
 	"ORDERED",
@@ -47,7 +46,7 @@ func (v *CardFulfillmentStatus) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := CardFulfillmentStatus(value)
-	for _, existing := range AllowedCardFulfillmentStatusEnumValues {
+	for _, existing := range allowedCardFulfillmentStatusEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -64,13 +63,13 @@ func NewCardFulfillmentStatusFromValue(v string) (*CardFulfillmentStatus, error)
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for CardFulfillmentStatus: valid values are %v", v, AllowedCardFulfillmentStatusEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for CardFulfillmentStatus: valid values are %v", v, allowedCardFulfillmentStatusEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v CardFulfillmentStatus) IsValid() bool {
-	for _, existing := range AllowedCardFulfillmentStatusEnumValues {
+	for _, existing := range allowedCardFulfillmentStatusEnumValues {
 		if existing == v {
 			return true
 		}
