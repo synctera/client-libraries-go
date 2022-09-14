@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ApplicationType** | Pointer to [**ApplicationType**](ApplicationType.md) |  | [optional] 
 **Description** | Pointer to **string** | User provided account template description | [optional] 
 **Id** | Pointer to **string** | Generated ID for the template | [optional] [readonly] 
 **IsEnabled** | **bool** | Whether this template can be used for account creation | 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewAccountTemplateWithDefaults instantiates a new AccountTemplate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetApplicationType
+
+`func (o *AccountTemplate) GetApplicationType() ApplicationType`
+
+GetApplicationType returns the ApplicationType field if non-nil, zero value otherwise.
+
+### GetApplicationTypeOk
+
+`func (o *AccountTemplate) GetApplicationTypeOk() (*ApplicationType, bool)`
+
+GetApplicationTypeOk returns a tuple with the ApplicationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationType
+
+`func (o *AccountTemplate) SetApplicationType(v ApplicationType)`
+
+SetApplicationType sets ApplicationType field to given value.
+
+### HasApplicationType
+
+`func (o *AccountTemplate) HasApplicationType() bool`
+
+HasApplicationType returns a boolean if a field has been set.
 
 ### GetDescription
 

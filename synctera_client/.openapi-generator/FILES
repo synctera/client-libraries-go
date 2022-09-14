@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -62,6 +61,7 @@ docs/AccountSummaryBalanceCeiling.md
 docs/AccountSummaryBalanceFloor.md
 docs/AccountTemplate.md
 docs/AccountTemplateResponse.md
+docs/AccountToAccountTransferRequest.md
 docs/AccountType.md
 docs/AccountVerification.md
 docs/AccountsApi.md
@@ -97,6 +97,7 @@ docs/ApplicationResponse.md
 docs/ApplicationResponse1.md
 docs/ApplicationStatus.md
 docs/ApplicationType.md
+docs/ApplicationType1.md
 docs/ApplicationUpdateRequest.md
 docs/ApplicationsApi.md
 docs/AuthRequestModel.md
@@ -118,6 +119,7 @@ docs/BaseMasterDisclosure.md
 docs/BasePerson.md
 docs/BasePerson1.md
 docs/BaseStatement.md
+docs/BaseStatementAllOf.md
 docs/BaseTemplateFields.md
 docs/BillingAddress.md
 docs/BillingPeriod.md
@@ -292,7 +294,13 @@ docs/GetCardBarcode200Response.md
 docs/GetViralLoopWaitlists.md
 docs/GoogleDigitalWalletProvisionRequest.md
 docs/GoogleDigitalWalletProvisionResponse.md
+docs/HoldCancelRequest.md
+docs/HoldCreateRequest.md
 docs/HoldData.md
+docs/HoldDeclineRequest.md
+docs/HoldModifyRequest.md
+docs/HoldPatchRequest.md
+docs/HoldPostingRequest.md
 docs/InAppProvisioning.md
 docs/IngestionStatus.md
 docs/Interest.md
@@ -467,9 +475,12 @@ docs/TokenList.md
 docs/TokenListResponse.md
 docs/Transaction.md
 docs/TransactionData.md
+docs/TransactionDirectPostRequest.md
 docs/TransactionLine.md
 docs/TransactionLine1.md
 docs/TransactionOptions.md
+docs/TransactionReverseRequest.md
+docs/TransactionUpdateMetaRequest.md
 docs/TransactionsApi.md
 docs/TransferListResponse.md
 docs/TransferListResponseAllOf.md
@@ -572,6 +583,7 @@ model_account_summary_balance_ceiling.go
 model_account_summary_balance_floor.go
 model_account_template.go
 model_account_template_response.go
+model_account_to_account_transfer_request.go
 model_account_type.go
 model_account_verification.go
 model_accrual_payout_schedule.go
@@ -606,6 +618,7 @@ model_application_response.go
 model_application_response1.go
 model_application_status.go
 model_application_type.go
+model_application_type1.go
 model_application_update_request.go
 model_auth_request_model.go
 model_authorization_advice_model.go
@@ -626,6 +639,7 @@ model_base_master_disclosure.go
 model_base_person.go
 model_base_person1.go
 model_base_statement.go
+model_base_statement_all_of.go
 model_base_template_fields.go
 model_billing_address.go
 model_billing_period.go
@@ -791,7 +805,13 @@ model_get_card_barcode_200_response.go
 model_get_viral_loop_waitlists.go
 model_google_digital_wallet_provision_request.go
 model_google_digital_wallet_provision_response.go
+model_hold_cancel_request.go
+model_hold_create_request.go
 model_hold_data.go
+model_hold_decline_request.go
+model_hold_modify_request.go
+model_hold_patch_request.go
+model_hold_posting_request.go
 model_in_app_provisioning.go
 model_ingestion_status.go
 model_interest.go
@@ -954,9 +974,12 @@ model_token_list.go
 model_token_list_response.go
 model_transaction.go
 model_transaction_data.go
+model_transaction_direct_post_request.go
 model_transaction_line.go
 model_transaction_line1.go
 model_transaction_options.go
+model_transaction_reverse_request.go
+model_transaction_update_meta_request.go
 model_transfer_list_response.go
 model_transfer_list_response_all_of.go
 model_transfer_request.go

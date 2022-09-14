@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **Id** | **string** | Generated ID for the application | [readonly] 
 **LastUpdatedTime** | **time.Time** | Timestamp of the last application modification in RFC3339 format | [readonly] 
 **Status** | [**ApplicationStatus**](ApplicationStatus.md) |  | 
-**Type** | [**ApplicationType**](ApplicationType.md) |  | 
+**Type** | [**ApplicationType1**](ApplicationType1.md) |  | 
 
 ## Methods
 
 ### NewApplicationResponse
 
-`func NewApplicationResponse(applicationDetails map[string]interface{}, creationTime time.Time, customerId string, id string, lastUpdatedTime time.Time, status ApplicationStatus, type_ ApplicationType, ) *ApplicationResponse`
+`func NewApplicationResponse(applicationDetails map[string]interface{}, creationTime time.Time, customerId string, id string, lastUpdatedTime time.Time, status ApplicationStatus, type_ ApplicationType1, ) *ApplicationResponse`
 
 NewApplicationResponse instantiates a new ApplicationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -153,20 +153,20 @@ SetStatus sets Status field to given value.
 
 ### GetType
 
-`func (o *ApplicationResponse) GetType() ApplicationType`
+`func (o *ApplicationResponse) GetType() ApplicationType1`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ApplicationResponse) GetTypeOk() (*ApplicationType, bool)`
+`func (o *ApplicationResponse) GetTypeOk() (*ApplicationType1, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ApplicationResponse) SetType(v ApplicationType)`
+`func (o *ApplicationResponse) SetType(v ApplicationType1)`
 
 SetType sets Type field to given value.
 

@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-    wireRequest := *openapiclient.NewWireRequest(int32(10000), "USD", "c6f0f83b-0b19-4eb3-b14d-233ef38af14a", "9ea58e5e-b021-4a2c-bf91-9790cb3ac63e", "0b320738-b9e8-4604-984b-6a83828e6163") // WireRequest | Wire transfer request
+    wireRequest := *openapiclient.NewWireRequest(int32(10000), "USD", "98f0e4c8-220b-463c-8981-7413c65ee6c9", "ed92890d-7111-465a-a972-1b6839e88eb2", "72b70665-ba18-412e-a91f-cd59f72c6cd0") // WireRequest | Wire transfer request
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

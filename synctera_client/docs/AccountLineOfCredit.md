@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AccountNumberMasked** | Pointer to **string** | The response will contain the bank fintech ID (3 or 6 digits) plus the last 4 digits, with the digits in between replaced with * characters. Shadow mode account numbers will not be masked. | [optional] [readonly] 
 **AccountPurpose** | Pointer to **string** | Purpose of the account | [optional] 
 **AccountType** | Pointer to [**AccountType**](AccountType.md) |  | [optional] 
+**ApplicationId** | Pointer to **string** | The application ID for this account.  | [optional] 
 **Balances** | Pointer to [**[]Balance**](Balance.md) | A list of balances for account based on different type | [optional] [readonly] 
 **BankRouting** | Pointer to **string** | Bank routing number | [optional] [readonly] 
 **CreationTime** | Pointer to **time.Time** | Account creation timestamp in RFC3339 format | [optional] [readonly] 
@@ -16,10 +17,8 @@ Name | Type | Description | Notes
 **CustomerIds** | Pointer to **[]string** | A list of the customer IDs of the account holders. | [optional] [readonly] 
 **CustomerType** | Pointer to [**CustomerType**](CustomerType.md) |  | [optional] 
 **ExchangeRateType** | Pointer to **string** | Exchange rate type | [optional] 
-**FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that the current account associate with | [optional] 
 **Iban** | Pointer to **string** | International bank account number | [optional] 
 **Id** | Pointer to **string** | Account ID | [optional] [readonly] 
-**InterestProductId** | Pointer to **string** | An interest from account product that the current account associate with | [optional] 
 **IsAccountPool** | Pointer to **bool** | Account is investment (variable balance) account or a multi-balance account pool. Default false | [optional] 
 **IsAchEnabled** | Pointer to **bool** | A flag to indicate whether ACH transactions are enabled. | [optional] [readonly] 
 **IsCardEnabled** | Pointer to **bool** | A flag to indicate whether card transactions are enabled. | [optional] [readonly] 
@@ -30,11 +29,11 @@ Name | Type | Description | Notes
 **Nickname** | Pointer to **string** | User provided account nickname | [optional] 
 **Status** | Pointer to [**Status**](Status.md) |  | [optional] 
 **SwiftCode** | Pointer to **string** | SWIFT code | [optional] 
-**ApplicationId** | Pointer to **string** | (REQUIRED): The application ID for this account.  | [optional] 
 **ChargeoffPeriod** | Pointer to **int32** | The number of days an account can stay delinquent before marking an account as charged-off.  | [optional] [default to 90]
 **CreditLimit** | Pointer to **int64** | The credit limit for this line of credit account in cents. Minimum is 0.  | [optional] 
 **DelinquencyPeriod** | Pointer to **int32** | The number of days past the due date to wait for a minimum payment before marking an account as delinquent.  | [optional] [default to 30]
 **GracePeriod** | Pointer to **int32** | The number of days past the billing period to allow for payment before it is considered due. This directly infers the due date for a payment.  | [optional] 
+**InterestProductId** | Pointer to **string** | An interest account product that the current account associates with. The account product must have its calculation_method set to COMPOUNDED_DAILY.  | [optional] 
 **MinimumPayment** | Pointer to [**MinimumPayment**](MinimumPayment.md) |  | [optional] 
 
 ## Methods
@@ -180,6 +179,31 @@ SetAccountType sets AccountType field to given value.
 `func (o *AccountLineOfCredit) HasAccountType() bool`
 
 HasAccountType returns a boolean if a field has been set.
+
+### GetApplicationId
+
+`func (o *AccountLineOfCredit) GetApplicationId() string`
+
+GetApplicationId returns the ApplicationId field if non-nil, zero value otherwise.
+
+### GetApplicationIdOk
+
+`func (o *AccountLineOfCredit) GetApplicationIdOk() (*string, bool)`
+
+GetApplicationIdOk returns a tuple with the ApplicationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationId
+
+`func (o *AccountLineOfCredit) SetApplicationId(v string)`
+
+SetApplicationId sets ApplicationId field to given value.
+
+### HasApplicationId
+
+`func (o *AccountLineOfCredit) HasApplicationId() bool`
+
+HasApplicationId returns a boolean if a field has been set.
 
 ### GetBalances
 
@@ -356,31 +380,6 @@ SetExchangeRateType sets ExchangeRateType field to given value.
 
 HasExchangeRateType returns a boolean if a field has been set.
 
-### GetFeeProductIds
-
-`func (o *AccountLineOfCredit) GetFeeProductIds() []string`
-
-GetFeeProductIds returns the FeeProductIds field if non-nil, zero value otherwise.
-
-### GetFeeProductIdsOk
-
-`func (o *AccountLineOfCredit) GetFeeProductIdsOk() (*[]string, bool)`
-
-GetFeeProductIdsOk returns a tuple with the FeeProductIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFeeProductIds
-
-`func (o *AccountLineOfCredit) SetFeeProductIds(v []string)`
-
-SetFeeProductIds sets FeeProductIds field to given value.
-
-### HasFeeProductIds
-
-`func (o *AccountLineOfCredit) HasFeeProductIds() bool`
-
-HasFeeProductIds returns a boolean if a field has been set.
-
 ### GetIban
 
 `func (o *AccountLineOfCredit) GetIban() string`
@@ -430,31 +429,6 @@ SetId sets Id field to given value.
 `func (o *AccountLineOfCredit) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
-### GetInterestProductId
-
-`func (o *AccountLineOfCredit) GetInterestProductId() string`
-
-GetInterestProductId returns the InterestProductId field if non-nil, zero value otherwise.
-
-### GetInterestProductIdOk
-
-`func (o *AccountLineOfCredit) GetInterestProductIdOk() (*string, bool)`
-
-GetInterestProductIdOk returns a tuple with the InterestProductId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInterestProductId
-
-`func (o *AccountLineOfCredit) SetInterestProductId(v string)`
-
-SetInterestProductId sets InterestProductId field to given value.
-
-### HasInterestProductId
-
-`func (o *AccountLineOfCredit) HasInterestProductId() bool`
-
-HasInterestProductId returns a boolean if a field has been set.
 
 ### GetIsAccountPool
 
@@ -706,31 +680,6 @@ SetSwiftCode sets SwiftCode field to given value.
 
 HasSwiftCode returns a boolean if a field has been set.
 
-### GetApplicationId
-
-`func (o *AccountLineOfCredit) GetApplicationId() string`
-
-GetApplicationId returns the ApplicationId field if non-nil, zero value otherwise.
-
-### GetApplicationIdOk
-
-`func (o *AccountLineOfCredit) GetApplicationIdOk() (*string, bool)`
-
-GetApplicationIdOk returns a tuple with the ApplicationId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApplicationId
-
-`func (o *AccountLineOfCredit) SetApplicationId(v string)`
-
-SetApplicationId sets ApplicationId field to given value.
-
-### HasApplicationId
-
-`func (o *AccountLineOfCredit) HasApplicationId() bool`
-
-HasApplicationId returns a boolean if a field has been set.
-
 ### GetChargeoffPeriod
 
 `func (o *AccountLineOfCredit) GetChargeoffPeriod() int32`
@@ -830,6 +779,31 @@ SetGracePeriod sets GracePeriod field to given value.
 `func (o *AccountLineOfCredit) HasGracePeriod() bool`
 
 HasGracePeriod returns a boolean if a field has been set.
+
+### GetInterestProductId
+
+`func (o *AccountLineOfCredit) GetInterestProductId() string`
+
+GetInterestProductId returns the InterestProductId field if non-nil, zero value otherwise.
+
+### GetInterestProductIdOk
+
+`func (o *AccountLineOfCredit) GetInterestProductIdOk() (*string, bool)`
+
+GetInterestProductIdOk returns a tuple with the InterestProductId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterestProductId
+
+`func (o *AccountLineOfCredit) SetInterestProductId(v string)`
+
+SetInterestProductId sets InterestProductId field to given value.
+
+### HasInterestProductId
+
+`func (o *AccountLineOfCredit) HasInterestProductId() bool`
+
+HasInterestProductId returns a boolean if a field has been set.
 
 ### GetMinimumPayment
 

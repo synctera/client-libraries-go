@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Created** | **time.Time** | The creation date of the transaction | 
 **Data** | [**PostedTransactionData**](PostedTransactionData.md) |  | 
 **EffectiveDate** | **time.Time** | The \&quot;effective date\&quot; of a transaction. This may be earlier than posted_date in some cases (for example, a transaction that occurs on a Saturday may not be posted until the following Monday, but would have an effective date of Saturday) | 
-**Id** | **int32** |  | 
+**Id** | **int64** |  | 
 **Idemkey** | **string** | The idempotency key used when initially creating this transaction. | 
 **InfoOnly** | **bool** | Whether or not this transaction represents a purely informational operation or an actual money movement | 
 **LeadMode** | **bool** | Whether or not this transaction was created operating in \&quot;lead ledger\&quot; mode | 
@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Status** | **string** |  | 
 **Subtype** | **string** | The specific transaction type. For example, for &#x60;ach&#x60;, this may be \&quot;outgoing_debit\&quot;. | 
 **Tenant** | **string** | The tenant associated with this transaction, in the form \&quot;&lt;bankid&gt;_&lt;partnerid&gt;\&quot; | 
+**TransactionTime** | **time.Time** | The time the transaction occurred. | 
 **Type** | **string** | The general type of transaction. For example, \&quot;card\&quot; or \&quot;ach\&quot;. | 
 **Updated** | **time.Time** | The date the transaction was last updated | 
 **Uuid** | **string** | The unique identifier of the transaction. | 
@@ -24,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewPostedTransaction
 
-`func NewPostedTransaction(created time.Time, data PostedTransactionData, effectiveDate time.Time, id int32, idemkey string, infoOnly bool, leadMode bool, postedDate time.Time, referenceId NullableString, status string, subtype string, tenant string, type_ string, updated time.Time, uuid string, ) *PostedTransaction`
+`func NewPostedTransaction(created time.Time, data PostedTransactionData, effectiveDate time.Time, id int64, idemkey string, infoOnly bool, leadMode bool, postedDate time.Time, referenceId NullableString, status string, subtype string, tenant string, transactionTime time.Time, type_ string, updated time.Time, uuid string, ) *PostedTransaction`
 
 NewPostedTransaction instantiates a new PostedTransaction object
 This constructor will assign default values to properties that have it defined,
@@ -101,20 +102,20 @@ SetEffectiveDate sets EffectiveDate field to given value.
 
 ### GetId
 
-`func (o *PostedTransaction) GetId() int32`
+`func (o *PostedTransaction) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *PostedTransaction) GetIdOk() (*int32, bool)`
+`func (o *PostedTransaction) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *PostedTransaction) SetId(v int32)`
+`func (o *PostedTransaction) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -287,6 +288,26 @@ and a boolean to check if the value has been set.
 `func (o *PostedTransaction) SetTenant(v string)`
 
 SetTenant sets Tenant field to given value.
+
+
+### GetTransactionTime
+
+`func (o *PostedTransaction) GetTransactionTime() time.Time`
+
+GetTransactionTime returns the TransactionTime field if non-nil, zero value otherwise.
+
+### GetTransactionTimeOk
+
+`func (o *PostedTransaction) GetTransactionTimeOk() (*time.Time, bool)`
+
+GetTransactionTimeOk returns a tuple with the TransactionTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTransactionTime
+
+`func (o *PostedTransaction) SetTransactionTime(v time.Time)`
+
+SetTransactionTime sets TransactionTime field to given value.
 
 
 ### GetType

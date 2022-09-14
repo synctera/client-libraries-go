@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Dob** | Pointer to [**ExternalPaymentDate**](ExternalPaymentDate.md) |  | [optional] 
 **DoingBusinessAs** | **string** | todo | 
 **Email** | Pointer to **string** | todo | [optional] 
+**Enabled** | **bool** | To enable or disable aft/oct feature | 
 **FirstName** | Pointer to **string** | todo | [optional] 
 **IncorporationDate** | Pointer to [**ExternalPaymentDate**](ExternalPaymentDate.md) |  | [optional] 
 **LastName** | Pointer to **string** | todo | [optional] 
@@ -30,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationRequest
 
-`func NewApplicationRequest(bankId int32, businessAddress Address1, businessName string, businessPhone string, businessTaxId string, businessType string, doingBusinessAs string, maxTransactionAmount int32, partnerId int32, processor Processor, ) *ApplicationRequest`
+`func NewApplicationRequest(bankId int32, businessAddress Address1, businessName string, businessPhone string, businessTaxId string, businessType string, doingBusinessAs string, enabled bool, maxTransactionAmount int32, partnerId int32, processor Processor, ) *ApplicationRequest`
 
 NewApplicationRequest instantiates a new ApplicationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -234,6 +235,26 @@ SetEmail sets Email field to given value.
 `func (o *ApplicationRequest) HasEmail() bool`
 
 HasEmail returns a boolean if a field has been set.
+
+### GetEnabled
+
+`func (o *ApplicationRequest) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *ApplicationRequest) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *ApplicationRequest) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
 
 ### GetFirstName
 

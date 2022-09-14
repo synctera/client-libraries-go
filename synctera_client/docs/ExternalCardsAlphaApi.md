@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-    transferRequest := *openapiclient.NewTransferRequest(int32(123), "USD", "e167fa0d-ee40-4a6e-b1ba-f61593fd254e", "75c8658d-4ffc-46a2-b33f-50f785026060", openapiclient.transfer_type("PULL")) // TransferRequest | Details of the transfer to create
+    transferRequest := *openapiclient.NewTransferRequest(int32(123), "USD", "b2710751-b575-47d0-a09b-da0994553d93", "3e2a2f28-4910-4934-be22-ded51f926b76", openapiclient.transfer_type("PULL")) // TransferRequest | Details of the transfer to create
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

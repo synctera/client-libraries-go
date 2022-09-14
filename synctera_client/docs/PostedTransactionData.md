@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExternalData** | **map[string]interface{}** | an unstructured json blob representing additional transaction information supplied by the integrator. | 
+**ForcePost** | **bool** | Whether or not the hold was forced (spending controls ignored) | 
 **HoldId** | Pointer to **string** | The uuid of the hold (pending transaction) that this transaction originated from, if any. | [optional] 
 **Lines** | [**[]TransactionLine1**](TransactionLine1.md) | The set of accounting entries associated with this transaction. For example, a debit to a customer account will have a corresponding credit in a general ledger account. | 
-**Memo** | **string** |  | 
+**Memo** | **string** | A short note to the recipient | 
 **Metadata** | **map[string]interface{}** |  | 
 **OriginalTrx** | Pointer to **string** | The \&quot;original\&quot; transaction that this transaction is related to. This is only populated in the case of reversed transactions. | [optional] 
 **RiskInfo** | **map[string]interface{}** | Information received by the transaction risk/fraud service related to this transaction | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewPostedTransactionData
 
-`func NewPostedTransactionData(externalData map[string]interface{}, lines []TransactionLine1, memo string, metadata map[string]interface{}, riskInfo map[string]interface{}, userData map[string]interface{}, ) *PostedTransactionData`
+`func NewPostedTransactionData(externalData map[string]interface{}, forcePost bool, lines []TransactionLine1, memo string, metadata map[string]interface{}, riskInfo map[string]interface{}, userData map[string]interface{}, ) *PostedTransactionData`
 
 NewPostedTransactionData instantiates a new PostedTransactionData object
 This constructor will assign default values to properties that have it defined,
@@ -62,6 +63,26 @@ SetExternalData sets ExternalData field to given value.
 `func (o *PostedTransactionData) UnsetExternalData()`
 
 UnsetExternalData ensures that no value is present for ExternalData, not even an explicit nil
+### GetForcePost
+
+`func (o *PostedTransactionData) GetForcePost() bool`
+
+GetForcePost returns the ForcePost field if non-nil, zero value otherwise.
+
+### GetForcePostOk
+
+`func (o *PostedTransactionData) GetForcePostOk() (*bool, bool)`
+
+GetForcePostOk returns a tuple with the ForcePost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForcePost
+
+`func (o *PostedTransactionData) SetForcePost(v bool)`
+
+SetForcePost sets ForcePost field to given value.
+
+
 ### GetHoldId
 
 `func (o *PostedTransactionData) GetHoldId() string`

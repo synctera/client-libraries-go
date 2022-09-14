@@ -20,6 +20,8 @@ Method | HTTP request | Description
 
 Subscribe a customer or business to monitoring
 
+
+
 ### Example
 
 ```go

@@ -174,7 +174,7 @@ import (
 
 func main() {
     webhookId := "97e074c8-188e-4cfb-8e34-16099909c595" // string | Webhook ID
-    eventId := "98f0e4c8-220b-463c-8981-7413c65ee6c9" // string | Webhook event ID
+    eventId := "30b341b8-8445-459a-8349-b3548b2aff53" // string | Webhook event ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -470,7 +470,7 @@ import (
 
 func main() {
     webhookId := "97e074c8-188e-4cfb-8e34-16099909c595" // string | Webhook ID
-    eventId := "ed92890d-7111-465a-a972-1b6839e88eb2" // string | Webhook event ID
+    eventId := "9e57eb8e-1795-4496-b3c5-06fcfdc7329f" // string | Webhook event ID
     delay := int32(56) // int32 | Delay the event triggering in seconds (optional)
 
     configuration := openapiclient.NewConfiguration()

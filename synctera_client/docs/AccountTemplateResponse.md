@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ApplicationType** | Pointer to [**ApplicationType**](ApplicationType.md) |  | [optional] 
 **Description** | Pointer to **string** | Account template description | [optional] 
 **Id** | Pointer to **string** | Generated ID for the template | [optional] 
 **IsEnabled** | **bool** | Whether this template can be used for account creation | 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewAccountTemplateResponseWithDefaults instantiates a new AccountTemplateResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetApplicationType
+
+`func (o *AccountTemplateResponse) GetApplicationType() ApplicationType`
+
+GetApplicationType returns the ApplicationType field if non-nil, zero value otherwise.
+
+### GetApplicationTypeOk
+
+`func (o *AccountTemplateResponse) GetApplicationTypeOk() (*ApplicationType, bool)`
+
+GetApplicationTypeOk returns a tuple with the ApplicationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationType
+
+`func (o *AccountTemplateResponse) SetApplicationType(v ApplicationType)`
+
+SetApplicationType sets ApplicationType field to given value.
+
+### HasApplicationType
+
+`func (o *AccountTemplateResponse) HasApplicationType() bool`
+
+HasApplicationType returns a boolean if a field has been set.
 
 ### GetDescription
 
