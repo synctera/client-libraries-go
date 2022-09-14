@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SavingsSummary** | [**SavingsSummary**](SavingsSummary.md) |  | 
+**SavingsSummary** | Pointer to [**SavingsSummary**](SavingsSummary.md) |  | [optional] 
 
 ## Methods
 
 ### NewStatementAllOf
 
-`func NewStatementAllOf(savingsSummary SavingsSummary, ) *StatementAllOf`
+`func NewStatementAllOf() *StatementAllOf`
 
 NewStatementAllOf instantiates a new StatementAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +44,11 @@ and a boolean to check if the value has been set.
 
 SetSavingsSummary sets SavingsSummary field to given value.
 
+### HasSavingsSummary
+
+`func (o *StatementAllOf) HasSavingsSummary() bool`
+
+HasSavingsSummary returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

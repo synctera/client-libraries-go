@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ChargeoffPeriod** | Pointer to **int32** | The number of days an account can stay delinquent before marking an account as charged-off.  | [optional] [default to 90]
 **DelinquencyPeriod** | Pointer to **int32** | The number of days past the due date to wait for a minimum payment before marking an account as delinquent.  | [optional] [default to 30]
 **GracePeriod** | Pointer to **int32** | The number of days past the billing period to allow for payment before it is considered due. This directly infers the due date for a payment.  | [optional] [default to 30]
+**InterestProductId** | Pointer to **string** | An interest account product that the current account associates with. The account product must have its calculation_method set to COMPOUNDED_DAILY.  | [optional] 
 **MinimumPayment** | [**MinimumPayment**](MinimumPayment.md) |  | 
 
 ## Methods
@@ -165,6 +166,31 @@ SetGracePeriod sets GracePeriod field to given value.
 `func (o *TemplateFieldsLineOfCredit) HasGracePeriod() bool`
 
 HasGracePeriod returns a boolean if a field has been set.
+
+### GetInterestProductId
+
+`func (o *TemplateFieldsLineOfCredit) GetInterestProductId() string`
+
+GetInterestProductId returns the InterestProductId field if non-nil, zero value otherwise.
+
+### GetInterestProductIdOk
+
+`func (o *TemplateFieldsLineOfCredit) GetInterestProductIdOk() (*string, bool)`
+
+GetInterestProductIdOk returns a tuple with the InterestProductId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterestProductId
+
+`func (o *TemplateFieldsLineOfCredit) SetInterestProductId(v string)`
+
+SetInterestProductId sets InterestProductId field to given value.
+
+### HasInterestProductId
+
+`func (o *TemplateFieldsLineOfCredit) HasInterestProductId() bool`
+
+HasInterestProductId returns a boolean if a field has been set.
 
 ### GetMinimumPayment
 

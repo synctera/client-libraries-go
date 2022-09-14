@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **AccountNo** | **string** | The account number associated with the hold | 
 **Created** | **time.Time** | The creation date of the hold | 
 **Data** | [**PendingTransactionData**](PendingTransactionData.md) |  | 
-**Id** | **int32** |  | 
+**Id** | **int64** |  | 
 **Idemkey** | **string** | The idempotency key used when initially creating this hold. | 
+**OffsetAccountId** | **string** | The offset account id associated with the hold | 
+**OffsetAccountNo** | **string** | The offset account number associated with the hold | 
 **ReferenceId** | **NullableString** | An external ID provided by the payment network to represent this transaction. | 
 **Tenant** | **string** | The tenant associated with this hold, in the form \&quot;&lt;bankid&gt;_&lt;partnerid&gt;\&quot; | 
 **Updated** | **time.Time** | The date the hold was last update | 
@@ -19,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewPendingTransaction
 
-`func NewPendingTransaction(accountId string, accountNo string, created time.Time, data PendingTransactionData, id int32, idemkey string, referenceId NullableString, tenant string, updated time.Time, uuid string, ) *PendingTransaction`
+`func NewPendingTransaction(accountId string, accountNo string, created time.Time, data PendingTransactionData, id int64, idemkey string, offsetAccountId string, offsetAccountNo string, referenceId NullableString, tenant string, updated time.Time, uuid string, ) *PendingTransaction`
 
 NewPendingTransaction instantiates a new PendingTransaction object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +118,20 @@ SetData sets Data field to given value.
 
 ### GetId
 
-`func (o *PendingTransaction) GetId() int32`
+`func (o *PendingTransaction) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *PendingTransaction) GetIdOk() (*int32, bool)`
+`func (o *PendingTransaction) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *PendingTransaction) SetId(v int32)`
+`func (o *PendingTransaction) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -152,6 +154,46 @@ and a boolean to check if the value has been set.
 `func (o *PendingTransaction) SetIdemkey(v string)`
 
 SetIdemkey sets Idemkey field to given value.
+
+
+### GetOffsetAccountId
+
+`func (o *PendingTransaction) GetOffsetAccountId() string`
+
+GetOffsetAccountId returns the OffsetAccountId field if non-nil, zero value otherwise.
+
+### GetOffsetAccountIdOk
+
+`func (o *PendingTransaction) GetOffsetAccountIdOk() (*string, bool)`
+
+GetOffsetAccountIdOk returns a tuple with the OffsetAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOffsetAccountId
+
+`func (o *PendingTransaction) SetOffsetAccountId(v string)`
+
+SetOffsetAccountId sets OffsetAccountId field to given value.
+
+
+### GetOffsetAccountNo
+
+`func (o *PendingTransaction) GetOffsetAccountNo() string`
+
+GetOffsetAccountNo returns the OffsetAccountNo field if non-nil, zero value otherwise.
+
+### GetOffsetAccountNoOk
+
+`func (o *PendingTransaction) GetOffsetAccountNoOk() (*string, bool)`
+
+GetOffsetAccountNoOk returns a tuple with the OffsetAccountNo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOffsetAccountNo
+
+`func (o *PendingTransaction) SetOffsetAccountNo(v string)`
+
+SetOffsetAccountNo sets OffsetAccountNo field to given value.
 
 
 ### GetReferenceId

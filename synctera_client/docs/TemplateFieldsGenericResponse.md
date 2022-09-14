@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **ChargeoffPeriod** | Pointer to **int32** | The number of days an account can stay delinquent before marking an account as charged-off.  | [optional] [default to 90]
 **Currency** | **string** | Account currency. ISO 4217 alphabetic currency code | 
 **DelinquencyPeriod** | Pointer to **int32** | The number of days past the due date to wait for a minimum payment before marking an account as delinquent.  | [optional] [default to 30]
-**FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that new accounts will associate with | [optional] 
+**FeeProductIds** | Pointer to **[]string** | A list of fee account products that the current account associates with. | [optional] 
 **GracePeriod** | Pointer to **int32** | The number of days past the billing period to allow for payment before it is considered due. This directly infers the due date for a payment.  | [optional] [default to 30]
-**InterestProductId** | Pointer to **string** | Interest from account product that new accounts will associate with | [optional] 
+**InterestProductId** | Pointer to **string** | An interest account product that the current account associates with. | [optional] 
 **IsAchEnabled** | Pointer to **bool** | Enable ACH transaction on ledger. | [optional] [default to false]
 **IsCardEnabled** | Pointer to **bool** | Enable card transaction on ledger. | [optional] [default to false]
 **IsP2pEnabled** | Pointer to **bool** | Enable P2P transaction on ledger. | [optional] [default to false]

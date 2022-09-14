@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AccountNumberMasked** | Pointer to **string** | The response will contain the bank fintech ID (3 or 6 digits) plus the last 4 digits, with the digits in between replaced with * characters. Shadow mode account numbers will not be masked. | [optional] [readonly] 
 **AccountPurpose** | Pointer to **string** | Purpose of the account | [optional] 
 **AccountType** | Pointer to [**AccountType**](AccountType.md) |  | [optional] 
+**ApplicationId** | Pointer to **string** | The application ID for this account.  | [optional] 
 **Balances** | Pointer to [**[]Balance**](Balance.md) | A list of balances for account based on different type | [optional] [readonly] 
 **BankRouting** | Pointer to **string** | Bank routing number | [optional] [readonly] 
 **CreationTime** | Pointer to **time.Time** | Account creation timestamp in RFC3339 format | [optional] [readonly] 
@@ -16,10 +17,8 @@ Name | Type | Description | Notes
 **CustomerIds** | Pointer to **[]string** | A list of the customer IDs of the account holders. | [optional] [readonly] 
 **CustomerType** | Pointer to [**CustomerType**](CustomerType.md) |  | [optional] 
 **ExchangeRateType** | Pointer to **string** | Exchange rate type | [optional] 
-**FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that the current account associate with | [optional] 
 **Iban** | Pointer to **string** | International bank account number | [optional] 
 **Id** | Pointer to **string** | Account ID | [optional] [readonly] 
-**InterestProductId** | Pointer to **string** | An interest from account product that the current account associate with | [optional] 
 **IsAccountPool** | Pointer to **bool** | Account is investment (variable balance) account or a multi-balance account pool. Default false | [optional] 
 **IsAchEnabled** | Pointer to **bool** | A flag to indicate whether ACH transactions are enabled. | [optional] [readonly] 
 **IsCardEnabled** | Pointer to **bool** | A flag to indicate whether card transactions are enabled. | [optional] [readonly] 
@@ -174,6 +173,31 @@ SetAccountType sets AccountType field to given value.
 `func (o *AccountBase) HasAccountType() bool`
 
 HasAccountType returns a boolean if a field has been set.
+
+### GetApplicationId
+
+`func (o *AccountBase) GetApplicationId() string`
+
+GetApplicationId returns the ApplicationId field if non-nil, zero value otherwise.
+
+### GetApplicationIdOk
+
+`func (o *AccountBase) GetApplicationIdOk() (*string, bool)`
+
+GetApplicationIdOk returns a tuple with the ApplicationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationId
+
+`func (o *AccountBase) SetApplicationId(v string)`
+
+SetApplicationId sets ApplicationId field to given value.
+
+### HasApplicationId
+
+`func (o *AccountBase) HasApplicationId() bool`
+
+HasApplicationId returns a boolean if a field has been set.
 
 ### GetBalances
 
@@ -350,31 +374,6 @@ SetExchangeRateType sets ExchangeRateType field to given value.
 
 HasExchangeRateType returns a boolean if a field has been set.
 
-### GetFeeProductIds
-
-`func (o *AccountBase) GetFeeProductIds() []string`
-
-GetFeeProductIds returns the FeeProductIds field if non-nil, zero value otherwise.
-
-### GetFeeProductIdsOk
-
-`func (o *AccountBase) GetFeeProductIdsOk() (*[]string, bool)`
-
-GetFeeProductIdsOk returns a tuple with the FeeProductIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFeeProductIds
-
-`func (o *AccountBase) SetFeeProductIds(v []string)`
-
-SetFeeProductIds sets FeeProductIds field to given value.
-
-### HasFeeProductIds
-
-`func (o *AccountBase) HasFeeProductIds() bool`
-
-HasFeeProductIds returns a boolean if a field has been set.
-
 ### GetIban
 
 `func (o *AccountBase) GetIban() string`
@@ -424,31 +423,6 @@ SetId sets Id field to given value.
 `func (o *AccountBase) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
-### GetInterestProductId
-
-`func (o *AccountBase) GetInterestProductId() string`
-
-GetInterestProductId returns the InterestProductId field if non-nil, zero value otherwise.
-
-### GetInterestProductIdOk
-
-`func (o *AccountBase) GetInterestProductIdOk() (*string, bool)`
-
-GetInterestProductIdOk returns a tuple with the InterestProductId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInterestProductId
-
-`func (o *AccountBase) SetInterestProductId(v string)`
-
-SetInterestProductId sets InterestProductId field to given value.
-
-### HasInterestProductId
-
-`func (o *AccountBase) HasInterestProductId() bool`
-
-HasInterestProductId returns a boolean if a field has been set.
 
 ### GetIsAccountPool
 

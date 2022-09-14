@@ -4,21 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccountId** | Pointer to **string** | The unique identifier of the account the statement belongs to | [optional] [readonly] 
+**DueDate** | Pointer to **string** | The limit date when the due amount indicated on the statement should be paid | [optional] [readonly] 
+**EndDate** | Pointer to **string** | The date indicating the ending of the time interval covered by the statement | [optional] [readonly] 
+**Id** | Pointer to **string** | statement ID | [optional] [readonly] 
+**IssueDate** | Pointer to **string** | The date when the statement has been issued | [optional] [readonly] 
+**StartDate** | Pointer to **string** | The date indicating the beginning of the time interval covered by the statement | [optional] [readonly] 
 **AccountSummary** | Pointer to [**AccountSummary**](AccountSummary.md) |  | [optional] 
-**AuthorizedSigners** | Pointer to [**[]Person1**](Person1.md) |  | [optional] [readonly] 
+**AuthorizedSigner** | Pointer to [**[]Person1**](Person1.md) |  | [optional] [readonly] 
 **Disclosure** | Pointer to **string** |  | [optional] 
 **JointAccountHolders** | Pointer to [**[]Person1**](Person1.md) |  | [optional] [readonly] 
 **PrimaryAccountHolderBusiness** | Pointer to [**Business1**](Business1.md) |  | [optional] 
 **PrimaryAccountHolderPersonal** | Pointer to [**Person1**](Person1.md) |  | [optional] 
-**StatementSummary** | Pointer to [**StatementSummary**](StatementSummary.md) |  | [optional] 
 **Transactions** | Pointer to [**[]Transaction**](Transaction.md) |  | [optional] 
-**SavingsSummary** | [**SavingsSummary**](SavingsSummary.md) |  | 
+**SavingsSummary** | Pointer to [**SavingsSummary**](SavingsSummary.md) |  | [optional] 
 
 ## Methods
 
 ### NewStatement
 
-`func NewStatement(savingsSummary SavingsSummary, ) *Statement`
+`func NewStatement() *Statement`
 
 NewStatement instantiates a new Statement object
 This constructor will assign default values to properties that have it defined,
@@ -32,6 +37,156 @@ will change when the set of required properties is changed
 NewStatementWithDefaults instantiates a new Statement object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccountId
+
+`func (o *Statement) GetAccountId() string`
+
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
+
+### GetAccountIdOk
+
+`func (o *Statement) GetAccountIdOk() (*string, bool)`
+
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountId
+
+`func (o *Statement) SetAccountId(v string)`
+
+SetAccountId sets AccountId field to given value.
+
+### HasAccountId
+
+`func (o *Statement) HasAccountId() bool`
+
+HasAccountId returns a boolean if a field has been set.
+
+### GetDueDate
+
+`func (o *Statement) GetDueDate() string`
+
+GetDueDate returns the DueDate field if non-nil, zero value otherwise.
+
+### GetDueDateOk
+
+`func (o *Statement) GetDueDateOk() (*string, bool)`
+
+GetDueDateOk returns a tuple with the DueDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDueDate
+
+`func (o *Statement) SetDueDate(v string)`
+
+SetDueDate sets DueDate field to given value.
+
+### HasDueDate
+
+`func (o *Statement) HasDueDate() bool`
+
+HasDueDate returns a boolean if a field has been set.
+
+### GetEndDate
+
+`func (o *Statement) GetEndDate() string`
+
+GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+
+### GetEndDateOk
+
+`func (o *Statement) GetEndDateOk() (*string, bool)`
+
+GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndDate
+
+`func (o *Statement) SetEndDate(v string)`
+
+SetEndDate sets EndDate field to given value.
+
+### HasEndDate
+
+`func (o *Statement) HasEndDate() bool`
+
+HasEndDate returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Statement) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Statement) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Statement) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *Statement) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetIssueDate
+
+`func (o *Statement) GetIssueDate() string`
+
+GetIssueDate returns the IssueDate field if non-nil, zero value otherwise.
+
+### GetIssueDateOk
+
+`func (o *Statement) GetIssueDateOk() (*string, bool)`
+
+GetIssueDateOk returns a tuple with the IssueDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssueDate
+
+`func (o *Statement) SetIssueDate(v string)`
+
+SetIssueDate sets IssueDate field to given value.
+
+### HasIssueDate
+
+`func (o *Statement) HasIssueDate() bool`
+
+HasIssueDate returns a boolean if a field has been set.
+
+### GetStartDate
+
+`func (o *Statement) GetStartDate() string`
+
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+
+### GetStartDateOk
+
+`func (o *Statement) GetStartDateOk() (*string, bool)`
+
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartDate
+
+`func (o *Statement) SetStartDate(v string)`
+
+SetStartDate sets StartDate field to given value.
+
+### HasStartDate
+
+`func (o *Statement) HasStartDate() bool`
+
+HasStartDate returns a boolean if a field has been set.
 
 ### GetAccountSummary
 
@@ -58,30 +213,30 @@ SetAccountSummary sets AccountSummary field to given value.
 
 HasAccountSummary returns a boolean if a field has been set.
 
-### GetAuthorizedSigners
+### GetAuthorizedSigner
 
-`func (o *Statement) GetAuthorizedSigners() []Person1`
+`func (o *Statement) GetAuthorizedSigner() []Person1`
 
-GetAuthorizedSigners returns the AuthorizedSigners field if non-nil, zero value otherwise.
+GetAuthorizedSigner returns the AuthorizedSigner field if non-nil, zero value otherwise.
 
-### GetAuthorizedSignersOk
+### GetAuthorizedSignerOk
 
-`func (o *Statement) GetAuthorizedSignersOk() (*[]Person1, bool)`
+`func (o *Statement) GetAuthorizedSignerOk() (*[]Person1, bool)`
 
-GetAuthorizedSignersOk returns a tuple with the AuthorizedSigners field if it's non-nil, zero value otherwise
+GetAuthorizedSignerOk returns a tuple with the AuthorizedSigner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAuthorizedSigners
+### SetAuthorizedSigner
 
-`func (o *Statement) SetAuthorizedSigners(v []Person1)`
+`func (o *Statement) SetAuthorizedSigner(v []Person1)`
 
-SetAuthorizedSigners sets AuthorizedSigners field to given value.
+SetAuthorizedSigner sets AuthorizedSigner field to given value.
 
-### HasAuthorizedSigners
+### HasAuthorizedSigner
 
-`func (o *Statement) HasAuthorizedSigners() bool`
+`func (o *Statement) HasAuthorizedSigner() bool`
 
-HasAuthorizedSigners returns a boolean if a field has been set.
+HasAuthorizedSigner returns a boolean if a field has been set.
 
 ### GetDisclosure
 
@@ -183,31 +338,6 @@ SetPrimaryAccountHolderPersonal sets PrimaryAccountHolderPersonal field to given
 
 HasPrimaryAccountHolderPersonal returns a boolean if a field has been set.
 
-### GetStatementSummary
-
-`func (o *Statement) GetStatementSummary() StatementSummary`
-
-GetStatementSummary returns the StatementSummary field if non-nil, zero value otherwise.
-
-### GetStatementSummaryOk
-
-`func (o *Statement) GetStatementSummaryOk() (*StatementSummary, bool)`
-
-GetStatementSummaryOk returns a tuple with the StatementSummary field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatementSummary
-
-`func (o *Statement) SetStatementSummary(v StatementSummary)`
-
-SetStatementSummary sets StatementSummary field to given value.
-
-### HasStatementSummary
-
-`func (o *Statement) HasStatementSummary() bool`
-
-HasStatementSummary returns a boolean if a field has been set.
-
 ### GetTransactions
 
 `func (o *Statement) GetTransactions() []Transaction`
@@ -252,6 +382,11 @@ and a boolean to check if the value has been set.
 
 SetSavingsSummary sets SavingsSummary field to given value.
 
+### HasSavingsSummary
+
+`func (o *Statement) HasSavingsSummary() bool`
+
+HasSavingsSummary returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

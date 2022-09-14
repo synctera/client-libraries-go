@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BalanceCeiling** | Pointer to [**BalanceCeiling**](BalanceCeiling.md) |  | [optional] 
 **BalanceFloor** | Pointer to [**BalanceFloor**](BalanceFloor.md) |  | [optional] 
-**FeeProductIds** | Pointer to **[]string** | A list of fee resources from account product that new accounts will associate with | [optional] 
-**InterestProductId** | Pointer to **string** | Interest from account product that new accounts will associate with | [optional] 
+**FeeProductIds** | Pointer to **[]string** | A list of fee account products that the current account associates with. | [optional] 
+**InterestProductId** | Pointer to **string** | An interest account product that the current account associates with. The account product must have its calculation_method set to COMPOUNDED_MONTHLY.  | [optional] 
 **IsAchEnabled** | Pointer to **bool** | Enable ACH transaction. | [optional] [default to false]
 **IsCardEnabled** | Pointer to **bool** | Enable card transaction. | [optional] [default to false]
 **IsP2pEnabled** | Pointer to **bool** | Enable P2P transaction. | [optional] [default to false]

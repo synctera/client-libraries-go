@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BalanceCeiling** | Pointer to [**BalanceCeiling**](BalanceCeiling.md) |  | [optional] 
 **BalanceFloor** | Pointer to [**BalanceFloor**](BalanceFloor.md) |  | [optional] 
+**FeeProductIds** | Pointer to **[]string** | A list of fee account products that the current account associates with. | [optional] 
+**InterestProductId** | Pointer to **string** | An interest account product that the current account associates with. The account product must have its calculation_method set to COMPOUNDED_MONTHLY.  | [optional] 
 **OverdraftLimit** | Pointer to **int64** | Account&#39;s overdraft limit | [optional] 
 **SpendingLimits** | Pointer to [**SpendingLimits**](SpendingLimits.md) |  | [optional] 
 
@@ -77,6 +79,56 @@ SetBalanceFloor sets BalanceFloor field to given value.
 `func (o *AccountDepositoryAllOf) HasBalanceFloor() bool`
 
 HasBalanceFloor returns a boolean if a field has been set.
+
+### GetFeeProductIds
+
+`func (o *AccountDepositoryAllOf) GetFeeProductIds() []string`
+
+GetFeeProductIds returns the FeeProductIds field if non-nil, zero value otherwise.
+
+### GetFeeProductIdsOk
+
+`func (o *AccountDepositoryAllOf) GetFeeProductIdsOk() (*[]string, bool)`
+
+GetFeeProductIdsOk returns a tuple with the FeeProductIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeeProductIds
+
+`func (o *AccountDepositoryAllOf) SetFeeProductIds(v []string)`
+
+SetFeeProductIds sets FeeProductIds field to given value.
+
+### HasFeeProductIds
+
+`func (o *AccountDepositoryAllOf) HasFeeProductIds() bool`
+
+HasFeeProductIds returns a boolean if a field has been set.
+
+### GetInterestProductId
+
+`func (o *AccountDepositoryAllOf) GetInterestProductId() string`
+
+GetInterestProductId returns the InterestProductId field if non-nil, zero value otherwise.
+
+### GetInterestProductIdOk
+
+`func (o *AccountDepositoryAllOf) GetInterestProductIdOk() (*string, bool)`
+
+GetInterestProductIdOk returns a tuple with the InterestProductId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterestProductId
+
+`func (o *AccountDepositoryAllOf) SetInterestProductId(v string)`
+
+SetInterestProductId sets InterestProductId field to given value.
+
+### HasInterestProductId
+
+`func (o *AccountDepositoryAllOf) HasInterestProductId() bool`
+
+HasInterestProductId returns a boolean if a field has been set.
 
 ### GetOverdraftLimit
 

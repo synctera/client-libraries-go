@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **int32** | The amount (in cents) to transfer from originating account to receiving account. | 
+**Amount** | **int64** | The amount (in cents) to transfer from originating account to receiving account. | 
 **Currency** | **string** | ISO 4217 alphabetic currency code of the transfer amount | 
 **Memo** | Pointer to **string** | A short note to the recipient | [optional] 
 **Metadata** | Pointer to **map[string]interface{}** | Arbitrary key-value metadata to associate with the transaction | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewInternalTransfer
 
-`func NewInternalTransfer(amount int32, currency string, type_ string, ) *InternalTransfer`
+`func NewInternalTransfer(amount int64, currency string, type_ string, ) *InternalTransfer`
 
 NewInternalTransfer instantiates a new InternalTransfer object
 This constructor will assign default values to properties that have it defined,
@@ -37,20 +37,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *InternalTransfer) GetAmount() int32`
+`func (o *InternalTransfer) GetAmount() int64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *InternalTransfer) GetAmountOk() (*int32, bool)`
+`func (o *InternalTransfer) GetAmountOk() (*int64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *InternalTransfer) SetAmount(v int32)`
+`func (o *InternalTransfer) SetAmount(v int64)`
 
 SetAmount sets Amount field to given value.
 

@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **ApplicationDetails** | **map[string]interface{}** | Details about the applicant. The exact schema is to be determined with your bank. | 
 **CustomerId** | **string** | Customer ID for the application | 
 **Status** | Pointer to [**ApplicationStatus**](ApplicationStatus.md) |  | [optional] 
-**Type** | [**ApplicationType**](ApplicationType.md) |  | 
+**Type** | [**ApplicationType1**](ApplicationType1.md) |  | 
 
 ## Methods
 
 ### NewApplication
 
-`func NewApplication(applicationDetails map[string]interface{}, customerId string, type_ ApplicationType, ) *Application`
+`func NewApplication(applicationDetails map[string]interface{}, customerId string, type_ ApplicationType1, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -95,20 +95,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *Application) GetType() ApplicationType`
+`func (o *Application) GetType() ApplicationType1`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Application) GetTypeOk() (*ApplicationType, bool)`
+`func (o *Application) GetTypeOk() (*ApplicationType1, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Application) SetType(v ApplicationType)`
+`func (o *Application) SetType(v ApplicationType1)`
 
 SetType sets Type field to given value.
 

@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-    reconciliationInput := *openapiclient.NewReconciliationInput(string(123), "sg67wa98toiudl") // ReconciliationInput | Reconciliation to perform (optional)
+    reconciliationInput := *openapiclient.NewReconciliationInput(string(123), "cp2tj9tzpzpckc") // ReconciliationInput | Reconciliation to perform (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

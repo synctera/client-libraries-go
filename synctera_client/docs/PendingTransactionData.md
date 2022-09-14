@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **int32** | The amount of the hold. | 
-**AvailBalance** | **int32** | The account \&quot;available balance\&quot; at the time this hold was created | 
-**Balance** | **int32** | The account balance at the time this hold was created | 
+**Amount** | **int64** | The amount of the hold. | 
+**AutoPostAt** | **time.Time** | The account \&quot;available balance\&quot; at the time this hold was created | 
+**AvailBalance** | **int64** | The account \&quot;available balance\&quot; at the time this hold was created (to be deprecated) | 
+**AvailableBalance** | **int64** | The account \&quot;available balance\&quot; at the time this hold was created | 
+**Balance** | **int64** | The account balance at the time this hold was created | 
 **Currency** | **string** | ISO 4217 alphabetic currency code of the transfer amount | 
 **DcSign** | [**DcSign**](DcSign.md) |  | 
 **EffectiveDate** | **time.Time** | The effective date of the transaction once it gets posted | 
@@ -14,16 +16,18 @@ Name | Type | Description | Notes
 **ExternalData** | **map[string]interface{}** | an unstructured json blob representing additional transaction information supplied by the integrator. | 
 **ForcePost** | **bool** | Whether or not the hold was forced (spending controls ignored) | 
 **History** | [**[]PendingTransactionHistory**](PendingTransactionHistory.md) | An array representing any previous states of the hold, if it has been modified (For example, increasing or decreasing the hold amount). | 
-**Memo** | **string** |  | 
+**Idemkey** | **string** | The idempotency key used when initially creating this hold. | 
+**Memo** | **string** | A short note to the recipient | 
 **Network** | **string** | The network this transaction is associated with | 
 **Operation** | **string** |  | 
 **Reason** | **string** | If a hold has been declined or modified, this will include the reason. | 
-**ReqAmount** | **int32** | The requested amount, in the case of hold modifications. | 
+**ReqAmount** | **int64** | The requested amount, in the case of hold modifications. | 
 **RiskInfo** | **map[string]interface{}** | Information received by the transaction risk/fraud service related to this transaction | 
 **Status** | **string** | The status of the hold. | 
 **Subtype** | **string** | The specific transaction type. For example, for &#x60;ach&#x60;, this may be \&quot;outgoing_debit\&quot;. | 
-**TotalAmount** | **int32** | The total amount of the hold. This may be different than &#x60;amount&#x60; in the case where a hold increase or decrease was requested. | 
+**TotalAmount** | **int64** | The total amount of the hold. This may be different than &#x60;amount&#x60; in the case where a hold increase or decrease was requested. | 
 **TransactionId** | Pointer to **string** | The uuid of the transaction that this pending transaction originated from, if any. This is primary used when a transaction \&quot;posts\&quot;, but a subset of the amount reserved until a future settlement date. | [optional] 
+**TransactionTime** | **time.Time** | The time that the transaction was created | 
 **Type** | **string** | The general type of transaction. For example, \&quot;card\&quot; or \&quot;ach\&quot;. | 
 **UserData** | **map[string]interface{}** | An unstructured JSON blob representing additional transaction information specific to each payment rail. | 
 **WasPartial** | **bool** | Does this hold represent a partial debit (or credit)? | 
@@ -32,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewPendingTransactionData
 
-`func NewPendingTransactionData(amount int32, availBalance int32, balance int32, currency string, dcSign DcSign, effectiveDate time.Time, expiresAt time.Time, externalData map[string]interface{}, forcePost bool, history []PendingTransactionHistory, memo string, network string, operation string, reason string, reqAmount int32, riskInfo map[string]interface{}, status string, subtype string, totalAmount int32, type_ string, userData map[string]interface{}, wasPartial bool, ) *PendingTransactionData`
+`func NewPendingTransactionData(amount int64, autoPostAt time.Time, availBalance int64, availableBalance int64, balance int64, currency string, dcSign DcSign, effectiveDate time.Time, expiresAt time.Time, externalData map[string]interface{}, forcePost bool, history []PendingTransactionHistory, idemkey string, memo string, network string, operation string, reason string, reqAmount int64, riskInfo map[string]interface{}, status string, subtype string, totalAmount int64, transactionTime time.Time, type_ string, userData map[string]interface{}, wasPartial bool, ) *PendingTransactionData`
 
 NewPendingTransactionData instantiates a new PendingTransactionData object
 This constructor will assign default values to properties that have it defined,
@@ -49,60 +53,100 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *PendingTransactionData) GetAmount() int32`
+`func (o *PendingTransactionData) GetAmount() int64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *PendingTransactionData) GetAmountOk() (*int32, bool)`
+`func (o *PendingTransactionData) GetAmountOk() (*int64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *PendingTransactionData) SetAmount(v int32)`
+`func (o *PendingTransactionData) SetAmount(v int64)`
 
 SetAmount sets Amount field to given value.
 
 
+### GetAutoPostAt
+
+`func (o *PendingTransactionData) GetAutoPostAt() time.Time`
+
+GetAutoPostAt returns the AutoPostAt field if non-nil, zero value otherwise.
+
+### GetAutoPostAtOk
+
+`func (o *PendingTransactionData) GetAutoPostAtOk() (*time.Time, bool)`
+
+GetAutoPostAtOk returns a tuple with the AutoPostAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoPostAt
+
+`func (o *PendingTransactionData) SetAutoPostAt(v time.Time)`
+
+SetAutoPostAt sets AutoPostAt field to given value.
+
+
 ### GetAvailBalance
 
-`func (o *PendingTransactionData) GetAvailBalance() int32`
+`func (o *PendingTransactionData) GetAvailBalance() int64`
 
 GetAvailBalance returns the AvailBalance field if non-nil, zero value otherwise.
 
 ### GetAvailBalanceOk
 
-`func (o *PendingTransactionData) GetAvailBalanceOk() (*int32, bool)`
+`func (o *PendingTransactionData) GetAvailBalanceOk() (*int64, bool)`
 
 GetAvailBalanceOk returns a tuple with the AvailBalance field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvailBalance
 
-`func (o *PendingTransactionData) SetAvailBalance(v int32)`
+`func (o *PendingTransactionData) SetAvailBalance(v int64)`
 
 SetAvailBalance sets AvailBalance field to given value.
 
 
+### GetAvailableBalance
+
+`func (o *PendingTransactionData) GetAvailableBalance() int64`
+
+GetAvailableBalance returns the AvailableBalance field if non-nil, zero value otherwise.
+
+### GetAvailableBalanceOk
+
+`func (o *PendingTransactionData) GetAvailableBalanceOk() (*int64, bool)`
+
+GetAvailableBalanceOk returns a tuple with the AvailableBalance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAvailableBalance
+
+`func (o *PendingTransactionData) SetAvailableBalance(v int64)`
+
+SetAvailableBalance sets AvailableBalance field to given value.
+
+
 ### GetBalance
 
-`func (o *PendingTransactionData) GetBalance() int32`
+`func (o *PendingTransactionData) GetBalance() int64`
 
 GetBalance returns the Balance field if non-nil, zero value otherwise.
 
 ### GetBalanceOk
 
-`func (o *PendingTransactionData) GetBalanceOk() (*int32, bool)`
+`func (o *PendingTransactionData) GetBalanceOk() (*int64, bool)`
 
 GetBalanceOk returns a tuple with the Balance field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBalance
 
-`func (o *PendingTransactionData) SetBalance(v int32)`
+`func (o *PendingTransactionData) SetBalance(v int64)`
 
 SetBalance sets Balance field to given value.
 
@@ -257,6 +301,26 @@ and a boolean to check if the value has been set.
 SetHistory sets History field to given value.
 
 
+### GetIdemkey
+
+`func (o *PendingTransactionData) GetIdemkey() string`
+
+GetIdemkey returns the Idemkey field if non-nil, zero value otherwise.
+
+### GetIdemkeyOk
+
+`func (o *PendingTransactionData) GetIdemkeyOk() (*string, bool)`
+
+GetIdemkeyOk returns a tuple with the Idemkey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdemkey
+
+`func (o *PendingTransactionData) SetIdemkey(v string)`
+
+SetIdemkey sets Idemkey field to given value.
+
+
 ### GetMemo
 
 `func (o *PendingTransactionData) GetMemo() string`
@@ -339,20 +403,20 @@ SetReason sets Reason field to given value.
 
 ### GetReqAmount
 
-`func (o *PendingTransactionData) GetReqAmount() int32`
+`func (o *PendingTransactionData) GetReqAmount() int64`
 
 GetReqAmount returns the ReqAmount field if non-nil, zero value otherwise.
 
 ### GetReqAmountOk
 
-`func (o *PendingTransactionData) GetReqAmountOk() (*int32, bool)`
+`func (o *PendingTransactionData) GetReqAmountOk() (*int64, bool)`
 
 GetReqAmountOk returns a tuple with the ReqAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReqAmount
 
-`func (o *PendingTransactionData) SetReqAmount(v int32)`
+`func (o *PendingTransactionData) SetReqAmount(v int64)`
 
 SetReqAmount sets ReqAmount field to given value.
 
@@ -429,20 +493,20 @@ SetSubtype sets Subtype field to given value.
 
 ### GetTotalAmount
 
-`func (o *PendingTransactionData) GetTotalAmount() int32`
+`func (o *PendingTransactionData) GetTotalAmount() int64`
 
 GetTotalAmount returns the TotalAmount field if non-nil, zero value otherwise.
 
 ### GetTotalAmountOk
 
-`func (o *PendingTransactionData) GetTotalAmountOk() (*int32, bool)`
+`func (o *PendingTransactionData) GetTotalAmountOk() (*int64, bool)`
 
 GetTotalAmountOk returns a tuple with the TotalAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalAmount
 
-`func (o *PendingTransactionData) SetTotalAmount(v int32)`
+`func (o *PendingTransactionData) SetTotalAmount(v int64)`
 
 SetTotalAmount sets TotalAmount field to given value.
 
@@ -471,6 +535,26 @@ SetTransactionId sets TransactionId field to given value.
 `func (o *PendingTransactionData) HasTransactionId() bool`
 
 HasTransactionId returns a boolean if a field has been set.
+
+### GetTransactionTime
+
+`func (o *PendingTransactionData) GetTransactionTime() time.Time`
+
+GetTransactionTime returns the TransactionTime field if non-nil, zero value otherwise.
+
+### GetTransactionTimeOk
+
+`func (o *PendingTransactionData) GetTransactionTimeOk() (*time.Time, bool)`
+
+GetTransactionTimeOk returns a tuple with the TransactionTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTransactionTime
+
+`func (o *PendingTransactionData) SetTransactionTime(v time.Time)`
+
+SetTransactionTime sets TransactionTime field to given value.
+
 
 ### GetType
 

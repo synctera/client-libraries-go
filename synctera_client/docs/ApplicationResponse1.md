@@ -5,16 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedTime** | **time.Time** |  | 
+**Enabled** | **bool** | To enable or disable aft/oct feature | 
 **ExternalId** | Pointer to **string** | The id of the application from processor | [optional] 
 **Id** | **string** | The id of the application | 
 **LastModifiedTime** | **time.Time** |  | 
-**Processor** | Pointer to [**Processor**](Processor.md) |  | [optional] 
+**Processor** | [**Processor**](Processor.md) |  | 
 
 ## Methods
 
 ### NewApplicationResponse1
 
-`func NewApplicationResponse1(createdTime time.Time, id string, lastModifiedTime time.Time, ) *ApplicationResponse1`
+`func NewApplicationResponse1(createdTime time.Time, enabled bool, id string, lastModifiedTime time.Time, processor Processor, ) *ApplicationResponse1`
 
 NewApplicationResponse1 instantiates a new ApplicationResponse1 object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +48,26 @@ and a boolean to check if the value has been set.
 `func (o *ApplicationResponse1) SetCreatedTime(v time.Time)`
 
 SetCreatedTime sets CreatedTime field to given value.
+
+
+### GetEnabled
+
+`func (o *ApplicationResponse1) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *ApplicationResponse1) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *ApplicationResponse1) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
 
 
 ### GetExternalId
@@ -133,11 +154,6 @@ and a boolean to check if the value has been set.
 
 SetProcessor sets Processor field to given value.
 
-### HasProcessor
-
-`func (o *ApplicationResponse1) HasProcessor() bool`
-
-HasProcessor returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -669,7 +669,7 @@ import (
 )
 
 func main() {
-    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("df063c1c-cc31-4d60-8a54-ed7a6fdbc1be", "ffe4f5b1-c84d-4fbf-b595-821d3254fed8") // SingleUseTokenRequest | User token details
+    singleUseTokenRequest := *openapiclient.NewSingleUseTokenRequest("9aea04bb-b7c7-46b5-817d-1af05e6b22f2", "e167fa0d-ee40-4a6e-b1ba-f61593fd254e") // SingleUseTokenRequest | User token details
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

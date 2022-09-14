@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApplicationId** | Pointer to **string** | (REQUIRED): The application ID for this account.  | [optional] 
 **ChargeoffPeriod** | Pointer to **int32** | The number of days an account can stay delinquent before marking an account as charged-off.  | [optional] [default to 90]
 **CreditLimit** | Pointer to **int64** | The credit limit for this line of credit account in cents. Minimum is 0.  | [optional] 
 **DelinquencyPeriod** | Pointer to **int32** | The number of days past the due date to wait for a minimum payment before marking an account as delinquent.  | [optional] [default to 30]
 **GracePeriod** | Pointer to **int32** | The number of days past the billing period to allow for payment before it is considered due. This directly infers the due date for a payment.  | [optional] 
+**InterestProductId** | Pointer to **string** | An interest account product that the current account associates with. The account product must have its calculation_method set to COMPOUNDED_DAILY.  | [optional] 
 **MinimumPayment** | Pointer to [**MinimumPayment**](MinimumPayment.md) |  | [optional] 
 
 ## Methods
@@ -29,31 +29,6 @@ will change when the set of required properties is changed
 NewAccountLineOfCreditAllOfWithDefaults instantiates a new AccountLineOfCreditAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetApplicationId
-
-`func (o *AccountLineOfCreditAllOf) GetApplicationId() string`
-
-GetApplicationId returns the ApplicationId field if non-nil, zero value otherwise.
-
-### GetApplicationIdOk
-
-`func (o *AccountLineOfCreditAllOf) GetApplicationIdOk() (*string, bool)`
-
-GetApplicationIdOk returns a tuple with the ApplicationId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApplicationId
-
-`func (o *AccountLineOfCreditAllOf) SetApplicationId(v string)`
-
-SetApplicationId sets ApplicationId field to given value.
-
-### HasApplicationId
-
-`func (o *AccountLineOfCreditAllOf) HasApplicationId() bool`
-
-HasApplicationId returns a boolean if a field has been set.
 
 ### GetChargeoffPeriod
 
@@ -154,6 +129,31 @@ SetGracePeriod sets GracePeriod field to given value.
 `func (o *AccountLineOfCreditAllOf) HasGracePeriod() bool`
 
 HasGracePeriod returns a boolean if a field has been set.
+
+### GetInterestProductId
+
+`func (o *AccountLineOfCreditAllOf) GetInterestProductId() string`
+
+GetInterestProductId returns the InterestProductId field if non-nil, zero value otherwise.
+
+### GetInterestProductIdOk
+
+`func (o *AccountLineOfCreditAllOf) GetInterestProductIdOk() (*string, bool)`
+
+GetInterestProductIdOk returns a tuple with the InterestProductId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterestProductId
+
+`func (o *AccountLineOfCreditAllOf) SetInterestProductId(v string)`
+
+SetInterestProductId sets InterestProductId field to given value.
+
+### HasInterestProductId
+
+`func (o *AccountLineOfCreditAllOf) HasInterestProductId() bool`
+
+HasInterestProductId returns a boolean if a field has been set.
 
 ### GetMinimumPayment
 
